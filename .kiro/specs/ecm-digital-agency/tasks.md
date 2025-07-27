@@ -70,7 +70,7 @@
     - Implementacja zgodnie z szablonem
     - _Wymagania: 2.1, 2.2_
   
-  - [ ] 3.6 Utworzenie minimum 5 case studies dla audytów UX
+  - [x] 3.6 Utworzenie minimum 5 case studies dla audytów UX
     - Zebranie danych projektowych
     - Przygotowanie opisów i wizualizacji
     - Implementacja zgodnie z szablonem
