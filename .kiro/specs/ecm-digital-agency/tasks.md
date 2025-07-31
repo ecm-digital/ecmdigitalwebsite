@@ -126,82 +126,82 @@
     - Implementacja opcji dodatkowych
     - _Wymagania: 4.1, 4.2, 4.3_
   
-  - [ ] 5.4 Implementacja cennika dla prototypów MVP
+  - [x] 5.4 Implementacja cennika dla prototypów MVP
     - Utworzenie tabeli pakietów i cen
     - Dodanie opisu zakresu prac
     - Implementacja opcji dodatkowych
     - _Wymagania: 4.1, 4.2, 4.3_
   
-  - [ ] 5.5 Implementacja cennika dla audytów UX
+  - [x] 5.5 Implementacja cennika dla audytów UX
     - Utworzenie tabeli pakietów i cen
     - Dodanie opisu zakresu prac
     - Implementacja opcji dodatkowych
     - _Wymagania: 4.1, 4.2, 4.3_
   
-  - [ ] 5.6 Implementacja kalkulatora wyceny
+  - [-] 5.6 Implementacja kalkulatora wyceny
     - Utworzenie interaktywnego formularza
     - Implementacja logiki kalkulacji
     - Dodanie formularza kontaktowego
     - _Wymagania: 4.3, 4.4, 4.5_
 
-- [ ] 6. Implementacja sekcji Zespół i Kompetencje
-  - [ ] 6.1 Utworzenie głównej strony zespołu
+- [x] 6. Implementacja sekcji Zespół i Kompetencje
+  - [x] 6.1 Utworzenie głównej strony zespołu
     - Implementacja nagłówka i wprowadzenia
     - Dodanie struktury organizacyjnej
     - Implementacja przeglądu kompetencji
     - _Wymagania: 5.1, 5.3_
   
-  - [ ] 6.2 Implementacja profili kluczowych członków zespołu
+  - [x] 6.2 Implementacja profili kluczowych członków zespołu
     - Utworzenie szablonu profilu
     - Dodanie zdjęć i biogramów
     - Implementacja listy projektów i specjalizacji
     - _Wymagania: 5.1, 5.2_
   
-  - [ ] 6.3 Implementacja sekcji kompetencji technologicznych
+  - [x] 6.3 Implementacja sekcji kompetencji technologicznych
     - Utworzenie kategorii technologii
     - Dodanie opisu doświadczenia w każdej technologii
     - Implementacja przykładów zastosowania
     - _Wymagania: 5.3, 5.4, 5.5_
 
-- [ ] 7. Implementacja sekcji Wsparcie i Utrzymanie
-  - [ ] 7.1 Utworzenie głównej strony wsparcia
+- [x] 7. Implementacja sekcji Wsparcie i Utrzymanie
+  - [x] 7.1 Utworzenie głównej strony wsparcia
     - Implementacja nagłówka i wprowadzenia
     - Dodanie przeglądu pakietów wsparcia
     - Implementacja nawigacji do podsekcji
     - _Wymagania: 6.1, 6.2, 6.3_
   
-  - [ ] 7.2 Implementacja pakietów wsparcia
+  - [x] 7.2 Implementacja pakietów wsparcia
     - Utworzenie tabeli porównawczej pakietów
     - Dodanie szczegółowych opisów
     - Implementacja formularza zamówienia
     - _Wymagania: 6.1, 6.2_
   
-  - [ ] 7.3 Implementacja sekcji SLA
+  - [x] 7.3 Implementacja sekcji SLA
     - Utworzenie tabeli parametrów SLA
     - Dodanie opisu procedur wsparcia
     - Implementacja FAQ
     - _Wymagania: 6.2_
   
-  - [ ] 7.4 Implementacja sekcji utrzymania technicznego
+  - [x] 7.4 Implementacja sekcji utrzymania technicznego
     - Utworzenie opisu usług utrzymania
     - Dodanie harmonogramów i procedur
     - Implementacja przykładów raportów
     - _Wymagania: 6.3, 6.4, 6.5_
 
-- [ ] 8. Implementacja sekcji Metodologia Pracy
-  - [ ] 8.1 Utworzenie głównej strony metodologii
+- [x] 8. Implementacja sekcji Metodologia Pracy
+  - [x] 8.1 Utworzenie głównej strony metodologii
     - Implementacja nagłówka i wprowadzenia
     - Dodanie przeglądu stosowanych metodologii
     - Implementacja nawigacji do podsekcji
     - _Wymagania: 7.1_
   
-  - [ ] 8.2 Implementacja opisu podejścia Agile
+  - [x] 8.2 Implementacja opisu podejścia Agile
     - Utworzenie szczegółowego opisu metodyki
     - Dodanie diagramu procesu
     - Implementacja przykładów zastosowania
     - _Wymagania: 7.1, 7.3_
   
-  - [ ] 8.3 Implementacja opisu Design Thinking
+  - [x] 8.3 Implementacja opisu Design Thinking
     - Utworzenie szczegółowego opisu metodyki
     - Dodanie diagramu procesu
     - Implementacja przykładów zastosowania

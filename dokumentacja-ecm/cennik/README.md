@@ -97,7 +97,7 @@ Kampanie social media oparte na data science z gwarantowanymi wysokimi współcz
 
 ## 💰 Kalkulator Wyceny
 
-Skorzystaj z naszego interaktywnego [kalkulatora wyceny](kalkulator.md) aby uzyskać przybliżoną wycenę swojego projektu w kilka minut.
+Skorzystaj z naszego interaktywnego [kalkulatora wyceny](kalkulator.html) aby uzyskać przybliżoną wycenę swojego projektu w kilka minut.
 
 ## Często Zadawane Pytania
 
