@@ -223,7 +223,7 @@ Przeprowadziliśmy kompleksowy audyt UX platformy SaaS, skupiając się na optym
 ### Wsparcie i Utrzymanie
 - **Pakiet wsparcia**: SaaS Premium Support Package
 - **SLA**: Reakcja w 2h, rozwiązanie w 8h
-- **Kontakt techniczny**: saas-support@ecmdigital.pl
+- **Kontakt techniczny**: hello@ecm-digital.com
 
 ---
 
@@ -232,8 +232,8 @@ Przeprowadziliśmy kompleksowy audyt UX platformy SaaS, skupiając się na optym
 Jeśli rozwijasz platformę SaaS i chcesz zoptymalizować onboarding oraz redukcję churn rate, skontaktuj się z nami:
 
 ### Bezpłatna Konsultacja
-- **Telefon**: +48 123 456 789
-- **Email**: hello@ecmdigital.pl
+- **Telefon**: +48 535 330 323
+- **Email**: hello@ecm-digital.com
 - **Formularz kontaktowy**: [Link do formularza](../kontakt.md)
 
 ### Co Otrzymasz?

@@ -11,7 +11,9 @@ dokumentacja-ecm/
 │   ├── strony-www/           # Usługi tworzenia stron WWW
 │   ├── sklepy-shopify/       # Sklepy e-commerce na Shopify
 │   ├── prototypy-mvp/        # Prototypy MVP i walidacja pomysłów
-│   └── audyty-ux/           # Audyty UX i optymalizacja
+│   ├── audyty-ux/           # Audyty UX i optymalizacja
+│   ├── automatyzacje-n8n/   # Automatyzacje procesów biznesowych
+│   └── social-media-data-science/ # Kampanie social media z data science
 ├── portfolio-case-studies/   # Portfolio i case studies
 │   ├── www/                 # Case studies stron WWW
 │   ├── shopify/             # Case studies sklepów Shopify
@@ -29,6 +31,8 @@ dokumentacja-ecm/
 - **Sklepy Shopify** - Profesjonalne sklepy e-commerce
 - **Prototypy MVP** - Szybka walidacja pomysłów biznesowych
 - **Audyty UX** - Optymalizacja doświadczenia użytkownika
+- **Automatyzacje z n8n** - Zaawansowane rozwiązania automatyzacji procesów biznesowych
+- **Social Media z Data Science** - Kampanie social media oparte na data science z wysokimi współczynnikami konwersji
 
 ### Portfolio
 - **25+ Case Studies** - Szczegółowe opisy zrealizowanych projektów
@@ -128,8 +132,8 @@ Następnie otwórz przeglądarkę i przejdź do `http://localhost:8000`
 5. **Wsparcie** - Długoterminowe utrzymanie
 
 ### Kontakt
-- **Email**: hello@ecmdigital.pl
-- **Telefon**: +48 123 456 789
+- **Email**: hello@ecm-digital.com
+- **Telefon**: +48 535330323
 - **Website**: [www.ecmdigital.pl](https://www.ecmdigital.pl)
 
 ## 📄 Licencja

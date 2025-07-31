@@ -223,7 +223,7 @@ Przeprowadziliśmy specjalistyczny audyt UX dla aplikacji fintech, uwzględniaj�
 ### Wsparcie i Utrzymanie
 - **Pakiet wsparcia**: Enterprise Support Package
 - **SLA**: Reakcja w 2h, rozwiązanie w 12h
-- **Kontakt techniczny**: fintech-support@ecmdigital.pl
+- **Kontakt techniczny**: hello@ecm-digital.com
 
 ---
 
@@ -232,8 +232,8 @@ Przeprowadziliśmy specjalistyczny audyt UX dla aplikacji fintech, uwzględniaj�
 Jeśli rozwijasz aplikację fintech i chcesz zoptymalizować jej UX przy zachowaniu najwyższych standardów bezpieczeństwa, skontaktuj się z nami:
 
 ### Bezpłatna Konsultacja
-- **Telefon**: +48 123 456 789
-- **Email**: hello@ecmdigital.pl
+- **Telefon**: +48 535 330 323
+- **Email**: hello@ecm-digital.com
 - **Formularz kontaktowy**: [Link do formularza](../kontakt.md)
 
 ### Co Otrzymasz?

@@ -267,7 +267,7 @@ Tak, wszystkie nasze strony są zoptymalizowane pod kątem SEO. Dodatkowo oferuj
 
 Jesteś zainteresowany stworzeniem profesjonalnej strony internetowej? Skontaktuj się z nami:
 
-* **Telefon:** +48 123 456 789
+* **Telefon:** +48 535 330 323
 * **Email:** www@ecmdigital.pl
 * **Formularz kontaktowy:** [Wypełnij formularz](../../kontakt.md)
 

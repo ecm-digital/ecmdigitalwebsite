@@ -223,7 +223,7 @@ Przeprowadziliśmy kompleksowy audyt UX łączący analizę heurystyczną, badan
 ### Wsparcie i Utrzymanie
 - **Pakiet wsparcia**: Premium Support Package
 - **SLA**: Reakcja w 4h, rozwiązanie w 24h
-- **Kontakt techniczny**: ux-support@ecmdigital.pl
+- **Kontakt techniczny**: hello@ecm-digital.com
 
 ---
 
@@ -232,8 +232,8 @@ Przeprowadziliśmy kompleksowy audyt UX łączący analizę heurystyczną, badan
 Jeśli ten case study Cię zainspirował i chcesz zoptymalizować UX swojego sklepu internetowego, skontaktuj się z nami:
 
 ### Bezpłatna Konsultacja
-- **Telefon**: +48 123 456 789
-- **Email**: hello@ecmdigital.pl
+- **Telefon**: +48 535 330 323
+- **Email**: hello@ecm-digital.com
 - **Formularz kontaktowy**: [Link do formularza](../kontakt.md)
 
 ### Co Otrzymasz?

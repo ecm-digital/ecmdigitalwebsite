@@ -68,6 +68,36 @@ Naszą misją jest tworzenie rozwiązań, które nie tylko wyglądają atrakcyjn
 
 [Dowiedz się więcej o naszych audytach UX →](audyty-ux/README.md)
 
+### [Automatyzacje z n8n](automatyzacje-n8n/README.md)
+
+![Ikona Automatyzacje n8n](https://via.placeholder.com/150x100?text=Automatyzacje+n8n)
+
+**Oferujemy zaawansowane rozwiązania automatyzacji procesów biznesowych** z wykorzystaniem platformy n8n, pomagając firmom oszczędzać czas i redukować koszty operacyjne.
+
+**Kluczowe korzyści:**
+- Automatyzacja powtarzalnych zadań i procesów
+- Integracja różnych systemów i aplikacji biznesowych
+- Eliminacja błędów ludzkich i zwiększenie efektywności
+- Skalowalność procesów wraz z rozwojem firmy
+- ROI 300-1000% w pierwszym roku wdrożenia
+
+[Dowiedz się więcej o automatyzacjach n8n →](automatyzacje-n8n/README.md)
+
+### [Kampanie Social Media z Data Science](social-media-data-science/README.md)
+
+![Ikona Social Media Data Science](https://via.placeholder.com/150x100?text=Social+Media+Data+Science)
+
+**Łączymy kreatywność marketingu social media z mocą data science**, dostarczając kampanie o najwyższych współczynnikach konwersji dzięki predykcyjnej analityce i real-time optimization.
+
+**Kluczowe korzyści:**
+- Kampanie oparte na danych, nie intuicji
+- Predykcyjna analityka i real-time optimization
+- ROAS 4-8x powyżej standardów branżowych
+- Zaawansowane targetowanie i personalizacja
+- Automatyzacja i skalowanie skutecznych kampanii
+
+[Dowiedz się więcej o kampaniach social media z data science →](social-media-data-science/README.md)
+
 ## Jak Wybrać Odpowiednią Usługę?
 
 Nie wiesz, która z naszych usług najlepiej odpowiada na Twoje potrzeby? Skorzystaj z poniższego przewodnika:
@@ -78,6 +108,8 @@ Nie wiesz, która z naszych usług najlepiej odpowiada na Twoje potrzeby? Skorzy
 | Sprzedaż produktów online | [Sklepy Shopify](sklepy-shopify/README.md) |
 | Testowanie nowego pomysłu biznesowego | [Prototypy MVP](prototypy-mvp/README.md) |
 | Poprawa istniejącego produktu cyfrowego | [Audyty UX](audyty-ux/README.md) |
+| Automatyzacja procesów biznesowych | [Automatyzacje z n8n](automatyzacje-n8n/README.md) |
+| Zwiększenie ROI z kampanii social media | [Kampanie Social Media z Data Science](social-media-data-science/README.md) |
 
 ## Proces Współpracy
 
@@ -95,8 +127,8 @@ Szczegółowy proces dla każdej usługi znajdziesz w odpowiednich sekcjach.
 
 Jesteś zainteresowany naszymi usługami? Skontaktuj się z nami, aby omówić Twój projekt:
 
-- **Telefon:** +48 123 456 789
-- **Email:** kontakt@ecmdigital.pl
+- **Telefon:** +48 535330323
+- **Email:** hello@ecm-digital.com
 - **Formularz kontaktowy:** [Wypełnij formularz](../kontakt.md)
 
 [Zobacz nasze portfolio i case studies →](../portfolio-case-studies/README.md)

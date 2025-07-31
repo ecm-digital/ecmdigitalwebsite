@@ -211,7 +211,7 @@ Wykorzystaliśmy Shopify Plus z dedykowanymi funkcjami B2B, tworząc zaawansowan
 ### Wsparcie i Utrzymanie
 - **Pakiet wsparcia**: Enterprise Support
 - **SLA**: Reakcja w ciągu 1 godziny, rozwiązanie w ciągu 4 godzin
-- **Kontakt techniczny**: b2b-support@ecmdigital.pl
+- **Kontakt techniczny**: hello@ecm-digital.com
 
 ---
 
@@ -220,8 +220,8 @@ Wykorzystaliśmy Shopify Plus z dedykowanymi funkcjami B2B, tworząc zaawansowan
 Jeśli ten case study Cię zainspirował i chcesz zrealizować podobny projekt, skontaktuj się z nami:
 
 ### Bezpłatna Konsultacja
-- **Telefon**: +48 123 456 789
-- **Email**: hello@ecmdigital.pl
+- **Telefon**: +48 535 330 323
+- **Email**: hello@ecm-digital.com
 - **Formularz kontaktowy**: [Link do formularza](../../kontakt.md)
 
 ### Co Otrzymasz?

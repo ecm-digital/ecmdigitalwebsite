@@ -216,7 +216,7 @@ Stworzyliśmy kompleksową platformę edukacyjną opartą na WordPress z customo
 ### Wsparcie i Utrzymanie
 - **Pakiet wsparcia**: Premium (priorytetowe)
 - **SLA**: 99.9% uptime, reakcja w 30 min
-- **Kontakt techniczny**: support@ecmdigital.pl
+- **Kontakt techniczny**: hello@ecm-digital.com
 
 ---
 
@@ -225,8 +225,8 @@ Stworzyliśmy kompleksową platformę edukacyjną opartą na WordPress z customo
 Jeśli prowadzisz szkołę językową lub inną instytucję edukacyjną i chcesz rozszerzyć działalność o e-learning, skontaktuj się z nami:
 
 ### Bezpłatna Konsultacja
-- **Telefon**: +48 123 456 789
-- **Email**: hello@ecmdigital.pl
+- **Telefon**: +48 535 330 323
+- **Email**: hello@ecm-digital.com
 - **Formularz kontaktowy**: [Link do formularza](../../kontakt.md)
 
 ### Co Otrzymasz?

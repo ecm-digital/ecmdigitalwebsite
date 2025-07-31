@@ -222,7 +222,7 @@ Skupiliśmy się na stworzeniu minimalnej, ale w pełni funkcjonalnej platformy 
 ### Wsparcie i Utrzymanie
 - **Pakiet wsparcia**: Medical Grade Support
 - **SLA**: 99.9% uptime, <2h response time dla critical issues
-- **Kontakt techniczny**: medical-support@ecmdigital.pl
+- **Kontakt techniczny**: hello@ecm-digital.com
 
 ---
 
@@ -231,8 +231,8 @@ Skupiliśmy się na stworzeniu minimalnej, ale w pełni funkcjonalnej platformy 
 Jeśli ten case study Cię zainspirował i chcesz zrealizować podobny projekt, skontaktuj się z nami:
 
 ### Bezpłatna Konsultacja
-- **Telefon**: +48 123 456 789
-- **Email**: hello@ecmdigital.pl
+- **Telefon**: +48 535 330 323
+- **Email**: hello@ecm-digital.com
 - **Formularz kontaktowy**: [Link do formularza](../kontakt.md)
 
 ### Co Otrzymasz?

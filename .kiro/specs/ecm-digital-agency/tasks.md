@@ -39,7 +39,7 @@
     - Implementacja przykładów i korzyści
     - _Wymagania: 1.1, 1.5_
 
-- [ ] 3. Implementacja sekcji Portfolio i Case Studies
+- [x] 3. Implementacja sekcji Portfolio i Case Studies
   - [x] 3.1 Utworzenie głównej strony portfolio
     - Implementacja nagłówka i wprowadzenia
     - Dodanie systemu filtrowania i wyszukiwania
@@ -76,51 +76,51 @@
     - Implementacja zgodnie z szablonem
     - _Wymagania: 2.1, 2.2_
 
-- [ ] 4. Implementacja sekcji Proces Współpracy
-  - [ ] 4.1 Utworzenie głównej strony procesu współpracy
+- [x] 4. Implementacja sekcji Proces Współpracy
+  - [x] 4.1 Utworzenie głównej strony procesu współpracy
     - Implementacja nagłówka i wprowadzenia
     - Dodanie ogólnego schematu współpracy
     - Implementacja nawigacji do podsekcji
     - _Wymagania: 3.1_
   
-  - [ ] 4.2 Implementacja procesu dla stron WWW
+  - [x] 4.2 Implementacja procesu dla stron WWW
     - Utworzenie szczegółowego opisu etapów
     - Dodanie diagramu procesu
     - Implementacja przykładowego harmonogramu
     - _Wymagania: 3.1, 3.2_
   
-  - [ ] 4.3 Implementacja procesu dla sklepów Shopify
+  - [x] 4.3 Implementacja procesu dla sklepów Shopify
     - Utworzenie szczegółowego opisu etapów
     - Dodanie diagramu procesu
     - Implementacja przykładowego harmonogramu
     - _Wymagania: 3.1, 3.3_
   
-  - [ ] 4.4 Implementacja procesu dla prototypów MVP
+  - [x] 4.4 Implementacja procesu dla prototypów MVP
     - Utworzenie szczegółowego opisu etapów
     - Dodanie diagramu procesu
     - Implementacja przykładowego harmonogramu
     - _Wymagania: 3.1, 3.4_
   
-  - [ ] 4.5 Implementacja procesu dla audytów UX
+  - [x] 4.5 Implementacja procesu dla audytów UX
     - Utworzenie szczegółowego opisu etapów
     - Dodanie diagramu procesu
     - Implementacja przykładowego harmonogramu
     - _Wymagania: 3.1, 3.5_
 
-- [ ] 5. Implementacja sekcji Cennik i Modele Rozliczeń
-  - [ ] 5.1 Utworzenie głównej strony cennika
+- [-] 5. Implementacja sekcji Cennik i Modele Rozliczeń
+  - [x] 5.1 Utworzenie głównej strony cennika
     - Implementacja nagłówka i wprowadzenia
     - Dodanie opisu modeli wyceny
     - Implementacja nawigacji do podsekcji
     - _Wymagania: 4.1, 4.2_
   
-  - [ ] 5.2 Implementacja cennika dla stron WWW
+  - [x] 5.2 Implementacja cennika dla stron WWW
     - Utworzenie tabeli pakietów i cen
     - Dodanie opisu zakresu prac
     - Implementacja opcji dodatkowych
     - _Wymagania: 4.1, 4.2, 4.3_
   
-  - [ ] 5.3 Implementacja cennika dla sklepów Shopify
+  - [x] 5.3 Implementacja cennika dla sklepów Shopify
     - Utworzenie tabeli pakietów i cen
     - Dodanie opisu zakresu prac
     - Implementacja opcji dodatkowych

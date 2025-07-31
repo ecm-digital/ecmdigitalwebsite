@@ -302,8 +302,8 @@ t
 
 Jesteś zainteresowany stworzeniem sklepu na platformie Shopify? Skontaktuj się z nami:
 
-* **Telefon:** +48 123 456 789
-* **Email:** shopify@ecmdigital.pl
+* **Telefon:** +48 535 330 323
+* **Email:** hello@ecm-digital.com
 * **Formularz kontaktowy:** [Wypełnij formularz](../../kontakt.md)
 
 [Wróć do oferty usług →](../README.md)

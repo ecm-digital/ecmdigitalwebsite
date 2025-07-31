@@ -216,7 +216,7 @@ Zaprojektowaliśmy nowoczesną, szybką stronę opartą na architekturze JAMstac
 ### Wsparcie i Utrzymanie
 - **Pakiet wsparcia**: Standard
 - **SLA**: 99.5% uptime, reakcja w 4h
-- **Kontakt techniczny**: support@ecmdigital.pl
+- **Kontakt techniczny**: hello@ecm-digital.com
 
 ---
 
@@ -225,8 +225,8 @@ Zaprojektowaliśmy nowoczesną, szybką stronę opartą na architekturze JAMstac
 Jeśli prowadzisz startup technologiczny lub firmę SaaS i potrzebujesz profesjonalnej strony do pozyskiwania klientów i inwestorów, skontaktuj się z nami:
 
 ### Bezpłatna Konsultacja
-- **Telefon**: +48 123 456 789
-- **Email**: hello@ecmdigital.pl
+- **Telefon**: +48 535 330 323
+- **Email**: hello@ecm-digital.com
 - **Formularz kontaktowy**: [Link do formularza](../../kontakt.md)
 
 ### Co Otrzymasz?

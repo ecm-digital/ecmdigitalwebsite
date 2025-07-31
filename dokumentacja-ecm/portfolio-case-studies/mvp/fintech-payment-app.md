@@ -221,7 +221,7 @@ Zdecydowaliśmy się na podejście "mobile-first" z fokusem na kluczowe funkcjon
 ### Wsparcie i Utrzymanie
 - **Pakiet wsparcia**: Premium Support Package
 - **SLA**: 99.9% uptime, <4h response time
-- **Kontakt techniczny**: tech-support@ecmdigital.pl
+- **Kontakt techniczny**: hello@ecm-digital.com
 
 ---
 
@@ -230,8 +230,8 @@ Zdecydowaliśmy się na podejście "mobile-first" z fokusem na kluczowe funkcjon
 Jeśli ten case study Cię zainspirował i chcesz zrealizować podobny projekt, skontaktuj się z nami:
 
 ### Bezpłatna Konsultacja
-- **Telefon**: +48 123 456 789
-- **Email**: hello@ecmdigital.pl
+- **Telefon**: +48 535 330 323
+- **Email**: hello@ecm-digital.com
 - **Formularz kontaktowy**: [Link do formularza](../kontakt.md)
 
 ### Co Otrzymasz?

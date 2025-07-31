@@ -213,7 +213,7 @@ Opracowaliśmy kompleksowe rozwiązanie oparte na WordPress z customowymi funkcj
 ### Wsparcie i Utrzymanie
 - **Pakiet wsparcia**: Premium (24/7)
 - **SLA**: 99.9% uptime, reakcja w 1h
-- **Kontakt techniczny**: support@ecmdigital.pl
+- **Kontakt techniczny**: hello@ecm-digital.com
 
 ---
 
@@ -222,8 +222,8 @@ Opracowaliśmy kompleksowe rozwiązanie oparte na WordPress z customowymi funkcj
 Jeśli prowadzisz placówkę medyczną i chcesz zwiększyć liczbę pacjentów dzięki profesjonalnej stronie internetowej, skontaktuj się z nami:
 
 ### Bezpłatna Konsultacja
-- **Telefon**: +48 123 456 789
-- **Email**: hello@ecmdigital.pl
+- **Telefon**: +48 535 330 323
+- **Email**: hello@ecm-digital.com
 - **Formularz kontaktowy**: [Link do formularza](../../kontakt.md)
 
 ### Co Otrzymasz?

@@ -210,7 +210,7 @@ Stworzyliśmy efektywny sklep dropshipping oparty na Shopify z automatyzacją kl
 ### Wsparcie i Utrzymanie
 - **Pakiet wsparcia**: Basic Support
 - **SLA**: Reakcja w ciągu 8 godzin, rozwiązanie w ciągu 48 godzin
-- **Kontakt techniczny**: support@ecmdigital.pl
+- **Kontakt techniczny**: hello@ecm-digital.com
 
 ---
 
@@ -219,8 +219,8 @@ Stworzyliśmy efektywny sklep dropshipping oparty na Shopify z automatyzacją kl
 Jeśli ten case study Cię zainspirował i chcesz zrealizować podobny projekt, skontaktuj się z nami:
 
 ### Bezpłatna Konsultacja
-- **Telefon**: +48 123 456 789
-- **Email**: hello@ecmdigital.pl
+- **Telefon**: +48 535 330 323
+- **Email**: hello@ecm-digital.com
 - **Formularz kontaktowy**: [Link do formularza](../../kontakt.md)
 
 ### Co Otrzymasz?

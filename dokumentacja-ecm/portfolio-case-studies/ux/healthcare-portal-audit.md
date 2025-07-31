@@ -223,7 +223,7 @@ Przeprowadziliśmy specjalistyczny audyt UX dla platformy healthcare, uwzględni
 ### Wsparcie i Utrzymanie
 - **Pakiet wsparcia**: Healthcare Premium Support
 - **SLA**: Reakcja w 1h, rozwiązanie w 8h
-- **Kontakt techniczny**: healthcare-support@ecmdigital.pl
+- **Kontakt techniczny**: hello@ecm-digital.com
 
 ---
 
@@ -232,8 +232,8 @@ Przeprowadziliśmy specjalistyczny audyt UX dla platformy healthcare, uwzględni
 Jeśli rozwijasz platformę healthcare i chcesz zapewnić dostępność dla wszystkich użytkowników, skontaktuj się z nami:
 
 ### Bezpłatna Konsultacja
-- **Telefon**: +48 123 456 789
-- **Email**: hello@ecmdigital.pl
+- **Telefon**: +48 535330323
+- **Email**: hello@ecm-digital.com
 - **Formularz kontaktowy**: [Link do formularza](../kontakt.md)
 
 ### Co Otrzymasz?

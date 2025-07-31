@@ -222,7 +222,7 @@ Stworzyliśmy dwustronną platformę (two-sided marketplace) z automatyczną wer
 ### Wsparcie i Utrzymanie
 - **Pakiet wsparcia**: PropTech Premium Support
 - **SLA**: 99.9% uptime, <2h response time
-- **Kontakt techniczny**: proptech-support@ecmdigital.pl
+- **Kontakt techniczny**: hello@ecm-digital.com
 
 ---
 
@@ -231,8 +231,8 @@ Stworzyliśmy dwustronną platformę (two-sided marketplace) z automatyczną wer
 Jeśli ten case study Cię zainspirował i chcesz zrealizować podobny projekt, skontaktuj się z nami:
 
 ### Bezpłatna Konsultacja
-- **Telefon**: +48 123 456 789
-- **Email**: hello@ecmdigital.pl
+- **Telefon**: +48 535 330 323
+- **Email**: hello@ecm-digital.com
 - **Formularz kontaktowy**: [Link do formularza](../kontakt.md)
 
 ### Co Otrzymasz?

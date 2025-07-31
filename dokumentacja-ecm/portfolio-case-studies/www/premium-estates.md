@@ -216,7 +216,7 @@ Stworzyliśmy innowacyjną platformę prezentacji nieruchomości z zaawansowanym
 ### Wsparcie i Utrzymanie
 - **Pakiet wsparcia**: Premium (24/7)
 - **SLA**: 99.9% uptime, reakcja w 1h
-- **Kontakt techniczny**: support@ecmdigital.pl
+- **Kontakt techniczny**: hello@ecm-digital.com
 
 ---
 
@@ -225,8 +225,8 @@ Stworzyliśmy innowacyjną platformę prezentacji nieruchomości z zaawansowanym
 Jeśli jesteś deweloperem lub pracujesz w branży nieruchomości i chcesz zwiększyć sprzedaż dzięki innowacyjnej prezentacji online, skontaktuj się z nami:
 
 ### Bezpłatna Konsultacja
-- **Telefon**: +48 123 456 789
-- **Email**: hello@ecmdigital.pl
+- **Telefon**: +48 535 330 323
+- **Email**: hello@ecm-digital.com
 - **Formularz kontaktowy**: [Link do formularza](../../kontakt.md)
 
 ### Co Otrzymasz?

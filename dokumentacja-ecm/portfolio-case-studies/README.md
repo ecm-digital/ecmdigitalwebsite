@@ -133,8 +133,8 @@ Każdy z przedstawionych projektów zaczynał się od pierwszej rozmowy. **Twój
 
 - **Bezpłatna konsultacja**: [Umów rozmowę](../kontakt.md)
 - **Szybka wycena**: [Wypełnij brief](../brief.md)
-- **Telefon**: +48 123 456 789
-- **Email**: hello@ecmdigital.pl
+- **Telefon**: +48 535330323
+- **Email**: hello@ecm-digital.com
 
 ### 🎯 Co możemy dla Ciebie zrobić?
 
