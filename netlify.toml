@@ -1,5 +1,5 @@
 [build]
-  publish = "dokumentacja-ecm"
+  publish = "."
   command = "echo 'Static site deployment ready'"
 
 [build.environment]
