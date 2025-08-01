@@ -207,7 +207,7 @@
     - Implementacja przykładów zastosowania
     - _Wymagania: 7.1, 7.5_
   
-  - [ ] 8.4 Implementacja sekcji komunikacji i raportowania
+  - [x] 8.4 Implementacja sekcji komunikacji i raportowania
     - Utworzenie opisu kanałów komunikacji
     - Dodanie szablonów raportów
     - Implementacja procedur zarządzania zmianą

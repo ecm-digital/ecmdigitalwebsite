@@ -143,8 +143,8 @@ ECM Digital to zespół doświadczonych specjalistów, którzy łączą pasję d
 
 ### Zarząd
 
-#### [Tomasz Gnat - CEO & Discovery Konsultant](./tomasz-gnat-ceo.md)
-Założyciel i CEO ECM Digital z wieloletnim doświadczeniem w branży digital. Specjalizuje się w odkrywaniu potrzeb biznesowych i strategii cyfrowej.
+#### [Tomasz Gnat - Discovery Consultant](./tomasz-gnat-ceo.md)
+Założyciel ECM Digital z wieloletnim doświadczeniem w branży digital. Specjalizuje się w odkrywaniu potrzeb biznesowych i strategii cyfrowej.
 
 **Kluczowe kompetencje:**
 - Strategia cyfrowa i transformacja biznesowa

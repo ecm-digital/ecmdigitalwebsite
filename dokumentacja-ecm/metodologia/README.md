@@ -1005,6 +1005,473 @@ graph TD
 - User satisfaction (SUS)
 - Net Promoter Score (NPS)
 
+## Komunikacja i Raportowanie
+
+### Filozofia Komunikacji w ECM Digital
+
+Transparentna i efektywna komunikacja stanowi fundament naszej współpracy z klientami. Wierzymy, że regularna komunikacja i szczegółowe raportowanie budują zaufanie, pozwalają na szybkie reagowanie na zmiany i zapewniają zgodność realizacji z oczekiwaniami biznesowymi.
+
+**Kluczowe zasady komunikacji:**
+- **Transparentność** - Otwarta komunikacja o postępach, problemach i rozwiązaniach
+- **Regularność** - Systematyczne raportowanie zgodnie z ustalonym harmonogramem
+- **Proaktywność** - Wyprzedzające informowanie o potencjalnych problemach
+- **Dostosowanie** - Komunikacja dostosowana do potrzeb i preferencji klienta
+- **Dokumentacja** - Pisemne potwierdzenie wszystkich ważnych ustaleń
+
+### Kanały Komunikacji
+
+#### Komunikacja Synchroniczna
+
+**Daily Stand-ups**
+- **Częstotliwość:** Codziennie (dni robocze)
+- **Czas trwania:** 15 minut
+- **Uczestnicy:** Zespół projektowy + opcjonalnie klient
+- **Format:** Video call lub audio call
+- **Agenda:**
+  - Co zostało zrobione wczoraj?
+  - Co będzie robione dzisiaj?
+  - Jakie są przeszkody/impedimenty?
+  - Pytania od klienta
+
+**Sprint Reviews**
+- **Częstotliwość:** Co 1-2 tygodnie (koniec sprintu)
+- **Czas trwania:** 1-2 godziny
+- **Uczestnicy:** Zespół projektowy + stakeholderzy
+- **Format:** Prezentacja + demo + dyskusja
+- **Agenda:**
+  - Prezentacja ukończonych funkcjonalności
+  - Live demo i testowanie
+  - Feedback session
+  - Planowanie kolejnych priorytetów
+
+**Weekly Status Meetings**
+- **Częstotliwość:** Raz w tygodniu
+- **Czas trwania:** 30-45 minut
+- **Uczestnicy:** PM + kluczowi stakeholderzy
+- **Format:** Structured meeting
+- **Agenda:**
+  - Przegląd postępu projektu
+  - Omówienie kluczowych decyzji
+  - Identyfikacja ryzyk i problemów
+  - Planowanie na kolejny tydzień
+
+**Ad-hoc Consultations**
+- **Dostępność:** W godzinach pracy (9:00-17:00)
+- **Kanały:** Slack, Teams, telefon
+- **Czas odpowiedzi:** <2 godziny w dni robocze
+- **Cel:** Szybkie rozwiązywanie bieżących problemów
+
+#### Komunikacja Asynchroniczna
+
+**Slack/Teams Channels**
+- **#projekt-general** - Ogólne dyskusje projektowe
+- **#projekt-daily** - Daily updates i quick questions
+- **#projekt-alerts** - Automatyczne powiadomienia (deployments, builds)
+- **#projekt-decisions** - Dokumentacja ważnych decyzji
+
+**Email Communication**
+- **Weekly reports** - Szczegółowe raporty tygodniowe
+- **Milestone updates** - Komunikaty o osiągnięciu kamieni milowych
+- **Change requests** - Formalne zapytania o zmiany
+- **Escalations** - Eskalacja problemów wymagających uwagi
+
+**Project Documentation**
+- **Confluence/Notion** - Centralna dokumentacja projektu
+- **Shared drives** - Materiały projektowe i zasoby
+- **Version control** - Komentarze w commitach i pull requestach
+
+### Struktura Raportowania
+
+#### Raporty Tygodniowe
+
+**Format:** Email + dashboard link
+**Częstotliwość:** Każdy piątek do 17:00
+**Odbiorcy:** Project stakeholders
+
+**Struktura raportu:**
+```
+📊 WEEKLY PROJECT REPORT - Tydzień [XX/YYYY]
+Projekt: [Nazwa projektu]
+Okres: [Data od] - [Data do]
+
+🎯 EXECUTIVE SUMMARY
+- Ogólny status projektu: [On Track/At Risk/Off Track]
+- Kluczowe osiągnięcia tego tygodnia
+- Główne wyzwania i działania mitygujące
+- Prognoza na kolejny tydzień
+
+📈 PROGRESS OVERVIEW
+- Ukończone zadania: [X/Y] ([Z]%)
+- Sprint velocity: [X] story points
+- Budget utilization: [X]% ([Y] PLN z [Z] PLN)
+- Timeline status: [On schedule/X days ahead/X days behind]
+
+✅ COMPLETED THIS WEEK
+- [Task 1] - [Brief description]
+- [Task 2] - [Brief description]
+- [Task 3] - [Brief description]
+
+🚧 IN PROGRESS
+- [Task 1] - [Status] - [Expected completion]
+- [Task 2] - [Status] - [Expected completion]
+
+📋 PLANNED FOR NEXT WEEK
+- [Task 1] - [Priority] - [Assigned to]
+- [Task 2] - [Priority] - [Assigned to]
+
+⚠️ RISKS & ISSUES
+- [Risk/Issue 1] - [Impact] - [Mitigation plan]
+- [Risk/Issue 2] - [Impact] - [Mitigation plan]
+
+🔄 CHANGE REQUESTS
+- [Change 1] - [Status] - [Impact assessment]
+
+📊 KEY METRICS
+- Code coverage: [X]%
+- Bug count: [X] (Critical: [Y], Major: [Z])
+- Performance metrics: [Details]
+- User feedback score: [X]/10
+
+💬 CLIENT FEEDBACK
+- [Summary of feedback received]
+- [Actions taken based on feedback]
+
+📞 NEXT STEPS
+- [Action 1] - [Owner] - [Due date]
+- [Action 2] - [Owner] - [Due date]
+
+---
+Prepared by: [PM Name]
+Next report: [Date]
+```
+
+#### Raporty Miesięczne
+
+**Format:** Comprehensive document + presentation
+**Częstotliwość:** Pierwszy piątek każdego miesiąca
+**Odbiorcy:** Executive stakeholders
+
+**Zawartość:**
+- **Executive Dashboard** - Kluczowe metryki i KPIs
+- **Milestone Progress** - Status względem głównych kamieni milowych
+- **Budget Analysis** - Szczegółowa analiza wykorzystania budżetu
+- **Quality Metrics** - Metryki jakości i wydajności
+- **Team Performance** - Analiza produktywności zespołu
+- **Risk Assessment** - Aktualizacja rejestru ryzyk
+- **Lessons Learned** - Wnioski i rekomendacje
+- **Forecast** - Prognoza na kolejny miesiąc
+
+#### Raporty Końcowe
+
+**Format:** Comprehensive project closure document
+**Timing:** W ciągu 2 tygodni po zakończeniu projektu
+**Odbiorcy:** Wszyscy stakeholderzy
+
+**Struktura:**
+- **Project Summary** - Podsumowanie projektu i osiągnięć
+- **Objectives Achievement** - Realizacja celów biznesowych
+- **Deliverables Overview** - Przegląd wszystkich dostarczonych elementów
+- **Budget Final Report** - Końcowe rozliczenie budżetu
+- **Timeline Analysis** - Analiza harmonogramu i terminowości
+- **Quality Assessment** - Ocena jakości dostarczonych rozwiązań
+- **Lessons Learned** - Wnioski dla przyszłych projektów
+- **Recommendations** - Rekomendacje dla dalszego rozwoju
+- **Handover Documentation** - Dokumentacja przekazania
+
+### Narzędzia Komunikacji i Raportowania
+
+#### Platformy Komunikacyjne
+
+**Slack**
+- **Channels organization:** Strukturalne kanały projektowe
+- **Integrations:** Jira, GitHub, Google Drive, Calendar
+- **Automation:** Automated daily standups, deployment notifications
+- **File sharing:** Centralized file repository
+- **Search functionality:** Easy access to historical conversations
+
+**Microsoft Teams**
+- **Video conferencing:** HD quality calls with screen sharing
+- **Recording capability:** Meeting recordings for absent stakeholders
+- **Breakout rooms:** Parallel discussions during larger meetings
+- **Whiteboard integration:** Collaborative brainstorming sessions
+- **Calendar integration:** Seamless meeting scheduling
+
+**Zoom**
+- **Webinar capability:** Large stakeholder presentations
+- **Breakout rooms:** Workshop facilitation
+- **Recording and transcription:** Automatic meeting documentation
+- **Virtual backgrounds:** Professional appearance
+- **Mobile apps:** Accessibility from anywhere
+
+#### Narzędzia Raportowania
+
+**Jira Dashboards**
+- **Sprint burndown charts** - Wizualizacja postępu sprintu
+- **Velocity charts** - Śledzenie produktywności zespołu
+- **Epic progress** - Status realizacji dużych funkcjonalności
+- **Bug tracking** - Monitoring jakości i błędów
+- **Time tracking** - Analiza wykorzystania czasu
+
+**Confluence Reports**
+- **Project documentation** - Centralna baza wiedzy
+- **Meeting notes** - Strukturalna dokumentacja spotkań
+- **Decision logs** - Historia ważnych decyzji projektowych
+- **Requirements traceability** - Śledzenie wymagań
+- **Architecture documentation** - Dokumentacja techniczna
+
+**Google Analytics/Data Studio**
+- **Performance dashboards** - Metryki wydajności aplikacji
+- **User behavior analysis** - Analiza zachowań użytkowników
+- **Conversion tracking** - Śledzenie celów biznesowych
+- **Custom reports** - Raporty dostosowane do potrzeb klienta
+- **Automated alerts** - Powiadomienia o anomaliach
+
+**Custom Reporting Tools**
+- **Project dashboards** - Personalizowane dashboardy projektowe
+- **Budget tracking** - Monitoring wykorzystania budżetu
+- **Resource utilization** - Analiza wykorzystania zasobów
+- **Quality metrics** - Metryki jakości kodu i produktu
+- **Client satisfaction** - Śledzenie satysfakcji klienta
+
+#### Dokumentacja i Knowledge Management
+
+**Notion/Confluence**
+- **Project wikis** - Centralna baza wiedzy projektowej
+- **Process documentation** - Dokumentacja procesów i procedur
+- **Templates library** - Biblioteka szablonów dokumentów
+- **Version control** - Śledzenie zmian w dokumentacji
+- **Access control** - Zarządzanie uprawnieniami dostępu
+
+**Google Workspace/Office 365**
+- **Shared documents** - Współpraca nad dokumentami
+- **Version history** - Historia zmian i komentarzy
+- **Real-time collaboration** - Jednoczesna praca nad dokumentami
+- **Template management** - Standardowe szablony raportów
+- **Integration capabilities** - Integracja z innymi narzędziami
+
+### Procedury Komunikacyjne
+
+#### Eskalacja Problemów
+
+**Level 1: Team Level (0-4 godziny)**
+- **Trigger:** Problem blokujący pracę zespołu
+- **Action:** Dyskusja w zespole, próba rozwiązania
+- **Communication:** Slack channel, daily standup
+- **Owner:** Scrum Master/Team Lead
+
+**Level 2: Project Level (4-24 godziny)**
+- **Trigger:** Problem nierozwiązany na poziomie zespołu
+- **Action:** Eskalacja do Project Managera
+- **Communication:** Email + phone call do stakeholderów
+- **Owner:** Project Manager
+
+**Level 3: Executive Level (24+ godziny)**
+- **Trigger:** Problem wpływający na timeline/budget/scope
+- **Action:** Eskalacja do kierownictwa
+- **Communication:** Formal meeting z decision makers
+- **Owner:** Account Manager/Director
+
+#### Zarządzanie Zmianami
+
+**Change Request Process:**
+```mermaid
+graph TD
+    A[Change Request<br/>Submitted] --> B[Impact Assessment<br/>48h]
+    B --> C[Stakeholder Review<br/>72h]
+    C --> D{Approved?}
+    D -->|Yes| E[Implementation Planning]
+    D -->|No| F[Request Rejected]
+    E --> G[Timeline/Budget Update]
+    G --> H[Implementation]
+    F --> I[Feedback to Requestor]
+    
+    style A fill:#e3f2fd
+    style D fill:#fff3e0
+    style E fill:#e8f5e8
+    style F fill:#ffebee
+```
+
+**Change Request Template:**
+```
+CHANGE REQUEST #[ID]
+Date: [Date]
+Requestor: [Name]
+Project: [Project Name]
+
+CHANGE DESCRIPTION
+[Detailed description of requested change]
+
+BUSINESS JUSTIFICATION
+[Why this change is needed]
+
+IMPACT ASSESSMENT
+- Timeline impact: [X days/weeks]
+- Budget impact: [X PLN]
+- Resource impact: [Team members affected]
+- Risk assessment: [Low/Medium/High]
+
+ALTERNATIVES CONSIDERED
+[Other options evaluated]
+
+RECOMMENDATION
+[PM recommendation with rationale]
+
+APPROVAL
+[ ] Approved - Signature: _______ Date: _______
+[ ] Rejected - Reason: _______________________
+[ ] Deferred - Until: _______________________
+```
+
+#### Crisis Communication
+
+**Crisis Definition:**
+- Production system down >2 hours
+- Security breach or data leak
+- Major scope/timeline deviation >20%
+- Key team member unavailability
+- Client escalation to executive level
+
+**Crisis Communication Protocol:**
+1. **Immediate notification** (within 30 minutes)
+   - Slack alert to crisis channel
+   - SMS/call to key stakeholders
+   - Email to executive team
+
+2. **Status updates** (every 2 hours)
+   - Progress on resolution
+   - Updated timeline estimates
+   - Resource requirements
+
+3. **Resolution communication** (within 24 hours)
+   - Root cause analysis
+   - Resolution summary
+   - Prevention measures
+   - Lessons learned
+
+### Metryki Komunikacji
+
+#### Effectiveness Metrics
+
+**Response Time**
+- **Email responses:** <4 hours (business days)
+- **Slack messages:** <2 hours (business days)
+- **Emergency issues:** <30 minutes (24/7)
+- **Change requests:** <48 hours (assessment)
+
+**Meeting Efficiency**
+- **On-time start rate:** >95%
+- **Agenda adherence:** >90%
+- **Action item completion:** >85%
+- **Participant satisfaction:** >4/5
+
+**Documentation Quality**
+- **Report timeliness:** 100% on schedule
+- **Information accuracy:** >98%
+- **Stakeholder feedback:** >4/5 usefulness
+- **Documentation completeness:** >95%
+
+#### Client Satisfaction Metrics
+
+**Communication Satisfaction Survey (Monthly)**
+```
+1. How satisfied are you with the frequency of communication?
+   [1-5 scale: Very Dissatisfied to Very Satisfied]
+
+2. How clear and understandable are our reports?
+   [1-5 scale: Very Unclear to Very Clear]
+
+3. How responsive is the team to your questions/concerns?
+   [1-5 scale: Very Unresponsive to Very Responsive]
+
+4. How well do we keep you informed about project progress?
+   [1-5 scale: Very Poorly to Very Well]
+
+5. What communication improvements would you suggest?
+   [Open text field]
+```
+
+**Net Promoter Score (NPS)**
+- **Question:** "How likely are you to recommend ECM Digital's communication approach to others?"
+- **Scale:** 0-10
+- **Target:** NPS >50
+- **Frequency:** Quarterly
+
+### Best Practices Komunikacji
+
+#### Do's ✅
+
+**Proactive Communication**
+- Inform about potential issues before they become problems
+- Share progress updates even when everything goes smoothly
+- Anticipate stakeholder questions and address them preemptively
+- Celebrate milestones and achievements with the team
+
+**Clear and Concise Messaging**
+- Use bullet points and structured formats
+- Avoid technical jargon when communicating with non-technical stakeholders
+- Include visual aids (charts, screenshots) when helpful
+- Summarize key points at the beginning of long communications
+
+**Stakeholder-Centric Approach**
+- Tailor communication style to audience preferences
+- Respect time zones and working hours
+- Provide information at the right level of detail
+- Ask for feedback on communication effectiveness
+
+**Documentation Excellence**
+- Document all important decisions and agreements
+- Maintain version control for shared documents
+- Use templates for consistency
+- Make information easily searchable and accessible
+
+#### Don'ts ❌
+
+**Communication Anti-Patterns**
+- Don't surprise stakeholders with bad news
+- Don't use communication tools inappropriately (urgent matters via email)
+- Don't assume everyone has the same context
+- Don't let communication gaps persist
+
+**Meeting Inefficiencies**
+- Don't schedule meetings without clear agendas
+- Don't let meetings run over time consistently
+- Don't include unnecessary participants
+- Don't forget to send meeting summaries and action items
+
+**Reporting Mistakes**
+- Don't provide data without context or interpretation
+- Don't use inconsistent metrics or definitions
+- Don't delay reports without advance notice
+- Don't ignore stakeholder feedback on report format
+
+### ROI Komunikacji
+
+#### Quantified Benefits
+
+**Reduced Project Risk**
+- 40% fewer scope creep incidents
+- 60% faster issue resolution
+- 30% reduction in project delays
+- 50% fewer client escalations
+
+**Improved Client Satisfaction**
+- 95% client retention rate
+- 4.8/5 average communication rating
+- 85% of clients rate transparency as "excellent"
+- 90% would recommend ECM Digital
+
+**Team Efficiency**
+- 25% reduction in rework due to miscommunication
+- 30% faster decision-making process
+- 20% improvement in team productivity
+- 15% reduction in meeting time
+
+**Business Impact**
+- 35% increase in repeat business
+- 50% more referrals from satisfied clients
+- 20% premium pricing due to service quality
+- 40% faster sales cycle for new projects
+
 ### Przykłady Zastosowania Design Thinking
 
 #### Projekt: Redesign aplikacji bankowej - Optymalizacja procesu przelewów
