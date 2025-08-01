@@ -143,8 +143,8 @@ ECM Digital to zespół doświadczonych specjalistów, którzy łączą pasję d
 
 ### Zarząd
 
-#### [Anna Kowalska - CEO & Founder](./anna-kowalska-ceo.md)
-Założycielka i CEO ECM Digital z ponad 12-letnim doświadczeniem w branży digital. Specjalizuje się w strategii cyfrowej i transformacji biznesowej.
+#### [Tomasz Gnat - CEO & Discovery Konsultant](./tomasz-gnat-ceo.md)
+Założyciel i CEO ECM Digital z wieloletnim doświadczeniem w branży digital. Specjalizuje się w odkrywaniu potrzeb biznesowych i strategii cyfrowej.
 
 **Kluczowe kompetencje:**
 - Strategia cyfrowa i transformacja biznesowa
@@ -192,8 +192,8 @@ Doświadczony project manager z 9-letnim stażem w zarządzaniu projektami IT. S
 
 ### Dział UX/UI
 
-#### [Katarzyna Wiśniowska - Senior UX Designer](./katarzyna-wisniowska-ux.md)
-Doświadczona UX designerka z 8-letnim stażem w projektowaniu doświadczeń użytkownika. Specjalizuje się w user research i testowaniu użyteczności.
+#### [Marta Górska - UX/UI Designer](./marta-gorska-ux.md)
+Doświadczona UX/UI designerka specjalizująca się w projektowaniu doświadczeń użytkownika. Ekspertka w user research i testowaniu użyteczności.
 
 **Kluczowe kompetencje:**
 - User experience design i research
@@ -210,19 +210,37 @@ Doświadczona UX designerka z 8-letnim stażem w projektowaniu doświadczeń uż
 
 ### Dział Rozwoju
 
-#### [Tomasz Nowicki - Senior Front-end Developer](./tomasz-nowicki-frontend.md)
-Pasjonat nowoczesnych technologii front-end z 7-letnim doświadczeniem w tworzeniu responsywnych i interaktywnych interfejsów użytkownika.
+#### [Karol Czechowski - QA Specialist & Developer](./karol-czechowski-qa.md)
+Specjalista od zapewnienia jakości z doświadczeniem w testowaniu aplikacji i rozwoju oprogramowania. Ekspert w automatyzacji testów i procesach QA.
 
 **Kluczowe kompetencje:**
-- Nowoczesne frameworki JavaScript (React, Vue.js)
-- Responsive Web Design i Mobile-First
-- Performance optimization i Web Vitals
-- Component-based architecture i Design Systems
+- Testowanie manualne i automatyczne
+- Selenium, Cypress, Jest
+- Performance testing i Load testing
+- Bug tracking i Quality assurance processes
 
 **Przykładowe projekty:**
-- Luxury Fashion E-commerce Store - Lead Front-end Developer
-- SaaS Dashboard Interface - Senior Front-end Developer
-- Progressive Web App dla EdTech - PWA Specialist
+- E-commerce Platform Testing - Lead QA Engineer
+- Banking App Quality Assurance - QA Specialist
+- MVP Testing & Validation - QA & Developer
+
+---
+
+### Dział Marketingu
+
+#### [Roman Dominia - Social Media & Automations Specialist](./roman-dominia-social.md)
+Specjalista od social media i automatyzacji procesów biznesowych. Ekspert w tworzeniu skutecznych kampanii i optymalizacji workflow.
+
+**Kluczowe kompetencje:**
+- Social Media Marketing i Content Strategy
+- Marketing Automation i n8n workflows
+- Data Analytics i Performance Tracking
+- Lead Generation i Conversion Optimization
+
+**Przykładowe projekty:**
+- E-commerce Social Media Campaign - Social Media Manager
+- Business Process Automation - Automation Specialist
+- Lead Generation System - Marketing Automation Expert
 
 ---
 

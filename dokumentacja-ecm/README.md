@@ -11,6 +11,8 @@ ECM Digital to agencja interaktywna specjalizująca się w tworzeniu stron inter
    - [Sklepy Shopify](oferta-uslug/sklepy-shopify/README.md)
    - [Prototypy MVP](oferta-uslug/prototypy-mvp/README.md)
    - [Audyty UX](oferta-uslug/audyty-ux/README.md)
+   - [Automatyzacje n8n](oferta-uslug/automatyzacje-n8n/README.md)
+   - [Social Media & Data Science](oferta-uslug/social-media-data-science/README.md)
 
 2. [Portfolio i Case Studies](portfolio-case-studies/README.md)
    - [Strony WWW](portfolio-case-studies/www/README.md)

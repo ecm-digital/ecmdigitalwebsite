@@ -134,7 +134,7 @@ Następnie otwórz przeglądarkę i przejdź do `http://localhost:8000`
 ### Kontakt
 - **Email**: hello@ecm-digital.com
 - **Telefon**: +48 535330323
-- **Website**: [www.ecmdigital.pl](https://www.ecmdigital.pl)
+- **Website**: [www.ecm-digital.com](https://www.ecm-digital.com)
 
 ## 📄 Licencja
 
