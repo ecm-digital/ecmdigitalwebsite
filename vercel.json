@@ -1,11 +1,9 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "**",
-      "use": "@vercel/static"
-    }
-  ],
+  "buildCommand": "echo 'Building static site'",
+  "outputDirectory": ".",
+  "installCommand": "echo 'No install needed'",
+  "framework": null,
   "routes": [
     {
       "src": "/(.*)",
