@@ -3,143 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ECM Digital - Eksperci w Tworzeniu Rozwiązań Cyfrowych</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>ECM Digital - Nowoczesna Agencja Cyfrowa</title>
+    <meta name="description" content="Profesjonalna agencja cyfrowa ECM Digital - strony WWW, Shopify, MVP, UX">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
     <style>
         :root {
-            --primary-color: #2563eb;
-            --primary-dark: #1d4ed8;
-            --secondary-color: #f8fafc;
-            --accent-color: #10b981;
-            --text-primary: #1e293b;
-            --text-secondary: #64748b;
-            --text-light: #94a3b8;
-            --border-color: #e2e8f0;
-            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+            /* Apple Dark Mode Colors */
+            --primary: #007AFF;
+            --primary-dark: #0056CC;
+            --primary-light: #409CFF;
+            --accent: #30D158;
+            --accent-orange: #FF9F0A;
+            --accent-purple: #BF5AF2;
+            --accent-pink: #FF2D92;
+            
+            /* Dark Theme Colors */
+            --bg-primary: #000000;
+            --bg-secondary: #1C1C1E;
+            --bg-tertiary: #2C2C2E;
+            --bg-quaternary: #3A3A3C;
+            
+            /* Text Colors */
+            --text-primary: #FFFFFF;
+            --text-secondary: #EBEBF5;
+            --text-tertiary: #EBEBF599;
+            --text-quaternary: #EBEBF54D;
+            
+            /* System Colors */
+            --separator: #38383A;
+            --overlay: rgba(0, 0, 0, 0.4);
+            
+            /* Shadows */
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+            --shadow-lg: 0 8px 25px rgba(0, 0, 0, 0.5);
+            --shadow-xl: 0 16px 40px rgba(0, 0, 0, 0.6);
+            
+            /* Glass Effect */
+            --glass-bg: rgba(28, 28, 30, 0.8);
+            --glass-border: rgba(255, 255, 255, 0.1);
         }
 
-        * {
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            color: var(--text-primary);
-            background-color: #ffffff;
-            overflow-x: hidden;
-        }
-
-        /* Header & Navigation */
-        .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border-color);
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 70px;
-        }
-
-        .logo {
-            font-size: 1.5rem;
+        
+        .font-display { 
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Space Grotesk', sans-serif;
             font-weight: 700;
-            color: var(--primary-color);
-            text-decoration: none;
+            letter-spacing: -0.02em;
         }
-
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-link {
-            color: var(--text-primary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-            position: relative;
-        }
-
-        .nav-link:hover {
-            color: var(--primary-color);
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary-color);
-            transition: width 0.3s ease;
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: var(--text-primary);
-            cursor: pointer;
-        }
-
-        .cta-button {
-            background: var(--primary-color);
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.5rem;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .cta-button:hover {
-            background: var(--primary-dark);
-            transform: translateY(-1px);
-            box-shadow: var(--shadow-md);
-            color: white;
-        }
-
+        
         /* Hero Section */
         .hero {
-            padding: 120px 0 80px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            color: var(--text-primary);
+            padding: 160px 0 120px;
             position: relative;
             overflow: hidden;
         }
-
+        
         .hero::before {
             content: '';
             position: absolute;
@@ -147,1042 +83,804 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(255,255,255,0.05)" points="0,1000 1000,0 1000,1000"/></svg>');
-            background-size: cover;
+            background: radial-gradient(circle at 30% 20%, var(--primary) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 80%, var(--accent-purple) 0%, transparent 50%);
+            opacity: 0.1;
+            z-index: 1;
         }
-
-        .hero-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1rem;
+        
+        .hero .container {
             position: relative;
             z-index: 2;
         }
-
-        .hero-content {
-            max-width: 600px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .hero-title {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-        }
-
-        .hero-subtitle {
-            font-size: 1.25rem;
+        
+        .hero-title { 
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 800; 
+            line-height: 1.05; 
             margin-bottom: 2rem;
-            opacity: 0.9;
-            line-height: 1.6;
+            letter-spacing: -0.03em;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn-primary {
-            background: white;
-            color: var(--primary-color);
-            padding: 1rem 2rem;
-            border-radius: 0.5rem;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow-lg);
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-xl);
-            color: var(--primary-color);
-        }
-
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 0.5rem;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-2px);
-            color: white;
-        }
-
-        /* Services Section */
-        .services {
-            padding: 80px 0;
-            background: var(--secondary-color);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1rem;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 1rem;
-        }
-
-        .section-subtitle {
-            font-size: 1.125rem;
-            color: var(--text-secondary);
+        
+        .hero-subtitle { 
+            font-size: 1.25rem; 
+            color: var(--text-tertiary);
+            font-weight: 400;
+            line-height: 1.5;
             max-width: 600px;
-            margin: 0 auto;
         }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
+        
+        /* Service Cards */
         .service-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 1rem;
-            box-shadow: var(--shadow-md);
-            transition: all 0.3s ease;
-            border: 1px solid var(--border-color);
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-xl);
-        }
-
-        .service-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--gradient-primary);
-            border-radius: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-            color: white;
-            font-size: 1.5rem;
-        }
-
-        .service-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-        }
-
-        .service-description {
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-        }
-
-        .service-link {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .service-link:hover {
-            gap: 0.75rem;
-        }
-
-        /* Stats Section */
-        .stats {
-            padding: 80px 0;
-            background: var(--text-primary);
-            color: white;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            text-align: center;
-        }
-
-        .stat-item {
-            padding: 1rem;
-        }
-
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 700;
-            color: var(--accent-color);
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            font-size: 1rem;
-            opacity: 0.9;
-        }
-
-        /* Portfolio Preview */
-        .portfolio-preview {
-            padding: 80px 0;
-        }
-
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .portfolio-card {
-            background: white;
-            border-radius: 1rem;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            height: 100%;
+            position: relative;
             overflow: hidden;
-            box-shadow: var(--shadow-md);
-            transition: all 0.3s ease;
         }
-
-        .portfolio-card:hover {
-            transform: translateY(-5px);
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent-purple) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            border-radius: 20px;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-8px) scale(1.02);
             box-shadow: var(--shadow-xl);
+            border-color: var(--glass-border);
         }
-
+        
+        .service-card:hover::before {
+            opacity: 0.05;
+        }
+        
+        .service-card .service-icon {
+            position: relative;
+            z-index: 2;
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-card h4 {
+            color: var(--text-primary);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            letter-spacing: -0.01em;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .service-card .text-muted {
+            color: var(--text-tertiary);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Portfolio Cards */
+        .portfolio-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            height: 100%;
+            position: relative;
+        }
+        
+        .portfolio-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--shadow-xl);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        
         .portfolio-image {
-            height: 200px;
-            background: var(--gradient-secondary);
+            height: 180px;
+            background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-quaternary) 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 3rem;
+            color: var(--text-secondary);
+            font-size: 2.5rem;
+            position: relative;
+            overflow: hidden;
         }
-
+        
+        .portfolio-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent-purple) 100%);
+            opacity: 0.1;
+        }
+        
         .portfolio-content {
             padding: 1.5rem;
         }
-
-        .portfolio-title {
-            font-size: 1.25rem;
+        
+        .portfolio-type {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: var(--text-primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
             font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .portfolio-category {
-            color: var(--primary-color);
-            font-size: 0.875rem;
-            font-weight: 500;
+            display: inline-block;
             margin-bottom: 1rem;
+            letter-spacing: 0.02em;
         }
-
-        .portfolio-description {
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
+        
+        /* Team Cards */
+        .team-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem 1.5rem;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            height: 100%;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
         }
-
-        .portfolio-link {
-            color: var(--primary-color);
+        
+        .team-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            border-radius: 20px;
+        }
+        
+        .team-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--shadow-xl);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .team-card:hover::before {
+            opacity: 0.05;
+        }
+        
+        .team-avatar {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), var(--accent-purple));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-primary);
+            font-size: 2rem;
+            margin: 0 auto 1.5rem;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .team-card:hover .team-avatar {
+            transform: scale(1.1);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .team-card h5 {
+            color: var(--text-primary);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .team-card .text-primary {
+            color: var(--primary) !important;
+            font-weight: 600;
+            font-size: 0.9rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .team-card .text-muted {
+            color: var(--text-tertiary);
+            font-size: 0.85rem;
+            line-height: 1.4;
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Buttons */
+        .btn-cta {
+            background: var(--primary);
+            color: var(--text-primary);
+            padding: 0.875rem 1.75rem;
+            border-radius: 12px;
             text-decoration: none;
             font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-        }
-
-        /* CTA Section */
-        .cta-section {
-            padding: 80px 0;
-            background: var(--gradient-primary);
-            color: white;
-            text-align: center;
-        }
-
-        .cta-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .cta-description {
-            font-size: 1.125rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-
-        /* Footer */
-        .footer {
-            background: var(--text-primary);
-            color: white;
-            padding: 60px 0 30px;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-section h3 {
-            margin-bottom: 1rem;
-            color: var(--accent-color);
-        }
-
-        .footer-section p,
-        .footer-section a {
-            color: rgba(255, 255, 255, 0.8);
-            text-decoration: none;
-            line-height: 1.8;
-        }
-
-        .footer-section a:hover {
-            color: white;
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 2rem;
-            text-align: center;
-            color: rgba(255, 255, 255, 0.6);
-        }
-
-        /* Mobile Styles */
-        @media (max-width: 768px) {
-            .nav-menu {
-                position: fixed;
-                top: 70px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 70px);
-                background: white;
-                flex-direction: column;
-                justify-content: flex-start;
-                align-items: center;
-                padding-top: 2rem;
-                transition: left 0.3s ease;
-                box-shadow: var(--shadow-lg);
-            }
-
-            .nav-menu.active {
-                left: 0;
-            }
-
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            .cta-button {
-                padding: 0.5rem 1rem;
-                font-size: 0.875rem;
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                max-width: 140px;
-            }
-
-            .hero {
-                padding: 100px 0 60px;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .btn-primary,
-            .btn-secondary {
-                width: 100%;
-                max-width: 300px;
-                justify-content: center;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .portfolio-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .cta-title {
-                font-size: 2rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .nav-container {
-                padding: 0 0.5rem;
-            }
-
-            .container {
-                padding: 0 0.5rem;
-            }
-
-            .hero-container {
-                padding: 0 0.5rem;
-            }
-
-            .service-card,
-            .portfolio-card {
-                margin: 0 0.5rem;
-            }
-
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .fade-in-up {
-            animation: fadeInUp 0.6s ease-out;
-        }
-
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Loading states */
-        .loading {
-            opacity: 0.6;
-            pointer-events: none;
-        }
-
-        /* Content area for markdown */
-        .content-area {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2rem;
-            background: white;
-            border-radius: 1rem;
             box-shadow: var(--shadow-md);
-            margin-top: 2rem;
-        }
-
-        .content-area h1,
-        .content-area h2,
-        .content-area h3 {
-            color: var(--text-primary);
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .content-area h1 {
-            font-size: 2rem;
-            border-bottom: 2px solid var(--primary-color);
-            padding-bottom: 0.5rem;
-        }
-
-        .content-area p {
-            margin-bottom: 1rem;
-            color: var(--text-secondary);
-        }
-
-        .content-area a {
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-
-        .content-area a:hover {
-            text-decoration: underline;
-        }
-
-        .content-area img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 0.5rem;
-            margin: 1rem 0;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .content-area table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1rem 0;
-            border-radius: 0.5rem;
+            border: none;
+            position: relative;
             overflow: hidden;
-            box-shadow: var(--shadow-sm);
+            letter-spacing: -0.01em;
         }
-
-        .content-area th,
-        .content-area td {
-            padding: 1rem;
-            text-align: left;
-            border-bottom: 1px solid var(--border-color);
+        
+        .btn-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: 12px;
         }
-
-        .content-area th {
-            background: var(--secondary-color);
-            font-weight: 600;
+        
+        .btn-cta:hover {
+            transform: translateY(-2px) scale(1.02);
             color: var(--text-primary);
+            box-shadow: var(--shadow-lg);
         }
-
-        .content-area code {
-            background: var(--secondary-color);
-            padding: 0.25rem 0.5rem;
-            border-radius: 0.25rem;
-            font-family: 'Monaco', 'Menlo', monospace;
-            font-size: 0.875rem;
+        
+        .btn-cta:hover::before {
+            opacity: 1;
         }
-
-        .content-area pre {
-            background: var(--text-primary);
-            color: white;
-            padding: 1rem;
-            border-radius: 0.5rem;
-            overflow-x: auto;
-            margin: 1rem 0;
+        
+        .btn-cta i {
+            position: relative;
+            z-index: 2;
         }
-
-        .content-area pre code {
-            background: none;
-            padding: 0;
-            color: inherit;
+        
+        .btn-cta span, .btn-cta-text {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .btn-cta-secondary {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            color: var(--text-primary);
+            border: 1px solid var(--glass-border);
+            padding: 0.875rem 1.75rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            position: relative;
+            overflow: hidden;
+            letter-spacing: -0.01em;
+        }
+        
+        .btn-cta-secondary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--primary);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: 12px;
+        }
+        
+        .btn-cta-secondary:hover {
+            color: var(--text-primary);
+            border-color: var(--primary);
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .btn-cta-secondary:hover::before {
+            opacity: 1;
+        }
+        
+        .btn-cta-secondary i,
+        .btn-cta-secondary span {
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Section Improvements */
+        .section-title {
+            color: var(--text-primary);
+            font-size: clamp(2rem, 5vw, 2.75rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .text-muted {
+            color: var(--text-tertiary) !important;
+        }
+        
+        /* Navigation */
+        .navbar {
+            background: var(--glass-bg) !important;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--separator);
+            box-shadow: none;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: var(--text-primary) !important;
+            letter-spacing: -0.01em;
+        }
+        
+        .nav-link {
+            color: var(--text-secondary) !important;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary) !important;
+        }
+        
+        /* Sections */
+        .py-5 {
+            padding: 5rem 0 !important;
+        }
+        
+        #services {
+            background: var(--bg-secondary) !important;
+        }
+        
+        #portfolio {
+            background: var(--bg-primary);
+        }
+        
+        #team {
+            background: var(--bg-secondary) !important;
+        }
+        
+        #contact {
+            background: var(--bg-primary);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--bg-secondary) !important;
+            border-top: 1px solid var(--separator);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .service-card, .team-card, .portfolio-card {
+                padding: 2rem 1.5rem;
+            }
+            
+            .btn-cta, .btn-cta-secondary {
+                padding: 0.875rem 1.5rem;
+                font-size: 0.95rem;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <nav class="nav-container">
-            <a href="#" class="logo" onclick="showHomePage()">ECM Digital</a>
-            
-            <ul class="nav-menu" id="nav-menu">
-                <li><a href="#services" class="nav-link">Usługi</a></li>
-                <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
-                <li><a href="#" class="nav-link" onclick="loadMarkdown('dokumentacja-ecm/metodologia/README.md')">Metodologia</a></li>
-                <li><a href="#contact" class="nav-link">Kontakt</a></li>
-            </ul>
-            
-            <a href="#contact" class="cta-button">Bezpłatna Konsultacja</a>
-            
-            <button class="mobile-menu-btn" id="mobile-menu-btn">
-                <i class="fas fa-bars"></i>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand font-display" href="#">
+                <i class="fas fa-rocket me-2" style="color: var(--primary);"></i>
+                ECM Digital
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" style="border: none; background: none;">
+                <i class="fas fa-bars" style="color: var(--text-primary); font-size: 1.2rem;"></i>
             </button>
-        </nav>
-    </header>
-
-    <!-- Main Content -->
-    <main id="main-content">
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="hero-container">
-                <div class="hero-content fade-in-up">
-                    <h1 class="hero-title">Tworzymy Rozwiązania Cyfrowe, Które Napędzają Biznes</h1>
-                    <p class="hero-subtitle">
-                        Specjalizujemy się w tworzeniu stron WWW, sklepów Shopify, prototypów MVP i audytach UX. 
-                        Pomagamy firmom osiągnąć sukces w świecie cyfrowym.
-                    </p>
-                    <div class="hero-buttons">
-                        <a href="#services" class="btn-primary">
-                            <i class="fas fa-rocket"></i>
-                            Zobacz Nasze Usługi
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#services">Usługi</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#team">Zespół</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Kontakt</a></li>
+                    <li class="nav-item ms-2">
+                        <a href="mailto:hello@ecm-digital.com" class="btn-cta">
+                            <i class="fas fa-paper-plane"></i>
+                            <span>Rozpocznij współpracę</span>
                         </a>
-                        <a href="#portfolio" class="btn-secondary">
-                            <i class="fas fa-eye"></i>
-                            Sprawdź Portfolio
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="hero-title font-display">Tworzymy <span style="color: #06d6a0;">przyszłość</span> cyfrową</h1>
+                    <p class="hero-subtitle">Profesjonalna agencja cyfrowa specjalizująca się w tworzeniu nowoczesnych stron WWW, sklepów Shopify, prototypów MVP i optymalizacji UX.</p>
+                    <div class="mt-4">
+                        <a href="#services" class="btn-cta me-3">
+                            <i class="fas fa-arrow-right"></i>
+                            Zobacz ofertę
+                        </a>
+                        <a href="mailto:hello@ecm-digital.com" class="btn-cta-secondary" style="color: var(--text-secondary); border-color: var(--glass-border);">
+                            <i class="fas fa-comments"></i>
+                            <span>Bezpłatna konsultacja</span>
                         </a>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Services Section -->
-        <section class="services" id="services">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Nasze Usługi</h2>
-                    <p class="section-subtitle">
-                        Oferujemy kompleksowe rozwiązania cyfrowe dostosowane do potrzeb Twojego biznesu
-                    </p>
+    <!-- Services Section -->
+    <section id="services" class="py-5" style="background: var(--secondary);">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title font-display">Kompleksowe usługi cyfrowe</h2>
+                <p class="text-muted">Od koncepcji po realizację - kompleksowe wsparcie na każdym etapie</p>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="service-card">
+                        <div class="mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), #3b82f6); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                            <i class="fas fa-desktop"></i>
+                        </div>
+                        <h4>Nowoczesne strony WWW</h4>
+                        <p class="text-muted">Responsywne strony internetowe zaprojektowane z myślą o konwersji i użytkowniku.</p>
+                        <a href="mailto:hello@ecm-digital.com" class="btn-cta">
+                            <i class="fas fa-arrow-right"></i>
+                            <span>Dowiedz się więcej</span>
+                        </a>
+                    </div>
                 </div>
                 
-                <div class="services-grid">
+                <div class="col-lg-4 col-md-6 mb-4">
                     <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-globe"></i>
+                        <div class="mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), #3b82f6); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                            <i class="fas fa-shopping-cart"></i>
                         </div>
-                        <h3 class="service-title">Strony WWW</h3>
-                        <p class="service-description">
-                            Nowoczesne, responsywne strony internetowe zoptymalizowane pod SEO i konwersję. 
-                            Tworzymy witryny, które przyciągają klientów i budują zaufanie.
-                        </p>
-                        <a href="#" class="service-link" onclick="loadMarkdown('dokumentacja-ecm/oferta-uslug/strony-www/README.md')">
-                            Dowiedz się więcej <i class="fas fa-arrow-right"></i>
+                        <h4>Sklepy Shopify</h4>
+                        <p class="text-muted">Profesjonalne sklepy e-commerce na platformie Shopify z pełną integracją.</p>
+                        <a href="mailto:hello@ecm-digital.com" class="btn-cta">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span>Dowiedz się więcej</span>
                         </a>
                     </div>
-                    
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
                     <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fab fa-shopify"></i>
+                        <div class="mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), #3b82f6); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                            <i class="fas fa-rocket"></i>
                         </div>
-                        <h3 class="service-title">Sklepy Shopify</h3>
-                        <p class="service-description">
-                            Profesjonalne sklepy internetowe na platformie Shopify. Od prostych sklepów po zaawansowane 
-                            rozwiązania e-commerce z integracjami i automatyzacją.
-                        </p>
-                        <a href="#" class="service-link" onclick="loadMarkdown('dokumentacja-ecm/oferta-uslug/sklepy-shopify/README.md')">
-                            Dowiedz się więcej <i class="fas fa-arrow-right"></i>
+                        <h4>Prototypy MVP</h4>
+                        <p class="text-muted">Szybka walidacja pomysłów biznesowych poprzez tworzenie funkcjonalnych prototypów.</p>
+                        <a href="mailto:hello@ecm-digital.com" class="btn-cta">
+                            <i class="fas fa-rocket"></i>
+                            <span>Dowiedz się więcej</span>
                         </a>
                     </div>
-                    
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
                     <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-lightbulb"></i>
+                        <div class="mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), #3b82f6); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                            <i class="fas fa-search-dollar"></i>
                         </div>
-                        <h3 class="service-title">Prototypy MVP</h3>
-                        <p class="service-description">
-                            Szybkie prototypowanie i tworzenie MVP dla startupów. Pomagamy zwalidować pomysły 
-                            biznesowe i przyspieszyć time-to-market.
-                        </p>
-                        <a href="#" class="service-link" onclick="loadMarkdown('dokumentacja-ecm/oferta-uslug/prototypy-mvp/README.md')">
-                            Dowiedz się więcej <i class="fas fa-arrow-right"></i>
+                        <h4>Audyty UX</h4>
+                        <p class="text-muted">Kompleksowa analiza doświadczeń użytkownika w celu zwiększenia konwersji.</p>
+                        <a href="mailto:hello@ecm-digital.com" class="btn-cta">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Dowiedz się więcej</span>
                         </a>
                     </div>
-                    
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
                     <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-search"></i>
-                        </div>
-                        <h3 class="service-title">Audyty UX</h3>
-                        <p class="service-description">
-                            Kompleksowe audyty doświadczeń użytkowników. Identyfikujemy problemy i dostarczamy 
-                            konkretne rekomendacje zwiększające konwersję.
-                        </p>
-                        <a href="#" class="service-link" onclick="loadMarkdown('dokumentacja-ecm/oferta-uslug/audyty-ux/README.md')">
-                            Dowiedz się więcej <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                    
-                    <div class="service-card">
-                        <div class="service-icon">
+                        <div class="mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), #3b82f6); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
                             <i class="fas fa-cogs"></i>
                         </div>
-                        <h3 class="service-title">Automatyzacje z n8n</h3>
-                        <p class="service-description">
-                            Zaawansowane rozwiązania automatyzacji procesów biznesowych. Oszczędzamy czas, 
-                            redukujemy koszty i eliminujemy błędy ludzkie.
-                        </p>
-                        <a href="#" class="service-link" onclick="loadMarkdown('dokumentacja-ecm/oferta-uslug/automatyzacje-n8n/README.md')">
-                            Dowiedz się więcej <i class="fas fa-arrow-right"></i>
+                        <h4>Automatyzacje n8n</h4>
+                        <p class="text-muted">Automatyzacja procesów biznesowych w celu oszczędności czasu i zasobów.</p>
+                        <a href="mailto:hello@ecm-digital.com" class="btn-cta">
+                            <i class="fas fa-cogs"></i>
+                            <span>Dowiedz się więcej</span>
                         </a>
                     </div>
-                    
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
-                        <h3 class="service-title">Social Media z Data Science</h3>
-                        <p class="service-description">
-                            Kampanie social media oparte na data science z predykcyjną analityką. 
-                            Osiągamy ROAS 4-8x powyżej standardów branżowych.
-                        </p>
-                        <a href="#" class="service-link" onclick="loadMarkdown('dokumentacja-ecm/oferta-uslug/social-media-data-science/README.md')">
-                            Dowiedz się więcej <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Stats Section -->
-        <section class="stats">
-            <div class="container">
-                <div class="stats-grid">
-                    <div class="stat-item">
-                        <div class="stat-number">100+</div>
-                        <div class="stat-label">Zrealizowanych Projektów</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">50+</div>
-                        <div class="stat-label">Zadowolonych Klientów</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">95%</div>
-                        <div class="stat-label">Projektów na Czas</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">24/7</div>
-                        <div class="stat-label">Wsparcie Techniczne</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Portfolio Preview -->
-        <section class="portfolio-preview" id="portfolio">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Nasze Realizacje</h2>
-                    <p class="section-subtitle">
-                        Sprawdź wybrane projekty z naszego portfolio i zobacz, jak pomagamy klientom osiągać sukces
-                    </p>
                 </div>
                 
-                <div class="portfolio-grid">
-                    <div class="portfolio-card">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="service-card">
+                        <div class="mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), #3b82f6); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h4>Social Media & Data Science</h4>
+                        <p class="text-muted">Kampanie oparte na danych, które przynoszą realne rezultaty biznesowe.</p>
+                        <a href="mailto:hello@ecm-digital.com" class="btn-cta">
+                            <i class="fas fa-share-alt"></i>
+                            <span>Dowiedz się więcej</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title font-display">Nasze Realizacje</h2>
+                <p class="text-muted">Poznaj projekty, które pomogły naszym klientom osiągnąć sukces</p>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="portfolio-card" data-aos="fade-up">
+                        <div class="portfolio-image">
+                            <i class="fas fa-desktop"></i>
+                        </div>
+                        <div class="portfolio-content">
+                            <span class="portfolio-type">Strona WWW</span>
+                            <h5 class="font-display">TechFlow Solutions</h5>
+                            <p class="text-muted">Nowoczesna strona dla startupu technologicznego z fokusem na konwersję.</p>
+                            <small class="text-primary">Gatsby • Strapi • GraphQL</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="portfolio-card" data-aos="fade-up" data-aos-delay="100">
                         <div class="portfolio-image">
                             <i class="fas fa-shopping-cart"></i>
                         </div>
                         <div class="portfolio-content">
-                            <div class="portfolio-category">E-commerce</div>
-                            <h3 class="portfolio-title">StyleHub Fashion</h3>
-                            <p class="portfolio-description">
-                                Audyt UX sklepu internetowego, który zwiększył konwersję o 100% i zredukował porzucanie koszyków o 20%.
-                            </p>
-                            <a href="#" class="portfolio-link" onclick="loadMarkdown('dokumentacja-ecm/portfolio-case-studies/ux/ecommerce-fashion-audit.md')">
-                                Zobacz case study <i class="fas fa-arrow-right"></i>
-                            </a>
+                            <span class="portfolio-type">Sklep Shopify</span>
+                            <h5 class="font-display">XYZ Fashion Store</h5>
+                            <p class="text-muted">Elegancki sklep online dla marki modowej z zaawansowanymi funkcjami.</p>
+                            <small class="text-primary">Shopify Plus • Liquid • JavaScript</small>
                         </div>
                     </div>
-                    
-                    <div class="portfolio-card">
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="portfolio-card" data-aos="fade-up" data-aos-delay="200">
                         <div class="portfolio-image">
-                            <i class="fas fa-mobile-alt"></i>
+                            <i class="fas fa-rocket"></i>
                         </div>
                         <div class="portfolio-content">
-                            <div class="portfolio-category">Fintech</div>
-                            <h3 class="portfolio-title">SecureBank Mobile</h3>
-                            <p class="portfolio-description">
-                                Audyt UX aplikacji bankowej, który poprawił oceny w sklepach o 45% i zwiększył accessibility o 104%.
-                            </p>
-                            <a href="#" class="portfolio-link" onclick="loadMarkdown('dokumentacja-ecm/portfolio-case-studies/ux/fintech-banking-app-audit.md')">
-                                Zobacz case study <i class="fas fa-arrow-right"></i>
-                            </a>
+                            <span class="portfolio-type">Prototyp MVP</span>
+                            <h5 class="font-display">PayFlow App</h5>
+                            <p class="text-muted">Aplikacja płatności P2P dla fintech z pełną walidacją biznesową.</p>
+                            <small class="text-primary">React Native • Node.js • AWS</small>
                         </div>
                     </div>
-                    
-                    <div class="portfolio-card">
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="portfolio-card" data-aos="fade-up" data-aos-delay="300">
                         <div class="portfolio-image">
-                            <i class="fas fa-heartbeat"></i>
+                            <i class="fas fa-search-dollar"></i>
                         </div>
                         <div class="portfolio-content">
-                            <div class="portfolio-category">Healthcare</div>
-                            <h3 class="portfolio-title">MedConnect Portal</h3>
-                            <p class="portfolio-description">
-                                Audyt UX platformy medycznej, który zwiększył adopcję wśród seniorów o 300% i zapewnił pełną dostępność.
-                            </p>
-                            <a href="#" class="portfolio-link" onclick="loadMarkdown('dokumentacja-ecm/portfolio-case-studies/ux/healthcare-portal-audit.md')">
-                                Zobacz case study <i class="fas fa-arrow-right"></i>
-                            </a>
+                            <span class="portfolio-type">Audyt UX</span>
+                            <h5 class="font-display">Banking App Audit</h5>
+                            <p class="text-muted">Kompleksowy audyt aplikacji bankowej zwiększający konwersję o 150%.</p>
+                            <small class="text-primary">UX Research • Analytics • Testing</small>
                         </div>
                     </div>
                 </div>
                 
-                <div style="text-align: center; margin-top: 3rem;">
-                    <a href="#" class="btn-primary" onclick="loadMarkdown('dokumentacja-ecm/portfolio-case-studies/README.md')">
-                        <i class="fas fa-folder-open"></i>
-                        Zobacz Wszystkie Projekty
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- CTA Section -->
-        <section class="cta-section" id="contact">
-            <div class="container">
-                <h2 class="cta-title">Gotowy na Rozpoczęcie Projektu?</h2>
-                <p class="cta-description">
-                    Skontaktuj się z nami już dziś i otrzymaj bezpłatną konsultację oraz wycenę swojego projektu
-                </p>
-                <div class="hero-buttons">
-                    <a href="mailto:hello@ecm-digital.com" class="btn-primary">
-                        <i class="fas fa-envelope"></i>
-                        hello@ecm-digital.com
-                    </a>
-                    <a href="tel:+48535330323" class="btn-secondary">
-                        <i class="fas fa-phone"></i>
-                        +48 535330323
-                    </a>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Content Area for Markdown -->
-    <div class="container" id="content-container" style="display: none;">
-        <div class="content-area">
-            <div id="markdown-content"></div>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>ECM Digital</h3>
-                    <p>Tworzymy rozwiązania cyfrowe, które napędzają biznes. Specjalizujemy się w nowoczesnych technologiach i user experience.</p>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="portfolio-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="portfolio-image">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <div class="portfolio-content">
+                            <span class="portfolio-type">Automatyzacja</span>
+                            <h5 class="font-display">Business Automation</h5>
+                            <p class="text-muted">Automatyzacja procesów biznesowych oszczędzająca 20h tygodniowo.</p>
+                            <small class="text-primary">n8n • Zapier • API Integrations</small>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="footer-section">
-                    <h3>Usługi</h3>
-                    <p><a href="#" onclick="loadMarkdown('dokumentacja-ecm/oferta-uslug/strony-www/README.md')">Strony WWW</a></p>
-                    <p><a href="#" onclick="loadMarkdown('dokumentacja-ecm/oferta-uslug/sklepy-shopify/README.md')">Sklepy Shopify</a></p>
-                    <p><a href="#" onclick="loadMarkdown('dokumentacja-ecm/oferta-uslug/prototypy-mvp/README.md')">Prototypy MVP</a></p>
-                    <p><a href="#" onclick="loadMarkdown('dokumentacja-ecm/oferta-uslug/audyty-ux/README.md')">Audyty UX</a></p>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Portfolio</h3>
-                    <p><a href="#" onclick="loadMarkdown('dokumentacja-ecm/portfolio-case-studies/README.md')">Wszystkie Projekty</a></p>
-                    <p><a href="#" onclick="loadMarkdown('dokumentacja-ecm/portfolio-case-studies/ux/ecommerce-fashion-audit.md')">Case Studies UX</a></p>
-                    <p><a href="#" onclick="loadMarkdown('dokumentacja-ecm/metodologia/README.md')">Metodologia</a></p>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Kontakt</h3>
-                    <p><a href="mailto:hello@ecm-digital.com">hello@ecm-digital.com</a></p>
-                    <p><a href="tel:+48535330323">+48 535 330 323</a></p>
-                    <p>Warszawa, Polska</p>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="portfolio-card" data-aos="fade-up" data-aos-delay="500">
+                        <div class="portfolio-image">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="portfolio-content">
+                            <span class="portfolio-type">Social Media</span>
+                            <h5 class="font-display">Data-Driven Campaign</h5>
+                            <p class="text-muted">Kampania social media oparta na danych zwiększająca ROI o 300%.</p>
+                            <small class="text-primary">Analytics • Facebook Ads • Content Strategy</small>
+                        </div>
+                    </div>
                 </div>
             </div>
             
-            <div class="footer-bottom">
-                <p>&copy; 2024 ECM Digital. Wszystkie prawa zastrzeżone.</p>
+            <div class="text-center mt-4">
+                <a href="mailto:hello@ecm-digital.com" class="btn-cta-secondary">
+                    <i class="fas fa-eye"></i>
+                    <span>Zobacz wszystkie realizacje</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="py-5" style="background: var(--secondary);">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title font-display">Nasz Zespół</h2>
+                <p class="text-muted">Poznaj ekspertów, którzy realizują Twoje projekty</p>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="team-card" data-aos="fade-up">
+                        <div class="team-avatar">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h5 class="font-display">Tomasz Gnat</h5>
+                        <p class="text-primary fw-bold">CEO & Discovery Konsultant</p>
+                        <p class="text-muted">Ekspert w odkrywaniu potrzeb biznesowych i strategii cyfrowej</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="team-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="team-avatar">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <h5 class="font-display">Marta Górska</h5>
+                        <p class="text-primary fw-bold">UX/UI Designer</p>
+                        <p class="text-muted">Specjalistka od projektowania doświadczeń użytkownika</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="team-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="team-avatar">
+                            <i class="fas fa-bug"></i>
+                        </div>
+                        <h5 class="font-display">Karol Czechowski</h5>
+                        <p class="text-primary fw-bold">QA Specialist & Developer</p>
+                        <p class="text-muted">Specjalista od zapewnienia jakości i testowania aplikacji</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="team-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="team-avatar">
+                            <i class="fas fa-share-alt"></i>
+                        </div>
+                        <h5 class="font-display">Roman Dominia</h5>
+                        <p class="text-primary fw-bold">Social Media & Automations Specialist</p>
+                        <p class="text-muted">Ekspert od social media i automatyzacji procesów biznesowych</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title font-display">Skontaktuj się z nami</h2>
+                <p class="text-muted mb-4">Gotowy na rozpoczęcie projektu? Napisz do nas!</p>
+                
+                <div class="row justify-content-center">
+                    <div class="col-md-4 mb-3">
+                        <div class="d-flex align-items-center justify-content-center">
+                            <i class="fas fa-envelope text-primary me-3" style="font-size: 1.5rem;"></i>
+                            <div>
+                                <h6 class="mb-0">Email</h6>
+                                <p class="text-muted mb-0">hello@ecm-digital.com</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="d-flex align-items-center justify-content-center">
+                            <i class="fas fa-phone text-primary me-3" style="font-size: 1.5rem;"></i>
+                            <div>
+                                <h6 class="mb-0">Telefon</h6>
+                                <p class="text-muted mb-0">+48 535 330 323</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="d-flex align-items-center justify-content-center">
+                            <i class="fas fa-map-marker-alt text-primary me-3" style="font-size: 1.5rem;"></i>
+                            <div>
+                                <h6 class="mb-0">Lokalizacja</h6>
+                                <p class="text-muted mb-0">Warszawa, Polska</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-4">
+                    <a href="mailto:hello@ecm-digital.com" class="btn-cta me-3">
+                        <i class="fas fa-envelope"></i>
+                        <span>Napisz do nas</span>
+                    </a>
+                    <a href="tel:+48535330323" class="btn-cta-secondary">
+                        <i class="fas fa-phone"></i>
+                        <span>Zadzwoń</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-4" style="background: var(--bg-dark); color: white;">
+        <div class="container">
+            <div class="text-center">
+                <p class="mb-0">&copy; 2024 ECM Digital. Wszystkie prawa zastrzeżone.</p>
             </div>
         </div>
     </footer>
 
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Mobile menu toggle
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const navMenu = document.getElementById('nav-menu');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            const icon = mobileMenuBtn.querySelector('i');
-            icon.classList.toggle('fa-bars');
-            icon.classList.toggle('fa-times');
-        });
-
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-                const icon = mobileMenuBtn.querySelector('i');
-                icon.classList.add('fa-bars');
-                icon.classList.remove('fa-times');
-            });
-        });
-
-        // Header scroll effect
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('.header');
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(255, 255, 255, 0.98)';
-                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
-            } else {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
-                header.style.boxShadow = 'none';
-            }
-        });
-
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Show/hide main content and markdown content
-        function showHomePage() {
-            document.getElementById('main-content').style.display = 'block';
-            document.getElementById('content-container').style.display = 'none';
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function showMarkdownContent() {
-            document.getElementById('main-content').style.display = 'none';
-            document.getElementById('content-container').style.display = 'block';
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // Funkcja do ładowania plików Markdown
-        function loadMarkdown(path) {
-            // Show loading state
-            const markdownContent = document.getElementById('markdown-content');
-            markdownContent.innerHTML = '<div style="text-align: center; padding: 2rem;"><i class="fas fa-spinner fa-spin" style="font-size: 2rem; color: var(--primary-color);"></i><p style="margin-top: 1rem;">Ładowanie...</p></div>';
-            
-            showMarkdownContent();
-            
-            fetch(path)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.text();
-                })
-                .then(text => {
-                    markdownContent.innerHTML = marked.parse(text);
-                    // Napraw relatywne linki do obrazów
-                    fixImagePaths(path);
-                    // Add back to home button
-                    addBackButton();
-                })
-                .catch(error => {
-                    console.error('Błąd podczas ładowania pliku Markdown:', error);
-                    markdownContent.innerHTML = `
-                        <div style="text-align: center; padding: 2rem;">
-                            <i class="fas fa-exclamation-triangle" style="font-size: 2rem; color: #f59e0b; margin-bottom: 1rem;"></i>
-                            <h3>Błąd podczas ładowania zawartości</h3>
-                            <p>Nie udało się załadować pliku: ${path}</p>
-                            <button onclick="showHomePage()" class="btn-primary" style="margin-top: 1rem;">
-                                <i class="fas fa-home"></i> Powrót do strony głównej
-                            </button>
-                        </div>
-                    `;
-                });
-        }
-
-        // Funkcja do naprawiania ścieżek do obrazów
-        function fixImagePaths(currentPath) {
-            const images = document.querySelectorAll('#markdown-content img');
-            const basePath = currentPath.substring(0, currentPath.lastIndexOf('/') + 1);
-            
-            images.forEach(img => {
-                const src = img.getAttribute('src');
-                if (src && !src.startsWith('http') && !src.startsWith('/')) {
-                    img.src = basePath + src;
-                }
-            });
-        }
-
-        // Add back button to markdown content
-        function addBackButton() {
-            const markdownContent = document.getElementById('markdown-content');
-            const backButton = document.createElement('div');
-            backButton.style.cssText = 'margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border-color);';
-            backButton.innerHTML = `
-                <button onclick="showHomePage()" class="btn-secondary" style="background: var(--secondary-color); color: var(--text-primary); border: 1px solid var(--border-color);">
-                    <i class="fas fa-arrow-left"></i> Powrót do strony głównej
-                </button>
-            `;
-            markdownContent.insertBefore(backButton, markdownContent.firstChild);
-        }
-
-        // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in-up');
-                }
-            });
-        }, observerOptions);
-
-        // Observe elements for animation
-        document.addEventListener('DOMContentLoaded', () => {
-            const animatedElements = document.querySelectorAll('.service-card, .portfolio-card, .stat-item');
-            animatedElements.forEach(el => observer.observe(el));
-        });
-
-        // Counter animation for stats
-        function animateCounters() {
-            const counters = document.querySelectorAll('.stat-number');
-            counters.forEach(counter => {
-                const target = parseInt(counter.textContent.replace(/\D/g, ''));
-                const suffix = counter.textContent.replace(/\d/g, '');
-                let current = 0;
-                const increment = target / 50;
-                const timer = setInterval(() => {
-                    current += increment;
-                    if (current >= target) {
-                        counter.textContent = target + suffix;
-                        clearInterval(timer);
-                    } else {
-                        counter.textContent = Math.floor(current) + suffix;
-                    }
-                }, 40);
-            });
-        }
-
-        // Trigger counter animation when stats section is visible
-        const statsObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateCounters();
-                    statsObserver.unobserve(entry.target);
-                }
-            });
-        });
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const statsSection = document.querySelector('.stats');
-            if (statsSection) {
-                statsObserver.observe(statsSection);
-            }
-        });
-
-        // Mobile CTA button text optimization
-        function updateCTAButtonForMobile() {
-            const ctaButton = document.querySelector('.cta-button');
-            if (ctaButton && window.innerWidth <= 768) {
-                ctaButton.textContent = 'Konsultacja';
-                ctaButton.setAttribute('title', 'Bezpłatna Konsultacja');
-            } else if (ctaButton) {
-                ctaButton.textContent = 'Bezpłatna Konsultacja';
-                ctaButton.removeAttribute('title');
-            }
-        }
-
-        // Update CTA button on load and resize
-        document.addEventListener('DOMContentLoaded', updateCTAButtonForMobile);
-        window.addEventListener('resize', updateCTAButtonForMobile);
+        AOS.init({ duration: 800, once: true });
     </script>
 </body>
 </html>
