@@ -534,6 +534,32 @@
             border-top: 1px solid var(--separator);
         }
         
+        /* About Us Section */
+        #about-us {
+            background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+        }
+
+        .about-us-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .about-us-card .lead {
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-us-card p {
+            color: var(--text-tertiary);
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .hero-title {
@@ -868,13 +894,13 @@
     </section>
 
     <!-- About Us Section -->
-    <section id="about-us" class="py-5 bg-secondary">
+    <section id="about-us" class="py-5 bg-secondary position-relative">
         <div class="container">
             <div class="text-center mb-5">
                 <h2 class="section-title font-display">Kim jesteśmy?</h2>
             </div>
             <div class="row justify-content-center">
-                <div class="col-lg-8 text-center">
+                                <div class="col-lg-8 text-center about-us-card">
                     <p class="lead text-white-50">
                         ECM Digital to marka oferująca kompleksowe i nowoczesne rozwiązania digitalowe. Specjalizujemy się w projektowaniu stron internetowych, e-commerce, audytach UX oraz automatyzacji procesów biznesowych, pomagając firmom rozwijać się w cyfrowym świecie.
                     </p>
