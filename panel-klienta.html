@@ -77,5 +77,45 @@
             <a href="/index.html" class="text-tertiary" style="text-decoration: none;">Powrót na stronę główną</a>
         </div>
     </div>
+    <script>
+        const form = document.querySelector('form');
+        const messageDiv = document.createElement('div');
+        messageDiv.className = 'mt-3';
+        form.insertAdjacentElement('afterend', messageDiv);
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            messageDiv.textContent = '';
+            messageDiv.className = 'mt-3';
+
+            const email = document.getElementById('floatingInput').value;
+            const password = document.getElementById('floatingPassword').value;
+
+            try {
+                const response = await fetch('/api/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email, password }),
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    // On successful login, Supabase client library needs to be initialized
+                    // to handle the session. For simplicity, we redirect to dashboard
+                    // where the session is handled.
+                    window.location.href = '/dashboard.html';
+                } else {
+                    messageDiv.textContent = data.message || 'Nieprawidłowe dane logowania.';
+                    messageDiv.classList.add('alert', 'alert-danger');
+                }
+            } catch (error) {
+                messageDiv.textContent = 'Błąd serwera. Spróbuj ponownie później.';
+                messageDiv.classList.add('alert', 'alert-danger');
+            }
+        });
+    </script>
 </body>
 </html>
