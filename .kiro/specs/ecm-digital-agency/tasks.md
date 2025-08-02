@@ -244,14 +244,14 @@
     - Implementacja przykładowych raportów
     - _Wymagania: 8.1, 8.5_
 
-- [ ] 10. Implementacja sekcji Bezpieczeństwo i Zgodność
-  - [ ] 10.1 Utworzenie głównej strony bezpieczeństwa
+- [x] 10. Implementacja sekcji Bezpieczeństwo i Zgodność
+  - [x] 10.1 Utworzenie głównej strony bezpieczeństwa
     - Implementacja nagłówka i wprowadzenia
     - Dodanie przeglądu praktyk bezpieczeństwa
     - Implementacja nawigacji do podsekcji
     - _Wymagania: 9.1_
   
-  - [ ] 10.2 Implementacja sekcji praktyk bezpieczeństwa
+  - [x] 10.2 Implementacja sekcji praktyk bezpieczeństwa
     - Utworzenie listy stosowanych praktyk
     - Dodanie opisu procedur bezpieczeństwa
     - Implementacja przykładów zabezpieczeń
