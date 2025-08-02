@@ -84,5 +84,51 @@
             <a href="panel-klienta.html" class="text-tertiary" style="text-decoration: none;">Masz już konto? Zaloguj się</a>
         </div>
     </div>
+    <script>
+        const form = document.querySelector('form');
+        const messageDiv = document.createElement('div');
+        messageDiv.className = 'mt-3';
+        form.insertAdjacentElement('afterend', messageDiv);
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            messageDiv.textContent = '';
+            messageDiv.className = 'mt-3';
+
+            const email = document.getElementById('floatingInput').value;
+            const password = document.getElementById('floatingPassword').value;
+            const confirmPassword = document.getElementById('floatingConfirmPassword').value;
+
+            if (password !== confirmPassword) {
+                messageDiv.textContent = 'Hasła nie są takie same.';
+                messageDiv.classList.add('alert', 'alert-danger');
+                return;
+            }
+
+            try {
+                const response = await fetch('/api/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email, password }),
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    messageDiv.textContent = data.message;
+                    messageDiv.classList.add('alert', 'alert-success');
+                    form.reset();
+                } else {
+                    messageDiv.textContent = data.message || 'Wystąpił błąd podczas rejestracji.';
+                    messageDiv.classList.add('alert', 'alert-danger');
+                }
+            } catch (error) {
+                messageDiv.textContent = 'Błąd serwera. Spróbuj ponownie później.';
+                messageDiv.classList.add('alert', 'alert-danger');
+            }
+        });
+    </script>
 </body>
 </html>

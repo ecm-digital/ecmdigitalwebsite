@@ -1,0 +1,16 @@
+{
+  "name": "ecmdigital-website",
+  "version": "1.0.0",
+  "description": "Website with client panel",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.39.0",
+    "bcrypt": "^5.1.1"
+  }
+}
