@@ -79,12 +79,14 @@
         }
 
         .hero-title {
-            font-size: 3rem;
+            font-size: 3.5rem;
             font-weight: 800;
             margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
+            background: linear-gradient(45deg, #ffffff, #f0f0f0);
+            background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            line-height: 1.2;
         }
 
         .content-section {
@@ -171,73 +173,508 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
+                    <!-- Wprowadzenie -->
                     <div class="service-card">
-                        <h2>Czym jest MVP?</h2>
-                        <p class="text-muted">MVP (Minimum Viable Product) to najprostrza wersja produktu, która pozwala na zebranie maksymalnej ilości informacji o klientach przy minimalnym wysiłku. To strategiczne podejście do rozwoju produktu, które minimalizuje ryzyko i koszty.</p>
+                        <h2><i class="fas fa-rocket text-primary me-3"></i>Prototypy MVP - Walidacja Pomysłów Biznesowych</h2>
+                        <p class="lead">MVP (Minimum Viable Product) to najprostrza wersja produktu, która pozwala na zebranie maksymalnej ilości informacji o klientach przy minimalnym wysiłku. To strategiczne podejście do rozwoju produktu, które minimalizuje ryzyko i maksymalizuje szanse na sukces.</p>
                         
                         <div class="row mt-4">
                             <div class="col-md-6 mb-3">
-                                <h5><i class="fas fa-lightbulb text-primary me-2"></i>Walidacja Pomysłu</h5>
-                                <p class="text-muted">Sprawdzamy czy Twój pomysł ma potencjał rynkowy.</p>
+                                <div class="feature-box">
+                                    <i class="fas fa-lightbulb text-primary mb-2"></i>
+                                    <h5>Walidacja Pomysłu</h5>
+                                    <p class="text-muted">Sprawdzamy czy Twój pomysł ma rzeczywisty potencjał rynkowy przed dużymi inwestycjami.</p>
+                                </div>
                             </div>
                             <div class="col-md-6 mb-3">
-                                <h5><i class="fas fa-users text-primary me-2"></i>Feedback Użytkowników</h5>
-                                <p class="text-muted">Zbieramy cenne opinie od rzeczywistych użytkowników.</p>
+                                <div class="feature-box">
+                                    <i class="fas fa-users text-primary mb-2"></i>
+                                    <h5>Feedback Użytkowników</h5>
+                                    <p class="text-muted">Zbieramy cenne opinie od rzeczywistych użytkowników już na wczesnym etapie.</p>
+                                </div>
                             </div>
                             <div class="col-md-6 mb-3">
-                                <h5><i class="fas fa-chart-line text-primary me-2"></i>Analiza Rynku</h5>
-                                <p class="text-muted">Badamy zapotrzebowanie i konkurencję.</p>
+                                <div class="feature-box">
+                                    <i class="fas fa-chart-line text-primary mb-2"></i>
+                                    <h5>Analiza Rynku</h5>
+                                    <p class="text-muted">Głęboko badamy zapotrzebowanie, konkurencję i potencjał monetyzacji.</p>
+                                </div>
                             </div>
                             <div class="col-md-6 mb-3">
-                                <h5><i class="fas fa-cogs text-primary me-2"></i>Iteracyjny Rozwój</h5>
-                                <p class="text-muted">Stopniowo rozwijamy produkt na podstawie danych.</p>
+                                <div class="feature-box">
+                                    <i class="fas fa-cogs text-primary mb-2"></i>
+                                    <h5>Iteracyjny Rozwój</h5>
+                                    <p class="text-muted">Stopniowo rozwijamy produkt na podstawie danych i feedbacków użytkowników.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
 
+                    <!-- Filozofia MVP -->
                     <div class="service-card">
-                        <h2>Proces Tworzenia MVP</h2>
-                        <ul class="list-group list-group-flush mt-3">
-                            <li class="list-group-item">
-                                <i class="fas fa-search text-success me-2"></i>
-                                <strong>1. Analiza i Research</strong> - Badamy rynek i definiujemy kluczowe funkcjonalności
-                            </li>
-                            <li class="list-group-item">
-                                <i class="fas fa-pencil-ruler text-success me-2"></i>
-                                <strong>2. Projektowanie UX/UI</strong> - Tworzymy intuicyjny i atrakcyjny design
-                            </li>
-                            <li class="list-group-item">
-                                <i class="fas fa-code text-success me-2"></i>
-                                <strong>3. Rozwój Techiczny</strong> - Budujemy funkcjonalny prototyp
-                            </li>
-                            <li class="list-group-item">
-                                <i class="fas fa-vial text-success me-2"></i>
-                                <strong>4. Testowanie</strong> - Przeprowadzamy testy z użytkownikami
-                            </li>
-                            <li class="list-group-item">
-                                <i class="fas fa-chart-bar text-success me-2"></i>
-                                <strong>5. Analiza Wyników</strong> - Analizujemy dane i planujemy dalszy rozwój
-                            </li>
-                        </ul>
+                        <h2><i class="fas fa-brain text-primary me-3"></i>Nasza Filozofia MVP</h2>
+                        <p>W ECM Digital wierzymy, że każdy wielki produkt zaczyna się od prostego MVP. Nasze podejście łączy najlepsze praktyki Lean Startup z nowoczesnym designem i technologią.</p>
+                        
+                        <div class="philosophy-points">
+                            <div class="point-item">
+                                <div class="point-icon">
+                                    <i class="fas fa-target"></i>
+                                </div>
+                                <div class="point-content">
+                                    <h5>Build-Measure-Learn</h5>
+                                    <p>Implementujemy cykl Lean Startup: budujemy szybko, mierzymy reakcje użytkowników, uczymy się z danych.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="point-item">
+                                <div class="point-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div class="point-content">
+                                    <h5>Time-to-Market</h5>
+                                    <p>Maksymalizujemy szybkość wejścia na rynek - każdy dzień opóźnienia to stracone możliwości.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="point-item">
+                                <div class="point-icon">
+                                    <i class="fas fa-dollar-sign"></i>
+                                </div>
+                                <div class="point-content">
+                                    <h5>Cost-Effective</h5>
+                                    <p>Minimalizujemy koszty rozwoju, maksymalizujemy wartość dla użytkowników i inwestorów.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="point-item">
+                                <div class="point-icon">
+                                    <i class="fas fa-chart-bar"></i>
+                                </div>
+                                <div class="point-content">
+                                    <h5>Data-Driven</h5>
+                                    <p>Wszystkie decyzje podejmujemy na podstawie danych, nie domysłów czy założeń.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Typy MVP -->
+                    <div class="service-card">
+                        <h2><i class="fas fa-layer-group text-primary me-3"></i>Typy MVP, które Tworzymy</h2>
+                        
+                        <div class="row mt-4">
+                            <div class="col-md-6 mb-4">
+                                <div class="mvp-type-card">
+                                    <div class="mvp-icon">
+                                        <i class="fas fa-mobile-alt"></i>
+                                    </div>
+                                    <h5>Aplikacje Mobilne</h5>
+                                    <p>Natywne i hybrydowe aplikacje iOS/Android z podstawowymi funkcjonalnościami.</p>
+                                    <ul class="mvp-features">
+                                        <li>React Native / Flutter</li>
+                                        <li>Podstawowe UI/UX</li>
+                                        <li>Integracje z API</li>
+                                        <li>Analytics i tracking</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6 mb-4">
+                                <div class="mvp-type-card">
+                                    <div class="mvp-icon">
+                                        <i class="fas fa-globe"></i>
+                                    </div>
+                                    <h5>Aplikacje Webowe</h5>
+                                    <p>Responsywne aplikacje SPA z nowoczesnym interfejsem użytkownika.</p>
+                                    <ul class="mvp-features">
+                                        <li>React / Vue.js / Angular</li>
+                                        <li>Progressive Web App</li>
+                                        <li>Real-time features</li>
+                                        <li>Cloud deployment</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6 mb-4">
+                                <div class="mvp-type-card">
+                                    <div class="mvp-icon">
+                                        <i class="fas fa-shopping-cart"></i>
+                                    </div>
+                                    <h5>E-commerce MVP</h5>
+                                    <p>Sklepy internetowe z podstawowymi funkcjami sprzedażowymi.</p>
+                                    <ul class="mvp-features">
+                                        <li>Shopify / WooCommerce</li>
+                                        <li>Płatności online</li>
+                                        <li>Zarządzanie produktami</li>
+                                        <li>Analityka sprzedaży</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6 mb-4">
+                                <div class="mvp-type-card">
+                                    <div class="mvp-icon">
+                                        <i class="fas fa-cogs"></i>
+                                    </div>
+                                    <h5>SaaS Platforms</h5>
+                                    <p>Platformy Software-as-a-Service z systemem subskrypcji.</p>
+                                    <ul class="mvp-features">
+                                        <li>Multi-tenant architecture</li>
+                                        <li>Subscription billing</li>
+                                        <li>User management</li>
+                                        <li>API integrations</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Proces 5-Etapowy -->
+                    <div class="service-card">
+                        <h2><i class="fas fa-tasks text-primary me-3"></i>Nasz 5-Etapowy Proces MVP</h2>
+                        
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-marker">1</div>
+                                <div class="timeline-content">
+                                    <h5>Discovery & Research (Tydzień 1)</h5>
+                                    <ul>
+                                        <li>Analiza pomysłu i modelu biznesowego</li>
+                                        <li>Badanie rynku i konkurencji</li>
+                                        <li>Definicja target group i user personas</li>
+                                        <li>Określenie kluczowych funkcjonalności</li>
+                                        <li>Wybor technologii i architektury</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="timeline-item">
+                                <div class="timeline-marker">2</div>
+                                <div class="timeline-content">
+                                    <h5>Design & Prototyping (Tydzień 2)</h5>
+                                    <ul>
+                                        <li>User Experience (UX) design</li>
+                                        <li>Wireframes i user flows</li>
+                                        <li>Interaktywne prototypy</li>
+                                        <li>User Interface (UI) design</li>
+                                        <li>Design system i style guide</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="timeline-item">
+                                <div class="timeline-marker">3</div>
+                                <div class="timeline-content">
+                                    <h5>Development (Tydzień 3-4)</h5>
+                                    <ul>
+                                        <li>Setup infrastruktury i CI/CD</li>
+                                        <li>Backend API development</li>
+                                        <li>Frontend implementation</li>
+                                        <li>Integracje z zewnętrznymi usługami</li>
+                                        <li>Podstawowe testy automatyczne</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="timeline-item">
+                                <div class="timeline-marker">4</div>
+                                <div class="timeline-content">
+                                    <h5>Testing & Launch (Tydzień 5)</h5>
+                                    <ul>
+                                        <li>Quality Assurance testing</li>
+                                        <li>User Acceptance Testing</li>
+                                        <li>Performance optimization</li>
+                                        <li>Deployment na produkcję</li>
+                                        <li>Setup analytics i monitoring</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="timeline-item">
+                                <div class="timeline-marker">5</div>
+                                <div class="timeline-content">
+                                    <h5>Measure & Iterate (Ongoing)</h5>
+                                    <ul>
+                                        <li>Zbieranie feedbacków użytkowników</li>
+                                        <li>Analiza metryk i KPIs</li>
+                                        <li>A/B testing nowych featureów</li>
+                                        <li>Iteracyjne ulepszenia</li>
+                                        <li>Planowanie kolejnych wersji</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tech Stack -->
+                    <div class="service-card">
+                        <h2><i class="fas fa-code text-primary me-3"></i>Nasz Tech Stack</h2>
+                        <p>Wykorzystujemy sprawdzone, nowoczesne technologie, które zapewniają szybki development i łatwą skalowalność:</p>
+                        
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <h5><i class="fas fa-laptop-code text-primary me-2"></i>Frontend</h5>
+                                <div class="tech-list">
+                                    <span class="tech-badge">React</span>
+                                    <span class="tech-badge">Vue.js</span>
+                                    <span class="tech-badge">Angular</span>
+                                    <span class="tech-badge">TypeScript</span>
+                                    <span class="tech-badge">Tailwind CSS</span>
+                                    <span class="tech-badge">Bootstrap</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <h5><i class="fas fa-server text-primary me-2"></i>Backend</h5>
+                                <div class="tech-list">
+                                    <span class="tech-badge">Node.js</span>
+                                    <span class="tech-badge">Python</span>
+                                    <span class="tech-badge">PHP</span>
+                                    <span class="tech-badge">Express</span>
+                                    <span class="tech-badge">Django</span>
+                                    <span class="tech-badge">Laravel</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <h5><i class="fas fa-mobile-alt text-primary me-2"></i>Mobile</h5>
+                                <div class="tech-list">
+                                    <span class="tech-badge">React Native</span>
+                                    <span class="tech-badge">Flutter</span>
+                                    <span class="tech-badge">Expo</span>
+                                    <span class="tech-badge">PWA</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <h5><i class="fas fa-database text-primary me-2"></i>Database & Cloud</h5>
+                                <div class="tech-list">
+                                    <span class="tech-badge">PostgreSQL</span>
+                                    <span class="tech-badge">MongoDB</span>
+                                    <span class="tech-badge">AWS</span>
+                                    <span class="tech-badge">Vercel</span>
+                                    <span class="tech-badge">Firebase</span>
+                                    <span class="tech-badge">Supabase</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Case Studies -->
+                    <div class="service-card">
+                        <h2><i class="fas fa-trophy text-primary me-3"></i>Case Studies</h2>
+                        
+                        <div class="case-study">
+                            <h4>FinTech Mobile App</h4>
+                            <div class="case-metrics">
+                                <div class="metric">
+                                    <span class="metric-value">5 tygodni</span>
+                                    <span class="metric-label">Czas realizacji</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric-value">50k</span>
+                                    <span class="metric-label">Użytkownicy w 3 mies.</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric-value">$2M</span>
+                                    <span class="metric-label">Seed funding</span>
+                                </div>
+                            </div>
+                            <p><strong>Wyzwanie:</strong> Startup potrzebował szybko zwalidować pomysł na aplikację do zarządzania finansami osobistymi.</p>
+                            <p><strong>Rozwiązanie:</strong> Stworzyłiśmy MVP z podstawowymi funkcjami trackingu wydatków i kategoryzacji transakcji.</p>
+                            <p><strong>Rezultat:</strong> Po 3 miesiącach aplikacja miała 50k aktywnych użytkowników i pozyskała $2M seed funding.</p>
+                        </div>
+                        
+                        <div class="case-study">
+                            <h4>E-learning Platform</h4>
+                            <div class="case-metrics">
+                                <div class="metric">
+                                    <span class="metric-value">4 tygodnie</span>
+                                    <span class="metric-label">Czas realizacji</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric-value">85%</span>
+                                    <span class="metric-label">User retention</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric-value">300%</span>
+                                    <span class="metric-label">Wzrost konwersji</span>
+                                </div>
+                            </div>
+                            <p><strong>Wyzwanie:</strong> Firma edukacyjna chciała przetestować nową metodologię nauczania online.</p>
+                            <p><strong>Rozwiązanie:</strong> Zbudowaliśmy MVP platformy z interaktywnymi lekcjami i systemem progress trackingu.</p>
+                            <p><strong>Rezultat:</strong> 85% retention rate i 300% wzrost konwersji w porównaniu do poprzedniej platformy.</p>
+                        </div>
+                    </div>
+
+                    <!-- Pakiety Usług -->
+                    <div class="service-card">
+                        <h2><i class="fas fa-box text-primary me-3"></i>Pakiety MVP</h2>
+                        
+                        <div class="row mt-4">
+                            <div class="col-md-6 mb-4">
+                                <div class="package-card">
+                                    <div class="package-header">
+                                        <h4>BASIC MVP</h4>
+                                        <div class="package-price">
+                                            <span class="price">15,000</span>
+                                            <span class="currency">PLN</span>
+                                        </div>
+                                    </div>
+                                    <div class="package-features">
+                                        <ul>
+                                            <li><i class="fas fa-check"></i> Research i analiza rynku</li>
+                                            <li><i class="fas fa-check"></i> UX/UI design (5 ekranów)</li>
+                                            <li><i class="fas fa-check"></i> Funkcjonalny prototyp</li>
+                                            <li><i class="fas fa-check"></i> Podstawowe testy</li>
+                                            <li><i class="fas fa-check"></i> Deployment</li>
+                                        </ul>
+                                    </div>
+                                    <div class="package-timeline">
+                                        <strong>Czas realizacji:</strong> 3-4 tygodnie
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6 mb-4">
+                                <div class="package-card featured">
+                                    <div class="package-badge">NAJPOPULARNIEJSZY</div>
+                                    <div class="package-header">
+                                        <h4>STANDARD MVP</h4>
+                                        <div class="package-price">
+                                            <span class="price">35,000</span>
+                                            <span class="currency">PLN</span>
+                                        </div>
+                                    </div>
+                                    <div class="package-features">
+                                        <ul>
+                                            <li><i class="fas fa-check"></i> Pełny research i competitive analysis</li>
+                                            <li><i class="fas fa-check"></i> Zaawansowany UX/UI (10+ ekranów)</li>
+                                            <li><i class="fas fa-check"></i> Pełnofunkcjonalny MVP</li>
+                                            <li><i class="fas fa-check"></i> User testing z 20 użytkownikami</li>
+                                            <li><i class="fas fa-check"></i> Analytics i monitoring</li>
+                                            <li><i class="fas fa-check"></i> 2 tygodnie wsparcia po launch</li>
+                                        </ul>
+                                    </div>
+                                    <div class="package-timeline">
+                                        <strong>Czas realizacji:</strong> 5-6 tygodni
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="package-card">
+                                    <div class="package-header">
+                                        <h4>PREMIUM MVP</h4>
+                                        <div class="package-price">
+                                            <span class="price">65,000+</span>
+                                            <span class="currency">PLN</span>
+                                        </div>
+                                    </div>
+                                    <div class="package-features">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <ul>
+                                                    <li><i class="fas fa-check"></i> Głęboki market research</li>
+                                                    <li><i class="fas fa-check"></i> Advanced UX/UI + branding</li>
+                                                    <li><i class="fas fa-check"></i> Skalowalna architektura</li>
+                                                    <li><i class="fas fa-check"></i> Zaawansowane funkcjonalności</li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <ul>
+                                                    <li><i class="fas fa-check"></i> Extensive user testing</li>
+                                                    <li><i class="fas fa-check"></i> A/B testing setup</li>
+                                                    <li><i class="fas fa-check"></i> Advanced analytics</li>
+                                                    <li><i class="fas fa-check"></i> 1 miesiąc wsparcia</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="package-timeline">
+                                        <strong>Czas realizacji:</strong> 8-10 tygodni
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Kontakt -->
+                    <div class="service-card">
+                        <h2><i class="fas fa-envelope text-primary me-3"></i>Gotowy na Walidację Pomysłu?</h2>
+                        <p class="lead">Masz pomysł na produkt? Zwalidujmy go razem i stworzmy MVP, które przyciągnie użytkowników i inwestorów!</p>
+                        
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <div class="contact-info">
+                                    <h5><i class="fas fa-phone text-primary me-2"></i>Telefon</h5>
+                                    <p>+48 123 456 789</p>
+                                    
+                                    <h5><i class="fas fa-envelope text-primary me-2"></i>Email</h5>
+                                    <p>mvp@ecm-digital.com</p>
+                                    
+                                    <h5><i class="fas fa-calendar text-primary me-2"></i>Bezpłatna Konsultacja</h5>
+                                    <p>Umów się na 45-minutową konsultację, podczas której:</p>
+                                    <ul>
+                                        <li>Przeanalizujemy Twój pomysł</li>
+                                        <li>Określimy kluczowe funkcjonalności MVP</li>
+                                        <li>Zaplanujemy strategię walidacji</li>
+                                        <li>Oszacujemy czas i koszt realizacji</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="cta-box">
+                                    <h5>Co otrzymasz:</h5>
+                                    <div class="benefit-list">
+                                        <div class="benefit-item">
+                                            <i class="fas fa-check-circle text-success me-2"></i>
+                                            <span>Darmową analizę pomysłu</span>
+                                        </div>
+                                        <div class="benefit-item">
+                                            <i class="fas fa-check-circle text-success me-2"></i>
+                                            <span>Roadmapę rozwoju MVP</span>
+                                        </div>
+                                        <div class="benefit-item">
+                                            <i class="fas fa-check-circle text-success me-2"></i>
+                                            <span>Rekomendacje technologiczne</span>
+                                        </div>
+                                        <div class="benefit-item">
+                                            <i class="fas fa-check-circle text-success me-2"></i>
+                                            <span>Strategię go-to-market</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mt-4">
+                                        <a href="#" class="btn btn-primary btn-lg w-100 mb-3">
+                                            <i class="fas fa-calendar-plus me-2"></i>
+                                            Umów Bezpłatną Konsultację
+                                        </a>
+                                        <a href="mailto:mvp@ecm-digital.com" class="btn btn-outline-primary w-100">
+                                            <i class="fas fa-envelope me-2"></i>
+                                            Napisz do Nas
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row mt-5">
+                            <div class="col-12">
+                                <div class="testimonial-box">
+                                    <blockquote>
+                                        "ECM Digital pomogło nam stworzyć MVP w rekordowym czasie. Dzięki ich doradztwo pozyskaliśmy seed funding już po 3 miesiącach od launch. Profesjonalne podejście i świetne wykonanie!"
+                                    </blockquote>
+                                    <cite>- Anna K., CEO, FinTech Startup</cite>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 <div class="col-lg-4">
-                    <div class="service-card">
-                        <h3>Skontaktuj się z nami</h3>
-                        <p class="text-muted">Masz pomysł na produkt? Zwalidujmy go razem!</p>
-                        <div class="d-grid gap-2">
-                            <a href="mailto:kontakt@ecmdigital.pl" class="btn btn-primary">
-                                <i class="fas fa-envelope me-2"></i>
-                                Wyślij email
-                            </a>
-                            <a href="tel:+48123456789" class="btn btn-outline-light">
-                                <i class="fas fa-phone me-2"></i>
-                                Zadzwoń
-                            </a>
-                        </div>
-                    </div>
-
                     <div class="service-card">
                         <h4>Technologie MVP</h4>
                         <div class="mt-3">
