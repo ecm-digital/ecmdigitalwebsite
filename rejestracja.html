@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panel Klienta - ECM Digital</title>
+    <title>Rejestracja - Panel Klienta - ECM Digital</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -27,7 +27,7 @@
             align-items: center;
             min-height: 100vh;
         }
-        .login-card {
+        .register-card {
             background: var(--glass-bg);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
@@ -58,10 +58,14 @@
     </style>
 </head>
 <body>
-    <div class="login-card text-center">
-        <h2 class="font-display mb-4">Panel Klienta</h2>
-        <p class="text-tertiary mb-4">Zaloguj się, aby zarządzać swoimi projektami.</p>
+    <div class="register-card text-center">
+        <h2 class="font-display mb-4">Utwórz konto</h2>
+        <p class="text-tertiary mb-4">Dołącz do grona naszych klientów.</p>
         <form>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="floatingName" placeholder="Imię i nazwisko">
+                <label for="floatingName">Imię i nazwisko</label>
+            </div>
             <div class="form-floating mb-3">
                 <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
                 <label for="floatingInput">Adres email</label>
@@ -70,11 +74,14 @@
                 <input type="password" class="form-control" id="floatingPassword" placeholder="Hasło">
                 <label for="floatingPassword">Hasło</label>
             </div>
-            <button type="submit" class="btn btn-primary btn-cta">Zaloguj się</button>
+             <div class="form-floating mb-3">
+                <input type="password" class="form-control" id="floatingConfirmPassword" placeholder="Potwierdź hasło">
+                <label for="floatingConfirmPassword">Potwierdź hasło</label>
+            </div>
+            <button type="submit" class="btn btn-primary btn-cta">Zarejestruj się</button>
         </form>
         <div class="mt-4">
-            <a href="rejestracja.html" class="text-tertiary d-block mb-2" style="text-decoration: none;">Nie masz konta? Zarejestruj się</a>
-            <a href="/index.html" class="text-tertiary" style="text-decoration: none;">Powrót na stronę główną</a>
+            <a href="panel-klienta.html" class="text-tertiary" style="text-decoration: none;">Masz już konto? Zaloguj się</a>
         </div>
     </div>
 </body>
