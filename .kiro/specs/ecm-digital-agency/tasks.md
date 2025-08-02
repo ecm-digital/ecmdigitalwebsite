@@ -213,32 +213,32 @@
     - Implementacja procedur zarządzania zmianą
     - _Wymagania: 7.2, 7.4_
 
-- [ ] 9. Implementacja sekcji Technologie i Narzędzia
-  - [ ] 9.1 Utworzenie głównej strony technologii
+- [x] 9. Implementacja sekcji Technologie i Narzędzia
+  - [x] 9.1 Utworzenie głównej strony technologii
     - Implementacja nagłówka i wprowadzenia
     - Dodanie przeglądu stosowanych technologii
     - Implementacja nawigacji do podsekcji
     - _Wymagania: 8.1_
   
-  - [ ] 9.2 Implementacja stacku technologicznego dla stron WWW
+  - [x] 9.2 Implementacja stacku technologicznego dla stron WWW
     - Utworzenie listy technologii front-end i back-end
     - Dodanie opisu doświadczenia i przykładów
     - Implementacja diagramu architektury
     - _Wymagania: 8.1, 8.2_
   
-  - [ ] 9.3 Implementacja stacku technologicznego dla Shopify
+  - [x] 9.3 Implementacja stacku technologicznego dla Shopify
     - Utworzenie listy technologii i narzędzi
     - Dodanie opisu doświadczenia i przykładów
     - Implementacja diagramu integracji
     - _Wymagania: 8.1, 8.3_
   
-  - [ ] 9.4 Implementacja stacku technologicznego dla MVP
+  - [x] 9.4 Implementacja stacku technologicznego dla MVP
     - Utworzenie listy technologii i frameworków
     - Dodanie opisu doświadczenia i przykładów
     - Implementacja diagramu architektury
     - _Wymagania: 8.1, 8.4_
   
-  - [ ] 9.5 Implementacja narzędzi do audytów UX
+  - [x] 9.5 Implementacja narzędzi do audytów UX
     - Utworzenie listy narzędzi badawczych i analitycznych
     - Dodanie opisu metodologii badań
     - Implementacja przykładowych raportów
