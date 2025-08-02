@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automatyzacje n8n - ECM Digital</title>
+    <meta name="description" content="Automatyzacje n8n ECM Digital - automatyzacja procesów biznesowych oszczędzająca czas i zasoby">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Hotjar Tracking Code for ECM Digital -->
+    <script>
+        (function(h,o,t,j,a,r){
+            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+            h._hjSettings={hjid:6393562,hjsv:6};
+            a=o.getElementsByTagName('head')[0];
+            r=o.createElement('script');r.async=1;
+            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+    </script>
+    
+    <style>
+        :root {
+            --primary: #007AFF;
+            --accent: #30D158;
+            --bg-primary: #000000;
+            --bg-secondary: #1C1C1E;
+            --text-primary: #FFFFFF;
+            --text-secondary: #EBEBF5;
+            --text-tertiary: #EBEBF599;
+            --glass-bg: rgba(28, 28, 30, 0.8);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --shadow-lg: 0 8px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .navbar {
+            background: var(--glass-bg) !important;
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--text-primary) !important;
+        }
+
+        .nav-link {
+            color: var(--text-secondary) !important;
+        }
+
+        .nav-link:hover {
+            color: var(--primary) !important;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            padding: 8rem 0 4rem;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .content-section {
+            padding: 4rem 0;
+            background: var(--bg-secondary);
+        }
+
+        .service-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .text-muted {
+            color: var(--text-tertiary) !important;
+        }
+
+        .list-group-item {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            border-radius: 12px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../../../">
+                <i class="fas fa-rocket me-2" style="color: var(--primary);"></i>
+                ECM Digital
+            </a>
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="../../../">Strona główna</a>
+                <a class="nav-link" href="../">Usługi</a>
+                <a class="nav-link" href="../../../#contact">Kontakt</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <h1 class="hero-title">Automatyzacje n8n</h1>
+                    <p class="lead text-muted">Automatyzacja procesów biznesowych w celu oszczędności czasu i zasobów. Zwiększ efektywność swojego biznesu dzięki inteligentnym automatyzacjom.</p>
+                    <a href="#contact" class="btn btn-primary btn-lg mt-3">
+                        <i class="fas fa-cogs me-2"></i>
+                        Zautomatyzuj procesy
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Section -->
+    <section class="content-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="service-card">
+                        <h2>Czym jest n8n?</h2>
+                        <p class="text-muted">n8n to potężne narzędzie do automatyzacji przepływów pracy, które pozwala łączyć różne aplikacje i usługi bez konieczności programowania. Dzięki n8n możesz zautomatyzować powtarzalne zadania i skupić się na rozwoju biznesu.</p>
+                        
+                        <div class="row mt-4">
+                            <div class="col-md-6 mb-3">
+                                <h5><i class="fas fa-link text-primary me-2"></i>Integracje</h5>
+                                <p class="text-muted">Łączymy różne systemy i aplikacje w jeden spójny workflow.</p>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <h5><i class="fas fa-clock text-primary me-2"></i>Oszczędność Czasu</h5>
+                                <p class="text-muted">Automatyzujemy powtarzalne zadania, oszczędzając godziny pracy.</p>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <h5><i class="fas fa-chart-line text-primary me-2"></i>Zwiększona Efektywność</h5>
+                                <p class="text-muted">Procesy działają 24/7 bez błędów ludzkich.</p>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <h5><i class="fas fa-shield-alt text-primary me-2"></i>Bezpieczeństwo</h5>
+                                <p class="text-muted">Wszystkie automatyzacje są bezpieczne i szyfrowane.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="service-card">
+                        <h2>Przykłady Automatyzacji</h2>
+                        <ul class="list-group list-group-flush mt-3">
+                            <li class="list-group-item">
+                                <i class="fas fa-envelope text-success me-2"></i>
+                                <strong>Email Marketing</strong> - Automatyczne kampanie email na podstawie zachowań użytkowników
+                            </li>
+                            <li class="list-group-item">
+                                <i class="fas fa-users text-success me-2"></i>
+                                <strong>CRM Integration</strong> - Synchronizacja danych między systemami CRM i innymi narzędziami
+                            </li>
+                            <li class="list-group-item">
+                                <i class="fas fa-share-alt text-success me-2"></i>
+                                <strong>Social Media</strong> - Automatyczne publikowanie treści na różnych platformach
+                            </li>
+                            <li class="list-group-item">
+                                <i class="fas fa-file-alt text-success me-2"></i>
+                                <strong>Generowanie Raportów</strong> - Automatyczne tworzenie i wysyłanie raportów
+                            </li>
+                            <li class="list-group-item">
+                                <i class="fas fa-shopping-cart text-success me-2"></i>
+                                <strong>E-commerce</strong> - Automatyzacja procesów zamówień i obsługi klienta
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card">
+                        <h2>Korzyści z Automatyzacji</h2>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="fas fa-clock text-success me-2"></i>Oszczędność do 20h tygodniowo</li>
+                                    <li class="mb-2"><i class="fas fa-dollar-sign text-success me-2"></i>Redukcja kosztów operacyjnych</li>
+                                    <li class="mb-2"><i class="fas fa-chart-line text-success me-2"></i>Zwiększona produktywność</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Eliminacja błędów ludzkich</li>
+                                    <li class="mb-2"><i class="fas fa-rocket text-success me-2"></i>Szybsze procesy biznesowe</li>
+                                    <li class="mb-2"><i class="fas fa-users text-success me-2"></i>Lepsza obsługa klienta</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="service-card">
+                        <h3>Skontaktuj się z nami</h3>
+                        <p class="text-muted">Chcesz zautomatyzować swoje procesy biznesowe? Skontaktuj się z nami!</p>
+                        <div class="d-grid gap-2">
+                            <a href="mailto:kontakt@ecmdigital.pl" class="btn btn-primary">
+                                <i class="fas fa-envelope me-2"></i>
+                                Wyślij email
+                            </a>
+                            <a href="tel:+48123456789" class="btn btn-outline-light">
+                                <i class="fas fa-phone me-2"></i>
+                                Zadzwoń
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="service-card">
+                        <h4>Integracje</h4>
+                        <div class="mt-3">
+                            <span class="badge bg-primary me-2 mb-2">Google Sheets</span>
+                            <span class="badge bg-primary me-2 mb-2">Slack</span>
+                            <span class="badge bg-primary me-2 mb-2">Mailchimp</span>
+                            <span class="badge bg-primary me-2 mb-2">Shopify</span>
+                            <span class="badge bg-primary me-2 mb-2">HubSpot</span>
+                            <span class="badge bg-primary me-2 mb-2">Zapier</span>
+                            <span class="badge bg-primary me-2 mb-2">WordPress</span>
+                        </div>
+                    </div>
+
+                    <div class="service-card">
+                        <h4>Proces Wdrożenia</h4>
+                        <ol class="list-unstyled mt-3">
+                            <li class="mb-2">1. Analiza procesów</li>
+                            <li class="mb-2">2. Projektowanie workflow</li>
+                            <li class="mb-2">3. Implementacja</li>
+                            <li class="mb-2">4. Testowanie</li>
+                            <li class="mb-2">5. Wdrożenie i szkolenie</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

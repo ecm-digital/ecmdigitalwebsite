@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Media & Data Science - ECM Digital</title>
+    <meta name="description" content="Social Media & Data Science ECM Digital - kampanie oparte na danych z wysokimi współczynnikami konwersji">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Hotjar Tracking Code for ECM Digital -->
+    <script>
+        (function(h,o,t,j,a,r){
+            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+            h._hjSettings={hjid:6393562,hjsv:6};
+            a=o.getElementsByTagName('head')[0];
+            r=o.createElement('script');r.async=1;
+            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+    </script>
+    
+    <style>
+        :root {
+            --primary: #007AFF;
+            --accent: #30D158;
+            --bg-primary: #000000;
+            --bg-secondary: #1C1C1E;
+            --text-primary: #FFFFFF;
+            --text-secondary: #EBEBF5;
+            --text-tertiary: #EBEBF599;
+            --glass-bg: rgba(28, 28, 30, 0.8);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --shadow-lg: 0 8px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .navbar {
+            background: var(--glass-bg) !important;
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--text-primary) !important;
+        }
+
+        .nav-link {
+            color: var(--text-secondary) !important;
+        }
+
+        .nav-link:hover {
+            color: var(--primary) !important;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            padding: 8rem 0 4rem;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .content-section {
+            padding: 4rem 0;
+            background: var(--bg-secondary);
+        }
+
+        .service-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .text-muted {
+            color: var(--text-tertiary) !important;
+        }
+
+        .list-group-item {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            border-radius: 12px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../../../">
+                <i class="fas fa-rocket me-2" style="color: var(--primary);"></i>
+                ECM Digital
+            </a>
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="../../../">Strona główna</a>
+                <a class="nav-link" href="../">Usługi</a>
+                <a class="nav-link" href="../../../#contact">Kontakt</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <h1 class="hero-title">Social Media & Data Science</h1>
+                    <p class="lead text-muted">Kampanie social media oparte na data science z wysokimi współczynnikami konwersji. Wykorzystujemy AI i analizę danych do maksymalizacji ROI.</p>
+                    <a href="#contact" class="btn btn-primary btn-lg mt-3">
+                        <i class="fas fa-chart-line me-2"></i>
+                        Rozpocznij kampanię
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Section -->
+    <section class="content-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="service-card">
+                        <h2>Social Media oparte na Data Science</h2>
+                        <p class="text-muted">Łączymy kreatywność social media z mocą data science, tworząc kampanie, które nie tylko angażują, ale przede wszystkim konwertują. Nasze podejście oparte na danych pozwala na precyzyjne targetowanie i optymalizację w czasie rzeczywistym.</p>
+                        
+                        <div class="row mt-4">
+                            <div class="col-md-6 mb-3">
+                                <h5><i class="fas fa-brain text-primary me-2"></i>AI & Machine Learning</h5>
+                                <p class="text-muted">Wykorzystujemy algorytmy AI do optymalizacji kampanii.</p>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <h5><i class="fas fa-bullseye text-primary me-2"></i>Precyzyjny Targeting</h5>
+                                <p class="text-muted">Docieramy do idealnych klientów w odpowiednim momencie.</p>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <h5><i class="fas fa-chart-bar text-primary me-2"></i>Analiza w Czasie Rzeczywistym</h5>
+                                <p class="text-muted">Monitorujemy i optymalizujemy kampanie na bieżąco.</p>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <h5><i class="fas fa-rocket text-primary me-2"></i>Wysokie ROI</h5>
+                                <p class="text-muted">Maksymalizujemy zwrot z inwestycji w marketing.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="service-card">
+                        <h2>Nasze Usługi</h2>
+                        <ul class="list-group list-group-flush mt-3">
+                            <li class="list-group-item">
+                                <i class="fas fa-facebook text-success me-2"></i>
+                                <strong>Facebook & Instagram Ads</strong> - Zaawansowane kampanie z wykorzystaniem AI
+                            </li>
+                            <li class="list-group-item">
+                                <i class="fas fa-search text-success me-2"></i>
+                                <strong>Google Ads & Analytics</strong> - Kampanie SEM oparte na danych behawioralnych
+                            </li>
+                            <li class="list-group-item">
+                                <i class="fas fa-linkedin text-success me-2"></i>
+                                <strong>LinkedIn Marketing</strong> - B2B marketing z precyzyjnym targetowaniem
+                            </li>
+                            <li class="list-group-item">
+                                <i class="fas fa-chart-pie text-success me-2"></i>
+                                <strong>Analiza Predykcyjna</strong> - Przewidywanie zachowań klientów
+                            </li>
+                            <li class="list-group-item">
+                                <i class="fas fa-robot text-success me-2"></i>
+                                <strong>Marketing Automation</strong> - Automatyzacja procesów marketingowych
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card">
+                        <h2>Rezultaty</h2>
+                        <div class="row">
+                            <div class="col-md-4 text-center mb-3">
+                                <h3 class="text-primary">300%</h3>
+                                <p class="text-muted">Średni wzrost ROI</p>
+                            </div>
+                            <div class="col-md-4 text-center mb-3">
+                                <h3 class="text-primary">85%</h3>
+                                <p class="text-muted">Redukcja kosztów akwizycji</p>
+                            </div>
+                            <div class="col-md-4 text-center mb-3">
+                                <h3 class="text-primary">150%</h3>
+                                <p class="text-muted">Wzrost konwersji</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="service-card">
+                        <h3>Skontaktuj się z nami</h3>
+                        <p class="text-muted">Chcesz zwiększyć ROI swoich kampanii social media? Skontaktuj się z nami!</p>
+                        <div class="d-grid gap-2">
+                            <a href="mailto:kontakt@ecmdigital.pl" class="btn btn-primary">
+                                <i class="fas fa-envelope me-2"></i>
+                                Wyślij email
+                            </a>
+                            <a href="tel:+48123456789" class="btn btn-outline-light">
+                                <i class="fas fa-phone me-2"></i>
+                                Zadzwoń
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="service-card">
+                        <h4>Platformy</h4>
+                        <div class="mt-3">
+                            <span class="badge bg-primary me-2 mb-2">Facebook</span>
+                            <span class="badge bg-primary me-2 mb-2">Instagram</span>
+                            <span class="badge bg-primary me-2 mb-2">LinkedIn</span>
+                            <span class="badge bg-primary me-2 mb-2">Google Ads</span>
+                            <span class="badge bg-primary me-2 mb-2">TikTok</span>
+                            <span class="badge bg-primary me-2 mb-2">YouTube</span>
+                            <span class="badge bg-primary me-2 mb-2">Twitter</span>
+                        </div>
+                    </div>
+
+                    <div class="service-card">
+                        <h4>Narzędzia AI</h4>
+                        <div class="mt-3">
+                            <span class="badge bg-primary me-2 mb-2">TensorFlow</span>
+                            <span class="badge bg-primary me-2 mb-2">Python</span>
+                            <span class="badge bg-primary me-2 mb-2">Google Analytics</span>
+                            <span class="badge bg-primary me-2 mb-2">Facebook Pixel</span>
+                            <span class="badge bg-primary me-2 mb-2">Looker Studio</span>
+                            <span class="badge bg-primary me-2 mb-2">BigQuery</span>
+                        </div>
+                    </div>
+
+                    <div class="service-card">
+                        <h4>Proces</h4>
+                        <ol class="list-unstyled mt-3">
+                            <li class="mb-2">1. Analiza danych historycznych</li>
+                            <li class="mb-2">2. Segmentacja audiencji</li>
+                            <li class="mb-2">3. Tworzenie kampanii</li>
+                            <li class="mb-2">4. A/B testing</li>
+                            <li class="mb-2">5. Optymalizacja AI</li>
+                            <li class="mb-2">6. Raportowanie</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
