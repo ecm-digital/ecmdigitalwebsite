@@ -1,0 +1,34 @@
+User-agent: *
+Allow: /
+
+# Allow all crawlers and bots
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+# Sitemap location
+Sitemap: https://ecm-digital.github.io/ecmdigitalwebsite/sitemap.xml
+
+# Allow access to all pages and resources
+Allow: *.html
+Allow: *.css
+Allow: *.js
+Allow: *.png
+Allow: *.jpg
+Allow: *.jpeg
+Allow: *.gif
+Allow: *.svg
+Allow: *.pdf
+
+# No restrictions - full access for analysis and crawling
