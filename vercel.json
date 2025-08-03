@@ -6,6 +6,14 @@
   "framework": null,
   "rewrites": [
     {
+      "source": "/login",
+      "destination": "https://client-dashboard-9khfoip7j-ecm-digitals-projects.vercel.app/auth/login"
+    },
+    {
+      "source": "/panel",
+      "destination": "https://client-dashboard-9khfoip7j-ecm-digitals-projects.vercel.app/dashboard"
+    },
+    {
       "source": "/dashboard/:path*",
       "destination": "https://client-dashboard-9khfoip7j-ecm-digitals-projects.vercel.app/:path*"
     },
