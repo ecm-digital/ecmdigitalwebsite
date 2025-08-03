@@ -257,13 +257,13 @@
     - Implementacja przykładów zabezpieczeń
     - _Wymagania: 9.1_
   
-  - [ ] 10.3 Implementacja sekcji zgodności z RODO/GDPR
+  - [x] 10.3 Implementacja sekcji zgodności z RODO/GDPR
     - Utworzenie opisu polityki prywatności
     - Dodanie procedur zarządzania danymi
     - Implementacja szablonów zgód
     - _Wymagania: 9.2_
   
-  - [ ] 10.4 Implementacja sekcji zgodności z przepisami e-commerce
+  - [x] 10.4 Implementacja sekcji zgodności z przepisami e-commerce
     - Utworzenie opisu wymogów prawnych
     - Dodanie szablonów regulaminów
     - Implementacja procedur bezpieczeństwa płatności
