@@ -560,6 +560,32 @@
             color: var(--text-tertiary);
         }
 
+        /* Language Switcher */
+        .language-switcher {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-left: 1rem;
+        }
+
+        .language-switcher a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .language-switcher a.active {
+            color: var(--primary);
+            background: rgba(48, 209, 88, 0.1);
+        }
+
+        .language-switcher a:hover {
+            color: var(--text-primary);
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .hero-title {
@@ -582,6 +608,11 @@
             .btn-cta.me-3 {
                 margin-right: 0 !important;
                 margin-bottom: 1rem;
+            }
+            
+            .language-switcher {
+                justify-content: center;
+                margin: 1rem 0 0 0;
             }
         }
     </style>
@@ -621,6 +652,10 @@
                     <li class="nav-item"><a class="nav-link" href="/login">Panel Klienta</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Kontakt</a></li>
                 </ul>
+                <div class="language-switcher">
+                    <a href="/" class="active" title="Polski">🇵🇱 PL</a>
+                    <a href="/en" title="English">🇺🇸 EN</a>
+                </div>
             </div>
         </div>
     </nav>
