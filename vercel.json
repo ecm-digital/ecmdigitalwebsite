@@ -12,6 +12,10 @@
     {
       "source": "/panel",
       "destination": "/panel.html"
+    },
+    {
+      "source": "/projekty",
+      "destination": "/projekty.html"
     }
   ],
   "headers": [

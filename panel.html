@@ -36,6 +36,14 @@
             font-weight: 600;
         }
         
+        .navbar-nav .nav-link {
+            color: var(--text-secondary) !important;
+        }
+        
+        .navbar-nav .nav-link.active {
+            color: var(--accent-blue) !important;
+        }
+        
         .btn-outline-light {
             border-color: rgba(255, 255, 255, 0.2);
             color: var(--text-secondary);
@@ -93,10 +101,16 @@
 <body>
     <nav class="navbar navbar-expand-lg">
         <div class="container">
-            <a class="navbar-brand" href="#">ECM Digital - Panel Klienta</a>
+            <a class="navbar-brand" href="/panel">ECM Digital</a>
+            <div class="navbar-nav me-auto">
+                <a class="nav-link active" href="/panel">Dashboard</a>
+                <a class="nav-link" href="/projekty">Projekty</a>
+                <a class="nav-link" href="#" onclick="alert('Wkrótce dostępne!')">Wiadomości</a>
+                <a class="nav-link" href="#" onclick="alert('Wkrótce dostępne!')">Dokumenty</a>
+            </div>
             <div class="d-flex">
                 <span class="navbar-text me-3">
-                    Witaj, <span id="user-email">ładowanie...</span>
+                    <span id="user-email">ładowanie...</span>
                 </span>
                 <button class="btn btn-outline-light btn-sm" onclick="logout()">Wyloguj</button>
             </div>
@@ -111,11 +125,13 @@
 
         <div class="row">
             <div class="col-md-6 col-lg-4">
-                <div class="feature-card">
-                    <div class="feature-icon">📁</div>
-                    <h5>Projekty</h5>
-                    <p class="text-secondary mb-0">Przeglądaj swoje aktywne projekty i ich postęp.</p>
-                </div>
+                <a href="/projekty" class="text-decoration-none">
+                    <div class="feature-card">
+                        <div class="feature-icon">📁</div>
+                        <h5>Projekty</h5>
+                        <p class="text-secondary mb-0">Przeglądaj swoje aktywne projekty i ich postęp.</p>
+                    </div>
+                </a>
             </div>
             <div class="col-md-6 col-lg-4">
                 <div class="feature-card">
