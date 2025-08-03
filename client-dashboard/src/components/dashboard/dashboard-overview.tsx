@@ -195,10 +195,13 @@ export function DashboardOverview() {
                 {/* TODO: Add unread count badge */}
               </a>
               
-              <button className="flex flex-col items-center p-4 border rounded-lg hover:bg-gray-50 transition-colors">
+              <a 
+                href="/dashboard/documents"
+                className="flex flex-col items-center p-4 border rounded-lg hover:bg-gray-50 transition-colors"
+              >
                 <FileText className="h-8 w-8 text-green-600 mb-2" />
                 <span className="text-sm font-medium">Dokumenty</span>
-              </button>
+              </a>
               
               <button className="flex flex-col items-center p-4 border rounded-lg hover:bg-gray-50 transition-colors">
                 <Calendar className="h-8 w-8 text-purple-600 mb-2" />

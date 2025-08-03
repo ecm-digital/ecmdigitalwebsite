@@ -136,6 +136,76 @@ BEGIN
   FROM projects p 
   WHERE p.client_id = user_id AND p.name LIKE '%[DEMO]%';
 
+  -- Dodaj przykładowe dokumenty
+  INSERT INTO documents (project_id, name, file_path, file_size, mime_type, version, uploaded_by, tags, created_at)
+  SELECT 
+    p.id,
+    CASE 
+      WHEN p.name LIKE '%TechFlow%' THEN 
+        CASE (ROW_NUMBER() OVER()) % 3
+          WHEN 1 THEN 'Specyfikacja techniczna TechFlow.pdf'
+          WHEN 2 THEN 'Mockupy interfejsu użytkownika.fig'
+          ELSE 'Logo i brand guidelines.zip'
+        END
+      WHEN p.name LIKE '%FashionHub%' THEN
+        CASE (ROW_NUMBER() OVER()) % 3
+          WHEN 1 THEN 'Katalog produktów FashionHub.xlsx'
+          WHEN 2 THEN 'Zdjęcia produktowe.zip'
+          ELSE 'Specyfikacja sklepu Shopify.docx'
+        END
+      WHEN p.name LIKE '%FinTech%' THEN
+        CASE (ROW_NUMBER() OVER()) % 3
+          WHEN 1 THEN 'Architektura systemu MVP.pdf'
+          WHEN 2 THEN 'User Stories i wymagania.docx'
+          ELSE 'Wireframes aplikacji mobilnej.fig'
+        END
+      WHEN p.name LIKE '%e-learning%' THEN
+        CASE (ROW_NUMBER() OVER()) % 3
+          WHEN 1 THEN 'Raport z audytu UX.pdf'
+          WHEN 2 THEN 'Rekomendacje ulepszeń.docx'
+          ELSE 'Heatmapy i analiza użytkowników.png'
+        END
+      WHEN p.name LIKE '%HR%' THEN
+        CASE (ROW_NUMBER() OVER()) % 3
+          WHEN 1 THEN 'Schemat automatyzacji procesów.pdf'
+          WHEN 2 THEN 'Konfiguracja n8n workflows.json'
+          ELSE 'Instrukcja wdrożenia.docx'
+        END
+      ELSE
+        CASE (ROW_NUMBER() OVER()) % 3
+          WHEN 1 THEN 'Strategia kampanii social media.pdf'
+          WHEN 2 THEN 'Analiza danych i insights.xlsx'
+          ELSE 'Kreacje reklamowe.zip'
+        END
+    END,
+    -- Fake file path (since we don't have actual files)
+    user_id || '/' || EXTRACT(EPOCH FROM NOW())::text || '_demo_file',
+    -- Random file size between 100KB and 10MB
+    (RANDOM() * 10000000 + 100000)::bigint,
+    CASE 
+      WHEN (ROW_NUMBER() OVER()) % 6 = 1 THEN 'application/pdf'
+      WHEN (ROW_NUMBER() OVER()) % 6 = 2 THEN 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+      WHEN (ROW_NUMBER() OVER()) % 6 = 3 THEN 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+      WHEN (ROW_NUMBER() OVER()) % 6 = 4 THEN 'application/zip'
+      WHEN (ROW_NUMBER() OVER()) % 6 = 5 THEN 'image/png'
+      ELSE 'application/json'
+    END,
+    1,
+    user_id,
+    CASE 
+      WHEN p.name LIKE '%TechFlow%' THEN ARRAY['specyfikacja', 'frontend', 'design']
+      WHEN p.name LIKE '%FashionHub%' THEN ARRAY['ecommerce', 'produkty', 'shopify']
+      WHEN p.name LIKE '%FinTech%' THEN ARRAY['mvp', 'mobile', 'fintech']
+      WHEN p.name LIKE '%e-learning%' THEN ARRAY['ux', 'audyt', 'analiza']
+      WHEN p.name LIKE '%HR%' THEN ARRAY['automatyzacja', 'n8n', 'hr']
+      ELSE ARRAY['social-media', 'marketing', 'analityka']
+    END,
+    NOW() - (RANDOM() * INTERVAL '60 days')
+  FROM projects p 
+  WHERE p.client_id = user_id AND p.name LIKE '%[DEMO]%'
+  ORDER BY p.id, RANDOM()
+  LIMIT 18; -- 3 documents per project (6 projects)
+
 END;
 $$ LANGUAGE plpgsql;
 
