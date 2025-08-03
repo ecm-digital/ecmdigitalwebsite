@@ -36,36 +36,30 @@
 
         const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-        supabase.auth.onAuthStateChange((event, session) => {
-            if (event === 'SIGNED_IN' && session) {
-                document.getElementById('user-email').textContent = session.user.email;
-            } else if (event === 'SIGNED_OUT' || !session) {
+        // Czekamy na załadowanie strony, a potem sprawdzamy sesję.
+        // To jest oficjalny, rekomendowany sposób.
+        document.addEventListener('DOMContentLoaded', async () => {
+            const { data: { session } } = await supabase.auth.getSession();
+            if (!session) {
+                // Jeśli nie ma sesji, od razu przekierowujemy.
                 window.location.href = '/panel-klienta.html';
+            } else {
+                // Jeśli jest sesja, witamy użytkownika.
+                document.getElementById('user-email').textContent = session.user.email;
             }
+
+            // Nasłuchujemy na przyszłe zmiany (np. wylogowanie)
+            supabase.auth.onAuthStateChange((_event, session) => {
+                if (!session) {
+                    window.location.href = '/panel-klienta.html';
+                }
+            });
         });
 
-        // Sprawdzenie początkowej sesji, aby obsłużyć już zalogowanych użytkowników
-        async function checkInitialSession() {
-            const { data: { session } } = await supabase.auth.getSession();
-            if (session) {
-                document.getElementById('user-email').textContent = session.user.email;
-            } else {
-                // Poczekaj chwilę, zanim przekierujesz, na wypadek gdyby sesja się ładowała
-                setTimeout(() => {
-                    supabase.auth.getSession().then(({ data: { session } }) => {
-                        if (!session) {
-                            window.location.href = '/panel-klienta.html';
-                        }
-                    });
-                }, 500); // Dajemy 500ms na załadowanie sesji
-            }
-        }
-
+        // Przycisk wylogowania
         document.getElementById('logout-button').addEventListener('click', async () => {
             await supabase.auth.signOut();
         });
-
-        checkInitialSession();
     </script>
 </body>
 </html>
