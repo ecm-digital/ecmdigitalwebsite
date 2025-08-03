@@ -17,6 +17,8 @@ npm install
 3. Przejdź do **SQL Editor**
 4. Skopiuj i wklej zawartość pliku `supabase/migrations/001_initial_schema.sql`
 5. Kliknij **Run** aby wykonać migrację
+6. Następnie skopiuj i wklej zawartość pliku `supabase/migrations/002_storage_buckets.sql`
+7. Kliknij **Run** aby utworzyć bucket'y do przechowywania plików
 
 ### 3. Dodanie przykładowych danych (opcjonalnie)
 
@@ -37,15 +39,17 @@ Aplikacja będzie dostępna pod adresem: http://localhost:3000
 - 🔐 **Autentykacja** - logowanie/rejestracja z Supabase Auth
 - 📊 **Dashboard** - przegląd projektów i statystyk
 - 📁 **Projekty** - zarządzanie projektami z filtrowaniem
+- 💬 **Komunikacja** - real-time messaging z zespołem
+- 📎 **Upload plików** - drag & drop z Supabase Storage
 - 💾 **Baza danych** - kompletny schemat z RLS policies
 - 🎨 **UI/UX** - responsywny design z Tailwind CSS
 - 📱 **PWA Ready** - przygotowane do Progressive Web App
 
 ### 🔄 W trakcie implementacji:
-- 💬 **Komunikacja** - real-time messaging
-- 📄 **Dokumenty** - zarządzanie plikami
+- 📄 **Dokumenty** - zarządzanie plikami projektowych
 - 💰 **Faktury** - system płatności
 - 📈 **Analityka** - metryki projektów
+- 🔧 **Integracje** - zewnętrzne narzędzia
 
 ## 🛠 Stack Technologiczny
 

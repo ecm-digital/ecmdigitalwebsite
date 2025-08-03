@@ -3,13 +3,16 @@
 import { useState, useRef } from 'react'
 import { Button } from '@/components/ui/button'
 import { Textarea } from '@/components/ui/textarea'
+import { FileUpload } from '@/components/ui/file-upload'
 import { 
   Send, 
   Paperclip, 
   Smile, 
   Loader2,
-  X
+  X,
+  Upload
 } from 'lucide-react'
+import { uploadMultipleFiles, STORAGE_BUCKETS, formatFileSize } from '@/lib/supabase/storage'
 
 interface MessageInputProps {
   onSendMessage: (content: string, attachments?: any[]) => Promise<any>
@@ -25,8 +28,9 @@ export function MessageInput({
   const [message, setMessage] = useState('')
   const [attachments, setAttachments] = useState<File[]>([])
   const [sending, setSending] = useState(false)
+  const [showFileUpload, setShowFileUpload] = useState(false)
+  const [uploadProgress, setUploadProgress] = useState<Record<string, number>>({})
   const textareaRef = useRef<HTMLTextAreaElement>(null)
-  const fileInputRef = useRef<HTMLInputElement>(null)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -37,19 +41,40 @@ export function MessageInput({
     setSending(true)
     
     try {
-      // TODO: Upload attachments to Supabase Storage
-      const attachmentData = attachments.map(file => ({
-        name: file.name,
-        size: file.size,
-        type: file.type,
-        // url: uploadedUrl - will be implemented later
-      }))
+      let attachmentData: any[] = []
+
+      // Upload attachments if any
+      if (attachments.length > 0) {
+        const uploadResult = await uploadMultipleFiles(
+          attachments,
+          STORAGE_BUCKETS.ATTACHMENTS,
+          (progress, fileName) => {
+            setUploadProgress(prev => ({ ...prev, [fileName]: progress }))
+          }
+        )
+
+        // Process successful uploads
+        attachmentData = uploadResult.successful.map(({ file, url }) => ({
+          name: file.name,
+          size: file.size,
+          type: file.type,
+          url: url
+        }))
+
+        // Log failed uploads
+        if (uploadResult.failed.length > 0) {
+          console.error('Failed uploads:', uploadResult.failed)
+          // TODO: Show error toast for failed uploads
+        }
+      }
 
       const result = await onSendMessage(message, attachmentData)
       
       if (result?.success) {
         setMessage('')
         setAttachments([])
+        setUploadProgress({})
+        setShowFileUpload(false)
         // Reset textarea height
         if (textareaRef.current) {
           textareaRef.current.style.height = 'auto'
@@ -69,16 +94,14 @@ export function MessageInput({
     }
   }
 
-  const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const files = Array.from(e.target.files || [])
-    const validFiles = files.filter(file => file.size <= 10 * 1024 * 1024) // 10MB limit
-    
-    setAttachments(prev => [...prev, ...validFiles])
-    
-    // Reset input
-    if (fileInputRef.current) {
-      fileInputRef.current.value = ''
-    }
+  const handleFilesSelected = (files: File[]) => {
+    setAttachments(files)
+  }
+
+  const handleFileUpload = async (files: File[]) => {
+    // Files will be uploaded when message is sent
+    // This is just for the FileUpload component interface
+    return Promise.resolve()
   }
 
   const removeAttachment = (index: number) => {
@@ -95,90 +118,134 @@ export function MessageInput({
   }
 
   return (
-    <div className="border-t bg-white p-4">
+    <div className="border-t bg-white">
+      {/* File Upload Modal */}
+      {showFileUpload && (
+        <div className="p-4 border-b bg-gray-50">
+          <div className="flex items-center justify-between mb-3">
+            <h4 className="font-medium text-gray-900">Dodaj załączniki</h4>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setShowFileUpload(false)}
+              className="h-8 w-8 p-0"
+            >
+              <X className="h-4 w-4" />
+            </Button>
+          </div>
+          
+          <FileUpload
+            onFilesSelected={handleFilesSelected}
+            maxFiles={5}
+            maxSize={50 * 1024 * 1024} // 50MB
+            disabled={sending}
+            className="max-w-md"
+          />
+        </div>
+      )}
+
       {/* Attachments Preview */}
       {attachments.length > 0 && (
-        <div className="mb-3 flex flex-wrap gap-2">
-          {attachments.map((file, index) => (
-            <div 
-              key={index}
-              className="flex items-center space-x-2 bg-gray-100 rounded-lg px-3 py-2 text-sm"
+        <div className="p-4 border-b bg-gray-50">
+          <div className="flex items-center justify-between mb-2">
+            <span className="text-sm font-medium text-gray-700">
+              Załączniki ({attachments.length})
+            </span>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setAttachments([])}
+              className="text-xs"
             >
-              <Paperclip className="h-4 w-4 text-gray-500" />
-              <span className="truncate max-w-32">{file.name}</span>
-              <button
-                onClick={() => removeAttachment(index)}
-                className="text-gray-400 hover:text-gray-600"
+              Usuń wszystkie
+            </Button>
+          </div>
+          
+          <div className="flex flex-wrap gap-2">
+            {attachments.map((file, index) => (
+              <div 
+                key={index}
+                className="flex items-center space-x-2 bg-white border rounded-lg px-3 py-2 text-sm"
               >
-                <X className="h-3 w-3" />
-              </button>
-            </div>
-          ))}
+                <Paperclip className="h-4 w-4 text-gray-500" />
+                <div className="flex flex-col">
+                  <span className="truncate max-w-32 font-medium">{file.name}</span>
+                  <span className="text-xs text-gray-500">{formatFileSize(file.size)}</span>
+                </div>
+                {uploadProgress[file.name] && (
+                  <div className="text-xs text-blue-600">
+                    {Math.round(uploadProgress[file.name])}%
+                  </div>
+                )}
+                <button
+                  onClick={() => removeAttachment(index)}
+                  className="text-gray-400 hover:text-gray-600"
+                  disabled={sending}
+                >
+                  <X className="h-3 w-3" />
+                </button>
+              </div>
+            ))}
+          </div>
         </div>
       )}
 
       {/* Message Input */}
-      <form onSubmit={handleSubmit} className="flex items-end space-x-2">
-        <div className="flex-1">
-          <Textarea
-            ref={textareaRef}
-            value={message}
-            onChange={handleTextareaChange}
-            onKeyPress={handleKeyPress}
-            placeholder={placeholder}
-            disabled={disabled || sending}
-            className="min-h-[40px] max-h-[120px] resize-none border-gray-300 focus:border-blue-500 focus:ring-blue-500"
-            rows={1}
-          />
-        </div>
+      <div className="p-4">
+        <form onSubmit={handleSubmit} className="flex items-end space-x-2">
+          <div className="flex-1">
+            <Textarea
+              ref={textareaRef}
+              value={message}
+              onChange={handleTextareaChange}
+              onKeyPress={handleKeyPress}
+              placeholder={placeholder}
+              disabled={disabled || sending}
+              className="min-h-[40px] max-h-[120px] resize-none border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+              rows={1}
+            />
+          </div>
 
-        {/* Action Buttons */}
-        <div className="flex items-center space-x-1">
-          {/* File Upload */}
-          <input
-            ref={fileInputRef}
-            type="file"
-            multiple
-            onChange={handleFileSelect}
-            className="hidden"
-            accept="image/*,.pdf,.doc,.docx,.txt"
-          />
-          <Button
-            type="button"
-            variant="ghost"
-            size="sm"
-            onClick={() => fileInputRef.current?.click()}
-            disabled={disabled || sending}
-            className="h-10 w-10 p-0"
-          >
-            <Paperclip className="h-4 w-4" />
-          </Button>
+          {/* Action Buttons */}
+          <div className="flex items-center space-x-1">
+            {/* File Upload Toggle */}
+            <Button
+              type="button"
+              variant="ghost"
+              size="sm"
+              onClick={() => setShowFileUpload(!showFileUpload)}
+              disabled={disabled || sending}
+              className={`h-10 w-10 p-0 ${showFileUpload ? 'bg-blue-100 text-blue-600' : ''}`}
+            >
+              <Paperclip className="h-4 w-4" />
+            </Button>
 
-          {/* Emoji Button (placeholder) */}
-          <Button
-            type="button"
-            variant="ghost"
-            size="sm"
-            disabled={disabled || sending}
-            className="h-10 w-10 p-0"
-          >
-            <Smile className="h-4 w-4" />
-          </Button>
+            {/* Emoji Button (placeholder) */}
+            <Button
+              type="button"
+              variant="ghost"
+              size="sm"
+              disabled={disabled || sending}
+              className="h-10 w-10 p-0"
+            >
+              <Smile className="h-4 w-4" />
+            </Button>
 
-          {/* Send Button */}
-          <Button
-            type="submit"
-            disabled={disabled || sending || (!message.trim() && attachments.length === 0)}
-            className="h-10 w-10 p-0"
-          >
-            {sending ? (
-              <Loader2 className="h-4 w-4 animate-spin" />
-            ) : (
-              <Send className="h-4 w-4" />
-            )}
-          </Button>
-        </div>
-      </form>
+            {/* Send Button */}
+            <Button
+              type="submit"
+              disabled={disabled || sending || (!message.trim() && attachments.length === 0)}
+              className="h-10 w-10 p-0"
+            >
+              {sending ? (
+                <Loader2 className="h-4 w-4 animate-spin" />
+              ) : (
+                <Send className="h-4 w-4" />
+              )}
+            </Button>
+          </div>
+        </form>
+      </div>
     </div>
   )
 }
