@@ -81,7 +81,7 @@
             <button type="submit" class="btn btn-primary btn-cta">Zarejestruj się</button>
         </form>
         <div class="mt-4">
-            <a href="panel-klienta.html" class="text-tertiary" style="text-decoration: none;">Masz już konto? Zaloguj się</a>
+            <a href="https://client-dashboard-ecm.vercel.app/auth/login" class="text-tertiary" style="text-decoration: none;">Masz już konto? Zaloguj się</a>
         </div>
     </div>
     <script type="module">
@@ -98,7 +98,7 @@
             const { data: { session } } = await supabase.auth.getSession();
             if (session) {
                 // Jeśli już zalogowany, przekieruj do dashboard
-                window.location.href = '/dashboard.html';
+                window.location.href = 'https://client-dashboard-ecm.vercel.app/dashboard';
             }
         });
 

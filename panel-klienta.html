@@ -91,7 +91,7 @@
             const { data: { session } } = await supabase.auth.getSession();
             if (session) {
                 // Jeśli już zalogowany, przekieruj do dashboard
-                window.location.href = '/dashboard.html';
+                window.location.href = 'https://client-dashboard-ecm.vercel.app/dashboard';
             }
         });
 
@@ -120,7 +120,7 @@
                     messageDiv.classList.add('alert', 'alert-danger');
                 } else {
                     // Sukces - przekieruj do dashboard
-                    window.location.href = '/dashboard.html';
+                    window.location.href = 'https://client-dashboard-ecm.vercel.app/dashboard';
                 }
             } catch (error) {
                 messageDiv.textContent = 'Błąd serwera. Spróbuj ponownie później.';
