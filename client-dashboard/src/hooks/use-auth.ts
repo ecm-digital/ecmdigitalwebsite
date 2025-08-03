@@ -14,7 +14,8 @@ export function useAuth() {
       
       if (session?.user) {
         setUser(session.user)
-        await fetchProfile(session.user.id)
+        // Skip profile fetch for now to avoid blocking login
+        // await fetchProfile(session.user.id)
       }
       
       setLoading(false)
@@ -27,7 +28,8 @@ export function useAuth() {
       async (event, session) => {
         if (session?.user) {
           setUser(session.user)
-          await fetchProfile(session.user.id)
+          // Skip profile fetch for now to avoid blocking login
+          // await fetchProfile(session.user.id)
         } else {
           signOut()
           router.push('/auth/login')
@@ -47,10 +49,16 @@ export function useAuth() {
         .eq('id', userId)
         .single()
 
-      if (error) throw error
+      if (error) {
+        console.warn('Profile not found, creating basic profile:', error)
+        // If profile doesn't exist, create a basic one or skip
+        setProfile(null)
+        return
+      }
       setProfile(data)
     } catch (error) {
       console.error('Error fetching profile:', error)
+      setProfile(null)
     }
   }
 
