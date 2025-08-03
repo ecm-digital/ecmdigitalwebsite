@@ -74,7 +74,7 @@ export function FileUploadTest() {
       {uploadResults.length > 0 && (
         <Card>
           <CardHeader>
-            <CardTitle>Wyniki Upload'u</CardTitle>
+            <CardTitle>Wyniki Uploadu</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-3">

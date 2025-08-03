@@ -138,7 +138,7 @@
     - Implementacja opcji dodatkowych
     - _Wymagania: 4.1, 4.2, 4.3_
   
-  - [-] 5.6 Implementacja kalkulatora wyceny
+  - [x] 5.6 Implementacja kalkulatora wyceny
     - Utworzenie interaktywnego formularza
     - Implementacja logiki kalkulacji
     - Dodanie formularza kontaktowego
@@ -269,57 +269,57 @@
     - Implementacja procedur bezpieczeństwa płatności
     - _Wymagania: 9.3_
   
-  - [ ] 10.5 Implementacja sekcji dostępności (WCAG)
+  - [x] 10.5 Implementacja sekcji dostępności (WCAG)
     - Utworzenie opisu standardów dostępności
     - Dodanie listy kontrolnej zgodności
     - Implementacja przykładów dobrych praktyk
     - _Wymagania: 9.4, 9.5_
 
 - [ ] 11. Implementacja sekcji Referencje i Opinie Klientów
-  - [ ] 11.1 Utworzenie głównej strony referencji
+  - [x] 11.1 Utworzenie głównej strony referencji
     - Implementacja nagłówka i wprowadzenia
     - Dodanie systemu filtrowania
     - Implementacja przeglądu klientów
     - _Wymagania: 10.1, 10.2_
   
-  - [ ] 11.2 Implementacja minimum 10 referencji klientów
+  - [x] 11.2 Implementacja minimum 10 referencji klientów
     - Zebranie opinii i danych klientów
     - Przygotowanie cytatów i wizualizacji
     - Implementacja zgodnie z szablonem
     - _Wymagania: 10.1, 10.2, 10.3_
   
-  - [ ] 11.3 Implementacja wizualizacji rezultatów
+  - [x] 11.3 Implementacja wizualizacji rezultatów
     - Utworzenie wykresów i porównań
     - Dodanie kluczowych wskaźników
     - Implementacja case studies z ROI
     - _Wymagania: 10.3, 10.4, 10.5_
 
 - [ ] 12. Integracja i testowanie dokumentacji
-  - [ ] 12.1 Implementacja systemu nawigacji
+  - [x] 12.1 Implementacja systemu nawigacji
     - Utworzenie menu głównego
     - Dodanie nawigacji kontekstowej
     - Implementacja wyszukiwarki
     - _Wymagania: Wszystkie_
   
-  - [ ] 12.2 Implementacja spójnego stylu
+  - [x] 12.2 Implementacja spójnego stylu
     - Utworzenie arkusza stylów
     - Dodanie elementów brandingowych
     - Implementacja responsywności
     - _Wymagania: Wszystkie_
   
-  - [ ] 12.3 Przeprowadzenie testów użyteczności
+  - [x] 12.3 Przeprowadzenie testów użyteczności
     - Przygotowanie scenariuszy testowych
     - Przeprowadzenie testów z użytkownikami
     - Implementacja poprawek
     - _Wymagania: Wszystkie_
   
-  - [ ] 12.4 Przeprowadzenie testów technicznych
+  - [x] 12.4 Przeprowadzenie testów technicznych
     - Sprawdzenie poprawności linków
     - Testowanie responsywności
     - Optymalizacja wydajności
     - _Wymagania: Wszystkie_
   
-  - [ ] 12.5 Finalizacja i publikacja dokumentacji
+  - [x] 12.5 Finalizacja i publikacja dokumentacji
     - Ostateczny przegląd zawartości
     - Korekta tekstów
     - Publikacja dokumentacji

@@ -36,7 +36,7 @@ export default function TestPage() {
         <div>
           <h1 className="text-3xl font-bold text-gray-900">Test Upload Plików</h1>
           <p className="text-gray-600 mt-2">
-            Strona testowa do sprawdzania funkcjonalności upload'u plików
+            Strona testowa do sprawdzania funkcjonalności uploadu plików
           </p>
         </div>
 

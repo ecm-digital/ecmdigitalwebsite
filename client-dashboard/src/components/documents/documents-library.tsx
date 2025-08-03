@@ -79,7 +79,7 @@ export function DocumentsLibrary({ projectId, projectName }: DocumentsLibraryPro
 
   // Filter and sort documents
   const filteredDocuments = useMemo(() => {
-    let filtered = documents.filter(doc => {
+    const filtered = documents.filter(doc => {
       // Search filter
       const matchesSearch = doc.name.toLowerCase().includes(searchQuery.toLowerCase())
       
@@ -95,7 +95,7 @@ export function DocumentsLibrary({ projectId, projectName }: DocumentsLibraryPro
     })
 
     // Sort documents
-    filtered.sort((a, b) => {
+    const sortedFiltered = [...filtered].sort((a, b) => {
       switch (sortBy) {
         case 'oldest':
           return new Date(a.created_at).getTime() - new Date(b.created_at).getTime()
@@ -109,7 +109,7 @@ export function DocumentsLibrary({ projectId, projectName }: DocumentsLibraryPro
       }
     })
 
-    return filtered
+    return sortedFiltered
   }, [documents, searchQuery, typeFilter, tagFilter, sortBy])
 
   const stats = getDocumentsStats()
