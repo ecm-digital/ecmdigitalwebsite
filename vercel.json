@@ -7,23 +7,11 @@
   "rewrites": [
     {
       "source": "/login",
-      "destination": "https://client-dashboard-9khfoip7j-ecm-digitals-projects.vercel.app/auth/login"
-    },
-    {
-      "source": "/register",
-      "destination": "https://client-dashboard-9khfoip7j-ecm-digitals-projects.vercel.app/auth/login"
+      "destination": "/login.html"
     },
     {
       "source": "/panel",
-      "destination": "https://client-dashboard-9khfoip7j-ecm-digitals-projects.vercel.app/dashboard"
-    },
-    {
-      "source": "/dashboard/:path*",
-      "destination": "https://client-dashboard-9khfoip7j-ecm-digitals-projects.vercel.app/:path*"
-    },
-    {
-      "source": "/dashboard",
-      "destination": "https://client-dashboard-9khfoip7j-ecm-digitals-projects.vercel.app/"
+      "destination": "/panel.html"
     }
   ],
   "headers": [
