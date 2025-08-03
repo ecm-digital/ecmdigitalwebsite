@@ -10,6 +10,10 @@
       "destination": "https://client-dashboard-9khfoip7j-ecm-digitals-projects.vercel.app/auth/login"
     },
     {
+      "source": "/register",
+      "destination": "https://client-dashboard-9khfoip7j-ecm-digitals-projects.vercel.app/auth/login"
+    },
+    {
       "source": "/panel",
       "destination": "https://client-dashboard-9khfoip7j-ecm-digitals-projects.vercel.app/dashboard"
     },
