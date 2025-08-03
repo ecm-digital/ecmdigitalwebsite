@@ -106,9 +106,7 @@
                     // On successful login, Supabase client library needs to be initialized
                     // to handle the session. For simplicity, we redirect to dashboard
                     // where the session is handled.
-                    console.log('Logowanie udane! Odpowiedź serwera:', data);
-                    messageDiv.textContent = 'Logowanie udane! Sprawdź konsolę (F12).';
-                    messageDiv.classList.add('alert', 'alert-success');
+                    window.location.href = '/dashboard.html';
                 } else {
                     messageDiv.textContent = data.message || 'Nieprawidłowe dane logowania.';
                     messageDiv.classList.add('alert', 'alert-danger');
