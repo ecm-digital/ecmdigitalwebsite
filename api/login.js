@@ -1,4 +1,3 @@
-require('dotenv').config({ path: '.env.development.local' });
 const { createClient } = require('@supabase/supabase-js');
 
 module.exports = async (req, res) => {
