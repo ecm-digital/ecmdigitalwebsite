@@ -84,7 +84,24 @@
             <a href="panel-klienta.html" class="text-tertiary" style="text-decoration: none;">Masz już konto? Zaloguj się</a>
         </div>
     </div>
-    <script>
+    <script type="module">
+        import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+
+        // Konfiguracja Supabase
+        const SUPABASE_URL = 'https://oxxuxsfmqquisoolmqqn.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im94eHV4c2ZtcXF1aXNvb2xtcXFuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQxNzA1MjAsImV4cCI6MjA2OTc0NjUyMH0.eRap290EcuePj-5BfT54PDsVXhlgp8fUjBoI-tcSuXY';
+
+        const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        // Sprawdź czy użytkownik jest już zalogowany
+        document.addEventListener('DOMContentLoaded', async () => {
+            const { data: { session } } = await supabase.auth.getSession();
+            if (session) {
+                // Jeśli już zalogowany, przekieruj do dashboard
+                window.location.href = '/dashboard.html';
+            }
+        });
+
         const form = document.querySelector('form');
         const messageDiv = document.createElement('div');
         messageDiv.className = 'mt-3';
@@ -95,6 +112,7 @@
             messageDiv.textContent = '';
             messageDiv.className = 'mt-3';
 
+            const name = document.getElementById('floatingName').value;
             const email = document.getElementById('floatingInput').value;
             const password = document.getElementById('floatingPassword').value;
             const confirmPassword = document.getElementById('floatingConfirmPassword').value;
@@ -105,24 +123,31 @@
                 return;
             }
 
+            if (password.length < 6) {
+                messageDiv.textContent = 'Hasło musi mieć co najmniej 6 znaków.';
+                messageDiv.classList.add('alert', 'alert-danger');
+                return;
+            }
+
             try {
-                const response = await fetch('/api/register', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ email, password }),
+                // Użyj Supabase do rejestracji
+                const { data, error } = await supabase.auth.signUp({
+                    email: email,
+                    password: password,
+                    options: {
+                        data: {
+                            full_name: name,
+                        }
+                    }
                 });
 
-                const data = await response.json();
-
-                if (response.ok) {
-                    messageDiv.textContent = data.message;
+                if (error) {
+                    messageDiv.textContent = error.message || 'Wystąpił błąd podczas rejestracji.';
+                    messageDiv.classList.add('alert', 'alert-danger');
+                } else {
+                    messageDiv.textContent = 'Konto zostało utworzone! Sprawdź swoją skrzynkę email, aby potwierdzić rejestrację.';
                     messageDiv.classList.add('alert', 'alert-success');
                     form.reset();
-                } else {
-                    messageDiv.textContent = data.message || 'Wystąpił błąd podczas rejestracji.';
-                    messageDiv.classList.add('alert', 'alert-danger');
                 }
             } catch (error) {
                 messageDiv.textContent = 'Błąd serwera. Spróbuj ponownie później.';
