@@ -4,6 +4,16 @@
   "outputDirectory": ".",
   "installCommand": "echo 'No install needed'",
   "framework": null,
+  "rewrites": [
+    {
+      "source": "/dashboard/:path*",
+      "destination": "https://client-dashboard-9khfoip7j-ecm-digitals-projects.vercel.app/:path*"
+    },
+    {
+      "source": "/dashboard",
+      "destination": "https://client-dashboard-9khfoip7j-ecm-digitals-projects.vercel.app/"
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
