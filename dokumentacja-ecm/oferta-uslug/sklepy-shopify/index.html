@@ -20,32 +20,32 @@
     <meta property="og:image" content="https://www.ecm-digital.com/assets/images/shopify-og.jpg">
     
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://www.ecm-digital.com/dokumentacja-ecm/oferta-uslug/sklepy-shopify/">
-    <meta property="twitter:title" content="Sklepy Shopify - Profesjonalne E-commerce | ECM Digital">
-    <meta property="twitter:description" content="Tworzymy profesjonalne sklepy internetowe na platformie Shopify. Custom design, zaawansowane funkcjonalności e-commerce, integracje.">
-    <meta property="twitter:image" content="https://www.ecm-digital.com/assets/images/shopify-og.jpg">
-    <meta name="description" content="Profesjonalne sklepy Shopify ECM Digital - B2C, B2B, dropshipping i subskrypcje">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://www.ecm-digital.com/dokumentacja-ecm/oferta-uslug/sklepy-shopify/">
+    <meta name="twitter:title" content="Sklepy Shopify - Profesjonalne E-commerce | ECM Digital">
+    <meta name="twitter:description" content="Tworzymy profesjonalne sklepy internetowe na platformie Shopify. Custom design, zaawansowane funkcjonalności e-commerce, integracje.">
+    <meta name="twitter:image" content="https://www.ecm-digital.com/assets/images/shopify-og.jpg">
     
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
-    <!-- Google Analytics -->
+    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-V309CX2XT8"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-V309CX2XT8');
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-V309CX2XT8');
     </script>
     
     <!-- Hotjar Tracking Code for ECM Digital -->
     <script>
         (function(h,o,t,j,a,r){
-            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments);};
             h._hjSettings={hjid:6393562,hjsv:6};
             a=o.getElementsByTagName('head')[0];
             r=o.createElement('script');r.async=1;
@@ -56,103 +56,427 @@
     
     <style>
         :root {
+            /* Apple Dark Mode Colors */
             --primary: #007AFF;
+            --primary-dark: #0056CC;
+            --primary-light: #409CFF;
             --accent: #30D158;
+            --accent-orange: #FF9F0A;
+            --accent-purple: #BF5AF2;
+            --accent-pink: #FF2D92;
+            
+            /* Dark Theme Colors */
             --bg-primary: #000000;
             --bg-secondary: #1C1C1E;
+            --bg-tertiary: #2C2C2E;
+            --bg-quaternary: #3A3A3C;
+            
+            /* Text Colors */
             --text-primary: #FFFFFF;
             --text-secondary: #EBEBF5;
             --text-tertiary: #EBEBF599;
+            --text-quaternary: #EBEBF54D;
+            
+            /* System Colors */
+            --separator: #38383A;
+            --overlay: rgba(0, 0, 0, 0.4);
+            
+            /* Shadows */
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+            --shadow-lg: 0 8px 25px rgba(0, 0, 0, 0.5);
+            --shadow-xl: 0 16px 40px rgba(0, 0, 0, 0.6);
+            
+            /* Glass Effect */
             --glass-bg: rgba(28, 28, 30, 0.8);
             --glass-border: rgba(255, 255, 255, 0.1);
-            --shadow-lg: 0 8px 25px rgba(0, 0, 0, 0.5);
         }
 
-        body {
-            font-family: 'Inter', sans-serif;
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', sans-serif;
             background: var(--bg-primary);
             color: var(--text-primary);
             line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
-
-        .navbar {
-            background: var(--glass-bg) !important;
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .navbar-brand {
+        
+        .font-display { 
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Space Grotesk', sans-serif;
             font-weight: 700;
-            color: var(--text-primary) !important;
+            letter-spacing: -0.02em;
         }
-
-        .nav-link {
-            color: var(--text-secondary) !important;
-        }
-
-        .nav-link:hover {
-            color: var(--primary) !important;
-        }
-
+        
+        /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
-            padding: 8rem 0 4rem;
+            background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            color: var(--text-primary);
+            padding: 160px 0 120px;
+            position: relative;
+            overflow: hidden;
         }
-
-        .hero-title {
-            font-size: 3rem;
-            font-weight: 800;
-            margin-bottom: 1.5rem;
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 20%, var(--primary) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 80%, var(--accent-purple) 0%, transparent 50%);
+            opacity: 0.1;
+            z-index: 1;
+        }
+        
+        .hero .container {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-title { 
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 800; 
+            line-height: 1.05; 
+            margin-bottom: 2rem;
+            letter-spacing: -0.03em;
             background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
-            background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-
-        .content-section {
-            padding: 4rem 0;
-            background: var(--bg-secondary);
+        
+        .hero-subtitle { 
+            font-size: 1.25rem; 
+            color: var(--text-tertiary);
+            font-weight: 400;
+            line-height: 1.5;
+            max-width: 600px;
         }
-
+        
+        /* Service Cards */
         .service-card {
             background: var(--glass-bg);
             backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border: 1px solid var(--glass-border);
             border-radius: 20px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            transition: all 0.3s ease;
+            padding: 2.5rem 2rem;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            height: 100%;
+            position: relative;
+            overflow: hidden;
         }
-
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent-purple) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            border-radius: 20px;
+        }
+        
         .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--glass-border);
         }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            border: none;
-            padding: 0.75rem 2rem;
+        
+        .service-card:hover::before {
+            opacity: 0.05;
+        }
+        
+        .service-card .service-icon {
+            position: relative;
+            z-index: 2;
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-card h4 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .service-card p {
+            color: var(--text-tertiary);
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .btn-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
             border-radius: 12px;
             font-weight: 600;
             transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
         }
-
-        .btn-primary:hover {
+        
+        .btn-cta:hover {
             transform: translateY(-2px);
             box-shadow: var(--shadow-lg);
+            color: white;
+            text-decoration: none;
         }
-
+        
+        /* Navbar */
+        .navbar {
+            background: var(--glass-bg) !important;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 1rem 0;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--text-primary) !important;
+            font-size: 1.5rem;
+        }
+        
+        .nav-link {
+            color: var(--text-secondary) !important;
+            font-weight: 500;
+            margin: 0 0.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary) !important;
+        }
+        
+        .dropdown-menu {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+        }
+        
+        .dropdown-item {
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+        }
+        
+        .dropdown-item:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .language-switcher {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-left: 1rem;
+        }
+        
+        .language-switcher a {
+            color: var(--text-tertiary);
+            text-decoration: none;
+            padding: 0.25rem 0.5rem;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+        
+        .language-switcher a.active,
+        .language-switcher a:hover {
+            color: var(--primary);
+            background: var(--glass-bg);
+        }
+        
+        /* Section Styles */
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
         .text-muted {
             color: var(--text-tertiary) !important;
         }
-
-        .list-group-item {
+        
+        /* Feature Cards */
+        .feature-card {
             background: var(--glass-bg);
             border: 1px solid var(--glass-border);
-            color: var(--text-primary);
-            margin-bottom: 0.5rem;
-            border-radius: 12px;
+            border-radius: 1rem;
+            backdrop-filter: blur(20px);
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .process-step {
+            padding: 2rem 1rem;
+        }
+        
+        .process-number {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto;
+        }
+        
+        .tech-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 1rem;
+            backdrop-filter: blur(20px);
+        }
+        
+        .pricing-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 1rem;
+            backdrop-filter: blur(20px);
+            transition: all 0.3s ease;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .price {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+        
+        .price .currency {
+            font-size: 1rem;
+            color: var(--text-tertiary);
+        }
+        
+        .price .period {
+            font-size: 1rem;
+            color: var(--text-tertiary);
+        }
+        
+        .contact-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 1rem;
+            backdrop-filter: blur(20px);
+        }
+        
+        .footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--glass-border);
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            border: none;
+            border-radius: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        
+        .btn-outline-primary {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            background: transparent;
+            border-radius: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline-primary:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-light {
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--bg-primary);
+            border: none;
+            border-radius: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-light:hover {
+            background: white;
+            transform: translateY(-2px);
+        }
+        
+        .text-primary {
+            color: var(--primary) !important;
+        }
+        
+        .bg-primary {
+            background-color: var(--primary) !important;
+        }
+        
+        .border-primary {
+            border-color: var(--primary) !important;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 120px 0 80px;
+            }
+            
+            .hero-title {
+                font-size: clamp(2rem, 6vw, 3rem);
+            }
+            
+            .btn-cta {
+                padding: 0.5rem 1rem;
+                font-size: 0.875rem;
+                margin-bottom: 1rem;
+                display: block;
+                text-align: center;
+                width: 100%;
+            }
+            
+            .btn-cta.me-3 {
+                margin-right: 0 !important;
+                margin-bottom: 1rem;
+            }
+            
+            .language-switcher {
+                justify-content: center;
+                margin: 1rem 0 0 0;
+            }
         }
     </style>
 </head>
@@ -160,32 +484,42 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="../../../">
+            <a class="navbar-brand font-display" href="../../">
                 <i class="fas fa-rocket me-2" style="color: var(--primary);"></i>
                 ECM Digital
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" style="border: none; background: none;">
+                <i class="fas fa-bars" style="color: var(--text-primary); font-size: 1.2rem;"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../#home">Home</a>
+                    </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="../" id="servicesDropdown" role="button" data-bs-toggle="dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Usługi
                         </a>
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="../strony-www/">Strony WWW</a></li>
-                            <li><a class="dropdown-item" href="../sklepy-shopify/">Sklepy Shopify</a></li>
+                            <li><a class="dropdown-item active" href="../sklepy-shopify/">Sklepy Shopify</a></li>
                             <li><a class="dropdown-item" href="../prototypy-mvp/">Prototypy MVP</a></li>
                             <li><a class="dropdown-item" href="../audyty-ux/">Audyty UX</a></li>
                             <li><a class="dropdown-item" href="../automatyzacje-n8n/">Automatyzacje</a></li>
                             <li><a class="dropdown-item" href="../social-media-data-science/">Social Media & AI</a></li>
+                            <li><a class="dropdown-item" href="../asystencja-ai-bedrock/">Asystencji AI na Amazon Bedrock</a></li>
                         </ul>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="../../portfolio-case-studies/">Portfolio</a></li>
                     <li class="nav-item"><a class="nav-link" href="../../zespol/">Zespół</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../../../#contact">Kontakt</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../#about-us">O nas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/login">Panel Klienta</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../#contact">Kontakt</a></li>
                 </ul>
+                <div class="language-switcher">
+                    <a href="../../" class="active" title="Polski">🇵🇱 PL</a>
+                    <a href="../../en" title="English">🇺🇸 EN</a>
+                </div>
             </div>
         </div>
     </nav>
