@@ -268,6 +268,50 @@
             <i class="fas fa-circle"></i> Status połączenia
         </div>
 
+        <!-- Debug Panel -->
+        <div class="debug-panel mb-3" style="display: none;">
+            <div class="control-group">
+                <h4><i class="fas fa-bug"></i> Panel Debugowania</h4>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label class="form-label">Region AWS:</label>
+                        <select id="regionSelect" class="form-select">
+                            <option value="us-east-1">US East (N. Virginia)</option>
+                            <option value="us-west-2">US West (Oregon)</option>
+                            <option value="eu-west-1">Europe (Ireland)</option>
+                            <option value="ap-southeast-1">Asia Pacific (Singapore)</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Log Level:</label>
+                        <select id="logLevel" class="form-select">
+                            <option value="basic">Podstawowy</option>
+                            <option value="detailed">Szczegółowy</option>
+                            <option value="verbose">Pełny</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="mt-2">
+                    <button id="testConnection" class="btn btn-outline-primary btn-sm">
+                        <i class="fas fa-plug"></i> Test Połączenia
+                    </button>
+                    <button id="checkModels" class="btn btn-outline-primary btn-sm ms-2">
+                        <i class="fas fa-list"></i> Sprawdź Modele
+                    </button>
+                    <button id="showStatus" class="btn btn-outline-primary btn-sm ms-2">
+                        <i class="fas fa-info"></i> Status
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Toggle Debug Panel -->
+        <div class="text-center mb-3">
+            <button id="toggleDebug" class="btn btn-outline-secondary btn-sm">
+                <i class="fas fa-cog"></i> Panel Debugowania
+            </button>
+        </div>
+
         <div class="controls">
             <div class="control-group">
                 <h4><i class="fas fa-robot"></i> Model AI</h4>
@@ -361,6 +405,15 @@
         const sendBtn = document.getElementById('sendBtn');
         const tempValue = document.getElementById('tempValue');
         const tokenValue = document.getElementById('tokenValue');
+        
+        // Debug elements
+        const toggleDebug = document.getElementById('toggleDebug');
+        const debugPanel = document.querySelector('.debug-panel');
+        const regionSelect = document.getElementById('regionSelect');
+        const logLevel = document.getElementById('logLevel');
+        const testConnection = document.getElementById('testConnection');
+        const checkModels = document.getElementById('checkModels');
+        const showStatus = document.getElementById('showStatus');
 
         // Inicjalizacja
         async function init() {
@@ -371,6 +424,7 @@
                 const credentials = getBedrockCredentials();
                 if (!credentials.accessKeyId || !credentials.secretAccessKey) {
                     updateStatus('error', 'Brak kluczy API. Dodaj je w localStorage.');
+                    showApiKeyInstructions();
                     return;
                 }
 
@@ -380,8 +434,102 @@
                 // Ustaw domyślny prompt
                 bedrockClient.setSystemPrompt('customerSupport');
                 
+                // Sprawdź dostępność modeli
+                await checkModelsAvailability();
+                
             } catch (error) {
                 updateStatus('error', `Błąd inicjalizacji: ${error.message}`);
+                console.error('Błąd inicjalizacji:', error);
+            }
+        }
+
+        // Sprawdzenie dostępności modeli
+        async function checkModelsAvailability() {
+            try {
+                updateStatus('loading', 'Sprawdzanie dostępności modeli...');
+                
+                const models = [
+                    'anthropic.claude-3-sonnet-20240229-v1:0',
+                    'amazon.titan-text-express-v1',
+                    'meta.llama2-13b-chat-v1'
+                ];
+                
+                for (const modelId of models) {
+                    const isAvailable = await checkModelAvailability(modelId, bedrockClient.currentRegion);
+                    if (!isAvailable) {
+                        console.warn(`⚠️ Model ${modelId} niedostępny`);
+                    }
+                }
+                
+                updateStatus('connected', 'Sprawdzanie modeli zakończone');
+                
+            } catch (error) {
+                console.error('Błąd sprawdzania modeli:', error);
+            }
+        }
+
+        // Pokaż instrukcje dodawania kluczy API
+        function showApiKeyInstructions() {
+            addMessage(`
+                <div style="background: rgba(255, 59, 48, 0.1); border: 1px solid #FF3B30; padding: 1rem; border-radius: 8px;">
+                    <h5><i class="fas fa-key"></i> Dodaj klucze API</h5>
+                    <p>W konsoli przeglądarki (F12) wykonaj:</p>
+                    <code style="background: rgba(0,0,0,0.3); padding: 0.5rem; border-radius: 4px; display: block; margin: 0.5rem 0;">
+                        localStorage.setItem('BEDROCK_ACCESS_KEY_ID', 'twój_access_key');<br>
+                        localStorage.setItem('BEDROCK_SECRET_ACCESS_KEY', 'twój_secret_key');
+                    </code>
+                    <p>Następnie odśwież stronę.</p>
+                </div>
+            `, 'system');
+        }
+
+        // Test połączenia
+        async function testConnection() {
+            try {
+                updateStatus('loading', 'Testowanie połączenia...');
+                
+                const response = await bedrockClient.invokeModel("Test", {
+                    maxTokens: 10,
+                    temperature: 0.1
+                });
+                
+                updateStatus('connected', 'Połączenie działa!');
+                addMessage(`✅ Test połączenia udany. Model: ${response.model}`, 'system');
+                
+            } catch (error) {
+                updateStatus('error', `Błąd połączenia: ${error.message}`);
+                addMessage(`❌ Test połączenia nieudany: ${error.message}`, 'system');
+            }
+        }
+
+        // Pokaż status
+        function showStatus() {
+            if (bedrockClient) {
+                const status = bedrockClient.getStatus();
+                addMessage(`
+                    <div style="background: rgba(0, 122, 255, 0.1); border: 1px solid var(--primary); padding: 1rem; border-radius: 8px;">
+                        <h5><i class="fas fa-info-circle"></i> Status Połączenia</h5>
+                        <ul style="margin: 0; padding-left: 1.5rem;">
+                            <li><strong>Model:</strong> ${status.model}</li>
+                            <li><strong>Region:</strong> ${status.region}</li>
+                            <li><strong>Endpoint:</strong> ${status.endpoint}</li>
+                            <li><strong>Access Key:</strong> ${status.credentials.hasAccessKey ? '✅' : '❌'}</li>
+                            <li><strong>Secret Key:</strong> ${status.credentials.hasSecretKey ? '✅' : '❌'}</li>
+                        </ul>
+                    </div>
+                `, 'system');
+            } else {
+                addMessage('❌ Klient Bedrock nie jest zainicjalizowany', 'system');
+            }
+        }
+
+        // Sprawdź modele
+        async function checkModels() {
+            try {
+                updateStatus('loading', 'Sprawdzanie modeli...');
+                await checkModelsAvailability();
+            } catch (error) {
+                console.error('Błąd sprawdzania modeli:', error);
             }
         }
 
@@ -468,6 +616,24 @@
                 bedrockClient.setSystemPrompt(e.target.value);
             }
         });
+
+        // Debug panel event listeners
+        toggleDebug.addEventListener('click', () => {
+            debugPanel.style.display = debugPanel.style.display === 'none' ? 'block' : 'none';
+            toggleDebug.innerHTML = debugPanel.style.display === 'none' ? 
+                '<i class="fas fa-cog"></i> Panel Debugowania' : 
+                '<i class="fas fa-times"></i> Ukryj Debug';
+        });
+
+        regionSelect.addEventListener('change', (e) => {
+            if (bedrockClient) {
+                bedrockClient.setRegion(e.target.value);
+            }
+        });
+
+        testConnection.addEventListener('click', testConnection);
+        checkModels.addEventListener('click', checkModels);
+        showStatus.addEventListener('click', showStatus);
 
         // Start demo
         init();

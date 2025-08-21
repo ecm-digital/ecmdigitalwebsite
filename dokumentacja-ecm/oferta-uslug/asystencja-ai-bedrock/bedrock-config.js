@@ -5,10 +5,18 @@ const BEDROCK_CONFIG = {
     // AWS Region dla Amazon Bedrock
     region: 'us-east-1', // lub 'eu-west-1', 'ap-southeast-1'
     
-    // Endpoint dla Amazon Bedrock
+    // Endpoint dla Amazon Bedrock - poprawiony dla produkcji
     endpoint: 'https://bedrock-runtime.us-east-1.amazonaws.com',
     
-    // Dostępne modele AI
+    // Alternatywne endpointy dla różnych regionów
+    endpoints: {
+        'us-east-1': 'https://bedrock-runtime.us-east-1.amazonaws.com',
+        'us-west-2': 'https://bedrock-runtime.us-west-2.amazonaws.com',
+        'eu-west-1': 'https://bedrock-runtime.eu-west-1.amazonaws.com',
+        'ap-southeast-1': 'https://bedrock-runtime.ap-southeast-1.amazonaws.com'
+    },
+    
+    // Dostępne modele AI - z poprawionymi ID
     models: {
         claude: {
             anthropic: {
@@ -49,6 +57,18 @@ const BEDROCK_CONFIG = {
         contentWriter: "Jesteś kreatywnym copywriterem specjalizującym się w treściach marketingowych i technicznych.",
         codeAssistant: "Jesteś doświadczonym programistą pomagającym w rozwiązywaniu problemów technicznych.",
         businessAnalyst: "Jesteś analitykiem biznesowym pomagającym w analizie danych i strategii."
+    },
+    
+    // Konfiguracja dla produkcji
+    production: {
+        // Włącz szczegółowe logowanie
+        enableLogging: true,
+        // Timeout dla zapytań (ms)
+        requestTimeout: 30000,
+        // Maksymalna liczba prób
+        maxRetries: 3,
+        // Opóźnienie między próbami (ms)
+        retryDelay: 1000
     }
 };
 
@@ -70,10 +90,69 @@ function getBedrockCredentials() {
     };
 }
 
+// Funkcja do sprawdzania dostępności modeli
+async function checkModelAvailability(modelId, region = 'us-east-1') {
+    try {
+        const endpoint = BEDROCK_CONFIG.endpoints[region] || BEDROCK_CONFIG.endpoints['us-east-1'];
+        const response = await fetch(`${endpoint}/models/${modelId}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        
+        if (response.ok) {
+            console.log(`✅ Model ${modelId} dostępny w regionie ${region}`);
+            return true;
+        } else {
+            console.warn(`⚠️ Model ${modelId} niedostępny w regionie ${region}: ${response.status}`);
+            return false;
+        }
+    } catch (error) {
+        console.error(`❌ Błąd sprawdzania modelu ${modelId}:`, error);
+        return false;
+    }
+}
+
+// Funkcja do walidacji konfiguracji
+function validateConfig() {
+    const errors = [];
+    
+    // Sprawdź region
+    if (!BEDROCK_CONFIG.region) {
+        errors.push('Brak zdefiniowanego regionu AWS');
+    }
+    
+    // Sprawdź endpoint
+    if (!BEDROCK_CONFIG.endpoint) {
+        errors.push('Brak zdefiniowanego endpointu');
+    }
+    
+    // Sprawdź modele
+    if (!BEDROCK_CONFIG.models || Object.keys(BEDROCK_CONFIG.models).length === 0) {
+        errors.push('Brak zdefiniowanych modeli AI');
+    }
+    
+    if (errors.length > 0) {
+        console.error('❌ Błędy konfiguracji Amazon Bedrock:', errors);
+        return false;
+    }
+    
+    console.log('✅ Konfiguracja Amazon Bedrock poprawna');
+    return true;
+}
+
 // Eksportuj konfigurację
 if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { BEDROCK_CONFIG, getBedrockCredentials };
+    module.exports = { 
+        BEDROCK_CONFIG, 
+        getBedrockCredentials, 
+        checkModelAvailability, 
+        validateConfig 
+    };
 } else if (typeof window !== 'undefined') {
     window.BEDROCK_CONFIG = BEDROCK_CONFIG;
     window.getBedrockCredentials = getBedrockCredentials;
+    window.checkModelAvailability = checkModelAvailability;
+    window.validateConfig = validateConfig;
 }
