@@ -27,6 +27,7 @@ dokumentacja-ecm/
 - [Audyty UX](oferta-uslug/audyty-ux/README.md)
 - [Social Media & Data Science](oferta-uslug/social-media-data-science/README.md)
 - [Automatyzacje n8n](oferta-uslug/automatyzacje-n8n/README.md)
+- [Asystencji AI na Amazon Bedrock](oferta-uslug/asystencja-ai-bedrock/index.html)
 
 ### 📂 Portfolio
 - [Przegląd Portfolio](portfolio-case-studies/README.md)
