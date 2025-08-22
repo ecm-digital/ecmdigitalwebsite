@@ -3,26 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ECM Digital - Agencja Tworzenia Stron WWW, Shopify i Aplikacji</title>
-    <meta name="description" content="Profesjonalna agencja cyfrowa ECM Digital - strony WWW, Shopify, MVP, UX">
+    <title>ECM Digital - Agencja Cyfrowa | Strony WWW, Sklepy, Aplikacje Mobilne</title>
     
-    <!-- Allow crawling and analysis -->
-    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-    <meta name="googlebot" content="index, follow">
-    <meta name="bingbot" content="index, follow">
-    <meta name="allow-crawling" content="true">
-    <meta name="crawl-delay" content="0">
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="ECM Digital - profesjonalna agencja cyfrowa. Tworzymy strony WWW, sklepy Shopify, aplikacje mobilne, prototypy MVP i audyty UX. Start od 2,900 PLN!">
+    <meta name="keywords" content="agencja cyfrowa, strony WWW, sklepy internetowe, aplikacje mobilne, UX design, web development, digital agency">
+    <meta name="author" content="ECM Digital">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.ecm-digital.com/">
     
-    <!-- Open Graph for better sharing -->
-    <meta property="og:title" content="ECM Digital - Agencja Tworzenia Stron WWW, Shopify i Aplikacji">
-    <meta property="og:description" content="Profesjonalna agencja cyfrowa ECM Digital - strony WWW, Shopify, MVP, UX">
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://ecm-digital.github.io/ecmdigitalwebsite/">
+    <meta property="og:url" content="https://www.ecm-digital.com/">
+    <meta property="og:title" content="ECM Digital - Agencja Cyfrowa | Strony WWW, Sklepy, Aplikacje Mobilne">
+    <meta property="og:description" content="ECM Digital - profesjonalna agencja cyfrowa. Tworzymy strony WWW, sklepy Shopify, aplikacje mobilne, prototypy MVP i audyty UX.">
+    <meta property="og:image" content="https://www.ecm-digital.com/assets/images/ecm-digital-og.jpg">
     
-    <!-- Twitter Card -->
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="ECM Digital - Agencja Tworzenia Stron WWW, Shopify i Aplikacji">
-    <meta name="twitter:description" content="Profesjonalna agencja cyfrowa ECM Digital - strony WWW, Shopify, MVP, UX">
+    <meta name="twitter:url" content="https://www.ecm-digital.com/">
+    <meta name="twitter:title" content="ECM Digital - Agencja Cyfrowa | Strony WWW, Sklepy, Aplikacje Mobilne">
+    <meta name="twitter:description" content="ECM Digital - profesjonalna agencja cyfrowa. Tworzymy strony WWW, sklepy Shopify, aplikacje mobilne, prototypy MVP i audyty UX.">
+    <meta name="twitter:image" content="https://www.ecm-digital.com/assets/images/ecm-digital-og.jpg">
     
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -43,7 +45,7 @@
     <!-- Hotjar Tracking Code for ECM Digital -->
     <script>
         (function(h,o,t,j,a,r){
-            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments);};
             h._hjSettings={hjid:6393562,hjsv:6};
             a=o.getElementsByTagName('head')[0];
             r=o.createElement('script');r.async=1;
@@ -198,405 +200,266 @@
         }
         
         .service-card h4 {
-            color: var(--text-primary);
+            font-size: 1.5rem;
             font-weight: 700;
             margin-bottom: 1rem;
-            font-size: 1.3rem;
-            letter-spacing: -0.01em;
+            color: var(--text-primary);
             position: relative;
             z-index: 2;
         }
         
-        .service-card .text-muted {
+        .service-card p {
             color: var(--text-tertiary);
-            font-size: 0.95rem;
-            line-height: 1.5;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             position: relative;
             z-index: 2;
         }
         
-        /* Portfolio Cards */
-        .portfolio-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            height: 100%;
-            position: relative;
-        }
-        
-        .portfolio-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: var(--shadow-xl);
-            border-color: rgba(255, 255, 255, 0.2);
-        }
-        
-        .portfolio-image {
-            height: 180px;
-            background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-quaternary) 100%);
-            display: flex;
+        .btn-cta {
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
-            color: var(--text-secondary);
-            font-size: 2.5rem;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .portfolio-image::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--accent-purple) 100%);
-            opacity: 0.1;
-        }
-        
-        .portfolio-content {
-            padding: 1.5rem;
-        }
-        
-        .portfolio-type {
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            color: var(--text-primary);
-            padding: 0.25rem 0.75rem;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
             border-radius: 12px;
-            font-size: 0.75rem;
             font-weight: 600;
-            display: inline-block;
-            margin-bottom: 1rem;
-            letter-spacing: 0.02em;
-        }
-        
-        /* Team Cards */
-        .team-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 2rem 1.5rem;
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            height: 100%;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .team-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            border-radius: 20px;
-        }
-        
-        .team-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: var(--shadow-xl);
-            border-color: rgba(255, 255, 255, 0.2);
-        }
-        
-        .team-card:hover::before {
-            opacity: 0.05;
-        }
-        
-        .team-avatar {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, var(--primary), var(--accent-purple));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-primary);
-            font-size: 2rem;
-            margin: 0 auto 1.5rem;
-            box-shadow: var(--shadow-md);
             transition: all 0.3s ease;
             position: relative;
             z-index: 2;
         }
         
-        .team-card:hover .team-avatar {
-            transform: scale(1.1);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .team-card h5 {
-            color: var(--text-primary);
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-            font-weight: 700;
-            letter-spacing: -0.01em;
-            position: relative;
-            z-index: 2;
-        }
-        
-        .team-card .text-primary {
-            color: var(--primary) !important;
-            font-weight: 600;
-            font-size: 0.9rem;
-            position: relative;
-            z-index: 2;
-        }
-        
-        .team-card .text-muted {
-            color: var(--text-tertiary);
-            font-size: 0.85rem;
-            line-height: 1.4;
-            position: relative;
-            z-index: 2;
-        }
-        
-        /* Buttons */
-        .btn-cta {
-            background: var(--primary);
-            color: var(--text-primary);
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.875rem;
-            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            box-shadow: var(--shadow-md);
-            border: none;
-            position: relative;
-            overflow: hidden;
-            letter-spacing: -0.01em;
-        }
-        
-        .btn-cta::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, var(--primary-light), var(--primary));
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            border-radius: 12px;
-        }
-        
         .btn-cta:hover {
-            transform: translateY(-2px) scale(1.02);
-            color: var(--text-primary);
+            transform: translateY(-2px);
             box-shadow: var(--shadow-lg);
-        }
-        
-        .btn-cta:hover::before {
-            opacity: 1;
-        }
-        
-        .btn-cta i {
-            position: relative;
-            z-index: 2;
-        }
-        
-        .btn-cta span, .btn-cta-text {
-            position: relative;
-            z-index: 2;
-        }
-        
-        .btn-cta-secondary {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            color: var(--text-primary);
-            border: 1px solid var(--glass-border);
-            padding: 0.875rem 1.75rem;
-            border-radius: 12px;
+            color: white;
             text-decoration: none;
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            position: relative;
-            overflow: hidden;
-            letter-spacing: -0.01em;
         }
         
-        .btn-cta-secondary::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: var(--primary);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            border-radius: 12px;
-        }
-        
-        .btn-cta-secondary:hover {
-            color: var(--text-primary);
-            border-color: var(--primary);
-            transform: translateY(-2px) scale(1.02);
-            box-shadow: var(--shadow-md);
-        }
-        
-        .btn-cta-secondary:hover::before {
-            opacity: 1;
-        }
-        
-        .btn-cta-secondary i,
-        .btn-cta-secondary span {
-            position: relative;
-            z-index: 2;
-        }
-        
-        /* Section Improvements */
-        .section-title {
-            color: var(--text-primary);
-            font-size: clamp(2rem, 5vw, 2.75rem);
-            font-weight: 800;
-            margin-bottom: 1rem;
-            letter-spacing: -0.02em;
-            background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .text-muted {
-            color: var(--text-tertiary) !important;
-        }
-        
-        /* Navigation */
+        /* Navbar */
         .navbar {
             background: var(--glass-bg) !important;
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--separator);
-            box-shadow: none;
+            border-bottom: 1px solid var(--glass-border);
+            padding: 1rem 0;
         }
         
         .navbar-brand {
             font-weight: 700;
-            font-size: 1.4rem;
             color: var(--text-primary) !important;
-            letter-spacing: -0.01em;
+            font-size: 1.5rem;
         }
         
         .nav-link {
             color: var(--text-secondary) !important;
             font-weight: 500;
+            margin: 0 0.5rem;
             transition: color 0.3s ease;
-            font-size: 0.95rem;
         }
         
         .nav-link:hover {
             color: var(--primary) !important;
         }
         
-        /* Sections */
-        .py-5 {
-            padding: 5rem 0 !important;
-        }
-        
-        #services {
-            background: var(--bg-secondary) !important;
-        }
-        
-        #portfolio {
-            background: var(--bg-primary);
-        }
-        
-        #team {
-            background: var(--bg-secondary) !important;
-        }
-        
-        #contact {
-            background: var(--bg-primary);
-        }
-        
-        /* Footer */
-        footer {
-            background: var(--bg-secondary) !important;
-            border-top: 1px solid var(--separator);
-        }
-        
-        /* About Us Section */
-        #about-us {
-            background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
-        }
-
-        .about-us-card {
+        .dropdown-menu {
             background: var(--glass-bg);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 3rem;
-            box-shadow: var(--shadow-lg);
+            border-radius: 12px;
         }
-
-        .about-us-card .lead {
-            font-size: 1.2rem;
-            font-weight: 400;
+        
+        .dropdown-item {
             color: var(--text-secondary);
-            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
         }
-
-        .about-us-card p {
-            color: var(--text-tertiary);
+        
+        .dropdown-item:hover {
+            background: var(--primary);
+            color: white;
         }
-
-        /* Language Switcher */
+        
         .language-switcher {
             display: flex;
             align-items: center;
             gap: 0.5rem;
             margin-left: 1rem;
         }
-
+        
         .language-switcher a {
-            color: var(--text-secondary);
+            color: var(--text-tertiary);
             text-decoration: none;
             padding: 0.25rem 0.5rem;
-            border-radius: 4px;
+            border-radius: 6px;
             transition: all 0.3s ease;
-            font-size: 0.9rem;
         }
-
-        .language-switcher a.active {
-            color: var(--primary);
-            background: rgba(48, 209, 88, 0.1);
-        }
-
+        
+        .language-switcher a.active,
         .language-switcher a:hover {
-            color: var(--text-primary);
+            color: var(--primary);
+            background: var(--glass-bg);
         }
-
+        
+        /* Section Styles */
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .text-muted {
+            color: var(--text-tertiary) !important;
+        }
+        
+        /* Feature Cards */
+        .feature-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 1rem;
+            backdrop-filter: blur(20px);
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .process-step {
+            padding: 2rem 1rem;
+        }
+        
+        .process-number {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto;
+        }
+        
+        .tech-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 1rem;
+            backdrop-filter: blur(20px);
+        }
+        
+        .pricing-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 1rem;
+            backdrop-filter: blur(20px);
+            transition: all 0.3s ease;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .price {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+        
+        .price .currency {
+            font-size: 1rem;
+            color: var(--text-tertiary);
+        }
+        
+        .price .period {
+            font-size: 1rem;
+            color: var(--text-tertiary);
+        }
+        
+        .contact-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 1rem;
+            backdrop-filter: blur(20px);
+        }
+        
+        .footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--glass-border);
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            border: none;
+            border-radius: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        
+        .btn-outline-primary {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            background: transparent;
+            border-radius: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline-primary:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-light {
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--bg-primary);
+            border: none;
+            border-radius: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-light:hover {
+            background: white;
+            transform: translateY(-2px);
+        }
+        
+        .text-primary {
+            color: var(--primary) !important;
+        }
+        
+        .bg-primary {
+            background-color: var(--primary) !important;
+        }
+        
+        .border-primary {
+            border-color: var(--primary) !important;
+        }
+        
         /* Responsive */
         @media (max-width: 768px) {
+            .hero {
+                padding: 120px 0 80px;
+            }
+            
             .hero-title {
-                font-size: 2.5rem;
+                font-size: clamp(2rem, 6vw, 3rem);
             }
             
-            .service-card, .team-card, .portfolio-card {
-                padding: 2rem 1.5rem;
-            }
-            
-            .btn-cta, .btn-cta-secondary {
+            .btn-cta {
                 padding: 0.5rem 1rem;
                 font-size: 0.875rem;
                 margin-bottom: 1rem;
@@ -655,25 +518,37 @@
                     <li class="nav-item"><a class="nav-link" href="#contact">Kontakt</a></li>
                 </ul>
                 <div class="language-switcher">
-                    <a href="/" class="active" title="Polski">🇵🇱 PL</a>
-                    <a href="/en" title="English">🇺🇸 EN</a>
+                    <a href="#" class="active" title="Polski">🇵🇱 PL</a>
+                    <a href="en.html" title="English">🇺🇸 EN</a>
                 </div>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section id="home" class="hero">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6">
-                    <h1 class="hero-title font-display">Zwiększamy <span style="color: #30D158;">sprzedaż</span> przez technologie</h1>
-                    <p class="hero-subtitle">Kompleksowe rozwiązania cyfrowe: od stron WWW i sklepów e-commerce, przez automatyzacje biznesowe, po analizę danych i kampanie marketingowe oparte na AI.</p>
-                    <div class="mt-4">
-                        <a href="#services" class="btn-cta">
-                            <i class="fas fa-arrow-right"></i>
-                            Zobacz ofertę
+                    <h1 class="hero-title">ECM Digital</h1>
+                    <p class="hero-subtitle">
+                        Profesjonalna agencja cyfrowa tworząca nowoczesne rozwiązania internetowe. 
+                        Od prostych stron WWW po zaawansowane aplikacje mobilne i systemy AI.
+                    </p>
+                    <div class="d-flex gap-3 flex-wrap">
+                        <a href="#services" class="btn btn-primary btn-lg">
+                            <i class="fas fa-rocket me-2"></i>
+                            Zobacz Ofertę
                         </a>
+                        <a href="#contact" class="btn btn-outline-primary btn-lg">
+                            <i class="fas fa-envelope me-2"></i>
+                            Darmowa Konsultacja
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <div class="hero-image">
+                        <i class="fas fa-rocket" style="font-size: 8rem; color: var(--primary); opacity: 0.8;"></i>
                     </div>
                 </div>
             </div>
@@ -681,21 +556,17 @@
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="py-5" style="background: var(--secondary);">
+    <section id="services" class="py-5">
         <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="section-title font-display">Kompleksowe usługi cyfrowe</h2>
-                <p class="text-muted">Od koncepcji po realizację - kompleksowe wsparcie na każdym etapie</p>
-            </div>
-            
-            <div class="row">
+            <h2 class="section-title">Nasze Usługi</h2>
+            <div class="row g-4">
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="service-card">
                         <div class="mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), #3b82f6); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
-                            <i class="fas fa-desktop"></i>
+                            <i class="fas fa-globe"></i>
                         </div>
-                        <h4>Nowoczesne strony WWW</h4>
-                        <p class="text-muted">Responsywne strony internetowe zaprojektowane z myślą o konwersji i użytkowniku.</p>
+                        <h4>Strony WWW</h4>
+                        <p class="text-muted">Nowoczesne, responsywne strony internetowe z optymalizacją SEO. Design dopasowany do Twojej marki.</p>
                         <a href="dokumentacja-ecm/oferta-uslug/strony-www/" class="btn-cta">
                             <i class="fas fa-arrow-right"></i>
                             <span>Dowiedz się więcej</span>
@@ -705,13 +576,13 @@
                 
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="service-card">
-                        <div class="mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), #3b82f6); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
-                            <i class="fas fa-shopping-cart"></i>
+                        <div class="mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), #10b981); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                            <i class="fab fa-shopify"></i>
                         </div>
                         <h4>Sklepy Shopify</h4>
-                        <p class="text-muted">Profesjonalne sklepy e-commerce na platformie Shopify z pełną integracją.</p>
+                        <p class="text-muted">Profesjonalne sklepy internetowe na platformie Shopify. Integracje płatności, zarządzanie produktami.</p>
                         <a href="dokumentacja-ecm/oferta-uslug/sklepy-shopify/" class="btn-cta">
-                            <i class="fas fa-shopping-cart"></i>
+                            <i class="fas fa-arrow-right"></i>
                             <span>Dowiedz się więcej</span>
                         </a>
                     </div>
@@ -719,13 +590,13 @@
                 
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="service-card">
-                        <div class="mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), #3b82f6); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
-                            <i class="fas fa-rocket"></i>
+                        <div class="mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), #f59e0b); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                            <i class="fas fa-lightbulb"></i>
                         </div>
                         <h4>Prototypy MVP</h4>
-                        <p class="text-muted">Szybka walidacja pomysłów biznesowych poprzez tworzenie funkcjonalnych prototypów.</p>
+                        <p class="text-muted">Szybkie prototypy i minimum viable products. Testuj pomysły przed pełnym rozwojem.</p>
                         <a href="dokumentacja-ecm/oferta-uslug/prototypy-mvp/" class="btn-cta">
-                            <i class="fas fa-rocket"></i>
+                            <i class="fas fa-arrow-right"></i>
                             <span>Dowiedz się więcej</span>
                         </a>
                     </div>
@@ -733,13 +604,13 @@
                 
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="service-card">
-                        <div class="mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), #3b82f6); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
-                            <i class="fas fa-search-dollar"></i>
+                        <div class="mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), #8b5cf6); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                            <i class="fas fa-eye"></i>
                         </div>
                         <h4>Audyty UX</h4>
-                        <p class="text-muted">Kompleksowa analiza doświadczeń użytkownika w celu zwiększenia konwersji.</p>
+                        <p class="text-muted">Kompleksowe audyty użyteczności i doświadczenia użytkownika. Popraw UX swojej strony.</p>
                         <a href="dokumentacja-ecm/oferta-uslug/audyty-ux/" class="btn-cta">
-                            <i class="fas fa-chart-line"></i>
+                            <i class="fas fa-arrow-right"></i>
                             <span>Dowiedz się więcej</span>
                         </a>
                     </div>
@@ -747,13 +618,13 @@
                 
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="service-card">
-                        <div class="mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), #3b82f6); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                        <div class="mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), #ef4444); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
                             <i class="fas fa-cogs"></i>
                         </div>
                         <h4>Automatyzacje n8n</h4>
-                        <p class="text-muted">Automatyzacja procesów biznesowych w celu oszczędności czasu i zasobów.</p>
+                        <p class="text-muted">Automatyzacja procesów biznesowych z n8n. Integracje API, workflow automation.</p>
                         <a href="dokumentacja-ecm/oferta-uslug/automatyzacje-n8n/" class="btn-cta">
-                            <i class="fas fa-cogs"></i>
+                            <i class="fas fa-arrow-right"></i>
                             <span>Dowiedz się więcej</span>
                         </a>
                     </div>
@@ -761,11 +632,11 @@
                 
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="service-card">
-                        <div class="mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), #3b82f6); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                        <div class="mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), #06b6d4); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
                             <i class="fas fa-chart-line"></i>
                         </div>
                         <h4>Social Media & AI</h4>
-                        <p class="text-muted">Strategie social media wspierane sztuczną inteligencją i analizą danych.</p>
+                        <p class="text-muted">Analiza danych social media z wykorzystaniem sztucznej inteligencji. Insights i strategie marketingowe.</p>
                         <a href="dokumentacja-ecm/oferta-uslug/social-media-data-science/" class="btn-cta">
                             <i class="fas fa-arrow-right"></i>
                             <span>Dowiedz się więcej</span>
@@ -804,245 +675,139 @@
         </div>
     </section>
 
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="py-5">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="section-title font-display">Nasze Realizacje</h2>
-                <p class="text-muted">Poznaj projekty, które pomogły naszym klientom osiągnąć sukces</p>
-            </div>
-            
-            <div class="row">
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="portfolio-card" data-aos="fade-up">
-                        <div class="portfolio-image">
-                            <i class="fas fa-desktop"></i>
-                        </div>
-                        <div class="portfolio-content">
-                            <span class="portfolio-type">Strona WWW</span>
-                            <h5 class="font-display">TechFlow Solutions</h5>
-                            <p class="text-muted">Nowoczesna strona dla startupu technologicznego z fokusem na konwersję.</p>
-                            <small class="text-primary">Gatsby • Strapi • GraphQL</small>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="portfolio-card" data-aos="fade-up" data-aos-delay="100">
-                        <div class="portfolio-image">
-                            <i class="fas fa-shopping-cart"></i>
-                        </div>
-                        <div class="portfolio-content">
-                            <span class="portfolio-type">Sklep Shopify</span>
-                            <h5 class="font-display">XYZ Fashion Store</h5>
-                            <p class="text-muted">Elegancki sklep online dla marki modowej z zaawansowanymi funkcjami.</p>
-                            <small class="text-primary">Shopify Plus • Liquid • JavaScript</small>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="portfolio-card" data-aos="fade-up" data-aos-delay="200">
-                        <div class="portfolio-image">
-                            <i class="fas fa-rocket"></i>
-                        </div>
-                        <div class="portfolio-content">
-                            <span class="portfolio-type">Prototyp MVP</span>
-                            <h5 class="font-display">PayFlow App</h5>
-                            <p class="text-muted">Aplikacja płatności P2P dla fintech z pełną walidacją biznesową.</p>
-                            <small class="text-primary">React Native • Node.js • AWS</small>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="portfolio-card" data-aos="fade-up" data-aos-delay="300">
-                        <div class="portfolio-image">
-                            <i class="fas fa-search-dollar"></i>
-                        </div>
-                        <div class="portfolio-content">
-                            <span class="portfolio-type">Audyt UX</span>
-                            <h5 class="font-display">Banking App Audit</h5>
-                            <p class="text-muted">Kompleksowy audyt aplikacji bankowej zwiększający konwersję o 150%.</p>
-                            <small class="text-primary">UX Research • Analytics • Testing</small>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="portfolio-card" data-aos="fade-up" data-aos-delay="400">
-                        <div class="portfolio-image">
-                            <i class="fas fa-cogs"></i>
-                        </div>
-                        <div class="portfolio-content">
-                            <span class="portfolio-type">Automatyzacja</span>
-                            <h5 class="font-display">Business Automation</h5>
-                            <p class="text-muted">Automatyzacja procesów biznesowych oszczędzająca 20h tygodniowo.</p>
-                            <small class="text-primary">n8n • Zapier • API Integrations</small>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="portfolio-card" data-aos="fade-up" data-aos-delay="500">
-                        <div class="portfolio-image">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
-                        <div class="portfolio-content">
-                            <span class="portfolio-type">Social Media</span>
-                            <h5 class="font-display">Data-Driven Campaign</h5>
-                            <p class="text-muted">Kampania social media oparta na danych zwiększająca ROI o 300%.</p>
-                            <small class="text-primary">Analytics • Facebook Ads • Content Strategy</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Team Section -->
-    <section id="team" class="py-5" style="background: var(--secondary);">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="section-title font-display">Nasz Zespół</h2>
-                <p class="text-muted">Poznaj ekspertów, którzy realizują Twoje projekty</p>
-            </div>
-            
-            <div class="row">
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <div class="team-card" data-aos="fade-up">
-                        <div class="team-avatar">
-                            <i class="fas fa-user-tie"></i>
-                        </div>
-                        <h5 class="font-display">Tomasz Gnat</h5>
-                        <p class="text-primary fw-bold">Discovery Consultant</p>
-                        <p class="text-muted">Ekspert w odkrywaniu potrzeb biznesowych i strategii cyfrowej</p>
-                    </div>
-                </div>
-                
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <div class="team-card" data-aos="fade-up" data-aos-delay="100">
-                        <div class="team-avatar">
-                            <i class="fas fa-palette"></i>
-                        </div>
-                        <h5 class="font-display">Marta Górska</h5>
-                        <p class="text-primary fw-bold">UX/UI Designer</p>
-                        <p class="text-muted">Specjalistka od projektowania doświadczeń użytkownika</p>
-                    </div>
-                </div>
-                
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <div class="team-card" data-aos="fade-up" data-aos-delay="200">
-                        <div class="team-avatar">
-                            <i class="fas fa-bug"></i>
-                        </div>
-                        <h5 class="font-display">Karol Czechowski</h5>
-                        <p class="text-primary fw-bold">QA Specialist & Developer</p>
-                        <p class="text-muted">Specjalista od zapewnienia jakości i testowania aplikacji</p>
-                    </div>
-                </div>
-                
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <div class="team-card" data-aos="fade-up" data-aos-delay="300">
-                        <div class="team-avatar">
-                            <i class="fas fa-share-alt"></i>
-                        </div>
-                        <h5 class="font-display">Roman Dominia</h5>
-                        <p class="text-primary fw-bold">Social Media & Automations Specialist</p>
-                        <p class="text-muted">Ekspert od social media i automatyzacji procesów biznesowych</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- About Us Section -->
-    <section id="about-us" class="py-5 bg-secondary position-relative">
+    <section id="about-us" class="py-5" style="background: var(--bg-secondary);">
         <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="section-title font-display">Kim jesteśmy?</h2>
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h2 class="section-title text-start">O ECM Digital</h2>
+                    <p class="text-muted mb-4">
+                        Jesteśmy zespołem pasjonatów technologii, którzy wierzą, że każdy biznes zasługuje na cyfrową transformację. 
+                        Łączymy kreatywność z innowacyjnymi rozwiązaniami technologicznymi.
+                    </p>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="text-center">
+                                <h4 class="text-primary">50+</h4>
+                                <p class="text-muted">Zrealizowanych projektów</p>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="text-center">
+                                <h4 class="text-primary">98%</h4>
+                                <p class="text-muted">Zadowolonych klientów</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <div class="feature-card p-4">
+                        <i class="fas fa-users" style="font-size: 4rem; color: var(--primary); margin-bottom: 1rem;"></i>
+                        <h4>Nasz Zespół</h4>
+                        <p class="text-muted">
+                            Doświadczeni developerzy, designerzy UX/UI i specjaliści marketingu cyfrowego 
+                            pracują nad każdym projektem.
+                        </p>
+                    </div>
+                </div>
             </div>
-            <div class="row justify-content-center">
-                                <div class="col-lg-8 text-center about-us-card">
-                    <p class="lead text-white-50">
-                        ECM Digital to marka oferująca kompleksowe i nowoczesne rozwiązania digitalowe. Specjalizujemy się w projektowaniu stron internetowych, e-commerce, audytach UX oraz automatyzacji procesów biznesowych, pomagając firmom rozwijać się w cyfrowym świecie.
-                    </p>
-                    <p class="text-white-50">
-                        Marka ECM Digital działa w ramach spółki Scrum Software Sp. z o.o., która jest formalnym właścicielem wszystkich świadczonych przez nas usług oraz odpowiedzialnym podmiotem prawnym. To Scrum Software Sp. z o.o. wystawia faktury, zawiera umowy i prowadzi rozliczenia finansowe.
-                    </p>
-                    <p class="text-white-50">
-                        Dzięki takiemu rozwiązaniu łączymy nowoczesny branding i profesjonalną obsługę prawną, zapewniając naszym klientom pełne bezpieczeństwo i transparentność współpracy.
-                    </p>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="section-title">Nasz Proces Pracy</h2>
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="process-step text-center">
+                        <div class="process-number">1</div>
+                        <h5>Konsultacja</h5>
+                        <p class="text-muted">Analiza potrzeb i wymagań projektu</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="process-step text-center">
+                        <div class="process-number">2</div>
+                        <h5>Planowanie</h5>
+                        <p class="text-muted">Strategia i architektura rozwiązania</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="process-step text-center">
+                        <div class="process-number">3</div>
+                        <h5>Realizacja</h5>
+                        <p class="text-muted">Development i testowanie</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="process-step text-center">
+                        <div class="process-number">4</div>
+                        <h5>Wdrożenie</h5>
+                        <p class="text-muted">Uruchomienie i wsparcie</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-5">
+    <section id="contact" class="py-5" style="background: var(--bg-secondary);">
         <div class="container">
-            <div class="text-center">
-                <h2 class="section-title font-display">Skontaktuj się z nami</h2>
-                <p class="text-muted mb-4">Gotowy na rozpoczęcie projektu? Napisz do nas!</p>
-                
-                <div class="row justify-content-center">
-                    <div class="col-md-4 mb-3">
-                        <div class="d-flex align-items-center justify-content-center">
-                            <i class="fas fa-envelope text-primary me-3" style="font-size: 1.5rem;"></i>
-                            <div>
-                                <h6 class="mb-0">Email</h6>
-                                <p class="text-muted mb-0">hello@ecm-digital.com</p>
-                            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="contact-card p-5 text-center">
+                        <h2 class="section-title">Rozpocznij Projekt</h2>
+                        <p class="text-muted mb-4">
+                            Skontaktuj się z nami, aby omówić Twój projekt. 
+                            Oferujemy darmową konsultację i wycenę.
+                        </p>
+                        <div class="d-flex justify-content-center gap-3 flex-wrap">
+                            <a href="mailto:kontakt@ecm-digital.com" class="btn btn-primary btn-lg">
+                                <i class="fas fa-envelope me-2"></i>
+                                Napisz Email
+                            </a>
+                            <a href="tel:+48123456789" class="btn btn-outline-primary btn-lg">
+                                <i class="fas fa-phone me-2"></i>
+                                Zadzwoń
+                            </a>
                         </div>
                     </div>
-                    <div class="col-md-4 mb-3">
-                        <div class="d-flex align-items-center justify-content-center">
-                            <i class="fas fa-phone text-primary me-3" style="font-size: 1.5rem;"></i>
-                            <div>
-                                <h6 class="mb-0">Telefon</h6>
-                                <p class="text-muted mb-0">+48 535 330 323</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <div class="d-flex align-items-center justify-content-center">
-                            <i class="fas fa-map-marker-alt text-primary me-3" style="font-size: 1.5rem;"></i>
-                            <div>
-                                <h6 class="mb-0">Lokalizacja</h6>
-                                <p class="text-muted mb-0">Katowice, Polska</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="mt-4">
-                    <a href="mailto:hello@ecm-digital.com" class="btn-cta me-3">
-                        <i class="fas fa-envelope"></i>
-                        <span>Napisz do nas</span>
-                    </a>
-                    <a href="tel:+48535330323" class="btn-cta-secondary">
-                        <i class="fas fa-phone"></i>
-                        <span>Zadzwoń</span>
-                    </a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-4" style="background: var(--bg-dark); color: white;">
-        <div class="container">
-            <div class="text-center">
-                <p class="mb-0">&copy; 2024 ECM Digital. Wszystkie prawa zastrzeżone.</p>
-            </div>
+    <footer class="footer py-4">
+        <div class="container text-center">
+            <p class="text-muted mb-0">
+                © 2025 ECM Digital. Wszystkie prawa zastrzeżone.
+            </p>
         </div>
     </footer>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
     <script>
-        AOS.init({ duration: 800, once: true });
+        // Initialize AOS
+        AOS.init();
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
     </script>
 </body>
 </html>
