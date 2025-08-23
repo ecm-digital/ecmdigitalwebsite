@@ -525,32 +525,33 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#home">Home</a>
+                        <a class="nav-link" href="#home" data-i18n="nav.home">Home</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-i18n="nav.services">
                             Usługi
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="dokumentacja-ecm/oferta-uslug/strony-www/">Strony WWW</a></li>
-                            <li><a class="dropdown-item" href="dokumentacja-ecm/oferta-uslug/sklepy-shopify/">Sklepy Shopify</a></li>
-                            <li><a class="dropdown-item" href="dokumentacja-ecm/oferta-uslug/prototypy-mvp/">Prototypy MVP</a></li>
-                            <li><a class="dropdown-item" href="dokumentacja-ecm/oferta-uslug/audyty-ux/">Audyty UX</a></li>
-                            <li><a class="dropdown-item" href="dokumentacja-ecm/oferta-uslug/automatyzacje-n8n/">Automatyzacje</a></li>
-                            <li><a class="dropdown-item" href="dokumentacja-ecm/oferta-uslug/social-media-data-science/">Social Media & AI</a></li>
-                            <li><a class="dropdown-item" href="dokumentacja-ecm/oferta-uslug/asystencja-ai-bedrock/">Asystenci AI na Amazon Bedrock & Copilot Studio</a></li>
-                            <li><a class="dropdown-item" href="dokumentacja-ecm/oferta-uslug/aplikacje-mobilne/">Aplikacje Mobilne</a></li>
-                            <li><a class="dropdown-item" href="dokumentacja-ecm/oferta-uslug/asystenci-glosowi-lex/">Asystenci Głosowi na Amazon Lex</a></li>
+                            <li><a class="dropdown-item" href="dokumentacja-ecm/oferta-uslug/strony-www/" data-i18n="services.websites">Strony WWW</a></li>
+                            <li><a class="dropdown-item" href="dokumentacja-ecm/oferta-uslug/sklepy-shopify/" data-i18n="services.shopify">Sklepy Shopify</a></li>
+                            <li><a class="dropdown-item" href="dokumentacja-ecm/oferta-uslug/prototypy-mvp/" data-i18n="services.mvp">Prototypy MVP</a></li>
+                            <li><a class="dropdown-item" href="dokumentacja-ecm/oferta-uslug/audyty-ux/" data-i18n="services.uxAudit">Audyty UX</a></li>
+                            <li><a class="dropdown-item" href="dokumentacja-ecm/oferta-uslug/automatyzacje-n8n/" data-i18n="services.automation">Automatyzacje</a></li>
+                            <li><a class="dropdown-item" href="dokumentacja-ecm/oferta-uslug/social-media-data-science/" data-i18n="services.socialMedia">Social Media & AI</a></li>
+                            <li><a class="dropdown-item" href="dokumentacja-ecm/oferta-uslug/asystencja-ai-bedrock/" data-i18n="services.aiAssistants">Asystenci AI na Amazon Bedrock & Copilot Studio</a></li>
+                            <li><a class="dropdown-item" href="dokumentacja-ecm/oferta-uslug/aplikacje-mobilne/" data-i18n="services.mobileApps">Aplikacje Mobilne</a></li>
+                            <li><a class="dropdown-item" href="dokumentacja-ecm/oferta-uslug/asystenci-glosowi-lex/" data-i18n="services.voiceAssistants">Asystenci Głosowi na Amazon Lex</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="#about-us">O nas</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#team">Zespół</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/login">Panel Klienta</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">Kontakt</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about-us" data-i18n="nav.about">O nas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#team" data-i18n="nav.team">Zespół</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/login" data-i18n="nav.clientPanel">Panel Klienta</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact" data-i18n="nav.contact">Kontakt</a></li>
                 </ul>
                 <div class="language-switcher">
-                    <a href="#" class="active" title="Polski">🇵🇱 PL</a>
-                    <a href="en.html" title="English">🇺🇸 EN</a>
+                    <a href="#" class="lang-btn active" data-lang="pl" title="Polski">🇵🇱 PL</a>
+                    <a href="#" class="lang-btn" data-lang="en" title="English">🇺🇸 EN</a>
+                    <a href="#" class="lang-btn" data-lang="de" title="Deutsch">🇩🇪 DE</a>
                 </div>
             </div>
         </div>
@@ -562,18 +563,18 @@
             <div class="row align-items-center">
                 <div class="col-lg-6">
                     <h1 class="hero-title">ECM Digital</h1>
-                    <p class="hero-subtitle">
+                    <p class="hero-subtitle" data-i18n="hero.subtitle">
                         Profesjonalna agencja cyfrowa tworząca nowoczesne rozwiązania internetowe. 
                         Od prostych stron WWW po zaawansowane aplikacje mobilne i systemy AI.
                     </p>
                     <div class="d-flex gap-3 flex-wrap">
                         <a href="#services" class="btn btn-primary btn-lg">
                             <i class="fas fa-rocket me-2"></i>
-                            Zobacz Ofertę
+                            <span data-i18n="hero.exploreServices">Zobacz Ofertę</span>
                         </a>
                         <a href="#contact" class="btn btn-outline-primary btn-lg">
                             <i class="fas fa-envelope me-2"></i>
-                            Darmowa Konsultacja
+                            <span data-i18n="hero.getQuote">Darmowa Konsultacja</span>
                         </a>
                     </div>
                 </div>
@@ -589,14 +590,14 @@
     <!-- Services Section -->
     <section id="services" class="py-5">
         <div class="container">
-            <h2 class="section-title">Nasze Usługi</h2>
+            <h2 class="section-title" data-i18n="sections.services.title">Nasze Usługi</h2>
             <div class="row g-4">
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="service-card">
                         <div class="mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), #3b82f6); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
                             <i class="fas fa-globe"></i>
                         </div>
-                        <h4>Strony WWW</h4>
+                        <h4 data-i18n="services.websites">Strony WWW</h4>
                         <p class="text-muted">Nowoczesne, responsywne strony internetowe z optymalizacją SEO. Design dopasowany do Twojej marki.</p>
                         <a href="dokumentacja-ecm/oferta-uslug/strony-www/" class="btn-cta">
                             <i class="fas fa-arrow-right"></i>
@@ -610,7 +611,7 @@
                         <div class="mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), #10b981); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
                             <i class="fab fa-shopify"></i>
                         </div>
-                        <h4>Sklepy Shopify</h4>
+                        <h4 data-i18n="services.shopify">Sklepy Shopify</h4>
                         <p class="text-muted">Profesjonalne sklepy internetowe na platformie Shopify. Integracje płatności, zarządzanie produktami.</p>
                         <a href="dokumentacja-ecm/oferta-uslug/sklepy-shopify/" class="btn-cta">
                             <i class="fas fa-arrow-right"></i>
@@ -624,7 +625,7 @@
                         <div class="mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), #f59e0b); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
                             <i class="fas fa-lightbulb"></i>
                         </div>
-                        <h4>Prototypy MVP</h4>
+                        <h4 data-i18n="services.mvp">Prototypy MVP</h4>
                         <p class="text-muted">Szybkie prototypy i minimum viable products. Testuj pomysły przed pełnym rozwojem.</p>
                         <a href="dokumentacja-ecm/oferta-uslug/prototypy-mvp/" class="btn-cta">
                             <i class="fas fa-arrow-right"></i>
@@ -638,7 +639,7 @@
                         <div class="mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), #8b5cf6); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
                             <i class="fas fa-eye"></i>
                         </div>
-                        <h4>Audyty UX</h4>
+                        <h4 data-i18n="services.uxAudit">Audyty UX</h4>
                         <p class="text-muted">Kompleksowe audyty użyteczności i doświadczenia użytkownika. Popraw UX swojej strony.</p>
                         <a href="dokumentacja-ecm/oferta-uslug/audyty-ux/" class="btn-cta">
                             <i class="fas fa-arrow-right"></i>
@@ -652,7 +653,7 @@
                         <div class="mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), #ef4444); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
                             <i class="fas fa-cogs"></i>
                         </div>
-                        <h4>Automatyzacje</h4>
+                        <h4 data-i18n="services.automation">Automatyzacje</h4>
                         <p class="text-muted">Automatyzacja procesów biznesowych z n8n, Zapier i Opal. Integracje API, workflow automation.</p>
                         <a href="dokumentacja-ecm/oferta-uslug/automatyzacje-n8n/" class="btn-cta">
                             <i class="fas fa-arrow-right"></i>
@@ -666,7 +667,7 @@
                         <div class="mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), #06b6d4); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
                             <i class="fas fa-chart-line"></i>
                         </div>
-                        <h4>Social Media & AI</h4>
+                        <h4 data-i18n="services.socialMedia">Social Media & AI</h4>
                         <p class="text-muted">Analiza danych social media z wykorzystaniem sztucznej inteligencji. Insights i strategie marketingowe.</p>
                         <a href="dokumentacja-ecm/oferta-uslug/social-media-data-science/" class="btn-cta">
                             <i class="fas fa-arrow-right"></i>
@@ -680,7 +681,7 @@
                         <div class="mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), #3b82f6); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
                             <i class="fas fa-robot"></i>
                         </div>
-                        <h4>Asystenci AI na Amazon Bedrock & Copilot Studio</h4>
+                        <h4 data-i18n="services.aiAssistants">Asystenci AI na Amazon Bedrock & Copilot Studio</h4>
                         <p class="text-muted">Zaawansowane asystenty AI oparte na Amazon Bedrock i Microsoft Copilot Studio - automatyzacja procesów biznesowych i wsparcie klientów.</p>
                         <a href="dokumentacja-ecm/oferta-uslug/asystencja-ai-bedrock/" class="btn-cta">
                             <i class="fas fa-arrow-right"></i>
@@ -694,7 +695,7 @@
                         <div class="mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), #10b981); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
                             <i class="fas fa-mobile-alt"></i>
                         </div>
-                        <h4>Aplikacje Mobilne</h4>
+                        <h4 data-i18n="services.mobileApps">Aplikacje Mobilne</h4>
                         <p class="text-muted">Tworzymy nowoczesne aplikacje mobilne iOS, Android i React Native. Od pomysłu do App Store w 8-12 tygodni!</p>
                         <a href="dokumentacja-ecm/oferta-uslug/aplikacje-mobilne/" class="btn-cta">
                             <i class="fas fa-arrow-right"></i>
@@ -708,7 +709,7 @@
                         <div class="mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), #8b5cf6); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
                             <i class="fas fa-microphone"></i>
                         </div>
-                        <h4>Asystenci Głosowi na Amazon Lex</h4>
+                        <h4 data-i18n="services.voiceAssistants">Asystenci Głosowi na Amazon Lex</h4>
                         <p class="text-muted">Tworzymy inteligentne asystenty głosowe i chatboty na platformie Amazon Lex. Automatyzacja obsługi klienta przez głos i tekst!</p>
                         <a href="dokumentacja-ecm/oferta-uslug/asystenci-glosowi-lex/" class="btn-cta">
                             <i class="fas fa-arrow-right"></i>
@@ -725,7 +726,7 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6">
-                    <h2 class="section-title text-start">O ECM Digital</h2>
+                    <h2 class="section-title text-start" data-i18n="sections.about.title">O ECM Digital</h2>
                     <p class="text-muted mb-4">
                         Jesteśmy zespołem pasjonatów technologii, którzy wierzą, że każdy biznes zasługuje na cyfrową transformację. 
                         Łączymy kreatywność z innowacyjnymi rozwiązaniami technologicznymi.
@@ -777,8 +778,8 @@
     <section id="team" class="py-5" style="background: var(--bg-primary);">
         <div class="container">
             <div class="text-center mb-5">
-                <h2 class="section-title">Nasz Zespół</h2>
-                <p class="text-muted">Poznaj ekspertów, którzy tworzą Twoje projekty</p>
+                <h2 class="section-title" data-i18n="sections.team.title">Nasz Zespół</h2>
+                <p class="text-muted" data-i18n="sections.team.subtitle">Poznaj ekspertów, którzy tworzą Twoje projekty</p>
             </div>
             <div class="row">
                 <div class="col-lg-3 col-md-6 mb-4">
@@ -828,34 +829,34 @@
     <!-- Process Section -->
     <section class="py-5">
         <div class="container">
-            <h2 class="section-title">Nasz Proces Pracy</h2>
+                            <h2 class="section-title" data-i18n="sections.process.title">Nasz Proces Pracy</h2>
             <div class="row g-4">
                 <div class="col-lg-3 col-md-6">
                     <div class="process-step text-center">
                         <div class="process-number">1</div>
-                        <h5>Konsultacja</h5>
-                        <p class="text-muted">Analiza potrzeb i wymagań projektu</p>
+                        <h5 data-i18n="sections.process.steps.discovery.title">Konsultacja</h5>
+                        <p class="text-muted" data-i18n="sections.process.steps.discovery.description">Analiza potrzeb i wymagań projektu</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <div class="process-step text-center">
                         <div class="process-number">2</div>
-                        <h5>Planowanie</h5>
-                        <p class="text-muted">Strategia i architektura rozwiązania</p>
+                        <h5 data-i18n="sections.process.steps.design.title">Planowanie</h5>
+                        <p class="text-muted" data-i18n="sections.process.steps.design.description">Strategia i architektura rozwiązania</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <div class="process-step text-center">
                         <div class="process-number">3</div>
-                        <h5>Realizacja</h5>
-                        <p class="text-muted">Development i testowanie</p>
+                        <h5 data-i18n="sections.process.steps.development.title">Realizacja</h5>
+                        <p class="text-muted" data-i18n="sections.process.steps.development.description">Development i testowanie</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <div class="process-step text-center">
                         <div class="process-number">4</div>
-                        <h5>Wdrożenie</h5>
-                        <p class="text-muted">Uruchomienie i wsparcie</p>
+                        <h5 data-i18n="sections.process.steps.launch.title">Wdrożenie</h5>
+                        <p class="text-muted" data-i18n="sections.process.steps.launch.description">Uruchomienie i wsparcie</p>
                     </div>
                 </div>
             </div>
@@ -868,19 +869,19 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <div class="contact-card p-5 text-center">
-                        <h2 class="section-title">Rozpocznij Projekt</h2>
-                        <p class="text-muted mb-4">
+                        <h2 class="section-title" data-i18n="sections.contact.title">Rozpocznij Projekt</h2>
+                        <p class="text-muted mb-4" data-i18n="sections.contact.description">
                             Skontaktuj się z nami, aby omówić Twój projekt. 
                             Oferujemy darmową konsultację i wycenę.
                         </p>
                         <div class="d-flex justify-content-center gap-3 flex-wrap">
                             <a href="mailto:kontakt@ecm-digital.com" class="btn btn-primary btn-lg">
                                 <i class="fas fa-envelope me-2"></i>
-                                Napisz Email
+                                <span data-i18n="sections.contact.sendMessage">Napisz Email</span>
                             </a>
                             <a href="tel:+48123456789" class="btn btn-outline-primary btn-lg">
                                 <i class="fas fa-phone me-2"></i>
-                                Zadzwoń
+                                <span data-i18n="sections.contact.phone">Zadzwoń</span>
                             </a>
                         </div>
                     </div>
@@ -892,7 +893,7 @@
     <!-- Footer -->
     <footer class="footer py-4">
         <div class="container text-center">
-            <p class="text-muted mb-0">
+            <p class="text-muted mb-0" data-i18n="footer.copyright">
                 © 2025 ECM Digital. Wszystkie prawa zastrzeżone.
             </p>
         </div>
@@ -902,9 +903,52 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     
+    <!-- System wielojęzyczny -->
+    <script src="src/js/i18n.js"></script>
+    
     <script>
         // Initialize AOS
         AOS.init();
+        
+        // Initialize I18n
+        const i18nManager = new I18nManager();
+        
+        // Language switcher functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const langButtons = document.querySelectorAll('.lang-btn');
+            
+            langButtons.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Remove active class from all buttons
+                    langButtons.forEach(b => b.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Get language from data-lang attribute
+                    const lang = this.getAttribute('data-lang');
+                    
+                    // Set language in I18n manager
+                    i18nManager.setLanguage(lang);
+                    
+                    // Store language preference
+                    localStorage.setItem('preferredLanguage', lang);
+                });
+            });
+            
+            // Set initial language from localStorage or default to Polish
+            const savedLang = localStorage.getItem('preferredLanguage') || 'pl';
+            i18nManager.setLanguage(savedLang);
+            
+            // Update active button
+            const activeBtn = document.querySelector(`[data-lang="${savedLang}"]`);
+            if (activeBtn) {
+                langButtons.forEach(b => b.classList.remove('active'));
+                activeBtn.classList.add('active');
+            }
+        });
         
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {

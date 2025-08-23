@@ -79,33 +79,33 @@
       "subtitle": "Bewährte Methodik für beste Ergebnisse",
       "steps": {
         "discovery": {
-          "title": "Entdeckung",
-          "description": "Wir analysieren Ihre Bedürfnisse und Geschäftsziele, um die perfekte Lösung zu schaffen."
+          "title": "Beratung",
+          "description": "Analyse der Projektanforderungen und Bedürfnisse"
         },
         "design": {
-          "title": "Design",
-          "description": "Wir erstellen benutzerzentrierte Designs, die Ästhetik mit Funktionalität verbinden."
+          "title": "Planung",
+          "description": "Strategie und Lösungsarchitektur"
         },
         "development": {
-          "title": "Entwicklung",
-          "description": "Wir implementieren Lösungen mit neuesten Technologien und bewährten Praktiken."
+          "title": "Umsetzung",
+          "description": "Entwicklung und Tests"
         },
         "launch": {
-          "title": "Start",
-          "description": "Wir stellen Ihre Lösung bereit und bieten kontinuierliche Unterstützung und Optimierung."
+          "title": "Bereitstellung",
+          "description": "Start und Support"
         }
       }
     },
     "contact": {
-      "title": "Bereit, Ihr Projekt zu starten?",
+      "title": "Starten Sie Ihr Projekt",
       "subtitle": "Lassen Sie uns besprechen, wie wir Ihnen bei der Transformation Ihres Unternehmens helfen können",
       "contactUs": "Kontaktieren Sie uns",
-      "description": "Nehmen Sie Kontakt auf, um Ihre Projektanforderungen zu besprechen",
-      "phone": "Telefon",
+      "description": "Kontaktieren Sie uns, um Ihr Projekt zu besprechen. Wir bieten kostenlose Beratung und Angebote.",
+      "phone": "Anrufen",
       "email": "E-Mail",
       "phoneNumber": "+48 XXX XXX XXX",
       "emailAddress": "contact@ecm-digital.pl",
-      "sendMessage": "Nachricht senden"
+      "sendMessage": "E-Mail schreiben"
     }
   },
   "footer": {

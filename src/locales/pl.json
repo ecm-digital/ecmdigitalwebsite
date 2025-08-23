@@ -75,41 +75,41 @@
       }
     },
     "process": {
-      "title": "Nasz Proces",
+      "title": "Nasz Proces Pracy",
       "subtitle": "Sprawdzona metodologia gwarantująca najlepsze rezultaty",
       "steps": {
         "discovery": {
-          "title": "Discovery",
-          "description": "Analizujemy Twoje potrzeby i cele biznesowe, aby stworzyć idealne rozwiązanie."
+          "title": "Konsultacja",
+          "description": "Analiza potrzeb i wymagań projektu"
         },
         "design": {
-          "title": "Design",
-          "description": "Tworzymy projekty zorientowane na użytkownika, łączące estetykę z funkcjonalnością."
+          "title": "Planowanie",
+          "description": "Strategia i architektura rozwiązania"
         },
         "development": {
-          "title": "Development",
-          "description": "Implementujemy rozwiązania używając najnowszych technologii i najlepszych praktyk."
+          "title": "Realizacja",
+          "description": "Development i testowanie"
         },
         "launch": {
-          "title": "Launch",
-          "description": "Wdrażamy Twoje rozwiązanie i zapewniamy ciągłe wsparcie i optymalizację."
+          "title": "Wdrożenie",
+          "description": "Uruchomienie i wsparcie"
         }
       }
     },
     "contact": {
-      "title": "Gotowy na Rozpoczęcie Projektu?",
+      "title": "Rozpocznij Projekt",
       "subtitle": "Porozmawiajmy o tym, jak możemy pomóc w transformacji Twojego biznesu",
       "contactUs": "Skontaktuj się z nami",
-      "description": "Skontaktuj się, aby omówić wymagania projektu",
-      "phone": "Telefon",
+      "description": "Skontaktuj się z nami, aby omówić Twój projekt. Oferujemy darmową konsultację i wycenę.",
+      "phone": "Zadzwoń"
       "email": "Email",
       "phoneNumber": "+48 XXX XXX XXX",
       "emailAddress": "contact@ecm-digital.pl",
-      "sendMessage": "Wyślij Wiadomość"
+      "sendMessage": "Napisz Email"
     }
   },
   "footer": {
-    "copyright": "© 2024 ECM Digital. Wszystkie prawa zastrzeżone.",
+    "copyright": "© 2025 ECM Digital. Wszystkie prawa zastrzeżone.",
     "poweredBy": "Powered by Scrum Software Sp. z o.o."
   }
 }

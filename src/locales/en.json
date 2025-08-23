@@ -79,33 +79,33 @@
       "subtitle": "Proven methodology ensuring the best results",
       "steps": {
         "discovery": {
-          "title": "Discovery",
-          "description": "We analyze your needs and business goals to create the perfect solution."
+          "title": "Consultation",
+          "description": "Analysis of project needs and requirements"
         },
         "design": {
-          "title": "Design",
-          "description": "We create user-centered designs that combine aesthetics with functionality."
+          "title": "Planning",
+          "description": "Strategy and solution architecture"
         },
         "development": {
-          "title": "Development",
-          "description": "We implement solutions using the latest technologies and best practices."
+          "title": "Implementation",
+          "description": "Development and testing"
         },
         "launch": {
-          "title": "Launch",
-          "description": "We deploy your solution and provide ongoing support and optimization."
+          "title": "Deployment",
+          "description": "Launch and support"
         }
       }
     },
     "contact": {
-      "title": "Ready to Start Your Project?",
+      "title": "Start Your Project",
       "subtitle": "Let's discuss how we can help transform your business",
       "contactUs": "Contact Us",
-      "description": "Get in touch to discuss your project requirements",
-      "phone": "Phone",
+      "description": "Contact us to discuss your project. We offer free consultation and quote.",
+      "phone": "Call"
       "email": "Email",
       "phoneNumber": "+48 XXX XXX XXX",
       "emailAddress": "contact@ecm-digital.pl",
-      "sendMessage": "Send Message"
+      "sendMessage": "Write Email"
     }
   },
   "footer": {
