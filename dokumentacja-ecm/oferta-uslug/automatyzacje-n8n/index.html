@@ -524,9 +524,15 @@
                     <li class="nav-item"><a class="nav-link" href="/login">Panel Klienta</a></li>
                     <li class="nav-item"><a class="nav-link" href="../../../index.html#contact">Kontakt</a></li>
                 </ul>
-                <div class="language-switcher">
-                    <a href="../../../index.html" class="active" title="Polski">🇵🇱 PL</a>
-                    <a href="../../../index.html" title="English">🇺🇸 EN</a>
+                <div class="language-switcher dropdown">
+                    <button class="btn btn-link dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        🇵🇱 PL
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="languageDropdown">
+                        <li><a class="dropdown-item lang-btn active" href="#" data-lang="pl">🇵🇱 Polski</a></li>
+                        <li><a class="dropdown-item lang-btn" href="#" data-lang="en">🇺🇸 English</a></li>
+                        <li><a class="dropdown-item lang-btn" href="#" data-lang="de">🇩🇪 Deutsch</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -537,8 +543,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
-                    <h1 class="hero-title">Automatyzacje n8n</h1>
-                    <p class="lead text-muted">Automatyzacja procesów biznesowych w celu oszczędności czasu i zasobów. Zwiększ efektywność swojego biznesu dzięki inteligentnym automatyzacjom.</p>
+                    <h1 class="hero-title" data-i18n="services.automation">Automatyzacje n8n</h1>
+                    <p class="lead text-muted" data-i18n="services.automation.description">Automatyzacja procesów biznesowych w celu oszczędności czasu i zasobów. Zwiększ efektywność swojego biznesu dzięki inteligentnym automatyzacjom.</p>
                     <a href="#contact" class="btn btn-primary btn-lg mt-3">
                         <i class="fas fa-cogs me-2"></i>
                         Zautomatyzuj procesy
