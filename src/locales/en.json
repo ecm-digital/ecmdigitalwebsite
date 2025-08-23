@@ -26,7 +26,7 @@
     "mobileApps": "Mobile Applications",
     "mobileApps.description": "We create modern mobile applications for iOS, Android and React Native. From idea to App Store in 8-12 weeks!",
     "voiceAssistants": "Voice Assistants on Amazon Lex",
-    "voiceAssistants.description": "We create intelligent voice assistants and chatbots on the Amazon Lex platform. Automation of customer service through voice and text!",
+    "voiceAssistants.description": "We create intelligent voice assistants and chatbots on the Amazon Lex platform. Automation of customer service through voice and text!"
   },
   "hero": {
     "title": "Transform Your Business with",
@@ -110,7 +110,7 @@
       "subtitle": "Let's discuss how we can help transform your business",
       "contactUs": "Contact Us",
       "description": "Contact us to discuss your project. We offer free consultation and quote.",
-      "phone": "Call"
+      "phone": "Call",
       "email": "Email",
       "phoneNumber": "+48 XXX XXX XXX",
       "emailAddress": "contact@ecm-digital.pl",

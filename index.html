@@ -591,7 +591,7 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6">
-                    <h1 class="hero-title">ECM Digital</h1>
+                    <h1 class="hero-title" data-i18n="hero.title">ECM Digital</h1>
                     <p class="hero-subtitle" data-i18n="hero.subtitle">
                         Profesjonalna agencja cyfrowa tworząca nowoczesne rozwiązania internetowe. 
                         Od prostych stron WWW po zaawansowane aplikacje mobilne i systemy AI.
@@ -941,10 +941,11 @@
         
         // Initialize I18n
         const i18nManager = new I18nManager();
-        i18nManager.init();
         
         // Language switcher functionality
         document.addEventListener('DOMContentLoaded', function() {
+            // Initialize I18n after DOM is loaded
+            i18nManager.init();
             const langButtons = document.querySelectorAll('.lang-btn');
             const languageDropdownButton = document.getElementById('languageDropdown');
             

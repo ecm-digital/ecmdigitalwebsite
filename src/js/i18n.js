@@ -271,16 +271,4 @@ if (typeof module !== 'undefined' && module.exports) {
     window.i18n = i18n;
 }
 
-// Automatyczna inicjalizacja po załadowaniu DOM
-document.addEventListener('DOMContentLoaded', () => {
-    i18n.init();
-});
-
-// Inicjalizacja natychmiast jeśli DOM jest już załadowany
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-        i18n.init();
-    });
-} else {
-    i18n.init();
-}
+// Automatyczna inicjalizacja została usunięta - inicjalizacja jest ręczna w HTML
