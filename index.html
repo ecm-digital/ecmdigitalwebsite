@@ -478,6 +478,37 @@
                 margin: 1rem 0 0 0;
             }
         }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .team-card {
+            background: var(--bg-secondary);
+            border-radius: 1rem;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .team-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: var(--primary);
+        }
+
+        .team-avatar {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), #8b5cf6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -513,6 +544,7 @@
                         </ul>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="#about-us">O nas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#team">Zespół</a></li>
                     <li class="nav-item"><a class="nav-link" href="/login">Panel Klienta</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Kontakt</a></li>
                 </ul>
@@ -735,6 +767,58 @@
                             Doświadczeni developerzy, designerzy UX/UI i specjaliści marketingu cyfrowego 
                             pracują nad każdym projektem w Scrum Software Sp. z o.o.
                         </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="py-5" style="background: var(--bg-primary);">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Nasz Zespół</h2>
+                <p class="text-muted">Poznaj ekspertów, którzy tworzą Twoje projekty</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="team-card text-center">
+                        <div class="team-avatar mb-3">
+                            <i class="fas fa-user-tie" style="font-size: 3rem; color: var(--primary);"></i>
+                        </div>
+                        <h5>Anna Kowalska</h5>
+                        <p class="text-muted">CEO & Strategia Biznesowa</p>
+                        <p class="text-muted small">Odpowiedzialna za strategię firmy, relacje z klientami i rozwój biznesu</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="team-card text-center">
+                        <div class="team-avatar mb-3">
+                            <i class="fas fa-code" style="font-size: 3rem; color: var(--primary);"></i>
+                        </div>
+                        <h5>Marcin Nowak</h5>
+                        <p class="text-muted">CTO & Architekt Rozwiązań</p>
+                        <p class="text-muted small">Specjalista w technologiach web, AI i automatyzacji procesów</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="team-card text-center">
+                        <div class="team-avatar mb-3">
+                            <i class="fas fa-palette" style="font-size: 3rem; color: var(--primary);"></i>
+                        </div>
+                        <h5>Katarzyna Wiśniewska</h5>
+                        <p class="text-muted">UX/UI Designer</p>
+                        <p class="text-muted small">Ekspert w projektowaniu interfejsów użytkownika i doświadczeń</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="team-card text-center">
+                        <div class="team-avatar mb-3">
+                            <i class="fas fa-tasks" style="font-size: 3rem; color: var(--primary);"></i>
+                        </div>
+                        <h5>Paweł Kowalski</h5>
+                        <p class="text-muted">Project Manager</p>
+                        <p class="text-muted small">Zarządza projektami i koordynuje pracę zespołu</p>
                     </div>
                 </div>
             </div>
