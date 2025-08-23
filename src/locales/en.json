@@ -117,6 +117,179 @@
       "sendMessage": "Write Email"
     }
   },
+  "serviceProcesses": {
+    "websites": {
+      "title": "Our Website Development Process",
+      "discovery": {
+        "title": "Discovery & Strategy (Week 1)",
+        "description": "Business goals analysis and target audience research"
+      },
+      "design": {
+        "title": "Design & UX (Week 2-3)",
+        "description": "Wireframes, UI design and interactive prototypes"
+      },
+      "development": {
+        "title": "Development (Week 4-5)",
+        "description": "Frontend, backend and external system integrations"
+      },
+      "launch": {
+        "title": "Testing & Launch (Week 6)",
+        "description": "Cross-browser testing and production deployment"
+      }
+    },
+    "shopify": {
+      "title": "Shopify Store Creation Process",
+      "discovery": {
+        "title": "Business Analysis (Week 1)",
+        "description": "Business model analysis and sales strategy"
+      },
+      "design": {
+        "title": "Store Design (Week 2)",
+        "description": "UX/UI design and information architecture"
+      },
+      "development": {
+        "title": "Development (Week 3-4)",
+        "description": "Shopify implementation and integrations"
+      },
+      "launch": {
+        "title": "Deployment (Week 5)",
+        "description": "Testing, optimization and launch"
+      }
+    },
+    "mvp": {
+      "title": "Our 5-Stage MVP Process",
+      "discovery": {
+        "title": "Discovery & Research (Week 1)",
+        "description": "Idea analysis and business model"
+      },
+      "design": {
+        "title": "Design & Prototyping (Week 2)",
+        "description": "User Experience (UX) design and wireframes"
+      },
+      "development": {
+        "title": "Development (Week 3-4)",
+        "description": "Infrastructure setup and development"
+      },
+      "launch": {
+        "title": "Testing & Launch (Week 5)",
+        "description": "Quality Assurance and deployment"
+      }
+    },
+    "uxAudit": {
+      "title": "UX Audit Implementation Process",
+      "discovery": {
+        "title": "Preparation and Planning",
+        "description": "Current state analysis and audit plan"
+      },
+      "design": {
+        "title": "Analysis and Research",
+        "description": "Heuristic analysis and user testing"
+      },
+      "development": {
+        "title": "Recommendations",
+        "description": "Report with recommendations and priorities"
+      },
+      "launch": {
+        "title": "Implementation",
+        "description": "Change implementation and monitoring"
+      }
+    },
+    "automation": {
+      "title": "Automation Implementation Process",
+      "discovery": {
+        "title": "Process Analysis & Mapping",
+        "description": "Current workflow mapping and bottleneck identification"
+      },
+      "design": {
+        "title": "Workflow Design",
+        "description": "Workflow diagrams and logic design"
+      },
+      "development": {
+        "title": "Implementation and Testing",
+        "description": "Automation development and end-to-end testing"
+      },
+      "launch": {
+        "title": "Deployment and Optimization",
+        "description": "Go-live, monitoring and continuous optimization"
+      }
+    },
+    "socialMedia": {
+      "title": "Social Media Campaign Implementation Process",
+      "discovery": {
+        "title": "Analysis and Strategy",
+        "description": "Market analysis, competition and target audience"
+      },
+      "design": {
+        "title": "Creative Concept",
+        "description": "Campaign design and content strategy"
+      },
+      "development": {
+        "title": "Implementation",
+        "description": "Campaign execution and monitoring"
+      },
+      "launch": {
+        "title": "Optimization",
+        "description": "Results analysis and optimization"
+      }
+    },
+    "aiAssistants": {
+      "title": "AI Assistant Implementation Process",
+      "discovery": {
+        "title": "Needs and Process Analysis",
+        "description": "Current workflow mapping and bottleneck identification"
+      },
+      "design": {
+        "title": "AI Architecture and Prompt Engineering",
+        "description": "AI system design and prompt optimization"
+      },
+      "development": {
+        "title": "Development and Integrations",
+        "description": "Assistant implementation and system integrations"
+      },
+      "launch": {
+        "title": "Deployment and Maintenance",
+        "description": "Go-live, monitoring and continuous optimization"
+      }
+    },
+    "mobileApps": {
+      "title": "Mobile App Creation Process",
+      "discovery": {
+        "title": "Analysis and Concept",
+        "description": "Idea analysis and functionality definition"
+      },
+      "design": {
+        "title": "UX/UI Design",
+        "description": "Interface design and user experience"
+      },
+      "development": {
+        "title": "Development",
+        "description": "Implementation on iOS, Android or React Native"
+      },
+      "launch": {
+        "title": "Deployment",
+        "description": "Testing, optimization and App Store publication"
+      }
+    },
+    "voiceAssistants": {
+      "title": "Voice Assistant Creation Process",
+      "discovery": {
+        "title": "Needs Analysis",
+        "description": "Process analysis and use case definition"
+      },
+      "design": {
+        "title": "Dialog Design",
+        "description": "Conversation design and user flows"
+      },
+      "development": {
+        "title": "Development on Amazon Lex",
+        "description": "Intent and slot implementation"
+      },
+      "launch": {
+        "title": "Deployment and Testing",
+        "description": "System integration and voice testing"
+      }
+    }
+  },
   "footer": {
     "copyright": "© 2025 ECM Digital. All rights reserved.",
     "poweredBy": "Powered by Scrum Software Sp. z o.o."
