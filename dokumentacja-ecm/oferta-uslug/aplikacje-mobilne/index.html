@@ -562,6 +562,98 @@
                 margin-top: 0.5rem;
             }
         }
+        
+        /* Timeline Process Styles */
+        .process-timeline {
+            position: relative;
+        }
+
+        .process-timeline::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(135deg, var(--primary), #8b5cf6);
+        }
+
+        .process-step {
+            position: relative;
+            margin-bottom: 3rem;
+            padding-left: 80px;
+        }
+
+        .step-number {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), #8b5cf6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .step-content {
+            background: var(--bg-primary);
+            border-radius: 1rem;
+            padding: 2rem;
+            border: 1px solid var(--separator);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .step-content h4 {
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .step-content ul {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .step-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .step-deliverables {
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--separator);
+        }
+
+        .step-deliverables .badge {
+            font-size: 0.8rem;
+            padding: 0.5rem 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .process-timeline::before {
+                left: 20px;
+            }
+            
+            .process-step {
+                padding-left: 60px;
+            }
+            
+            .step-number {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+            
+            .step-content {
+                padding: 1.5rem;
+            }
+        }
     </style>
 </head>
 <body>
