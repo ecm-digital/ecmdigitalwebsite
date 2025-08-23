@@ -1,0 +1,115 @@
+{
+  "nav": {
+    "home": "Startseite",
+    "services": "Dienstleistungen",
+    "about": "Über uns",
+    "team": "Team",
+    "clientPanel": "Kundenbereich",
+    "contact": "Kontakt",
+    "language": "DE"
+  },
+  "services": {
+    "websites": "Websites",
+    "shopify": "Shopify Stores",
+    "mvp": "MVP Prototypen",
+    "uxAudit": "UX Audits",
+    "automation": "Automatisierung",
+    "socialMedia": "Social Media & KI",
+    "aiAssistants": "KI-Assistenten auf Amazon Bedrock & Copilot Studio",
+    "mobileApps": "Mobile Anwendungen",
+    "voiceAssistants": "Sprachassistenten auf Amazon Lex"
+  },
+  "hero": {
+    "title": "Transformieren Sie Ihr Unternehmen mit",
+    "titleHighlight": "Digitaler Innovation",
+    "subtitle": "Wir sind eine professionelle Digitalagentur, die moderne Websites, E-Commerce-Lösungen, KI-Assistenten und Automatisierungssysteme erstellt. Lassen Sie uns gemeinsam die Zukunft gestalten!",
+    "exploreServices": "Dienstleistungen erkunden",
+    "getQuote": "Angebot erhalten"
+  },
+  "sections": {
+    "services": {
+      "title": "Unsere Dienstleistungen",
+      "subtitle": "Umfassende digitale Lösungen für moderne Unternehmen"
+    },
+    "about": {
+      "title": "Über ECM Digital",
+      "description1": "Wir sind ein Team von Technologie-Enthusiasten, die glauben, dass jedes Unternehmen eine digitale Transformation verdient. Wir verbinden Kreativität mit innovativen technologischen Lösungen.",
+      "description2": "ECM Digital ist eine Marke, die umfassende und moderne digitale Lösungen anbietet. Wir sind spezialisiert auf Webdesign, E-Commerce, UX-Audits und Geschäftsprozessautomatisierung und helfen Unternehmen dabei, sich in der digitalen Welt zu entwickeln.",
+      "description3": "Die Marke ECM Digital operiert innerhalb der Scrum Software Sp. z o.o., die der formelle Eigentümer aller von uns bereitgestellten Dienstleistungen und die rechtlich verantwortliche Einheit ist. Es ist Scrum Software Sp. z o.o., die Rechnungen ausstellt, Verträge abschließt und Finanzabwicklungen durchführt.",
+      "description4": "Dank dieser Lösung verbinden wir modernes Branding mit professionellem Rechtsservice und gewährleisten unseren Kunden vollständige Sicherheit und Transparenz der Zusammenarbeit.",
+      "stats": {
+        "projects": "50+",
+        "projectsLabel": "Abgeschlossene Projekte",
+        "clients": "98%",
+        "clientsLabel": "Zufriedene Kunden"
+      },
+      "team": {
+        "title": "Unser Team",
+        "description": "Erfahrene Entwickler, UX/UI-Designer und Digital-Marketing-Spezialisten arbeiten an jedem Projekt bei Scrum Software Sp. z o.o."
+      }
+    },
+    "team": {
+      "title": "Unser Team",
+      "subtitle": "Lernen Sie die Experten kennen, die Ihre Projekte erstellen",
+      "members": {
+        "anna": {
+          "name": "Anna Kowalska",
+          "position": "CEO & Geschäftsstrategie",
+          "description": "Verantwortlich für Unternehmensstrategie, Kundenbeziehungen und Geschäftsentwicklung"
+        },
+        "marcin": {
+          "name": "Marcin Nowak",
+          "position": "CTO & Lösungsarchitekt",
+          "description": "Spezialist für Webtechnologien, KI und Geschäftsprozessautomatisierung"
+        },
+        "katarzyna": {
+          "name": "Katarzyna Wiśniewska",
+          "position": "UX/UI Designer",
+          "description": "Expertin für Benutzeroberflächendesign und Benutzererfahrung"
+        },
+        "pawel": {
+          "name": "Paweł Kowalski",
+          "position": "Projektmanager",
+          "description": "Verwaltet Projekte und koordiniert Teamarbeit"
+        }
+      }
+    },
+    "process": {
+      "title": "Unser Prozess",
+      "subtitle": "Bewährte Methodik für beste Ergebnisse",
+      "steps": {
+        "discovery": {
+          "title": "Entdeckung",
+          "description": "Wir analysieren Ihre Bedürfnisse und Geschäftsziele, um die perfekte Lösung zu schaffen."
+        },
+        "design": {
+          "title": "Design",
+          "description": "Wir erstellen benutzerzentrierte Designs, die Ästhetik mit Funktionalität verbinden."
+        },
+        "development": {
+          "title": "Entwicklung",
+          "description": "Wir implementieren Lösungen mit neuesten Technologien und bewährten Praktiken."
+        },
+        "launch": {
+          "title": "Start",
+          "description": "Wir stellen Ihre Lösung bereit und bieten kontinuierliche Unterstützung und Optimierung."
+        }
+      }
+    },
+    "contact": {
+      "title": "Bereit, Ihr Projekt zu starten?",
+      "subtitle": "Lassen Sie uns besprechen, wie wir Ihnen bei der Transformation Ihres Unternehmens helfen können",
+      "contactUs": "Kontaktieren Sie uns",
+      "description": "Nehmen Sie Kontakt auf, um Ihre Projektanforderungen zu besprechen",
+      "phone": "Telefon",
+      "email": "E-Mail",
+      "phoneNumber": "+48 XXX XXX XXX",
+      "emailAddress": "contact@ecm-digital.pl",
+      "sendMessage": "Nachricht senden"
+    }
+  },
+  "footer": {
+    "copyright": "© 2024 ECM Digital. Alle Rechte vorbehalten.",
+    "poweredBy": "Powered by Scrum Software Sp. z o.o."
+  }
+}
