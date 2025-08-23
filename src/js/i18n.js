@@ -16,26 +16,28 @@ class I18nManager {
             // Ustawienie domyślnego języka
             this.setLanguage(this.getStoredLanguage() || 'pl');
             
-            // Nasłuchiwanie zmian języka
-            this.bindLanguageSwitchers();
-            
             console.log('I18n system initialized successfully');
         } catch (error) {
             console.error('Failed to initialize I18n system:', error);
+            // Fallback do wbudowanych tłumaczeń
+            this.loadFallbackTranslations();
+            this.setLanguage('pl');
         }
     }
 
     // Ładowanie plików tłumaczeń
     async loadTranslations() {
         try {
-            const [plTranslations, enTranslations] = await Promise.all([
+            const [plTranslations, enTranslations, deTranslations] = await Promise.all([
                 fetch('/src/locales/pl.json').then(res => res.json()),
-                fetch('/src/locales/en.json').then(res => res.json())
+                fetch('/src/locales/en.json').then(res => res.json()),
+                fetch('/src/locales/de.json').then(res => res.json())
             ]);
 
             this.translations = {
                 pl: plTranslations,
-                en: enTranslations
+                en: enTranslations,
+                de: deTranslations
             };
         } catch (error) {
             console.error('Failed to load translations:', error);
@@ -54,16 +56,46 @@ class I18nManager {
                     about: "O nas",
                     team: "Zespół",
                     clientPanel: "Panel Klienta",
-                    contact: "Kontakt",
-                    language: "PL"
+                    contact: "Kontakt"
                 },
                 hero: {
-                    title: "Transformuj Swój Biznes z",
-                    titleHighlight: "Innowacjami Cyfrowymi",
-                    subtitle: "Jesteśmy profesjonalną agencją cyfrową, która tworzy nowoczesne strony internetowe, rozwiązania e-commerce, asystentów AI i systemy automatyzacji. Budujmy przyszłość razem!",
-                    exploreServices: "Poznaj Usługi",
-                    getQuote: "Otrzymaj Ofertę"
-                }
+                    subtitle: "Profesjonalna agencja cyfrowa tworząca nowoczesne rozwiązania internetowe. Od prostych stron WWW po zaawansowane aplikacje mobilne i systemy AI.",
+                    exploreServices: "Zobacz Ofertę",
+                    getQuote: "Darmowa Konsultacja"
+                },
+                services: {
+                    websites: "Strony WWW",
+                    shopify: "Sklepy Shopify",
+                    mvp: "Prototypy MVP",
+                    uxAudit: "Audyty UX",
+                    automation: "Automatyzacje",
+                    socialMedia: "Social Media & AI",
+                    aiAssistants: "Asystenci AI na Amazon Bedrock & Copilot Studio",
+                    mobileApps: "Aplikacje Mobilne",
+                    voiceAssistants: "Asystenci Głosowi na Amazon Lex"
+                },
+                sections: {
+                    services: { title: "Nasze Usługi" },
+                    about: { title: "O ECM Digital" },
+                    team: { title: "Nasz Zespół", subtitle: "Poznaj ekspertów, którzy tworzą Twoje projekty" },
+                    process: { 
+                        title: "Nasz Proces Pracy",
+                        steps: {
+                            discovery: { title: "Konsultacja", description: "Analiza potrzeb i wymagań projektu" },
+                            design: { title: "Planowanie", description: "Strategia i architektura rozwiązania" },
+                            development: { title: "Realizacja", description: "Development i testowanie" },
+                            launch: { title: "Wdrożenie", description: "Uruchomienie i wsparcie" }
+                        }
+                    },
+                    contact: { 
+                        title: "Rozpocznij Projekt",
+                        description: "Skontaktuj się z nami, aby omówić Twój projekt. Oferujemy darmową konsultację i wycenę.",
+                        contactUs: "Skontaktuj się z nami",
+                        sendMessage: "Napisz Email",
+                        phone: "Zadzwoń"
+                    }
+                },
+                footer: { copyright: "© 2025 ECM Digital. Wszystkie prawa zastrzeżone." }
             },
             en: {
                 nav: {
@@ -72,16 +104,94 @@ class I18nManager {
                     about: "About Us",
                     team: "Team",
                     clientPanel: "Client Panel",
-                    contact: "Contact",
-                    language: "EN"
+                    contact: "Contact"
                 },
                 hero: {
-                    title: "Transform Your Business with",
-                    titleHighlight: "Digital Innovation",
-                    subtitle: "We are a professional digital agency that creates cutting-edge websites, e-commerce solutions, AI assistants, and automation systems. Let's build the future together!",
-                    exploreServices: "Explore Services",
-                    getQuote: "Get Quote"
-                }
+                    subtitle: "Professional digital agency creating modern internet solutions. From simple websites to advanced mobile applications and AI systems.",
+                    exploreServices: "View Offer",
+                    getQuote: "Free Consultation"
+                },
+                services: {
+                    websites: "Websites",
+                    shopify: "Shopify Stores",
+                    mvp: "MVP Prototypes",
+                    uxAudit: "UX Audits",
+                    automation: "Automation",
+                    socialMedia: "Social Media & AI",
+                    aiAssistants: "AI Assistants on Amazon Bedrock & Copilot Studio",
+                    mobileApps: "Mobile Applications",
+                    voiceAssistants: "Voice Assistants on Amazon Lex"
+                },
+                sections: {
+                    services: { title: "Our Services" },
+                    about: { title: "About ECM Digital" },
+                    team: { title: "Our Team", subtitle: "Meet the experts who create your projects" },
+                    process: { 
+                        title: "Our Work Process",
+                        steps: {
+                            discovery: { title: "Consultation", description: "Analysis of project needs and requirements" },
+                            design: { title: "Planning", description: "Strategy and solution architecture" },
+                            development: { title: "Implementation", description: "Development and testing" },
+                            launch: { title: "Deployment", description: "Launch and support" }
+                        }
+                    },
+                    contact: { 
+                        title: "Start Your Project",
+                        description: "Contact us to discuss your project. We offer free consultation and quote.",
+                        contactUs: "Contact Us",
+                        sendMessage: "Write Email",
+                        phone: "Call"
+                    }
+                },
+                footer: { copyright: "© 2025 ECM Digital. All rights reserved." }
+            },
+            de: {
+                nav: {
+                    home: "Startseite",
+                    services: "Dienstleistungen",
+                    about: "Über uns",
+                    team: "Team",
+                    clientPanel: "Kundenbereich",
+                    contact: "Kontakt"
+                },
+                hero: {
+                    subtitle: "Professionelle Digitalagentur, die moderne Internetlösungen erstellt. Von einfachen Websites bis hin zu fortschrittlichen mobilen Anwendungen und KI-Systemen.",
+                    exploreServices: "Angebot ansehen",
+                    getQuote: "Kostenlose Beratung"
+                },
+                services: {
+                    websites: "Websites",
+                    shopify: "Shopify Stores",
+                    mvp: "MVP Prototypen",
+                    uxAudit: "UX Audits",
+                    automation: "Automatisierung",
+                    socialMedia: "Social Media & KI",
+                    aiAssistants: "KI-Assistenten auf Amazon Bedrock & Copilot Studio",
+                    mobileApps: "Mobile Anwendungen",
+                    voiceAssistants: "Sprachassistenten auf Amazon Lex"
+                },
+                sections: {
+                    services: { title: "Unsere Dienstleistungen" },
+                    about: { title: "Über ECM Digital" },
+                    team: { title: "Unser Team", subtitle: "Lernen Sie die Experten kennen, die Ihre Projekte erstellen" },
+                    process: { 
+                        title: "Unser Arbeitsprozess",
+                        steps: {
+                            discovery: { title: "Beratung", description: "Analyse der Projektanforderungen und Bedürfnisse" },
+                            design: { title: "Planung", description: "Strategie und Lösungsarchitektur" },
+                            development: { title: "Umsetzung", description: "Entwicklung und Tests" },
+                            launch: { title: "Bereitstellung", description: "Start und Support" }
+                        }
+                    },
+                    contact: { 
+                        title: "Starten Sie Ihr Projekt",
+                        description: "Kontaktieren Sie uns, um Ihr Projekt zu besprechen. Wir bieten kostenlose Beratung und Angebote.",
+                        contactUs: "Kontaktieren Sie uns",
+                        sendMessage: "E-Mail schreiben",
+                        phone: "Anrufen"
+                    }
+                },
+                footer: { copyright: "© 2025 ECM Digital. Alle Rechte vorbehalten." }
             }
         };
     }
@@ -94,7 +204,7 @@ class I18nManager {
         }
 
         this.currentLanguage = lang;
-        localStorage.setItem('ecm-language', lang);
+        localStorage.setItem('preferredLanguage', lang);
         
         // Aktualizacja HTML
         document.documentElement.lang = lang;
@@ -102,15 +212,12 @@ class I18nManager {
         // Aktualizacja wszystkich elementów z data-i18n
         this.updatePageContent();
         
-        // Aktualizacja przełączników języka
-        this.updateLanguageSwitchers();
-        
         console.log(`Language changed to: ${lang}`);
     }
 
     // Pobranie zapisanego języka
     getStoredLanguage() {
-        return localStorage.getItem('ecm-language');
+        return localStorage.getItem('preferredLanguage');
     }
 
     // Pobranie tłumaczenia
@@ -150,65 +257,6 @@ class I18nManager {
                 }
             }
         });
-
-        // Aktualizacja meta tagów
-        this.updateMetaTags();
-    }
-
-    // Aktualizacja meta tagów
-    updateMetaTags() {
-        const title = document.querySelector('title');
-        const metaDescription = document.querySelector('meta[name="description"]');
-        const ogTitle = document.querySelector('meta[property="og:title"]');
-        const ogDescription = document.querySelector('meta[property="og:description"]');
-        const twitterTitle = document.querySelector('meta[name="twitter:title"]');
-        const twitterDescription = document.querySelector('meta[name="twitter:description"]');
-
-        if (title) title.textContent = this.t('meta.title');
-        if (metaDescription) metaDescription.setAttribute('content', this.t('meta.description'));
-        if (ogTitle) ogTitle.setAttribute('content', this.t('meta.ogTitle'));
-        if (ogDescription) ogDescription.setAttribute('content', this.t('meta.ogDescription'));
-        if (twitterTitle) twitterTitle.setAttribute('content', this.t('meta.twitterTitle'));
-        if (twitterDescription) twitterDescription.setAttribute('content', this.t('meta.twitterDescription'));
-    }
-
-    // Aktualizacja przełączników języka
-    updateLanguageSwitchers() {
-        const switchers = document.querySelectorAll('.language-switcher a');
-        
-        switchers.forEach(switcher => {
-            const lang = switcher.getAttribute('data-lang');
-            if (lang === this.currentLanguage) {
-                switcher.classList.add('active');
-            } else {
-                switcher.classList.remove('active');
-            }
-        });
-    }
-
-    // Bindowanie przełączników języka
-    bindLanguageSwitchers() {
-        const switchers = document.querySelectorAll('.language-switcher a, [data-lang]');
-        
-        switchers.forEach(switcher => {
-            switcher.addEventListener('click', (e) => {
-                e.preventDefault();
-                const lang = switcher.getAttribute('data-lang');
-                if (lang) {
-                    this.setLanguage(lang);
-                }
-            });
-        });
-    }
-
-    // Pobranie aktualnego języka
-    getCurrentLanguage() {
-        return this.currentLanguage;
-    }
-
-    // Sprawdzenie czy system jest zainicjalizowany
-    isInitialized() {
-        return this.initialized;
     }
 }
 
