@@ -288,24 +288,48 @@
         }
         
         .language-switcher {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
             margin-left: 1rem;
         }
         
-        .language-switcher a {
+        .language-switcher .btn-link {
             color: var(--text-tertiary);
             text-decoration: none;
             padding: 0.25rem 0.5rem;
             border-radius: 6px;
             transition: all 0.3s ease;
+            border: none;
+            background: none;
         }
         
-        .language-switcher a.active,
-        .language-switcher a:hover {
+        .language-switcher .btn-link:hover,
+        .language-switcher .btn-link:focus {
             color: var(--primary);
             background: var(--glass-bg);
+            box-shadow: none;
+        }
+        
+        .language-switcher .dropdown-menu {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(20px);
+            border-radius: 0.5rem;
+            margin-top: 0.5rem;
+        }
+        
+        .language-switcher .dropdown-item {
+            color: var(--text-tertiary);
+            transition: all 0.3s ease;
+        }
+        
+        .language-switcher .dropdown-item:hover {
+            color: var(--primary);
+            background: var(--glass-bg);
+        }
+        
+        .language-switcher .dropdown-item.active {
+            color: var(--primary);
+            background: var(--glass-bg);
+            font-weight: 600;
         }
         
         /* Section Styles */
@@ -528,8 +552,14 @@
             }
             
             .language-switcher {
-                justify-content: center;
                 margin: 1rem 0 0 0;
+            }
+            
+            .language-switcher .dropdown-menu {
+                position: static !important;
+                transform: none !important;
+                width: 100%;
+                margin-top: 0.5rem;
             }
         }
     </style>
@@ -1025,13 +1055,59 @@
     <script>
         // Initialize AOS
         AOS.init();
-    </script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="../../../src/js/i18n.js"></script>
-    
-    <script>
-        // Initialize AOS
-        AOS.init();
+        
+        // Initialize I18n
+        const i18nManager = new I18nManager();
+        i18nManager.init();
+        
+        // Language switcher functionality
+        document.addEventListener("DOMContentLoaded", function() {
+            const langButtons = document.querySelectorAll(".lang-btn");
+            const languageDropdownButton = document.getElementById("languageDropdown");
+            
+            // Language names for button text
+            const languageNames = {
+                "pl": "🇵🇱 PL",
+                "en": "🇺🇸 EN", 
+                "de": "🇩🇪 DE"
+            };
+            
+            langButtons.forEach(btn => {
+                btn.addEventListener("click", function(e) {
+                    e.preventDefault();
+                    
+                    // Remove active class from all buttons
+                    langButtons.forEach(b => b.classList.remove("active"));
+                    
+                    // Add active class to clicked button
+                    this.classList.add("active");
+                    
+                    // Get language from data-lang attribute
+                    const lang = this.getAttribute("data-lang");
+                    
+                    // Update dropdown button text
+                    languageDropdownButton.innerHTML = languageNames[lang];
+                    
+                    // Set language in I18n manager
+                    i18nManager.setLanguage(lang);
+                    
+                    // Store language preference
+                    localStorage.setItem("preferredLanguage", lang);
+                });
+            });
+            
+            // Set initial language from localStorage or default to Polish
+            const savedLang = localStorage.getItem("preferredLanguage") || "pl";
+            i18nManager.setLanguage(savedLang);
+            
+            // Update active button and dropdown text
+            const activeBtn = document.querySelector(`[data-lang="${savedLang}"]`);
+            if (activeBtn) {
+                langButtons.forEach(b => b.classList.remove("active"));
+                activeBtn.classList.add("active");
+                languageDropdownButton.innerHTML = languageNames[savedLang];
+            }
+        });
         
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
