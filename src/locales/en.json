@@ -22,9 +22,9 @@
   "hero": {
     "title": "Transform Your Business with",
     "titleHighlight": "Digital Innovation",
-    "subtitle": "We are a professional digital agency that creates cutting-edge websites, e-commerce solutions, AI assistants, and automation systems. Let's build the future together!",
-    "exploreServices": "Explore Services",
-    "getQuote": "Get Quote"
+    "subtitle": "Professional digital agency creating modern internet solutions. From simple websites to advanced mobile applications and AI systems.",
+    "exploreServices": "View Offer",
+    "getQuote": "Free Consultation"
   },
   "sections": {
     "services": {
@@ -75,7 +75,7 @@
       }
     },
     "process": {
-      "title": "Our Process",
+      "title": "Our Work Process",
       "subtitle": "Proven methodology ensuring the best results",
       "steps": {
         "discovery": {
@@ -109,7 +109,7 @@
     }
   },
   "footer": {
-    "copyright": "© 2024 ECM Digital. All rights reserved.",
+    "copyright": "© 2025 ECM Digital. All rights reserved.",
     "poweredBy": "Powered by Scrum Software Sp. z o.o."
   }
 }
