@@ -16,6 +16,7 @@
     "mvp": "MVP Prototypes",
     "mvp.description": "Quick validation of business ideas through creating functional prototypes. We minimize risk and maximize chances of success.",
     "uxAudit": "UX Audits",
+    "uxAudit.description": "Comprehensive analysis of user experience to increase conversion. We identify problems and propose specific solutions.",
     "automation": "Automation",
     "socialMedia": "Social Media & AI",
     "aiAssistants": "AI Assistants on Amazon Bedrock & Copilot Studio",
