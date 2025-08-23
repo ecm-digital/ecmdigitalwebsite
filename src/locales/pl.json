@@ -19,9 +19,11 @@
     "automation": "Automatyzacje",
     "socialMedia": "Social Media & AI",
     "aiAssistants": "Asystenci AI na Amazon Bedrock & Copilot Studio",
+    "aiAssistants.description": "Tworzymy zaawansowane asystenty AI oparte na Amazon Bedrock i Microsoft Copilot Studio. Automatyzacja procesów biznesowych, obsługa klientów i analiza danych z wykorzystaniem najnowszych modeli AI.",
     "mobileApps": "Aplikacje Mobilne",
     "mobileApps.description": "Tworzymy nowoczesne aplikacje mobilne iOS, Android i React Native. Od pomysłu do App Store w 8-12 tygodni!",
-    "voiceAssistants": "Asystenci Głosowi na Amazon Lex"
+    "voiceAssistants": "Asystenci Głosowi na Amazon Lex",
+    "voiceAssistants.description": "Tworzymy inteligentne asystenty głosowe i chatboty na platformie Amazon Lex. Automatyzacja obsługi klienta przez głos i tekst!"
   },
   "hero": {
     "title": "Transformuj Swój Biznes z",
