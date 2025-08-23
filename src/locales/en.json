@@ -20,6 +20,7 @@
     "automation": "Automation",
     "automation.description": "Business process automation to save time and resources. Increase your business efficiency with intelligent automations.",
     "socialMedia": "Social Media & AI",
+    "socialMedia.description": "Social media campaigns based on data science with high conversion rates. We use AI and data analysis to maximize ROI.",
     "aiAssistants": "AI Assistants on Amazon Bedrock & Copilot Studio",
     "aiAssistants.description": "We create advanced AI assistants based on Amazon Bedrock and Microsoft Copilot Studio. Business process automation, customer service and data analysis using the latest AI models.",
     "mobileApps": "Mobile Applications",
