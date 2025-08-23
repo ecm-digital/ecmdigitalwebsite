@@ -1,0 +1,115 @@
+{
+  "nav": {
+    "home": "Strona główna",
+    "services": "Usługi",
+    "about": "O nas",
+    "team": "Zespół",
+    "clientPanel": "Panel Klienta",
+    "contact": "Kontakt",
+    "language": "PL"
+  },
+  "services": {
+    "websites": "Strony WWW",
+    "shopify": "Sklepy Shopify",
+    "mvp": "Prototypy MVP",
+    "uxAudit": "Audyty UX",
+    "automation": "Automatyzacje",
+    "socialMedia": "Social Media & AI",
+    "aiAssistants": "Asystenci AI na Amazon Bedrock & Copilot Studio",
+    "mobileApps": "Aplikacje Mobilne",
+    "voiceAssistants": "Asystenci Głosowi na Amazon Lex"
+  },
+  "hero": {
+    "title": "Transformuj Swój Biznes z",
+    "titleHighlight": "Innowacjami Cyfrowymi",
+    "subtitle": "Jesteśmy profesjonalną agencją cyfrową, która tworzy nowoczesne strony internetowe, rozwiązania e-commerce, asystentów AI i systemy automatyzacji. Budujmy przyszłość razem!",
+    "exploreServices": "Poznaj Usługi",
+    "getQuote": "Otrzymaj Ofertę"
+  },
+  "sections": {
+    "services": {
+      "title": "Nasze Usługi",
+      "subtitle": "Kompleksowe rozwiązania cyfrowe dla nowoczesnych firm"
+    },
+    "about": {
+      "title": "O ECM Digital",
+      "description1": "Jesteśmy zespołem pasjonatów technologii, którzy wierzą, że każdy biznes zasługuje na cyfrową transformację. Łączymy kreatywność z innowacyjnymi rozwiązaniami technologicznymi.",
+      "description2": "ECM Digital to marka oferująca kompleksowe i nowoczesne rozwiązania digitalowe. Specjalizujemy się w projektowaniu stron internetowych, e-commerce, audytach UX oraz automatyzacji procesów biznesowych, pomagając firmom rozwijać się w cyfrowym świecie.",
+      "description3": "Marka ECM Digital działa w ramach spółki Scrum Software Sp. z o.o., która jest formalnym właścicielem wszystkich świadczonych przez nas usług oraz odpowiedzialnym podmiotem prawnym. To Scrum Software Sp. z o.o. wystawia faktury, zawiera umowy i prowadzi rozliczenia finansowe.",
+      "description4": "Dzięki takiemu rozwiązaniu łączymy nowoczesny branding i profesjonalną obsługę prawną, zapewniając naszym klientom pełne bezpieczeństwo i transparentność współpracy.",
+      "stats": {
+        "projects": "50+",
+        "projectsLabel": "Zrealizowanych projektów",
+        "clients": "98%",
+        "clientsLabel": "Zadowolonych klientów"
+      },
+      "team": {
+        "title": "Nasz Zespół",
+        "description": "Doświadczeni developerzy, designerzy UX/UI i specjaliści marketingu cyfrowego pracują nad każdym projektem w Scrum Software Sp. z o.o."
+      }
+    },
+    "team": {
+      "title": "Nasz Zespół",
+      "subtitle": "Poznaj ekspertów, którzy tworzą Twoje projekty",
+      "members": {
+        "anna": {
+          "name": "Anna Kowalska",
+          "position": "CEO & Strategia Biznesowa",
+          "description": "Odpowiedzialna za strategię firmy, relacje z klientami i rozwój biznesu"
+        },
+        "marcin": {
+          "name": "Marcin Nowak",
+          "position": "CTO & Architekt Rozwiązań",
+          "description": "Specjalista w technologiach web, AI i automatyzacji procesów"
+        },
+        "katarzyna": {
+          "name": "Katarzyna Wiśniewska",
+          "position": "UX/UI Designer",
+          "description": "Ekspert w projektowaniu interfejsów użytkownika i doświadczeń"
+        },
+        "pawel": {
+          "name": "Paweł Kowalski",
+          "position": "Project Manager",
+          "description": "Zarządza projektami i koordynuje pracę zespołu"
+        }
+      }
+    },
+    "process": {
+      "title": "Nasz Proces",
+      "subtitle": "Sprawdzona metodologia gwarantująca najlepsze rezultaty",
+      "steps": {
+        "discovery": {
+          "title": "Discovery",
+          "description": "Analizujemy Twoje potrzeby i cele biznesowe, aby stworzyć idealne rozwiązanie."
+        },
+        "design": {
+          "title": "Design",
+          "description": "Tworzymy projekty zorientowane na użytkownika, łączące estetykę z funkcjonalnością."
+        },
+        "development": {
+          "title": "Development",
+          "description": "Implementujemy rozwiązania używając najnowszych technologii i najlepszych praktyk."
+        },
+        "launch": {
+          "title": "Launch",
+          "description": "Wdrażamy Twoje rozwiązanie i zapewniamy ciągłe wsparcie i optymalizację."
+        }
+      }
+    },
+    "contact": {
+      "title": "Gotowy na Rozpoczęcie Projektu?",
+      "subtitle": "Porozmawiajmy o tym, jak możemy pomóc w transformacji Twojego biznesu",
+      "contactUs": "Skontaktuj się z nami",
+      "description": "Skontaktuj się, aby omówić wymagania projektu",
+      "phone": "Telefon",
+      "email": "Email",
+      "phoneNumber": "+48 XXX XXX XXX",
+      "emailAddress": "contact@ecm-digital.pl",
+      "sendMessage": "Wyślij Wiadomość"
+    }
+  },
+  "footer": {
+    "copyright": "© 2024 ECM Digital. Wszystkie prawa zastrzeżone.",
+    "poweredBy": "Powered by Scrum Software Sp. z o.o."
+  }
+}

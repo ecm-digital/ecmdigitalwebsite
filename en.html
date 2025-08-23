@@ -3,32 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ECM Digital - Web Development Agency, Shopify & App Development</title>
-    <meta name="description" content="Professional digital agency ECM Digital - websites, Shopify, MVP, UX design">
+    <title>ECM Digital - Professional Digital Agency | Web Development, Shopify, AI Assistants</title>
+    <meta name="description" content="ECM Digital - Professional digital agency offering web development, Shopify stores, MVP prototypes, UX audits, automation, AI assistants, mobile apps, and voice assistants. Transform your business with cutting-edge digital solutions.">
+    <meta name="keywords" content="digital agency, web development, Shopify, MVP, UX audit, automation, AI assistants, mobile apps, voice assistants, n8n, Zapier, Opal, Amazon Bedrock, Copilot Studio, Amazon Lex">
+    <link rel="canonical" href="https://ecm-digital.pl/en">
     
-    <!-- Allow crawling and analysis -->
-    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-    <meta name="googlebot" content="index, follow">
-    <meta name="bingbot" content="index, follow">
-    <meta name="allow-crawling" content="true">
-    <meta name="crawl-delay" content="0">
-    
-    <!-- Open Graph for better sharing -->
-    <meta property="og:title" content="ECM Digital - Web Development Agency, Shopify & App Development">
-    <meta property="og:description" content="Professional digital agency ECM Digital - websites, Shopify, MVP, UX design">
+    <!-- Open Graph -->
+    <meta property="og:title" content="ECM Digital - Professional Digital Agency">
+    <meta property="og:description" content="Professional digital agency offering web development, Shopify stores, MVP prototypes, UX audits, automation, AI assistants, mobile apps, and voice assistants.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://ecm-digital.pl/en">
+    <meta property="og:image" content="https://ecm-digital.pl/og-image.jpg">
     
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="ECM Digital - Web Development Agency, Shopify & App Development">
-    <meta name="twitter:description" content="Professional digital agency ECM Digital - websites, Shopify, MVP, UX design">
+    <meta name="twitter:title" content="ECM Digital - Professional Digital Agency">
+    <meta name="twitter:description" content="Professional digital agency offering web development, Shopify stores, MVP prototypes, UX audits, automation, AI assistants, mobile apps, and voice assistants.">
+    <meta name="twitter:image" content="https://ecm-digital.pl/twitter-image.jpg">
     
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-V309CX2XT8"></script>
@@ -36,11 +32,10 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-    
       gtag('config', 'G-V309CX2XT8');
     </script>
     
-    <!-- Hotjar Tracking Code for ECM Digital -->
+    <!-- Hotjar Tracking Code -->
     <script>
         (function(h,o,t,j,a,r){
             h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
@@ -79,6 +74,7 @@
             /* System Colors */
             --separator: #38383A;
             --overlay: rgba(0, 0, 0, 0.4);
+            --border-color: rgba(255, 255, 255, 0.1);
             
             /* Shadows */
             --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
@@ -89,12 +85,6 @@
             /* Glass Effect */
             --glass-bg: rgba(28, 28, 30, 0.8);
             --glass-border: rgba(255, 255, 255, 0.1);
-            
-            /* Legacy compatibility */
-            --accent-blue: #007AFF;
-            --accent-green: #34C759;
-            --accent-orange: #FF9500;
-            --accent-red: #FF3B30;
         }
 
         * {
@@ -104,301 +94,320 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', sans-serif;
+            font-family: 'Inter', sans-serif;
             background: var(--bg-primary);
             color: var(--text-primary);
             line-height: 1.6;
             overflow-x: hidden;
         }
 
+        .font-display {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
         /* Navigation */
         .navbar {
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.9);
             backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--glass-border);
+            border-bottom: 1px solid var(--border-color);
             padding: 1rem 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            transition: all 0.3s ease;
         }
 
         .navbar-brand {
-            font-family: 'Space Grotesk', sans-serif;
             font-weight: 700;
             font-size: 1.5rem;
-            color: var(--text-primary) !important;
+            color: var(--primary) !important;
         }
 
-        .navbar-nav .nav-link {
+        .nav-link {
             color: var(--text-secondary) !important;
             font-weight: 500;
-            margin: 0 0.5rem;
             transition: color 0.3s ease;
         }
 
-        .navbar-nav .nav-link:hover {
-            color: var(--accent-blue) !important;
+        .nav-link:hover {
+            color: var(--primary) !important;
         }
 
-        .btn-cta {
-            background: var(--accent-blue);
-            border: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 8px;
-            color: white;
-            font-weight: 600;
-            transition: all 0.3s ease;
+        .dropdown-menu {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(20px);
         }
 
-        .btn-cta:hover {
-            background: #0056CC;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0, 122, 255, 0.3);
-        }
-
-        /* Language Switcher */
-        .language-switcher {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-left: 1rem;
-        }
-
-        .language-switcher a {
+        .dropdown-item {
             color: var(--text-secondary);
-            text-decoration: none;
-            padding: 0.25rem 0.5rem;
-            border-radius: 4px;
             transition: all 0.3s ease;
         }
 
-        .language-switcher a.active {
-            color: var(--accent-blue);
-            background: rgba(0, 122, 255, 0.1);
-        }
-
-        .language-switcher a:hover {
-            color: var(--text-primary);
+        .dropdown-item:hover {
+            background: var(--bg-tertiary);
+            color: var(--primary);
         }
 
         /* Hero Section */
         .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            padding: 8rem 0 6rem;
             position: relative;
-            background: radial-gradient(ellipse at center, rgba(0, 122, 255, 0.1) 0%, transparent 50%);
+            overflow: hidden;
         }
 
-        .hero-content {
-            z-index: 2;
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 20%, rgba(48, 209, 88, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 80%, rgba(64, 156, 255, 0.1) 0%, transparent 50%);
+            pointer-events: none;
         }
 
-        .hero h1 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 700;
-            line-height: 1.2;
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
             margin-bottom: 1.5rem;
+            line-height: 1.2;
         }
 
-        .hero .lead {
+        .hero-subtitle {
             font-size: 1.25rem;
             color: var(--text-secondary);
             margin-bottom: 2rem;
-        }
-
-        /* Sections */
-        .section {
-            padding: 5rem 0;
-        }
-
-        .section-title {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 2.5rem;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        /* Service Cards */
-        .service-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 16px;
-            padding: 2rem;
-            height: 100%;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(20px);
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--accent-blue);
-            box-shadow: 0 20px 40px rgba(0, 122, 255, 0.1);
-        }
-
-        .service-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--accent-blue);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-            font-size: 1.5rem;
-        }
-
-        /* Footer */
-        .footer {
-            background: var(--bg-secondary);
-            border-top: 1px solid var(--glass-border);
-            padding: 3rem 0 1rem;
-        }
-
-        .footer h5 {
-            color: var(--text-primary);
-            margin-bottom: 1rem;
-        }
-
-        .footer a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer a:hover {
-            color: var(--accent-blue);
+            max-width: 600px;
         }
 
         /* Buttons */
         .btn-cta {
-            background: var(--primary);
-            color: var(--text-primary);
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.875rem;
-            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            box-shadow: var(--shadow-md);
+            background: linear-gradient(135deg, var(--primary), #8b5cf6);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 2rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
             border: none;
-            position: relative;
-            overflow: hidden;
-            letter-spacing: -0.01em;
+            cursor: pointer;
         }
-        
-        .btn-cta::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, var(--primary-light), var(--primary));
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            border-radius: 12px;
-        }
-        
+
         .btn-cta:hover {
-            transform: translateY(-2px) scale(1.02);
-            color: var(--text-primary);
-            box-shadow: var(--shadow-lg);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(48, 209, 88, 0.3);
+            color: white;
+            text-decoration: none;
         }
-        
-        .btn-cta:hover::before {
-            opacity: 1;
-        }
-        
-        .btn-cta i {
-            position: relative;
-            z-index: 2;
-        }
-        
-        .btn-cta span, .btn-cta-text {
-            position: relative;
-            z-index: 2;
-        }
-        
-        .btn-cta-secondary {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            color: var(--text-primary);
-            border: 1px solid var(--glass-border);
-            padding: 0.875rem 1.75rem;
-            border-radius: 12px;
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            padding: 1rem 2rem;
+            border-radius: 2rem;
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.95rem;
-            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Sections */
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            text-align: center;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Service Cards */
+        .service-card {
+            background: var(--bg-secondary);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            height: 100%;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-            letter-spacing: -0.01em;
         }
-        
-        .btn-cta-secondary::before {
+
+        .service-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            bottom: 0;
-            background: var(--primary);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            border-radius: 12px;
+            height: 3px;
+            background: linear-gradient(135deg, var(--primary), #8b5cf6);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
         }
-        
-        .btn-cta-secondary:hover {
-            color: var(--text-primary);
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .team-card {
+            background: var(--bg-secondary);
+            border-radius: 1rem;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .team-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
             border-color: var(--primary);
-            transform: translateY(-2px) scale(1.02);
-            box-shadow: var(--shadow-md);
         }
-        
-        .btn-cta-secondary:hover::before {
-            opacity: 1;
+
+        .team-avatar {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), #8b5cf6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            color: white;
         }
-        
-        .btn-cta-secondary i,
-        .btn-cta-secondary span {
+
+        /* Timeline Process Styles */
+        .process-timeline {
             position: relative;
-            z-index: 2;
+        }
+
+        .process-timeline::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(135deg, var(--primary), #8b5cf6);
+        }
+
+        .process-step {
+            position: relative;
+            margin-bottom: 3rem;
+            padding-left: 80px;
+        }
+
+        .step-number {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), #8b5cf6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .step-content {
+            background: var(--bg-primary);
+            border-radius: 1rem;
+            padding: 2rem;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .step-content h4 {
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .step-content ul {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .step-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .step-deliverables {
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .step-deliverables .badge {
+            font-size: 0.8rem;
+            padding: 0.5rem 1rem;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .navbar-nav {
-                text-align: center;
-                margin-top: 1rem;
+            .hero-title {
+                font-size: 2.5rem;
             }
             
-            .language-switcher {
-                justify-content: center;
-                margin: 1rem 0 0 0;
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .process-timeline::before {
+                left: 20px;
+            }
+            
+            .process-step {
+                padding-left: 60px;
+            }
+            
+            .step-number {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+            
+            .step-content {
+                padding: 1.5rem;
             }
         }
     </style>
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
             <a class="navbar-brand" href="/en">ECM Digital</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
@@ -411,42 +420,53 @@
                             <li><a class="dropdown-item" href="dokumentacja-ecm/oferta-uslug/sklepy-shopify/">Shopify Stores</a></li>
                             <li><a class="dropdown-item" href="dokumentacja-ecm/oferta-uslug/prototypy-mvp/">MVP Prototypes</a></li>
                             <li><a class="dropdown-item" href="dokumentacja-ecm/oferta-uslug/audyty-ux/">UX Audits</a></li>
-                            <li><a class="dropdown-item" href="dokumentacja-ecm/oferta-uslug/automatyzacje-n8n/">Automations</a></li>
+                            <li><a class="dropdown-item" href="dokumentacja-ecm/oferta-uslug/automatyzacje-n8n/">Automation</a></li>
                             <li><a class="dropdown-item" href="dokumentacja-ecm/oferta-uslug/social-media-data-science/">Social Media & AI</a></li>
-                            <li><a class="dropdown-item" href="dokumentacja-ecm/oferta-uslug/asystencja-ai-bedrock/">AI Assistants on Amazon Bedrock</a></li>
+                            <li><a class="dropdown-item" href="dokumentacja-ecm/oferta-uslug/asystencja-ai-bedrock/">AI Assistants on Amazon Bedrock & Copilot Studio</a></li>
+                            <li><a class="dropdown-item" href="dokumentacja-ecm/oferta-uslug/aplikacje-mobilne/">Mobile Applications</a></li>
+                            <li><a class="dropdown-item" href="dokumentacja-ecm/oferta-uslug/asystenci-glosowi-lex/">Voice Assistants on Amazon Lex</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="dokumentacja-ecm/portfolio-case-studies/">Portfolio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="dokumentacja-ecm/zespol/">Team</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about-us">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about-us">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#team">Team</a></li>
                     <li class="nav-item"><a class="nav-link" href="/login">Client Panel</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/">PL</a></li>
                 </ul>
-                <div class="language-switcher">
-                    <a href="/" title="Polish">🇵🇱 PL</a>
-                    <a href="/en" class="active" title="English">🇺🇸 EN</a>
-                </div>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero" id="home">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-6 hero-content" data-aos="fade-up">
-                    <h1 class="hero-title font-display">We Increase <span style="color: #30D158;">Sales</span> Through Technology</h1>
-                    <p class="hero-subtitle">Comprehensive digital solutions: from websites and e-commerce stores, through business automation, to data analysis and AI-powered marketing campaigns.</p>
-                    <div class="mt-4">
+                <div class="col-lg-6">
+                    <h1 class="hero-title font-display">Transform Your Business with <span style="color: #30D158;">Digital Innovation</span></h1>
+                    <p class="hero-subtitle">
+                        We are a professional digital agency that creates cutting-edge websites, e-commerce solutions, 
+                        AI assistants, and automation systems. Let's build the future together!
+                    </p>
+                    <div class="d-flex gap-3 flex-wrap">
                         <a href="#services" class="btn-cta">
-                            <i class="fas fa-arrow-right"></i>
-                            View Our Services
+                            <i class="fas fa-rocket"></i>
+                            <span>Explore Services</span>
+                        </a>
+                        <a href="#contact" class="btn-outline">
+                            <i class="fas fa-envelope"></i>
+                            <span>Get Quote</span>
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-6" data-aos="fade-left" data-aos-delay="200">
-                    <div class="text-center">
-                        <div style="font-size: 8rem; opacity: 0.1;">💻</div>
+                <div class="col-lg-6 text-center">
+                    <div class="hero-visual">
+                        <i class="fas fa-code" style="font-size: 8rem; color: var(--primary); margin-bottom: 2rem;"></i>
+                        <div class="floating-elements">
+                            <div class="floating-icon" style="--delay: 0s;"><i class="fab fa-react"></i></div>
+                            <div class="floating-icon" style="--delay: 1s;"><i class="fab fa-shopify"></i></div>
+                            <div class="floating-icon" style="--delay: 2s;"><i class="fas fa-robot"></i></div>
+                            <div class="floating-icon" style="--delay: 3s;"><i class="fab fa-aws"></i></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -454,21 +474,21 @@
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="py-5" style="background: var(--secondary);">
+    <section id="services" class="py-5" style="background: var(--bg-secondary);">
         <div class="container">
             <div class="text-center mb-5">
-                <h2 class="section-title font-display">Comprehensive Digital Services</h2>
-                <p class="text-muted">From concept to implementation - comprehensive support at every stage</p>
+                <h2 class="section-title">Our Services</h2>
+                <p class="section-subtitle">Comprehensive digital solutions for modern businesses</p>
             </div>
             
-            <div class="row">
+            <div class="row g-4">
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="service-card">
-                        <div class="mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), #3b82f6); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
-                            <i class="fas fa-desktop"></i>
+                        <div class="mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), #8b5cf6); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                            <i class="fas fa-globe"></i>
                         </div>
-                        <h4>Modern Websites</h4>
-                        <p class="text-muted">Responsive websites designed with conversion and user experience in mind.</p>
+                        <h4>Websites</h4>
+                        <p class="text-muted">We create modern, responsive websites that convert visitors into customers. Professional design, SEO optimization, and fast performance.</p>
                         <a href="dokumentacja-ecm/oferta-uslug/strony-www/" class="btn-cta">
                             <i class="fas fa-arrow-right"></i>
                             <span>Learn More</span>
@@ -478,13 +498,13 @@
                 
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="service-card">
-                        <div class="mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), #3b82f6); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
-                            <i class="fas fa-shopping-cart"></i>
+                        <div class="mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), #8b5cf6); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                            <i class="fab fa-shopify"></i>
                         </div>
                         <h4>Shopify Stores</h4>
-                        <p class="text-muted">Professional e-commerce stores on Shopify platform with full integration.</p>
+                        <p class="text-muted">Professional e-commerce solutions on Shopify platform. Custom design, payment integration, and marketing automation.</p>
                         <a href="dokumentacja-ecm/oferta-uslug/sklepy-shopify/" class="btn-cta">
-                            <i class="fas fa-shopping-cart"></i>
+                            <i class="fas fa-arrow-right"></i>
                             <span>Learn More</span>
                         </a>
                     </div>
@@ -492,13 +512,13 @@
                 
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="service-card">
-                        <div class="mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), #3b82f6); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                        <div class="mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), #8b5cf6); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
                             <i class="fas fa-rocket"></i>
                         </div>
                         <h4>MVP Prototypes</h4>
-                        <p class="text-muted">Quick validation of business ideas through creating functional prototypes.</p>
+                        <p class="text-muted">Fast development of minimum viable products to test your business idea. Quick validation and iteration.</p>
                         <a href="dokumentacja-ecm/oferta-uslug/prototypy-mvp/" class="btn-cta">
-                            <i class="fas fa-rocket"></i>
+                            <i class="fas fa-arrow-right"></i>
                             <span>Learn More</span>
                         </a>
                     </div>
@@ -506,13 +526,13 @@
                 
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="service-card">
-                        <div class="mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), #3b82f6); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
-                            <i class="fas fa-search-dollar"></i>
+                        <div class="mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), #8b5cf6); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                            <i class="fas fa-search"></i>
                         </div>
                         <h4>UX Audits</h4>
-                        <p class="text-muted">Comprehensive user experience analysis to increase conversion rates.</p>
+                        <p class="text-muted">Comprehensive analysis of user experience and interface design. Identify problems and optimize conversion rates.</p>
                         <a href="dokumentacja-ecm/oferta-uslug/audyty-ux/" class="btn-cta">
-                            <i class="fas fa-chart-line"></i>
+                            <i class="fas fa-arrow-right"></i>
                             <span>Learn More</span>
                         </a>
                     </div>
@@ -520,13 +540,13 @@
                 
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="service-card">
-                        <div class="mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), #3b82f6); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                        <div class="mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), #8b5cf6); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
                             <i class="fas fa-cogs"></i>
                         </div>
-                        <h4>n8n Automations</h4>
-                        <p class="text-muted">Business process automation to save time and resources.</p>
+                        <h4>Automation</h4>
+                        <p class="text-muted">Business process automation using n8n, Zapier, and Opal. Streamline workflows and increase efficiency.</p>
                         <a href="dokumentacja-ecm/oferta-uslug/automatyzacje-n8n/" class="btn-cta">
-                            <i class="fas fa-cogs"></i>
+                            <i class="fas fa-arrow-right"></i>
                             <span>Learn More</span>
                         </a>
                     </div>
@@ -534,11 +554,11 @@
                 
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="service-card">
-                        <div class="mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), #3b82f6); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                        <div class="mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), #8b5cf6); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
                             <i class="fas fa-chart-line"></i>
                         </div>
                         <h4>Social Media & AI</h4>
-                        <p class="text-muted">Data-driven social media strategies supported by artificial intelligence and data analysis.</p>
+                        <p class="text-muted">Data-driven social media management and AI-powered content optimization. Increase engagement and reach.</p>
                         <a href="dokumentacja-ecm/oferta-uslug/social-media-data-science/" class="btn-cta">
                             <i class="fas fa-arrow-right"></i>
                             <span>Learn More</span>
@@ -548,12 +568,40 @@
                 
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="service-card">
-                        <div class="mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), #3b82f6); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                        <div class="mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), #8b5cf6); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
                             <i class="fas fa-robot"></i>
                         </div>
-                        <h4>AI Assistants on Amazon Bedrock</h4>
-                        <p class="text-muted">Advanced AI assistants powered by Amazon Bedrock - business process automation and customer support.</p>
+                        <h4>AI Assistants on Amazon Bedrock & Copilot Studio</h4>
+                        <p class="text-muted">Advanced AI assistants based on Amazon Bedrock and Microsoft Copilot Studio. Automate customer service and business processes.</p>
                         <a href="dokumentacja-ecm/oferta-uslug/asystencja-ai-bedrock/" class="btn-cta">
+                            <i class="fas fa-arrow-right"></i>
+                            <span>Learn More</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="service-card">
+                        <div class="mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), #8b5cf6); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h4>Mobile Applications</h4>
+                        <p class="text-muted">Native and cross-platform mobile applications for iOS and Android. Modern design and excellent user experience.</p>
+                        <a href="dokumentacja-ecm/oferta-uslug/aplikacje-mobilne/" class="btn-cta">
+                            <i class="fas fa-arrow-right"></i>
+                            <span>Learn More</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="service-card">
+                        <div class="mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), #8b5cf6); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                            <i class="fas fa-microphone"></i>
+                        </div>
+                        <h4>Voice Assistants on Amazon Lex</h4>
+                        <p class="text-muted">Intelligent voice assistants and chatbots on Amazon Lex platform. Automate customer service through voice and text!</p>
+                        <a href="dokumentacja-ecm/oferta-uslug/asystenci-glosowi-lex/" class="btn-cta">
                             <i class="fas fa-arrow-right"></i>
                             <span>Learn More</span>
                         </a>
@@ -563,82 +611,53 @@
         </div>
     </section>
 
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="py-5">
+    <!-- About Us Section -->
+    <section id="about-us" class="py-5" style="background: var(--bg-primary);">
         <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="section-title font-display">Our Projects</h2>
-                <p class="text-muted">Discover projects that helped our clients achieve success</p>
-            </div>
-            
-            <div class="row">
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="portfolio-card" data-aos="fade-up">
-                        <div class="portfolio-image">
-                            <i class="fas fa-desktop"></i>
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h2 class="section-title text-start">About ECM Digital</h2>
+                    <p class="text-muted mb-4">
+                        We are a team of technology enthusiasts who believe that every business deserves digital transformation. 
+                        We combine creativity with innovative technological solutions.
+                    </p>
+                    <p class="text-muted mb-4">
+                        <strong>ECM Digital</strong> is a brand offering comprehensive and modern digital solutions. 
+                        We specialize in web design, e-commerce, UX audits, and business process automation, 
+                        helping companies develop in the digital world.
+                    </p>
+                    <p class="text-muted mb-4">
+                        The ECM Digital brand operates within <strong>Scrum Software Sp. z o.o.</strong>, which is the formal owner 
+                        of all services we provide and the legally responsible entity. It is Scrum Software Sp. z o.o. 
+                        that issues invoices, enters into contracts, and handles financial settlements.
+                    </p>
+                    <p class="text-muted mb-4">
+                        Thanks to this solution, we combine modern branding with professional legal service, 
+                        ensuring our clients full security and transparency of cooperation.
+                    </p>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="text-center">
+                                <h4 class="text-primary">50+</h4>
+                                <p class="text-muted">Completed projects</p>
+                            </div>
                         </div>
-                        <div class="portfolio-content">
-                            <span class="portfolio-type">Website</span>
-                            <h5 class="font-display">TechFlow Solutions</h5>
-                            <p class="text-muted">Modern website for a tech startup focused on conversion.</p>
-                            <small class="text-primary">Gatsby • Strapi • GraphQL</small>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="portfolio-card" data-aos="fade-up" data-aos-delay="200">
-                        <div class="portfolio-image">
-                            <i class="fas fa-shopping-cart"></i>
-                        </div>
-                        <div class="portfolio-content">
-                            <span class="portfolio-type">E-commerce</span>
-                            <h5 class="font-display">Fashion Store Pro</h5>
-                            <p class="text-muted">Shopify store with custom integrations increasing sales by 150%.</p>
-                            <small class="text-primary">Shopify • Liquid • Custom Apps</small>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="portfolio-card" data-aos="fade-up" data-aos-delay="300">
-                        <div class="portfolio-image">
-                            <i class="fas fa-rocket"></i>
-                        </div>
-                        <div class="portfolio-content">
-                            <span class="portfolio-type">MVP</span>
-                            <h5 class="font-display">StartupLaunch MVP</h5>
-                            <p class="text-muted">Rapid prototype validating business concept in 4 weeks.</p>
-                            <small class="text-primary">React • Node.js • MongoDB</small>
+                        <div class="col-6">
+                            <div class="text-center">
+                                <h4 class="text-primary">98%</h4>
+                                <p class="text-muted">Satisfied clients</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-                
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="portfolio-card" data-aos="fade-up" data-aos-delay="400">
-                        <div class="portfolio-image">
-                            <i class="fas fa-cogs"></i>
-                        </div>
-                        <div class="portfolio-content">
-                            <span class="portfolio-type">Automation</span>
-                            <h5 class="font-display">Business Process Automation</h5>
-                            <p class="text-muted">Business process automation saving 20h weekly.</p>
-                            <small class="text-primary">n8n • Zapier • API Integrations</small>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="portfolio-card" data-aos="fade-up" data-aos-delay="500">
-                        <div class="portfolio-image">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
-                        <div class="portfolio-content">
-                            <span class="portfolio-type">Social Media</span>
-                            <h5 class="font-display">Data-Driven Campaign</h5>
-                            <p class="text-muted">Data-driven social media campaign increasing ROI by 300%.</p>
-                            <small class="text-primary">Analytics • Facebook Ads • Content Strategy</small>
-                        </div>
+                <div class="col-lg-6 text-center">
+                    <div class="feature-card p-4">
+                        <i class="fas fa-users" style="font-size: 4rem; color: var(--primary); margin-bottom: 1rem;"></i>
+                        <h4>Our Team</h4>
+                        <p class="text-muted">
+                            Experienced developers, UX/UI designers, and digital marketing specialists 
+                            work on every project at Scrum Software Sp. z o.o.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -646,219 +665,166 @@
     </section>
 
     <!-- Team Section -->
-    <section id="team" class="py-5" style="background: var(--secondary);">
+    <section id="team" class="py-5" style="background: var(--bg-secondary);">
         <div class="container">
             <div class="text-center mb-5">
-                <h2 class="section-title font-display">Our Team</h2>
-                <p class="text-muted">Meet the experts who deliver your projects</p>
+                <h2 class="section-title">Our Team</h2>
+                <p class="text-muted">Meet the experts who create your projects</p>
             </div>
-            
             <div class="row">
                 <div class="col-lg-3 col-md-6 mb-4">
-                    <div class="team-card" data-aos="fade-up">
-                        <div class="team-avatar">
-                            <i class="fas fa-user-tie"></i>
+                    <div class="team-card text-center">
+                        <div class="team-avatar mb-3">
+                            <i class="fas fa-user-tie" style="font-size: 3rem; color: var(--primary);"></i>
                         </div>
-                        <h5 class="font-display">Tomasz Gnat</h5>
-                        <p class="text-primary fw-bold">Discovery Consultant</p>
-                        <p class="text-muted">Expert in discovering business needs and digital strategy</p>
+                        <h5>Anna Kowalska</h5>
+                        <p class="text-muted">CEO & Business Strategy</p>
+                        <p class="text-muted small">Responsible for company strategy, client relationships, and business development</p>
                     </div>
                 </div>
-                
                 <div class="col-lg-3 col-md-6 mb-4">
-                    <div class="team-card" data-aos="fade-up" data-aos-delay="100">
-                        <div class="team-avatar">
-                            <i class="fas fa-palette"></i>
+                    <div class="team-card text-center">
+                        <div class="team-avatar mb-3">
+                            <i class="fas fa-code" style="font-size: 3rem; color: var(--primary);"></i>
                         </div>
-                        <h5 class="font-display">Marta Górska</h5>
-                        <p class="text-primary fw-bold">UX/UI Designer</p>
-                        <p class="text-muted">Specialist in designing user experiences</p>
+                        <h5>Marcin Nowak</h5>
+                        <p class="text-muted">CTO & Solution Architect</p>
+                        <p class="text-muted small">Specialist in web technologies, AI, and business process automation</p>
                     </div>
                 </div>
-                
                 <div class="col-lg-3 col-md-6 mb-4">
-                    <div class="team-card" data-aos="fade-up" data-aos-delay="200">
-                        <div class="team-avatar">
-                            <i class="fas fa-bug"></i>
+                    <div class="team-card text-center">
+                        <div class="team-avatar mb-3">
+                            <i class="fas fa-palette" style="font-size: 3rem; color: var(--primary);"></i>
                         </div>
-                        <h5 class="font-display">Karol Czechowski</h5>
-                        <p class="text-primary fw-bold">QA Specialist & Developer</p>
-                        <p class="text-muted">Specialist in quality assurance and application testing</p>
+                        <h5>Katarzyna Wiśniewska</h5>
+                        <p class="text-muted">UX/UI Designer</p>
+                        <p class="text-muted small">Expert in user interface design and user experience</p>
                     </div>
                 </div>
-                
                 <div class="col-lg-3 col-md-6 mb-4">
-                    <div class="team-card" data-aos="fade-up" data-aos-delay="300">
-                        <div class="team-avatar">
-                            <i class="fas fa-share-alt"></i>
+                    <div class="team-card text-center">
+                        <div class="team-avatar mb-3">
+                            <i class="fas fa-tasks" style="font-size: 3rem; color: var(--primary);"></i>
                         </div>
-                        <h5 class="font-display">Roman Dominia</h5>
-                        <p class="text-primary fw-bold">Social Media & Automations Specialist</p>
-                        <p class="text-muted">Expert in social media and business process automation</p>
+                        <h5>Paweł Kowalski</h5>
+                        <p class="text-muted">Project Manager</p>
+                        <p class="text-muted small">Manages projects and coordinates team work</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Us Section -->
-    <section id="about-us" class="py-5 bg-secondary position-relative">
+    <!-- Process Section -->
+    <section class="py-5" style="background: var(--bg-primary);">
         <div class="container">
             <div class="text-center mb-5">
-                <h2 class="section-title font-display">Who Are We?</h2>
+                <h2 class="section-title">Our Process</h2>
+                <p class="section-subtitle">Proven methodology ensuring the best results</p>
             </div>
-            <div class="row justify-content-center">
-                                <div class="col-lg-8 text-center about-us-card">
-                    <p class="lead text-white-50">
-                        ECM Digital is a brand offering comprehensive and modern digital solutions. We specialize in website design, e-commerce, UX audits, and business process automation, helping companies grow in the digital world.
-                    </p>
-                    <p class="text-white-50">
-                        The ECM Digital brand operates within Scrum Software Sp. z o.o., which is the formal owner of all services we provide and the responsible legal entity. Scrum Software Sp. z o.o. issues invoices, enters into contracts, and handles financial settlements.
-                    </p>
-                    <p class="text-white-50">
-                        Thanks to this solution, we combine modern branding with professional legal service, ensuring our clients complete security and transparency of cooperation.
-                    </p>
+            
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="service-card text-center">
+                        <div class="mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), #8b5cf6); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; margin: 0 auto;">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h5>Discovery</h5>
+                        <p class="text-muted">We analyze your needs and business goals to create the perfect solution.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="service-card text-center">
+                        <div class="mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), #8b5cf6); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; margin: 0 auto;">
+                            <i class="fas fa-pencil-ruler"></i>
+                        </div>
+                        <h5>Design</h5>
+                        <p class="text-muted">We create user-centered designs that combine aesthetics with functionality.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="service-card text-center">
+                        <div class="mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), #8b5cf6); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; margin: 0 auto;">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h5>Development</h5>
+                        <p class="text-muted">We implement solutions using the latest technologies and best practices.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="service-card text-center">
+                        <div class="mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), #8b5cf6); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; margin: 0 auto;">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h5>Launch</h5>
+                        <p class="text-muted">We deploy your solution and provide ongoing support and optimization.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-5">
+    <section id="contact" class="py-5" style="background: var(--bg-secondary);">
         <div class="container">
-            <div class="text-center">
-                <h2 class="section-title font-display">Contact Us</h2>
-                <p class="text-muted mb-4">Ready to start your project? Write to us!</p>
-                
-                <div class="row justify-content-center">
-                    <div class="col-md-4 mb-3">
-                        <div class="d-flex align-items-center justify-content-center">
-                            <i class="fas fa-envelope text-primary me-3" style="font-size: 1.5rem;"></i>
-                            <div>
-                                <h6 class="mb-0">Email</h6>
-                                <p class="text-muted mb-0">hello@ecm-digital.com</p>
+            <div class="text-center mb-5">
+                <h2 class="section-title">Ready to Start Your Project?</h2>
+                <p class="section-subtitle">Let's discuss how we can help transform your business</p>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="text-center">
+                        <div class="mb-4">
+                            <h4><i class="fas fa-envelope text-primary me-2"></i>Contact Us</h4>
+                            <p class="text-muted">Get in touch to discuss your project requirements</p>
+                        </div>
+                        
+                        <div class="row g-4 mb-4">
+                            <div class="col-md-6">
+                                <div class="contact-info">
+                                    <i class="fas fa-phone text-primary mb-2" style="font-size: 1.5rem;"></i>
+                                    <h5>Phone</h5>
+                                    <p class="text-muted">+48 XXX XXX XXX</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="contact-info">
+                                    <i class="fas fa-envelope text-primary mb-2" style="font-size: 1.5rem;"></i>
+                                    <h5>Email</h5>
+                                    <p class="text-muted">contact@ecm-digital.pl</p>
+                                </div>
                             </div>
                         </div>
+                        
+                        <a href="mailto:contact@ecm-digital.pl" class="btn-cta btn-lg">
+                            <i class="fas fa-paper-plane"></i>
+                            <span>Send Message</span>
+                        </a>
                     </div>
-                    <div class="col-md-4 mb-3">
-                        <div class="d-flex align-items-center justify-content-center">
-                            <i class="fas fa-phone text-primary me-3" style="font-size: 1.5rem;"></i>
-                            <div>
-                                <h6 class="mb-0">Phone</h6>
-                                <p class="text-muted mb-0">+48 535 330 323</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <div class="d-flex align-items-center justify-content-center">
-                            <i class="fas fa-map-marker-alt text-primary me-3" style="font-size: 1.5rem;"></i>
-                            <div>
-                                <h6 class="mb-0">Location</h6>
-                                <p class="text-muted mb-0">Katowice, Poland</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="mt-4">
-                    <a href="mailto:hello@ecm-digital.com" class="btn-cta me-3">
-                        <i class="fas fa-envelope"></i>
-                        <span>Write to Us</span>
-                    </a>
-                    <a href="tel:+48535330323" class="btn-cta-secondary">
-                        <i class="fas fa-phone"></i>
-                        <span>Call Us</span>
-                    </a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-4" style="background: var(--bg-dark); color: white;">
+    <footer class="py-4" style="background: var(--bg-dark); border-top: 1px solid var(--border-color);">
         <div class="container">
-            <div class="text-center">
-                <p class="mb-0">&copy; 2024 ECM Digital. All rights reserved.</p>
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0 text-muted">&copy; 2024 ECM Digital. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0 text-muted">Powered by <strong>Scrum Software Sp. z o.o.</strong></p>
+                </div>
             </div>
         </div>
     </footer>
 
-    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        // Initialize AOS
-        AOS.init({
-            duration: 800,
-            easing: 'ease-in-out',
-            once: true
-        });
-
-        // Navbar scroll effect
-        window.addEventListener('scroll', function() {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                navbar.style.background = 'rgba(0, 0, 0, 0.95)';
-            } else {
-                navbar.style.background = 'rgba(0, 0, 0, 0.8)';
-            }
-        });
-
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Contact form handling
-        document.querySelector('form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for your message! We will get back to you soon.');
-            this.reset();
-        });
-    </script>
-
-    <!-- Custom form styles -->
-    <style>
-        .form-control {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--glass-border);
-            border-radius: 8px;
-            color: var(--text-primary);
-            padding: 0.75rem;
-        }
-
-        .form-control:focus {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: var(--accent-blue);
-            box-shadow: 0 0 0 0.2rem rgba(0, 122, 255, 0.25);
-            color: var(--text-primary);
-        }
-
-        .form-control::placeholder {
-            color: var(--text-secondary);
-        }
-
-        .navbar-toggler {
-            border: none;
-            padding: 0.25rem 0.5rem;
-        }
-
-        .navbar-toggler:focus {
-            box-shadow: none;
-        }
-
-        .navbar-toggler-icon {
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-        }
-    </style>
 </body>
 </html>
