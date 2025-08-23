@@ -10,6 +10,7 @@
   },
   "services": {
     "websites": "Strony WWW",
+    "websites.description": "Profesjonalne strony internetowe dostosowane do potrzeb biznesowych. Zoptymalizowane pod kątem SEO, wydajności i konwersji.",
     "shopify": "Sklepy Shopify",
     "mvp": "Prototypy MVP",
     "uxAudit": "Audyty UX",

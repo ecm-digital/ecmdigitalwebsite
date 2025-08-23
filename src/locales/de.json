@@ -10,6 +10,7 @@
   },
   "services": {
     "websites": "Websites",
+    "websites.description": "Professionelle Websites, die auf Geschäftsanforderungen zugeschnitten sind. Optimiert für SEO, Leistung und Konversion.",
     "shopify": "Shopify Stores",
     "mvp": "MVP Prototypen",
     "uxAudit": "UX Audits",
