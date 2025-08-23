@@ -12,12 +12,15 @@
     "websites": "Strony WWW",
     "websites.description": "Profesjonalne strony internetowe dostosowane do potrzeb biznesowych. Zoptymalizowane pod kątem SEO, wydajności i konwersji.",
     "shopify": "Sklepy Shopify",
+    "shopify.description": "Profesjonalne sklepy internetowe na platformie Shopify, które skutecznie sprzedają i skalują się wraz z Twoim biznesem.",
     "mvp": "Prototypy MVP",
+    "mvp.description": "Szybka walidacja pomysłów biznesowych poprzez tworzenie funkcjonalnych prototypów. Minimalizujemy ryzyko i maksymalizujemy szanse na sukces.",
     "uxAudit": "Audyty UX",
     "automation": "Automatyzacje",
     "socialMedia": "Social Media & AI",
     "aiAssistants": "Asystenci AI na Amazon Bedrock & Copilot Studio",
     "mobileApps": "Aplikacje Mobilne",
+    "mobileApps.description": "Tworzymy nowoczesne aplikacje mobilne iOS, Android i React Native. Od pomysłu do App Store w 8-12 tygodni!",
     "voiceAssistants": "Asystenci Głosowi na Amazon Lex"
   },
   "hero": {
