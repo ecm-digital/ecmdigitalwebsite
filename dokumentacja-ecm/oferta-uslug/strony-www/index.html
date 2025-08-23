@@ -116,6 +116,9 @@
             padding: 160px 0 120px;
             position: relative;
             overflow: hidden;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
         }
         
         .hero::before {
@@ -168,6 +171,9 @@
             height: 100%;
             position: relative;
             overflow: hidden;
+            min-height: 200px;
+            opacity: 1;
+            transform: none;
         }
         
         .service-card::before {
@@ -326,12 +332,42 @@
             font-weight: 600;
         }
         
+        /* AOS Fixes */
+        [data-aos] {
+            opacity: 1 !important;
+            transform: none !important;
+        }
+        
+        [data-aos].aos-animate {
+            opacity: 1 !important;
+        }
+        
+        /* Prevent layout shifts */
+        .service-card {
+            min-height: 200px;
+        }
+        
+        .hero {
+            min-height: 400px;
+        }
+        
+        .content-section {
+            min-height: 300px;
+        }
+        
         /* Section Styles */
         .section-title {
             font-size: clamp(2rem, 5vw, 3rem);
             font-weight: 800;
             margin-bottom: 1rem;
             text-align: center;
+        }
+        
+        /* Content Section */
+        .content-section {
+            min-height: 300px;
+            opacity: 1;
+            transform: none;
         }
         
         .text-muted {
@@ -1269,12 +1305,21 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="../../../src/js/i18n.js"></script>
     <script>
-        // Initialize AOS
+        // Initialize AOS with better settings
         AOS.init({
-            duration: 800,
-            easing: "ease-in-out",
+            duration: 600,
+            easing: "ease-out",
             once: true,
-            offset: 100
+            offset: 50,
+            delay: 0,
+            disable: false,
+            startEvent: 'DOMContentLoaded',
+            initClassName: 'aos-init',
+            animatedClassName: 'aos-animate',
+            useClassNames: false,
+            disableMutationObserver: false,
+            debounceDelay: 50,
+            throttleDelay: 99
         });
         
         // Initialize I18n
