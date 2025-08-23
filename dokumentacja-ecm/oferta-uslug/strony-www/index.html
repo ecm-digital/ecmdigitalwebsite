@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="pl" data-lang="pl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -353,6 +353,98 @@
         
         .content-section {
             min-height: 300px;
+        }
+        
+        /* Timeline Process Styles */
+        .process-timeline {
+            position: relative;
+        }
+
+        .process-timeline::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(135deg, var(--primary), #8b5cf6);
+        }
+
+        .process-step {
+            position: relative;
+            margin-bottom: 3rem;
+            padding-left: 80px;
+        }
+
+        .step-number {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), #8b5cf6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .step-content {
+            background: var(--bg-primary);
+            border-radius: 1rem;
+            padding: 2rem;
+            border: 1px solid var(--separator);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .step-content h4 {
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .step-content ul {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .step-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .step-deliverables {
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--separator);
+        }
+
+        .step-deliverables .badge {
+            font-size: 0.8rem;
+            padding: 0.5rem 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .process-timeline::before {
+                left: 20px;
+            }
+            
+            .process-step {
+                padding-left: 60px;
+            }
+            
+            .step-number {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+            
+            .step-content {
+                padding: 1.5rem;
+            }
         }
         
         /* Section Styles */
@@ -735,11 +827,11 @@
                     <div class="service-card" data-aos="fade-up" data-aos-delay="100">
                         <h2><i class="fas fa-tasks text-primary me-3"></i><span data-i18n="serviceProcesses.websites.title">Nasz Proces Realizacji</span></h2>
                         
-                        <div class="timeline">
-                            <div class="timeline-item">
-                                <div class="timeline-marker">1</div>
-                                <div class="timeline-content">
-                                    <h5 data-i18n="serviceProcesses.websites.discovery.title">Discovery & Strategia (Tydzień 1)</h5>
+                        <div class="process-timeline">
+                            <div class="process-step">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <h4 data-i18n="serviceProcesses.websites.discovery.title">Discovery & Strategia (Tydzień 1)</h4>
                                     <ul>
                                         <li data-i18n="serviceProcesses.websites.discovery.description">Analiza celów biznesowych</li>
                                         <li>Badanie grupy docelowej</li>
@@ -747,13 +839,18 @@
                                         <li>Definicja funkcjonalności</li>
                                         <li>Strategia SEO i content</li>
                                     </ul>
+                                    <div class="step-deliverables">
+                                        <span class="badge bg-primary me-2">Strategia projektu</span>
+                                        <span class="badge bg-primary me-2">Mapa funkcjonalności</span>
+                                        <span class="badge bg-primary me-2">Analiza konkurencji</span>
+                                    </div>
                                 </div>
                             </div>
                             
-                            <div class="timeline-item">
-                                <div class="timeline-marker">2</div>
-                                <div class="timeline-content">
-                                    <h5 data-i18n="serviceProcesses.websites.design.title">Design & UX (Tydzień 2-3)</h5>
+                            <div class="process-step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <h4 data-i18n="serviceProcesses.websites.design.title">Design & UX (Tydzień 2-3)</h4>
                                     <ul>
                                         <li data-i18n="serviceProcesses.websites.design.description">Wireframes i architektura informacji</li>
                                         <li>UI design i branding</li>
@@ -761,13 +858,18 @@
                                         <li>Responsive design</li>
                                         <li>User experience optimization</li>
                                     </ul>
+                                    <div class="step-deliverables">
+                                        <span class="badge bg-primary me-2">Wireframes</span>
+                                        <span class="badge bg-primary me-2">Prototypy</span>
+                                        <span class="badge bg-primary me-2">Style guide</span>
+                                    </div>
                                 </div>
                             </div>
                             
-                            <div class="timeline-item">
-                                <div class="timeline-marker">3</div>
-                                <div class="timeline-content">
-                                    <h5 data-i18n="serviceProcesses.websites.development.title">Development (Tydzień 4-5)</h5>
+                            <div class="process-step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <h4 data-i18n="serviceProcesses.websites.development.title">Development (Tydzień 4-5)</h4>
                                     <ul>
                                         <li data-i18n="serviceProcesses.websites.development.description">Frontend development (HTML, CSS, JS)</li>
                                         <li>Backend development i CMS</li>
@@ -775,13 +877,18 @@
                                         <li>Optymalizacja wydajności</li>
                                         <li>SEO implementation</li>
                                     </ul>
+                                    <div class="step-deliverables">
+                                        <span class="badge bg-primary me-2">Kod źródłowy</span>
+                                        <span class="badge bg-primary me-2">CMS</span>
+                                        <span class="badge bg-primary me-2">Integracje</span>
+                                    </div>
                                 </div>
                             </div>
                             
-                            <div class="timeline-item">
-                                <div class="timeline-marker">4</div>
-                                <div class="timeline-content">
-                                    <h5 data-i18n="serviceProcesses.websites.launch.title">Testing & Launch (Tydzień 6)</h5>
+                            <div class="process-step">
+                                <div class="step-number">4</div>
+                                <div class="step-content">
+                                    <h4 data-i18n="serviceProcesses.websites.launch.title">Testing & Launch (Tydzień 6)</h4>
                                     <ul>
                                         <li>Cross-browser testing</li>
                                         <li>Mobile responsiveness testing</li>
@@ -789,13 +896,18 @@
                                         <li>Go-live i DNS setup</li>
                                         <li>Szkolenie z obsługi CMS</li>
                                     </ul>
+                                    <div class="step-deliverables">
+                                        <span class="badge bg-primary me-2">Raport testów</span>
+                                        <span class="badge bg-primary me-2">Strona na produkcji</span>
+                                        <span class="badge bg-primary me-2">Dokumentacja</span>
+                                    </div>
                                 </div>
                             </div>
                             
-                            <div class="timeline-item">
-                                <div class="timeline-marker">5</div>
-                                <div class="timeline-content">
-                                    <h5>Wsparcie & Rozwój (Ongoing)</h5>
+                            <div class="process-step">
+                                <div class="step-number">5</div>
+                                <div class="step-content">
+                                    <h4>Wsparcie & Rozwój (Ongoing)</h4>
                                     <ul>
                                         <li>Monitoring wydajności</li>
                                         <li>Aktualizacje bezpieczeństwa</li>
@@ -803,6 +915,11 @@
                                         <li>Rozwój funkcjonalności</li>
                                         <li>Wsparcie techniczne</li>
                                     </ul>
+                                    <div class="step-deliverables">
+                                        <span class="badge bg-primary me-2">Monitoring</span>
+                                        <span class="badge bg-primary me-2">Wsparcie</span>
+                                        <span class="badge bg-primary me-2">Aktualizacje</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -1326,10 +1443,11 @@
         
         // Initialize I18n
         const i18nManager = new I18nManager();
-        i18nManager.init();
         
         // Language switcher functionality
         document.addEventListener("DOMContentLoaded", function() {
+            // Initialize I18n after DOM is loaded
+            i18nManager.init();
             const langButtons = document.querySelectorAll(".lang-btn");
             const languageDropdownButton = document.getElementById("languageDropdown");
             

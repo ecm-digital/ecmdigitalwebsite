@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="pl" data-lang="pl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -1320,10 +1320,11 @@
         
         // Initialize I18n
         const i18nManager = new I18nManager();
-        i18nManager.init();
         
         // Language switcher functionality
         document.addEventListener("DOMContentLoaded", function() {
+            // Initialize I18n after DOM is loaded
+            i18nManager.init();
             const langButtons = document.querySelectorAll(".lang-btn");
             const languageDropdownButton = document.getElementById("languageDropdown");
             
