@@ -1223,73 +1223,104 @@
                 this.messages = [];
                 this.currentLanguage = 'pl';
                 
-                this.init();
+                try {
+                    this.init();
+                } catch (error) {
+                    console.error('Error in VoiceChatbot constructor:', error);
+                }
             }
             
             init() {
-                // Initialize speech recognition
-                if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
-                    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-                    this.recognition = new SpeechRecognition();
-                    this.recognition.continuous = false;
-                    this.recognition.interimResults = false;
-                    this.recognition.lang = 'pl-PL';
+                try {
+                    // Initialize speech recognition
+                    if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+                        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+                        this.recognition = new SpeechRecognition();
+                        this.recognition.continuous = false;
+                        this.recognition.interimResults = false;
+                        this.recognition.lang = 'pl-PL';
+                        
+                        this.recognition.onstart = () => {
+                            this.isListening = true;
+                            this.updateUI();
+                        };
+                        
+                        this.recognition.onresult = (event) => {
+                            const transcript = event.results[0][0].transcript;
+                            this.handleUserInput(transcript);
+                        };
+                        
+                        this.recognition.onend = () => {
+                            this.isListening = false;
+                            this.updateUI();
+                        };
+                        
+                        this.recognition.onerror = (event) => {
+                            console.error('Speech recognition error:', event.error);
+                            this.isListening = false;
+                            this.updateUI();
+                        };
+                        
+                        console.log('Speech recognition initialized successfully');
+                    } else {
+                        console.warn('Speech recognition not supported in this browser');
+                    }
                     
-                    this.recognition.onstart = () => {
-                        this.isListening = true;
-                        this.updateUI();
-                    };
-                    
-                    this.recognition.onresult = (event) => {
-                        const transcript = event.results[0][0].transcript;
-                        this.handleUserInput(transcript);
-                    };
-                    
-                    this.recognition.onend = () => {
-                        this.isListening = false;
-                        this.updateUI();
-                    };
-                    
-                    this.recognition.onerror = (event) => {
-                        console.error('Speech recognition error:', event.error);
-                        this.isListening = false;
-                        this.updateUI();
-                    };
+                    this.bindEvents();
+                    this.addWelcomeMessage();
+                    console.log('VoiceChatbot initialized successfully');
+                } catch (error) {
+                    console.error('Error in VoiceChatbot init:', error);
                 }
-                
-                this.bindEvents();
-                this.addWelcomeMessage();
             }
             
             bindEvents() {
-                // Open/close modal
-                document.getElementById('voiceChatbotButton').addEventListener('click', () => {
-                    this.openModal();
-                });
-                
-                document.getElementById('voiceChatbotClose').addEventListener('click', () => {
-                    this.closeModal();
-                });
-                
-                // Voice input button
-                document.getElementById('voiceInputButton').addEventListener('click', () => {
-                    this.toggleListening();
-                });
-                
-                // Suggestion clicks
-                document.querySelectorAll('.voice-suggestion').forEach(suggestion => {
-                    suggestion.addEventListener('click', () => {
-                        const text = suggestion.getAttribute('data-suggestion');
-                        this.handleUserInput(text);
-                    });
-                });
-                
-                // Close modal on outside click
-                document.getElementById('voiceChatbotModal').addEventListener('click', (e) => {
-                    if (e.target.id === 'voiceChatbotModal') {
-                        this.closeModal();
+                try {
+                    // Open/close modal
+                    const openButton = document.getElementById('voiceChatbotButton');
+                    if (openButton) {
+                        openButton.addEventListener('click', () => {
+                            this.openModal();
+                        });
                     }
-                });
+                    
+                    const closeButton = document.getElementById('voiceChatbotClose');
+                    if (closeButton) {
+                        closeButton.addEventListener('click', () => {
+                            this.closeModal();
+                        });
+                    }
+                    
+                    // Voice input button
+                    const voiceButton = document.getElementById('voiceInputButton');
+                    if (voiceButton) {
+                        voiceButton.addEventListener('click', () => {
+                            this.toggleListening();
+                        });
+                    }
+                    
+                    // Suggestion clicks
+                    document.querySelectorAll('.voice-suggestion').forEach(suggestion => {
+                        suggestion.addEventListener('click', () => {
+                            const text = suggestion.getAttribute('data-suggestion');
+                            this.handleUserInput(text);
+                        });
+                    });
+                    
+                    // Close modal on outside click
+                    const modal = document.getElementById('voiceChatbotModal');
+                    if (modal) {
+                        modal.addEventListener('click', (e) => {
+                            if (e.target.id === 'voiceChatbotModal') {
+                                this.closeModal();
+                            }
+                        });
+                    }
+                    
+                    console.log('All event listeners bound successfully');
+                } catch (error) {
+                    console.error('Error binding events:', error);
+                }
             }
             
             openModal() {
@@ -1402,27 +1433,31 @@
         // Initialize voice chatbot when DOM is loaded
         document.addEventListener('DOMContentLoaded', function() {
             console.log('DOM loaded, initializing voice chatbot...');
+            
+            // Ensure widget is visible even if chatbot fails
+            const widget = document.querySelector('.voice-chatbot-widget');
+            const button = document.getElementById('voiceChatbotButton');
+            
+            if (widget) {
+                widget.style.display = 'block';
+                widget.style.visibility = 'visible';
+                widget.style.opacity = '1';
+                console.log('Widget element found and made visible');
+            }
+            
+            if (button) {
+                button.style.display = 'flex';
+                button.style.visibility = 'visible';
+                button.style.opacity = '1';
+                console.log('Button element found and made visible');
+            }
+            
             try {
                 const chatbot = new VoiceChatbot();
                 console.log('Voice chatbot initialized successfully:', chatbot);
-                
-                // Debug: check if elements exist
-                const widget = document.querySelector('.voice-chatbot-widget');
-                const button = document.getElementById('voiceChatbotButton');
-                console.log('Widget element:', widget);
-                console.log('Button element:', button);
-                
-                if (widget) {
-                    widget.style.border = '2px solid green';
-                    console.log('Widget found and highlighted');
-                }
-                
-                if (button) {
-                    button.style.border = '2px solid blue';
-                    console.log('Button found and highlighted');
-                }
             } catch (error) {
                 console.error('Error initializing voice chatbot:', error);
+                console.log('But widget should still be visible');
             }
         });
     </script>
