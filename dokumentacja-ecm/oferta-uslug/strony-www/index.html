@@ -345,14 +345,36 @@
         /* Prevent layout shifts */
         .service-card {
             min-height: 200px;
+            opacity: 1 !important;
+            transform: none !important;
         }
         
         .hero {
             min-height: 400px;
+            opacity: 1 !important;
+            transform: none !important;
         }
         
         .content-section {
             min-height: 300px;
+            opacity: 1 !important;
+            transform: none !important;
+        }
+        
+        /* Additional fixes for layout stability */
+        .process-timeline {
+            opacity: 1 !important;
+            transform: none !important;
+        }
+        
+        .process-step {
+            opacity: 1 !important;
+            transform: none !important;
+        }
+        
+        .step-content {
+            opacity: 1 !important;
+            transform: none !important;
         }
         
         /* Timeline Process Styles */
@@ -425,6 +447,63 @@
         .step-deliverables .badge {
             font-size: 0.8rem;
             padding: 0.5rem 1rem;
+        }
+        
+        /* Additional layout stability */
+        .process-timeline {
+            min-height: 100px;
+        }
+        
+        .process-step {
+            min-height: 80px;
+        }
+        
+        .step-content {
+            min-height: 120px;
+        }
+        
+        /* Force visibility for all elements */
+        * {
+            visibility: visible !important;
+        }
+        
+        /* Ensure proper spacing */
+        .service-card + .service-card {
+            margin-top: 2rem;
+        }
+        
+        .process-step + .process-step {
+            margin-top: 2rem;
+        }
+        
+        /* Additional fixes for text gaps */
+        p, h1, h2, h3, h4, h5, h6, li, span, div {
+            display: block !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+        
+        /* Fix for process timeline gaps */
+        .process-timeline .process-step {
+            display: block !important;
+            margin-bottom: 2rem !important;
+            page-break-inside: avoid;
+        }
+        
+        /* Ensure content is always visible */
+        .step-content * {
+            display: block !important;
+            opacity: 1 !important;
+        }
+        
+        .step-content ul {
+            display: block !important;
+            margin: 1rem 0 !important;
+        }
+        
+        .step-content li {
+            display: list-item !important;
+            margin-bottom: 0.5rem !important;
         }
 
         @media (max-width: 768px) {
@@ -1266,19 +1345,19 @@
     <script>
         // Initialize AOS with better settings
         AOS.init({
-            duration: 600,
-            easing: "ease-out",
+            duration: 800,
+            easing: "ease-out-cubic",
             once: true,
-            offset: 50,
-            delay: 0,
+            offset: 100,
+            delay: 100,
             disable: false,
             startEvent: 'DOMContentLoaded',
             initClassName: 'aos-init',
             animatedClassName: 'aos-animate',
             useClassNames: false,
             disableMutationObserver: false,
-            debounceDelay: 50,
-            throttleDelay: 99
+            debounceDelay: 100,
+            throttleDelay: 150
         });
         
         // Initialize I18n
@@ -1286,6 +1365,13 @@
         
         // Language switcher functionality
         document.addEventListener("DOMContentLoaded", function() {
+            // Force all elements to be visible
+            document.querySelectorAll('[data-aos]').forEach(el => {
+                el.style.opacity = '1';
+                el.style.transform = 'none';
+                el.style.visibility = 'visible';
+            });
+            
             // Initialize I18n after DOM is loaded
             i18nManager.init();
             const langButtons = document.querySelectorAll(".lang-btn");
