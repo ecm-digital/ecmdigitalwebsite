@@ -48,20 +48,33 @@ class AWSChatbot {
             // Initialize speech recognition
             this.initSpeechRecognition();
             
-            // Load mute preference
-            this.loadMutePreference();
+                    // Load mute preference
+        this.loadMutePreference();
+        
+        // Bind events
+        this.bindEvents();
+        
+        // Add welcome message
+        this.addWelcomeMessage();
+        
+        console.log('✅ AWS Chatbot initialized successfully');
+    }
+    
+    async checkPollyVoices() {
+        try {
+            console.log('🔍 Checking available Polly voices...');
+            const result = await this.polly.describeVoices().promise();
+            console.log('✅ Available voices:', result.Voices?.length || 0);
             
-            // Bind events
-            this.bindEvents();
-            
-            // Add welcome message
-            this.addWelcomeMessage();
-            
-            console.log('✅ AWS Chatbot initialized successfully');
+            if (result.Voices && result.Voices.length > 0) {
+                const polishVoices = result.Voices.filter(v => v.LanguageCode === 'pl-PL');
+                const englishVoices = result.Voices.filter(v => v.LanguageCode === 'en-US');
+                
+                console.log('🇵🇱 Polish voices:', polishVoices.map(v => v.Id));
+                console.log('🇺🇸 English voices:', englishVoices.map(v => v.Id));
+            }
         } catch (error) {
-            console.error('❌ Error initializing AWS Chatbot:', error);
-            console.error('Error stack:', error.stack);
-            this.fallbackToBasicChatbot();
+            console.warn('⚠️ Could not check Polly voices:', error.message);
         }
     }
     
@@ -96,6 +109,9 @@ class AWSChatbot {
         this.cognitoIdentity = new AWS.CognitoIdentity();
         
         console.log('✅ AWS services initialized with credentials');
+        
+        // Check available Polly voices
+        this.checkPollyVoices();
     }
     
     initSpeechRecognition() {
@@ -641,52 +657,77 @@ Co Cię najbardziej interesuje? Opowiedz mi o swoich potrzebach lub wybierz jedn
         console.log('🎯 speakWithPolly called with text:', text.substring(0, 50) + '...');
         console.log('🔍 Polly instance:', this.polly);
         console.log('🔍 Current language:', this.currentLanguage);
+        console.log('🔍 AWS config region:', AWS.config.region);
         
-        const params = {
-            Text: text,
-            OutputFormat: 'mp3',
-            VoiceId: this.currentLanguage === 'pl' ? 'Ewa' : 'Joanna',
-            Engine: 'neural',
-            TextType: 'text'
+        // Try different regions and voice configurations
+        const regions = ['us-east-1', 'us-west-2', 'eu-west-1'];
+        const voices = {
+            'pl': ['Ewa', 'Maja', 'Jacek'],
+            'en': ['Joanna', 'Matthew', 'Salli']
         };
         
-        console.log('📤 Polly parameters:', params);
-        
-        try {
-            console.log('🚀 Calling Polly.synthesizeSpeech...');
-            const result = await this.polly.synthesizeSpeech(params).promise();
-            console.log('✅ Polly response received:', result);
-            console.log('🔊 Audio stream length:', result.AudioStream ? result.AudioStream.length : 'No audio stream');
-            
-            // Play the audio
-            const audioBlob = new Blob([result.AudioStream], { type: 'audio/mpeg' });
-            const audioUrl = URL.createObjectURL(audioBlob);
-            const audio = new Audio(audioUrl);
-            
-            console.log('🎵 Audio element created, attempting to play...');
-            
-            audio.onended = () => {
-                console.log('✅ Audio playback completed');
-                URL.revokeObjectURL(audioUrl);
-            };
-            
-            audio.onerror = (error) => {
-                console.error('❌ Audio playback error:', error);
-            };
-            
-            await audio.play();
-            console.log('🎵 Audio playback started successfully');
-            
-        } catch (error) {
-            console.error('❌ Polly error:', error);
-            console.error('Error details:', {
-                name: error.name,
-                message: error.message,
-                code: error.code,
-                statusCode: error.statusCode
-            });
-            throw error;
+        for (const region of regions) {
+            for (const voiceId of voices[this.currentLanguage] || voices['en']) {
+                try {
+                    console.log(`🔄 Trying region: ${region}, voice: ${voiceId}`);
+                    
+                    // Update AWS config for this region
+                    AWS.config.update({ region: region });
+                    
+                    const params = {
+                        Text: text,
+                        OutputFormat: 'mp3',
+                        VoiceId: voiceId,
+                        Engine: 'neural',
+                        TextType: 'text'
+                    };
+                    
+                    console.log('📤 Polly parameters:', params);
+                    
+                    console.log('🚀 Calling Polly.synthesizeSpeech...');
+                    const result = await this.polly.synthesizeSpeech(params).promise();
+                    console.log('✅ Polly response received:', result);
+                    console.log('🔊 Audio stream length:', result.AudioStream ? result.AudioStream.length : 'No audio stream');
+                    
+                    // Play the audio
+                    const audioBlob = new Blob([result.AudioStream], { type: 'audio/mpeg' });
+                    const audioUrl = URL.createObjectURL(audioBlob);
+                    const audio = new Audio(audioUrl);
+                    
+                    console.log('🎵 Audio element created, attempting to play...');
+                    
+                    audio.onended = () => {
+                        console.log('✅ Audio playback completed');
+                        URL.revokeObjectURL(audioUrl);
+                    };
+                    
+                    audio.onerror = (error) => {
+                        console.error('❌ Audio playback error:', error);
+                    };
+                    
+                    await audio.play();
+                    console.log('🎵 Audio playback started successfully');
+                    
+                    // Success! Exit the loop
+                    return;
+                    
+                } catch (error) {
+                    console.log(`❌ Polly failed for region ${region}, voice ${voiceId}:`, error.code || error.message);
+                    
+                    // If it's a credentials error, don't try other regions
+                    if (error.code === 'CredentialsError' || error.code === 'UnauthorizedOperation') {
+                        console.error('❌ Credentials error - stopping retry');
+                        throw error;
+                    }
+                    
+                    // Continue to next voice/region
+                    continue;
+                }
+            }
         }
+        
+        // If we get here, all attempts failed
+        throw new Error('All Polly attempts failed');
     }
     
     speakWithWebSpeech(text) {
