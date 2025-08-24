@@ -21,6 +21,13 @@ class AWSChatbot {
     
     init() {
         try {
+            // Check Bedrock client availability
+            if (window.BedrockClient) {
+                console.log('🤖 Bedrock client found - will use AI responses');
+            } else {
+                console.log('⚠️ No Bedrock client found - using fallback responses');
+            }
+            
             // Initialize AWS SDK
             this.initAWS();
             
@@ -36,9 +43,9 @@ class AWSChatbot {
             // Add welcome message
             this.addWelcomeMessage();
             
-            console.log('AWS Chatbot initialized successfully');
+            console.log('✅ AWS Chatbot initialized successfully');
         } catch (error) {
-            console.error('Error initializing AWS Chatbot:', error);
+            console.error('❌ Error initializing AWS Chatbot:', error);
             this.fallbackToBasicChatbot();
         }
     }
@@ -151,8 +158,12 @@ class AWSChatbot {
         this.addMessage(text, 'user');
         
         try {
+            console.log('🔄 Processing user input:', text);
+            
             // Send to Amazon Bedrock for intelligent response
             const response = await this.sendToBedrock(text);
+            
+            console.log('🤖 Bot response:', response);
             
             // Add bot response
             this.addMessage(response.message, 'bot');
@@ -161,10 +172,11 @@ class AWSChatbot {
             this.speak(response.message);
             
         } catch (error) {
-            console.error('Error handling user input:', error);
+            console.error('❌ Error handling user input:', error);
             
             // Fallback response
             const fallbackResponse = this.generateFallbackResponse(text);
+            console.log('🔄 Using fallback response:', fallbackResponse);
             this.addMessage(fallbackResponse, 'bot');
             this.speak(fallbackResponse);
         }
@@ -214,44 +226,59 @@ KONTEKST: ${this.getConversationContext()}`;
         try {
             // Try to use existing Bedrock client if available
             if (window.BedrockClient) {
-                console.log('Using existing Bedrock client');
-                return await this.callExistingBedrock(systemPrompt, userMessage);
+                console.log('🚀 Using existing Bedrock client');
+                console.log('System prompt:', systemPrompt);
+                console.log('User message:', userMessage);
+                
+                const response = await this.callExistingBedrock(systemPrompt, userMessage);
+                console.log('✅ Bedrock response received:', response);
+                return response;
             }
             
             // Fallback to simulation if no Bedrock client
-            console.log('No Bedrock client found, using simulation');
+            console.log('⚠️ No Bedrock client found, using simulation');
             return this.simulateBedrockResponse(systemPrompt, userMessage);
             
         } catch (error) {
-            console.error('Bedrock API call failed:', error);
+            console.error('❌ Bedrock API call failed:', error);
+            console.log('🔄 Falling back to simulation');
             // Fallback to simulation
             return this.simulateBedrockResponse(systemPrompt, userMessage);
         }
     }
     
     async callExistingBedrock(systemPrompt, userMessage) {
-        // This integrates with your existing Bedrock setup
-        const bedrockClient = new window.BedrockClient();
-        
-        const params = {
-            modelId: 'anthropic.claude-3-sonnet-20240229-v1:0',
-            body: JSON.stringify({
-                max_tokens: 1000,
-                temperature: 0.7,
-                top_p: 0.9,
-                messages: [
-                    { role: 'system', content: systemPrompt },
-                    { role: 'user', content: userMessage }
-                ]
-            })
-        };
-        
         try {
-            const response = await bedrockClient.invokeModel(params);
-            const responseBody = JSON.parse(response.body);
-            return responseBody.content[0].text;
+            // Use your existing Bedrock client
+            const bedrockClient = new window.BedrockClient();
+            
+            // Call invokeModel with proper parameters
+            const response = await bedrockClient.invokeModel(userMessage, {
+                systemPrompt: systemPrompt,
+                maxTokens: 1000,
+                temperature: 0.7,
+                model: 'anthropic.claude-3-sonnet-20240229-v1:0'
+            });
+            
+            console.log('Bedrock response:', response);
+            
+            // Extract text from response based on model type
+            if (response && response.content) {
+                // Claude format
+                return response.content[0].text;
+            } else if (response && response.outputText) {
+                // Titan format
+                return response.outputText;
+            } else if (response && response.generation) {
+                // Llama format
+                return response.generation;
+            } else {
+                // Fallback
+                return response || 'Przepraszam, nie udało się wygenerować odpowiedzi.';
+            }
+            
         } catch (error) {
-            console.error('Existing Bedrock call failed:', error);
+            console.error('Bedrock API call failed:', error);
             throw error;
         }
     }
