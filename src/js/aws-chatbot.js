@@ -184,7 +184,7 @@ class AWSChatbot {
     
     async sendToBedrock(text) {
         // Use Amazon Bedrock for intelligent responses
-        const systemPrompt = `Jesteś asystentem sprzedażowym ECM Digital - firmy specjalizującej się w usługach cyfrowych.
+        const systemPrompt = `Jesteś cyfrowym asystentem głosowym Tomasza Gnata - CEO ECM Digital. Reprezentujesz firmę specjalizującą się w usługach cyfrowych.
 
 INFORMACJE O FIRMIE:
 - Strony WWW: od 3,500 PLN
@@ -419,7 +419,7 @@ Chcesz zobaczyć demo? Mogę pokazać jak AI może zoptymalizować Twoje procesy
         }
         
         // Default intelligent response
-        return `Dziękuję za pytanie! Jestem tutaj żeby pomóc Ci znaleźć najlepsze rozwiązanie cyfrowe dla Twojej firmy.
+        return `Dziękuję za pytanie! Jestem cyfrowym asystentem Tomasza Gnata i jestem tutaj żeby pomóc Ci znaleźć najlepsze rozwiązanie cyfrowe dla Twojej firmy.
 
 Mogę opowiedzieć o:
 • Naszych usługach i technologiach
@@ -596,7 +596,7 @@ Co Cię najbardziej interesuje? Opowiedz mi o swoich potrzebach lub wybierz jedn
     }
     
     addWelcomeMessage() {
-        const welcomeMessage = 'Cześć! Jestem asystentem głosowym ECM Digital zintegrowanym z Amazon Lex. Mogę opowiedzieć Ci o naszych usługach, pomóc w wyborze rozwiązania lub umówić konsultację. Jak mogę Ci pomóc?';
+        const welcomeMessage = 'Cześć! Jestem cyfrowym asystentem głosowym Tomasza Gnata - CEO ECM Digital. Mogę opowiedzieć Ci o naszych usługach, pomóc w wyborze rozwiązania lub umówić konsultację. Jak mogę Ci pomóc?';
         this.addMessage(welcomeMessage, 'bot');
     }
     
