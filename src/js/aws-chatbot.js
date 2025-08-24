@@ -282,10 +282,16 @@ KONTEKST: ${this.getConversationContext()}`;
         try {
             console.log('🔍 Using AWS SDK for Bedrock...');
             
-            // Use AWS SDK directly instead of custom BedrockClient
-            if (!window.AWS || !window.AWS.BedrockRuntime) {
-                throw new Error('AWS SDK BedrockRuntime not available');
+            // Check if AWS SDK v3 is available
+            if (typeof window.AWS === 'undefined') {
+                throw new Error('AWS SDK not available');
             }
+            
+            console.log('🔍 AWS SDK available:', {
+                v2: !!window.AWS,
+                v3: !!window.AWS.BedrockRuntime,
+                services: Object.keys(window.AWS || {})
+            });
             
             // Configure AWS with credentials from localStorage
             const accessKeyId = localStorage.getItem('BEDROCK_ACCESS_KEY_ID');
@@ -300,12 +306,22 @@ KONTEKST: ${this.getConversationContext()}`;
                 secretAccessKey: secretAccessKey ? '***' + secretAccessKey.slice(-4) : 'Not set'
             });
             
-            // Create BedrockRuntime instance
-            const bedrockRuntime = new window.AWS.BedrockRuntime({
-                region: 'us-east-1',
-                accessKeyId: accessKeyId,
-                secretAccessKey: secretAccessKey
-            });
+            // Try AWS SDK v3 first, then fallback to v2
+            let bedrockRuntime;
+            if (window.AWS.BedrockRuntime) {
+                console.log('🚀 Using AWS SDK v3 BedrockRuntime...');
+                bedrockRuntime = new window.AWS.BedrockRuntime({
+                    region: 'us-east-1',
+                    credentials: {
+                        accessKeyId: accessKeyId,
+                        secretAccessKey: secretAccessKey
+                    }
+                });
+            } else {
+                console.log('⚠️ AWS SDK v3 not available, trying v2...');
+                // Fallback to v2 if v3 not available
+                throw new Error('AWS SDK v3 BedrockRuntime not available - need to implement v2 fallback');
+            }
             
             console.log('🚀 Calling Bedrock via AWS SDK...');
             console.log('Model: anthropic.claude-3-sonnet-20240229-v1:0');
