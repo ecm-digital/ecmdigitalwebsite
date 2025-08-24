@@ -1450,6 +1450,35 @@
                 button.style.visibility = 'visible';
                 button.style.opacity = '1';
                 console.log('Button element found and made visible');
+                
+                // Add simple click test
+                button.addEventListener('click', function() {
+                    console.log('Button clicked!');
+                    
+                    // Simple modal test
+                    const modal = document.getElementById('voiceChatbotModal');
+                    if (modal) {
+                        modal.classList.add('show');
+                        document.body.style.overflow = 'hidden';
+                        console.log('Modal opened manually');
+                    } else {
+                        console.error('Modal not found!');
+                    }
+                });
+            }
+            
+            // Add close button functionality
+            const closeButton = document.getElementById('voiceChatbotClose');
+            if (closeButton) {
+                closeButton.addEventListener('click', function() {
+                    console.log('Close button clicked!');
+                    const modal = document.getElementById('voiceChatbotModal');
+                    if (modal) {
+                        modal.classList.remove('show');
+                        document.body.style.overflow = 'auto';
+                        console.log('Modal closed manually');
+                    }
+                });
             }
             
             try {
@@ -1483,10 +1512,7 @@
             </div>
             
             <div class="voice-chatbot-messages" id="voiceChatbotMessages">
-                <div class="voice-message bot">
-                    <i class="fas fa-robot me-2"></i>
-                    Cześć! Jestem asystentem głosowym ECM Digital. Mogę opowiedzieć Ci o naszych usługach, pomóc w wyborze rozwiązania lub umówić konsultację. Jak mogę Ci pomóc?
-                </div>
+                <!-- Messages will be added dynamically -->
             </div>
             
             <div class="voice-chatbot-controls">
