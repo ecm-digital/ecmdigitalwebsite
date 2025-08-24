@@ -42,13 +42,16 @@ class AWSChatbot {
                 console.log('⚠️ No AWS SDK found - some features may not work');
             }
             
-            // Initialize AWS SDK (with fallback)
-            try {
-                this.initAWS();
-            } catch (awsError) {
-                console.error('❌ AWS initialization failed:', awsError);
-                console.log('🔄 Continuing without AWS services...');
-            }
+                    // Initialize AWS SDK (with fallback)
+        try {
+            this.initAWS();
+        } catch (awsError) {
+            console.error('❌ AWS initialization failed:', awsError);
+            console.log('🔄 Continuing without AWS services...');
+        }
+        
+        // Skip Polly voice checking since we don't have permissions
+        console.log('⚠️ Skipping Polly voice check - using Web Speech API instead');
             
             // Initialize speech recognition
             this.initSpeechRecognition();
@@ -70,23 +73,7 @@ class AWSChatbot {
         }
     }
     
-    async checkPollyVoices() {
-        try {
-            console.log('🔍 Checking available Polly voices...');
-            const result = await this.polly.describeVoices().promise();
-            console.log('✅ Available voices:', result.Voices?.length || 0);
-            
-            if (result.Voices && result.Voices.length > 0) {
-                const polishVoices = result.Voices.filter(v => v.LanguageCode === 'pl-PL');
-                const englishVoices = result.Voices.filter(v => v.LanguageCode === 'en-US');
-                
-                console.log('🇵🇱 Polish voices:', polishVoices.map(v => v.Id));
-                console.log('🇺🇸 English voices:', englishVoices.map(v => v.Id));
-            }
-        } catch (error) {
-            console.warn('⚠️ Could not check Polly voices:', error.message);
-        }
-    }
+
     
     // Fallback method if AWS services fail
     fallbackToBasicChatbot() {
@@ -130,31 +117,31 @@ class AWSChatbot {
             secretKeyLength: secretAccessKey?.length || 0
         });
         
-        // Configure AWS
+        // Configure AWS for Bedrock only
         AWS.config.update({
             region: 'us-east-1',
             accessKeyId: accessKeyId,
             secretAccessKey: secretAccessKey
         });
         
-        console.log('🔧 AWS config updated:', {
+        console.log('🔧 AWS config updated for Bedrock:', {
             region: AWS.config.region,
             hasCredentials: !!accessKeyId && !!secretAccessKey,
             credentialsFormat: {
-                accessKeyFormat: accessKeyId?.startsWith('AKIA') ? 'IAM User' : 'Custom',
-                secretKeyFormat: secretAccessKey?.length === 40 ? 'Valid' : 'Invalid length'
+                accessKeyFormat: accessKeyId?.startsWith('BedrockAPIKey') ? 'Bedrock Format' : 'Unknown',
+                secretKeyFormat: secretAccessKey?.length >= 40 ? 'Valid' : 'Invalid length'
             }
         });
         
-        // Initialize services
-        this.lexRuntime = new AWS.LexRuntime();
-        this.polly = new AWS.Polly();
-        this.cognitoIdentity = new AWS.CognitoIdentity();
+        // Initialize only Bedrock-related services
+        console.log('🚀 Initializing Bedrock-only services...');
         
-        console.log('✅ AWS services initialized with credentials');
+        // Don't initialize Polly/Lex if we don't have permissions
+        this.polly = null;
+        this.lexRuntime = null;
+        this.cognitoIdentity = null;
         
-        // Check available Polly voices
-        this.checkPollyVoices();
+        console.log('✅ AWS configured for Bedrock only (no Polly/Lex)');
     }
     
     initSpeechRecognition() {
@@ -189,6 +176,36 @@ class AWSChatbot {
             console.log('Speech recognition initialized');
         } else {
             console.warn('Speech recognition not supported');
+        }
+        
+        // Initialize speech synthesis voices
+        this.initSpeechSynthesis();
+    }
+    
+    initSpeechSynthesis() {
+        if (this.synthesis) {
+            // Wait for voices to load
+            if (this.synthesis.getVoices().length === 0) {
+                this.synthesis.onvoiceschanged = () => {
+                    console.log('🎵 Voices loaded:', this.synthesis.getVoices().length);
+                    this.logAvailableVoices();
+                };
+            } else {
+                this.logAvailableVoices();
+            }
+        }
+    }
+    
+    logAvailableVoices() {
+        if (this.synthesis) {
+            const voices = this.synthesis.getVoices();
+            console.log('🎵 Total voices available:', voices.length);
+            
+            const polishVoices = voices.filter(v => v.lang.startsWith('pl'));
+            const englishVoices = voices.filter(v => v.lang.startsWith('en'));
+            
+            console.log('🇵🇱 Polish voices:', polishVoices.map(v => ({ name: v.name, lang: v.lang })));
+            console.log('🇺🇸 English voices:', englishVoices.map(v => ({ name: v.name, lang: v.lang })));
         }
     }
     
@@ -627,27 +644,11 @@ Co Cię najbardziej interesuje? Opowiedz mi o swoich potrzebach lub wybierz jedn
         }
         
         console.log('🗣️ Starting speech synthesis for:', text.substring(0, 50) + '...');
-        console.log('🔍 Polly available:', !!this.polly);
         console.log('🔍 Web Speech available:', !!this.synthesis);
         
-        try {
-            // Try Amazon Polly first
-            if (this.polly) {
-                console.log('🚀 Attempting to use Amazon Polly...');
-                await this.speakWithPolly(text);
-                console.log('✅ Amazon Polly speech completed successfully');
-                return;
-            } else {
-                console.log('⚠️ Amazon Polly not available, using Web Speech API');
-            }
-        } catch (error) {
-            console.error('❌ Amazon Polly failed:', error);
-            console.log('🔄 Falling back to Web Speech API...');
-        }
-        
-        // Fallback to Web Speech API
+        // Use Web Speech API directly since we don't have Polly permissions
         if (this.synthesis) {
-            console.log('🔊 Using Web Speech API fallback...');
+            console.log('🔊 Using Web Speech API (no Polly permissions)...');
             this.speakWithWebSpeech(text);
         } else {
             console.error('❌ No speech synthesis available');
@@ -792,13 +793,47 @@ Co Cię najbardziej interesuje? Opowiedz mi o swoich potrzebach lub wybierz jedn
         console.log('🔍 Synthesis available:', !!this.synthesis);
         
         if (this.synthesis) {
+            // Get available voices and select the best one
+            const voices = this.synthesis.getVoices();
+            console.log('🎵 Available voices:', voices.length);
+            
+            // Try to find a good Polish or English voice
+            let selectedVoice = null;
+            
+            // First try Polish voices
+            if (this.currentLanguage === 'pl') {
+                selectedVoice = voices.find(v => v.lang === 'pl-PL') || 
+                              voices.find(v => v.lang.startsWith('pl')) ||
+                              voices.find(v => v.name.includes('Polish'));
+            }
+            
+            // If no Polish, try English
+            if (!selectedVoice) {
+                selectedVoice = voices.find(v => v.lang === 'en-US') || 
+                              voices.find(v => v.lang.startsWith('en')) ||
+                              voices.find(v => v.name.includes('English'));
+            }
+            
+            // If still no good voice, use default
+            if (!selectedVoice) {
+                selectedVoice = voices.find(v => v.default) || voices[0];
+            }
+            
+            console.log('🎵 Selected voice:', selectedVoice ? {
+                name: selectedVoice.name,
+                lang: selectedVoice.lang,
+                default: selectedVoice.default
+            } : 'No voice found');
+            
             const utterance = new SpeechSynthesisUtterance(text);
-            utterance.lang = this.currentLanguage === 'pl' ? 'pl-PL' : 'en-US';
+            utterance.voice = selectedVoice;
+            utterance.lang = selectedVoice ? selectedVoice.lang : (this.currentLanguage === 'pl' ? 'pl-PL' : 'en-US');
             utterance.rate = 0.85;
             utterance.pitch = 1.1;
             utterance.volume = 0.9;
             
             console.log('📤 Web Speech parameters:', {
+                voice: utterance.voice?.name,
                 lang: utterance.lang,
                 rate: utterance.rate,
                 pitch: utterance.pitch,
