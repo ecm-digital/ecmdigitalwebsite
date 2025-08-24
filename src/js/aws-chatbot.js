@@ -70,15 +70,27 @@ class AWSChatbot {
             throw new Error('AWS SDK not loaded');
         }
         
+        // Get credentials from localStorage
+        const accessKeyId = localStorage.getItem('BEDROCK_ACCESS_KEY_ID');
+        const secretAccessKey = localStorage.getItem('BEDROCK_SECRET_ACCESS_KEY');
+        
+        if (!accessKeyId || !secretAccessKey) {
+            console.warn('⚠️ AWS credentials not found, some services may not work');
+        }
+        
         // Configure AWS
-        AWS.config.region = 'us-east-1'; // or your preferred region
+        AWS.config.update({
+            region: 'us-east-1',
+            accessKeyId: accessKeyId,
+            secretAccessKey: secretAccessKey
+        });
         
         // Initialize services
         this.lexRuntime = new AWS.LexRuntime();
         this.polly = new AWS.Polly();
         this.cognitoIdentity = new AWS.CognitoIdentity();
         
-        console.log('AWS services initialized');
+        console.log('✅ AWS services initialized with credentials');
     }
     
     initSpeechRecognition() {
@@ -268,65 +280,82 @@ KONTEKST: ${this.getConversationContext()}`;
     
     async callExistingBedrock(systemPrompt, userMessage) {
         try {
-            console.log('🔍 Checking BedrockClient availability...');
-            console.log('window.BedrockClient:', window.BedrockClient);
-            console.log('typeof window.BedrockClient:', typeof window.BedrockClient);
+            console.log('🔍 Using AWS SDK for Bedrock...');
             
-            if (!window.BedrockClient) {
-                throw new Error('BedrockClient not found in window object');
+            // Use AWS SDK directly instead of custom BedrockClient
+            if (!window.AWS || !window.AWS.BedrockRuntime) {
+                throw new Error('AWS SDK BedrockRuntime not available');
             }
             
-            // Use your existing Bedrock client
-            console.log('🏗️ Creating new BedrockClient instance...');
-            const bedrockClient = new window.BedrockClient();
-            console.log('✅ BedrockClient instance created:', bedrockClient);
+            // Configure AWS with credentials from localStorage
+            const accessKeyId = localStorage.getItem('BEDROCK_ACCESS_KEY_ID');
+            const secretAccessKey = localStorage.getItem('BEDROCK_SECRET_ACCESS_KEY');
             
-            // Call invokeModel with proper parameters
-            console.log('🚀 Calling invokeModel...');
-            console.log('Parameters:', {
-                userMessage,
-                systemPrompt,
-                maxTokens: 1000,
-                temperature: 0.7,
-                model: 'anthropic.claude-3-sonnet-20240229-v1:0'
+            if (!accessKeyId || !secretAccessKey) {
+                throw new Error('Bedrock credentials not found in localStorage');
+            }
+            
+            console.log('🔑 Using credentials:', { 
+                accessKeyId: accessKeyId ? '***' + accessKeyId.slice(-4) : 'Not set',
+                secretAccessKey: secretAccessKey ? '***' + secretAccessKey.slice(-4) : 'Not set'
             });
             
-            const response = await bedrockClient.invokeModel(userMessage, {
-                systemPrompt: systemPrompt,
-                maxTokens: 1000,
-                temperature: 0.7,
-                model: 'anthropic.claude-3-sonnet-20240229-v1:0'
+            // Create BedrockRuntime instance
+            const bedrockRuntime = new window.AWS.BedrockRuntime({
+                region: 'us-east-1',
+                accessKeyId: accessKeyId,
+                secretAccessKey: secretAccessKey
             });
+            
+            console.log('🚀 Calling Bedrock via AWS SDK...');
+            console.log('Model: anthropic.claude-3-sonnet-20240229-v1:0');
+            
+            // Prepare request body for Claude
+            const requestBody = {
+                anthropic_version: "bedrock-2023-05-31",
+                max_tokens: 1000,
+                temperature: 0.7,
+                messages: [
+                    {
+                        role: "system",
+                        content: systemPrompt
+                    },
+                    {
+                        role: "user",
+                        content: userMessage
+                    }
+                ]
+            };
+            
+            const params = {
+                modelId: 'anthropic.claude-3-sonnet-20240229-v1:0',
+                contentType: 'application/json',
+                accept: 'application/json',
+                body: JSON.stringify(requestBody)
+            };
+            
+            console.log('📤 Sending request to Bedrock...');
+            const response = await bedrockRuntime.invokeModel(params).promise();
             
             console.log('🎯 Bedrock response received:', response);
-            console.log('Response type:', typeof response);
-            console.log('Response keys:', Object.keys(response || {}));
             
-            // Extract text from response based on model type
+            // Parse response
+            const responseBody = JSON.parse(response.body);
+            console.log('📝 Response body:', responseBody);
+            
             let extractedText = '';
-            if (response && response.content && response.content[0] && response.content[0].text) {
-                // Claude format
-                extractedText = response.content[0].text;
-                console.log('📝 Extracted Claude text:', extractedText);
-            } else if (response && response.outputText) {
-                // Titan format
-                extractedText = response.outputText;
-                console.log('📝 Extracted Titan text:', extractedText);
-            } else if (response && response.generation) {
-                // Llama format
-                extractedText = response.generation;
-                console.log('📝 Extracted Llama text:', extractedText);
+            if (responseBody && responseBody.content && responseBody.content[0] && responseBody.content[0].text) {
+                extractedText = responseBody.content[0].text;
+                console.log('✅ Extracted Claude text:', extractedText);
             } else {
-                // Fallback
-                extractedText = response || 'Przepraszam, nie udało się wygenerować odpowiedzi.';
-                console.log('⚠️ Using fallback text:', extractedText);
+                extractedText = 'Przepraszam, nie udało się wygenerować odpowiedzi.';
+                console.log('⚠️ Using fallback text');
             }
             
-            console.log('✅ Final extracted text:', extractedText);
             return extractedText;
             
         } catch (error) {
-            console.error('❌ Bedrock API call failed:', error);
+            console.error('❌ AWS SDK Bedrock call failed:', error);
             console.error('Error stack:', error.stack);
             throw error;
         }
