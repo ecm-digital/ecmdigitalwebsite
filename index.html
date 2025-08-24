@@ -1373,6 +1373,22 @@
     <!-- AWS SDK v3 for Bedrock -->
     <script src="https://cdn.jsdelivr.net/npm/@aws-sdk/client-bedrock-runtime@3.0.0/dist/index.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@aws-sdk/credential-providers@3.0.0/dist/index.min.js"></script>
+    
+    <!-- Check AWS SDK availability -->
+    <script>
+        console.log('🔍 Checking AWS SDK availability...');
+        console.log('AWS SDK v2:', typeof window.AWS);
+        console.log('AWS SDK v3 BedrockRuntimeClient:', typeof window.BedrockRuntimeClient);
+        console.log('AWS SDK v3 from CDN:', typeof window.AWS?.BedrockRuntime);
+        
+        // Wait for all scripts to load
+        window.addEventListener('load', () => {
+            console.log('📦 All scripts loaded, checking again...');
+            console.log('AWS SDK v2:', typeof window.AWS);
+            console.log('AWS SDK v3 BedrockRuntimeClient:', typeof window.BedrockRuntimeClient);
+            console.log('AWS SDK v3 from CDN:', typeof window.AWS?.BedrockRuntime);
+        });
+    </script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     
     <!-- System wielojęzyczny -->

@@ -123,6 +123,13 @@ class AWSChatbot {
             console.warn('⚠️ AWS credentials not found, some services may not work');
         }
         
+        console.log('🔑 Credentials check:', {
+            accessKeyId: accessKeyId ? '***' + accessKeyId.slice(-4) : 'Not set',
+            secretAccessKey: secretAccessKey ? '***' + secretAccessKey.slice(-4) : 'Not set',
+            accessKeyLength: accessKeyId?.length || 0,
+            secretKeyLength: secretAccessKey?.length || 0
+        });
+        
         // Configure AWS
         AWS.config.update({
             region: 'us-east-1',
@@ -132,7 +139,11 @@ class AWSChatbot {
         
         console.log('🔧 AWS config updated:', {
             region: AWS.config.region,
-            hasCredentials: !!accessKeyId && !!secretAccessKey
+            hasCredentials: !!accessKeyId && !!secretAccessKey,
+            credentialsFormat: {
+                accessKeyFormat: accessKeyId?.startsWith('AKIA') ? 'IAM User' : 'Custom',
+                secretKeyFormat: secretAccessKey?.length === 40 ? 'Valid' : 'Invalid length'
+            }
         });
         
         // Initialize services
@@ -745,11 +756,25 @@ Co Cię najbardziej interesuje? Opowiedz mi o swoich potrzebach lub wybierz jedn
                     
                 } catch (error) {
                     console.log(`❌ Polly failed for region ${region}, voice ${voiceId}:`, error.code || error.message);
+                    console.error('❌ Error details:', {
+                        code: error.code,
+                        message: error.message,
+                        statusCode: error.statusCode,
+                        requestId: error.requestId,
+                        region: region,
+                        voice: voiceId
+                    });
                     
                     // If it's a credentials error, don't try other regions
                     if (error.code === 'CredentialsError' || error.code === 'UnauthorizedOperation') {
                         console.error('❌ Credentials error - stopping retry');
                         throw error;
+                    }
+                    
+                    // If it's error 12 (InvalidParameterValue), it might be permissions
+                    if (error.code === 12 || error.code === 'InvalidParameterValue') {
+                        console.error('❌ InvalidParameterValue (12) - likely permissions issue');
+                        console.error('❌ This usually means the credentials don\'t have Polly permissions');
                     }
                     
                     // Continue to next voice/region
