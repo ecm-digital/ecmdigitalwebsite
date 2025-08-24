@@ -1,13 +1,22 @@
 import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
+
+// Extend Express Request interface to include user property
+declare global {
+  namespace Express {
+    interface Request {
+      user?: any;
+    }
+  }
+}
 import morgan from 'morgan';
 import dotenv from 'dotenv';
 
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3002;
 
 // Middleware
 app.use(helmet());
@@ -20,6 +29,22 @@ app.use(express.urlencoded({ extended: true }));
 type Task = { id: string; title: string; assignee: string; status: string; dueAt?: string };
 type Milestone = { id: string; name: string; date: string; status: string };
 type Project = { id: number; name: string; client: string; status: string; description: string };
+type User = {
+  id: string;
+  email: string;
+  name: string;
+  role: 'admin' | 'manager' | 'employee';
+  avatar?: string;
+  lastLogin?: string;
+  isActive: boolean;
+  permissions: string[];
+};
+type AuthToken = {
+  userId: string;
+  token: string;
+  expiresAt: Date;
+  createdAt: Date;
+};
 
 let projectsStore: Project[] = [
   {
@@ -72,9 +97,241 @@ const milestonesStore: Record<number, Milestone[]> = {
   ],
 };
 
+// Users and Authentication
+let usersStore: User[] = [
+  {
+    id: 'u1',
+    email: 'admin@ecm-digital.com',
+    name: 'Tomasz Gnat',
+    role: 'admin',
+    avatar: 'https://assets.ecm-digital.com/avatars/tomasz.jpg',
+    lastLogin: '2025-01-15T10:30:00Z',
+    isActive: true,
+    permissions: ['all']
+  },
+  {
+    id: 'u2',
+    email: 'marta@ecm-digital.com',
+    name: 'Marta Górska',
+    role: 'manager',
+    avatar: 'https://assets.ecm-digital.com/avatars/marta.jpg',
+    lastLogin: '2025-01-15T09:15:00Z',
+    isActive: true,
+    permissions: ['projects', 'clients', 'case-studies', 'team']
+  },
+  {
+    id: 'u3',
+    email: 'karol@ecm-digital.com',
+    name: 'Karol Czechowski',
+    role: 'employee',
+    avatar: 'https://assets.ecm-digital.com/avatars/karol.jpg',
+    lastLogin: '2025-01-14T16:45:00Z',
+    isActive: true,
+    permissions: ['projects', 'case-studies']
+  },
+  {
+    id: 'u4',
+    email: 'roman@ecm-digital.com',
+    name: 'Roman Dominia',
+    role: 'employee',
+    avatar: 'https://assets.ecm-digital.com/avatars/roman.jpg',
+    lastLogin: '2025-01-14T14:20:00Z',
+    isActive: true,
+    permissions: ['clients', 'services', 'automations']
+  }
+];
+
+let authTokensStore: AuthToken[] = [];
+
+// Passwords (in real app, use proper hashing)
+const userPasswords: Record<string, string> = {
+  'admin@ecm-digital.com': 'admin123',
+  'marta@ecm-digital.com': 'manager123',
+  'karol@ecm-digital.com': 'dev123',
+  'roman@ecm-digital.com': 'specialist123'
+};
+
 // Health check
 app.get('/health', (req, res) => {
   res.json({ status: 'OK', timestamp: new Date().toISOString() });
+});
+
+// Authentication middleware
+const authenticate = (req: any, res: any, next: any) => {
+  const authHeader = req.headers.authorization;
+  if (!authHeader || !authHeader.startsWith('Bearer ')) {
+    return res.status(401).json({ error: 'Unauthorized - No token provided' });
+  }
+
+  const token = authHeader.substring(7);
+  const authToken = authTokensStore.find(t => t.token === token && t.expiresAt > new Date());
+
+  if (!authToken) {
+    return res.status(401).json({ error: 'Unauthorized - Invalid or expired token' });
+  }
+
+  const user = usersStore.find(u => u.id === authToken.userId);
+  if (!user || !user.isActive) {
+    return res.status(401).json({ error: 'Unauthorized - User not found or inactive' });
+  }
+
+  req.user = user;
+  next();
+};
+
+// Authorization middleware
+const authorize = (permission: string) => {
+  return (req: any, res: any, next: any) => {
+    const user = req.user;
+    if (!user) {
+      return res.status(401).json({ error: 'Unauthorized' });
+    }
+
+    if (user.permissions.includes('all') || user.permissions.includes(permission)) {
+      next();
+    } else {
+      res.status(403).json({ error: 'Forbidden - Insufficient permissions' });
+    }
+  };
+};
+
+// Authentication endpoints
+app.post('/auth/login', (req, res) => {
+  const { email, password } = req.body;
+
+  if (!email || !password) {
+    return res.status(400).json({ error: 'Email and password required' });
+  }
+
+  const user = usersStore.find(u => u.email === email);
+  const correctPassword = userPasswords[email];
+
+  if (!user || !user.isActive || password !== correctPassword) {
+    return res.status(401).json({ error: 'Invalid credentials' });
+  }
+
+  // Generate token (in real app, use JWT)
+  const token = `token_${Date.now()}_${user.id}`;
+  const expiresAt = new Date(Date.now() + 24 * 60 * 60 * 1000); // 24 hours
+
+  const authToken: AuthToken = {
+    userId: user.id,
+    token,
+    expiresAt,
+    createdAt: new Date()
+  };
+
+  authTokensStore.push(authToken);
+
+  // Update last login
+  user.lastLogin = new Date().toISOString();
+
+  res.json({
+    user: {
+      id: user.id,
+      email: user.email,
+      name: user.name,
+      role: user.role,
+      avatar: user.avatar,
+      permissions: user.permissions
+    },
+    token,
+    expiresAt: expiresAt.toISOString()
+  });
+});
+
+app.post('/auth/logout', authenticate, (req, res) => {
+  const authHeader = req.headers.authorization;
+  const token = authHeader?.substring(7);
+
+  if (token) {
+    authTokensStore = authTokensStore.filter(t => t.token !== token);
+  }
+
+  res.json({ message: 'Logged out successfully' });
+});
+
+app.get('/api/auth/me', authenticate, (req, res) => {
+  const user = req.user;
+  res.json({
+    id: user.id,
+    email: user.email,
+    name: user.name,
+    role: user.role,
+    avatar: user.avatar,
+    permissions: user.permissions
+  });
+});
+
+// Token validation endpoint for frontend
+app.get('/auth/validate', authenticate, (req, res) => {
+  const user = req.user;
+  res.json({
+    id: user.id,
+    email: user.email,
+    name: user.name,
+    role: user.role,
+    avatar: user.avatar,
+    permissions: user.permissions
+  });
+});
+
+// Users management endpoints
+app.get('/api/users', authenticate, authorize('users'), (req, res) => {
+  const users = usersStore.map(u => ({
+    id: u.id,
+    email: u.email,
+    name: u.name,
+    role: u.role,
+    avatar: u.avatar,
+    lastLogin: u.lastLogin,
+    isActive: u.isActive,
+    permissions: u.permissions
+  }));
+  res.json(users);
+});
+
+app.get('/api/users/:id', authenticate, authorize('users'), (req, res) => {
+  const user = usersStore.find(u => u.id === req.params.id);
+  if (!user) {
+    return res.status(404).json({ error: 'User not found' });
+  }
+
+  res.json({
+    id: user.id,
+    email: user.email,
+    name: user.name,
+    role: user.role,
+    avatar: user.avatar,
+    lastLogin: user.lastLogin,
+    isActive: user.isActive,
+    permissions: user.permissions
+  });
+});
+
+app.patch('/api/users/:id', authenticate, authorize('users'), (req, res) => {
+  const user = usersStore.find(u => u.id === req.params.id);
+  if (!user) {
+    return res.status(404).json({ error: 'User not found' });
+  }
+
+  const { name, role, isActive, permissions } = req.body;
+
+  if (name !== undefined) user.name = name;
+  if (role !== undefined) user.role = role;
+  if (isActive !== undefined) user.isActive = isActive;
+  if (permissions !== undefined) user.permissions = permissions;
+
+  res.json({
+    id: user.id,
+    email: user.email,
+    name: user.name,
+    role: user.role,
+    avatar: user.avatar,
+    lastLogin: user.lastLogin,
+    isActive: user.isActive,
+    permissions: user.permissions
+  });
 });
 
 // Zadania projektu

@@ -34,7 +34,8 @@
         "subtitle": "Transformujemy Twoją firmę dzięki sztucznej inteligencji. Od chatbotów po zaawansowane automatyzacje - AI, które naprawdę działa i generuje realne korzyści biznesowe.",
         "exploreServices": "Poznaj Usługi",
         "getQuote": "Otrzymaj Ofertę",
-        "cta_assistant": "Porozmawiaj z naszym asystentem"
+        "cta_assistant": "Porozmawiaj z naszym asystentem",
+      "exploreFeatures": "Poznaj funkcje"
     },
   "sections": {
     "services": {
@@ -150,7 +151,21 @@
       "form.budget.25k+": "Powyżej 25,000 PLN",
       "form.budget.consultation": "Potrzebuję konsultacji",
       "form.message": "Wiadomość *",
-      "form.submit": "Wyślij Wiadomość"
+              "form.submit": "Wyślij Wiadomość"
+      }
+    },
+    "features": {
+      "title": "Kluczowe funkcje",
+      "subtitle": "Wykorzystujemy najnowsze technologie do tworzenia profesjonalnych stron internetowych"
+    },
+    "benefits": {
+      "title": "Dlaczego Wybrać Nas?"
+    },
+    "cta": {
+      "title": "Gotowy na Profesjonalną Stronę?",
+      "description": "Skontaktuj się z nami i otrzymaj bezpłatną konsultację. Pomożemy Ci stworzyć stronę, która przyciągnie klientów i zwiększy sprzedaż.",
+      "freeConsultation": "Darmowa Konsultacja",
+      "callNow": "Zadzwoń Teraz"
     }
   },
   "serviceProcesses": {

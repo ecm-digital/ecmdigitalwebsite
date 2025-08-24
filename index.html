@@ -325,6 +325,222 @@
             background: var(--glass-bg);
             font-weight: 600;
         }
+
+        /* Skip Links for Accessibility */
+        .skip-links {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            z-index: 10000;
+            width: 100%;
+        }
+
+        .skip-link {
+            position: absolute;
+            left: 6px;
+            top: -40px;
+            background: var(--primary);
+            color: white;
+            padding: 8px 16px;
+            text-decoration: none;
+            border-radius: 0 0 4px 4px;
+            font-weight: 600;
+            font-size: 14px;
+            transition: top 0.3s ease;
+            z-index: 10001;
+        }
+
+        .skip-link:focus {
+            top: 0;
+            outline: 3px solid #ffffff;
+            outline-offset: -3px;
+        }
+
+        .skip-link:nth-child(2) {
+            left: 160px;
+        }
+
+        .skip-link:nth-child(3) {
+            left: 280px;
+        }
+
+        /* Improved Focus States */
+        .btn-cta:focus,
+        .btn-primary:focus,
+        .btn-outline-primary:focus,
+        .nav-link:focus,
+        .dropdown-item:focus,
+        .language-switcher .btn-link:focus {
+            outline: 3px solid var(--primary);
+            outline-offset: 2px;
+            box-shadow: 0 0 0 6px rgba(0, 122, 255, 0.25);
+        }
+
+        /* Better Contrast for Text */
+        .text-muted {
+            color: var(--text-tertiary) !important;
+        }
+
+        .hero-subtitle {
+            color: var(--text-secondary) !important;
+        }
+
+        /* Improved Keyboard Navigation */
+        .service-card {
+            position: relative;
+        }
+
+        .service-card:focus-within {
+            outline: 3px solid var(--primary);
+            outline-offset: 2px;
+        }
+
+        /* Screen Reader Only Content */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* Loading States */
+        .loading {
+            position: relative;
+            pointer-events: none;
+            opacity: 0.6;
+        }
+
+        .loading::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            margin: -10px 0 0 -10px;
+            border: 2px solid transparent;
+            border-top: 2px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Progress Indicators */
+        .progress-step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .progress-step::before {
+            content: '';
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            margin-right: 1rem;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .progress-step.completed::before {
+            content: '✓';
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .progress-step.active::before {
+            animation: pulse 2s infinite;
+        }
+
+        /* Better Tablet Responsiveness */
+        @media (max-width: 992px) {
+            .hero .container {
+                padding: 0 2rem;
+            }
+
+            .hero-title {
+                font-size: clamp(2.2rem, 6vw, 3.5rem);
+            }
+
+            .service-card {
+                margin-bottom: 2rem;
+            }
+
+            .btn-cta {
+                width: 100%;
+                margin-bottom: 1rem;
+                text-align: center;
+            }
+
+            .skip-link {
+                position: static;
+                display: inline-block;
+                margin-right: 1rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .skip-links {
+                position: relative;
+                top: 0;
+                left: 0;
+                background: var(--bg-secondary);
+                padding: 1rem;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 0.5rem;
+            }
+        }
+
+        /* Enhanced Mobile Navigation */
+        @media (max-width: 768px) {
+            .navbar-collapse {
+                background: var(--glass-bg);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                border-radius: 0 0 12px 12px;
+                margin-top: 1rem;
+                padding: 1rem;
+                border: 1px solid var(--glass-border);
+            }
+
+            .nav-link {
+                padding: 0.75rem 1rem;
+                border-radius: 8px;
+                margin: 0.25rem 0;
+            }
+
+            .dropdown-menu {
+                position: static;
+                float: none;
+                width: auto;
+                margin-top: 0.5rem;
+                background: transparent;
+                border: none;
+                box-shadow: none;
+            }
+
+            .dropdown-item {
+                padding: 0.75rem 1rem;
+                border-radius: 8px;
+                margin: 0.25rem 0;
+            }
+        }
         
         /* Section Styles */
         .section-title {
@@ -532,11 +748,11 @@
             .hero {
                 padding: 120px 0 80px;
             }
-            
+
             .hero-title {
                 font-size: clamp(2rem, 6vw, 3rem);
             }
-            
+
             .btn-cta {
                 padding: 0.5rem 1rem;
                 font-size: 0.875rem;
@@ -545,20 +761,106 @@
                 text-align: center;
                 width: 100%;
             }
-            
+
             .btn-cta.me-3 {
                 margin-right: 0 !important;
                 margin-bottom: 1rem;
             }
-            
+
             .hero-buttons .btn {
                 width: 100%;
                 margin-bottom: 1rem;
             }
-            
+
             .language-switcher {
                 justify-content: center;
                 margin: 1rem 0 0 0;
+            }
+
+            /* About section responsive */
+            .about-content p {
+                font-size: 0.95rem;
+                line-height: 1.4;
+                margin-bottom: 1rem;
+            }
+
+            /* Team section responsive */
+            .team-card {
+                margin-bottom: 2rem;
+                padding: 1.5rem;
+            }
+
+            .team-card h5 {
+                font-size: 1.1rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .team-card p {
+                font-size: 0.9rem;
+            }
+
+            /* Service cards responsive */
+            .service-card {
+                margin-bottom: 1.5rem;
+                padding: 1.5rem 1rem;
+            }
+
+            .service-card h4 {
+                font-size: 1.2rem;
+                margin-bottom: 0.75rem;
+            }
+
+            /* Contact section responsive */
+            .contact-section .col-lg-4 {
+                margin-bottom: 2rem;
+            }
+
+            /* Process section responsive */
+            .process-step {
+                margin-bottom: 2rem;
+            }
+
+            .step-number {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            /* Extra small screens */
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .service-card {
+                padding: 1.25rem 0.75rem;
+            }
+
+            .team-card {
+                padding: 1.25rem;
+            }
+
+            .btn-cta {
+                padding: 0.75rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            /* Stack team cards vertically on very small screens */
+            .team-card h5 {
+                font-size: 1rem;
+            }
+
+            .team-card p {
+                font-size: 0.85rem;
             }
         }
 
@@ -978,8 +1280,15 @@
     </style>
 </head>
 <body>
+    <!-- Skip Links for Accessibility -->
+    <div class="skip-links">
+        <a href="#main-content" class="skip-link">Przejdź do głównej treści</a>
+        <a href="#services" class="skip-link">Przejdź do usług</a>
+        <a href="#contact" class="skip-link">Przejdź do kontaktu</a>
+    </div>
+
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg fixed-top">
+    <nav class="navbar navbar-expand-lg fixed-top" role="navigation" aria-label="Główna nawigacja">
         <div class="container">
             <a class="navbar-brand font-display" href="#">
                 <i class="fas fa-rocket me-2" style="color: var(--primary);"></i>
@@ -1029,29 +1338,34 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero">
+    <main id="main-content" role="main">
+        <section id="home" class="hero" aria-labelledby="hero-title">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6">
-                    <h1 class="hero-title" data-i18n="hero.title">Wdrażamy AI w Twojej Firmie</h1>
+                    <h1 id="hero-title" class="hero-title" data-i18n="hero.title">Wdrażamy AI w Twojej Firmie</h1>
                     <p class="hero-subtitle" data-i18n="hero.subtitle">
                         Transformujemy Twoją firmę dzięki sztucznej inteligencji. Od chatbotów po zaawansowane automatyzacje - 
                         AI, które naprawdę działa i generuje realne korzyści biznesowe.
                     </p>
-                    <div class="d-flex gap-3 flex-wrap">
-                        <a href="#services" class="btn btn-primary btn-lg">
-                            <i class="fas fa-rocket me-2"></i>
+                    <div class="d-flex gap-3 flex-wrap" role="group" aria-label="Akcje w sekcji hero">
+                        <a href="#services" class="btn btn-primary btn-lg" aria-describedby="services-desc">
+                            <i class="fas fa-rocket me-2" aria-hidden="true"></i>
                             <span data-i18n="hero.exploreServices">Zobacz Ofertę</span>
                         </a>
-                        <a href="#contact" class="btn btn-outline-primary btn-lg">
-                            <i class="fas fa-envelope me-2"></i>
+                        <a href="#contact" class="btn btn-outline-primary btn-lg" aria-describedby="contact-desc">
+                            <i class="fas fa-envelope me-2" aria-hidden="true"></i>
                             <span data-i18n="hero.getQuote">Darmowa Konsultacja</span>
                         </a>
-                        <button class="btn btn-success btn-lg hero-chatbot-btn" id="heroChatbotButton">
-                            <i class="fas fa-robot me-2"></i>
+                        <button class="btn btn-success btn-lg hero-chatbot-btn" id="heroChatbotButton" aria-describedby="chatbot-desc" aria-haspopup="dialog">
+                            <i class="fas fa-robot me-2" aria-hidden="true"></i>
                             <span data-i18n="hero.cta_assistant">Porozmawiaj z naszym asystentem</span>
                         </button>
                     </div>
+                    <div id="services-desc" class="sr-only">Przejdź do sekcji z ofertą naszych usług</div>
+                    <div id="contact-desc" class="sr-only">Przejdź do formularza kontaktowego</div>
+                    <div id="chatbot-desc" class="sr-only">Otwórz czat głosowy z asystentem AI</div>
+    <div id="loading-message" class="sr-only">Trwa ładowanie, proszę czekać</div>
                 </div>
                 <div class="col-lg-6 text-center">
                     <div class="hero-image">
@@ -1200,26 +1514,105 @@
     <section id="about-us" class="py-5" style="background: var(--bg-secondary);">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-6">
+                <div class="col-lg-6 about-content">
                     <h2 class="section-title text-start" data-i18n="sections.about.title">O ECM Digital</h2>
-                    <p class="text-muted mb-4" data-i18n="sections.about.description1">
-                        Jesteśmy zespołem pasjonatów technologii, którzy wierzą, że każdy biznes zasługuje na cyfrową transformację. 
-                        Łączymy kreatywność z innowacyjnymi rozwiązaniami technologicznymi.
-                    </p>
-                    <p class="text-muted mb-4" data-i18n="sections.about.description2">
-                        <strong>ECM Digital</strong> to marka oferująca kompleksowe i nowoczesne rozwiązania digitalowe. 
-                        Specjalizujemy się w projektowaniu stron internetowych, e-commerce, audytach UX oraz automatyzacji procesów biznesowych, 
-                        pomagając firmom rozwijać się w cyfrowym świecie.
-                    </p>
-                    <p class="text-muted mb-4" data-i18n="sections.about.description3">
-                        Marka ECM Digital działa w ramach spółki <strong>Scrum Software Sp. z o.o.</strong>, która jest formalnym właścicielem 
-                        wszystkich świadczonych przez nas usług oraz odpowiedzialnym podmiotem prawnym. To Scrum Software Sp. z o.o. 
-                        wystawia faktury, zawiera umowy i prowadzi rozliczenia finansowe.
-                    </p>
-                    <p class="text-muted mb-4" data-i18n="sections.about.description4">
-                        Dzięki takiemu rozwiązaniu łączymy nowoczesny branding i profesjonalną obsługę prawną, 
-                        zapewniając naszym klientom pełne bezpieczeństwo i transparentność współpracy.
-                    </p>
+
+                    <!-- Desktop version - full text -->
+                    <div class="d-none d-lg-block">
+                        <p class="text-muted mb-4" data-i18n="sections.about.description1">
+                            Jesteśmy zespołem pasjonatów technologii, którzy wierzą, że każdy biznes zasługuje na cyfrową transformację.
+                            Łączymy kreatywność z innowacyjnymi rozwiązaniami technologicznymi.
+                        </p>
+                        <p class="text-muted mb-4" data-i18n="sections.about.description2">
+                            <strong>ECM Digital</strong> to marka oferująca kompleksowe i nowoczesne rozwiązania digitalowe.
+                            Specjalizujemy się w projektowaniu stron internetowych, e-commerce, audytach UX oraz automatyzacji procesów biznesowych,
+                            pomagając firmom rozwijać się w cyfrowym świecie.
+                        </p>
+                        <p class="text-muted mb-4" data-i18n="sections.about.description3">
+                            Marka ECM Digital działa w ramach spółki <strong>Scrum Software Sp. z o.o.</strong>, która jest formalnym właścicielem
+                            wszystkich świadczonych przez nas usług oraz odpowiedzialnym podmiotem prawnym. To Scrum Software Sp. z o.o.
+                            wystawia faktury, zawiera umowy i prowadzi rozliczenia finansowe.
+                        </p>
+                        <p class="text-muted mb-4" data-i18n="sections.about.description4">
+                            Dzięki takiemu rozwiązaniu łączymy nowoczesny branding i profesjonalną obsługę prawną,
+                            zapewniając naszym klientom pełne bezpieczeństwo i transparentność współpracy.
+                        </p>
+                    </div>
+
+                    <!-- Mobile version - accordion -->
+                    <div class="d-lg-none">
+                        <div class="accordion" id="aboutAccordion">
+                            <div class="accordion-item" style="background: transparent; border: 1px solid var(--glass-border); border-radius: 12px; margin-bottom: 1rem;">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#aboutCollapse1" aria-expanded="false" aria-controls="aboutCollapse1" style="background: var(--glass-bg); color: var(--text-primary); border: none; border-radius: 12px;">
+                                        <i class="fas fa-users me-2" style="color: var(--primary);"></i>
+                                        <span data-i18n="sections.about.description1">Nasz Zespół</span>
+                                    </button>
+                                </h3>
+                                <div id="aboutCollapse1" class="accordion-collapse collapse" data-bs-parent="#aboutAccordion">
+                                    <div class="accordion-body" style="background: var(--bg-tertiary); border-radius: 0 0 12px 12px;">
+                                        <p class="text-muted mb-0" data-i18n="sections.about.description1">
+                                            Jesteśmy zespołem pasjonatów technologii, którzy wierzą, że każdy biznes zasługuje na cyfrową transformację.
+                                            Łączymy kreatywność z innowacyjnymi rozwiązaniami technologicznymi.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item" style="background: transparent; border: 1px solid var(--glass-border); border-radius: 12px; margin-bottom: 1rem;">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#aboutCollapse2" aria-expanded="false" aria-controls="aboutCollapse2" style="background: var(--glass-bg); color: var(--text-primary); border: none; border-radius: 12px;">
+                                        <i class="fas fa-rocket me-2" style="color: var(--primary);"></i>
+                                        <span data-i18n="sections.about.description2">Nasze Rozwiązania</span>
+                                    </button>
+                                </h3>
+                                <div id="aboutCollapse2" class="accordion-collapse collapse" data-bs-parent="#aboutAccordion">
+                                    <div class="accordion-body" style="background: var(--bg-tertiary); border-radius: 0 0 12px 12px;">
+                                        <p class="text-muted mb-0" data-i18n="sections.about.description2">
+                                            <strong>ECM Digital</strong> to marka oferująca kompleksowe i nowoczesne rozwiązania digitalowe.
+                                            Specjalizujemy się w projektowaniu stron internetowych, e-commerce, audytach UX oraz automatyzacji procesów biznesowych,
+                                            pomagając firmom rozwijać się w cyfrowym świecie.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item" style="background: transparent; border: 1px solid var(--glass-border); border-radius: 12px; margin-bottom: 1rem;">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#aboutCollapse3" aria-expanded="false" aria-controls="aboutCollapse3" style="background: var(--glass-bg); color: var(--text-primary); border: none; border-radius: 12px;">
+                                        <i class="fas fa-building me-2" style="color: var(--primary);"></i>
+                                        <span data-i18n="sections.about.description3">Formalności Prawn</span>
+                                    </button>
+                                </h3>
+                                <div id="aboutCollapse3" class="accordion-collapse collapse" data-bs-parent="#aboutAccordion">
+                                    <div class="accordion-body" style="background: var(--bg-tertiary); border-radius: 0 0 12px 12px;">
+                                        <p class="text-muted mb-0" data-i18n="sections.about.description3">
+                                            Marka ECM Digital działa w ramach spółki <strong>Scrum Software Sp. z o.o.</strong>, która jest formalnym właścicielem
+                                            wszystkich świadczonych przez nas usług oraz odpowiedzialnym podmiotem prawnym. To Scrum Software Sp. z o.o.
+                                            wystawia faktury, zawiera umowy i prowadzi rozliczenia finansowe.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item" style="background: transparent; border: 1px solid var(--glass-border); border-radius: 12px; margin-bottom: 1rem;">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#aboutCollapse4" aria-expanded="false" aria-controls="aboutCollapse4" style="background: var(--glass-bg); color: var(--text-primary); border: none; border-radius: 12px;">
+                                        <i class="fas fa-shield-alt me-2" style="color: var(--primary);"></i>
+                                        <span data-i18n="sections.about.description4">Bezpieczeństwo</span>
+                                    </button>
+                                </h3>
+                                <div id="aboutCollapse4" class="accordion-collapse collapse" data-bs-parent="#aboutAccordion">
+                                    <div class="accordion-body" style="background: var(--bg-tertiary); border-radius: 0 0 12px 12px;">
+                                        <p class="text-muted mb-0" data-i18n="sections.about.description4">
+                                            Dzięki takiemu rozwiązaniu łączymy nowoczesny branding i profesjonalną obsługę prawną,
+                                            zapewniając naszym klientom pełne bezpieczeństwo i transparentność współpracy.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-6">
                             <div class="text-center">
@@ -1293,33 +1686,33 @@
     </section>
 
     <!-- Process Section -->
-    <section class="py-5">
+    <section class="py-5" id="process" aria-labelledby="process-title">
         <div class="container">
-                            <h2 class="section-title" data-i18n="sections.process.title">Nasz Proces Pracy</h2>
-            <div class="row g-4">
+            <h2 id="process-title" class="section-title" data-i18n="sections.process.title">Nasz Proces Pracy</h2>
+            <div class="row g-4" role="tablist" aria-label="Kroki procesu pracy">
                 <div class="col-lg-3 col-md-6">
-                    <div class="process-step text-center">
+                    <div class="process-step text-center" role="tab" tabindex="0" aria-selected="false" aria-controls="step1-content">
                         <div class="process-number">1</div>
                         <h5 data-i18n="sections.process.steps.discovery.title">Konsultacja</h5>
                         <p class="text-muted" data-i18n="sections.process.steps.discovery.description">Analiza potrzeb i wymagań projektu</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <div class="process-step text-center">
+                    <div class="process-step text-center" role="tab" tabindex="0" aria-selected="false" aria-controls="step2-content">
                         <div class="process-number">2</div>
                         <h5 data-i18n="sections.process.steps.design.title">Planowanie</h5>
                         <p class="text-muted" data-i18n="sections.process.steps.design.description">Strategia i architektura rozwiązania</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <div class="process-step text-center">
+                    <div class="process-step text-center active" role="tab" tabindex="0" aria-selected="true" aria-controls="step3-content">
                         <div class="process-number">3</div>
                         <h5 data-i18n="sections.process.steps.development.title">Realizacja</h5>
                         <p class="text-muted" data-i18n="sections.process.steps.development.description">Development i testowanie</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <div class="process-step text-center">
+                    <div class="process-step text-center" role="tab" tabindex="0" aria-selected="false" aria-controls="step4-content">
                         <div class="process-number">4</div>
                         <h5 data-i18n="sections.process.steps.launch.title">Wdrożenie</h5>
                         <p class="text-muted" data-i18n="sections.process.steps.launch.description">Uruchomienie i wsparcie</p>
@@ -1356,8 +1749,10 @@
         </div>
     </section>
 
+    </main>
+
     <!-- Footer -->
-    <footer class="footer py-4">
+    <footer class="footer py-4" role="contentinfo">
         <div class="container text-center">
             <p class="text-muted mb-0" data-i18n="footer.copyright">
                 © 2025 ECM Digital. Wszystkie prawa zastrzeżone.
@@ -1529,20 +1924,164 @@
             }
         });
         
-        // Smooth scrolling for anchor links
+        // Enhanced Keyboard Navigation
+        document.addEventListener('keydown', function(e) {
+            // Skip links navigation with Alt + number
+            if (e.altKey) {
+                const skipLinks = document.querySelectorAll('.skip-link');
+                if (e.key >= '1' && e.key <= '3') {
+                    e.preventDefault();
+                    const index = parseInt(e.key) - 1;
+                    if (skipLinks[index]) {
+                        skipLinks[index].focus();
+                        skipLinks[index].click();
+                    }
+                }
+            }
+        });
+
+        // Process steps keyboard navigation
+        const processSteps = document.querySelectorAll('.process-step[role="tab"]');
+        let currentStepIndex = 2; // Start with active step (Realizacja)
+
+        function updateProcessStepFocus() {
+            processSteps.forEach((step, index) => {
+                step.setAttribute('aria-selected', index === currentStepIndex ? 'true' : 'false');
+                step.classList.toggle('active', index === currentStepIndex);
+            });
+        }
+
+        processSteps.forEach((step, index) => {
+            step.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowLeft' && index > 0) {
+                    e.preventDefault();
+                    currentStepIndex = index - 1;
+                    updateProcessStepFocus();
+                    processSteps[currentStepIndex].focus();
+                } else if (e.key === 'ArrowRight' && index < processSteps.length - 1) {
+                    e.preventDefault();
+                    currentStepIndex = index + 1;
+                    updateProcessStepFocus();
+                    processSteps[currentStepIndex].focus();
+                }
+            });
+
+            step.addEventListener('click', function() {
+                currentStepIndex = index;
+                updateProcessStepFocus();
+            });
+        });
+
+        // Service cards keyboard navigation
+        const serviceCards = document.querySelectorAll('.service-card');
+        serviceCards.forEach(card => {
+            card.setAttribute('tabindex', '0');
+            card.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    const link = this.querySelector('.btn-cta');
+                    if (link) link.click();
+                }
+            });
+        });
+
+        // Enhanced smooth scrolling with focus management
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
+                const targetId = this.getAttribute('href');
+                const target = document.querySelector(targetId);
                 if (target) {
                     target.scrollIntoView({
                         behavior: 'smooth',
                         block: 'start'
                     });
+
+                    // Focus management after scroll
+                    setTimeout(() => {
+                        if (target.getAttribute('tabindex') === null) {
+                            target.setAttribute('tabindex', '-1');
+                        }
+                        target.focus();
+
+                        // Announce to screen readers
+                        const announcement = document.createElement('div');
+                        announcement.setAttribute('aria-live', 'polite');
+                        announcement.setAttribute('aria-atomic', 'true');
+                        announcement.className = 'sr-only';
+                        announcement.textContent = `Przejście do sekcji ${target.getAttribute('aria-labelledby') || target.id}`;
+                        document.body.appendChild(announcement);
+                        setTimeout(() => document.body.removeChild(announcement), 1000);
+                    }, 800);
                 }
             });
         });
         
+        // Loading States Management
+        function addLoadingState(element) {
+            element.classList.add('loading');
+            element.setAttribute('aria-busy', 'true');
+            element.setAttribute('aria-describedby', 'loading-message');
+        }
+
+        function removeLoadingState(element) {
+            element.classList.remove('loading');
+            element.removeAttribute('aria-busy');
+            element.removeAttribute('aria-describedby');
+        }
+
+        // Enhanced button interactions
+        document.querySelectorAll('.btn-cta, .btn-primary, .btn-outline-primary').forEach(button => {
+            button.addEventListener('click', function(e) {
+                if (this.getAttribute('href') && this.getAttribute('href').startsWith('mailto:')) {
+                    // Handle email links
+                    addLoadingState(this);
+                    setTimeout(() => removeLoadingState(this), 1000);
+                }
+            });
+        });
+
+        // Form submission with loading states
+        const forms = document.querySelectorAll('form');
+        forms.forEach(form => {
+            form.addEventListener('submit', function(e) {
+                const submitBtn = this.querySelector('button[type="submit"]');
+                if (submitBtn) {
+                    e.preventDefault();
+                    addLoadingState(submitBtn);
+
+                    // Simulate form processing
+                    setTimeout(() => {
+                        removeLoadingState(submitBtn);
+                        // In real implementation, handle form submission here
+                        alert('Formularz został wysłany! Skontaktujemy się z Tobą wkrótce.');
+                        this.reset();
+                    }, 2000);
+                }
+            });
+        });
+
+        // Enhanced error handling
+        window.addEventListener('error', function(e) {
+            console.error('JavaScript error:', e.error);
+            // Could send error to analytics service
+        });
+
+        // Performance optimization - lazy load images
+        const images = document.querySelectorAll('img[data-src]');
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src;
+                    img.classList.remove('lazy');
+                    observer.unobserve(img);
+                }
+            });
+        });
+
+        images.forEach(img => imageObserver.observe(img));
+
         // Voice Chatbot Functionality
         class VoiceChatbot {
             constructor() {
@@ -1858,38 +2397,99 @@
                 });
             }
             
-            // Hero chatbot button
-            const heroButton = document.getElementById('heroChatbotButton');
-            if (heroButton) {
-                heroButton.addEventListener('click', function() {
-                    console.log('Hero chatbot button clicked!');
-                    const modal = document.getElementById('voiceChatbotModal');
-                    if (modal) {
-                        modal.classList.add('show');
-                        document.body.style.overflow = 'hidden';
-                        console.log('Modal opened from hero button');
+            // Enhanced chatbot initialization with better UX
+            if (window.awsChatbot) {
+                console.log('✅ AWS Chatbot already initialized');
+            } else {
+                console.log('🔄 AWS Chatbot not found, using enhanced fallback');
+
+                // Enhanced chatbot functionality for better UX
+                class EnhancedVoiceChatbot {
+                    constructor() {
+                        this.messages = [];
+                        this.init();
                     }
-                });
-            }
-            
-            // Add close button functionality
-            const closeButton = document.getElementById('voiceChatbotClose');
-            if (closeButton) {
-                closeButton.addEventListener('click', function() {
-                    console.log('Close button clicked!');
-                    const modal = document.getElementById('voiceChatbotModal');
-                    if (modal) {
-                        modal.classList.remove('show');
-                        document.body.style.overflow = 'auto';
-                        console.log('Modal closed');
-                        
-                        // Mute chatbot when modal is closed
-                        if (window.awsChatbot) {
-                            window.awsChatbot.isMuted = true;
-                            window.awsChatbot.updateMuteButton();
+
+                    init() {
+                        this.bindEvents();
+                        this.addWelcomeMessage();
+                    }
+
+                    bindEvents() {
+                        const textInput = document.getElementById('voiceChatbotTextInput');
+                        const sendButton = document.getElementById('voiceChatbotSendButton');
+                        const voiceButton = document.getElementById('voiceInputButton');
+
+                        if (sendButton) {
+                            sendButton.addEventListener('click', () => this.handleSendMessage());
+                        }
+
+                        if (textInput) {
+                            textInput.addEventListener('keypress', (e) => {
+                                if (e.key === 'Enter' && textInput.value.trim()) {
+                                    e.preventDefault();
+                                    this.handleSendMessage();
+                                }
+                            });
+                        }
+
+                        // Voice suggestions
+                        document.querySelectorAll('.voice-suggestion').forEach(suggestion => {
+                            suggestion.addEventListener('click', () => {
+                                const text = suggestion.getAttribute('data-suggestion');
+                                this.handleUserInput(text);
+                            });
+                        });
+                    }
+
+                    handleSendMessage() {
+                        const textInput = document.getElementById('voiceChatbotTextInput');
+                        if (textInput && textInput.value.trim()) {
+                            this.handleUserInput(textInput.value.trim());
+                            textInput.value = '';
                         }
                     }
-                });
+
+                    handleUserInput(text) {
+                        this.addMessage(text, 'user');
+                        const response = this.generateResponse(text);
+                        setTimeout(() => {
+                            this.addMessage(response, 'bot');
+                        }, 1000);
+                    }
+
+                    generateResponse(input) {
+                        const responses = [
+                            'Dzień dobry! Jak mogę pomóc w doborze usług dla Twojej firmy?',
+                            'Świetnie! Nasz zespół specjalistów pomoże Ci we wdrażaniu AI.',
+                            'Dziękuję za pytanie. Skontaktujemy się z Tobą w ciągu 24 godzin.',
+                            'Chętnie opowiem więcej o naszych rozwiązaniach. Co Cię najbardziej interesuje?',
+                            'To świetny wybór! Czy masz jakieś preferencje co do technologii?'
+                        ];
+                        return responses[Math.floor(Math.random() * responses.length)];
+                    }
+
+                    addMessage(text, sender) {
+                        const messagesContainer = document.getElementById('voiceChatbotMessages');
+                        if (!messagesContainer) return;
+
+                        const messageDiv = document.createElement('div');
+                        messageDiv.className = `voice-message ${sender}`;
+                        messageDiv.innerHTML = `<i class="fas fa-${sender === 'bot' ? 'robot' : 'user'} me-2"></i>${text}`;
+
+                        messagesContainer.appendChild(messageDiv);
+                        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                        this.messages.push({ text, sender, timestamp: new Date() });
+                    }
+
+                    addWelcomeMessage() {
+                        const welcomeMessage = 'Cześć! Jestem asystentem ECM Digital. Jak mogę Ci pomóc?';
+                        this.addMessage(welcomeMessage, 'bot');
+                    }
+                }
+
+                // Initialize enhanced chatbot
+                window.enhancedChatbot = new EnhancedVoiceChatbot();
             }
             
             // Initialize AWS Chatbot after all scripts are loaded
@@ -1907,23 +2507,125 @@
                 }
             }, 1000); // Wait 1 second for all scripts to load
             
-            // Add ESC key support to close modal
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape') {
-                    const modal = document.getElementById('voiceChatbotModal');
-                    if (modal && modal.classList.contains('show')) {
-                        modal.classList.remove('show');
-                        document.body.style.overflow = 'auto';
-                        console.log('Modal closed with ESC key');
-                        
-                        // Mute chatbot when modal is closed
-                        if (window.awsChatbot) {
-                            window.awsChatbot.isMuted = true;
-                            window.awsChatbot.updateMuteButton();
+            // Enhanced modal keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            // ESC key to close modal
+            if (e.key === 'Escape') {
+                const modal = document.getElementById('voiceChatbotModal');
+                if (modal && modal.classList.contains('show')) {
+                    e.preventDefault();
+                    modal.classList.remove('show');
+                    document.body.style.overflow = 'auto';
+                    console.log('Modal closed with ESC key');
+
+                    // Return focus to trigger button
+                    const triggerButton = document.getElementById('heroChatbotButton') || document.getElementById('voiceChatbotButton');
+                    if (triggerButton) {
+                        triggerButton.focus();
+                    }
+
+                    // Mute chatbot when modal is closed
+                    if (window.awsChatbot) {
+                        window.awsChatbot.isMuted = true;
+                        window.awsChatbot.updateMuteButton();
+                    }
+                }
+            }
+
+            // Enhanced chatbot input handling
+            const textInput = document.getElementById('voiceChatbotTextInput');
+            if (e.key === 'Enter' && document.activeElement === textInput && textInput.value.trim()) {
+                e.preventDefault();
+                // Trigger send message
+                const sendButton = document.getElementById('voiceChatbotSendButton');
+                if (sendButton) {
+                    sendButton.click();
+                }
+            }
+        });
+
+        // Focus trap for modal
+        function trapFocus(element) {
+            const focusableElements = element.querySelectorAll(
+                'a[href], button, textarea, input[type="text"], input[type="radio"], input[type="checkbox"], select'
+            );
+            const firstElement = focusableElements[0];
+            const lastElement = focusableElements[focusableElements.length - 1];
+
+            function handleTabKey(e) {
+                if (e.key === 'Tab') {
+                    if (e.shiftKey) {
+                        if (document.activeElement === firstElement) {
+                            e.preventDefault();
+                            lastElement.focus();
+                        }
+                    } else {
+                        if (document.activeElement === lastElement) {
+                            e.preventDefault();
+                            firstElement.focus();
                         }
                     }
                 }
-            });
+            }
+
+            element.addEventListener('keydown', handleTabKey);
+
+            // Return function to remove event listener
+            return function() {
+                element.removeEventListener('keydown', handleTabKey);
+            };
+        }
+
+        // Apply focus trap when modal opens
+        const modal = document.getElementById('voiceChatbotModal');
+        let removeTrap = null;
+
+        // Enhanced modal opening
+        function openModal() {
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+
+            // Set up focus trap
+            removeTrap = trapFocus(modal);
+
+            // Focus first focusable element
+            setTimeout(() => {
+                const closeButton = document.getElementById('voiceChatbotClose');
+                if (closeButton) closeButton.focus();
+            }, 100);
+        }
+
+        function closeModal() {
+            modal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+
+            // Remove focus trap
+            if (removeTrap) removeTrap();
+
+            // Return focus to trigger button
+            const triggerButton = document.getElementById('heroChatbotButton') || document.getElementById('voiceChatbotButton');
+            if (triggerButton) {
+                triggerButton.focus();
+            }
+        }
+
+        // Update event listeners to use new functions
+        const openButtons = document.querySelectorAll('#heroChatbotButton, #voiceChatbotButton');
+        openButtons.forEach(button => {
+            button.addEventListener('click', openModal);
+        });
+
+        const closeButton = document.getElementById('voiceChatbotClose');
+        if (closeButton) {
+            closeButton.addEventListener('click', closeModal);
+        }
+
+        // Close modal when clicking outside
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
         });
     </script>
     
@@ -1936,24 +2638,24 @@
     </div>
     
     <!-- Voice Chatbot Modal -->
-    <div class="voice-chatbot-modal" id="voiceChatbotModal">
+    <div class="voice-chatbot-modal" id="voiceChatbotModal" role="dialog" aria-modal="true" aria-labelledby="voice-chatbot-title" aria-describedby="voice-chatbot-subtitle">
         <div class="voice-chatbot-content">
             <div class="voice-chatbot-header">
                 <div class="voice-chatbot-title-section">
                     <img src="assets/images/tomasz-profile.jpg" alt="Tomasz Gnat" class="voice-chatbot-header-avatar">
                     <div class="voice-chatbot-title-text">
-                        <h3 class="voice-chatbot-title">
+                        <h3 id="voice-chatbot-title" class="voice-chatbot-title">
                             Asystent Głosowy ECM Digital
                         </h3>
-                        <p class="voice-chatbot-subtitle">Tomasz Gnat - CEO</p>
+                        <p id="voice-chatbot-subtitle" class="voice-chatbot-subtitle">Tomasz Gnat - CEO</p>
                     </div>
                 </div>
                 <div class="voice-chatbot-controls-header">
-                    <button class="voice-chatbot-mute" id="voiceChatbotMute" title="Wycisz/Włącz dźwięk">
-                        <i class="fas fa-volume-up"></i>
+                    <button class="voice-chatbot-mute" id="voiceChatbotMute" title="Wycisz/Włącz dźwięk" aria-label="Wycisz lub włącz dźwięk">
+                        <i class="fas fa-volume-up" aria-hidden="true"></i>
                     </button>
-                    <button class="voice-chatbot-close" id="voiceChatbotClose">
-                        <i class="fas fa-times"></i>
+                    <button class="voice-chatbot-close" id="voiceChatbotClose" aria-label="Zamknij czat">
+                        <i class="fas fa-times" aria-hidden="true"></i>
                     </button>
                 </div>
             </div>
@@ -1964,8 +2666,8 @@
             
             <div class="voice-chatbot-controls">
                 <div class="voice-controls-row">
-                    <button class="voice-input-button" id="voiceInputButton" title="Kliknij i mów">
-                        <i class="fas fa-microphone"></i>
+                    <button class="voice-input-button" id="voiceInputButton" title="Kliknij i mów" aria-label="Aktywuj głosowe wprowadzanie" aria-describedby="voice-status">
+                        <i class="fas fa-microphone" aria-hidden="true"></i>
                     </button>
                     <div class="voice-status" id="voiceStatus">
                         Kliknij mikrofon, aby rozpocząć rozmowę
@@ -1973,11 +2675,13 @@
                 </div>
                 
                 <div class="text-input-row">
-                    <input type="text" id="voiceChatbotTextInput" placeholder="Wpisz wiadomość...">
-                    <button id="voiceChatbotSendButton">
-                        <i class="fas fa-paper-plane"></i>
+                    <label for="voiceChatbotTextInput" class="sr-only">Wpisz wiadomość do asystenta</label>
+                    <input type="text" id="voiceChatbotTextInput" placeholder="Wpisz wiadomość..." aria-describedby="voice-input-help">
+                    <button id="voiceChatbotSendButton" aria-label="Wyślij wiadomość">
+                        <i class="fas fa-paper-plane" aria-hidden="true"></i>
                     </button>
                 </div>
+                <div id="voice-input-help" class="sr-only">Naciśnij Enter lub kliknij przycisk, aby wysłać wiadomość</div>
             </div>
             
             <div class="voice-chatbot-suggestions">

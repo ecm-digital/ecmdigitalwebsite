@@ -408,6 +408,118 @@
         .contact-section {
             min-height: 300px;
         }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 120px 0 80px;
+            }
+
+            .hero-title {
+                font-size: clamp(2rem, 6vw, 3rem);
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+                line-height: 1.4;
+            }
+
+            .section-title {
+                font-size: clamp(1.8rem, 5vw, 2.5rem);
+                margin-bottom: 2rem;
+            }
+
+            .contact-card {
+                margin-bottom: 2rem;
+                padding: 1.5rem 1rem;
+            }
+
+            .contact-card h4 {
+                font-size: 1.2rem;
+                margin-bottom: 0.75rem;
+            }
+
+            .contact-card p {
+                font-size: 0.9rem;
+                margin-bottom: 1.25rem;
+            }
+
+            .btn-contact {
+                width: 100%;
+                padding: 0.75rem 1rem;
+                font-size: 0.9rem;
+                text-align: center;
+            }
+
+            .contact-form {
+                padding: 1.5rem;
+                margin-top: 2rem;
+            }
+
+            .form-group {
+                margin-bottom: 1rem;
+            }
+
+            .form-label {
+                font-size: 0.9rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .form-control {
+                font-size: 0.9rem;
+                padding: 0.5rem 0.75rem;
+            }
+
+            .btn-submit {
+                width: 100%;
+                padding: 0.75rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 1.8rem;
+            }
+
+            .hero-subtitle {
+                font-size: 0.9rem;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .contact-card {
+                padding: 1.25rem 0.75rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .contact-card h4 {
+                font-size: 1.1rem;
+            }
+
+            .contact-card p {
+                font-size: 0.85rem;
+            }
+
+            .contact-form {
+                padding: 1rem;
+            }
+
+            .form-control {
+                font-size: 16px; /* Prevent zoom on iOS */
+            }
+
+            .btn-submit {
+                padding: 0.8rem 1rem;
+                font-size: 0.95rem;
+            }
+
+            .footer p {
+                font-size: 0.8rem;
+            }
+        }
     </style>
 </head>
 <body>

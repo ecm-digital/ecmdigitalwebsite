@@ -85,6 +85,41 @@ export const translations = {
       status: {
         online: 'Online'
       }
+    },
+    // Chatbot
+    chatbot: {
+      title: 'AI Asystent ECM Digital',
+      subtitle: 'Pomoc i konsultacje',
+      welcome: 'Witaj w AI Asystencie!',
+      description: 'Jestem tutaj, aby pomóc Ci z usługami ECM Digital',
+      features: {
+        text: '💬 Możesz pisać wiadomości tekstowe',
+        voiceInput: '🎤 Możesz również używać mikrofonu do rozmowy głosowej',
+        voiceOutput: '🔊 Bot może odpowiadać głosowo (możesz wyłączyć dźwięk)'
+      },
+      status: {
+        online: 'Online',
+        listening: '🎤 Słucham... Mów teraz!',
+        processing: 'Przetwarzanie...',
+        muted: 'Wyciszony'
+      },
+      buttons: {
+        messages: 'Wiadomości',
+        aiAssistant: 'AI Asystent',
+        mute: 'Wycisz dźwięk',
+        unmute: 'Włącz dźwięk',
+        voiceInput: 'Nagraj głos',
+        send: 'Wyślij'
+      },
+      errors: {
+        noSpeech: 'Nie wykryto mowy. Spróbuj ponownie.',
+        noMicrophone: 'Brak dostępu do mikrofonu. Sprawdź uprawnienia.',
+        microphoneBlocked: 'Dostęp do mikrofonu zabroniony. Zezwól na dostęp w ustawieniach przeglądarki.',
+        network: 'Problem z siecią. Sprawdź połączenie internetowe.',
+        speechNotSupported: 'Rozpoznawanie mowy nie jest dostępne w tej przeglądarce',
+        speechError: 'Wystąpił błąd z rozpoznawaniem mowy.'
+      },
+      placeholder: 'Napisz wiadomość lub użyj mikrofonu...'
     }
   },
   en: {
@@ -173,6 +208,41 @@ export const translations = {
       status: {
         online: 'Online'
       }
+    },
+    // Chatbot
+    chatbot: {
+      title: 'AI Assistant ECM Digital',
+      subtitle: 'Help and consultations',
+      welcome: 'Welcome to AI Assistant!',
+      description: 'I\'m here to help you with ECM Digital services',
+      features: {
+        text: '💬 You can write text messages',
+        voiceInput: '🎤 You can also use microphone for voice conversation',
+        voiceOutput: '🔊 Bot can respond with voice (you can mute the sound)'
+      },
+      status: {
+        online: 'Online',
+        listening: '🎤 Listening... Speak now!',
+        processing: 'Processing...',
+        muted: 'Muted'
+      },
+      buttons: {
+        messages: 'Messages',
+        aiAssistant: 'AI Assistant',
+        mute: 'Mute sound',
+        unmute: 'Unmute sound',
+        voiceInput: 'Record voice',
+        send: 'Send'
+      },
+      errors: {
+        noSpeech: 'No speech detected. Please try again.',
+        noMicrophone: 'No microphone access. Please check permissions.',
+        microphoneBlocked: 'Microphone access blocked. Please allow access in browser settings.',
+        network: 'Network problem. Please check your internet connection.',
+        speechNotSupported: 'Speech recognition is not available in this browser',
+        speechError: 'Speech recognition error occurred.'
+      },
+      placeholder: 'Type a message or use microphone...'
     }
   }
 }

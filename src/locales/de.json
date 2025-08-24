@@ -34,7 +34,8 @@
         "subtitle": "Wir transformieren Ihr Unternehmen durch künstliche Intelligenz. Von Chatbots bis hin zu fortschrittlicher Automatisierung - KI, die wirklich funktioniert und echte Geschäftsvorteile generiert.",
         "exploreServices": "Dienstleistungen erkunden",
         "getQuote": "Angebot erhalten",
-        "cta_assistant": "Sprechen Sie mit unserem KI-Assistenten"
+        "cta_assistant": "Sprechen Sie mit unserem KI-Assistenten",
+        "exploreFeatures": "Funktionen erkunden"
     },
   "sections": {
     "services": {
@@ -150,7 +151,21 @@
       "form.budget.25k+": "Über 25.000 PLN",
       "form.budget.consultation": "Beratung benötigt",
       "form.message": "Nachricht *",
-      "form.submit": "Nachricht senden"
+              "form.submit": "Nachricht senden"
+      }
+    },
+    "features": {
+      "title": "Hauptfunktionen",
+      "subtitle": "Wir nutzen die neuesten Technologien für professionelle Websites"
+    },
+    "benefits": {
+      "title": "Warum uns wählen?"
+    },
+    "cta": {
+      "title": "Bereit für eine professionelle Website?",
+      "description": "Kontaktieren Sie uns und erhalten Sie eine kostenlose Beratung. Wir helfen Ihnen dabei, eine Website zu erstellen, die Kunden anzieht und den Umsatz steigert.",
+      "freeConsultation": "Kostenlose Beratung",
+      "callNow": "Jetzt anrufen"
     }
   },
   "serviceProcesses": {

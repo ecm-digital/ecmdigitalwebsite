@@ -34,7 +34,8 @@
         "subtitle": "We transform your company through artificial intelligence. From chatbots to advanced automation - AI that really works and generates real business benefits.",
         "exploreServices": "View Offer",
         "getQuote": "Free Consultation",
-        "cta_assistant": "Chat with our AI Assistant"
+        "cta_assistant": "Chat with our AI Assistant",
+        "exploreFeatures": "Explore features"
     },
   "sections": {
     "services": {
@@ -150,7 +151,21 @@
       "form.budget.25k+": "Above 25,000 PLN",
       "form.budget.consultation": "Need consultation",
       "form.message": "Message *",
-      "form.submit": "Send Message"
+              "form.submit": "Send Message"
+      }
+    },
+    "features": {
+      "title": "Key Features",
+      "subtitle": "We use the latest technologies to create professional websites"
+    },
+    "benefits": {
+      "title": "Why Choose Us?"
+    },
+    "cta": {
+      "title": "Ready for a Professional Website?",
+      "description": "Contact us and get a free consultation. We'll help you create a website that attracts customers and increases sales.",
+      "freeConsultation": "Free Consultation",
+      "callNow": "Call Now"
     }
   },
   "serviceProcesses": {

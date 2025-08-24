@@ -34,7 +34,7 @@ export function useMessages(projectId?: string) {
   }, [user])
 
   // Send a new message
-  const sendMessage = async (content: string, attachments?: any[]) => {
+  const sendMessage = async (content: string, attachments?: any[], senderId?: string) => {
     if (!user || !projectId || !content.trim()) return
 
     setSending(true)
@@ -43,7 +43,7 @@ export function useMessages(projectId?: string) {
         .from('messages')
         .insert([{
           project_id: projectId,
-          sender_id: user.id,
+          sender_id: senderId || user.id,
           content: content.trim(),
           attachments: attachments || []
         }])
@@ -57,7 +57,7 @@ export function useMessages(projectId?: string) {
 
       // Add message to local state immediately for optimistic updates
       setMessages(prev => [...prev, data])
-      
+
       return { success: true, data }
     } catch (error) {
       console.error('Error sending message:', error)
@@ -65,6 +65,29 @@ export function useMessages(projectId?: string) {
     } finally {
       setSending(false)
     }
+  }
+
+  // Send chatbot message (for AI responses)
+  const sendChatbotMessage = async (content: string, isVoice: boolean = false) => {
+    if (!projectId || !content.trim()) return
+
+    // Create a chatbot user ID (or use a system user)
+    const chatbotUserId = 'chatbot-system-user'
+
+    const result = await sendMessage(content, [], chatbotUserId)
+
+    if (result.success) {
+      // Mark as bot message
+      setMessages(prev =>
+        prev.map(msg =>
+          msg.id === result.data.id
+            ? { ...msg, is_bot: true, is_voice: isVoice }
+            : msg
+        )
+      )
+    }
+
+    return result
   }
 
   // Mark messages as read
@@ -168,6 +191,7 @@ export function useMessages(projectId?: string) {
     loading,
     sending,
     sendMessage,
+    sendChatbotMessage,
     markAsRead,
     unreadCount,
     latestMessage,
