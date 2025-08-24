@@ -16,7 +16,12 @@ class AWSChatbot {
         this.userId = this.generateUserId();
         this.isMuted = false;
         this.selectedVoice = null; // Pre-selected voice
-        
+
+        // AWS API Configuration
+        this.useAPI = true; // Set to true to use our Lambda API
+        this.apiEndpoint = 'https://ctdktnhcv8.execute-api.eu-west-1.amazonaws.com/prod/chat';
+        this.apiTimeout = 10000; // 10 seconds
+
         this.init();
     }
     
@@ -66,7 +71,10 @@ class AWSChatbot {
             
             // Load voice preference
             this.loadVoicePreference();
-            
+
+            // Load API preference
+            this.loadAPIPreference();
+
             // Bind events
             this.bindEvents();
             
@@ -153,7 +161,10 @@ class AWSChatbot {
             
             // Load voice preference
             this.loadVoicePreference();
-            
+
+            // Load API preference
+            this.loadAPIPreference();
+
             // Bind events
             this.bindEvents();
             
@@ -377,29 +388,46 @@ class AWSChatbot {
                 this.showVoiceChangeConfirmation('reset');
             });
         }
+
+        // API Mode Toggle
+        const apiToggle = document.getElementById('apiModeToggle');
+        if (apiToggle) {
+            apiToggle.checked = this.useAPI;
+            apiToggle.addEventListener('change', (e) => {
+                this.useAPI = e.target.checked;
+                localStorage.setItem('chatbotUseAPI', this.useAPI);
+                console.log(`🔄 API mode ${this.useAPI ? 'enabled' : 'disabled'}`);
+                this.showAPIModeChange();
+            });
+        }
     }
     
     async handleUserInput(text) {
         // Add user message
         this.addMessage(text, 'user');
-        
+
         try {
             console.log('🔄 Processing user input:', text);
-            
+
             // Send to Amazon Bedrock for intelligent response
             const response = await this.sendToBedrock(text);
-            
+
             console.log('🤖 Bot response:', response);
-            
+
             // Add bot response
             this.addMessage(response.message, 'bot');
-            
+
+            // Show service recommendations if available
+            if (response.services && response.services.length > 0) {
+                this.showServiceRecommendations(response.services);
+            }
+
             // Speak response
             this.speak(response.message);
-            
+
         } catch (error) {
             console.error('❌ Error handling user input:', error);
-            
+
             // Fallback response
             const fallbackResponse = this.generateFallbackResponse(text);
             console.log('🔄 Using fallback response:', fallbackResponse);
@@ -408,13 +436,19 @@ class AWSChatbot {
         }
     }
     
-    async sendToBedrock(text) {
+        async sendToBedrock(text) {
+        // Check if we should use our API instead of direct AWS calls
+        if (this.useAPI) {
+            console.log('🔄 Using ECM Digital API instead of direct AWS calls');
+            return await this.callAPI(text);
+        }
+
         // Use Amazon Bedrock for intelligent responses
         const systemPrompt = `Jesteś cyfrowym asystentem głosowym Tomasza Gnata - CEO ECM Digital. Reprezentujesz firmę specjalizującą się w usługach cyfrowych.
 
 INFORMACJE O FIRMIE:
 - Strony WWW: od 3,500 PLN
-- Sklepy Shopify: od 8,000 PLN  
+- Sklepy Shopify: od 8,000 PLN
 - Aplikacje Mobilne: od 15,000 PLN
 - Asystenci AI na Amazon Bedrock: od 12,000 PLN
 - Automatyzacje (n8n, Zapier, Opal): od 5,000 PLN
@@ -433,7 +467,7 @@ JĘZYK: Odpowiadaj w języku ${this.currentLanguage === 'pl' ? 'polskim' : 'angi
 KONTEKST: ${this.getConversationContext()}`;
 
         const userMessage = text;
-        
+
         try {
             // Use Claude 3 Sonnet for best results
             const response = await this.callBedrockAPI(systemPrompt, userMessage);
@@ -445,6 +479,65 @@ KONTEKST: ${this.getConversationContext()}`;
         } catch (error) {
             console.error('Bedrock error:', error);
             throw error;
+        }
+    }
+
+    /**
+     * Call our ECM Digital API endpoint
+     */
+    async callAPI(message) {
+        console.log('🌐 Calling ECM Digital API:', message);
+
+        try {
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), this.apiTimeout);
+
+            const response = await fetch(this.apiEndpoint, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    message: message,
+                    userId: this.userId,
+                    sessionId: `session_${Date.now()}`,
+                    language: this.currentLanguage
+                }),
+                signal: controller.signal
+            });
+
+            clearTimeout(timeoutId);
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const data = await response.json();
+            console.log('✅ API response received:', data);
+
+            return {
+                message: data.message,
+                services: data.services || [],
+                source: 'api',
+                timestamp: data.timestamp,
+                query: data.query
+            };
+
+        } catch (error) {
+            console.error('❌ API call failed:', error);
+
+            if (error.name === 'AbortError') {
+                throw new Error('API request timeout - spróbuj ponownie');
+            }
+
+            // Fallback to local responses if API fails
+            console.log('🔄 Falling back to local responses');
+            return {
+                message: this.generateFallbackResponse(message),
+                source: 'fallback',
+                error: error.message
+            };
         }
     }
     
@@ -836,13 +929,49 @@ Co Cię najbardziej interesuje? Opowiedz mi o swoich potrzebach lub wybierz jedn
         if (voiceType) {
             console.log('🎵 Loading saved voice preference:', voiceType);
             this.handleVoiceChange(voiceType);
-            
+
             // Update selector to match saved preference
             const voiceSelector = document.getElementById('voiceSelector');
             if (voiceSelector) {
                 voiceSelector.value = voiceType;
             }
         }
+    }
+
+    loadAPIPreference() {
+        const useAPI = localStorage.getItem('chatbotUseAPI');
+        if (useAPI !== null) {
+            this.useAPI = useAPI === 'true';
+            console.log(`🔄 Loaded API preference: ${this.useAPI ? 'enabled' : 'disabled'}`);
+        }
+
+        // Update toggle if it exists
+        const apiToggle = document.getElementById('apiModeToggle');
+        if (apiToggle) {
+            apiToggle.checked = this.useAPI;
+        }
+    }
+
+    showAPIModeChange() {
+        const messagesContainer = document.getElementById('voiceChatbotMessages');
+        if (!messagesContainer) return;
+
+        const modeMessage = document.createElement('div');
+        modeMessage.className = 'voice-message bot api-mode-change';
+        modeMessage.innerHTML = `
+            <i class="fas fa-server me-2" style="color: var(--accent);"></i>
+            Tryb API ${this.useAPI ? 'włączony' : 'wyłączony'}
+        `;
+
+        messagesContainer.appendChild(modeMessage);
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+        // Remove after 3 seconds
+        setTimeout(() => {
+            if (modeMessage.parentNode) {
+                modeMessage.remove();
+            }
+        }, 3000);
     }
     
     async speakWithPolly(text) {
@@ -1746,6 +1875,61 @@ Co Cię najbardziej interesuje? Opowiedz mi o swoich potrzebach lub wybierz jedn
         // Basic chatbot without AWS integration
         this.bindEvents();
         this.addWelcomeMessage();
+    }
+
+    /**
+     * Show service recommendations from API
+     */
+    showServiceRecommendations(services) {
+        console.log('💡 Showing service recommendations:', services);
+
+        const messagesContainer = document.getElementById('voiceChatbotMessages');
+        if (!messagesContainer) return;
+
+        // Create recommendations container
+        const recommendationsDiv = document.createElement('div');
+        recommendationsDiv.className = 'service-recommendations';
+        recommendationsDiv.innerHTML = `
+            <div style="margin-top: 1rem; padding: 1rem; background: var(--bg-primary); border-radius: 8px; border: 1px solid var(--border);">
+                <div style="font-weight: 600; color: var(--accent); margin-bottom: 0.5rem;">
+                    💼 Rekomendowane usługi:
+                </div>
+                <div class="services-grid" style="display: grid; gap: 0.5rem;">
+                    ${services.map(service => `
+                        <div class="service-card" style="padding: 0.75rem; background: var(--bg-secondary); border-radius: 6px; border: 1px solid var(--border); cursor: pointer; transition: all 0.3s ease;" onclick="window.open('${service.url || '#'}', '_blank')">
+                            <div style="font-weight: 600; color: var(--text-primary); margin-bottom: 0.25rem;">
+                                ${service.name}
+                            </div>
+                            <div style="font-size: 0.9rem; color: var(--text-secondary);">
+                                ${service.category} • ${service.priority}
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+        `;
+
+        messagesContainer.appendChild(recommendationsDiv);
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+        // Add hover effects
+        recommendationsDiv.querySelectorAll('.service-card').forEach(card => {
+            card.onmouseenter = () => {
+                card.style.transform = 'translateY(-2px)';
+                card.style.boxShadow = '0 4px 12px rgba(0,0,0,0.15)';
+            };
+            card.onmouseleave = () => {
+                card.style.transform = 'translateY(0)';
+                card.style.boxShadow = 'none';
+            };
+        });
+
+        // Remove recommendations after 30 seconds
+        setTimeout(() => {
+            if (recommendationsDiv.parentNode) {
+                recommendationsDiv.remove();
+            }
+        }, 30000);
     }
     
     setLanguage(lang) {

@@ -214,6 +214,70 @@
             position: relative;
             z-index: 2;
         }
+
+        /* Service Recommendations from API */
+        .service-recommendations {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: var(--bg-primary);
+            border-radius: 12px;
+            border: 1px solid var(--separator);
+        }
+
+        .service-recommendations .service-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--separator);
+            border-radius: 8px;
+            padding: 0.75rem;
+            margin: 0.25rem 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            height: auto;
+            min-height: 60px;
+        }
+
+        .service-recommendations .service-card:hover {
+            background: var(--bg-tertiary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary);
+        }
+
+        .service-recommendations .service-card .service-name {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .service-recommendations .service-card .service-meta {
+            font-size: 0.8rem;
+            color: var(--text-tertiary);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .service-recommendations .service-card .service-category {
+            font-weight: 500;
+            color: var(--accent);
+        }
+
+        .service-recommendations .service-card .service-priority {
+            padding: 0.2rem 0.5rem;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+        .service-recommendations .service-card .service-priority.High {
+            background: var(--accent);
+            color: white;
+        }
+
+        .service-recommendations .service-card .service-priority.Medium {
+            background: var(--accent-orange);
+            color: white;
+        }
         
         .btn-cta {
             display: inline-flex;
@@ -1238,6 +1302,48 @@
             color: var(--text-primary);
             cursor: pointer;
             transition: all 0.3s ease;
+        }
+
+        /* API Mode Toggle Styles */
+        .api-mode-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+            padding: 0.75rem;
+            background: var(--bg-tertiary);
+            border-radius: 15px;
+            border: 1px solid var(--separator);
+            margin-bottom: 0.5rem;
+        }
+
+        .api-mode-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+        }
+
+        .api-mode-switch {
+            margin: 0;
+        }
+
+        .api-mode-text {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .form-check-input:checked {
+            background-color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .form-check-input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 0.25rem rgba(0, 122, 255, 0.25);
         }
         
         .voice-selector:focus {
@@ -2845,6 +2951,21 @@
                 </div>
                 <div id="voice-input-help" class="sr-only">Naciśnij Enter lub kliknij przycisk, aby wysłać wiadomość</div>
                 
+                <!-- API Mode Toggle -->
+                <div class="api-mode-row">
+                    <label class="api-mode-label">
+                        <i class="fas fa-server me-2"></i>
+                        Tryb asystenta:
+                    </label>
+                    <div class="form-check form-switch api-mode-switch">
+                        <input class="form-check-input" type="checkbox" id="apiModeToggle" checked>
+                        <label class="form-check-label" for="apiModeToggle">
+                            <span class="api-mode-text">AI AWS</span>
+                            <i class="fas fa-info-circle ms-1" title="Tryb AI z AWS - inteligentne odpowiedzi na podstawie danych usług"></i>
+                        </label>
+                    </div>
+                </div>
+
                 <!-- Voice Selection -->
                 <div class="voice-selection-row">
                     <label for="voiceSelector" class="voice-selection-label">
