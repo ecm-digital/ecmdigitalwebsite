@@ -58,23 +58,23 @@
       "title": "Unser Team",
       "subtitle": "Lernen Sie die Experten kennen, die Ihre Projekte erstellen",
       "members": {
-        "anna": {
-          "name": "Anna Kowalska",
+        "tomasz": {
+          "name": "Tomasz Gnat",
           "position": "CEO & Geschäftsstrategie",
           "description": "Verantwortlich für Unternehmensstrategie, Kundenbeziehungen und Geschäftsentwicklung"
         },
-        "marcin": {
-          "name": "Marcin Nowak",
+        "karol": {
+          "name": "Karol Czechowski",
           "position": "CTO & Lösungsarchitekt",
           "description": "Spezialist für Webtechnologien, KI und Geschäftsprozessautomatisierung"
         },
-        "katarzyna": {
-          "name": "Katarzyna Wiśniewska",
+        "marta": {
+          "name": "Marta Górska",
           "position": "UX/UI Designer",
           "description": "Expertin für Benutzeroberflächendesign und Benutzererfahrung"
         },
-        "pawel": {
-          "name": "Paweł Kowalski",
+        "roman": {
+          "name": "Roman Domina",
           "position": "Projektmanager",
           "description": "Verwaltet Projekte und koordiniert Teamarbeit"
         }
