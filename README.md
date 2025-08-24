@@ -1,4 +1,4 @@
-# ECM Digital Agency - Dokumentacja
+# ECM Digital Agency - Dokumentacja (Updated)
 
 Kompleksowa dokumentacja agencji ECM Digital zawierająca ofertę usług, portfolio projektów, metodologię pracy oraz case studies.
 
