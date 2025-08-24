@@ -95,7 +95,7 @@
             --glass-border: rgba(255, 255, 255, 0.1);
         }
 
-        body { 
+        body {
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', sans-serif;
             background: var(--bg-primary);
             color: var(--text-primary);
@@ -254,20 +254,20 @@
             border-bottom: 1px solid var(--glass-border);
             padding: 1rem 0;
         }
-        
+
         .navbar-brand {
             font-weight: 700;
             color: var(--text-primary) !important;
             font-size: 1.5rem;
         }
-        
+
         .nav-link {
             color: var(--text-secondary) !important;
             font-weight: 500;
             margin: 0 0.5rem;
             transition: color 0.3s ease;
         }
-        
+
         .nav-link:hover {
             color: var(--primary) !important;
         }
@@ -604,7 +604,7 @@
             backdrop-filter: blur(20px);
             transition: all 0.3s ease;
         }
-        
+
         .pricing-card:hover {
             transform: translateY(-5px);
             box-shadow: var(--shadow-lg);
@@ -636,7 +636,7 @@
             background: var(--bg-secondary);
             border-top: 1px solid var(--glass-border);
         }
-        
+
         .btn-primary {
             background: var(--primary);
             border: none;
@@ -645,7 +645,7 @@
             font-weight: 600;
             transition: all 0.3s ease;
         }
-        
+
         .btn-primary:hover {
             background: #0056b3;
             transform: translateY(-2px);
@@ -698,11 +698,16 @@
             .hero {
                 padding: 120px 0 80px;
             }
-            
+
             .hero-title {
                 font-size: clamp(2rem, 6vw, 3rem);
             }
-            
+
+            .hero-subtitle {
+                font-size: 1rem;
+                line-height: 1.4;
+            }
+
             .btn-cta {
                 padding: 0.5rem 1rem;
                 font-size: 0.875rem;
@@ -711,21 +716,165 @@
                 text-align: center;
                 width: 100%;
             }
-            
+
             .btn-cta.me-3 {
                 margin-right: 0 !important;
                 margin-bottom: 1rem;
             }
-            
+
             .language-switcher {
                 margin: 1rem 0 0 0;
             }
-            
+
             .language-switcher .dropdown-menu {
                 position: static !important;
                 transform: none !important;
                 width: 100%;
                 margin-top: 0.5rem;
+            }
+
+            /* Enhanced mobile responsiveness */
+            .hero .container {
+                padding: 0 2rem;
+            }
+
+            .section-title {
+                font-size: clamp(1.8rem, 5vw, 2.5rem);
+                margin-bottom: 2rem;
+            }
+
+            .service-card {
+                margin-bottom: 1.5rem;
+                padding: 1.5rem 1rem;
+            }
+
+            .service-card h3, .service-card h4 {
+                font-size: 1.2rem;
+                margin-bottom: 0.75rem;
+            }
+
+            .service-card p {
+                font-size: 0.9rem;
+                margin-bottom: 1rem;
+            }
+
+            .content-section {
+                padding: 60px 0;
+            }
+
+            .step-content h4 {
+                font-size: 1.1rem;
+                margin-bottom: 1rem;
+            }
+
+            .step-content p {
+                font-size: 0.9rem;
+                line-height: 1.4;
+            }
+
+            .step-deliverables .badge {
+                font-size: 0.75rem;
+                margin-bottom: 0.5rem;
+            }
+
+            /* Mobile navbar improvements */
+            .navbar-collapse {
+            background: var(--glass-bg);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                border-radius: 0 0 12px 12px;
+                margin-top: 1rem;
+                padding: 1rem;
+            border: 1px solid var(--glass-border);
+            }
+
+            .nav-link {
+                padding: 0.75rem 1rem;
+                border-radius: 8px;
+                margin: 0.25rem 0;
+            }
+
+            .dropdown-menu {
+                position: static;
+                float: none;
+                width: auto;
+                margin-top: 0.5rem;
+                background: transparent;
+                border: none;
+                box-shadow: none;
+            }
+
+            .dropdown-item {
+                padding: 0.75rem 1rem;
+                border-radius: 8px;
+                margin: 0.25rem 0;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 1.8rem;
+            }
+
+            .hero-subtitle {
+                font-size: 0.9rem;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .service-card {
+                padding: 1.25rem 0.75rem;
+                margin-bottom: 1.25rem;
+            }
+
+            .service-card h3, .service-card h4 {
+                font-size: 1.1rem;
+            }
+
+            .service-card p {
+                font-size: 0.85rem;
+            }
+
+            .btn-cta {
+                padding: 0.8rem 1rem;
+                font-size: 0.95rem;
+            }
+
+            .content-section {
+                padding: 40px 0;
+            }
+
+            .step-content {
+                padding: 1.25rem;
+            }
+
+            .step-content h4 {
+                font-size: 1rem;
+            }
+
+            .step-content p {
+                font-size: 0.85rem;
+            }
+
+            .process-step {
+                margin-bottom: 1.5rem;
+            }
+
+            .step-number {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
+
+            .navbar-collapse {
+                padding: 0.75rem;
+            }
+
+            .nav-link {
+                padding: 0.6rem 0.8rem;
+                font-size: 0.9rem;
             }
         }
     </style>
@@ -775,7 +924,7 @@
                         <li><a class="dropdown-item lang-btn active" href="#" data-lang="pl">🇵🇱 Polski</a></li>
                         <li><a class="dropdown-item lang-btn" href="#" data-lang="en">🇺🇸 English</a></li>
                         <li><a class="dropdown-item lang-btn" href="#" data-lang="de">🇩🇪 Deutsch</a></li>
-                    </ul>
+                </ul>
                 </div>
             </div>
         </div>
