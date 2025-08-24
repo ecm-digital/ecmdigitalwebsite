@@ -9,6 +9,8 @@ class I18nManager {
     // Inicjalizacja systemu
     async init() {
         try {
+            console.log('🔄 Initializing I18n system...');
+            
             // Ładowanie tłumaczeń
             await this.loadTranslations();
             this.initialized = true;
@@ -16,9 +18,10 @@ class I18nManager {
             // Ustawienie domyślnego języka
             this.setLanguage(this.getStoredLanguage() || 'pl');
             
-            console.log('I18n system initialized successfully');
+            console.log('✅ I18n system initialized successfully');
+            console.log('📊 Available translations:', Object.keys(this.translations));
         } catch (error) {
-            console.error('Failed to initialize I18n system:', error);
+            console.error('❌ Failed to initialize I18n system:', error);
             // Fallback do wbudowanych tłumaczeń
             this.loadFallbackTranslations();
             this.setLanguage('pl');
@@ -30,6 +33,9 @@ class I18nManager {
         try {
             // Dynamicznie określ ścieżkę do plików tłumaczeń
             const basePath = this.getBasePath();
+            console.log('🔍 Base path determined:', basePath);
+            console.log('🔍 Current pathname:', window.location.pathname);
+            
             const [plTranslations, enTranslations, deTranslations] = await Promise.all([
                 fetch(`${basePath}src/locales/pl.json`).then(res => res.json()),
                 fetch(`${basePath}src/locales/en.json`).then(res => res.json()),
@@ -41,8 +47,11 @@ class I18nManager {
                 en: enTranslations,
                 de: deTranslations
             };
+            
+            console.log('✅ Translations loaded successfully');
+            console.log('🇵🇱 Polish keys:', Object.keys(plTranslations));
         } catch (error) {
-            console.error('Failed to load translations:', error);
+            console.error('❌ Failed to load translations:', error);
             // Fallback do wbudowanych tłumaczeń
             this.loadFallbackTranslations();
         }
@@ -258,6 +267,7 @@ class I18nManager {
     // Aktualizacja zawartości strony
     updatePageContent() {
         const elements = document.querySelectorAll('[data-i18n]');
+        console.log(`🔄 Updating ${elements.length} elements with translations`);
         
         elements.forEach(element => {
             const key = element.getAttribute('data-i18n');
@@ -269,6 +279,9 @@ class I18nManager {
                 } else {
                     element.textContent = translation;
                 }
+                console.log(`✅ Updated ${key}: ${translation}`);
+            } else {
+                console.warn(`⚠️ No translation found for key: ${key}`);
             }
         });
     }

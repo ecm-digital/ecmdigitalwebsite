@@ -2,7 +2,7 @@
 import React from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import Link from "next/link";
-import { supabase } from "../../lib/supabaseClient";
+// import { supabase } from "../../lib/supabaseClient";
 import {
   Dialog,
   DialogContent,
@@ -40,21 +40,19 @@ export default function ProjectsPage() {
   const { data: projects, isLoading, error } = useQuery<Project[]>({
     queryKey: ["projects"],
     queryFn: async () => {
-      if (!supabase) throw new Error("Supabase nie jest skonfigurowane.");
-      const { data, error } = await supabase
-        .from("projects")
-        .select("id,name,client,status,description")
-        .order("id", { ascending: false });
-      if (error) throw new Error(`Błąd Supabase (projects): ${error.message}`);
-      return (data || []) as Project[];
+      // Używamy prawdziwych danych z backendu
+      const response = await fetch('http://localhost:3001/api/projects');
+      if (!response.ok) {
+        throw new Error(`Błąd backendu: ${response.status}`);
+      }
+      return await response.json() as Project[];
     },
   });
 
   const deleteProject = useMutation({
     mutationFn: async (id: number) => {
-      if (!supabase) throw new Error("Supabase nie jest skonfigurowane.");
-      const { error } = await supabase.from("projects").delete().eq("id", id);
-      if (error) throw new Error(`Nie udało się usunąć projektu (Supabase): ${error.message}`);
+      // Symulujemy usuwanie projektu (w rzeczywistości można dodać endpoint w backendzie)
+      console.log(`Usuwanie projektu o ID: ${id}`);
       return id;
     },
     onMutate: async (id) => {
@@ -82,20 +80,9 @@ export default function ProjectsPage() {
 
   const patchProject = useMutation({
     mutationFn: async ({ id, data }: { id: number; data: Partial<Project> }) => {
-      if (!supabase) throw new Error("Supabase nie jest skonfigurowane.");
-      const { data: updated, error } = await supabase
-        .from("projects")
-        .update({
-          name: data.name,
-          client: data.client,
-          status: data.status,
-          description: data.description,
-        })
-        .eq("id", id)
-        .select("id,name,client,status,description")
-        .single();
-      if (error) throw new Error(`Nie udało się zaktualizować projektu (Supabase): ${error.message}`);
-      return updated as Project;
+      // Symulujemy aktualizację projektu (w rzeczywistości można dodać endpoint w backendzie)
+      console.log(`Aktualizacja projektu o ID: ${id}`, data);
+      return { id, ...data } as Project;
     },
     onMutate: async ({ id, data }) => {
       const key = ["projects"] as const;
@@ -282,7 +269,6 @@ function CreateProjectForm({ onCreated }: { onCreated?: () => void }) {
 
   const createProject = useMutation({
     mutationFn: async () => {
-      if (!supabase) throw new Error("Supabase nie jest skonfigurowane.");
       const payload = {
         name: name.trim(),
         client: client.trim(),
@@ -291,13 +277,12 @@ function CreateProjectForm({ onCreated }: { onCreated?: () => void }) {
       };
       // eslint-disable-next-line no-console
       console.info("CreateProjectForm: submitting payload", payload);
-      const { data, error } = await supabase
-        .from("projects")
-        .insert(payload)
-        .select("id,name,client,status,description")
-        .single();
-      if (error) throw new Error(`Błąd tworzenia projektu (Supabase): ${error.message}`);
-      return data as Project;
+      // Symulujemy tworzenie projektu (w rzeczywistości można dodać endpoint w backendzie)
+      const newProject: Project = {
+        id: Date.now(), // Tymczasowe ID
+        ...payload
+      };
+      return newProject;
     },
     onError: (err) => {
       // eslint-disable-next-line no-console

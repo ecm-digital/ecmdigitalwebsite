@@ -1870,13 +1870,14 @@
         // Initialize AOS
         AOS.init();
         
-        // Initialize I18n
-        const i18nManager = new I18nManager();
-        
         // Language switcher functionality
         document.addEventListener('DOMContentLoaded', function() {
             // Initialize I18n after DOM is loaded
-            i18nManager.init();
+            if (window.i18nManager) {
+                window.i18nManager.init();
+            } else {
+                console.error('I18nManager not found!');
+            }
             const langButtons = document.querySelectorAll('.lang-btn');
             const languageDropdownButton = document.getElementById('languageDropdown');
             
@@ -1904,7 +1905,9 @@
                     languageDropdownButton.innerHTML = languageNames[lang];
                     
                     // Set language in I18n manager
-                    i18nManager.setLanguage(lang);
+                    if (window.i18nManager) {
+                        window.i18nManager.setLanguage(lang);
+                    }
                     
                     // Store language preference
                     localStorage.setItem('preferredLanguage', lang);
@@ -1913,7 +1916,9 @@
             
             // Set initial language from localStorage or default to Polish
             const savedLang = localStorage.getItem('preferredLanguage') || 'pl';
-            i18nManager.setLanguage(savedLang);
+            if (window.i18nManager) {
+                window.i18nManager.setLanguage(savedLang);
+            }
             
             // Update active button and dropdown text
             const activeBtn = document.querySelector(`[data-lang="${savedLang}"]`);
