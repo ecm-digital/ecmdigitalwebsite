@@ -42,22 +42,32 @@ class AWSChatbot {
                 console.log('⚠️ No AWS SDK found - some features may not work');
             }
             
-            // Initialize AWS SDK
-            this.initAWS();
+            // Initialize AWS SDK (with fallback)
+            try {
+                this.initAWS();
+            } catch (awsError) {
+                console.error('❌ AWS initialization failed:', awsError);
+                console.log('🔄 Continuing without AWS services...');
+            }
             
             // Initialize speech recognition
             this.initSpeechRecognition();
             
-                    // Load mute preference
-        this.loadMutePreference();
-        
-        // Bind events
-        this.bindEvents();
-        
-        // Add welcome message
-        this.addWelcomeMessage();
-        
-        console.log('✅ AWS Chatbot initialized successfully');
+            // Load mute preference
+            this.loadMutePreference();
+            
+            // Bind events
+            this.bindEvents();
+            
+            // Add welcome message
+            this.addWelcomeMessage();
+            
+            console.log('✅ AWS Chatbot initialized successfully');
+        } catch (error) {
+            console.error('❌ Error initializing AWS Chatbot:', error);
+            console.error('Error stack:', error.stack);
+            this.fallbackToBasicChatbot();
+        }
     }
     
     async checkPollyVoices() {
@@ -75,6 +85,28 @@ class AWSChatbot {
             }
         } catch (error) {
             console.warn('⚠️ Could not check Polly voices:', error.message);
+        }
+    }
+    
+    // Fallback method if AWS services fail
+    fallbackToBasicChatbot() {
+        console.log('🔄 Falling back to basic chatbot functionality');
+        try {
+            // Initialize basic speech recognition
+            this.initSpeechRecognition();
+            
+            // Load mute preference
+            this.loadMutePreference();
+            
+            // Bind events
+            this.bindEvents();
+            
+            // Add welcome message
+            this.addWelcomeMessage();
+            
+            console.log('✅ Basic chatbot initialized successfully');
+        } catch (error) {
+            console.error('❌ Even basic chatbot failed:', error);
         }
     }
     
