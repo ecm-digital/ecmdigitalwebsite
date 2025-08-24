@@ -522,23 +522,35 @@ Co Cię najbardziej interesuje? Opowiedz mi o swoich potrzebach lub wybierz jedn
     async speak(text) {
         // Check if muted
         if (this.isMuted) {
-            console.log('Speech is muted, skipping audio output');
+            console.log('🔇 Speech is muted, skipping audio output');
             return;
         }
+        
+        console.log('🗣️ Starting speech synthesis for:', text.substring(0, 50) + '...');
+        console.log('🔍 Polly available:', !!this.polly);
+        console.log('🔍 Web Speech available:', !!this.synthesis);
         
         try {
             // Try Amazon Polly first
             if (this.polly) {
+                console.log('🚀 Attempting to use Amazon Polly...');
                 await this.speakWithPolly(text);
-            } else if (this.synthesis) {
-                this.speakWithWebSpeech(text);
+                console.log('✅ Amazon Polly speech completed successfully');
+                return;
+            } else {
+                console.log('⚠️ Amazon Polly not available, using Web Speech API');
             }
         } catch (error) {
-            console.error('Speech synthesis error:', error);
-            // Fallback to Web Speech API
-            if (this.synthesis) {
-                this.speakWithWebSpeech(text);
-            }
+            console.error('❌ Amazon Polly failed:', error);
+            console.log('🔄 Falling back to Web Speech API...');
+        }
+        
+        // Fallback to Web Speech API
+        if (this.synthesis) {
+            console.log('🔊 Using Web Speech API fallback...');
+            this.speakWithWebSpeech(text);
+        } else {
+            console.error('❌ No speech synthesis available');
         }
     }
     
@@ -585,6 +597,10 @@ Co Cię najbardziej interesuje? Opowiedz mi o swoich potrzebach lub wybierz jedn
     }
     
     async speakWithPolly(text) {
+        console.log('🎯 speakWithPolly called with text:', text.substring(0, 50) + '...');
+        console.log('🔍 Polly instance:', this.polly);
+        console.log('🔍 Current language:', this.currentLanguage);
+        
         const params = {
             Text: text,
             OutputFormat: 'mp3',
@@ -593,27 +609,49 @@ Co Cię najbardziej interesuje? Opowiedz mi o swoich potrzebach lub wybierz jedn
             TextType: 'text'
         };
         
+        console.log('📤 Polly parameters:', params);
+        
         try {
+            console.log('🚀 Calling Polly.synthesizeSpeech...');
             const result = await this.polly.synthesizeSpeech(params).promise();
+            console.log('✅ Polly response received:', result);
+            console.log('🔊 Audio stream length:', result.AudioStream ? result.AudioStream.length : 'No audio stream');
             
             // Play the audio
             const audioBlob = new Blob([result.AudioStream], { type: 'audio/mpeg' });
             const audioUrl = URL.createObjectURL(audioBlob);
             const audio = new Audio(audioUrl);
             
+            console.log('🎵 Audio element created, attempting to play...');
+            
             audio.onended = () => {
+                console.log('✅ Audio playback completed');
                 URL.revokeObjectURL(audioUrl);
             };
             
+            audio.onerror = (error) => {
+                console.error('❌ Audio playback error:', error);
+            };
+            
             await audio.play();
+            console.log('🎵 Audio playback started successfully');
             
         } catch (error) {
-            console.error('Polly error:', error);
+            console.error('❌ Polly error:', error);
+            console.error('Error details:', {
+                name: error.name,
+                message: error.message,
+                code: error.code,
+                statusCode: error.statusCode
+            });
             throw error;
         }
     }
     
     speakWithWebSpeech(text) {
+        console.log('🔊 speakWithWebSpeech called with text:', text.substring(0, 50) + '...');
+        console.log('🔍 Synthesis available:', !!this.synthesis);
+        
         if (this.synthesis) {
             const utterance = new SpeechSynthesisUtterance(text);
             utterance.lang = this.currentLanguage === 'pl' ? 'pl-PL' : 'en-US';
@@ -621,7 +659,21 @@ Co Cię najbardziej interesuje? Opowiedz mi o swoich potrzebach lub wybierz jedn
             utterance.pitch = 1.1;
             utterance.volume = 0.9;
             
+            console.log('📤 Web Speech parameters:', {
+                lang: utterance.lang,
+                rate: utterance.rate,
+                pitch: utterance.pitch,
+                volume: utterance.volume
+            });
+            
+            utterance.onstart = () => console.log('🎵 Web Speech started');
+            utterance.onend = () => console.log('✅ Web Speech completed');
+            utterance.onerror = (error) => console.error('❌ Web Speech error:', error);
+            
             this.synthesis.speak(utterance);
+            console.log('🎵 Web Speech utterance queued');
+        } else {
+            console.error('❌ Web Speech synthesis not available');
         }
     }
     
