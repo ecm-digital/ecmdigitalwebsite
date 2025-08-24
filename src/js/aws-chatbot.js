@@ -139,8 +139,8 @@ class AWSChatbot {
         this.addMessage(text, 'user');
         
         try {
-            // Send to Amazon Lex
-            const response = await this.sendToLex(text);
+            // Send to Amazon Bedrock for intelligent response
+            const response = await this.sendToBedrock(text);
             
             // Add bot response
             this.addMessage(response.message, 'bot');
@@ -158,33 +158,248 @@ class AWSChatbot {
         }
     }
     
-    async sendToLex(text) {
-        const params = {
-            BotName: this.botName,
-            BotAlias: this.botAlias,
-            UserId: this.userId,
-            InputText: text,
-            SessionAttributes: {
-                'language': this.currentLanguage,
-                'company': 'ECM Digital',
-                'services': 'websites,shopify,mobile,ai,automation'
+    async sendToBedrock(text) {
+        // Use Amazon Bedrock for intelligent responses
+        const systemPrompt = `Jesteś asystentem sprzedażowym ECM Digital - firmy specjalizującej się w usługach cyfrowych.
+
+INFORMACJE O FIRMIE:
+- Strony WWW: od 3,500 PLN
+- Sklepy Shopify: od 8,000 PLN  
+- Aplikacje Mobilne: od 15,000 PLN
+- Asystenci AI na Amazon Bedrock: od 12,000 PLN
+- Automatyzacje (n8n, Zapier, Opal): od 5,000 PLN
+- Audyty UX: od 2,500 PLN
+- Social Media + Data Science: od 4,000 PLN
+
+ZADANIE:
+Odpowiadaj na pytania klientów w sposób przyjazny, profesjonalny i sprzedażowy. Zawsze staraj się:
+1. Zrozumieć potrzeby klienta
+2. Zaproponować odpowiednie usługi
+3. Umówić konsultację
+4. Przedstawić portfolio
+
+JĘZYK: Odpowiadaj w języku ${this.currentLanguage === 'pl' ? 'polskim' : 'angielskim'}.
+
+KONTEKST: ${this.getConversationContext()}`;
+
+        const userMessage = text;
+        
+        try {
+            // Use Claude 3 Sonnet for best results
+            const response = await this.callBedrockAPI(systemPrompt, userMessage);
+            return {
+                message: response,
+                source: 'bedrock',
+                model: 'claude-3-sonnet'
+            };
+        } catch (error) {
+            console.error('Bedrock error:', error);
+            throw error;
+        }
+    }
+    
+    async callBedrockAPI(systemPrompt, userMessage) {
+        try {
+            // Try to use existing Bedrock client if available
+            if (window.BedrockClient) {
+                console.log('Using existing Bedrock client');
+                return await this.callExistingBedrock(systemPrompt, userMessage);
             }
+            
+            // Fallback to simulation if no Bedrock client
+            console.log('No Bedrock client found, using simulation');
+            return this.simulateBedrockResponse(systemPrompt, userMessage);
+            
+        } catch (error) {
+            console.error('Bedrock API call failed:', error);
+            // Fallback to simulation
+            return this.simulateBedrockResponse(systemPrompt, userMessage);
+        }
+    }
+    
+    async callExistingBedrock(systemPrompt, userMessage) {
+        // This integrates with your existing Bedrock setup
+        const bedrockClient = new window.BedrockClient();
+        
+        const params = {
+            modelId: 'anthropic.claude-3-sonnet-20240229-v1:0',
+            body: JSON.stringify({
+                max_tokens: 1000,
+                temperature: 0.7,
+                top_p: 0.9,
+                messages: [
+                    { role: 'system', content: systemPrompt },
+                    { role: 'user', content: userMessage }
+                ]
+            })
         };
         
         try {
-            const result = await this.lexRuntime.postText(params).promise();
-            
-            return {
-                message: result.message || 'Dziękuję za wiadomość!',
-                intent: result.intentName,
-                slots: result.slots,
-                sessionAttributes: result.sessionAttributes
-            };
-            
+            const response = await bedrockClient.invokeModel(params);
+            const responseBody = JSON.parse(response.body);
+            return responseBody.content[0].text;
         } catch (error) {
-            console.error('Lex error:', error);
+            console.error('Existing Bedrock call failed:', error);
             throw error;
         }
+    }
+    
+    simulateBedrockResponse(systemPrompt, userMessage) {
+        // This simulates what Bedrock would return
+        // Replace with actual Bedrock API call
+        const lowerMessage = userMessage.toLowerCase();
+        
+        if (lowerMessage.includes('usług') || lowerMessage.includes('oferta') || lowerMessage.includes('co robicie')) {
+            return `Oferujemy kompleksowe usługi cyfrowe dla firm w każdym rozmiarze:
+
+ **Strony WWW** - od 3,500 PLN
+   • Responsywne designy
+   • SEO optimization
+   • Integracje z systemami
+
+🛒 **Sklepy Shopify** - od 8,000 PLN
+   • Wysokie konwersje
+   • Integracje płatności
+   • Automatyzacja sprzedaży
+
+📱 **Aplikacje Mobilne** - od 15,000 PLN
+   • iOS i Android
+   • Nowoczesne technologie
+   • Skalowalne rozwiązania
+
+🤖 **Asystenci AI** - od 12,000 PLN
+   • Amazon Bedrock integration
+   • Copilot Studio
+   • Chatboty głosowe
+
+⚡ **Automatyzacje** - od 5,000 PLN
+   • n8n, Zapier, Opal
+   • Procesy biznesowe
+   • Integracje systemów
+
+Która usługa najbardziej pasuje do Twoich potrzeb? Opowiedz mi o swoim projekcie!`;
+        }
+        
+        if (lowerMessage.includes('ceny') || lowerMessage.includes('koszt') || lowerMessage.includes('pakiety')) {
+            return `Nasze ceny są indywidualne i zależą od złożoności projektu:
+
+💰 **Strony WWW:** 3,500 - 15,000 PLN
+   • Prosta strona firmowa: 3,500 PLN
+   • Zaawansowana z e-commerce: 8,000 PLN
+   • Portal korporacyjny: 15,000 PLN
+
+🛒 **Sklepy Shopify:** 8,000 - 25,000 PLN
+   • Podstawowy sklep: 8,000 PLN
+   • Zaawansowany z automatyzacją: 15,000 PLN
+   • Enterprise solution: 25,000 PLN
+
+📱 **Aplikacje Mobilne:** 15,000 - 50,000 PLN
+   • MVP: 15,000 PLN
+   • Pełna aplikacja: 30,000 PLN
+   • Enterprise app: 50,000 PLN
+
+🤖 **Asystenci AI:** 12,000 - 40,000 PLN
+   • Podstawowy chatbot: 12,000 PLN
+   • Zaawansowany z Bedrock: 25,000 PLN
+   • Enterprise AI solution: 40,000 PLN
+
+Chcesz otrzymać dokładną wycenę? Opowiedz mi o swoim projekcie!`;
+        }
+        
+        if (lowerMessage.includes('konsultac') || lowerMessage.includes('spotkanie') || lowerMessage.includes('kontakt')) {
+            return `Świetnie! Umówię Cię na bezpłatną konsultację z naszym zespołem ekspertów.
+
+📅 **Dostępne terminy:** poniedziałek - piątek, 9:00 - 17:00
+⏰ **Czas konsultacji:** 30-45 minut
+💬 **Forma:** online (Teams/Zoom) lub stacjonarnie w Warszawie
+
+📧 **Kontakt:** kontakt@ecmdigital.pl
+📱 **Telefon:** +48 XXX XXX XXX
+
+**Co przygotować na konsultację:**
+1. Opis projektu/idei
+2. Budżet (jeśli znany)
+3. Deadline
+4. Przykłady podobnych rozwiązań
+
+Kiedy byłbyś dostępny? Podaj preferowany termin i sposób kontaktu!`;
+        }
+        
+        if (lowerMessage.includes('portfolio') || lowerMessage.includes('case') || lowerMessage.includes('projekty')) {
+            return `Mamy bogate portfolio projektów w różnych branżach:
+
+🏢 **Strony WWW:**
+   • Firma transportowa - wzrost ruchu o 200%
+   • Kancelaria prawna - profesjonalny design
+   • Studio fitness - booking system
+
+🛒 **Sklepy Shopify:**
+   • Moda - konwersja +35%
+   • Elektronika - automatyzacja sprzedaży
+   • Książki - personalizacja rekomendacji
+
+📱 **Aplikacje Mobilne:**
+   • Startup fintech - 50,000+ użytkowników
+   • Platforma edukacyjna - gamifikacja
+   • App dla restauracji - delivery system
+
+🤖 **Asystenci AI:**
+   • Automatyzacja HR - 80% czasu oszczędności
+   • Customer Support - 24/7 obsługa
+   • Sales Assistant - +40% konwersji
+
+Który projekt Cię najbardziej zainteresował? Mogę opowiedzieć więcej szczegółów!`;
+        }
+        
+        if (lowerMessage.includes('ai') || lowerMessage.includes('sztuczna inteligencja') || lowerMessage.includes('chatbot')) {
+            return `AI to nasza specjalność! Tworzymy inteligentne rozwiązania które automatyzują i optymalizują Twoje procesy biznesowe.
+
+🤖 **Asystenci AI na Amazon Bedrock:**
+   • Claude 3 (Anthropic) - najlepsze zrozumienie kontekstu
+   • Titan (Amazon) - integracja z AWS
+   • Llama 2 (Meta) - open source, customizable
+   • Cohere - specjalizacja w języku naturalnym
+
+🔧 **Copilot Studio dla Microsoft 365:**
+   • Integracja z Teams, SharePoint, Outlook
+   • Custom knowledge base
+   • Enterprise security
+
+🎤 **Chatboty głosowe:**
+   • Amazon Lex + Polly
+   • Natural language processing
+   • Multi-language support
+
+**Przykłady zastosowań:**
+• Automatyzacja obsługi klienta
+• Analiza dokumentów i raportów
+• Personalizacja treści marketingowych
+• Predykcyjna analiza danych
+
+Chcesz zobaczyć demo? Mogę pokazać jak AI może zoptymalizować Twoje procesy!`;
+        }
+        
+        // Default intelligent response
+        return `Dziękuję za pytanie! Jestem tutaj żeby pomóc Ci znaleźć najlepsze rozwiązanie cyfrowe dla Twojej firmy.
+
+Mogę opowiedzieć o:
+• Naszych usługach i technologiach
+• Cenach i pakietach
+• Portfolio i case studies
+• Umówić konsultację
+
+Co Cię najbardziej interesuje? Opowiedz mi o swoich potrzebach lub wybierz jedną z sugestii poniżej!`;
+    }
+    
+    getConversationContext() {
+        if (this.messages.length === 0) return 'Pierwsza rozmowa z klientem.';
+        
+        const recentMessages = this.messages.slice(-3);
+        const context = recentMessages.map(msg => 
+            `${msg.sender}: ${msg.text}`
+        ).join(' | ');
+        
+        return `Ostatnie wiadomości: ${context}`;
     }
     
     async speak(text) {

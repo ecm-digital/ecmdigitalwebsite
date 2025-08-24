@@ -444,6 +444,37 @@
         .btn-outline-primary:hover {
             background: var(--primary);
             color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 123, 255, 0.3);
+        }
+        
+        .btn-success {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            border: none;
+            color: white;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-success:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(40, 167, 69, 0.3);
+        }
+        
+        .btn-success::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn-success:hover::before {
+            left: 100%;
         }
         
         .btn-light {
@@ -494,6 +525,11 @@
             
             .btn-cta.me-3 {
                 margin-right: 0 !important;
+                margin-bottom: 1rem;
+            }
+            
+            .hero-buttons .btn {
+                width: 100%;
                 margin-bottom: 1rem;
             }
             
@@ -758,9 +794,11 @@
         
         .voice-chatbot-suggestions {
             margin-top: 1rem;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.75rem;
+            max-height: 200px;
+            overflow-y: auto;
         }
         
         .voice-suggestion {
@@ -880,6 +918,10 @@
                             <i class="fas fa-envelope me-2"></i>
                             <span data-i18n="hero.getQuote">Darmowa Konsultacja</span>
                         </a>
+                        <button class="btn btn-success btn-lg" id="heroChatbotButton">
+                            <i class="fas fa-robot me-2"></i>
+                            <span data-i18n="hero.cta_assistant">Porozmawiaj z naszym asystentem</span>
+                        </button>
                     </div>
                 </div>
                 <div class="col-lg-6 text-center">
@@ -1204,6 +1246,9 @@
     
     <!-- AWS Chatbot Integration -->
     <script src="src/js/aws-chatbot.js"></script>
+    
+    <!-- Existing Bedrock Integration -->
+    <script src="dokumentacja-ecm/oferta-uslug/asystencja-ai-bedrock/bedrock-client.js"></script>
     
     <script>
         // Initialize AOS
@@ -1592,6 +1637,20 @@
                 });
             }
             
+            // Hero chatbot button
+            const heroButton = document.getElementById('heroChatbotButton');
+            if (heroButton) {
+                heroButton.addEventListener('click', function() {
+                    console.log('Hero chatbot button clicked!');
+                    const modal = document.getElementById('voiceChatbotModal');
+                    if (modal) {
+                        modal.classList.add('show');
+                        document.body.style.overflow = 'hidden';
+                        console.log('Modal opened from hero button');
+                    }
+                });
+            }
+            
             // Add close button functionality
             const closeButton = document.getElementById('voiceChatbotClose');
             if (closeButton) {
@@ -1620,7 +1679,7 @@
     <!-- Voice Chatbot Widget -->
     <div class="voice-chatbot-widget">
         <button class="voice-chatbot-button" id="voiceChatbotButton" title="Rozmawiaj z naszym asystentem głosowym">
-            <i class="fas fa-microphone"></i>
+            <i class="fas fa-robot"></i>
         </button>
     </div>
     
@@ -1660,21 +1719,29 @@
             </div>
             
             <div class="voice-chatbot-suggestions">
-                <div class="voice-suggestion" data-suggestion="Opowiedz o usługach">
+                <div class="voice-suggestion" data-suggestion="Jakie usługi oferujecie?">
                     <i class="fas fa-lightbulb"></i>
-                    Opowiedz o usługach
+                    Jakie usługi oferujecie?
                 </div>
-                <div class="voice-suggestion" data-suggestion="Ceny i pakiety">
+                <div class="voice-suggestion" data-suggestion="Ile kosztują wasze usługi?">
                     <i class="fas fa-tag"></i>
-                    Ceny i pakiety
+                    Ile kosztują wasze usługi?
                 </div>
-                <div class="voice-suggestion" data-suggestion="Umów konsultację">
+                <div class="voice-suggestion" data-suggestion="Chcę umówić konsultację">
                     <i class="fas fa-calendar"></i>
-                    Umów konsultację
+                    Chcę umówić konsultację
                 </div>
-                <div class="voice-suggestion" data-suggestion="Case studies">
+                <div class="voice-suggestion" data-suggestion="Pokaż mi portfolio projektów">
                     <i class="fas fa-folder-open"></i>
-                    Case studies
+                    Pokaż mi portfolio
+                </div>
+                <div class="voice-suggestion" data-suggestion="Opowiedz o waszych asystentach AI">
+                    <i class="fas fa-robot"></i>
+                    Asystenci AI
+                </div>
+                <div class="voice-suggestion" data-suggestion="Jak automatyzujecie procesy biznesowe?">
+                    <i class="fas fa-cogs"></i>
+                    Automatyzacje
                 </div>
             </div>
         </div>
