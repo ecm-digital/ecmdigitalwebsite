@@ -28,13 +28,14 @@
     "voiceAssistants": "Sprachassistenten auf Amazon Lex",
     "voiceAssistants.description": "Wir erstellen intelligente Sprachassistenten und Chatbots auf der Amazon Lex-Plattform. Automatisierung des Kundenservices durch Sprache und Text!"
   },
-  "hero": {
-    "title": "Wir implementieren KI in Ihrem Unternehmen",
-    "titleHighlight": "Digitaler Innovation",
-    "subtitle": "Wir transformieren Ihr Unternehmen durch künstliche Intelligenz. Von Chatbots bis hin zu fortschrittlicher Automatisierung - KI, die wirklich funktioniert und echte Geschäftsvorteile generiert.",
-    "exploreServices": "Dienstleistungen erkunden",
-    "getQuote": "Angebot erhalten"
-  },
+      "hero": {
+        "title": "Wir implementieren KI in Ihrem Unternehmen",
+        "titleHighlight": "Digitaler Innovation",
+        "subtitle": "Wir transformieren Ihr Unternehmen durch künstliche Intelligenz. Von Chatbots bis hin zu fortschrittlicher Automatisierung - KI, die wirklich funktioniert und echte Geschäftsvorteile generiert.",
+        "exploreServices": "Dienstleistungen erkunden",
+        "getQuote": "Angebot erhalten",
+        "cta_assistant": "Sprechen Sie mit unserem KI-Assistenten"
+    },
   "sections": {
     "services": {
       "title": "Unsere Dienstleistungen",

@@ -28,13 +28,14 @@
     "voiceAssistants": "Asystenci Głosowi na Amazon Lex",
     "voiceAssistants.description": "Tworzymy inteligentne asystenty głosowe i chatboty na platformie Amazon Lex. Automatyzacja obsługi klienta przez głos i tekst!"
   },
-  "hero": {
-    "title": "Wdrażamy AI w Twojej Firmie",
-    "titleHighlight": "Innowacjami Cyfrowymi",
-    "subtitle": "Transformujemy Twoją firmę dzięki sztucznej inteligencji. Od chatbotów po zaawansowane automatyzacje - AI, które naprawdę działa i generuje realne korzyści biznesowe.",
-    "exploreServices": "Poznaj Usługi",
-    "getQuote": "Otrzymaj Ofertę"
-  },
+      "hero": {
+        "title": "Wdrażamy AI w Twojej Firmie",
+        "titleHighlight": "Innowacjami Cyfrowymi",
+        "subtitle": "Transformujemy Twoją firmę dzięki sztucznej inteligencji. Od chatbotów po zaawansowane automatyzacje - AI, które naprawdę działa i generuje realne korzyści biznesowe.",
+        "exploreServices": "Poznaj Usługi",
+        "getQuote": "Otrzymaj Ofertę",
+        "cta_assistant": "Porozmawiaj z naszym asystentem"
+    },
   "sections": {
     "services": {
       "title": "Nasze Usługi",

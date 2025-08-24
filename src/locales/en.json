@@ -28,13 +28,14 @@
     "voiceAssistants": "Voice Assistants on Amazon Lex",
     "voiceAssistants.description": "We create intelligent voice assistants and chatbots on the Amazon Lex platform. Automation of customer service through voice and text!"
   },
-  "hero": {
-    "title": "We Implement AI in Your Company",
-    "titleHighlight": "Digital Innovation",
-    "subtitle": "We transform your company through artificial intelligence. From chatbots to advanced automation - AI that really works and generates real business benefits.",
-    "exploreServices": "View Offer",
-    "getQuote": "Free Consultation"
-  },
+      "hero": {
+        "title": "We Implement AI in Your Company",
+        "titleHighlight": "Digital Innovation",
+        "subtitle": "We transform your company through artificial intelligence. From chatbots to advanced automation - AI that really works and generates real business benefits.",
+        "exploreServices": "View Offer",
+        "getQuote": "Free Consultation",
+        "cta_assistant": "Chat with our AI Assistant"
+    },
   "sections": {
     "services": {
       "title": "Our Services",
