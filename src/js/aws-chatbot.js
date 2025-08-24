@@ -85,6 +85,11 @@ class AWSChatbot {
             secretAccessKey: secretAccessKey
         });
         
+        console.log('🔧 AWS config updated:', {
+            region: AWS.config.region,
+            hasCredentials: !!accessKeyId && !!secretAccessKey
+        });
+        
         // Initialize services
         this.lexRuntime = new AWS.LexRuntime();
         this.polly = new AWS.Polly();
@@ -308,19 +313,25 @@ KONTEKST: ${this.getConversationContext()}`;
             
             // Try AWS SDK v3 first, then fallback to v2
             let bedrockRuntime;
-            if (window.AWS.BedrockRuntime) {
-                console.log('🚀 Using AWS SDK v3 BedrockRuntime...');
-                bedrockRuntime = new window.AWS.BedrockRuntime({
+            if (window.BedrockRuntimeClient) {
+                console.log('🚀 Using AWS SDK v3 BedrockRuntimeClient...');
+                bedrockRuntime = new window.BedrockRuntimeClient({
                     region: 'us-east-1',
                     credentials: {
                         accessKeyId: accessKeyId,
                         secretAccessKey: secretAccessKey
                     }
                 });
+            } else if (window.AWS.BedrockRuntime) {
+                console.log('🚀 Using AWS SDK v2 BedrockRuntime...');
+                bedrockRuntime = new window.AWS.BedrockRuntime({
+                    region: 'us-east-1',
+                    accessKeyId: accessKeyId,
+                    secretAccessKey: secretAccessKey
+                });
             } else {
-                console.log('⚠️ AWS SDK v3 not available, trying v2...');
-                // Fallback to v2 if v3 not available
-                throw new Error('AWS SDK v3 BedrockRuntime not available - need to implement v2 fallback');
+                console.log('⚠️ No Bedrock client available, using fallback...');
+                throw new Error('No Bedrock client available - using fallback responses');
             }
             
             console.log('🚀 Calling Bedrock via AWS SDK...');
@@ -351,13 +362,27 @@ KONTEKST: ${this.getConversationContext()}`;
             };
             
             console.log('📤 Sending request to Bedrock...');
-            const response = await bedrockRuntime.invokeModel(params).promise();
             
-            console.log('🎯 Bedrock response received:', response);
-            
-            // Parse response
-            const responseBody = JSON.parse(response.body);
-            console.log('📝 Response body:', responseBody);
+            let response;
+            if (bedrockRuntime.constructor.name === 'BedrockRuntimeClient') {
+                // AWS SDK v3
+                console.log('📤 Using AWS SDK v3 invokeModel...');
+                response = await bedrockRuntime.invokeModel(params);
+                console.log('🎯 Bedrock response received (v3):', response);
+                
+                // Parse response
+                const responseBody = JSON.parse(response.body);
+                console.log('📝 Response body (v3):', responseBody);
+            } else {
+                // AWS SDK v2
+                console.log('📤 Using AWS SDK v2 invokeModel...');
+                response = await bedrockRuntime.invokeModel(params).promise();
+                console.log('🎯 Bedrock response received (v2):', response);
+                
+                // Parse response
+                const responseBody = JSON.parse(response.body);
+                console.log('📝 Response body (v2):', responseBody);
+            }
             
             let extractedText = '';
             if (responseBody && responseBody.content && responseBody.content[0] && responseBody.content[0].text) {
