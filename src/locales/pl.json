@@ -156,7 +156,9 @@
     },
     "features": {
       "title": "Kluczowe funkcje",
-      "subtitle": "Wykorzystujemy najnowsze technologie do tworzenia profesjonalnych stron internetowych"
+      "subtitle": "Wykorzystujemy najnowsze technologie do tworzenia profesjonalnych stron internetowych",
+      "shopify_subtitle": "Wykorzystujemy najnowsze technologie Shopify do tworzenia profesjonalnych sklepów e-commerce",
+      "mvp_subtitle": "Wykorzystujemy metodologię Lean Startup do szybkiej walidacji pomysłów biznesowych"
     },
     "benefits": {
       "title": "Dlaczego Wybrać Nas?"
@@ -164,6 +166,10 @@
     "cta": {
       "title": "Gotowy na Profesjonalną Stronę?",
       "description": "Skontaktuj się z nami i otrzymaj bezpłatną konsultację. Pomożemy Ci stworzyć stronę, która przyciągnie klientów i zwiększy sprzedaż.",
+      "shopify_title": "Gotowy na Profesjonalny Sklep?",
+      "shopify_description": "Skontaktuj się z nami i otrzymaj bezpłatną konsultację. Pomożemy Ci stworzyć sklep, który zwiększy sprzedaż i skaluje Twój biznes.",
+      "mvp_title": "Gotowy na Walidację Pomysłu?",
+      "mvp_description": "Skontaktuj się z nami i otrzymaj bezpłatną konsultację. Pomożemy Ci szybko przetestować pomysł i zminimalizować ryzyko biznesowe.",
       "freeConsultation": "Darmowa Konsultacja",
       "callNow": "Zadzwoń Teraz"
     }

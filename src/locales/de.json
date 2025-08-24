@@ -156,7 +156,9 @@
     },
     "features": {
       "title": "Hauptfunktionen",
-      "subtitle": "Wir nutzen die neuesten Technologien für professionelle Websites"
+      "subtitle": "Wir nutzen die neuesten Technologien für professionelle Websites",
+      "shopify_subtitle": "Wir nutzen die neuesten Shopify-Technologien für professionelle E-Commerce-Shops",
+      "mvp_subtitle": "Wir nutzen die Lean-Startup-Methodik für die schnelle Validierung von Geschäftsideen"
     },
     "benefits": {
       "title": "Warum uns wählen?"
@@ -164,6 +166,10 @@
     "cta": {
       "title": "Bereit für eine professionelle Website?",
       "description": "Kontaktieren Sie uns und erhalten Sie eine kostenlose Beratung. Wir helfen Ihnen dabei, eine Website zu erstellen, die Kunden anzieht und den Umsatz steigert.",
+      "shopify_title": "Bereit für einen professionellen Shop?",
+      "shopify_description": "Kontaktieren Sie uns und erhalten Sie eine kostenlose Beratung. Wir helfen Ihnen dabei, einen Shop zu erstellen, der den Umsatz steigert und Ihr Geschäft skaliert.",
+      "mvp_title": "Bereit, Ihre Idee zu validieren?",
+      "mvp_description": "Kontaktieren Sie uns und erhalten Sie eine kostenlose Beratung. Wir helfen Ihnen dabei, Ihre Idee schnell zu testen und das Geschäftsrisiko zu minimieren.",
       "freeConsultation": "Kostenlose Beratung",
       "callNow": "Jetzt anrufen"
     }

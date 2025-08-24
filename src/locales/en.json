@@ -156,7 +156,9 @@
     },
     "features": {
       "title": "Key Features",
-      "subtitle": "We use the latest technologies to create professional websites"
+      "subtitle": "We use the latest technologies to create professional websites",
+      "shopify_subtitle": "We use the latest Shopify technologies to create professional e-commerce stores",
+      "mvp_subtitle": "We use Lean Startup methodology for rapid business idea validation"
     },
     "benefits": {
       "title": "Why Choose Us?"
@@ -164,6 +166,10 @@
     "cta": {
       "title": "Ready for a Professional Website?",
       "description": "Contact us and get a free consultation. We'll help you create a website that attracts customers and increases sales.",
+      "shopify_title": "Ready for a Professional Store?",
+      "shopify_description": "Contact us and get a free consultation. We'll help you create a store that increases sales and scales your business.",
+      "mvp_title": "Ready to Validate Your Idea?",
+      "mvp_description": "Contact us and get a free consultation. We'll help you quickly test your idea and minimize business risk.",
       "freeConsultation": "Free Consultation",
       "callNow": "Call Now"
     }
