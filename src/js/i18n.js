@@ -28,10 +28,12 @@ class I18nManager {
     // Ładowanie plików tłumaczeń
     async loadTranslations() {
         try {
+            // Dynamicznie określ ścieżkę do plików tłumaczeń
+            const basePath = this.getBasePath();
             const [plTranslations, enTranslations, deTranslations] = await Promise.all([
-                fetch('/src/locales/pl.json').then(res => res.json()),
-                fetch('/src/locales/en.json').then(res => res.json()),
-                fetch('/src/locales/de.json').then(res => res.json())
+                fetch(`${basePath}src/locales/pl.json`).then(res => res.json()),
+                fetch(`${basePath}src/locales/en.json`).then(res => res.json()),
+                fetch(`${basePath}src/locales/de.json`).then(res => res.json())
             ]);
 
             this.translations = {
@@ -43,6 +45,18 @@ class I18nManager {
             console.error('Failed to load translations:', error);
             // Fallback do wbudowanych tłumaczeń
             this.loadFallbackTranslations();
+        }
+    }
+
+    // Określ bazową ścieżkę na podstawie aktualnej lokalizacji
+    getBasePath() {
+        const path = window.location.pathname;
+        if (path.includes('/dokumentacja-ecm/oferta-uslug/')) {
+            return '../../../';
+        } else if (path.includes('/dokumentacja-ecm/')) {
+            return '../';
+        } else {
+            return './';
         }
     }
 
