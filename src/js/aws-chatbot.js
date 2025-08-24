@@ -14,6 +14,7 @@ class AWSChatbot {
         this.botName = 'ECMDigitalBot';
         this.botAlias = 'PROD';
         this.userId = this.generateUserId();
+        this.isMuted = false;
         
         this.init();
     }
@@ -25,6 +26,9 @@ class AWSChatbot {
             
             // Initialize speech recognition
             this.initSpeechRecognition();
+            
+            // Load mute preference
+            this.loadMutePreference();
             
             // Bind events
             this.bindEvents();
@@ -96,6 +100,14 @@ class AWSChatbot {
         if (voiceButton) {
             voiceButton.addEventListener('click', () => {
                 this.toggleListening();
+            });
+        }
+        
+        // Mute button
+        const muteButton = document.getElementById('voiceChatbotMute');
+        if (muteButton) {
+            muteButton.addEventListener('click', () => {
+                this.toggleMute();
             });
         }
         
@@ -403,6 +415,12 @@ Co Cię najbardziej interesuje? Opowiedz mi o swoich potrzebach lub wybierz jedn
     }
     
     async speak(text) {
+        // Check if muted
+        if (this.isMuted) {
+            console.log('Speech is muted, skipping audio output');
+            return;
+        }
+        
         try {
             // Try Amazon Polly first
             if (this.polly) {
@@ -416,6 +434,48 @@ Co Cię najbardziej interesuje? Opowiedz mi o swoich potrzebach lub wybierz jedn
             if (this.synthesis) {
                 this.speakWithWebSpeech(text);
             }
+        }
+    }
+    
+    toggleMute() {
+        this.isMuted = !this.isMuted;
+        this.updateMuteButton();
+        
+        if (this.isMuted) {
+            // Stop any ongoing speech
+            if (this.synthesis && this.synthesis.speaking) {
+                this.synthesis.cancel();
+            }
+            console.log('Chatbot muted');
+        } else {
+            console.log('Chatbot unmuted');
+        }
+        
+        // Save preference to localStorage
+        localStorage.setItem('chatbotMuted', this.isMuted);
+    }
+    
+    updateMuteButton() {
+        const muteButton = document.getElementById('voiceChatbotMute');
+        if (muteButton) {
+            const icon = muteButton.querySelector('i');
+            if (this.isMuted) {
+                muteButton.classList.add('muted');
+                icon.className = 'fas fa-volume-mute';
+                muteButton.title = 'Włącz dźwięk';
+            } else {
+                muteButton.classList.remove('muted');
+                icon.className = 'fas fa-volume-up';
+                muteButton.title = 'Wycisz dźwięk';
+            }
+        }
+    }
+    
+    loadMutePreference() {
+        const muted = localStorage.getItem('chatbotMuted');
+        if (muted !== null) {
+            this.isMuted = muted === 'true';
+            this.updateMuteButton();
         }
     }
     

@@ -692,6 +692,41 @@
             color: var(--text-primary);
         }
         
+        .voice-chatbot-controls-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .voice-chatbot-mute {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .voice-chatbot-mute:hover {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+        }
+        
+        .voice-chatbot-mute.muted {
+            color: #dc3545;
+        }
+        
+        .voice-chatbot-mute.muted i {
+            transform: scale(0.8);
+        }
+        
         .voice-chatbot-close {
             background: none;
             border: none;
@@ -1684,6 +1719,12 @@
                         modal.classList.remove('show');
                         document.body.style.overflow = 'auto';
                         console.log('Modal closed');
+                        
+                        // Mute chatbot when modal is closed
+                        if (window.awsChatbot) {
+                            window.awsChatbot.isMuted = true;
+                            window.awsChatbot.updateMuteButton();
+                        }
                     }
                 });
             }
@@ -1691,11 +1732,30 @@
             // Initialize AWS Chatbot
             try {
                 const awsChatbot = new AWSChatbot();
+                window.awsChatbot = awsChatbot; // Make it globally accessible
                 console.log('AWS Chatbot initialized successfully:', awsChatbot);
             } catch (error) {
                 console.error('Error initializing AWS Chatbot:', error);
                 console.log('Falling back to basic functionality');
             }
+            
+            // Add ESC key support to close modal
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    const modal = document.getElementById('voiceChatbotModal');
+                    if (modal && modal.classList.contains('show')) {
+                        modal.classList.remove('show');
+                        document.body.style.overflow = 'auto';
+                        console.log('Modal closed with ESC key');
+                        
+                        // Mute chatbot when modal is closed
+                        if (window.awsChatbot) {
+                            window.awsChatbot.isMuted = true;
+                            window.awsChatbot.updateMuteButton();
+                        }
+                    }
+                }
+            });
         });
     </script>
     
@@ -1714,9 +1774,14 @@
                     <i class="fas fa-robot text-primary me-2"></i>
                     Asystent Głosowy ECM Digital
                 </h3>
-                <button class="voice-chatbot-close" id="voiceChatbotClose">
-                    <i class="fas fa-times"></i>
-                </button>
+                <div class="voice-chatbot-controls-header">
+                    <button class="voice-chatbot-mute" id="voiceChatbotMute" title="Wycisz/Włącz dźwięk">
+                        <i class="fas fa-volume-up"></i>
+                    </button>
+                    <button class="voice-chatbot-close" id="voiceChatbotClose">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
             </div>
             
             <div class="voice-chatbot-messages" id="voiceChatbotMessages">
