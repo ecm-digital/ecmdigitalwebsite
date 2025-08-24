@@ -34,8 +34,8 @@
         "subtitle": "We transform your company through artificial intelligence. From chatbots to advanced automation - AI that really works and generates real business benefits.",
         "exploreServices": "View Offer",
         "getQuote": "Free Consultation",
-        "cta_assistant": "Chat with our AI Assistant",
-        "exploreFeatures": "Explore features"
+              "cta_assistant": "Chat with our AI Assistant",
+      "exploreFeatures": "Explore Features"
     },
   "sections": {
     "services": {
@@ -61,23 +61,23 @@
       "members": {
         "tomasz": {
           "name": "Tomasz Gnat",
-          "position": "CEO & Business Strategy",
-          "description": "Responsible for company strategy, client relationships, and business development"
+          "position": "Discovery Consultant",
+          "description": "Expert in discovering business needs and digital strategy"
         },
         "karol": {
           "name": "Karol Czechowski",
-          "position": "CTO & Solution Architect",
-          "description": "Specialist in web technologies, AI, and business process automation"
+          "position": "QA Specialist & Developer",
+          "description": "Specialist in quality assurance and application testing"
         },
         "marta": {
           "name": "Marta Górska",
           "position": "UX/UI Designer",
-          "description": "Expert in user interface design and user experience"
+          "description": "Specialist in user experience design"
         },
         "roman": {
-          "name": "Roman Domina",
-          "position": "Project Manager",
-          "description": "Manages projects and coordinates team work"
+          "name": "Roman Dominia",
+          "position": "Social Media & Automations Specialist",
+          "description": "Expert in social media and business process automation"
         }
       }
     },
@@ -158,7 +158,8 @@
       "title": "Key Features",
       "subtitle": "We use the latest technologies to create professional websites",
       "shopify_subtitle": "We use the latest Shopify technologies to create professional e-commerce stores",
-      "mvp_subtitle": "We use Lean Startup methodology for rapid business idea validation"
+      "mvp_subtitle": "We use Lean Startup methodology for rapid business idea validation",
+      "socialMedia_subtitle": "We combine social media marketing with advanced data analysis and AI"
     },
     "benefits": {
       "title": "Why Choose Us?"
@@ -170,6 +171,8 @@
       "shopify_description": "Contact us and get a free consultation. We'll help you create a store that increases sales and scales your business.",
       "mvp_title": "Ready to Validate Your Idea?",
       "mvp_description": "Contact us and get a free consultation. We'll help you quickly test your idea and minimize business risk.",
+      "socialMedia_title": "Ready for AI-Powered Marketing?",
+      "socialMedia_description": "Contact us and get a free consultation. We'll help you create social media campaigns that maximize ROI through AI and data science.",
       "freeConsultation": "Free Consultation",
       "callNow": "Call Now"
     }

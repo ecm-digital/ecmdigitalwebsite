@@ -36,7 +36,7 @@ export default function Home() {
 
   const checkAuthStatus = async (token: string) => {
     try {
-      const response = await fetch('http://localhost:3002/auth/validate', {
+      const response = await fetch('http://localhost:3001/auth/validate', {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -60,7 +60,7 @@ export default function Home() {
   const handleLogin = async (email: string, password: string) => {
     setLoginError(null);
     try {
-      const response = await fetch('http://localhost:3002/auth/login', {
+      const response = await fetch('http://localhost:3001/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -88,7 +88,7 @@ export default function Home() {
     try {
       const token = localStorage.getItem('authToken');
       if (token) {
-        await fetch('http://localhost:3002/auth/logout', {
+        await fetch('http://localhost:3001/auth/logout', {
           method: 'POST',
           headers: {
             'Authorization': `Bearer ${token}`

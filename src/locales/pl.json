@@ -59,25 +59,25 @@
       "title": "Nasz Zespół",
       "subtitle": "Poznaj ekspertów, którzy tworzą Twoje projekty",
       "members": {
-        "tomasz": {
-          "name": "Tomasz Gnat",
-          "position": "CEO & Strategia Biznesowa",
-          "description": "Odpowiedzialny za strategię firmy, relacje z klientami i rozwój biznesu"
+                "tomasz": {
+            "name": "Tomasz Gnat",
+            "position": "Discovery Consultant",
+            "description": "Ekspert w odkrywaniu potrzeb biznesowych i strategii cyfrowej"
         },
         "karol": {
-          "name": "Karol Czechowski",
-          "position": "CTO & Architekt Rozwiązań",
-          "description": "Specjalista w technologiach web, AI i automatyzacji procesów"
+            "name": "Karol Czechowski",
+            "position": "QA Specialist & Developer",
+            "description": "Specjalista od zapewnienia jakości i testowania aplikacji"
         },
         "marta": {
-          "name": "Marta Górska",
-          "position": "UX/UI Designer",
-          "description": "Ekspert w projektowaniu interfejsów użytkownika i doświadczeń"
+            "name": "Marta Górska",
+            "position": "UX/UI Designer",
+            "description": "Specjalistka od projektowania doświadczeń użytkownika"
         },
         "roman": {
-          "name": "Roman Domina",
-          "position": "Project Manager",
-          "description": "Zarządza projektami i koordynuje pracę zespołu"
+            "name": "Roman Dominia",
+            "position": "Social Media & Automations Specialist",
+            "description": "Ekspert od social media i automatyzacji procesów biznesowych"
         }
       }
     },
@@ -158,7 +158,8 @@
       "title": "Kluczowe funkcje",
       "subtitle": "Wykorzystujemy najnowsze technologie do tworzenia profesjonalnych stron internetowych",
       "shopify_subtitle": "Wykorzystujemy najnowsze technologie Shopify do tworzenia profesjonalnych sklepów e-commerce",
-      "mvp_subtitle": "Wykorzystujemy metodologię Lean Startup do szybkiej walidacji pomysłów biznesowych"
+      "mvp_subtitle": "Wykorzystujemy metodologię Lean Startup do szybkiej walidacji pomysłów biznesowych",
+      "socialMedia_subtitle": "Łączymy social media marketing z zaawansowaną analizą danych i AI"
     },
     "benefits": {
       "title": "Dlaczego Wybrać Nas?"
@@ -170,6 +171,8 @@
       "shopify_description": "Skontaktuj się z nami i otrzymaj bezpłatną konsultację. Pomożemy Ci stworzyć sklep, który zwiększy sprzedaż i skaluje Twój biznes.",
       "mvp_title": "Gotowy na Walidację Pomysłu?",
       "mvp_description": "Skontaktuj się z nami i otrzymaj bezpłatną konsultację. Pomożemy Ci szybko przetestować pomysł i zminimalizować ryzyko biznesowe.",
+      "socialMedia_title": "Gotowy na AI-Powered Marketing?",
+      "socialMedia_description": "Skontaktuj się z nami i otrzymaj bezpłatną konsultację. Pomożemy Ci stworzyć kampanie social media, które maksymalizują ROI dzięki AI i data science.",
       "freeConsultation": "Darmowa Konsultacja",
       "callNow": "Zadzwoń Teraz"
     }

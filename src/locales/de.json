@@ -61,23 +61,23 @@
       "members": {
         "tomasz": {
           "name": "Tomasz Gnat",
-          "position": "CEO & Geschäftsstrategie",
-          "description": "Verantwortlich für Unternehmensstrategie, Kundenbeziehungen und Geschäftsentwicklung"
+          "position": "Discovery Consultant",
+          "description": "Experte für die Entdeckung von Geschäftsanforderungen und digitale Strategie"
         },
         "karol": {
           "name": "Karol Czechowski",
-          "position": "CTO & Lösungsarchitekt",
-          "description": "Spezialist für Webtechnologien, KI und Geschäftsprozessautomatisierung"
+          "position": "QA-Spezialist & Entwickler",
+          "description": "Spezialist für Qualitätssicherung und Anwendungstests"
         },
         "marta": {
           "name": "Marta Górska",
           "position": "UX/UI Designer",
-          "description": "Expertin für Benutzeroberflächendesign und Benutzererfahrung"
+          "description": "Spezialistin für Benutzererfahrungsdesign"
         },
         "roman": {
-          "name": "Roman Domina",
-          "position": "Projektmanager",
-          "description": "Verwaltet Projekte und koordiniert Teamarbeit"
+          "name": "Roman Dominia",
+          "position": "Social Media & Automatisierungsspezialist",
+          "description": "Experte für Social Media und Geschäftsprozessautomatisierung"
         }
       }
     },
@@ -158,7 +158,8 @@
       "title": "Hauptfunktionen",
       "subtitle": "Wir nutzen die neuesten Technologien für professionelle Websites",
       "shopify_subtitle": "Wir nutzen die neuesten Shopify-Technologien für professionelle E-Commerce-Shops",
-      "mvp_subtitle": "Wir nutzen die Lean-Startup-Methodik für die schnelle Validierung von Geschäftsideen"
+      "mvp_subtitle": "Wir nutzen die Lean-Startup-Methodik für die schnelle Validierung von Geschäftsideen",
+      "socialMedia_subtitle": "Wir verbinden Social Media Marketing mit fortschrittlicher Datenanalyse und KI"
     },
     "benefits": {
       "title": "Warum uns wählen?"
@@ -170,6 +171,8 @@
       "shopify_description": "Kontaktieren Sie uns und erhalten Sie eine kostenlose Beratung. Wir helfen Ihnen dabei, einen Shop zu erstellen, der den Umsatz steigert und Ihr Geschäft skaliert.",
       "mvp_title": "Bereit, Ihre Idee zu validieren?",
       "mvp_description": "Kontaktieren Sie uns und erhalten Sie eine kostenlose Beratung. Wir helfen Ihnen dabei, Ihre Idee schnell zu testen und das Geschäftsrisiko zu minimieren.",
+      "socialMedia_title": "Bereit für KI-gestützten Marketing?",
+      "socialMedia_description": "Kontaktieren Sie uns und erhalten Sie eine kostenlose Beratung. Wir helfen Ihnen dabei, Social Media Kampagnen zu erstellen, die den ROI durch KI und Data Science maximieren.",
       "freeConsultation": "Kostenlose Beratung",
       "callNow": "Jetzt anrufen"
     }

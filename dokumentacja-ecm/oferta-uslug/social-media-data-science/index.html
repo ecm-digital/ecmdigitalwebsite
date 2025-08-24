@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Social Media & Data Science - Analiza Danych i AI | ECM Digital</title>
+    <title>Social Media & AI - Kampanie z Data Science | ECM Digital</title>
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Social Media & Data Science - analiza danych, AI, machine learning, automatyzacja social media. Zwiększ skuteczność kampanii marketingowych!">
-    <meta name="keywords" content="social media data science, analiza danych, AI marketing, machine learning, automatyzacja social media, data analytics">
+    <meta name="description" content="Kampanie social media oparte na data science z wysokimi współczynnikami konwersji. Wykorzystujemy AI i analizę danych do maksymalizacji ROI. Start od 12,900 PLN!">
+    <meta name="keywords" content="social media marketing, data science, AI marketing, kampanie social media, analiza danych, marketing automation, ROI optimization">
     <meta name="author" content="ECM Digital">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://www.ecm-digital.com/dokumentacja-ecm/oferta-uslug/social-media-data-science/">
@@ -15,15 +15,15 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.ecm-digital.com/dokumentacja-ecm/oferta-uslug/social-media-data-science/">
-    <meta property="og:title" content="Social Media & Data Science - Analiza Danych i AI | ECM Digital">
-    <meta property="og:description" content="Social Media & Data Science - analiza danych, AI, machine learning, automatyzacja social media.">
+    <meta property="og:title" content="Social Media & AI - Kampanie z Data Science | ECM Digital">
+    <meta property="og:description" content="Kampanie social media oparte na data science z wysokimi współczynnikami konwersji. Wykorzystujemy AI i analizę danych do maksymalizacji ROI.">
     <meta property="og:image" content="https://www.ecm-digital.com/assets/images/social-media-ai-og.jpg">
     
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://www.ecm-digital.com/dokumentacja-ecm/oferta-uslug/social-media-data-science/">
-    <meta name="twitter:title" content="Social Media & Data Science - Analiza Danych i AI | ECM Digital">
-    <meta name="twitter:description" content="Social Media & Data Science - analiza danych, AI, machine learning, automatyzacja social media.">
+    <meta name="twitter:title" content="Social Media & AI - Kampanie z Data Science | ECM Digital">
+    <meta name="twitter:description" content="Kampanie social media oparte na data science z wysokimi współczynnikami konwersji. Wykorzystujemy AI i analizę danych do maksymalizacji ROI.">
     <meta name="twitter:image" content="https://www.ecm-digital.com/assets/images/social-media-ai-og.jpg">
     
     <!-- Fonts -->
@@ -56,38 +56,15 @@
     
     <style>
         :root {
-            /* Apple Dark Mode Colors */
             --primary: #007AFF;
             --primary-dark: #0056CC;
-            --primary-light: #409CFF;
             --accent: #30D158;
-            --accent-orange: #FF9F0A;
-            --accent-purple: #BF5AF2;
-            --accent-pink: #FF2D92;
-            
-            /* Dark Theme Colors */
             --bg-primary: #000000;
             --bg-secondary: #1C1C1E;
             --bg-tertiary: #2C2C2E;
-            --bg-quaternary: #3A3A3C;
-            
-            /* Text Colors */
             --text-primary: #FFFFFF;
             --text-secondary: #EBEBF5;
-            --text-tertiary: #EBEBF599;
-            --text-quaternary: #EBEBF54D;
-            
-            /* System Colors */
-            --separator: #38383A;
-            --overlay: rgba(0, 0, 0, 0.4);
-            
-            /* Shadows */
-            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
-            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
-            --shadow-lg: 0 8px 25px rgba(0, 0, 0, 0.5);
-            --shadow-xl: 0 16px 40px rgba(0, 0, 0, 0.6);
-            
-            /* Glass Effect */
+            --text-muted: #EBEBF599;
             --glass-bg: rgba(28, 28, 30, 0.8);
             --glass-border: rgba(255, 255, 255, 0.1);
         }
@@ -98,29 +75,71 @@
             color: var(--text-primary);
             line-height: 1.6;
             margin: 0;
-            padding: 0;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
         }
-        
-        .font-display { 
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Space Grotesk', sans-serif;
+
+        /* Navigation */
+        .navbar {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 1rem 0;
+        }
+
+        .navbar-brand {
             font-weight: 700;
-            letter-spacing: -0.02em;
+            font-size: 1.5rem;
+            color: var(--text-primary) !important;
         }
-        
+
+        .nav-link {
+            color: var(--text-secondary) !important;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--primary) !important;
+        }
+
+        .dropdown-menu {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        .dropdown-item {
+            color: var(--text-secondary);
+        }
+
+        .dropdown-item:hover {
+            background: var(--bg-tertiary);
+            color: var(--primary);
+        }
+
+        .language-switcher .dropdown-menu {
+            min-width: 200px;
+        }
+
+        .language-switcher .btn-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .language-switcher .btn-link:hover {
+            color: var(--primary);
+        }
+
         /* Hero Section */
         .hero {
-            min-height: 400px;
-            display: flex;
-            align-items: center;
-            background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
-            color: var(--text-primary);
-            padding: 160px 0 120px;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            padding: 120px 0 80px;
             position: relative;
             overflow: hidden;
         }
-        
+
         .hero::before {
             content: '';
             position: absolute;
@@ -128,485 +147,261 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: radial-gradient(circle at 30% 20%, var(--primary) 0%, transparent 50%),
-                        radial-gradient(circle at 70% 80%, var(--accent-purple) 0%, transparent 50%);
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23333" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
             opacity: 0.1;
-            z-index: 1;
         }
-        
-        .hero .container {
-            position: relative;
-            z-index: 2;
+
+        .hero-title {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
         }
-        
-        .hero-title { 
-            font-size: clamp(2.5rem, 8vw, 5rem);
-            font-weight: 800; 
-            line-height: 1.05; 
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-muted);
             margin-bottom: 2rem;
-            letter-spacing: -0.03em;
-            background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .hero-subtitle { 
-            font-size: 1.25rem; 
-            color: var(--text-tertiary);
-            font-weight: 400;
-            line-height: 1.5;
             max-width: 600px;
         }
-        
-        /* Service Cards */
-        .service-card {
-            min-height: 200px;
-            opacity: 1;
-            transform: none;
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 2.5rem 2rem;
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            height: 100%;
-            position: relative;
-            overflow: hidden;
+
+        .font-display {
+            font-family: 'Space Grotesk', sans-serif;
         }
-        
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--accent-purple) 100%);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            border-radius: 20px;
-        }
-        
-        .service-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: var(--shadow-xl);
-            border-color: var(--glass-border);
-        }
-        
-        .service-card:hover::before {
-            opacity: 0.05;
-        }
-        
-        .service-card .service-icon {
-            position: relative;
-            z-index: 2;
-            margin-bottom: 1.5rem;
-        }
-        
-        .service-card h4 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-            position: relative;
-            z-index: 2;
-        }
-        
-        .service-card p {
-            color: var(--text-tertiary);
-            margin-bottom: 1.5rem;
-            position: relative;
-            z-index: 2;
-        }
-        
+
         .btn-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
-            text-decoration: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 12px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border: none;
+            padding: 1rem 2rem;
             font-weight: 600;
+            border-radius: 12px;
             transition: all 0.3s ease;
-            position: relative;
-            z-index: 2;
+            text-decoration: none;
+            display: inline-block;
+            color: white;
         }
-        
+
         .btn-cta:hover {
             transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
+            box-shadow: 0 8px 25px rgba(0, 122, 255, 0.3);
             color: white;
-            text-decoration: none;
         }
-        
-        /* Navbar */
-        .navbar {
-            background: var(--glass-bg) !important;
+
+        /* Service Cards */
+        .service-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
             backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--glass-border);
-            padding: 1rem 0;
+            transition: all 0.3s ease;
         }
-        
-        .navbar-brand {
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 12px 40px rgba(0, 122, 255, 0.1);
+        }
+
+        .service-card h3 {
+            color: var(--primary);
             font-weight: 700;
-            color: var(--text-primary) !important;
-            font-size: 1.5rem;
+            margin-bottom: 1rem;
         }
-        
-        .nav-link {
-            color: var(--text-secondary) !important;
-            font-weight: 500;
-            margin: 0 0.5rem;
-            transition: color 0.3s ease;
+
+        .service-card p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
         }
-        
-        .nav-link:hover {
-            color: var(--primary) !important;
+
+        /* Process Section */
+        .process-section {
+            background: var(--bg-secondary);
+            padding: 80px 0;
         }
-        
-        .dropdown-menu {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: 12px;
-        }
-        
-        .dropdown-item {
-            color: var(--text-secondary);
-            transition: all 0.3s ease;
-        }
-        
-        .dropdown-item:hover {
-            background: var(--primary);
-            color: white;
-        }
-        
-        .language-switcher {
-            margin-left: 1rem;
-        }
-        
-        .language-switcher .btn-link {
-            color: var(--text-tertiary);
-            text-decoration: none;
-            padding: 0.25rem 0.5rem;
-            border-radius: 6px;
-            transition: all 0.3s ease;
-            border: none;
-            background: none;
-        }
-        
-        .language-switcher .btn-link:hover,
-        .language-switcher .btn-link:focus {
-            color: var(--primary);
-            background: var(--glass-bg);
-            box-shadow: none;
-        }
-        
-        .language-switcher .dropdown-menu {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            backdrop-filter: blur(20px);
-            border-radius: 0.5rem;
-            margin-top: 0.5rem;
-        }
-        
-        .language-switcher .dropdown-item {
-            color: var(--text-tertiary);
-            transition: all 0.3s ease;
-        }
-        
-        .language-switcher .dropdown-item:hover {
-            color: var(--primary);
-            background: var(--glass-bg);
-        }
-        
-        .language-switcher .dropdown-item.active {
-            color: var(--primary);
-            background: var(--glass-bg);
-            font-weight: 600;
-        }
-        
-        /* Section Styles */
+
         .section-title {
             font-size: clamp(2rem, 5vw, 3rem);
             font-weight: 800;
-            margin-bottom: 1rem;
             text-align: center;
-        }
-        
-        .text-muted {
-            color: var(--text-tertiary) !important;
-        }
-        
-        /* Feature Cards */
-        .feature-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 1rem;
-            backdrop-filter: blur(20px);
-            transition: all 0.3s ease;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .process-step {
-            padding: 2rem 1rem;
-        }
-        
-        .process-number {
-            width: 60px;
-            height: 60px;
-            background: var(--primary);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin: 0 auto;
-        }
-        
-        .tech-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 1rem;
-            backdrop-filter: blur(20px);
-        }
-        
-        .pricing-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 1rem;
-            backdrop-filter: blur(20px);
-            transition: all 0.3s ease;
-        }
-        
-        .pricing-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .price {
-            font-size: 2rem;
-            font-weight: 700;
-        }
-        
-        .price .currency {
-            font-size: 1rem;
-            color: var(--text-tertiary);
-        }
-        
-        .price .period {
-            font-size: 1rem;
-            color: var(--text-tertiary);
-        }
-        
-        .contact-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 1rem;
-            backdrop-filter: blur(20px);
-        }
-        
-        .footer {
-            background: var(--bg-secondary);
-            border-top: 1px solid var(--glass-border);
-        }
-        
-        .btn-primary {
-            background: var(--primary);
-            border: none;
-            border-radius: 0.5rem;
-            padding: 0.75rem 1.5rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-primary:hover {
-            background: #0056b3;
-            transform: translateY(-2px);
-        }
-        
-        .btn-outline-primary {
-            border: 2px solid var(--primary);
-            color: var(--primary);
-            background: transparent;
-            border-radius: 0.5rem;
-            padding: 0.75rem 1.5rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-outline-primary:hover {
-            background: var(--primary);
-            color: white;
-        }
-        
-        .btn-light {
-            background: rgba(255, 255, 255, 0.9);
-            color: var(--bg-primary);
-            border: none;
-            border-radius: 0.5rem;
-            padding: 0.75rem 1.5rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-light:hover {
-            background: white;
-            transform: translateY(-2px);
-        }
-        
-        .text-primary {
-            color: var(--primary) !important;
-        }
-        
-        .bg-primary {
-            background-color: var(--primary) !important;
-        }
-        
-        .border-primary {
-            border-color: var(--primary) !important;
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero {
-            min-height: 400px;
-            display: flex;
-            align-items: center;
-                padding: 120px 0 80px;
-            }
-            
-            .hero-title {
-                font-size: clamp(2rem, 6vw, 3rem);
-            }
-            
-            .btn-cta {
-                padding: 0.5rem 1rem;
-                font-size: 0.875rem;
-                margin-bottom: 1rem;
-                display: block;
-                text-align: center;
-                width: 100%;
-            }
-            
-            .btn-cta.me-3 {
-                margin-right: 0 !important;
-                margin-bottom: 1rem;
-            }
-            
-            .language-switcher {
-                margin: 1rem 0 0 0;
-            }
-            
-            .language-switcher .dropdown-menu {
-                position: static !important;
-                transform: none !important;
-                width: 100%;
-                margin-top: 0.5rem;
-            }
-        }
-        
-        /* Timeline Process Styles */
-        .process-timeline {
-            position: relative;
-        }
-
-        .process-timeline::before {
-            content: '';
-            position: absolute;
-            left: 30px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(135deg, var(--primary), #8b5cf6);
-        }
-
-        .process-step {
-            position: relative;
             margin-bottom: 3rem;
-            padding-left: 80px;
+            color: var(--text-primary);
+        }
+
+        .process-step {
+            text-align: center;
+            margin-bottom: 2rem;
         }
 
         .step-number {
-            position: absolute;
-            left: 0;
-            top: 0;
             width: 60px;
             height: 60px;
-            background: linear-gradient(135deg, var(--primary), #8b5cf6);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
             font-size: 1.5rem;
-            font-weight: bold;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            font-weight: 700;
+            color: white;
+            margin: 0 auto 1rem;
         }
 
-        .step-content {
-            background: var(--bg-primary);
-            border-radius: 1rem;
-            padding: 2rem;
-            border: 1px solid var(--separator);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .step-content h4 {
-            color: var(--text-primary);
+        .step-title {
+            font-size: 1.25rem;
+            font-weight: 600;
             margin-bottom: 1rem;
-            font-size: 1.3rem;
+            color: var(--text-primary);
         }
 
-        .step-content ul {
-            margin: 1rem 0;
-            padding-left: 1.5rem;
+        .step-description {
+            color: var(--text-muted);
+            max-width: 300px;
+            margin: 0 auto;
         }
 
-        .step-content li {
-            margin-bottom: 0.5rem;
+        /* Features */
+        .features-section {
+            padding: 80px 0;
         }
 
-        .step-deliverables {
-            margin-top: 1.5rem;
-            padding-top: 1rem;
-            border-top: 1px solid var(--separator);
+        .feature-item {
+            text-align: center;
+            margin-bottom: 2rem;
         }
 
-        .step-deliverables .badge {
-            font-size: 0.8rem;
-            padding: 0.5rem 1rem;
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--glass-bg);
+            border: 2px solid var(--primary);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: var(--primary);
         }
 
+        .feature-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .feature-description {
+            color: var(--text-muted);
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 12px 40px rgba(0, 122, 255, 0.1);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .cta-title {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .cta-description {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .text-muted {
+            color: var(--text-tertiary) !important;
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
-            .process-timeline::before {
-                left: 20px;
+            .hero {
+                padding: 100px 0 60px;
             }
-            
-            .process-step {
-                padding-left: 60px;
+
+            .hero-title {
+                font-size: 2.5rem;
             }
-            
-            .step-number {
-                width: 40px;
-                height: 40px;
-                font-size: 1.2rem;
+
+            .hero-subtitle {
+                font-size: 1.1rem;
             }
-            
-            .step-content {
+
+            .btn-cta {
+                width: 100%;
+                text-align: center;
+                margin-bottom: 1rem;
+            }
+
+            .service-card {
                 padding: 1.5rem;
+            }
+
+            .process-step {
+                margin-bottom: 3rem;
+            }
+
+            .step-number {
+                width: 50px;
+                height: 50px;
+                font-size: 1.25rem;
+            }
+
+            .navbar-collapse {
+                background: var(--glass-bg);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                border-radius: 12px;
+                margin-top: 1rem;
+                padding: 1rem;
+                border: 1px solid var(--glass-border);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .service-card {
+                padding: 1.25rem;
             }
         }
     </style>
@@ -619,9 +414,11 @@
                 <i class="fas fa-rocket me-2" style="color: var(--primary);"></i>
                 ECM Digital
             </a>
+            
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" style="border: none; background: none;">
                 <i class="fas fa-bars" style="color: var(--text-primary); font-size: 1.2rem;"></i>
             </button>
+            
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
@@ -635,7 +432,7 @@
                             <li><a class="dropdown-item" href="../strony-www/" data-i18n="services.websites">Strony WWW</a></li>
                             <li><a class="dropdown-item" href="../sklepy-shopify/" data-i18n="services.shopify">Sklepy Shopify</a></li>
                             <li><a class="dropdown-item" href="../prototypy-mvp/" data-i18n="services.mvp">Prototypy MVP</a></li>
-                            <li><a class="dropdown-item" href="../audyty-ux/" data-i18n="services.uxAudit">Audyty UX</a></li>
+                            <li><a class="nav-item"><a class="nav-link" href="../audyty-ux/" data-i18n="services.uxAudit">Audyty UX</a></li>
                             <li><a class="dropdown-item" href="../automatyzacje-n8n/" data-i18n="services.automation">Automatyzacje</a></li>
                             <li><a class="dropdown-item active" href="../social-media-data-science/" data-i18n="services.socialMedia">Social Media & AI</a></li>
                             <li><a class="dropdown-item" href="../asystencja-ai-bedrock/" data-i18n="services.aiAssistants">Asystenci AI na Amazon Bedrock & Copilot Studio</a></li>
@@ -655,7 +452,7 @@
                     <ul class="dropdown-menu" aria-labelledby="languageDropdown">
                         <li><a class="dropdown-item lang-btn active" href="#" data-lang="pl">🇵🇱 Polski</a></li>
                         <li><a class="dropdown-item lang-btn" href="#" data-lang="en">🇺🇸 English</a></li>
-                        <li><a class="dropdown-item lang-btn" href="#" data-lang="de">🇩🇪 Deutsch</a></li>
+                        <li><a class="dropdown-item" href="#" data-lang="de">🇩🇪 Deutsch</a></li>
                     </ul>
                 </div>
             </div>
@@ -665,677 +462,241 @@
     <!-- Hero Section -->
     <section class="hero" data-aos="fade-up">
         <div class="container">
-            <div class="row">
+            <div class="row align-items-center">
                 <div class="col-lg-8">
-                    <h1 class="hero-title" data-i18n="services.socialMedia">Social Media & Data Science</h1>
-                    <p class="lead text-muted" data-i18n="services.socialMedia.description">Kampanie social media oparte na data science z wysokimi współczynnikami konwersji. Wykorzystujemy AI i analizę danych do maksymalizacji ROI.</p>
-                    <a href="#contact" class="btn btn-primary btn-lg mt-3">
-                        <i class="fas fa-chart-line me-2"></i>
-                        Rozpocznij kampanię
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Content Section -->
-    <section class="content-section" data-aos="fade-up">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8">
-                    <!-- Wprowadzenie -->
-                    <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-                        <h2><i class="fas fa-chart-line text-primary me-3"></i>Social Media oparte na Data Science</h2>
-                        <p class="lead">Łączymy kreatywność social media z mocą data science, tworząc kampanie, które nie tylko angażują, ale przede wszystkim konwertują. Nasze podejście oparte na danych pozwala na precyzyjne targetowanie i optymalizację w czasie rzeczywistym.</p>
-                        
-                        <div class="row mt-4">
-                            <div class="col-md-6 mb-3">
-                                <div class="feature-box">
-                                    <i class="fas fa-brain text-primary mb-2"></i>
-                                    <h5>AI & Machine Learning</h5>
-                                    <p class="text-muted">Wykorzystujemy algorytmy AI do optymalizacji kampanii i przewidywania zachowań użytkowników.</p>
-                                </div>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <div class="feature-box">
-                                    <i class="fas fa-bullseye text-primary mb-2"></i>
-                                    <h5>Precyzyjny Targeting</h5>
-                                    <p class="text-muted">Docieramy do idealnych klientów w odpowiednim momencie dzięki analizie big data.</p>
-                                </div>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <div class="feature-box">
-                                    <i class="fas fa-chart-bar text-primary mb-2"></i>
-                                    <h5>Analiza w Czasie Rzeczywistym</h5>
-                                    <p class="text-muted">Monitorujemy i optymalizujemy kampanie na bieżąco używając zaawansowanych dashboardów.</p>
-                                </div>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <div class="feature-box">
-                                    <i class="fas fa-rocket text-primary mb-2"></i>
-                                    <h5>Wysokie ROI</h5>
-                                    <p class="text-muted">Maksymalizujemy zwrot z inwestycji dzięki data-driven podejściu do marketingu.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Podejście Data-Driven -->
-                    <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-                        <h2><i class="fas fa-database text-primary me-3"></i>Podejście Data-Driven</h2>
-                        <p>Nasze kampanie social media opierają się na solidnych fundamentach analitycznych:</p>
-                        
-                        <div class="process-steps">
-                            <div class="step-item">
-                                <div class="step-number">1</div>
-                                <div class="step-content">
-                                    <h5>Analiza Danych Historycznych</h5>
-                                    <p>Badamy poprzednie kampanie i zachowania użytkowników, aby zidentyfikować wzorce i trendy.</p>
-                                </div>
-                            </div>
-                            <div class="step-item">
-                                <div class="step-number">2</div>
-                                <div class="step-content">
-                                    <h5>Segmentacja Audiencji</h5>
-                                    <p>Dzielimy odbiorców na precyzyjne segmenty na podstawie demografii, zachowań i preferencji.</p>
-                                </div>
-                            </div>
-                            <div class="step-item">
-                                <div class="step-number">3</div>
-                                <div class="step-content">
-                                    <h5>Predykcyjne Modelowanie</h5>
-                                    <p>Używamy machine learning do przewidywania skuteczności różnych strategii contentu.</p>
-                                </div>
-                            </div>
-                            <div class="step-item">
-                                <div class="step-number">4</div>
-                                <div class="step-content">
-                                    <h5>Optymalizacja w Czasie Rzeczywistym</h5>
-                                    <p>Automatycznie dostosowujemy kampanie na podstawie napływających danych.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Platformy Social Media -->
-                    <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-                        <h2><i class="fas fa-share-alt text-primary me-3"></i>Platformy Social Media</h2>
-                        <p>Specjalizujemy się w kampaniach na wszystkich głównych platformach społecznościowych:</p>
-                        
-                        <div class="row mt-4">
-                            <div class="col-md-4 mb-4">
-                                <div class="platform-card">
-                                    <i class="fab fa-facebook-f platform-icon"></i>
-                                    <h5>Facebook & Instagram</h5>
-                                    <ul class="platform-features">
-                                        <li>Zaawansowany targeting</li>
-                                        <li>Lookalike audiences</li>
-                                        <li>Retargeting campaigns</li>
-                                        <li>Stories & Reels optimization</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-md-4 mb-4">
-                                <div class="platform-card">
-                                    <i class="fab fa-linkedin-in platform-icon"></i>
-                                    <h5>LinkedIn</h5>
-                                    <ul class="platform-features">
-                                        <li>B2B lead generation</li>
-                                        <li>Professional targeting</li>
-                                        <li>Sponsored content</li>
-                                        <li>InMail campaigns</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-md-4 mb-4">
-                                <div class="platform-card">
-                                    <i class="fab fa-google platform-icon"></i>
-                                    <h5>Google Ads</h5>
-                                    <ul class="platform-features">
-                                        <li>Search campaigns</li>
-                                        <li>Display network</li>
-                                        <li>YouTube advertising</li>
-                                        <li>Smart bidding</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Tech Stack -->
-                    <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-                        <h2><i class="fas fa-cogs text-primary me-3"></i>Nasz Tech Stack</h2>
-                        <p>Wykorzystujemy najnowocześniejsze narzędzia do analizy danych i automatyzacji:</p>
-                        
-                        <div class="row mt-4">
-                            <div class="col-md-6">
-                                <h5><i class="fas fa-chart-pie text-primary me-2"></i>Analiza Danych</h5>
-                                <div class="tech-list">
-                                    <span class="tech-badge">Python</span>
-                                    <span class="tech-badge">R</span>
-                                    <span class="tech-badge">SQL</span>
-                                    <span class="tech-badge">Tableau</span>
-                                    <span class="tech-badge">Power BI</span>
-                                    <span class="tech-badge">Google Analytics</span>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <h5><i class="fas fa-robot text-primary me-2"></i>Machine Learning</h5>
-                                <div class="tech-list">
-                                    <span class="tech-badge">TensorFlow</span>
-                                    <span class="tech-badge">Scikit-learn</span>
-                                    <span class="tech-badge">Pandas</span>
-                                    <span class="tech-badge">NumPy</span>
-                                    <span class="tech-badge">Jupyter</span>
-                                    <span class="tech-badge">Apache Spark</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="row mt-4">
-                            <div class="col-md-6">
-                                <h5><i class="fas fa-cloud text-primary me-2"></i>Cloud & Infrastruktura</h5>
-                                <div class="tech-list">
-                                    <span class="tech-badge">AWS</span>
-                                    <span class="tech-badge">Google Cloud</span>
-                                    <span class="tech-badge">Azure</span>
-                                    <span class="tech-badge">Docker</span>
-                                    <span class="tech-badge">Kubernetes</span>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <h5><i class="fas fa-sync text-primary me-2"></i>Automatyzacja</h5>
-                                <div class="tech-list">
-                                    <span class="tech-badge">Zapier</span>
-                                    <span class="tech-badge">n8n</span>
-                                    <span class="tech-badge">Apache Airflow</span>
-                                    <span class="tech-badge">GitHub Actions</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Case Studies -->
-                    <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-                        <h2><i class="fas fa-trophy text-primary me-3"></i>Case Studies</h2>
-                        
-                        <div class="case-study">
-                            <h4>E-commerce Fashion Brand</h4>
-                            <div class="case-metrics">
-                                <div class="metric">
-                                    <span class="metric-value">340%</span>
-                                    <span class="metric-label">Wzrost ROAS</span>
-                                </div>
-                                <div class="metric">
-                                    <span class="metric-value">65%</span>
-                                    <span class="metric-label">Redukcja CPA</span>
-                                </div>
-                                <div class="metric">
-                                    <span class="metric-value">2.8M</span>
-                                    <span class="metric-label">Reach miesięczny</span>
-                                </div>
-                            </div>
-                            <p><strong>Wyzwanie:</strong> Marka modowa miała niski ROAS i wysokie koszty pozyskania klienta.</p>
-                            <p><strong>Rozwiązanie:</strong> Implementowaliśmy predykcyjne modele do optymalizacji targetingu i automatyczne A/B testing creativów.</p>
-                            <p><strong>Rezultat:</strong> 340% wzrost ROAS w ciągu 6 miesięcy przy jednoczesnym zwiększeniu skali kampanii.</p>
-                        </div>
-                        
-                        <div class="case-study">
-                            <h4>SaaS B2B Platform</h4>
-                            <div class="case-metrics">
-                                <div class="metric">
-                                    <span class="metric-value">180%</span>
-                                    <span class="metric-label">Wzrost leadów</span>
-                                </div>
-                                <div class="metric">
-                                    <span class="metric-value">45%</span>
-                                    <span class="metric-label">Poprawa jakości leadów</span>
-                                </div>
-                                <div class="metric">
-                                    <span class="metric-value">25%</span>
-                                    <span class="metric-label">Redukcja CPL</span>
-                                </div>
-                            </div>
-                            <p><strong>Wyzwanie:</strong> Platforma SaaS potrzebowała wysokiej jakości leadów B2B przy kontrolowanych kosztach.</p>
-                            <p><strong>Rozwiązanie:</strong> Stworzyliśmy zaawansowany lead scoring model i zoptymalizowaliśmy kampanie LinkedIn.</p>
-                            <p><strong>Rezultat:</strong> 180% wzrost liczby leadów przy 45% poprawie ich jakości.</p>
-                        </div>
-                    </div>
-
-                    <!-- ROI i Korzyści -->
-                    <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-                        <h2><i class="fas fa-chart-line text-primary me-3"></i>ROI i Korzyści Biznesowe</h2>
-                        
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="benefit-item">
-                                    <h5><i class="fas fa-percentage text-success me-2"></i>Zwiększenie ROAS</h5>
-                                    <p>Średnio <strong>250-400% wzrost</strong> zwrotu z wydatków reklamowych dzięki optymalizacji opartej na danych.</p>
-                                </div>
-                                
-                                <div class="benefit-item">
-                                    <h5><i class="fas fa-target text-success me-2"></i>Precyzyjniejszy Targeting</h5>
-                                    <p><strong>60-80% redukcja</strong> kosztów pozyskania klienta przez lepsze dopasowanie audiencji.</p>
-                                </div>
-                                
-                                <div class="benefit-item">
-                                    <h5><i class="fas fa-clock text-success me-2"></i>Oszczędność Czasu</h5>
-                                    <p><strong>70% automatyzacja</strong> procesów optymalizacji kampanii i raportowania.</p>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="benefit-item">
-                                    <h5><i class="fas fa-users text-success me-2"></i>Lepsze Zrozumienie Klientów</h5>
-                                    <p>Głębsze insights o zachowaniach i preferencjach target group.</p>
-                                </div>
-                                
-                                <div class="benefit-item">
-                                    <h5><i class="fas fa-trending-up text-success me-2"></i>Skalowalność</h5>
-                                    <p>Możliwość efektywnego skalowania kampanii bez proporcjonalnego wzrostu kosztów.</p>
-                                </div>
-                                
-                                <div class="benefit-item">
-                                    <h5><i class="fas fa-shield-alt text-success me-2"></i>Przewaga Konkurencyjna</h5>
-                                    <p>Wykorzystanie zaawansowanych technologii niedostępnych dla konkurencji.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Pakiety Usług -->
-                    <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-                        <h2><i class="fas fa-box text-primary me-3"></i>Pakiety Usług</h2>
-                        
-                        <div class="row mt-4">
-                            <div class="col-md-4 mb-4">
-                                <div class="package-card">
-                                    <div class="package-header">
-                                        <h4>STARTER</h4>
-                                        <div class="package-price">
-                                            <span class="price">8,000</span>
-                                            <span class="currency">PLN/mies</span>
-                                        </div>
-                                    </div>
-                                    <div class="package-features">
-                                        <ul>
-                                            <li><i class="fas fa-check"></i> 2 platformy social media</li>
-                                            <li><i class="fas fa-check"></i> Podstawowa analiza danych</li>
-                                            <li><i class="fas fa-check"></i> Miesięczne raporty</li>
-                                            <li><i class="fas fa-check"></i> A/B testing creativów</li>
-                                            <li><i class="fas fa-check"></i> Podstawowy targeting</li>
-                                        </ul>
-                                    </div>
-                                    <div class="package-ideal">
-                                        <strong>Idealne dla:</strong> Małych firm rozpoczynających przygodę z data-driven marketing
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="col-md-4 mb-4">
-                                <div class="package-card featured">
-                                    <div class="package-badge">NAJPOPULARNIEJSZY</div>
-                                    <div class="package-header">
-                                        <h4>BUSINESS</h4>
-                                        <div class="package-price">
-                                            <span class="price">18,000</span>
-                                            <span class="currency">PLN/mies</span>
-                                        </div>
-                                    </div>
-                                    <div class="package-features">
-                                        <ul>
-                                            <li><i class="fas fa-check"></i> 4 platformy social media</li>
-                                            <li><i class="fas fa-check"></i> Zaawansowana analiza predykcyjna</li>
-                                            <li><i class="fas fa-check"></i> Tygodniowe raporty + dashboard</li>
-                                            <li><i class="fas fa-check"></i> Machine learning optimization</li>
-                                            <li><i class="fas fa-check"></i> Lookalike audiences</li>
-                                            <li><i class="fas fa-check"></i> Retargeting campaigns</li>
-                                            <li><i class="fas fa-check"></i> Custom attribution models</li>
-                                        </ul>
-                                    </div>
-                                    <div class="package-ideal">
-                                        <strong>Idealne dla:</strong> Średnich firm chcących maksymalizować ROI z social media
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="col-md-4 mb-4">
-                                <div class="package-card">
-                                    <div class="package-header">
-                                        <h4>ENTERPRISE</h4>
-                                        <div class="package-price">
-                                            <span class="price">35,000+</span>
-                                            <span class="currency">PLN/mies</span>
-                                        </div>
-                                    </div>
-                                    <div class="package-features">
-                                        <ul>
-                                            <li><i class="fas fa-check"></i> Wszystkie platformy</li>
-                                            <li><i class="fas fa-check"></i> AI-powered optimization</li>
-                                            <li><i class="fas fa-check"></i> Real-time dashboards</li>
-                                            <li><i class="fas fa-check"></i> Custom ML models</li>
-                                            <li><i class="fas fa-check"></i> Advanced attribution</li>
-                                            <li><i class="fas fa-check"></i> Dedicated data scientist</li>
-                                            <li><i class="fas fa-check"></i> Custom integrations</li>
-                                            <li><i class="fas fa-check"></i> White-label reporting</li>
-                                        </ul>
-                                    </div>
-                                    <div class="package-ideal">
-                                        <strong>Idealne dla:</strong> Dużych firm i agencji potrzebujących zaawansowanych rozwiązań
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Proces Realizacji -->
-                    <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-                        <h2><i class="fas fa-tasks text-primary me-3"></i>Proces Realizacji</h2>
-                        
-                        <div class="timeline">
-                            <div class="timeline-item">
-                                <div class="timeline-marker">1</div>
-                                <div class="timeline-content">
-                                    <h5>Analiza i Audyt (Tydzień 1-2)</h5>
-                                    <ul>
-                                        <li>Audyt obecnych kampanii social media</li>
-                                        <li>Analiza danych historycznych</li>
-                                        <li>Identyfikacja target groups</li>
-                                        <li>Competitive analysis</li>
-                                        <li>Określenie KPIs i celów biznesowych</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            
-                            <div class="timeline-item">
-                                <div class="timeline-marker">2</div>
-                                <div class="timeline-content">
-                                    <h5>Strategia i Setup (Tydzień 3-4)</h5>
-                                    <ul>
-                                        <li>Opracowanie data-driven strategii</li>
-                                        <li>Setup tracking i analytics</li>
-                                        <li>Konfiguracja narzędzi ML</li>
-                                        <li>Przygotowanie creativów do testowania</li>
-                                        <li>Implementacja attribution models</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            
-                            <div class="timeline-item">
-                                <div class="timeline-marker">3</div>
-                                <div class="timeline-content">
-                                    <h5>Wdrożenie i Testing (Tydzień 5-8)</h5>
-                                    <ul>
-                                        <li>Launch kampanii testowych</li>
-                                        <li>A/B testing różnych podejść</li>
-                                        <li>Zbieranie i analiza danych</li>
-                                        <li>Pierwsze optymalizacje</li>
-                                        <li>Setup automatyzacji</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            
-                            <div class="timeline-item">
-                                <div class="timeline-marker">4</div>
-                                <div class="timeline-content">
-                                    <h5>Optymalizacja i Skalowanie (Ongoing)</h5>
-                                    <ul>
-                                        <li>Ciągła optymalizacja na podstawie danych</li>
-                                        <li>Skalowanie skutecznych kampanii</li>
-                                        <li>Regularne raporty i insights</li>
-                                        <li>Dostosowywanie strategii do trendów</li>
-                                        <li>Ekspansja na nowe platformy</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- FAQ -->
-                    <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-                        <h2><i class="fas fa-question-circle text-primary me-3"></i>Często Zadawane Pytania</h2>
-                        
-                        <div class="accordion" id="faqAccordion">
-                            <div class="accordion-item">
-                                <h2 class="accordion-header">
-                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
-                                        Jak długo trwa osiągnięcie pierwszych rezultatów?
-                                    </button>
-                                </h2>
-                                <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
-                                    <div class="accordion-body">
-                                        Pierwsze insights i optymalizacje widoczne są już po 2-3 tygodniach. Znaczące poprawy w ROAS i CPA obserwujemy zwykle po 6-8 tygodniach, gdy modele ML mają wystarczająco danych do nauki.
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="accordion-item">
-                                <h2 class="accordion-header">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
-                                        Czy potrzebuję dużego budżetu reklamowego?
-                                    </button>
-                                </h2>
-                                <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                                    <div class="accordion-body">
-                                        Minimalne budżety reklamowe to 15,000 PLN/miesiąc dla pakietu STARTER i 30,000 PLN/miesiąc dla BUSINESS. Większe budżety pozwalają na szybsze uczenie modeli i lepsze rezultaty.
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="accordion-item">
-                                <h2 class="accordion-header">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
-                                        Jakie dane potrzebujecie do rozpoczęcia?
-                                    </button>
-                                </h2>
-                                <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                                    <div class="accordion-body">
-                                        Potrzebujemy dostępu do: Facebook Ads Manager, Google Analytics, danych o sprzedaży/konwersjach, informacji o produktach/usługach oraz dostępu do obecnych kont social media.
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="accordion-item">
-                                <h2 class="accordion-header">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
-                                        Czy tworzycie także content?
-                                    </button>
-                                </h2>
-                                <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                                    <div class="accordion-body">
-                                        Tak, tworzymy content zoptymalizowany pod kątem performance. Używamy A/B testingu i analizy danych do określenia, jakie typy contentu najlepiej konwertują dla Twojej audiencji.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Kontakt -->
-                    <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-                        <h2><i class="fas fa-envelope text-primary me-3"></i>Rozpocznij Swoją Data-Driven Kampanię</h2>
-                        <p class="lead">Gotowy na zwiększenie ROI z social media? Skontaktuj się z nami i otrzymaj bezpłatną analizę Twoich obecnych kampanii.</p>
-                        
-                        <div class="row mt-4">
-                            <div class="col-md-6">
-                                <div class="contact-info">
-                                    <h5><i class="fas fa-phone text-primary me-2"></i>Telefon</h5>
-                                    <p>+48 535 330 323</p>
-                                    
-                                    <h5><i class="fas fa-envelope text-primary me-2"></i>Email</h5>
-                                    <p>social@ecm-digital.com</p>
-                                    
-                                    <h5><i class="fas fa-calendar text-primary me-2"></i>Bezpłatna Konsultacja</h5>
-                                    <p>Umów się na 30-minutową konsultację, podczas której:</p>
-                                    <ul>
-                                        <li>Przeanalizujemy Twoje obecne kampanie</li>
-                                        <li>Zidentyfikujemy potencjał optymalizacji</li>
-                                        <li>Przedstawimy rekomendacje data-driven</li>
-                                        <li>Oszacujemy możliwy wzrost ROI</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="cta-box">
-                                    <h5>Co otrzymasz:</h5>
-                                    <div class="benefit-list">
-                                        <div class="benefit-item">
-                                            <i class="fas fa-check-circle text-success me-2"></i>
-                                            <span>Darmowy audyt obecnych kampanii</span>
-                                        </div>
-                                        <div class="benefit-item">
-                                            <i class="fas fa-check-circle text-success me-2"></i>
-                                            <span>Analizę konkurencji</span>
-                                        </div>
-                                        <div class="benefit-item">
-                                            <i class="fas fa-check-circle text-success me-2"></i>
-                                            <span>Rekomendacje optymalizacji</span>
-                                        </div>
-                                        <div class="benefit-item">
-                                            <i class="fas fa-check-circle text-success me-2"></i>
-                                            <span>Prognozę ROI</span>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="mt-4">
-                                        <a href="#" class="btn btn-primary btn-lg w-100 mb-3">
-                                            <i class="fas fa-calendar-plus me-2"></i>
-                                            Umów Bezpłatną Konsultację
-                                        </a>
-                                        <a href="mailto:social@ecm-digital.com" class="btn btn-outline-primary w-100">
-                                            <i class="fas fa-envelope me-2"></i>
-                                            Napisz do Nas
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="row mt-5">
-                            <div class="col-12">
-                                <div class="testimonial-box">
-                                    <blockquote>
-                                        "Dzięki ECM Digital nasze kampanie social media osiągają ROAS na poziomie 450%. Ich data-driven podejście i machine learning modele to prawdziwa rewolucja w naszym marketingu."
-                                    </blockquote>
-                                    <cite>- Marcin K., Marketing Director, E-commerce Fashion Brand</cite>
-                                </div>
-                            </div>
-                        </div>
+                    <h1 class="hero-title font-display" data-i18n="services.socialMedia">Social Media & AI</h1>
+                    <p class="hero-subtitle" data-i18n="services.socialMedia.description">
+                        Kampanie social media oparte na data science z wysokimi współczynnikami konwersji. 
+                        Wykorzystujemy AI i analizę danych do maksymalizacji ROI i automatyzacji marketingu.
+                    </p>
+                    <div class="mt-4">
+                        <a href="#features" class="btn-cta">
+                            <i class="fas fa-arrow-right"></i>
+                            <span data-i18n="hero.exploreFeatures">Poznaj funkcje</span>
+                        </a>
                     </div>
                 </div>
-
                 <div class="col-lg-4">
-                    <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-                        <h3>Skontaktuj się z nami</h3>
-                        <p class="text-muted">Chcesz zwiększyć ROI swoich kampanii social media? Skontaktuj się z nami!</p>
-                        <div class="d-grid gap-2">
-                            <a href="mailto:kontakt@ecmdigital.pl" class="btn btn-primary">
-                                <i class="fas fa-envelope me-2"></i>
-                                Wyślij email
-                            </a>
-                            <a href="tel:+48535330323" class="btn btn-outline-light">
-                                <i class="fas fa-phone me-2"></i>
-                                Zadzwoń
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-                        <h4>Platformy</h4>
-                        <div class="mt-3">
-                            <span class="badge bg-primary me-2 mb-2">Facebook</span>
-                            <span class="badge bg-primary me-2 mb-2">Instagram</span>
-                            <span class="badge bg-primary me-2 mb-2">LinkedIn</span>
-                            <span class="badge bg-primary me-2 mb-2">Google Ads</span>
-                            <span class="badge bg-primary me-2 mb-2">TikTok</span>
-                            <span class="badge bg-primary me-2 mb-2">YouTube</span>
-                            <span class="badge bg-primary me-2 mb-2">Twitter</span>
-                        </div>
-                    </div>
-
-                    <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-                        <h4>Narzędzia AI</h4>
-                        <div class="mt-3">
-                            <span class="badge bg-primary me-2 mb-2">TensorFlow</span>
-                            <span class="badge bg-primary me-2 mb-2">Python</span>
-                            <span class="badge bg-primary me-2 mb-2">Google Analytics</span>
-                            <span class="badge bg-primary me-2 mb-2">Facebook Pixel</span>
-                            <span class="badge bg-primary me-2 mb-2">Looker Studio</span>
-                            <span class="badge bg-primary me-2 mb-2">BigQuery</span>
-                        </div>
-                    </div>
-
-                    <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-                        <h4>Proces</h4>
-                        <ol class="list-unstyled mt-3">
-                            <li class="mb-2">1. Analiza danych historycznych</li>
-                            <li class="mb-2">2. Segmentacja audiencji</li>
-                            <li class="mb-2">3. Tworzenie kampanii</li>
-                            <li class="mb-2">4. A/B testing</li>
-                            <li class="mb-2">5. Optymalizacja AI</li>
-                            <li class="mb-2">6. Raportowanie</li>
-                        </ol>
+                    <div class="hero-image text-center">
+                        <img src="https://via.placeholder.com/600x400/FF6B9D/ffffff?text=Social+Media+AI" alt="Social Media & AI ECM Digital" class="img-fluid rounded-4 shadow-lg">
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Features Section -->
+    <section id="features" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title font-display" data-i18n="sections.features.title">Kluczowe funkcje</h2>
+                <p class="text-muted" data-i18n="sections.features.socialMedia_subtitle">Łączymy social media marketing z zaawansowaną analizą danych i AI</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card text-center p-4 h-100" data-aos="fade-up" data-aos-delay="100">
+                        <div class="mb-3">
+                            <i class="fas fa-chart-line fa-3x text-primary"></i>
+                        </div>
+                        <h4>Data-Driven Marketing</h4>
+                        <p class="text-muted">Kampanie oparte na analizie danych i zachowań użytkowników</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card text-center p-4 h-100" data-aos="fade-up" data-aos-delay="200">
+                        <div class="mb-3">
+                            <i class="fas fa-robot fa-3x text-primary"></i>
+                        </div>
+                        <h4>AI Content Generation</h4>
+                        <p class="text-muted">Automatyczne generowanie treści i personalizacja wiadomości</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card text-center p-4 h-100" data-aos="fade-up" data-aos-delay="300">
+                        <div class="mb-3">
+                            <i class="fas fa-bullseye fa-3x text-primary"></i>
+                        </div>
+                        <h4>Audience Targeting</h4>
+                        <p class="text-muted">Precyzyjne targetowanie na podstawie analizy behawioralnej</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card text-center p-4 h-100" data-aos="fade-up" data-aos-delay="400">
+                        <div class="mb-3">
+                            <i class="fas fa-cogs fa-3x text-primary"></i>
+                        </div>
+                        <h4>Marketing Automation</h4>
+                        <p class="text-muted">Automatyzacja kampanii i optymalizacja w czasie rzeczywistym</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card text-center p-4 h-100" data-aos="fade-up" data-aos-delay="500">
+                        <div class="mb-3">
+                            <i class="fas fa-analytics fa-3x text-primary"></i>
+                        </div>
+                        <h4>ROI Optimization</h4>
+                        <p class="text-muted">Ciągła optymalizacja kampanii dla maksymalizacji zwrotu</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card text-center p-4 h-100" data-aos="fade-up" data-aos-delay="600">
+                        <div class="mb-3">
+                            <i class="fas fa-trending-up fa-3x text-primary"></i>
+                        </div>
+                        <h4>Performance Tracking</h4>
+                        <p class="text-muted">Zaawansowane raportowanie i śledzenie wyników</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section">
+        <div class="container">
+            <h2 class="section-title font-display" data-i18n="sections.process.title">Nasz Proces Pracy</h2>
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="process-step" data-aos="fade-up" data-aos-delay="100">
+                        <div class="step-number">1</div>
+                        <h4 class="step-title">Analiza Danych</h4>
+                        <p class="step-description">
+                            Badanie grupy docelowej i analiza konkurencji
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="process-step" data-aos="fade-up" data-aos-delay="200">
+                        <div class="step-number">2</div>
+                        <h4 class="step-title">Strategia AI</h4>
+                        <p class="step-description">
+                            Projektowanie kampanii z wykorzystaniem AI
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="process-step" data-aos="fade-up" data-aos-delay="300">
+                        <div class="step-number">3</div>
+                        <h4 class="step-title">Implementacja</h4>
+                        <p class="step-description">
+                            Wdrożenie kampanii i automatyzacja
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="process-step" data-aos="fade-up" data-aos-delay="400">
+                        <div class="step-number">4</div>
+                        <h4 class="step-title">Optymalizacja</h4>
+                        <p class="step-description">
+                            Ciągłe monitorowanie i optymalizacja
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="features-section">
+        <div class="container">
+            <h2 class="section-title font-display" data-i18n="sections.benefits.title">Dlaczego Wybrać Nas?</h2>
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-item" data-aos="fade-up" data-aos-delay="100">
+                        <div class="feature-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h4 class="feature-title">Szybka Realizacja</h4>
+                        <p class="feature-description">
+                            Kampanie gotowe w 2-3 tygodnie z pełną automatyzacją
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-item" data-aos="fade-up" data-aos-delay="200">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4 class="feature-title">Data-Driven</h4>
+                        <p class="feature-description">
+                            Wszystkie decyzje oparte na analizie danych i AI
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-item" data-aos="fade-up" data-aos-delay="300">
+                        <div class="feature-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h4 class="feature-title">Wsparcie 24/7</h4>
+                        <p class="feature-description">
+                            Stałe wsparcie techniczne i konsultacje po wdrożeniu
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="contact">
+        <div class="container">
+            <h2 class="cta-title font-display" data-i18n="sections.cta.socialMedia_title">Gotowy na AI-Powered Marketing?</h2>
+            <p class="cta-description" data-i18n="sections.cta.socialMedia_description">
+                Skontaktuj się z nami i otrzymaj bezpłatną konsultację. 
+                Pomożemy Ci stworzyć kampanie social media, które maksymalizują ROI dzięki AI i data science.
+            </p>
+            <div class="d-flex gap-3 justify-content-center flex-wrap">
+                <a href="../../../index.html#contact" class="btn btn-cta">
+                    <i class="fas fa-envelope me-2"></i>
+                    <span data-i18n="sections.cta.freeConsultation">Darmowa Konsultacja</span>
+                </a>
+                <a href="tel:+48123456789" class="btn btn-outline-light btn-lg">
+                    <i class="fas fa-phone me-2"></i>
+                    <span data-i18n="sections.cta.callNow">Zadzwoń Teraz</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-4" style="background: var(--bg-secondary); border-top: 1px solid var(--glass-border);">
+        <div class="container text-center">
+            <p class="text-muted mb-0">
+                © 2024 ECM Digital. Wszystkie prawa zastrzeżone. 
+                <a href="../../../index.html" class="text-primary text-decoration-none">Wróć do strony głównej</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- AOS Animation -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- i18n Manager -->
     <script src="../../../src/js/i18n.js"></script>
+    
     <script>
         // Initialize AOS
-        AOS.init();
-        
-        // Initialize I18n
-        const i18nManager = new I18nManager();
-        i18nManager.init();
-        
-        // Language switcher functionality
-        document.addEventListener("DOMContentLoaded", function() {
-            const langButtons = document.querySelectorAll(".lang-btn");
-            const languageDropdownButton = document.getElementById("languageDropdown");
-            
-            // Language names for button text
-            const languageNames = {
-                "pl": "🇵🇱 PL",
-                "en": "🇺🇸 EN", 
-                "de": "🇩🇪 DE"
-            };
-            
-            langButtons.forEach(btn => {
-                btn.addEventListener("click", function(e) {
-                    e.preventDefault();
-                    
-                    // Remove active class from all buttons
-                    langButtons.forEach(b => b.classList.remove("active"));
-                    
-                    // Add active class to clicked button
-                    this.classList.add("active");
-                    
-                    // Get language from data-lang attribute
-                    const lang = this.getAttribute("data-lang");
-                    
-                    // Update dropdown button text
-                    languageDropdownButton.innerHTML = languageNames[lang];
-                    
-                    // Set language in I18n manager
-                    i18nManager.setLanguage(lang);
-                    
-                    // Store language preference
-                    localStorage.setItem("preferredLanguage", lang);
-                });
-            });
-            
-            // Set initial language from localStorage or default to Polish
-            const savedLang = localStorage.getItem("preferredLanguage") || "pl";
-            i18nManager.setLanguage(savedLang);
-            
-            // Update active button and dropdown text
-            const activeBtn = document.querySelector(`[data-lang="${savedLang}"]`);
-            if (activeBtn) {
-                langButtons.forEach(b => b.classList.remove("active"));
-                activeBtn.classList.add("active");
-                languageDropdownButton.innerHTML = languageNames[savedLang];
+        AOS.init({
+            duration: 800,
+            easing: 'ease-out',
+            once: true,
+            offset: 100
+        });
+
+        // Initialize i18n
+        document.addEventListener('DOMContentLoaded', function() {
+            if (window.i18nManager) {
+                i18nManager.init();
             }
         });
     </script>

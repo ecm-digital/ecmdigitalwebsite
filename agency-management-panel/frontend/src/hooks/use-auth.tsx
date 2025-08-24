@@ -45,7 +45,7 @@ export function useAuthProvider() {
 
   const validateToken = async (token: string) => {
     try {
-      const response = await fetch('http://localhost:3002/auth/validate', {
+      const response = await fetch('http://localhost:3001/auth/validate', {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -69,7 +69,7 @@ export function useAuthProvider() {
   const login = async (email: string, password: string): Promise<boolean> => {
     setIsLoading(true);
     try {
-      const response = await fetch('http://localhost:3002/auth/login', {
+      const response = await fetch('http://localhost:3001/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
