@@ -335,26 +335,23 @@
             font-weight: 600;
         }
         
-        /* AOS Fixes */
+        /* AOS Fixes - Better Configuration */
         [data-aos] {
-            opacity: 1 !important;
-            transform: none !important;
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
-        
+
         [data-aos].aos-animate {
-            opacity: 1 !important;
+            opacity: 1;
+            transform: none;
         }
-        
+
         /* Prevent layout shifts */
         .service-card {
             min-height: 200px;
-            opacity: 1 !important;
-            transform: none !important;
         }
-        
+
         .hero {
             min-height: 400px;
-            opacity: 1 !important;
             transform: none !important;
         }
         
@@ -1359,44 +1356,38 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="../../../src/js/i18n.js"></script>
     <script>
-        // Initialize AOS with better settings
-        AOS.init({
-            duration: 800,
-            easing: "ease-out-cubic",
-            once: true,
-            offset: 100,
-            delay: 100,
-            disable: false,
-            startEvent: 'DOMContentLoaded',
-            initClassName: 'aos-init',
-            animatedClassName: 'aos-animate',
-            useClassNames: false,
-            disableMutationObserver: false,
-            debounceDelay: 100,
-            throttleDelay: 150
-        });
+        // Initialize AOS with better settings and fallback
+        try {
+            AOS.init({
+                duration: 800,
+                easing: "ease-out-cubic",
+                once: true,
+                offset: 100,
+                delay: 100,
+                disable: false,
+                startEvent: 'DOMContentLoaded',
+                initClassName: 'aos-init',
+                animatedClassName: 'aos-animate',
+                useClassNames: false,
+                disableMutationObserver: false,
+                debounceDelay: 100,
+                throttleDelay: 150
+            });
+
+            console.log('✅ AOS initialized successfully');
+        } catch (error) {
+            console.warn('⚠️ AOS initialization failed:', error);
+            // Fallback: make all elements visible
+            document.querySelectorAll('[data-aos]').forEach(el => {
+                el.classList.add('aos-animate');
+            });
+        }
         
         // Initialize I18n
         const i18nManager = new I18nManager();
         
         // Language switcher functionality
         document.addEventListener("DOMContentLoaded", function() {
-            // Force all elements to be visible
-            document.querySelectorAll('[data-aos]').forEach(el => {
-                el.style.opacity = '1';
-                el.style.transform = 'none';
-                el.style.visibility = 'visible';
-            });
-            
-            // Force all content to be visible
-            document.querySelectorAll('*').forEach(el => {
-                if (el.style) {
-                    el.style.opacity = '1';
-                    el.style.visibility = 'visible';
-                    el.style.display = el.tagName === 'LI' ? 'list-item' : 'block';
-                }
-            });
-            
             // Initialize I18n after DOM is loaded
             i18nManager.init();
             const langButtons = document.querySelectorAll(".lang-btn");
