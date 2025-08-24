@@ -50,8 +50,12 @@ class AWSChatbot {
             console.log('🔄 Continuing without AWS services...');
         }
         
-        // Skip Polly voice checking since we don't have permissions
-        console.log('⚠️ Skipping Polly voice check - using Web Speech API instead');
+        // Check available Polly voices
+        if (this.polly) {
+            this.checkPollyVoices();
+        } else {
+            console.log('⚠️ Polly not available - using Web Speech API instead');
+        }
             
             // Initialize speech recognition
             this.initSpeechRecognition();
@@ -74,6 +78,23 @@ class AWSChatbot {
     }
     
 
+    async checkPollyVoices() {
+        try {
+            console.log('🔍 Checking available Polly voices...');
+            const result = await this.polly.describeVoices().promise();
+            console.log('✅ Available Polly voices:', result.Voices?.length || 0);
+            
+            if (result.Voices && result.Voices.length > 0) {
+                const polishVoices = result.Voices.filter(v => v.LanguageCode === 'pl-PL');
+                const englishVoices = result.Voices.filter(v => v.LanguageCode === 'en-US');
+                
+                console.log('🇵🇱 Polish Polly voices:', polishVoices.map(v => v.Id));
+                console.log('🇺🇸 English Polly voices:', englishVoices.map(v => v.Id));
+            }
+        } catch (error) {
+            console.warn('⚠️ Could not check Polly voices:', error.message);
+        }
+    }
     
     // Fallback method if AWS services fail
     fallbackToBasicChatbot() {
@@ -133,15 +154,27 @@ class AWSChatbot {
             }
         });
         
-        // Initialize only Bedrock-related services
-        console.log('🚀 Initializing Bedrock-only services...');
+        // Initialize AWS services
+        console.log('🚀 Initializing AWS services...');
         
-        // Don't initialize Polly/Lex if we don't have permissions
-        this.polly = null;
-        this.lexRuntime = null;
-        this.cognitoIdentity = null;
-        
-        console.log('✅ AWS configured for Bedrock only (no Polly/Lex)');
+        try {
+            // Initialize Polly for text-to-speech
+            this.polly = new AWS.Polly();
+            console.log('✅ Amazon Polly initialized');
+            
+            // Initialize Lex for chatbot
+            this.lexRuntime = new AWS.LexRuntime();
+            console.log('✅ Amazon Lex initialized');
+            
+            // Initialize Cognito for identity
+            this.cognitoIdentity = new AWS.CognitoIdentity();
+            console.log('✅ Amazon Cognito initialized');
+            
+            console.log('✅ All AWS services initialized successfully');
+        } catch (error) {
+            console.error('❌ Error initializing AWS services:', error);
+            console.log('🔄 Continuing with fallback services...');
+        }
     }
     
     initSpeechRecognition() {
@@ -644,11 +677,27 @@ Co Cię najbardziej interesuje? Opowiedz mi o swoich potrzebach lub wybierz jedn
         }
         
         console.log('🗣️ Starting speech synthesis for:', text.substring(0, 50) + '...');
+        console.log('🔍 Polly available:', !!this.polly);
         console.log('🔍 Web Speech available:', !!this.synthesis);
         
-        // Use Web Speech API directly since we don't have Polly permissions
+        try {
+            // Try Amazon Polly first
+            if (this.polly) {
+                console.log('🚀 Attempting to use Amazon Polly...');
+                await this.speakWithPolly(text);
+                console.log('✅ Amazon Polly speech completed successfully');
+                return;
+            } else {
+                console.log('⚠️ Amazon Polly not available, using Web Speech API');
+            }
+        } catch (error) {
+            console.error('❌ Amazon Polly failed:', error);
+            console.log('🔄 Falling back to Web Speech API...');
+        }
+        
+        // Fallback to Web Speech API
         if (this.synthesis) {
-            console.log('🔊 Using Web Speech API (no Polly permissions)...');
+            console.log('🔊 Using Web Speech API fallback...');
             this.speakWithWebSpeech(text);
         } else {
             console.error('❌ No speech synthesis available');
