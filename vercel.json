@@ -3,7 +3,7 @@
   "buildCommand": "echo 'Building static site'",
   "outputDirectory": ".",
   "installCommand": "echo 'No install needed'",
-  "framework": null,
+  "framework": "static",
   "rewrites": [
     {
       "source": "/login",
@@ -20,6 +20,10 @@
     {
       "source": "/en",
       "destination": "/en.html"
+    },
+    {
+      "source": "/contact",
+      "destination": "/contact.html"
     }
   ],
   "headers": [
@@ -40,5 +44,7 @@
         }
       ]
     }
-  ]
+  ],
+  "functions": {},
+  "regions": ["iad1"]
 }
