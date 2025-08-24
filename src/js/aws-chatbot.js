@@ -21,11 +21,25 @@ class AWSChatbot {
     
     init() {
         try {
+            console.log('🚀 Initializing AWS Chatbot...');
+            console.log('🔍 Checking dependencies...');
+            
             // Check Bedrock client availability
+            console.log('window.BedrockClient:', window.BedrockClient);
+            console.log('typeof window.BedrockClient:', typeof window.BedrockClient);
+            console.log('window.AWS:', window.AWS);
+            console.log('typeof window.AWS:', typeof window.AWS);
+            
             if (window.BedrockClient) {
                 console.log('🤖 Bedrock client found - will use AI responses');
             } else {
                 console.log('⚠️ No Bedrock client found - using fallback responses');
+            }
+            
+            if (window.AWS) {
+                console.log('☁️ AWS SDK found - will use AWS services');
+            } else {
+                console.log('⚠️ No AWS SDK found - some features may not work');
             }
             
             // Initialize AWS SDK
@@ -46,6 +60,7 @@ class AWSChatbot {
             console.log('✅ AWS Chatbot initialized successfully');
         } catch (error) {
             console.error('❌ Error initializing AWS Chatbot:', error);
+            console.error('Error stack:', error.stack);
             this.fallbackToBasicChatbot();
         }
     }
@@ -224,8 +239,12 @@ KONTEKST: ${this.getConversationContext()}`;
     
     async callBedrockAPI(systemPrompt, userMessage) {
         try {
+            console.log('🔍 Checking BedrockClient availability in callBedrockAPI...');
+            console.log('window.BedrockClient:', window.BedrockClient);
+            console.log('typeof window.BedrockClient:', typeof window.BedrockClient);
+            
             // Try to use existing Bedrock client if available
-            if (window.BedrockClient) {
+            if (window.BedrockClient && typeof window.BedrockClient === 'function') {
                 console.log('🚀 Using existing Bedrock client');
                 console.log('System prompt:', systemPrompt);
                 console.log('User message:', userMessage);
@@ -249,10 +268,29 @@ KONTEKST: ${this.getConversationContext()}`;
     
     async callExistingBedrock(systemPrompt, userMessage) {
         try {
+            console.log('🔍 Checking BedrockClient availability...');
+            console.log('window.BedrockClient:', window.BedrockClient);
+            console.log('typeof window.BedrockClient:', typeof window.BedrockClient);
+            
+            if (!window.BedrockClient) {
+                throw new Error('BedrockClient not found in window object');
+            }
+            
             // Use your existing Bedrock client
+            console.log('🏗️ Creating new BedrockClient instance...');
             const bedrockClient = new window.BedrockClient();
+            console.log('✅ BedrockClient instance created:', bedrockClient);
             
             // Call invokeModel with proper parameters
+            console.log('🚀 Calling invokeModel...');
+            console.log('Parameters:', {
+                userMessage,
+                systemPrompt,
+                maxTokens: 1000,
+                temperature: 0.7,
+                model: 'anthropic.claude-3-sonnet-20240229-v1:0'
+            });
+            
             const response = await bedrockClient.invokeModel(userMessage, {
                 systemPrompt: systemPrompt,
                 maxTokens: 1000,
@@ -260,25 +298,36 @@ KONTEKST: ${this.getConversationContext()}`;
                 model: 'anthropic.claude-3-sonnet-20240229-v1:0'
             });
             
-            console.log('Bedrock response:', response);
+            console.log('🎯 Bedrock response received:', response);
+            console.log('Response type:', typeof response);
+            console.log('Response keys:', Object.keys(response || {}));
             
             // Extract text from response based on model type
-            if (response && response.content) {
+            let extractedText = '';
+            if (response && response.content && response.content[0] && response.content[0].text) {
                 // Claude format
-                return response.content[0].text;
+                extractedText = response.content[0].text;
+                console.log('📝 Extracted Claude text:', extractedText);
             } else if (response && response.outputText) {
                 // Titan format
-                return response.outputText;
+                extractedText = response.outputText;
+                console.log('📝 Extracted Titan text:', extractedText);
             } else if (response && response.generation) {
                 // Llama format
-                return response.generation;
+                extractedText = response.generation;
+                console.log('📝 Extracted Llama text:', extractedText);
             } else {
                 // Fallback
-                return response || 'Przepraszam, nie udało się wygenerować odpowiedzi.';
+                extractedText = response || 'Przepraszam, nie udało się wygenerować odpowiedzi.';
+                console.log('⚠️ Using fallback text:', extractedText);
             }
             
+            console.log('✅ Final extracted text:', extractedText);
+            return extractedText;
+            
         } catch (error) {
-            console.error('Bedrock API call failed:', error);
+            console.error('❌ Bedrock API call failed:', error);
+            console.error('Error stack:', error.stack);
             throw error;
         }
     }

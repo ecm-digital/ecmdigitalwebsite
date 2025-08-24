@@ -1377,7 +1377,29 @@
     <script src="src/js/aws-chatbot.js"></script>
     
     <!-- Existing Bedrock Integration -->
+    <script src="dokumentacja-ecm/oferta-uslug/asystencja-ai-bedrock/bedrock-config.js"></script>
     <script src="dokumentacja-ecm/oferta-uslug/asystencja-ai-bedrock/bedrock-client.js"></script>
+    
+    <!-- Set Bedrock API credentials -->
+    <script>
+        // Set Bedrock API credentials from your provided key
+        const BEDROCK_API_KEY = 'ABSKQmVkcm9ja0FQSUtleS1yemNuLWF0LTA0OTE2NDA1Nzk3MDpaUFZVWkVYOVZYRHZCa3dEOThxOEx3ZUFJbTdVWFNXc3M5Mlc5WHF1K2d3OGdOM3ozc2luNWJ4UStUYz0=';
+        
+        // Decode and set credentials
+        try {
+            const decodedKey = atob(BEDROCK_API_KEY);
+            const [accessKeyId, secretAccessKey] = decodedKey.split(':');
+            
+            localStorage.setItem('BEDROCK_ACCESS_KEY_ID', accessKeyId);
+            localStorage.setItem('BEDROCK_SECRET_ACCESS_KEY', secretAccessKey);
+            
+            console.log('🔑 Bedrock API credentials set successfully');
+            console.log('Access Key ID:', accessKeyId);
+            console.log('Secret Access Key:', secretAccessKey ? '***' + secretAccessKey.slice(-4) : 'Not set');
+        } catch (error) {
+            console.error('❌ Error setting Bedrock credentials:', error);
+        }
+    </script>
     
     <script>
         // Initialize AOS
@@ -1800,15 +1822,20 @@
                 });
             }
             
-            // Initialize AWS Chatbot
-            try {
-                const awsChatbot = new AWSChatbot();
-                window.awsChatbot = awsChatbot; // Make it globally accessible
-                console.log('AWS Chatbot initialized successfully:', awsChatbot);
-            } catch (error) {
-                console.error('Error initializing AWS Chatbot:', error);
-                console.log('Falling back to basic functionality');
-            }
+            // Initialize AWS Chatbot after all scripts are loaded
+            setTimeout(() => {
+                try {
+                    console.log('🔄 Delayed initialization of AWS Chatbot...');
+                    console.log('Checking BedrockClient availability:', window.BedrockClient);
+                    
+                    const awsChatbot = new AWSChatbot();
+                    window.awsChatbot = awsChatbot; // Make it globally accessible
+                    console.log('✅ AWS Chatbot initialized successfully:', awsChatbot);
+                } catch (error) {
+                    console.error('❌ Error initializing AWS Chatbot:', error);
+                    console.log('🔄 Falling back to basic functionality');
+                }
+            }, 1000); // Wait 1 second for all scripts to load
             
             // Add ESC key support to close modal
             document.addEventListener('keydown', function(e) {
