@@ -619,6 +619,20 @@
             align-items: center !important;
             justify-content: center !important;
             z-index: 10000 !important;
+            padding: 0 !important;
+            overflow: hidden !important;
+        }
+        
+        .voice-chatbot-avatar {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover !important;
+            border-radius: 50% !important;
+            transition: all 0.3s ease !important;
+        }
+        
+        .voice-chatbot-button:hover .voice-chatbot-avatar {
+            transform: scale(1.1) !important;
         }
         
         .voice-chatbot-button:hover {
@@ -1762,7 +1776,7 @@
     <!-- Voice Chatbot Widget -->
     <div class="voice-chatbot-widget">
         <button class="voice-chatbot-button" id="voiceChatbotButton" title="Rozmawiaj z naszym asystentem głosowym">
-            <i class="fas fa-robot"></i>
+            <img src="assets/images/tomasz-profile.jpg" alt="Tomasz Gnat" class="voice-chatbot-avatar">
         </button>
     </div>
     
