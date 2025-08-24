@@ -533,6 +533,218 @@
             margin: 0 auto;
             color: white;
         }
+        
+        /* Voice Chatbot Styles */
+        .voice-chatbot-widget {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+        }
+        
+        .voice-chatbot-button {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--accent-purple));
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .voice-chatbot-button:hover {
+            transform: scale(1.1);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .voice-chatbot-button.recording {
+            background: linear-gradient(135deg, #FF3B30, #FF9500);
+            animation: pulse 1.5s infinite;
+        }
+        
+        .voice-chatbot-button.listening {
+            background: linear-gradient(135deg, var(--accent), var(--primary));
+            animation: wave 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes wave {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .voice-chatbot-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1001;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .voice-chatbot-modal.show {
+            display: flex;
+        }
+        
+        .voice-chatbot-content {
+            background: var(--bg-secondary);
+            border-radius: 20px;
+            padding: 2rem;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            border: 1px solid var(--separator);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .voice-chatbot-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--separator);
+        }
+        
+        .voice-chatbot-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        
+        .voice-chatbot-close {
+            background: none;
+            border: none;
+            color: var(--text-tertiary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+        
+        .voice-chatbot-close:hover {
+            color: var(--text-primary);
+        }
+        
+        .voice-chatbot-messages {
+            margin-bottom: 1.5rem;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .voice-message {
+            margin-bottom: 1rem;
+            padding: 1rem;
+            border-radius: 15px;
+            max-width: 80%;
+        }
+        
+        .voice-message.bot {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            margin-right: auto;
+        }
+        
+        .voice-message.user {
+            background: var(--primary);
+            color: white;
+            margin-left: auto;
+        }
+        
+        .voice-chatbot-controls {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+        
+        .voice-input-button {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--accent-purple));
+            border: none;
+            color: white;
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .voice-input-button:hover {
+            transform: scale(1.05);
+        }
+        
+        .voice-input-button.recording {
+            background: linear-gradient(135deg, #FF3B30, #FF9500);
+            animation: pulse 1.5s infinite;
+        }
+        
+        .voice-status {
+            color: var(--text-tertiary);
+            font-size: 0.9rem;
+            text-align: center;
+            margin-top: 1rem;
+        }
+        
+        .voice-chatbot-suggestions {
+            margin-top: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .voice-suggestion {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            border: 1px solid var(--separator);
+            border-radius: 20px;
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .voice-suggestion:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        @media (max-width: 768px) {
+            .voice-chatbot-widget {
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .voice-chatbot-button {
+                width: 60px;
+                height: 60px;
+                font-size: 1.3rem;
+            }
+            
+            .voice-chatbot-content {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -997,6 +1209,241 @@
                 }
             });
         });
+        
+        // Voice Chatbot Functionality
+        class VoiceChatbot {
+            constructor() {
+                this.isListening = false;
+                this.recognition = null;
+                this.synthesis = window.speechSynthesis;
+                this.messages = [];
+                this.currentLanguage = 'pl';
+                
+                this.init();
+            }
+            
+            init() {
+                // Initialize speech recognition
+                if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+                    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+                    this.recognition = new SpeechRecognition();
+                    this.recognition.continuous = false;
+                    this.recognition.interimResults = false;
+                    this.recognition.lang = 'pl-PL';
+                    
+                    this.recognition.onstart = () => {
+                        this.isListening = true;
+                        this.updateUI();
+                    };
+                    
+                    this.recognition.onresult = (event) => {
+                        const transcript = event.results[0][0].transcript;
+                        this.handleUserInput(transcript);
+                    };
+                    
+                    this.recognition.onend = () => {
+                        this.isListening = false;
+                        this.updateUI();
+                    };
+                    
+                    this.recognition.onerror = (event) => {
+                        console.error('Speech recognition error:', event.error);
+                        this.isListening = false;
+                        this.updateUI();
+                    };
+                }
+                
+                this.bindEvents();
+                this.addWelcomeMessage();
+            }
+            
+            bindEvents() {
+                // Open/close modal
+                document.getElementById('voiceChatbotButton').addEventListener('click', () => {
+                    this.openModal();
+                });
+                
+                document.getElementById('voiceChatbotClose').addEventListener('click', () => {
+                    this.closeModal();
+                });
+                
+                // Voice input button
+                document.getElementById('voiceInputButton').addEventListener('click', () => {
+                    this.toggleListening();
+                });
+                
+                // Suggestion clicks
+                document.querySelectorAll('.voice-suggestion').forEach(suggestion => {
+                    suggestion.addEventListener('click', () => {
+                        const text = suggestion.getAttribute('data-suggestion');
+                        this.handleUserInput(text);
+                    });
+                });
+                
+                // Close modal on outside click
+                document.getElementById('voiceChatbotModal').addEventListener('click', (e) => {
+                    if (e.target.id === 'voiceChatbotModal') {
+                        this.closeModal();
+                    }
+                });
+            }
+            
+            openModal() {
+                document.getElementById('voiceChatbotModal').classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
+            
+            closeModal() {
+                document.getElementById('voiceChatbotModal').classList.remove('show');
+                document.body.style.overflow = 'auto';
+            }
+            
+            toggleListening() {
+                if (this.isListening) {
+                    this.recognition.stop();
+                } else {
+                    this.recognition.start();
+                }
+            }
+            
+            updateUI() {
+                const button = document.getElementById('voiceInputButton');
+                const status = document.getElementById('voiceStatus');
+                
+                if (this.isListening) {
+                    button.classList.add('recording');
+                    status.textContent = 'Słucham... Mów teraz!';
+                } else {
+                    button.classList.remove('recording');
+                    status.textContent = 'Kliknij mikrofon, aby rozpocząć rozmowę';
+                }
+            }
+            
+            handleUserInput(text) {
+                // Add user message
+                this.addMessage(text, 'user');
+                
+                // Process input and generate response
+                const response = this.generateResponse(text);
+                
+                // Add bot response
+                setTimeout(() => {
+                    this.addMessage(response, 'bot');
+                    this.speak(response);
+                }, 500);
+            }
+            
+            generateResponse(input) {
+                const lowerInput = input.toLowerCase();
+                
+                // Service-related responses
+                if (lowerInput.includes('usług') || lowerInput.includes('oferta')) {
+                    return 'Oferujemy kompleksowe usługi cyfrowe: Strony WWW od 3,500 PLN, Sklepy Shopify od 8,000 PLN, Aplikacje Mobilne od 15,000 PLN, Asystenci AI na Amazon Bedrock, Automatyzacje z n8n/Zapier/Opal, Audyty UX i Social Media z AI. Która usługa Cię najbardziej interesuje?';
+                }
+                
+                if (lowerInput.includes('ceny') || lowerInput.includes('pakiety') || lowerInput.includes('koszt')) {
+                    return 'Nasze ceny zaczynają się od: Strony WWW - 3,500 PLN, Sklepy Shopify - 8,000 PLN, Aplikacje Mobilne - 15,000 PLN, Asystenci AI - 12,000 PLN. Wszystkie ceny są indywidualne i zależą od złożoności projektu. Chcesz otrzymać dokładną wycenę?';
+                }
+                
+                if (lowerInput.includes('konsultac') || lowerInput.includes('spotkanie')) {
+                    return 'Świetnie! Mogę umówić Cię na bezpłatną konsultację z naszym zespołem. Podaj swój numer telefonu lub email, a my skontaktujemy się z Tobą w ciągu 24 godzin. Kiedy byłbyś dostępny?';
+                }
+                
+                if (lowerInput.includes('case') || lowerInput.includes('portfolio') || lowerInput.includes('projekty')) {
+                    return 'Mamy bogate portfolio projektów: Strony WWW dla firm z różnych branż, Sklepy Shopify z wysoką konwersją, Aplikacje Mobilne dla startupów, Asystenci AI dla korporacji. Chcesz zobaczyć konkretne przykłady?';
+                }
+                
+                if (lowerInput.includes('ai') || lowerInput.includes('sztuczna inteligencja')) {
+                    return 'Specjalizujemy się w AI! Tworzymy asystentów na Amazon Bedrock (Claude, Titan, Llama), Copilot Studio dla Microsoft 365, chatboty głosowe na Amazon Lex. AI może zautomatyzować Twoje procesy biznesowe. Chcesz dowiedzieć się więcej?';
+                }
+                
+                if (lowerInput.includes('automatyzac') || lowerInput.includes('n8n') || lowerInput.includes('zapier')) {
+                    return 'Automatyzujemy procesy biznesowe używając n8n, Zapier i Opal. Możemy zautomatyzować: marketing, sprzedaż, HR, finanse, obsługę klienta. To oszczędza czas i redukuje błędy. Jakie procesy chciałbyś zautomatyzować?';
+                }
+                
+                // Default response
+                return 'Dziękuję za pytanie! Mogę opowiedzieć Ci o naszych usługach, cenach, umówić konsultację lub pokazać portfolio. Co Cię najbardziej interesuje?';
+            }
+            
+            addMessage(text, sender) {
+                const messagesContainer = document.getElementById('voiceChatbotMessages');
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `voice-message ${sender}`;
+                
+                const icon = sender === 'bot' ? 'fas fa-robot' : 'fas fa-user';
+                messageDiv.innerHTML = `<i class="${icon} me-2"></i>${text}`;
+                
+                messagesContainer.appendChild(messageDiv);
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                
+                this.messages.push({ text, sender, timestamp: new Date() });
+            }
+            
+            speak(text) {
+                if (this.synthesis) {
+                    const utterance = new SpeechSynthesisUtterance(text);
+                    utterance.lang = this.currentLanguage === 'pl' ? 'pl-PL' : 'en-US';
+                    utterance.rate = 0.9;
+                    utterance.pitch = 1;
+                    this.synthesis.speak(utterance);
+                }
+            }
+            
+            addWelcomeMessage() {
+                const welcomeMessage = 'Cześć! Jestem asystentem głosowym ECM Digital. Mogę opowiedzieć Ci o naszych usługach, pomóc w wyborze rozwiązania lub umówić konsultację. Jak mogę Ci pomóc?';
+                this.addMessage(welcomeMessage, 'bot');
+            }
+        }
+        
+        // Initialize voice chatbot when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            new VoiceChatbot();
+        });
     </script>
+    
+    <!-- Voice Chatbot Widget -->
+    <div class="voice-chatbot-widget">
+        <button class="voice-chatbot-button" id="voiceChatbotButton" title="Rozmawiaj z naszym asystentem głosowym">
+            <i class="fas fa-microphone"></i>
+        </button>
+    </div>
+    
+    <!-- Voice Chatbot Modal -->
+    <div class="voice-chatbot-modal" id="voiceChatbotModal">
+        <div class="voice-chatbot-content">
+            <div class="voice-chatbot-header">
+                <h3 class="voice-chatbot-title">
+                    <i class="fas fa-robot text-primary me-2"></i>
+                    Asystent Głosowy ECM Digital
+                </h3>
+                <button class="voice-chatbot-close" id="voiceChatbotClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="voice-chatbot-messages" id="voiceChatbotMessages">
+                <div class="voice-message bot">
+                    <i class="fas fa-robot me-2"></i>
+                    Cześć! Jestem asystentem głosowym ECM Digital. Mogę opowiedzieć Ci o naszych usługach, pomóc w wyborze rozwiązania lub umówić konsultację. Jak mogę Ci pomóc?
+                </div>
+            </div>
+            
+            <div class="voice-chatbot-controls">
+                <button class="voice-input-button" id="voiceInputButton" title="Kliknij i mów">
+                    <i class="fas fa-microphone"></i>
+                </button>
+                <div class="voice-status" id="voiceStatus">
+                    Kliknij mikrofon, aby rozpocząć rozmowę
+                </div>
+            </div>
+            
+            <div class="voice-chatbot-suggestions">
+                <div class="voice-suggestion" data-suggestion="Opowiedz o usługach">Opowiedz o usługach</div>
+                <div class="voice-suggestion" data-suggestion="Ceny i pakiety">Ceny i pakiety</div>
+                <div class="voice-suggestion" data-suggestion="Umów konsultację">Umów konsultację</div>
+                <div class="voice-suggestion" data-suggestion="Case studies">Case studies</div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
