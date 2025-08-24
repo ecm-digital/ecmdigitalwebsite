@@ -81,6 +81,9 @@ class AWSChatbot {
     async checkPollyVoices() {
         try {
             console.log('🔍 Checking available Polly voices...');
+            console.log('🔍 Current AWS region:', AWS.config.region);
+            console.log('🔍 Polly instance:', this.polly);
+            
             const result = await this.polly.describeVoices().promise();
             console.log('✅ Available Polly voices:', result.Voices?.length || 0);
             
@@ -90,9 +93,19 @@ class AWSChatbot {
                 
                 console.log('🇵🇱 Polish Polly voices:', polishVoices.map(v => v.Id));
                 console.log('🇺🇸 English Polly voices:', englishVoices.map(v => v.Id));
+                
+                // Log first few voices for debugging
+                console.log('🔍 Sample voices:', result.Voices.slice(0, 3).map(v => ({
+                    id: v.Id,
+                    language: v.LanguageCode,
+                    name: v.Name
+                })));
             }
         } catch (error) {
-            console.warn('⚠️ Could not check Polly voices:', error.message);
+            console.error('❌ Could not check Polly voices:', error);
+            console.error('❌ Error code:', error.code);
+            console.error('❌ Error message:', error.message);
+            console.error('❌ Full error:', error);
         }
     }
     
@@ -138,9 +151,9 @@ class AWSChatbot {
             secretKeyLength: secretAccessKey?.length || 0
         });
         
-        // Configure AWS for Bedrock only
+        // Configure AWS for all services
         AWS.config.update({
-            region: 'us-east-1',
+            region: 'eu-west-1', // Try EU region first
             accessKeyId: accessKeyId,
             secretAccessKey: secretAccessKey
         });
@@ -837,7 +850,7 @@ Co Cię najbardziej interesuje? Opowiedz mi o swoich potrzebach lub wybierz jedn
         throw new Error('All Polly attempts failed');
     }
     
-    speakWithWebSpeech(text) {
+    speakWithWebSpeech(text, forceDifferentVoice = false) {
         console.log('🔊 speakWithWebSpeech called with text:', text.substring(0, 50) + '...');
         console.log('🔍 Synthesis available:', !!this.synthesis);
         
@@ -849,24 +862,31 @@ Co Cię najbardziej interesuje? Opowiedz mi o swoich potrzebach lub wybierz jedn
             // Try to find a good Polish or English voice
             let selectedVoice = null;
             
-            // First try Polish voices
-            if (this.currentLanguage === 'pl') {
-                selectedVoice = voices.find(v => v.lang === 'pl-PL') || 
-                              voices.find(v => v.lang.startsWith('pl')) ||
-                              voices.find(v => v.name.includes('Polish'));
-            }
-            
-            // If no Polish, try English
-            if (!selectedVoice) {
-                selectedVoice = voices.find(v => v.lang === 'en-US') || 
-                              voices.find(v => v.lang.startsWith('en')) ||
-                              voices.find(v => v.name.includes('English'));
-            }
-            
-            // If still no good voice, use default
-            if (!selectedVoice) {
-                selectedVoice = voices.find(v => v.default) || voices[0];
-            }
+                            // If forcing different voice, skip the first few
+                if (forceDifferentVoice) {
+                    const availableVoices = voices.filter(v => v.lang.startsWith('en') || v.lang.startsWith('pl'));
+                    selectedVoice = availableVoices[Math.floor(Math.random() * Math.min(availableVoices.length, 5))] || availableVoices[0];
+                    console.log('🔄 Forcing different voice due to error:', selectedVoice?.name);
+                } else {
+                    // First try Polish voices
+                    if (this.currentLanguage === 'pl') {
+                        selectedVoice = voices.find(v => v.lang === 'pl-PL') || 
+                                      voices.find(v => v.lang.startsWith('pl')) ||
+                                      voices.find(v => v.name.includes('Polish'));
+                    }
+                    
+                    // If no Polish, try English
+                    if (!selectedVoice) {
+                        selectedVoice = voices.find(v => v.lang === 'en-US') || 
+                                      voices.find(v => v.lang.startsWith('en')) ||
+                                      voices.find(v => v.name.includes('English'));
+                    }
+                    
+                    // If still no good voice, use default
+                    if (!selectedVoice) {
+                        selectedVoice = voices.find(v => v.default) || voices[0];
+                    }
+                }
             
             console.log('🎵 Selected voice:', selectedVoice ? {
                 name: selectedVoice.name,
@@ -889,9 +909,20 @@ Co Cię najbardziej interesuje? Opowiedz mi o swoich potrzebach lub wybierz jedn
                 volume: utterance.volume
             });
             
-            utterance.onstart = () => console.log('🎵 Web Speech started');
-            utterance.onend = () => console.log('✅ Web Speech completed');
-            utterance.onerror = (error) => console.error('❌ Web Speech error:', error);
+                            utterance.onstart = () => console.log('🎵 Web Speech started');
+                utterance.onend = () => console.log('✅ Web Speech completed');
+                utterance.onerror = (error) => {
+                    console.error('❌ Web Speech error:', error);
+                    console.error('❌ Error type:', error.type);
+                    console.error('❌ Error name:', error.name);
+                    console.error('❌ Error message:', error.message);
+                    
+                    // Try to recover with different voice
+                    if (error.name === 'NotAllowedError') {
+                        console.log('🔄 Trying with different voice due to permission error...');
+                        this.speakWithWebSpeech(text, true); // Force different voice
+                    }
+                };
             
             this.synthesis.speak(utterance);
             console.log('🎵 Web Speech utterance queued');
