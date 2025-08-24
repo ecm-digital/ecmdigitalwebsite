@@ -673,8 +673,56 @@
         
         .voice-chatbot-controls {
             display: flex;
+            flex-direction: column;
             gap: 1rem;
+        }
+        
+        .voice-controls-row {
+            display: flex;
             align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .text-input-row {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+        
+        .text-input-row input {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            border: 2px solid var(--separator);
+            border-radius: 25px;
+            font-size: 0.9rem;
+            transition: border-color 0.3s ease;
+            background: white;
+        }
+        
+        .text-input-row input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+        }
+        
+        .text-input-row button {
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(135deg, #28a745, #20c997);
+            border: none;
+            border-radius: 25px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+        }
+        
+        .text-input-row button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
         }
         
         .voice-input-button {
@@ -720,16 +768,27 @@
             color: var(--text-primary);
             border: 1px solid var(--separator);
             border-radius: 20px;
-            padding: 0.5rem 1rem;
+            padding: 0.75rem 1rem;
             font-size: 0.9rem;
             cursor: pointer;
             transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
         }
         
         .voice-suggestion:hover {
             background: var(--primary);
             color: white;
             border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 123, 255, 0.2);
+        }
+        
+        .voice-suggestion i {
+            font-size: 0.8rem;
+            opacity: 0.8;
         }
         
         @media (max-width: 768px) {
@@ -1143,6 +1202,9 @@
     <!-- System wielojęzyczny -->
     <script src="src/js/i18n.js"></script>
     
+    <!-- AWS Chatbot Integration -->
+    <script src="src/js/aws-chatbot.js"></script>
+    
     <script>
         // Initialize AOS
         AOS.init();
@@ -1497,21 +1559,11 @@
             }
         }
         
-        // Initialize voice chatbot when DOM is loaded
+                // Initialize AWS Chatbot when DOM is loaded
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('DOM loaded, initializing voice chatbot...');
+            console.log('DOM loaded, initializing AWS Chatbot...');
             
-            // Initialize AWS Polly if available
-            if (typeof AWS !== 'undefined') {
-                AWS.config.region = 'us-east-1'; // or your preferred region
-                console.log('AWS SDK loaded, Polly available');
-                window.AmazonPolly = true;
-            } else {
-                console.warn('AWS SDK not loaded, using Web Speech API');
-                window.AmazonPolly = false;
-            }
-            
-            // Ensure widget is visible even if chatbot fails
+            // Ensure widget is visible
             const widget = document.querySelector('.voice-chatbot-widget');
             const button = document.getElementById('voiceChatbotButton');
             
@@ -1528,18 +1580,14 @@
                 button.style.opacity = '1';
                 console.log('Button element found and made visible');
                 
-                // Add simple click test
+                // Add modal functionality
                 button.addEventListener('click', function() {
                     console.log('Button clicked!');
-                    
-                    // Simple modal test
                     const modal = document.getElementById('voiceChatbotModal');
                     if (modal) {
                         modal.classList.add('show');
                         document.body.style.overflow = 'hidden';
-                        console.log('Modal opened manually');
-                    } else {
-                        console.error('Modal not found!');
+                        console.log('Modal opened');
                     }
                 });
             }
@@ -1553,17 +1601,18 @@
                     if (modal) {
                         modal.classList.remove('show');
                         document.body.style.overflow = 'auto';
-                        console.log('Modal closed manually');
+                        console.log('Modal closed');
                     }
                 });
             }
             
+            // Initialize AWS Chatbot
             try {
-                const chatbot = new VoiceChatbot();
-                console.log('Voice chatbot initialized successfully:', chatbot);
+                const awsChatbot = new AWSChatbot();
+                console.log('AWS Chatbot initialized successfully:', awsChatbot);
             } catch (error) {
-                console.error('Error initializing voice chatbot:', error);
-                console.log('But widget should still be visible');
+                console.error('Error initializing AWS Chatbot:', error);
+                console.log('Falling back to basic functionality');
             }
         });
     </script>
@@ -1593,19 +1642,40 @@
             </div>
             
             <div class="voice-chatbot-controls">
-                <button class="voice-input-button" id="voiceInputButton" title="Kliknij i mów">
-                    <i class="fas fa-microphone"></i>
-                </button>
-                <div class="voice-status" id="voiceStatus">
-                    Kliknij mikrofon, aby rozpocząć rozmowę
+                <div class="voice-controls-row">
+                    <button class="voice-input-button" id="voiceInputButton" title="Kliknij i mów">
+                        <i class="fas fa-microphone"></i>
+                    </button>
+                    <div class="voice-status" id="voiceStatus">
+                        Kliknij mikrofon, aby rozpocząć rozmowę
+                    </div>
+                </div>
+                
+                <div class="text-input-row">
+                    <input type="text" id="voiceChatbotTextInput" placeholder="Wpisz wiadomość...">
+                    <button id="voiceChatbotSendButton">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
                 </div>
             </div>
             
             <div class="voice-chatbot-suggestions">
-                <div class="voice-suggestion" data-suggestion="Opowiedz o usługach">Opowiedz o usługach</div>
-                <div class="voice-suggestion" data-suggestion="Ceny i pakiety">Ceny i pakiety</div>
-                <div class="voice-suggestion" data-suggestion="Umów konsultację">Umów konsultację</div>
-                <div class="voice-suggestion" data-suggestion="Case studies">Case studies</div>
+                <div class="voice-suggestion" data-suggestion="Opowiedz o usługach">
+                    <i class="fas fa-lightbulb"></i>
+                    Opowiedz o usługach
+                </div>
+                <div class="voice-suggestion" data-suggestion="Ceny i pakiety">
+                    <i class="fas fa-tag"></i>
+                    Ceny i pakiety
+                </div>
+                <div class="voice-suggestion" data-suggestion="Umów konsultację">
+                    <i class="fas fa-calendar"></i>
+                    Umów konsultację
+                </div>
+                <div class="voice-suggestion" data-suggestion="Case studies">
+                    <i class="fas fa-folder-open"></i>
+                    Case studies
+                </div>
             </div>
         </div>
     </div>
