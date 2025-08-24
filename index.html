@@ -1370,9 +1370,12 @@
     <!-- AWS SDK v2 for Polly and other services -->
     <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1001.0.min.js"></script>
     
-    <!-- AWS SDK v3 for Bedrock -->
-    <script src="https://cdn.jsdelivr.net/npm/@aws-sdk/client-bedrock-runtime@3.0.0/dist/index.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@aws-sdk/credential-providers@3.0.0/dist/index.min.js"></script>
+    <!-- AWS SDK v3 for Bedrock - alternative CDN -->
+    <script src="https://unpkg.com/@aws-sdk/client-bedrock-runtime@3.0.0/dist/index.min.js"></script>
+    <script src="https://unpkg.com/@aws-sdk/credential-providers@3.0.0/dist/index.min.js"></script>
+    
+    <!-- Alternative: AWS SDK v3 bundle -->
+    <script src="https://unpkg.com/@aws-sdk/client-bedrock-runtime@3.0.0/dist/index.js"></script>
     
     <!-- Check AWS SDK availability -->
     <script>
@@ -1381,12 +1384,27 @@
         console.log('AWS SDK v3 BedrockRuntimeClient:', typeof window.BedrockRuntimeClient);
         console.log('AWS SDK v3 from CDN:', typeof window.AWS?.BedrockRuntime);
         
+        // Check for specific AWS SDK v3 exports
+        if (typeof window.BedrockRuntimeClient !== 'undefined') {
+            console.log('✅ BedrockRuntimeClient found in window object');
+        } else {
+            console.log('❌ BedrockRuntimeClient not found in window object');
+        }
+        
         // Wait for all scripts to load
         window.addEventListener('load', () => {
             console.log('📦 All scripts loaded, checking again...');
             console.log('AWS SDK v2:', typeof window.AWS);
             console.log('AWS SDK v3 BedrockRuntimeClient:', typeof window.BedrockRuntimeClient);
             console.log('AWS SDK v3 from CDN:', typeof window.AWS?.BedrockRuntime);
+            
+            // Check for specific AWS SDK v3 exports
+            if (typeof window.BedrockRuntimeClient !== 'undefined') {
+                console.log('✅ BedrockRuntimeClient found in window object');
+            } else {
+                console.log('❌ BedrockRuntimeClient not found in window object');
+                console.log('🔍 Available window properties:', Object.keys(window).filter(k => k.includes('AWS') || k.includes('Bedrock')));
+            }
         });
     </script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -1415,15 +1433,35 @@
             console.log('Decoded key:', decodedKey);
             
             const [accessKeyId, secretAccessKey] = decodedKey.split(':');
-            console.log('Split result:', { accessKeyId, secretAccessKey: secretAccessKey ? '***' + secretAccessKey.slice(-4) : 'Not set' });
+            console.log('Split result:', { 
+                accessKeyId: accessKeyId ? accessKeyId.substring(0, 20) + '...' : 'Not set',
+                secretAccessKey: secretAccessKey ? '***' + secretAccessKey.slice(-4) : 'Not set' 
+            });
             
             if (accessKeyId && secretAccessKey) {
-                localStorage.setItem('BEDROCK_ACCESS_KEY_ID', accessKeyId);
-                localStorage.setItem('BEDROCK_SECRET_ACCESS_KEY', secretAccessKey);
+                // Validate credentials format
+                const isValidAccessKey = accessKeyId.length > 10 && accessKeyId.includes('-');
+                const isValidSecretKey = secretAccessKey.length >= 40;
                 
-                console.log('✅ Bedrock API credentials set successfully');
-                console.log('Access Key ID:', accessKeyId);
-                console.log('Secret Access Key length:', secretAccessKey.length);
+                console.log('🔍 Credentials validation:', {
+                    accessKeyValid: isValidAccessKey,
+                    secretKeyValid: isValidSecretKey,
+                    accessKeyFormat: accessKeyId.startsWith('BedrockAPIKey') ? 'Bedrock Format' : 'Unknown Format',
+                    secretKeyLength: secretAccessKey.length
+                });
+                
+                if (isValidAccessKey && isValidSecretKey) {
+                    localStorage.setItem('BEDROCK_ACCESS_KEY_ID', accessKeyId);
+                    localStorage.setItem('BEDROCK_SECRET_ACCESS_KEY', secretAccessKey);
+                    
+                    console.log('✅ Bedrock API credentials set successfully');
+                    console.log('Access Key ID:', accessKeyId);
+                    console.log('Secret Access Key length:', secretAccessKey.length);
+                } else {
+                    console.error('❌ Invalid credentials format - validation failed');
+                    console.error('Access Key valid:', isValidAccessKey);
+                    console.error('Secret Key valid:', isValidSecretKey);
+                }
             } else {
                 console.error('❌ Invalid credentials format - missing accessKeyId or secretAccessKey');
             }
