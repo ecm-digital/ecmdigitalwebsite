@@ -629,9 +629,21 @@
             object-fit: cover !important;
             border-radius: 50% !important;
             transition: all 0.3s ease !important;
+            border: 2px solid rgba(255, 255, 255, 0.3) !important;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2) !important;
         }
         
         .voice-chatbot-button:hover .voice-chatbot-avatar {
+            transform: scale(1.1) !important;
+        }
+        
+        .voice-chatbot-fallback-icon {
+            display: none !important;
+            font-size: 1.5rem !important;
+            color: white !important;
+        }
+        
+        .voice-chatbot-button:hover .voice-chatbot-fallback-icon {
             transform: scale(1.1) !important;
         }
         
@@ -911,6 +923,11 @@
                 width: 60px;
                 height: 60px;
                 font-size: 1.3rem;
+            }
+            
+            .voice-chatbot-avatar {
+                width: 100% !important;
+                height: 100% !important;
             }
             
             .voice-chatbot-content {
@@ -1776,7 +1793,8 @@
     <!-- Voice Chatbot Widget -->
     <div class="voice-chatbot-widget">
         <button class="voice-chatbot-button" id="voiceChatbotButton" title="Rozmawiaj z naszym asystentem głosowym">
-            <img src="assets/images/tomasz-profile.jpg" alt="Tomasz Gnat" class="voice-chatbot-avatar">
+            <img src="assets/images/tomasz-profile.jpg" alt="Tomasz Gnat" class="voice-chatbot-avatar" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <i class="fas fa-robot voice-chatbot-fallback-icon"></i>
         </button>
     </div>
     
