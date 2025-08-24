@@ -15,6 +15,7 @@ class AWSChatbot {
         this.botAlias = 'PROD';
         this.userId = this.generateUserId();
         this.isMuted = false;
+        this.selectedVoice = null; // Pre-selected voice
         
         this.init();
     }
@@ -63,11 +64,23 @@ class AWSChatbot {
             // Load mute preference
             this.loadMutePreference();
             
+            // Load voice preference
+            this.loadVoicePreference();
+            
             // Bind events
             this.bindEvents();
             
             // Add welcome message
             this.addWelcomeMessage();
+            
+            // Update voice info display
+            this.updateCurrentVoiceInfo();
+            
+            // Update voice counts
+            this.updateVoiceCount();
+            
+            // Show voice initialization summary
+            this.showVoiceInitSummary();
             
             console.log('✅ AWS Chatbot initialized successfully');
         } catch (error) {
@@ -109,6 +122,25 @@ class AWSChatbot {
         }
     }
     
+    // Show voice initialization summary
+    showVoiceInitSummary() {
+        if (!this.synthesis) return;
+        
+        const voices = this.synthesis.getVoices();
+        const totalVoices = voices.length;
+        const premiumVoices = this.getPremiumVoices().length;
+        
+        if (totalVoices > 0) {
+            console.log(`🎵 Voice system initialized successfully!`);
+            console.log(`📊 Available voices: ${totalVoices}`);
+            console.log(`⭐ Premium voices: ${premiumVoices}`);
+            console.log(`💡 Tip: Use voice selector to choose different voice types`);
+            console.log(`🔧 Voice parameters can be customized for each type`);
+        } else {
+            console.warn(`⚠️ No voices available - speech synthesis may not work properly`);
+        }
+    }
+    
     // Fallback method if AWS services fail
     fallbackToBasicChatbot() {
         console.log('🔄 Falling back to basic chatbot functionality');
@@ -119,11 +151,20 @@ class AWSChatbot {
             // Load mute preference
             this.loadMutePreference();
             
+            // Load voice preference
+            this.loadVoicePreference();
+            
             // Bind events
             this.bindEvents();
             
             // Add welcome message
             this.addWelcomeMessage();
+            
+            // Update voice info display
+            this.updateCurrentVoiceInfo();
+            
+            // Update voice counts
+            this.updateVoiceCount();
             
             console.log('✅ Basic chatbot initialized successfully');
         } catch (error) {
@@ -249,9 +290,23 @@ class AWSChatbot {
             
             const polishVoices = voices.filter(v => v.lang.startsWith('pl'));
             const englishVoices = voices.filter(v => v.lang.startsWith('en'));
+            const premiumVoices = this.getPremiumVoices();
             
             console.log('🇵🇱 Polish voices:', polishVoices.map(v => ({ name: v.name, lang: v.lang })));
             console.log('🇺🇸 English voices:', englishVoices.map(v => ({ name: v.name, lang: v.lang })));
+            console.log('⭐ Premium voices:', premiumVoices.map(v => ({ name: v.name, lang: v.lang })));
+            
+            // Log voice selection recommendations
+            if (voices.length > 0) {
+                console.log('💡 Voice recommendations:');
+                console.log('  - For Polish: Try voices with "pl-PL" language');
+                console.log('  - For English: Try voices with "en-US" language');
+                console.log('  - For Premium: Look for voices with "Premium", "Enhanced", "Neural"');
+                console.log('  - For Natural: Try "Samantha", "Alex", "Victoria"');
+                console.log('  - For AI: Look for voices with "AI", "Robot", "Synthetic"');
+                console.log('  - For Google: Look for voices with "Google" in name');
+                console.log('  - For Microsoft: Look for voices with "Microsoft" in name');
+            }
         }
     }
     
@@ -305,6 +360,23 @@ class AWSChatbot {
                 this.handleUserInput(text);
             });
         });
+        
+        // Voice selector
+        const voiceSelector = document.getElementById('voiceSelector');
+        if (voiceSelector) {
+            voiceSelector.addEventListener('change', (e) => {
+                this.handleVoiceChange(e.target.value);
+            });
+        }
+        
+        // Voice reset button
+        const resetVoiceButton = document.getElementById('resetVoiceButton');
+        if (resetVoiceButton) {
+            resetVoiceButton.addEventListener('click', () => {
+                this.resetVoice();
+                this.showVoiceChangeConfirmation('reset');
+            });
+        }
     }
     
     async handleUserInput(text) {
@@ -759,6 +831,20 @@ Co Cię najbardziej interesuje? Opowiedz mi o swoich potrzebach lub wybierz jedn
         }
     }
     
+    loadVoicePreference() {
+        const voiceType = localStorage.getItem('chatbotVoiceType');
+        if (voiceType) {
+            console.log('🎵 Loading saved voice preference:', voiceType);
+            this.handleVoiceChange(voiceType);
+            
+            // Update selector to match saved preference
+            const voiceSelector = document.getElementById('voiceSelector');
+            if (voiceSelector) {
+                voiceSelector.value = voiceType;
+            }
+        }
+    }
+    
     async speakWithPolly(text) {
         console.log('🎯 speakWithPolly called with text:', text.substring(0, 50) + '...');
         console.log('🔍 Polly instance:', this.polly);
@@ -862,22 +948,38 @@ Co Cię najbardziej interesuje? Opowiedz mi o swoich potrzebach lub wybierz jedn
             // Try to find a good Polish or English voice
             let selectedVoice = null;
             
-                            // If forcing different voice, skip the first few
-                if (forceDifferentVoice) {
-                    const availableVoices = voices.filter(v => v.lang.startsWith('en') || v.lang.startsWith('pl'));
-                    selectedVoice = availableVoices[Math.floor(Math.random() * Math.min(availableVoices.length, 5))] || availableVoices[0];
-                    console.log('🔄 Forcing different voice due to error:', selectedVoice?.name);
+            // If forcing different voice, skip the first few
+            if (forceDifferentVoice) {
+                const availableVoices = voices.filter(v => v.lang.startsWith('en') || v.lang.startsWith('pl'));
+                selectedVoice = availableVoices[Math.floor(Math.random() * Math.min(availableVoices.length, 5))] || availableVoices[0];
+                console.log('🔄 Forcing different voice due to error:', selectedVoice?.name);
+            } else {
+                // Use pre-selected voice if available
+                if (this.selectedVoice) {
+                    selectedVoice = this.selectedVoice;
+                    console.log('🎵 Using pre-selected voice:', selectedVoice.name);
                 } else {
                     // First try Polish voices
                     if (this.currentLanguage === 'pl') {
-                        selectedVoice = voices.find(v => v.lang === 'pl-PL') || 
+                        // Prefer premium Polish voices
+                        selectedVoice = voices.find(v => v.lang === 'pl-PL' && v.name.includes('Premium')) ||
+                                      voices.find(v => v.lang === 'pl-PL' && v.name.includes('Enhanced')) ||
+                                      voices.find(v => v.lang === 'pl-PL' && v.name.includes('Neural')) ||
+                                      voices.find(v => v.lang === 'pl-PL') ||
                                       voices.find(v => v.lang.startsWith('pl')) ||
                                       voices.find(v => v.name.includes('Polish'));
                     }
                     
                     // If no Polish, try English
                     if (!selectedVoice) {
-                        selectedVoice = voices.find(v => v.lang === 'en-US') || 
+                        // Prefer premium English voices
+                        selectedVoice = voices.find(v => v.lang === 'en-US' && v.name.includes('Premium')) ||
+                                      voices.find(v => v.lang === 'en-US' && v.name.includes('Enhanced')) ||
+                                      voices.find(v => v.lang === 'en-US' && v.name.includes('Neural')) ||
+                                      voices.find(v => v.lang === 'en-US' && v.name.includes('Samantha')) ||
+                                      voices.find(v => v.lang === 'en-US' && v.name.includes('Alex')) ||
+                                      voices.find(v => v.lang === 'en-US' && v.name.includes('Victoria')) ||
+                                      voices.find(v => v.lang === 'en-US') ||
                                       voices.find(v => v.lang.startsWith('en')) ||
                                       voices.find(v => v.name.includes('English'));
                     }
@@ -887,48 +989,676 @@ Co Cię najbardziej interesuje? Opowiedz mi o swoich potrzebach lub wybierz jedn
                         selectedVoice = voices.find(v => v.default) || voices[0];
                     }
                 }
+            }
             
             console.log('🎵 Selected voice:', selectedVoice ? {
                 name: selectedVoice.name,
                 lang: selectedVoice.lang,
-                default: selectedVoice.default
+                default: selectedVoice.default,
+                voiceType: localStorage.getItem('chatbotVoiceType') || 'auto'
             } : 'No voice found');
             
             const utterance = new SpeechSynthesisUtterance(text);
             utterance.voice = selectedVoice;
             utterance.lang = selectedVoice ? selectedVoice.lang : (this.currentLanguage === 'pl' ? 'pl-PL' : 'en-US');
-            utterance.rate = 0.85;
-            utterance.pitch = 1.1;
-            utterance.volume = 0.9;
+            
+            // Enhanced voice parameters based on voice type
+            const voiceParams = this.getVoiceParameters();
+            utterance.rate = voiceParams.rate;
+            utterance.pitch = voiceParams.pitch;
+            utterance.volume = voiceParams.volume;
+            
+            // Add slight pauses for better comprehension
+            const enhancedText = this.addSpeechPauses(text);
+            utterance.text = enhancedText;
             
             console.log('📤 Web Speech parameters:', {
                 voice: utterance.voice?.name,
                 lang: utterance.lang,
                 rate: utterance.rate,
                 pitch: utterance.pitch,
-                volume: utterance.volume
+                volume: utterance.volume,
+                enhancedText: enhancedText.substring(0, 100) + '...',
+                voiceType: localStorage.getItem('chatbotVoiceType') || 'auto',
+                selectedVoice: this.selectedVoice?.name || 'auto-selected'
             });
             
-                            utterance.onstart = () => console.log('🎵 Web Speech started');
-                utterance.onend = () => console.log('✅ Web Speech completed');
-                utterance.onerror = (error) => {
-                    console.error('❌ Web Speech error:', error);
-                    console.error('❌ Error type:', error.type);
-                    console.error('❌ Error name:', error.name);
-                    console.error('❌ Error message:', error.message);
-                    
-                    // Try to recover with different voice
-                    if (error.name === 'NotAllowedError') {
-                        console.log('🔄 Trying with different voice due to permission error...');
-                        this.speakWithWebSpeech(text, true); // Force different voice
-                    }
-                };
+            utterance.onstart = () => console.log('🎵 Web Speech started');
+            utterance.onend = () => console.log('✅ Web Speech completed');
+            utterance.onerror = (error) => {
+                console.error('❌ Web Speech error:', error);
+                console.error('❌ Error type:', error.type);
+                console.error('❌ Error name:', error.name);
+                console.error('❌ Error message:', error.message);
+                console.error('❌ Current voice:', selectedVoice?.name);
+                console.error('❌ Voice language:', selectedVoice?.lang);
+                
+                // Try to recover with different voice
+                if (error.name === 'NotAllowedError') {
+                    console.log('🔄 Trying with different voice due to permission error...');
+                    this.speakWithWebSpeech(text, true); // Force different voice
+                } else if (error.name === 'NotSupportedError') {
+                    console.log('🔄 Voice not supported, trying default voice...');
+                    this.selectedVoice = null; // Reset to default
+                    this.speakWithWebSpeech(text, false);
+                } else {
+                    console.log('🔄 Unknown error, trying with different voice...');
+                    this.speakWithWebSpeech(text, true);
+                }
+            };
             
             this.synthesis.speak(utterance);
             console.log('🎵 Web Speech utterance queued');
         } else {
             console.error('❌ Web Speech synthesis not available');
         }
+    }
+    
+    // Add speech pauses for better comprehension
+    addSpeechPauses(text) {
+        // Add pauses after sentences and important punctuation
+        return text
+            .replace(/\./g, '... ')
+            .replace(/\!/g, '! ')
+            .replace(/\?/g, '? ')
+            .replace(/\,/g, ', ')
+            .replace(/\:/g, ': ')
+            .replace(/\;/g, '; ')
+            .trim();
+    }
+    
+    // Get available premium voices
+    getPremiumVoices() {
+        if (!this.synthesis) return [];
+        
+        const voices = this.synthesis.getVoices();
+        const premiumVoices = voices.filter(voice => 
+            voice.name.includes('Premium') ||
+            voice.name.includes('Enhanced') ||
+            voice.name.includes('Neural') ||
+            voice.name.includes('Samantha') ||
+            voice.name.includes('Alex') ||
+            voice.name.includes('Victoria') ||
+            voice.name.includes('Daniel') ||
+            voice.name.includes('Karen') ||
+            voice.name.includes('Google') ||
+            voice.name.includes('Microsoft') ||
+            voice.name.includes('High') ||
+            voice.name.includes('Quality')
+        );
+        
+        console.log('🎵 Premium voices found:', premiumVoices.map(v => ({ name: v.name, lang: v.lang })));
+        
+        // If no premium voices found, suggest alternatives
+        if (premiumVoices.length === 0) {
+            console.log('💡 No premium voices found, suggesting alternatives...');
+            const alternativeVoices = voices.filter(v => 
+                v.name.includes('Google') ||
+                v.name.includes('Microsoft') ||
+                v.name.includes('Apple') ||
+                v.name.includes('Siri')
+            );
+            console.log('🎵 Alternative voices:', alternativeVoices.map(v => ({ name: v.name, lang: v.lang })));
+            return alternativeVoices;
+        }
+        
+        return premiumVoices;
+    }
+    
+    // Set specific voice by name
+    setVoiceByName(voiceName) {
+        if (!this.synthesis) return false;
+        
+        const voices = this.synthesis.getVoices();
+        const selectedVoice = voices.find(v => v.name === voiceName);
+        
+        if (selectedVoice) {
+            this.selectedVoice = selectedVoice;
+            console.log('🎵 Voice set to:', selectedVoice.name);
+            return true;
+        } else {
+            console.warn('⚠️ Voice not found:', voiceName);
+            return false;
+        }
+    }
+    
+    // Handle voice selection change
+    handleVoiceChange(voiceType) {
+        console.log('🎵 Voice type selected:', voiceType);
+        
+        switch (voiceType) {
+            case 'premium':
+                this.setPremiumVoice();
+                break;
+            case 'natural':
+                this.setNaturalVoice();
+                break;
+            case 'ai':
+                this.setAIVoice();
+                break;
+            case 'auto':
+            default:
+                this.setAutoVoice();
+                break;
+        }
+        
+        // Save preference
+        localStorage.setItem('chatbotVoiceType', voiceType);
+        
+        // Show confirmation
+        this.showVoiceChangeConfirmation(voiceType);
+    }
+    
+    // Set premium voice
+    setPremiumVoice() {
+        const premiumVoices = this.getPremiumVoices();
+        if (premiumVoices.length > 0) {
+            const randomPremium = premiumVoices[Math.floor(Math.random() * premiumVoices.length)];
+            this.selectedVoice = randomPremium;
+            console.log('⭐ Premium voice set:', randomPremium.name);
+        } else {
+            console.log('⚠️ No premium voices available, using default');
+            this.selectedVoice = null;
+        }
+    }
+    
+    // Set natural voice
+    setNaturalVoice() {
+        const voices = this.synthesis.getVoices();
+        const naturalVoice = voices.find(v => 
+            v.name.includes('Natural') || 
+            v.name.includes('Human') || 
+            v.name.includes('Real') ||
+            v.name.includes('Samantha') ||
+            v.name.includes('Alex') ||
+            v.name.includes('Victoria') ||
+            v.name.includes('Daniel')
+        ) || voices[0];
+        
+        this.selectedVoice = naturalVoice;
+        console.log('🌿 Natural voice set:', naturalVoice.name);
+        
+        if (!naturalVoice) {
+            console.log('⚠️ No natural voices available, using default');
+            this.selectedVoice = null;
+        }
+    }
+    
+    // Set AI voice
+    setAIVoice() {
+        const voices = this.synthesis.getVoices();
+        const aiVoice = voices.find(v => 
+            v.name.includes('AI') || 
+            v.name.includes('Robot') || 
+            v.name.includes('Synthetic') ||
+            v.name.includes('Digital') ||
+            v.name.includes('Computer') ||
+            v.name.includes('System')
+        ) || voices[0];
+        
+        this.selectedVoice = aiVoice;
+        console.log('🤖 AI voice set:', aiVoice.name);
+        
+        if (!aiVoice) {
+            console.log('⚠️ No AI voices available, using default');
+            this.selectedVoice = null;
+        }
+    }
+    
+    // Set auto voice (default behavior)
+    setAutoVoice() {
+        this.selectedVoice = null; // Will use default selection logic
+        console.log('🎵 Auto voice selection enabled');
+        
+        // Log available voices for auto selection
+        if (this.synthesis) {
+            const voices = this.synthesis.getVoices();
+            const availableVoices = voices.filter(v => 
+                v.lang.startsWith('pl') || v.lang.startsWith('en')
+            );
+            console.log('🎵 Available voices for auto selection:', availableVoices.length);
+        }
+    }
+    
+    // Reset voice to default
+    resetVoice() {
+        this.selectedVoice = null;
+        localStorage.removeItem('chatbotVoiceType');
+        
+        const voiceSelector = document.getElementById('voiceSelector');
+        if (voiceSelector) {
+            voiceSelector.value = 'auto';
+        }
+        
+        console.log('🔄 Voice reset to default');
+        
+        // Update display
+        this.updateCurrentVoiceInfo();
+    }
+    
+    // Get current voice info
+    getCurrentVoiceInfo() {
+        if (this.selectedVoice) {
+            return {
+                name: this.selectedVoice.name,
+                lang: this.selectedVoice.lang,
+                type: localStorage.getItem('chatbotVoiceType') || 'custom'
+            };
+        } else {
+            // Try to get the actual auto-selected voice
+            if (this.synthesis) {
+                const voices = this.synthesis.getVoices();
+                const autoVoice = voices.find(v => 
+                    (this.currentLanguage === 'pl' && v.lang.startsWith('pl')) ||
+                    (this.currentLanguage === 'en' && v.lang.startsWith('en'))
+                ) || voices.find(v => v.default) || voices[0];
+                
+                if (autoVoice) {
+                    return {
+                        name: autoVoice.name,
+                        lang: autoVoice.lang,
+                        type: 'auto'
+                    };
+                }
+            }
+            
+            return {
+                name: 'Auto-selected',
+                lang: this.currentLanguage === 'pl' ? 'pl-PL' : 'en-US',
+                type: 'auto'
+            };
+        }
+    }
+    
+    // Show voice change confirmation
+    showVoiceChangeConfirmation(voiceType) {
+        const messagesContainer = document.getElementById('voiceChatbotMessages');
+        if (!messagesContainer) return;
+        
+        const confirmationDiv = document.createElement('div');
+        confirmationDiv.className = 'voice-message bot voice-change-confirmation';
+        confirmationDiv.innerHTML = `
+            <i class="fas fa-check-circle me-2" style="color: var(--accent);"></i>
+            Głos zmieniony na: ${this.getVoiceTypeName(voiceType)}
+        `;
+        
+        messagesContainer.appendChild(confirmationDiv);
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        
+        // Remove confirmation after 3 seconds
+        setTimeout(() => {
+            if (confirmationDiv.parentNode) {
+                confirmationDiv.remove();
+            }
+        }, 3000);
+        
+        // Update current voice info
+        this.updateCurrentVoiceInfo();
+    }
+    
+    // Get voice type display name
+    getVoiceTypeName(voiceType) {
+        const names = {
+            'premium': '⭐ Premium głosy',
+            'natural': '🌿 Naturalny głos',
+            'ai': '🤖 AI głos',
+            'auto': '🎵 Automatyczny wybór',
+            'reset': '🔄 Domyślny głos'
+        };
+        return names[voiceType] || 'Nieznany typ';
+    }
+    
+    // Get voice parameters based on selected type
+    getVoiceParameters() {
+        const voiceType = localStorage.getItem('chatbotVoiceType') || 'auto';
+        
+        const params = {
+            'premium': {
+                rate: 0.85,      // Slower for premium feel
+                pitch: 1.1,      // Slightly higher pitch
+                volume: 0.95,    // High volume
+                description: 'Premium quality with slower pace'
+            },
+            'natural': {
+                rate: 0.9,       // Natural speaking pace
+                pitch: 1.0,      // Natural pitch
+                volume: 0.9,     // Good volume
+                description: 'Natural human-like speech'
+            },
+            'ai': {
+                rate: 0.8,       // Slower for AI clarity
+                pitch: 1.15,     // Higher pitch for AI sound
+                volume: 0.95,    // High volume
+                description: 'AI-optimized for clarity'
+            },
+            'auto': {
+                rate: 0.9,       // Default balanced
+                pitch: 1.05,     // Slightly higher
+                volume: 0.95,    // High volume
+                description: 'Balanced automatic selection'
+            }
+        };
+        
+        const selectedParams = params[voiceType] || params['auto'];
+        console.log(`🎵 Voice parameters for ${voiceType}:`, selectedParams);
+        
+        return selectedParams;
+    }
+    
+    // Update current voice info display
+    updateCurrentVoiceInfo() {
+        const currentVoiceName = document.getElementById('currentVoiceName');
+        if (!currentVoiceName) return;
+        
+        const voiceInfo = this.getCurrentVoiceInfo();
+        
+        // Add visual indicator for voice type
+        const voiceType = voiceInfo.type;
+        const icons = {
+            'premium': '⭐',
+            'natural': '🌿',
+            'ai': '🤖',
+            'auto': '🎵',
+            'reset': '🔄'
+        };
+        
+        currentVoiceName.innerHTML = `${icons[voiceType] || '🎵'} ${voiceInfo.name}`;
+        
+        // Update voice details
+        const currentVoiceDetails = document.getElementById('currentVoiceDetails');
+        if (currentVoiceDetails) {
+            const params = this.getVoiceParameters();
+            const voiceType = voiceInfo.type;
+            
+            if (voiceType === 'auto') {
+                currentVoiceDetails.innerHTML = `Automatyczny wybór • ${voiceInfo.lang}`;
+            } else if (voiceType === 'reset') {
+                currentVoiceDetails.innerHTML = `Domyślny głos • ${voiceInfo.lang}`;
+            } else {
+                currentVoiceDetails.innerHTML = `${params.description} • ${voiceInfo.lang}`;
+            }
+            
+            // Add click hint
+            currentVoiceDetails.style.cursor = 'pointer';
+            currentVoiceDetails.title = 'Kliknij, aby zmienić głos';
+            
+            // Add click event to open voice selector
+            currentVoiceDetails.onclick = () => {
+                const voiceSelector = document.getElementById('voiceSelector');
+                if (voiceSelector) {
+                    voiceSelector.focus();
+                    voiceSelector.click();
+                }
+            };
+            
+            // Add hover effect
+            currentVoiceDetails.style.transition = 'color 0.3s ease';
+            
+            // Add hover styles
+            currentVoiceDetails.onmouseenter = () => {
+                currentVoiceDetails.style.color = 'var(--primary)';
+            };
+            
+            currentVoiceDetails.onmouseleave = () => {
+                currentVoiceDetails.style.color = 'var(--text-tertiary)';
+            };
+            
+            // Add keyboard navigation
+            currentVoiceDetails.onkeydown = (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    const voiceSelector = document.getElementById('voiceSelector');
+                    if (voiceSelector) {
+                        voiceSelector.focus();
+                        voiceSelector.click();
+                    }
+                }
+            };
+            
+            // Make it focusable
+            currentVoiceDetails.tabIndex = 0;
+            currentVoiceDetails.setAttribute('role', 'button');
+            
+            // Add ARIA label
+            currentVoiceDetails.setAttribute('aria-label', `Aktualny głos: ${voiceInfo.name}. Kliknij, aby zmienić.`);
+        }
+        
+        // Log current voice configuration
+        console.log('🎵 Current voice configuration:', {
+            name: voiceInfo.name,
+            language: voiceInfo.lang,
+            type: voiceType,
+            parameters: this.getVoiceParameters(),
+            selectedVoice: this.selectedVoice?.name || 'auto'
+        });
+        
+        // Show voice quality indicator
+        this.showVoiceQualityIndicator(voiceType);
+    }
+    
+    // Show voice quality indicator
+    showVoiceQualityIndicator(voiceType) {
+        const currentVoiceInfo = document.getElementById('currentVoiceInfo');
+        if (!currentVoiceInfo) return;
+        
+        // Add quality indicator
+        const qualityIndicator = currentVoiceInfo.querySelector('.voice-quality-indicator');
+        if (qualityIndicator) {
+            qualityIndicator.remove();
+        }
+        
+        const qualityDiv = document.createElement('div');
+        qualityDiv.className = 'voice-quality-indicator';
+        
+        const qualityInfo = {
+            'premium': { icon: '⭐', text: 'Najwyższa jakość', color: 'var(--accent)' },
+            'natural': { icon: '🌿', text: 'Naturalny dźwięk', color: 'var(--accent-orange)' },
+            'ai': { icon: '🤖', text: 'Zoptymalizowany AI', color: 'var(--accent-purple)' },
+            'auto': { icon: '🎵', text: 'Automatyczny wybór', color: 'var(--primary)' },
+            'reset': { icon: '🔄', text: 'Domyślny głos', color: 'var(--text-tertiary)' }
+        };
+        
+        const quality = qualityInfo[voiceType] || qualityInfo['auto'];
+        qualityDiv.innerHTML = `
+            <small style="color: ${quality.color}; font-weight: 600;">
+                ${quality.icon} ${quality.text}
+            </small>
+        `;
+        
+        currentVoiceInfo.appendChild(qualityDiv);
+        
+        // Add animation
+        qualityDiv.style.animation = 'fadeInUp 0.5s ease-out';
+        
+        // Log quality change
+        console.log(`🎵 Voice quality indicator updated: ${quality.text} (${voiceType})`);
+        
+        // Add tooltip for better UX
+        qualityDiv.title = `Głos typu: ${voiceType} - ${quality.text}`;
+        qualityDiv.style.cursor = 'help';
+        
+        // Add click to show voice details
+        qualityDiv.onclick = () => {
+            this.showVoiceDetails(voiceType, quality);
+        };
+        
+        // Add keyboard navigation
+        qualityDiv.tabIndex = 0;
+        qualityDiv.onkeydown = (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                this.showVoiceDetails(voiceType, quality);
+            }
+        };
+        
+        // Add ARIA label
+        qualityDiv.setAttribute('role', 'button');
+        qualityDiv.setAttribute('aria-label', `Kliknij, aby zobaczyć szczegóły głosu: ${quality.text}`);
+        
+        // Add hover effect
+        qualityDiv.style.transition = 'all 0.3s ease';
+        qualityDiv.onmouseenter = () => {
+            qualityDiv.style.transform = 'scale(1.05)';
+            qualityDiv.style.boxShadow = '0 2px 8px rgba(0,0,0,0.2)';
+        };
+        qualityDiv.onmouseleave = () => {
+            qualityDiv.style.transform = 'scale(1)';
+            qualityDiv.style.boxShadow = 'none';
+        };
+        
+        // Add focus styles
+        qualityDiv.onfocus = () => {
+            qualityDiv.style.outline = '2px solid var(--primary)';
+            qualityDiv.style.outlineOffset = '2px';
+        };
+        qualityDiv.onblur = () => {
+            qualityDiv.style.outline = 'none';
+        };
+        
+        // Add success feedback
+        qualityDiv.onclick = () => {
+            qualityDiv.style.background = quality.color;
+            qualityDiv.style.color = 'white';
+            setTimeout(() => {
+                qualityDiv.style.background = '';
+                qualityDiv.style.color = '';
+            }, 200);
+        };
+        
+        // Add voice test functionality
+        qualityDiv.ondblclick = () => {
+            this.testVoice(voiceType);
+        };
+        
+        // Add tooltip for double-click
+        qualityDiv.title += ' (Podwójne kliknięcie = test głosu)';
+        
+        // Add visual feedback for double-click hint
+        const hintDiv = document.createElement('div');
+        hintDiv.style.fontSize = '0.6rem';
+        hintDiv.style.opacity = '0.7';
+        hintDiv.style.marginTop = '0.25rem';
+        hintDiv.innerHTML = 'Podwójne kliknięcie = test';
+        qualityDiv.appendChild(hintDiv);
+        
+        // Add keyboard shortcut hint
+        const keyboardHint = document.createElement('div');
+        keyboardHint.style.fontSize = '0.6rem';
+        keyboardHint.style.opacity = '0.7';
+        keyboardHint.style.marginTop = '0.1rem';
+        keyboardHint.innerHTML = 'Enter = szczegóły';
+        qualityDiv.appendChild(keyboardHint);
+        
+        // Add voice count info
+        this.updateVoiceCount();
+    }
+    
+    // Update voice count display
+    updateVoiceCount() {
+        if (!this.synthesis) return;
+        
+        const voices = this.synthesis.getVoices();
+        const totalVoices = voices.length;
+        const polishVoices = voices.filter(v => v.lang.startsWith('pl')).length;
+        const englishVoices = voices.filter(v => v.lang.startsWith('en')).length;
+        const premiumVoices = this.getPremiumVoices().length;
+        
+        console.log(`🎵 Voice statistics:`, {
+            total: totalVoices,
+            polish: polishVoices,
+            english: englishVoices,
+            premium: premiumVoices
+        });
+        
+        // Update voice selector with counts
+        const voiceSelector = document.getElementById('voiceSelector');
+        if (voiceSelector) {
+            const autoOption = voiceSelector.querySelector('option[value="auto"]');
+            const premiumOption = voiceSelector.querySelector('option[value="premium"]');
+            const naturalOption = voiceSelector.querySelector('option[value="natural"]');
+            const aiOption = voiceSelector.querySelector('option[value="ai"]');
+            
+            if (autoOption) autoOption.textContent = `🎵 Automatyczny wybór (${totalVoices} głosów)`;
+            if (premiumOption) premiumOption.textContent = `⭐ Premium głosy (${premiumVoices} dostępnych)`;
+            if (naturalOption) naturalOption.textContent = `🌿 Naturalny głos (${englishVoices + polishVoices} dostępnych)`;
+            if (aiOption) aiOption.textContent = `🤖 AI głos (${totalVoices} dostępnych)`;
+        }
+    }
+    
+    // Test voice with sample text
+    testVoice(voiceType) {
+        const testText = 'To jest test głosu. Sprawdź, jak brzmi wybrany głos.';
+        console.log(`🎵 Testing voice type: ${voiceType} with text: ${testText}`);
+        
+        // Show test message
+        const messagesContainer = document.getElementById('voiceChatbotMessages');
+        if (messagesContainer) {
+            const testDiv = document.createElement('div');
+            testDiv.className = 'voice-message bot voice-test';
+            testDiv.innerHTML = `
+                <div style="background: var(--accent); color: white; padding: 0.5rem; border-radius: 8px; margin-bottom: 0.5rem;">
+                    <strong>🧪 Test głosu</strong>
+                </div>
+                <div style="font-size: 0.9rem; color: var(--text-secondary);">
+                    <strong>Typ:</strong> ${this.getVoiceTypeName(voiceType)}<br>
+                    <strong>Tekst testowy:</strong> "${testText}"<br>
+                    <strong>Status:</strong> Odtwarzanie...
+                </div>
+            `;
+            
+            messagesContainer.appendChild(testDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            
+            // Speak test text
+            this.speak(testText);
+            
+            // Update status after speaking
+            setTimeout(() => {
+                const statusElement = testDiv.querySelector('div:last-child');
+                if (statusElement) {
+                    statusElement.innerHTML = statusElement.innerHTML.replace('Odtwarzanie...', '✅ Test zakończony');
+                }
+            }, 3000);
+            
+            // Remove test message after 8 seconds
+            setTimeout(() => {
+                if (testDiv.parentNode) {
+                    testDiv.remove();
+                }
+            }, 8000);
+        }
+    }
+    
+    // Show voice details
+    showVoiceDetails(voiceType, quality) {
+        const messagesContainer = document.getElementById('voiceChatbotMessages');
+        if (!messagesContainer) return;
+        
+        const detailsDiv = document.createElement('div');
+        detailsDiv.className = 'voice-message bot voice-details';
+        detailsDiv.innerHTML = `
+            <div style="background: ${quality.color}; color: white; padding: 0.5rem; border-radius: 8px; margin-bottom: 0.5rem;">
+                <strong>${quality.icon} ${quality.text}</strong>
+            </div>
+            <div style="font-size: 0.9rem; color: var(--text-secondary);">
+                <strong>Typ głosu:</strong> ${this.getVoiceTypeName(voiceType)}<br>
+                <strong>Parametry:</strong> ${this.getVoiceParameters().description}<br>
+                <strong>Język:</strong> ${this.getCurrentVoiceInfo().lang}<br>
+                <strong>Nazwa:</strong> ${this.getCurrentVoiceInfo().name}
+            </div>
+        `;
+        
+        messagesContainer.appendChild(detailsDiv);
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        
+        // Remove details after 5 seconds
+        setTimeout(() => {
+            if (detailsDiv.parentNode) {
+                detailsDiv.remove();
+            }
+        }, 5000);
+        
+        console.log(`📋 Voice details shown for type: ${voiceType}`);
     }
     
     generateFallbackResponse(input) {

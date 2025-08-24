@@ -172,3 +172,5 @@ W przypadku problemów:
 ---
 
 **🎉 Gotowe do uruchomienia!**
+
+
