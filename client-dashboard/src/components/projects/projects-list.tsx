@@ -17,7 +17,12 @@ import {
   Search, 
   Filter, 
   Plus,
-  FolderOpen
+  FolderOpen,
+  BarChart3,
+  TrendingUp,
+  Clock,
+  CheckCircle,
+  AlertCircle
 } from 'lucide-react'
 import { Project, ProjectStatus, ProjectType } from '@/types/database'
 
@@ -64,14 +69,18 @@ export function ProjectsList() {
     console.log('View project details:', project.id)
   }
 
+  const activeProjects = projects.filter(p => p.status !== 'completed')
+  const completedProjects = projects.filter(p => p.status === 'completed')
+  const totalBudget = projects.reduce((sum, p) => sum + (p.budget_total || 0), 0)
+
   if (loading) {
     return (
-      <div className="space-y-6">
+      <div className="space-y-8">
         <div className="animate-pulse">
-          <div className="h-8 bg-gray-200 rounded w-1/3 mb-4"></div>
+          <div className="h-12 bg-gray-200 rounded-xl w-1/3 mb-6"></div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[...Array(6)].map((_, i) => (
-              <div key={i} className="h-64 bg-gray-200 rounded"></div>
+              <div key={i} className="h-64 bg-gray-200 rounded-xl"></div>
             ))}
           </div>
         </div>
@@ -80,71 +89,138 @@ export function ProjectsList() {
   }
 
   return (
-    <div className="space-y-6">
-      {/* Header */}
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-3xl font-bold text-gray-900">Projekty</h1>
-          <p className="text-gray-600 mt-2">
-            Zarządzaj swoimi projektami i śledź postępy
-          </p>
-        </div>
-        <Button className="flex items-center space-x-2">
-          <Plus className="h-4 w-4" />
-          <span>Nowy projekt</span>
-        </Button>
-      </div>
-
-      {/* Filters */}
-      <div className="flex flex-col sm:flex-row gap-4">
-        <div className="relative flex-1">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
-          <Input
-            placeholder="Szukaj projektów..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="pl-10"
-          />
+    <div className="space-y-8">
+      {/* Hero Header */}
+      <div className="relative overflow-hidden bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 rounded-3xl p-8 lg:p-12">
+        <div className="absolute inset-0 bg-black/10"></div>
+        <div className="relative z-10">
+          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between">
+            <div className="flex-1">
+              <div className="inline-flex items-center px-3 py-1 rounded-full bg-white/20 backdrop-blur-sm text-white text-sm font-medium mb-4">
+                <FolderOpen className="h-4 w-4 mr-2" />
+                Zarządzanie Projektami
+              </div>
+              <h1 className="text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight">
+                Twoje Projekty
+              </h1>
+              <p className="text-xl text-blue-100 mb-6 max-w-2xl">
+                Zarządzaj swoimi projektami i śledź postępy w czasie rzeczywistym
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <div className="flex items-center text-white/80 text-sm">
+                  <Clock className="h-4 w-4 mr-2" />
+                  Aktywnych: {activeProjects.length}
+                </div>
+                <div className="flex items-center text-white/80 text-sm">
+                  <CheckCircle className="h-4 w-4 mr-2" />
+                  Ukończonych: {completedProjects.length}
+                </div>
+                <div className="flex items-center text-white/80 text-sm">
+                  <TrendingUp className="h-4 w-4 mr-2" />
+                  Budżet: ${totalBudget.toLocaleString()}
+                </div>
+              </div>
+            </div>
+            <div className="hidden lg:block mt-8 lg:mt-0">
+              <Button className="btn-primary-modern text-lg px-8 py-4">
+                <Plus className="h-5 w-5 mr-2" />
+                Nowy Projekt
+              </Button>
+            </div>
+          </div>
         </div>
         
-        <Select value={statusFilter} onValueChange={setStatusFilter}>
-          <SelectTrigger className="w-full sm:w-48">
-            <SelectValue placeholder="Status" />
-          </SelectTrigger>
-          <SelectContent>
-            {statusOptions.map(option => (
-              <SelectItem key={option.value} value={option.value}>
-                {option.label}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-
-        <Select value={typeFilter} onValueChange={setTypeFilter}>
-          <SelectTrigger className="w-full sm:w-48">
-            <SelectValue placeholder="Typ" />
-          </SelectTrigger>
-          <SelectContent>
-            {typeOptions.map(option => (
-              <SelectItem key={option.value} value={option.value}>
-                {option.label}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
+        {/* Decorative elements */}
+        <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-32 translate-x-32"></div>
+        <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full translate-y-24 -translate-x-24"></div>
       </div>
 
-      {/* Stats */}
-      <div className="flex flex-wrap gap-2">
-        <Badge variant="outline">
-          Wszystkich: {projects.length}
-        </Badge>
-        <Badge variant="outline">
-          Aktywnych: {projects.filter(p => p.status !== 'completed').length}
-        </Badge>
-        <Badge variant="outline">
-          Ukończonych: {projects.filter(p => p.status === 'completed').length}
-        </Badge>
+      {/* Quick Stats */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-6 border border-blue-200">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-blue-600 font-medium text-sm">Aktywne Projekty</p>
+              <p className="text-3xl font-bold text-blue-900">{activeProjects.length}</p>
+            </div>
+            <div className="p-3 bg-blue-200 rounded-xl">
+              <FolderOpen className="h-6 w-6 text-blue-700" />
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-2xl p-6 border border-green-200">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-green-600 font-medium text-sm">Ukończone</p>
+              <p className="text-3xl font-bold text-green-900">{completedProjects.length}</p>
+            </div>
+            <div className="p-3 bg-green-200 rounded-xl">
+              <CheckCircle className="h-6 w-6 text-green-700" />
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl p-6 border border-purple-200">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-purple-600 font-medium text-sm">Całkowity Budżet</p>
+              <p className="text-3xl font-bold text-purple-900">${totalBudget.toLocaleString()}</p>
+            </div>
+            <div className="p-3 bg-purple-200 rounded-xl">
+              <BarChart3 className="h-6 w-6 text-purple-700" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Filters Section */}
+      <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-slate-200/50 shadow-lg">
+        <div className="flex flex-col lg:flex-row gap-6">
+          <div className="relative flex-1">
+            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-slate-400" />
+            <Input
+              placeholder="Szukaj projektów, opisów, nazw..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="input-modern pl-12 text-lg"
+            />
+          </div>
+          
+          <Select value={statusFilter} onValueChange={setStatusFilter}>
+            <SelectTrigger className="w-full lg:w-48 h-12 text-lg border-slate-200/50 rounded-xl">
+              <SelectValue placeholder="Status projektu" />
+            </SelectTrigger>
+            <SelectContent>
+              {statusOptions.map(option => (
+                <SelectItem key={option.value} value={option.value}>
+                  {option.label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+
+          <Select value={typeFilter} onValueChange={setTypeFilter}>
+            <SelectTrigger className="w-full lg:w-48 h-12 text-lg border-slate-200/50 rounded-xl">
+              <SelectValue placeholder="Typ projektu" />
+            </SelectTrigger>
+            <SelectContent>
+              {typeOptions.map(option => (
+                <SelectItem key={option.value} value={option.value}>
+                  {option.label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+
+          <Button 
+            variant="outline" 
+            className="h-12 px-6 border-slate-200/50 rounded-xl hover:bg-slate-50"
+          >
+            <Filter className="h-5 w-5 mr-2" />
+            Filtry
+          </Button>
+        </div>
       </div>
 
       {/* Projects Grid */}
@@ -159,28 +235,38 @@ export function ProjectsList() {
           ))}
         </div>
       ) : (
-        <div className="text-center py-12">
-          <FolderOpen className="h-16 w-16 mx-auto text-gray-300 mb-4" />
-          <h3 className="text-lg font-medium text-gray-900 mb-2">
+        <div className="text-center py-16 bg-white/80 backdrop-blur-sm rounded-2xl border border-slate-200/50">
+          <div className="w-24 h-24 bg-gradient-to-br from-slate-100 to-slate-200 rounded-full flex items-center justify-center mx-auto mb-6">
+            <FolderOpen className="h-12 w-12 text-slate-400" />
+          </div>
+          <h3 className="text-2xl font-bold text-slate-900 mb-3">
             {searchQuery || statusFilter !== 'all' || typeFilter !== 'all' 
               ? 'Brak projektów spełniających kryteria'
               : 'Brak projektów'
             }
           </h3>
-          <p className="text-gray-600 mb-6">
+          <p className="text-slate-600 mb-8 text-lg max-w-md mx-auto">
             {searchQuery || statusFilter !== 'all' || typeFilter !== 'all'
-              ? 'Spróbuj zmienić filtry wyszukiwania'
+              ? 'Spróbuj zmienić filtry wyszukiwania lub rozszerzyć kryteria'
               : 'Rozpocznij współpracę z ECM Digital, aby zobaczyć swoje projekty tutaj'
             }
           </p>
           {(!searchQuery && statusFilter === 'all' && typeFilter === 'all') && (
-            <Button>
-              <Plus className="h-4 w-4 mr-2" />
+            <Button className="btn-primary-modern text-lg px-8 py-4">
+              <Plus className="h-5 w-5 mr-2" />
               Rozpocznij nowy projekt
             </Button>
           )}
         </div>
       )}
+
+      {/* Mobile New Project Button */}
+      <div className="lg:hidden">
+        <Button className="btn-primary-modern w-full text-lg py-4">
+          <Plus className="h-5 w-5 mr-2" />
+          Nowy Projekt
+        </Button>
+      </div>
     </div>
   )
 }

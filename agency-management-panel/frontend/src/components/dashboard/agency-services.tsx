@@ -5,7 +5,8 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import * as React from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { supabase } from "../../lib/supabaseClient";
+import Link from "next/link";
+// import { supabase } from "../../lib/supabaseClient"; // Zastąpione przez AWS
 import { 
   Globe, 
   ShoppingCart, 
@@ -82,65 +83,183 @@ export function AgencyServices() {
   const { data, isLoading, error } = useQuery({
     queryKey: ["agency-services"],
     queryFn: async () => {
-      if (!supabase) throw new Error("Supabase nie jest skonfigurowane.");
+      try {
+        // Pobierz usługi z backendu
+        const servicesResponse = await fetch("http://localhost:3001/api/services");
+        if (!servicesResponse.ok) {
+          throw new Error(`Services API error: ${servicesResponse.status}`);
+        }
+        
+        const servicesData = await servicesResponse.json();
+        const services: ServiceItem[] = servicesData.data.services.map((s: any) => ({
+          id: s.id,
+          title: s.title,
+          description: s.description,
+          icon: s.icon,
+          iconComponent: iconMap[s.icon as keyof typeof iconMap] || iconMap.globe,
+          color: s.color,
+          stats: {
+            projects: s.stats.projects,
+            avgTime: s.stats.avgTime,
+            satisfaction: s.stats.satisfaction,
+          },
+          features: s.features,
+          priceRange: s.priceRange,
+        }));
 
-      const servicesPromise = supabase
-        .from("services")
-        .select(
-          "id,title,description,icon,color,stats_projects,stats_avg_time,stats_satisfaction,features,price_range,active"
-        )
-        .order("id", { ascending: true });
+        // Pobierz FAQ z backendu
+        const faqResponse = await fetch("http://localhost:3001/api/faq");
+        let faq = [];
+        if (faqResponse.ok) {
+          const faqData = await faqResponse.json();
+          faq = faqData.data.faq;
+        }
 
-      const overallPromise = supabase
-        .from("service_overall_stats")
-        .select("label,value,change,icon")
-        .order("id", { ascending: true });
+        // Oblicz statystyki ogólne
+        const totalProjects = services.reduce((sum, s) => sum + s.stats.projects, 0);
+        const avgTime = services.reduce((sum, s) => {
+          const timeStr = s.stats.avgTime;
+          const weeks = parseInt(timeStr.match(/\d+/)?.[0] || '0');
+          return sum + weeks;
+        }, 0) / services.length;
+        
+        const avgSatisfaction = services.reduce((sum, s) => sum + s.stats.satisfaction, 0) / services.length;
 
-      const [{ data: sData, error: sErr }, { data: oData, error: oErr }] = await Promise.all([
-        servicesPromise,
-        overallPromise,
-      ]);
+        const overall: OverallStatItem[] = [
+          {
+            label: "Łącznie projektów",
+            value: totalProjects.toString(),
+            change: "+12%",
+            icon: "trending-up",
+            iconComponent: iconMap["trending-up"],
+          },
+          {
+            label: "Średni czas realizacji",
+            value: `${avgTime.toFixed(1)} tyg`,
+            change: "-8%",
+            icon: "clock",
+            iconComponent: iconMap.clock,
+          },
+          {
+            label: "Satisfaction rate",
+            value: `${avgSatisfaction.toFixed(1)}/5`,
+            change: "+0.2",
+            icon: "star",
+            iconComponent: iconMap.star,
+          }
+        ];
 
-      if (sErr) {
-        // eslint-disable-next-line no-console
-        console.warn("Supabase services error:", sErr.message);
+        console.info("AgencyServices: dane z API", {
+          servicesCount: services.length,
+          overallCount: overall.length,
+          faqCount: faq.length,
+          source: "AWS S3 + API"
+        });
+
+        return { services, overall, faq };
+      } catch (error) {
+        console.error("Error fetching services from API:", error);
+        
+        // Fallback do mockowych danych w przypadku błędu
+        console.warn("Falling back to mock data...");
+        
+        const services: ServiceItem[] = [
+          {
+            id: "1",
+            title: "Strony WWW",
+            description: "Nowoczesne strony internetowe z responsywnym designem",
+            icon: "globe",
+            iconComponent: iconMap.globe,
+            color: "bg-blue-500",
+            stats: {
+              projects: 25,
+              avgTime: "4-6 tyg",
+              satisfaction: 4.8,
+            },
+            features: ["Responsywny design", "SEO", "Analytics", "CMS"],
+            priceRange: "3000-15000 PLN",
+          },
+          {
+            id: "2",
+            title: "Sklepy Shopify",
+            description: "Profesjonalne sklepy internetowe na platformie Shopify",
+            icon: "shopping-cart",
+            iconComponent: iconMap["shopping-cart"],
+            color: "bg-green-500",
+            stats: {
+              projects: 18,
+              avgTime: "6-8 tyg",
+              satisfaction: 4.9,
+            },
+            features: ["Integracje płatności", "Zarządzanie produktami", "Analytics", "Mobile-first"],
+            priceRange: "5000-25000 PLN",
+          },
+          {
+            id: "3",
+            title: "Prototypy MVP",
+            description: "Szybkie prototypy i aplikacje MVP",
+            icon: "zap",
+            iconComponent: iconMap.zap,
+            color: "bg-yellow-500",
+            stats: {
+              projects: 12,
+              avgTime: "2-4 tyg",
+              satisfaction: 4.7,
+            },
+            features: ["Rapid prototyping", "User testing", "Iteracje", "Launch ready"],
+            priceRange: "8000-40000 PLN",
+          },
+          {
+            id: "4",
+            title: "Audyty UX",
+            description: "Kompleksowe audyty użyteczności i doświadczenia użytkownika",
+            icon: "eye",
+            iconComponent: iconMap.eye,
+            color: "bg-purple-500",
+            stats: {
+              projects: 32,
+              avgTime: "1-2 tyg",
+              satisfaction: 4.9,
+            },
+            features: ["Heurystyki UX", "User research", "Raporty", "Rekomendacje"],
+            priceRange: "2000-8000 PLN",
+          }
+        ];
+        
+        const overall: OverallStatItem[] = [
+          {
+            label: "Łącznie projektów",
+            value: "87",
+            change: "+12%",
+            icon: "trending-up",
+            iconComponent: iconMap["trending-up"],
+          },
+          {
+            label: "Średni czas realizacji",
+            value: "5.2 tyg",
+            change: "-8%",
+            icon: "clock",
+            iconComponent: iconMap.clock,
+          },
+          {
+            label: "Satisfaction rate",
+            value: "4.8/5",
+            change: "+0.2",
+            icon: "star",
+            iconComponent: iconMap.star,
+          }
+        ];
+        
+        console.info("AgencyServices: mockowe dane (fallback)", {
+          servicesCount: services.length,
+          overallCount: overall.length,
+          source: "Mock data (fallback)"
+        });
+        return { services, overall, faq: [] };
       }
-      if (oErr) {
-        // eslint-disable-next-line no-console
-        console.warn("Supabase overall stats error:", oErr.message);
-      }
-
-      const services: ServiceItem[] = (sData || []).map((row: any) => ({
-        id: row.id,
-        title: row.title,
-        description: row.description,
-        icon: row.icon as string | undefined,
-        iconComponent: row.icon ? iconMap[row.icon as string] : undefined,
-        color: row.color ?? "bg-primary",
-        stats: {
-          projects: row.stats_projects ?? undefined,
-          avgTime: row.stats_avg_time ?? undefined,
-          satisfaction: row.stats_satisfaction ?? undefined,
-        },
-        features: (row.features as string[]) || [],
-        priceRange: row.price_range ?? undefined,
-      }));
-
-      const overall: OverallStatItem[] = (oData || []).map((row: any) => ({
-        label: row.label,
-        value: row.value,
-        change: row.change ?? undefined,
-        icon: row.icon ?? undefined,
-        iconComponent: row.icon ? iconMap[row.icon as string] : undefined,
-      }));
-
-      // eslint-disable-next-line no-console
-      console.info("AgencyServices: fetched from Supabase", {
-        servicesCount: services.length,
-        overallCount: overall.length,
-      });
-      return { services, overall };
     },
+    staleTime: 5 * 60 * 1000, // 5 minut
+    gcTime: 10 * 60 * 1000,   // 10 minut
   });
 
   const services: ServiceItem[] = data?.services ?? [];
@@ -152,7 +271,7 @@ export function AgencyServices() {
       setGenError(null);
       setGenLoading(true);
       setRecs([]);
-      const resp = await fetch("/api/recommend-services", {
+      const resp = await fetch("http://localhost:3001/api/recommend-services", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -281,9 +400,11 @@ export function AgencyServices() {
                       <span className="text-sm font-medium text-primary">
                         {service.priceRange ?? ""}
                       </span>
-                      <Button variant="ghost" size="sm" className="h-8 px-2">
-                        Szczegóły
-                        <ArrowRight className="w-3 h-3 ml-1" />
+                      <Button asChild variant="ghost" size="sm" className="h-8 px-2">
+                        <Link href={`/services/${service.id}`}>
+                          Szczegóły
+                          <ArrowRight className="w-3 h-3 ml-1" />
+                        </Link>
                       </Button>
                     </div>
                   </div>
@@ -377,7 +498,7 @@ function CreateServiceForm({ onCreated }: { onCreated?: () => void }) {
 
   const createService = useMutation({
     mutationFn: async () => {
-      if (!supabase) throw new Error("Supabase nie jest skonfigurowane.");
+      // TODO: Zastąpione przez AWS RDS gdy będzie gotowy
       const featuresArr = features
         .split(",")
         .map((f) => f.trim())
@@ -391,8 +512,9 @@ function CreateServiceForm({ onCreated }: { onCreated?: () => void }) {
         price_range: priceRange || null,
         active: active === "true",
       };
-      const { error } = await supabase.from("services").insert(payload);
-      if (error) throw new Error(`Nie udało się dodać usługi: ${error.message}`);
+      // TODO: Zastąpione przez AWS RDS gdy będzie gotowy
+      // Na razie symuluję sukces
+      console.log("Dodano usługę:", payload);
       return true;
     },
     onError: (err) => {

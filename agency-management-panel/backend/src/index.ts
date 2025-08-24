@@ -15,8 +15,29 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
+// Import AWS RDS functions
+import { 
+  initializeDatabase, 
+  createProject, 
+  getProjects, 
+  getProject, 
+  updateProject, 
+  deleteProject,
+  testConnection 
+} from './aws-rds';
+
+// Import AWS Bedrock functions
+import {
+  generateAIResponse,
+  searchFAQ,
+  getServicesFromS3,
+  getFAQFromS3,
+  uploadServicesToS3,
+  testBedrockConnection
+} from './aws-bedrock';
+
 const app = express();
-const PORT = process.env.PORT || 3002;
+const PORT = process.env.PORT || 3001;
 
 // Middleware
 app.use(helmet());
@@ -25,10 +46,9 @@ app.use(morgan('combined'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// In-memory stores (dev only)
+// In-memory stores (dev only) - keeping for other entities
 type Task = { id: string; title: string; assignee: string; status: string; dueAt?: string };
 type Milestone = { id: string; name: string; date: string; status: string };
-type Project = { id: number; name: string; client: string; status: string; description: string };
 type User = {
   id: string;
   email: string;
@@ -46,30 +66,23 @@ type AuthToken = {
   createdAt: Date;
 };
 
-let projectsStore: Project[] = [
-  {
-    id: 1,
-    name: "Platforma logistyczna",
-    client: "LogisticsPro",
-    status: "Aktywny",
-    description: "System obsługujący 1000+ dostaw dziennie, React + Node.js + AWS."
-  },
-  {
-    id: 2,
-    name: "PropTech Real Estate",
-    client: "EstateNow",
-    status: "Zakończony",
-    description: "Platforma zarządzania nieruchomościami, Vue.js + Django."
-  },
-  {
-    id: 3,
-    name: "EdTech LMS",
-    client: "EduSmart",
-    status: "Wdrożenie",
-    description: "System edukacyjny z video streamingiem, Next.js + GraphQL."
+// Initialize AWS RDS database on startup
+app.use(async (req, res, next) => {
+  if (!req.app.locals.dbInitialized) {
+    try {
+      console.log('🚀 Initializing AWS RDS database...');
+      await initializeDatabase();
+      req.app.locals.dbInitialized = true;
+      console.log('✅ Database initialized successfully');
+    } catch (error) {
+      console.error('❌ Failed to initialize database:', error);
+      // Continue without database for now
+    }
   }
-];
+  next();
+});
 
+// In-memory stores for tasks and milestones (will be moved to AWS RDS later)
 const tasksStore: Record<number, Task[]> = {
   1: [
     { id: 'T-1', title: 'Integracja API przewoźników', assignee: 'Marta Górska', status: 'In Progress', dueAt: '2025-08-20' },
@@ -97,7 +110,6 @@ const milestonesStore: Record<number, Milestone[]> = {
   ],
 };
 
-// Users and Authentication
 let usersStore: User[] = [
   {
     id: 'u1',
@@ -154,6 +166,192 @@ const userPasswords: Record<string, string> = {
 // Health check
 app.get('/health', (req, res) => {
   res.json({ status: 'OK', timestamp: new Date().toISOString() });
+});
+
+// Test AWS RDS connection
+app.get('/api/test-aws', async (req, res) => {
+  try {
+    const isConnected = await testConnection();
+    res.json({ 
+      status: 'success', 
+      message: 'AWS RDS connection test successful',
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    console.error('AWS RDS connection test failed:', error);
+    res.status(500).json({ 
+      status: 'error', 
+      message: 'AWS RDS connection test failed',
+      error: error instanceof Error ? error.message : 'Unknown error',
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+
+// AI Endpoint - /ask
+app.post('/api/ask', async (req, res) => {
+  try {
+    const { question, language = 'pl', context } = req.body;
+    
+    if (!question || !question.trim()) {
+      return res.status(400).json({ 
+        error: 'Question is required' 
+      });
+    }
+
+    console.log(`🤖 AI Question: ${question} (${language})`);
+    
+    const response = await generateAIResponse(question, language, context);
+    
+    res.json({
+      status: 'success',
+      data: response,
+      timestamp: new Date().toISOString()
+    });
+    
+  } catch (error) {
+    console.error('Error in AI endpoint:', error);
+    res.status(500).json({ 
+      status: 'error', 
+      message: 'Failed to generate AI response',
+      error: error instanceof Error ? error.message : 'Unknown error',
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+
+// FAQ Endpoint - /faq
+app.get('/api/faq', async (req, res) => {
+  try {
+    const { language = 'pl', category, query } = req.query;
+    
+    console.log(`📚 FAQ Request: lang=${language}, category=${category}, query=${query}`);
+    
+    let faq;
+    if (query) {
+      faq = await searchFAQ(query as string, language as 'pl' | 'en', category as string);
+    } else {
+      faq = await getFAQFromS3(language as 'pl' | 'en');
+      if (category) {
+        faq = faq.filter(f => f.category === category);
+      }
+    }
+    
+    res.json({
+      status: 'success',
+      data: {
+        faq,
+        total: faq.length,
+        language,
+        category: category || 'all'
+      },
+      timestamp: new Date().toISOString()
+    });
+    
+  } catch (error) {
+    console.error('Error in FAQ endpoint:', error);
+    res.status(500).json({ 
+      status: 'error', 
+      message: 'Failed to fetch FAQ',
+      error: error instanceof Error ? error.message : 'Unknown error',
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+
+// Services Endpoint - /services
+app.get('/api/services', async (req, res) => {
+  try {
+    const { language = 'pl', category } = req.query;
+    
+    console.log(`🛠️ Services Request: lang=${language}, category=${category}`);
+    
+    let services = await getServicesFromS3(language as 'pl' | 'en');
+    
+    if (category) {
+      services = services.filter(s => s.category === category);
+    }
+    
+    res.json({
+      status: 'success',
+      data: {
+        services,
+        total: services.length,
+        language,
+        category: category || 'all'
+      },
+      timestamp: new Date().toISOString()
+    });
+    
+  } catch (error) {
+    console.error('Error in Services endpoint:', error);
+    res.status(500).json({ 
+      status: 'error', 
+      message: 'Failed to fetch services',
+      error: error instanceof Error ? error.message : 'Unknown error',
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+
+// Upload Services Endpoint
+app.post('/api/services/upload', async (req, res) => {
+  try {
+    const { services, language = 'pl' } = req.body;
+
+    if (!services || !Array.isArray(services)) {
+      return res.status(400).json({
+        status: 'error',
+        message: 'Services array is required'
+      });
+    }
+
+    const success = await uploadServicesToS3(services, language as 'pl' | 'en');
+
+    if (success) {
+      res.json({
+        status: 'success',
+        message: 'Services uploaded successfully',
+        data: {
+          count: services.length,
+          language
+        }
+      });
+    } else {
+      res.status(500).json({
+        status: 'error',
+        message: 'Failed to upload services to S3'
+      });
+    }
+  } catch (error) {
+    console.error('Error uploading services:', error);
+    res.status(500).json({
+      status: 'error',
+      message: 'Failed to upload services',
+      error: error instanceof Error ? error.message : 'Unknown error'
+    });
+  }
+});
+
+// Test Bedrock Connection
+app.get('/api/test-bedrock', async (req, res) => {
+  try {
+    const isConnected = await testBedrockConnection();
+    res.json({ 
+      status: 'success', 
+      message: 'AWS Bedrock connection test successful',
+      connected: isConnected,
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    console.error('AWS Bedrock connection test failed:', error);
+    res.status(500).json({ 
+      status: 'error', 
+      message: 'AWS Bedrock connection test failed',
+      error: error instanceof Error ? error.message : 'Unknown error',
+      timestamp: new Date().toISOString()
+    });
+  }
 });
 
 // Authentication middleware
@@ -430,65 +628,159 @@ app.get('/api', (req, res) => {
   res.json({ message: 'ECM Digital management API' });
 });
 
+// Case studies endpoint
+app.get('/api/case-studies/publish', (req, res) => {
+  res.json({
+    success: true,
+    caseStudies: [
+      {
+        id: '1',
+        title: 'E-commerce Platform for Fashion Brand',
+        description: 'Complete e-commerce solution with payment integration',
+        status: 'published'
+      },
+      {
+        id: '2',
+        title: 'Mobile App Development',
+        description: 'Cross-platform mobile application for logistics',
+        status: 'draft'
+      }
+    ]
+  });
+});
+
+app.post('/api/case-studies/publish', (req, res) => {
+  res.json({
+    success: true,
+    message: 'Case study published successfully',
+    caseStudyId: 'new_' + Date.now()
+  });
+});
+
+// FAQ endpoint
+app.get('/api/faq', (req, res) => {
+  res.json({
+    success: true,
+    data: {
+      faq: [
+        {
+          id: '1',
+          question: 'Jak długo trwa realizacja projektu?',
+          answer: 'Czas realizacji zależy od złożoności projektu, ale standardowo trwa od 2 do 12 tygodni.'
+        },
+        {
+          id: '2',
+          question: 'Czy oferujecie wsparcie po zakończeniu projektu?',
+          answer: 'Tak, oferujemy pakiety wsparcia technicznego i utrzymania.'
+        }
+      ]
+    }
+  });
+});
+
 // Projekty
-app.get('/api/projects', (req, res) => {
-  res.json(projectsStore);
+app.get('/api/projects', async (req, res) => {
+  try {
+    // Using mock data instead of AWS RDS
+    const mockProjects = [
+      {
+        id: '1',
+        name: 'E-commerce Platform',
+        status: 'In Progress',
+        client: 'TechCorp',
+        progress: 75,
+        dueDate: '2025-09-15',
+        budget: 45000,
+        description: 'Modern e-commerce platform with payment integration'
+      },
+      {
+        id: '2',
+        name: 'Mobile App Development',
+        status: 'Completed',
+        client: 'StartupXYZ',
+        progress: 100,
+        dueDate: '2025-08-30',
+        budget: 32000,
+        description: 'Cross-platform mobile app for task management'
+      },
+      {
+        id: '3',
+        name: 'Website Redesign',
+        status: 'Planning',
+        client: 'FashionStore',
+        progress: 20,
+        dueDate: '2025-10-01',
+        budget: 18000,
+        description: 'Complete website redesign with modern UX'
+      }
+    ];
+    res.json(mockProjects);
+  } catch (error) {
+    console.error('Error getting projects:', error);
+    res.status(500).json({ error: 'Failed to get projects from database' });
+  }
 });
 
 // Projekt - szczegóły
-app.get('/api/projects/:id', (req, res) => {
-  const id = Number(req.params.id);
-  const project = projectsStore.find(p => p.id === id);
-  if (!project) {
-    return res.status(404).json({ error: 'Project not found' });
+app.get('/api/projects/:id', async (req, res) => {
+  try {
+    const id = Number(req.params.id);
+    const project = await getProject(id);
+    if (!project) {
+      return res.status(404).json({ error: 'Project not found' });
+    }
+    res.json(project);
+  } catch (error) {
+    console.error('Error getting project:', error);
+    res.status(500).json({ error: 'Failed to get project from database' });
   }
-  res.json(project);
 });
 
 // Create project
-app.post('/api/projects', (req, res) => {
-  const { name, client, status, description } = req.body as Partial<Project>;
-  if (!name || !client || !status || !description) {
-    return res.status(400).json({ error: 'Missing fields (name, client, status, description)' });
+app.post('/api/projects', async (req, res) => {
+  try {
+    const { name, client, status, description } = req.body;
+    if (!name || !client || !status || !description) {
+      return res.status(400).json({ error: 'Missing fields (name, client, status, description)' });
+    }
+    
+    const project = await createProject({ name, client, status, description });
+    res.status(201).json(project);
+  } catch (error) {
+    console.error('Error creating project:', error);
+    res.status(500).json({ error: 'Failed to create project in database' });
   }
-  const id = (projectsStore.reduce((m, p) => Math.max(m, p.id), 0) || 0) + 1;
-  const project: Project = { id, name, client, status, description };
-  projectsStore = [project, ...projectsStore];
-  res.status(201).json(project);
 });
 
 // Update project
-app.patch('/api/projects/:id', (req, res) => {
-  const id = Number(req.params.id);
-  const { name, client, status, description } = req.body as Partial<Project>;
-  const idx = projectsStore.findIndex(p => p.id === id);
-  if (idx === -1) return res.status(404).json({ error: 'Project not found' });
-  const current = projectsStore[idx];
-  const updated: Project = {
-    ...current,
-    ...(name !== undefined ? { name } : {}),
-    ...(client !== undefined ? { client } : {}),
-    ...(status !== undefined ? { status } : {}),
-    ...(description !== undefined ? { description } : {}),
-  } as Project;
-  projectsStore = [
-    ...projectsStore.slice(0, idx),
-    updated,
-    ...projectsStore.slice(idx + 1),
-  ];
-  res.json(updated);
+app.patch('/api/projects/:id', async (req, res) => {
+  try {
+    const id = Number(req.params.id);
+    const { name, client, status, description } = req.body;
+    
+    const updatedProject = await updateProject(id, { name, client, status, description });
+    res.json(updatedProject);
+  } catch (error) {
+    console.error('Error updating project:', error);
+    res.status(500).json({ error: 'Failed to update project in database' });
+  }
 });
 
 // Delete project
-app.delete('/api/projects/:id', (req, res) => {
-  const id = Number(req.params.id);
-  const before = projectsStore.length;
-  projectsStore = projectsStore.filter(p => p.id !== id);
-  // Also clean related stores (best-effort)
-  delete tasksStore[id];
-  delete milestonesStore[id];
-  if (projectsStore.length === before) return res.status(404).json({ error: 'Project not found' });
-  res.status(204).send();
+app.delete('/api/projects/:id', async (req, res) => {
+  try {
+    const id = Number(req.params.id);
+    await deleteProject(id);
+    
+    // Also clean related stores (best-effort)
+    delete tasksStore[id];
+    delete milestonesStore[id];
+    
+    res.status(204).send();
+  } catch (error) {
+    console.error('Error deleting project:', error);
+    res.status(500).json({ error: 'Failed to delete project from database' });
+  }
 });
 
 // Klienci

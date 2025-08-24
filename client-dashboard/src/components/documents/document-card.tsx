@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import { Document } from '@/types/database'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
@@ -22,7 +21,6 @@ import {
 } from 'lucide-react'
 import { format } from 'date-fns'
 import { pl } from 'date-fns/locale'
-import { formatFileSize, getFileUrl, STORAGE_BUCKETS } from '@/lib/supabase/storage'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -30,18 +28,28 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 
+interface Document {
+  id: string
+  name: string
+  mime_type: string
+  size: number
+  tags: string[]
+  created_at: string
+  updated_at: string
+  project_id: string
+  url?: string
+}
+
 interface DocumentCardProps {
   document: Document
-  onDelete?: (document: Document) => void
-  onUpdate?: (document: Document, updates: { name?: string; tags?: string[] }) => void
-  onView?: (document: Document) => void
+  onDelete?: (id: string) => void
+  onUpdate?: (id: string, updates: Partial<Document>) => void
 }
 
 export function DocumentCard({ 
   document, 
   onDelete, 
-  onUpdate, 
-  onView 
+  onUpdate
 }: DocumentCardProps) {
   const [isEditing, setIsEditing] = useState(false)
   const [editName, setEditName] = useState(document.name)
@@ -61,17 +69,22 @@ export function DocumentCard({
     }
   }
 
+  const formatFileSize = (bytes: number) => {
+    if (bytes === 0) return '0 Bytes'
+    const k = 1024
+    const sizes = ['Bytes', 'KB', 'MB', 'GB']
+    const i = Math.floor(Math.log(bytes) / Math.log(k))
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i]
+  }
+
   const handleDownload = () => {
-    const url = getFileUrl(STORAGE_BUCKETS.DOCUMENTS, document.file_path)
-    window.open(url, '_blank')
+    // TODO: Implement AWS S3 download
+    console.log('Download document:', document.name)
   }
 
   const handleView = () => {
-    if (onView) {
-      onView(document)
-    } else {
-      handleDownload()
-    }
+    // TODO: Implement document viewer
+    console.log('View document:', document.name)
   }
 
   const handleSaveEdit = () => {
@@ -81,7 +94,7 @@ export function DocumentCard({
         .map(tag => tag.trim())
         .filter(tag => tag.length > 0)
       
-      onUpdate(document, {
+      onUpdate(document.id, {
         name: editName.trim(),
         tags: tags.length > 0 ? tags : []
       })
@@ -98,156 +111,149 @@ export function DocumentCard({
   const isImage = document.mime_type?.startsWith('image/')
 
   return (
-    <Card className="group hover:shadow-md transition-shadow duration-200">
-      <CardContent className="p-4">
-        <div className="flex items-start space-x-3">
-          {/* File Icon/Preview */}
-          <div className="flex-shrink-0">
-            {isImage ? (
-              <div className="relative">
-                <img
-                  src={getFileUrl(STORAGE_BUCKETS.DOCUMENTS, document.file_path)}
-                  alt={document.name}
-                  className="h-12 w-12 object-cover rounded-lg cursor-pointer"
-                  onClick={handleView}
-                />
-              </div>
-            ) : (
-              <div className="flex items-center justify-center h-12 w-12 bg-gray-100 rounded-lg">
-                {getFileIcon()}
-              </div>
-            )}
-          </div>
-
-          {/* Document Info */}
+    <Card className="group relative overflow-hidden border-0 bg-gradient-to-br from-white to-slate-50 hover:from-white hover:to-blue-50 transition-all duration-300 hover:scale-105 hover:shadow-xl border border-slate-200/50">
+      {/* Shine effect */}
+      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+      
+      <CardContent className="p-6 relative z-10">
+        {/* Header */}
+        <div className="flex items-start justify-between mb-4">
           <div className="flex-1 min-w-0">
             {isEditing ? (
-              <div className="space-y-2">
-                <Input
-                  value={editName}
-                  onChange={(e) => setEditName(e.target.value)}
-                  className="text-sm"
-                  placeholder="Nazwa dokumentu"
-                />
-                <Input
-                  value={editTags}
-                  onChange={(e) => setEditTags(e.target.value)}
-                  className="text-sm"
-                  placeholder="Tagi (oddzielone przecinkami)"
-                />
-                <div className="flex space-x-2">
-                  <Button size="sm" onClick={handleSaveEdit}>
-                    <Check className="h-3 w-3" />
-                  </Button>
-                  <Button size="sm" variant="outline" onClick={handleCancelEdit}>
-                    <X className="h-3 w-3" />
-                  </Button>
-                </div>
-              </div>
+              <Input
+                value={editName}
+                onChange={(e) => setEditName(e.target.value)}
+                className="text-sm font-semibold text-slate-900 mb-2"
+                placeholder="Nazwa dokumentu"
+              />
             ) : (
-              <>
-                <h4 
-                  className="font-medium text-sm text-gray-900 truncate cursor-pointer hover:text-blue-600"
-                  onClick={handleView}
-                  title={document.name}
-                >
-                  {document.name}
-                </h4>
-                
-                <div className="flex items-center space-x-2 mt-1">
-                  <span className="text-xs text-gray-500">
-                    {document.file_size && formatFileSize(document.file_size)}
-                  </span>
-                  <span className="text-xs text-gray-400">•</span>
-                  <span className="text-xs text-gray-500">
-                    {format(new Date(document.created_at), 'dd MMM yyyy', { locale: pl })}
-                  </span>
-                </div>
-
-                {/* Tags */}
-                {document.tags && document.tags.length > 0 && (
-                  <div className="flex flex-wrap gap-1 mt-2">
-                    {document.tags.slice(0, 3).map((tag, index) => (
-                      <Badge key={index} variant="secondary" className="text-xs">
-                        {tag}
-                      </Badge>
-                    ))}
-                    {document.tags.length > 3 && (
-                      <Badge variant="secondary" className="text-xs">
-                        +{document.tags.length - 3}
-                      </Badge>
-                    )}
-                  </div>
-                )}
-
-                {/* Uploader Info */}
-                <div className="flex items-center justify-between mt-2">
-                  <span className="text-xs text-gray-500">
-                    {document.uploader?.contact_person || 'Nieznany użytkownik'}
-                  </span>
-                  
-                  {/* Actions */}
-                  <div className="flex items-center space-x-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <Button
-                      size="sm"
-                      variant="ghost"
-                      onClick={handleView}
-                      className="h-8 w-8 p-0"
-                    >
-                      <Eye className="h-3 w-3" />
-                    </Button>
-                    
-                    <Button
-                      size="sm"
-                      variant="ghost"
-                      onClick={handleDownload}
-                      className="h-8 w-8 p-0"
-                    >
-                      <Download className="h-3 w-3" />
-                    </Button>
-
-                    <DropdownMenu>
-                      <DropdownMenuTrigger asChild>
-                        <Button
-                          size="sm"
-                          variant="ghost"
-                          className="h-8 w-8 p-0"
-                        >
-                          <MoreVertical className="h-3 w-3" />
-                        </Button>
-                      </DropdownMenuTrigger>
-                      <DropdownMenuContent align="end">
-                        <DropdownMenuItem onClick={handleView}>
-                          <ExternalLink className="h-4 w-4 mr-2" />
-                          Otwórz
-                        </DropdownMenuItem>
-                        <DropdownMenuItem onClick={handleDownload}>
-                          <Download className="h-4 w-4 mr-2" />
-                          Pobierz
-                        </DropdownMenuItem>
-                        {onUpdate && (
-                          <DropdownMenuItem onClick={() => setIsEditing(true)}>
-                            <Edit className="h-4 w-4 mr-2" />
-                            Edytuj
-                          </DropdownMenuItem>
-                        )}
-                        {onDelete && (
-                          <DropdownMenuItem 
-                            onClick={() => onDelete(document)}
-                            className="text-red-600"
-                          >
-                            <Trash2 className="h-4 w-4 mr-2" />
-                            Usuń
-                          </DropdownMenuItem>
-                        )}
-                      </DropdownMenuContent>
-                    </DropdownMenu>
-                  </div>
-                </div>
-              </>
+              <h3 className="text-sm font-semibold text-slate-900 mb-2 truncate group-hover:text-blue-700 transition-colors">
+                {document.name}
+              </h3>
             )}
+            
+            <div className="flex items-center space-x-2 text-xs text-slate-500">
+              <span>{formatFileSize(document.size)}</span>
+              <span>•</span>
+              <span>{format(new Date(document.created_at), 'dd MMM yyyy', { locale: pl })}</span>
+            </div>
+          </div>
+          
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button
+                variant="ghost"
+                size="sm"
+                className="h-8 w-8 p-0 opacity-0 group-hover:opacity-100 transition-opacity"
+              >
+                <MoreVertical className="h-4 w-4" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-48">
+              <DropdownMenuItem onClick={handleView}>
+                <Eye className="h-4 w-4 mr-2" />
+                Podgląd
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={handleDownload}>
+                <Download className="h-4 w-4 mr-2" />
+                Pobierz
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => setIsEditing(true)}>
+                <Edit className="h-4 w-4 mr-2" />
+                Edytuj
+              </DropdownMenuItem>
+              <DropdownMenuItem 
+                onClick={() => onDelete?.(document.id)}
+                className="text-red-600 focus:text-red-600"
+              >
+                <Trash2 className="h-4 w-4 mr-2" />
+                Usuń
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
+
+        {/* File Icon and Preview */}
+        <div className="flex items-center justify-center mb-4">
+          <div className="w-16 h-16 bg-gradient-to-br from-slate-100 to-slate-200 rounded-xl flex items-center justify-center group-hover:from-blue-100 group-hover:to-blue-200 transition-colors">
+            {getFileIcon()}
           </div>
         </div>
+
+        {/* Tags */}
+        <div className="mb-4">
+          {isEditing ? (
+            <Input
+              value={editTags}
+              onChange={(e) => setEditTags(e.target.value)}
+              className="text-xs"
+              placeholder="Tagi (oddzielone przecinkami)"
+            />
+          ) : (
+            <div className="flex flex-wrap gap-1">
+              {document.tags && document.tags.length > 0 ? (
+                document.tags.map((tag, index) => (
+                  <Badge
+                    key={index}
+                    variant="secondary"
+                    className="text-xs px-2 py-1 bg-slate-100 text-slate-700 border-slate-200"
+                  >
+                    {tag}
+                  </Badge>
+                ))
+              ) : (
+                <span className="text-xs text-slate-400">Brak tagów</span>
+              )}
+            </div>
+          )}
+        </div>
+
+        {/* Edit Actions */}
+        {isEditing && (
+          <div className="flex space-x-2">
+            <Button
+              size="sm"
+              onClick={handleSaveEdit}
+              className="flex-1 bg-green-600 hover:bg-green-700 text-white"
+            >
+              <Check className="h-4 w-4 mr-1" />
+              Zapisz
+            </Button>
+            <Button
+              size="sm"
+              variant="outline"
+              onClick={handleCancelEdit}
+              className="flex-1"
+            >
+              <X className="h-4 w-4 mr-1" />
+              Anuluj
+            </Button>
+          </div>
+        )}
+
+        {/* Quick Actions */}
+        {!isEditing && (
+          <div className="flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity">
+            <Button
+              size="sm"
+              variant="outline"
+              onClick={handleView}
+              className="flex-1 border-slate-200 hover:border-blue-300 hover:bg-blue-50"
+            >
+              <Eye className="h-4 w-4 mr-1" />
+              Podgląd
+            </Button>
+            <Button
+              size="sm"
+              variant="outline"
+              onClick={handleDownload}
+              className="flex-1 border-slate-200 hover:border-green-300 hover:bg-green-50"
+            >
+              <Download className="h-4 w-4 mr-1" />
+              Pobierz
+            </Button>
+          </div>
+        )}
       </CardContent>
     </Card>
   )

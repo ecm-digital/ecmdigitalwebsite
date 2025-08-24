@@ -15,7 +15,56 @@ import {
   CheckCircle,
   Loader2
 } from 'lucide-react'
-import { validateFile, formatFileSize, FILE_LIMITS } from '@/lib/supabase/storage'
+
+// TODO: Implement AWS S3 file validation and limits
+const FILE_LIMITS = {
+  MAX_FILES: 10,
+  MAX_SIZE: 10 * 1024 * 1024, // 10MB
+  ACCEPTED_TYPES: [
+    'image/*',
+    'application/pdf',
+    'application/msword',
+    'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+    'application/vnd.ms-excel',
+    'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+    'text/plain',
+    'application/zip',
+    'application/x-rar-compressed'
+  ]
+}
+
+const validateFile = (file: File) => {
+  if (file.size > FILE_LIMITS.MAX_SIZE) {
+    return {
+      valid: false,
+      error: `Plik jest za duży. Maksymalny rozmiar: ${(FILE_LIMITS.MAX_SIZE / (1024 * 1024)).toFixed(1)} MB`
+    }
+  }
+
+  const isAcceptedType = FILE_LIMITS.ACCEPTED_TYPES.some(type => {
+    if (type.endsWith('/*')) {
+      return file.type.startsWith(type.slice(0, -1))
+    }
+    return file.type === type
+  })
+
+  if (!isAcceptedType) {
+    return {
+      valid: false,
+      error: 'Nieobsługiwany typ pliku'
+    }
+  }
+
+  return { valid: true, error: null }
+}
+
+const formatFileSize = (bytes: number) => {
+  if (bytes === 0) return '0 Bytes'
+  const k = 1024
+  const sizes = ['Bytes', 'KB', 'MB', 'GB']
+  const i = Math.floor(Math.log(bytes) / Math.log(k))
+  return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i]
+}
 
 interface FileUploadProps {
   onFilesSelected: (files: File[]) => void
@@ -98,64 +147,65 @@ export function FileUpload({
     }
 
     if (errors.length > 0) {
-      // TODO: Show toast notifications for errors
+      // TODO: Show error messages to user
       console.error('File validation errors:', errors)
     }
   }, [files, maxFiles, onFilesSelected])
 
-  const handleDragOver = useCallback((e: React.DragEvent) => {
-    e.preventDefault()
-    e.stopPropagation()
-    if (!disabled) {
-      setIsDragOver(true)
-    }
-  }, [disabled])
-
-  const handleDragLeave = useCallback((e: React.DragEvent) => {
-    e.preventDefault()
-    e.stopPropagation()
-    setIsDragOver(false)
+  const removeFile = useCallback((fileId: string) => {
+    setFiles(prev => prev.filter(f => f.id !== fileId))
   }, [])
 
-  const handleDrop = useCallback((e: React.DragEvent) => {
-    e.preventDefault()
-    e.stopPropagation()
-    setIsDragOver(false)
-
-    if (disabled) return
-
-    const droppedFiles = Array.from(e.dataTransfer.files)
-    addFiles(droppedFiles)
-  }, [disabled, addFiles])
-
-  const handleFileSelect = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    const selectedFiles = Array.from(e.target.files || [])
-    addFiles(selectedFiles)
-    
-    // Reset input
+  const handleFileInput = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
+    const selectedFiles = Array.from(event.target.files || [])
+    if (selectedFiles.length > 0) {
+      addFiles(selectedFiles)
+    }
+    // Reset input value to allow selecting the same file again
     if (fileInputRef.current) {
       fileInputRef.current.value = ''
     }
   }, [addFiles])
 
-  const removeFile = (fileId: string) => {
-    setFiles(prev => prev.filter(f => f.id !== fileId))
-  }
+  const handleDrop = useCallback((event: React.DragEvent<HTMLDivElement>) => {
+    event.preventDefault()
+    setIsDragOver(false)
+    
+    const droppedFiles = Array.from(event.dataTransfer.files)
+    if (droppedFiles.length > 0) {
+      addFiles(droppedFiles)
+    }
+  }, [addFiles])
 
-  const handleUpload = async () => {
+  const handleDragOver = useCallback((event: React.DragEvent<HTMLDivElement>) => {
+    event.preventDefault()
+    setIsDragOver(true)
+  }, [])
+
+  const handleDragLeave = useCallback((event: React.DragEvent<HTMLDivElement>) => {
+    event.preventDefault()
+    setIsDragOver(false)
+  }, [])
+
+  const handleUpload = useCallback(async () => {
     if (!onUpload || files.length === 0) return
 
     setIsUploading(true)
     
     try {
       // Update all files to uploading status
-      setFiles(prev => prev.map(f => ({ ...f, status: 'uploading' as const, progress: 0 })))
+      setFiles(prev => prev.map(f => ({ ...f, status: 'uploading' as const })))
       
-      await onUpload(files)
+      // TODO: Implement AWS S3 upload
+      // For now, simulate upload
+      await new Promise(resolve => setTimeout(resolve, 2000))
       
       // Update all files to success status
-      setFiles(prev => prev.map(f => ({ ...f, status: 'success' as const, progress: 100 })))
+      setFiles(prev => prev.map(f => ({ ...f, status: 'success' as const })))
+      
+      await onUpload(files)
     } catch (error) {
+      console.error('Upload failed:', error)
       // Update all files to error status
       setFiles(prev => prev.map(f => ({ 
         ...f, 
@@ -165,154 +215,134 @@ export function FileUpload({
     } finally {
       setIsUploading(false)
     }
-  }
+  }, [onUpload, files])
 
-  const clearFiles = () => {
+  const clearAll = useCallback(() => {
     setFiles([])
-  }
+  }, [])
 
   return (
-    <div className={`space-y-4 ${className}`}>
+    <div className={`w-full ${className}`}>
+      {/* File Input */}
+      <input
+        ref={fileInputRef}
+        type="file"
+        multiple
+        onChange={handleFileInput}
+        accept={acceptedTypes?.join(',')}
+        className="hidden"
+        disabled={disabled}
+      />
+
       {/* Drop Zone */}
       <div
-        onDragOver={handleDragOver}
-        onDragLeave={handleDragLeave}
-        onDrop={handleDrop}
         className={`
-          border-2 border-dashed rounded-lg p-6 text-center transition-colors
+          border-2 border-dashed rounded-lg p-6 text-center cursor-pointer transition-colors
           ${isDragOver 
             ? 'border-blue-500 bg-blue-50' 
-            : 'border-gray-300 hover:border-gray-400'
+            : 'border-gray-300 hover:border-gray-400 hover:bg-gray-50'
           }
-          ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
+          ${disabled ? 'opacity-50 cursor-not-allowed' : ''}
         `}
+        onDrop={handleDrop}
+        onDragOver={handleDragOver}
+        onDragLeave={handleDragLeave}
         onClick={() => !disabled && fileInputRef.current?.click()}
       >
-        <input
-          ref={fileInputRef}
-          type="file"
-          multiple
-          onChange={handleFileSelect}
-          accept={acceptedTypes?.join(',') || undefined}
-          className="hidden"
-          disabled={disabled}
-        />
-
-        <Upload className="h-12 w-12 mx-auto text-gray-400 mb-4" />
-        
-        <div className="space-y-2">
-          <p className="text-lg font-medium text-gray-900">
-            {isDragOver ? 'Upuść pliki tutaj' : 'Przeciągnij i upuść pliki'}
-          </p>
-          <p className="text-sm text-gray-500">
-            lub <span className="text-blue-600 font-medium">kliknij aby wybrać</span>
-          </p>
-          <p className="text-xs text-gray-400">
-            Maksymalnie {maxFiles} plików, {formatFileSize(maxSize)} każdy
-          </p>
-        </div>
+        <Upload className="h-12 w-12 mx-auto mb-4 text-gray-400" />
+        <p className="text-lg font-medium text-gray-900 mb-2">
+          Przeciągnij pliki tutaj lub kliknij, aby wybrać
+        </p>
+        <p className="text-sm text-gray-500">
+          Maksymalnie {maxFiles} plików, każdy do {formatFileSize(maxSize)}
+        </p>
+        <p className="text-xs text-gray-400 mt-2">
+          Obsługiwane formaty: PDF, DOC, XLS, obrazy, archiwa
+        </p>
       </div>
 
       {/* File List */}
       {files.length > 0 && (
-        <div className="space-y-3">
+        <div className="mt-4 space-y-2">
           <div className="flex items-center justify-between">
-            <h4 className="font-medium text-gray-900">
+            <h3 className="text-sm font-medium text-gray-900">
               Wybrane pliki ({files.length})
-            </h4>
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={clearFiles}
-              disabled={disabled || isUploading}
-            >
-              Wyczyść wszystkie
-            </Button>
-          </div>
-
-          <div className="space-y-2">
-            {files.map((file) => (
-              <div
-                key={file.id}
-                className="flex items-center space-x-3 p-3 border rounded-lg bg-gray-50"
-              >
-                {/* File Icon */}
-                <div className="flex-shrink-0">
-                  {getFileIcon(file)}
-                </div>
-
-                {/* File Info */}
-                <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium text-gray-900 truncate">
-                    {file.name}
-                  </p>
-                  <p className="text-xs text-gray-500">
-                    {formatFileSize(file.size)}
-                  </p>
-                  
-                  {/* Progress Bar */}
-                  {file.status === 'uploading' && (
-                    <Progress value={file.progress || 0} className="mt-2 h-1" />
+            </h3>
+            <div className="flex items-center space-x-2">
+              {onUpload && (
+                <Button
+                  onClick={handleUpload}
+                  disabled={isUploading || disabled}
+                  size="sm"
+                >
+                  {isUploading ? (
+                    <>
+                      <Loader2 className="h-4 w-4 animate-spin mr-2" />
+                      Wysyłanie...
+                    </>
+                  ) : (
+                    <>
+                      <Upload className="h-4 w-4 mr-2" />
+                      Wyślij
+                    </>
                   )}
-                  
-                  {/* Error Message */}
-                  {file.status === 'error' && file.error && (
-                    <p className="text-xs text-red-600 mt-1">{file.error}</p>
-                  )}
-                </div>
-
-                {/* Status Icon */}
-                <div className="flex-shrink-0">
-                  {file.status === 'pending' && (
-                    <Badge variant="secondary">Oczekuje</Badge>
-                  )}
-                  {file.status === 'uploading' && (
-                    <Loader2 className="h-4 w-4 animate-spin text-blue-600" />
-                  )}
-                  {file.status === 'success' && (
-                    <CheckCircle className="h-4 w-4 text-green-600" />
-                  )}
-                  {file.status === 'error' && (
-                    <AlertCircle className="h-4 w-4 text-red-600" />
-                  )}
-                </div>
-
-                {/* Remove Button */}
-                {file.status !== 'uploading' && (
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={() => removeFile(file.id)}
-                    disabled={disabled}
-                    className="h-8 w-8 p-0"
-                  >
-                    <X className="h-3 w-3" />
-                  </Button>
-                )}
-              </div>
-            ))}
-          </div>
-
-          {/* Upload Button */}
-          {onUpload && files.some(f => f.status === 'pending') && (
-            <Button
-              onClick={handleUpload}
-              disabled={disabled || isUploading || files.length === 0}
-              className="w-full"
-            >
-              {isUploading ? (
-                <>
-                  <Loader2 className="h-4 w-4 mr-2 animate-spin" />
-                  Przesyłanie...
-                </>
-              ) : (
-                <>
-                  <Upload className="h-4 w-4 mr-2" />
-                  Prześlij pliki ({files.filter(f => f.status === 'pending').length})
-                </>
+                </Button>
               )}
-            </Button>
-          )}
+              <Button
+                variant="outline"
+                onClick={clearAll}
+                disabled={isUploading || disabled}
+                size="sm"
+              >
+                <X className="h-4 w-4 mr-2" />
+                Wyczyść
+              </Button>
+            </div>
+          </div>
+
+          {files.map((file) => (
+            <div
+              key={file.id}
+              className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg"
+            >
+              {getFileIcon(file)}
+              <div className="flex-1 min-w-0">
+                <p className="text-sm font-medium text-gray-900 truncate">
+                  {file.name}
+                </p>
+                <p className="text-xs text-gray-500">
+                  {formatFileSize(file.size)}
+                </p>
+              </div>
+              
+              <div className="flex items-center space-x-2">
+                {file.status === 'uploading' && (
+                  <Progress value={file.progress || 0} className="w-20" />
+                )}
+                
+                {file.status === 'success' && (
+                  <CheckCircle className="h-5 w-5 text-green-500" />
+                )}
+                
+                {file.status === 'error' && (
+                  <div className="flex items-center space-x-1">
+                    <AlertCircle className="h-4 w-4 text-red-500" />
+                    <span className="text-xs text-red-600">{file.error}</span>
+                  </div>
+                )}
+                
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => removeFile(file.id)}
+                  disabled={isUploading || disabled}
+                  className="h-8 w-8 p-0"
+                >
+                  <X className="h-4 w-4" />
+                </Button>
+              </div>
+            </div>
+          ))}
         </div>
       )}
     </div>

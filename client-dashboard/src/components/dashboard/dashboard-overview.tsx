@@ -1,13 +1,12 @@
 'use client'
 
 import { useProjects } from '@/hooks/use-projects'
-import { useAuth } from '@/hooks/use-auth'
+import { useAWSAuth } from '@/hooks/use-aws-auth'
 import { useUnreadMessages } from '@/hooks/use-unread-messages'
 import { useLanguage } from '@/hooks/use-language'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Progress } from '@/components/ui/progress'
-import { DemoDataBanner } from './demo-data-banner'
 import { 
   FolderOpen, 
   CheckCircle, 
@@ -17,16 +16,20 @@ import {
   MessageSquare,
   FileText,
   Zap,
-  LayoutDashboard
+  LayoutDashboard,
+  Plus,
+  ArrowRight,
+  Users,
+  Clock
 } from 'lucide-react'
 
 const statusColors = {
-  'discovery': 'bg-blue-100 text-blue-800',
-  'design': 'bg-purple-100 text-purple-800',
-  'development': 'bg-yellow-100 text-yellow-800',
-  'testing': 'bg-orange-100 text-orange-800',
-  'completed': 'bg-green-100 text-green-800',
-  'on-hold': 'bg-gray-100 text-gray-800',
+  'discovery': 'bg-blue-100 text-blue-800 border-blue-200',
+  'design': 'bg-purple-100 text-purple-800 border-purple-200',
+  'development': 'bg-yellow-100 text-yellow-800 border-yellow-200',
+  'testing': 'bg-orange-100 text-orange-800 border-orange-200',
+  'completed': 'bg-green-100 text-green-800 border-green-200',
+  'on-hold': 'bg-gray-100 text-gray-800 border-gray-200',
 }
 
 const statusLabels = {
@@ -40,7 +43,7 @@ const statusLabels = {
 
 export function DashboardOverview() {
   const { projects, loading } = useProjects()
-  const { profile } = useAuth()
+  const { user } = useAWSAuth()
   const unreadCount = useUnreadMessages()
   const { t } = useLanguage()
 
@@ -55,12 +58,12 @@ export function DashboardOverview() {
 
   if (loading) {
     return (
-      <div className="space-y-6">
+      <div className="space-y-8">
         <div className="animate-pulse">
-          <div className="h-8 bg-gray-200 rounded w-1/3 mb-4"></div>
+          <div className="h-12 bg-gray-200 rounded-xl w-1/3 mb-6"></div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[...Array(4)].map((_, i) => (
-              <div key={i} className="h-32 bg-gray-200 rounded"></div>
+              <div key={i} className="h-32 bg-gray-200 rounded-xl"></div>
             ))}
           </div>
         </div>
@@ -70,185 +73,256 @@ export function DashboardOverview() {
 
   return (
     <div className="space-y-8">
-      {/* Demo Data Banner */}
-      <DemoDataBanner />
-
-      {/* Welcome Header */}
-      <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl p-8 text-white">
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-3xl font-bold mb-2">
-              {t('dashboard.welcome')}, {profile?.contact_person || 'User'}! 👋
-            </h1>
-            <p className="text-blue-100 text-lg">
-              {t('dashboard.overview')}
-            </p>
-          </div>
-          <div className="hidden md:block">
-            <div className="w-24 h-24 bg-white/10 rounded-full flex items-center justify-center backdrop-blur-sm">
-              <LayoutDashboard className="h-12 w-12 text-white" />
+      {/* Hero Section */}
+      <div className="relative overflow-hidden bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 rounded-3xl p-8 lg:p-12">
+        <div className="absolute inset-0 bg-black/10"></div>
+        <div className="relative z-10">
+          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between">
+            <div className="flex-1">
+              <div className="inline-flex items-center px-3 py-1 rounded-full bg-white/20 backdrop-blur-sm text-white text-sm font-medium mb-4">
+                <Users className="h-4 w-4 mr-2" />
+                Panel Klienta
+              </div>
+              <h1 className="text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight">
+                {t('dashboard.welcome')}, {user?.name || user?.email || 'User'}! 👋
+              </h1>
+              <p className="text-xl text-blue-100 mb-6 max-w-2xl">
+                {t('dashboard.overview')}
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <div className="flex items-center text-white/80 text-sm">
+                  <Clock className="h-4 w-4 mr-2" />
+                  Ostatnia aktualizacja: {new Date().toLocaleDateString('pl-PL')}
+                </div>
+              </div>
+            </div>
+            <div className="hidden lg:block mt-8 lg:mt-0">
+              <div className="w-32 h-32 bg-white/10 rounded-3xl flex items-center justify-center backdrop-blur-sm border border-white/20">
+                <LayoutDashboard className="h-16 w-16 text-white" />
+              </div>
             </div>
           </div>
         </div>
+        
+        {/* Decorative elements */}
+        <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-32 translate-x-32"></div>
+        <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full translate-y-24 -translate-x-24"></div>
       </div>
 
-      {/* Stats Cards */}
+      {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <Card className="bg-white/80 backdrop-blur-sm border-0 shadow-lg hover:shadow-xl transition-all duration-300">
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium text-slate-600">{t('dashboard.stats.activeProjects')}</CardTitle>
-            <div className="p-2 bg-blue-100 rounded-lg">
-              <FolderOpen className="h-4 w-4 text-blue-600" />
+        <Card className="group relative overflow-hidden border-0 bg-gradient-to-br from-blue-50 to-blue-100 hover:from-blue-100 hover:to-blue-200 transition-all duration-300 hover:scale-105 hover:shadow-xl">
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3">
+            <CardTitle className="text-sm font-semibold text-blue-900">Aktywne Projekty</CardTitle>
+            <div className="p-2.5 bg-blue-200 rounded-xl group-hover:bg-blue-300 transition-colors">
+              <FolderOpen className="h-5 w-5 text-blue-700" />
             </div>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-slate-900">{activeProjects.length}</div>
-            <p className="text-xs text-slate-500 mt-1">
-              {t('dashboard.stats.allProjects')} {projects.length}
+            <div className="text-3xl font-bold text-blue-900 mb-1">{activeProjects.length}</div>
+            <p className="text-sm text-blue-700 font-medium">
+              {t('dashboard.stats.activeProjectsDesc')}
             </p>
           </CardContent>
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
         </Card>
 
-        <Card className="bg-white/80 backdrop-blur-sm border-0 shadow-lg hover:shadow-xl transition-all duration-300">
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium text-slate-600">{t('dashboard.stats.completed')}</CardTitle>
-            <div className="p-2 bg-green-100 rounded-lg">
-              <CheckCircle className="h-4 w-4 text-green-600" />
+        <Card className="group relative overflow-hidden border-0 bg-gradient-to-br from-green-50 to-green-100 hover:from-green-100 hover:to-green-200 transition-all duration-300 hover:scale-105 hover:shadow-xl">
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3">
+            <CardTitle className="text-sm font-semibold text-green-900">Ukończone Projekty</CardTitle>
+            <div className="p-2.5 bg-green-200 rounded-xl group-hover:bg-green-300 transition-colors">
+              <CheckCircle className="h-5 w-5 text-green-700" />
             </div>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-slate-900">{completedProjects.length}</div>
-            <p className="text-xs text-slate-500 mt-1">
-              {t('dashboard.stats.completedProjects')}
+            <div className="text-3xl font-bold text-green-900 mb-1">{completedProjects.length}</div>
+            <p className="text-sm text-green-700 font-medium">
+              {t('dashboard.stats.completedProjectsDesc')}
             </p>
           </CardContent>
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
         </Card>
 
-        <Card className="bg-white/80 backdrop-blur-sm border-0 shadow-lg hover:shadow-xl transition-all duration-300">
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium text-slate-600">{t('dashboard.stats.budget')}</CardTitle>
-            <div className="p-2 bg-orange-100 rounded-lg">
-              <DollarSign className="h-4 w-4 text-orange-600" />
+        <Card className="group relative overflow-hidden border-0 bg-gradient-to-br from-purple-50 to-purple-100 hover:from-purple-100 hover:to-purple-200 transition-all duration-300 hover:scale-105 hover:shadow-xl">
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3">
+            <CardTitle className="text-sm font-semibold text-purple-900">Całkowity Budżet</CardTitle>
+            <div className="p-2.5 bg-purple-200 rounded-xl group-hover:bg-purple-300 transition-colors">
+              <DollarSign className="h-5 w-5 text-purple-700" />
             </div>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-slate-900">
-              {new Intl.NumberFormat('pl-PL', {
-                style: 'currency',
-                currency: 'PLN'
-              }).format(totalBudget)}
-            </div>
-            <Progress value={budgetProgress} className="mt-2 h-2" />
-            <p className="text-xs text-slate-500 mt-1">
-              {budgetProgress.toFixed(1)}% {t('dashboard.stats.utilized')}
+            <div className="text-3xl font-bold text-purple-900 mb-1">${totalBudget.toLocaleString()}</div>
+            <p className="text-sm text-purple-700 font-medium">
+              {t('dashboard.stats.totalBudgetDesc')}
             </p>
           </CardContent>
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
         </Card>
 
-        <Card className="bg-white/80 backdrop-blur-sm border-0 shadow-lg hover:shadow-xl transition-all duration-300">
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium text-slate-600">{t('dashboard.stats.averageProgress')}</CardTitle>
-            <div className="p-2 bg-purple-100 rounded-lg">
-              <TrendingUp className="h-4 w-4 text-purple-600" />
+        <Card className="group relative overflow-hidden border-0 bg-gradient-to-br from-orange-50 to-orange-100 hover:from-orange-100 hover:to-orange-200 transition-all duration-300 hover:scale-105 hover:shadow-xl">
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3">
+            <CardTitle className="text-sm font-semibold text-orange-900">Nieprzeczytane Wiadomości</CardTitle>
+            <div className="p-2.5 bg-orange-200 rounded-xl group-hover:bg-orange-300 transition-colors">
+              <MessageSquare className="h-5 w-5 text-orange-700" />
             </div>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-slate-900">
-              {activeProjects.length > 0 ? '67%' : '0%'}
-            </div>
-            <p className="text-xs text-slate-500 mt-1">
-              {t('dashboard.stats.allProjectsProgress')}
+            <div className="text-3xl font-bold text-orange-900 mb-1">{unreadCount}</div>
+            <p className="text-sm text-orange-700 font-medium">
+              {t('dashboard.stats.unreadMessagesDesc')}
             </p>
           </CardContent>
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
         </Card>
       </div>
 
-      {/* Recent Projects and Quick Actions */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <Card className="bg-white/80 backdrop-blur-sm border-0 shadow-lg">
+      {/* Budget Progress */}
+      {totalBudget > 0 && (
+        <Card className="border-0 bg-gradient-to-r from-slate-50 to-slate-100 shadow-lg">
           <CardHeader>
-            <CardTitle className="flex items-center space-x-2">
-              <FolderOpen className="h-5 w-5 text-blue-600" />
-              <span>{t('dashboard.sections.recentProjects')}</span>
+            <CardTitle className="text-xl font-bold text-slate-800 flex items-center">
+              <TrendingUp className="h-5 w-5 mr-2 text-blue-600" />
+              Postęp Budżetu
             </CardTitle>
-            <CardDescription>
-              {t('dashboard.sections.recentProjectsDesc')}
+            <CardDescription className="text-slate-600 text-base">
+              Śledź wykorzystanie budżetu w projektach
             </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            <div className="flex justify-between text-sm font-medium text-slate-700">
+              <span className="flex items-center">
+                <div className="w-3 h-3 bg-blue-500 rounded-full mr-2"></div>
+                Wykorzystane: ${usedBudget.toLocaleString()}
+              </span>
+              <span className="flex items-center">
+                <div className="w-3 h-3 bg-slate-300 rounded-full mr-2"></div>
+                Całkowity: ${totalBudget.toLocaleString()}
+              </span>
+            </div>
+            <div className="relative">
+              <Progress value={budgetProgress} className="h-4 bg-slate-200" />
+              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 to-blue-600 opacity-20"></div>
+            </div>
+            <div className="text-right text-lg font-bold text-slate-800">
+              {budgetProgress.toFixed(1)}% wykorzystane
+            </div>
+          </CardContent>
+        </Card>
+      )}
+
+      {/* Recent Projects */}
+      {recentProjects.length > 0 && (
+        <Card className="border-0 bg-gradient-to-r from-slate-50 to-slate-100 shadow-lg">
+          <CardHeader className="flex flex-row items-center justify-between">
+            <div>
+              <CardTitle className="text-xl font-bold text-slate-800 flex items-center">
+                <FolderOpen className="h-5 w-5 mr-2 text-blue-600" />
+                Ostatnie Projekty
+              </CardTitle>
+              <CardDescription className="text-slate-600 text-base">
+                Twoje najnowsze projekty i ich status
+              </CardDescription>
+            </div>
+            <button className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors flex items-center">
+              <Plus className="h-4 w-4 mr-2" />
+              Wszystkie projekty
+            </button>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
-              {recentProjects.length > 0 ? (
-                recentProjects.map((project) => (
-                  <div key={project.id} className="flex items-center justify-between p-4 bg-slate-50/50 rounded-xl border border-slate-100 hover:bg-slate-50 transition-colors">
-                    <div className="flex-1">
-                      <h4 className="font-semibold text-slate-900">{project.name}</h4>
-                      <p className="text-sm text-slate-500 capitalize">{project.type}</p>
+              {recentProjects.map((project) => (
+                <div key={project.id} className="group p-4 bg-white rounded-xl border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all duration-300">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-4">
+                      <div className="w-12 h-12 bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl flex items-center justify-center group-hover:from-blue-200 group-hover:to-blue-300 transition-colors">
+                        <FolderOpen className="h-6 w-6 text-blue-700" />
+                      </div>
+                      <div>
+                        <h4 className="font-semibold text-slate-900 text-lg group-hover:text-blue-700 transition-colors">{project.name}</h4>
+                        <p className="text-slate-600 text-sm">{project.description}</p>
+                      </div>
                     </div>
-                    <Badge 
-                      variant="secondary" 
-                      className={`${statusColors[project.status]} border-0 font-medium`}
-                    >
-                      {statusLabels[project.status]}
-                    </Badge>
+                    <div className="flex items-center space-x-4">
+                      <Badge className={`${statusColors[project.status as keyof typeof statusColors]} border font-medium`}>
+                        {statusLabels[project.status as keyof typeof statusLabels]}
+                      </Badge>
+                      <div className="text-right">
+                        <div className="text-lg font-bold text-slate-900">${project.budget_total?.toLocaleString() || '0'}</div>
+                        <div className="text-xs text-slate-500">budżet</div>
+                      </div>
+                      <ArrowRight className="h-5 w-5 text-slate-400 group-hover:text-blue-600 transition-colors" />
+                    </div>
                   </div>
-                ))
-              ) : (
-                <div className="text-center py-12 text-slate-500">
-                  <FolderOpen className="h-16 w-16 mx-auto mb-4 text-slate-300" />
-                  <p className="text-lg font-medium">Brak projektów</p>
-                  <p className="text-sm">Twoje projekty pojawią się tutaj</p>
                 </div>
-              )}
+              ))}
             </div>
           </CardContent>
         </Card>
+      )}
 
-        <Card className="bg-white/80 backdrop-blur-sm border-0 shadow-lg">
-          <CardHeader>
-            <CardTitle className="flex items-center space-x-2">
-              <Zap className="h-5 w-5 text-yellow-600" />
-              <span>{t('dashboard.sections.quickActions')}</span>
-            </CardTitle>
-            <CardDescription>
-              {t('dashboard.sections.quickActionsDesc')}
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-2 gap-4">
-              <a 
-                href="/dashboard/messages"
-                className="group flex flex-col items-center p-6 bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl hover:from-blue-100 hover:to-blue-200 transition-all duration-300 transform hover:scale-105 relative"
-              >
-                <MessageSquare className="h-8 w-8 text-blue-600 mb-3 group-hover:scale-110 transition-transform" />
-                <span className="text-sm font-semibold text-slate-900">{t('dashboard.actions.messages')}</span>
-                {unreadCount > 0 && (
-                  <Badge className="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-2 py-1">
-                    {unreadCount > 99 ? '99+' : unreadCount}
-                  </Badge>
-                )}
-              </a>
-              
-              <a 
-                href="/dashboard/documents"
-                className="group flex flex-col items-center p-6 bg-gradient-to-br from-green-50 to-green-100 rounded-xl hover:from-green-100 hover:to-green-200 transition-all duration-300 transform hover:scale-105"
-              >
-                <FileText className="h-8 w-8 text-green-600 mb-3 group-hover:scale-110 transition-transform" />
-                <span className="text-sm font-semibold text-slate-900">{t('dashboard.actions.documents')}</span>
-              </a>
-              
-              <button className="group flex flex-col items-center p-6 bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl hover:from-purple-100 hover:to-purple-200 transition-all duration-300 transform hover:scale-105">
-                <Calendar className="h-8 w-8 text-purple-600 mb-3 group-hover:scale-110 transition-transform" />
-                <span className="text-sm font-semibold text-slate-900">{t('dashboard.actions.calendar')}</span>
-              </button>
-              
-              <button className="group flex flex-col items-center p-6 bg-gradient-to-br from-orange-50 to-orange-100 rounded-xl hover:from-orange-100 hover:to-orange-200 transition-all duration-300 transform hover:scale-105">
-                <DollarSign className="h-8 w-8 text-orange-600 mb-3 group-hover:scale-110 transition-transform" />
-                <span className="text-sm font-semibold text-slate-900">{t('dashboard.actions.invoices')}</span>
-              </button>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
+      {/* Quick Actions */}
+      <Card className="border-0 bg-gradient-to-r from-slate-50 to-slate-100 shadow-lg">
+        <CardHeader>
+          <CardTitle className="text-xl font-bold text-slate-800 flex items-center">
+            <Zap className="h-5 w-5 mr-2 text-yellow-600" />
+            Szybkie Akcje
+          </CardTitle>
+          <CardDescription className="text-slate-600 text-base">
+            Najczęściej używane funkcje
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <button className="group p-6 bg-gradient-to-br from-blue-50 to-blue-100 hover:from-blue-100 hover:to-blue-200 rounded-2xl text-left transition-all duration-300 hover:scale-105 hover:shadow-lg border border-blue-200 hover:border-blue-300">
+              <div className="flex items-center space-x-4">
+                <div className="p-3 bg-blue-200 rounded-xl group-hover:bg-blue-300 transition-colors">
+                  <Plus className="h-6 w-6 text-blue-700" />
+                </div>
+                <div>
+                  <h4 className="font-semibold text-blue-900 text-lg group-hover:text-blue-800 transition-colors">
+                    {t('dashboard.quickActions.newProject')}
+                  </h4>
+                  <p className="text-blue-700 text-sm font-medium">
+                    {t('dashboard.quickActions.newProjectDesc')}
+                  </p>
+                </div>
+              </div>
+            </button>
+
+            <button className="group p-6 bg-gradient-to-br from-green-50 to-green-100 hover:from-green-100 hover:to-green-200 rounded-2xl text-left transition-all duration-300 hover:scale-105 hover:shadow-lg border border-green-200 hover:border-green-300">
+              <div className="flex items-center space-x-4">
+                <div className="p-3 bg-green-200 rounded-xl group-hover:bg-green-300 transition-colors">
+                  <MessageSquare className="h-6 w-6 text-green-700" />
+                </div>
+                <div>
+                  <h4 className="font-semibold text-green-900 text-lg group-hover:text-green-800 transition-colors">
+                    {t('dashboard.quickActions.sendMessage')}
+                  </h4>
+                  <p className="text-green-700 text-sm font-medium">
+                    {t('dashboard.quickActions.sendMessageDesc')}
+                  </p>
+                </div>
+              </div>
+            </button>
+
+            <button className="group p-6 bg-gradient-to-br from-purple-50 to-purple-100 hover:from-purple-100 hover:to-purple-200 rounded-2xl text-left transition-all duration-300 hover:scale-105 hover:shadow-lg border border-purple-200 hover:border-purple-300">
+              <div className="flex items-center space-x-4">
+                <div className="p-3 bg-purple-200 rounded-xl group-hover:bg-purple-300 transition-colors">
+                  <FileText className="h-6 w-6 text-purple-700" />
+                </div>
+                <div>
+                  <h4 className="font-semibold text-purple-900 text-lg group-hover:text-purple-800 transition-colors">
+                    {t('dashboard.quickActions.uploadDocument')}
+                  </h4>
+                  <p className="text-purple-700 text-sm font-medium">
+                    {t('dashboard.quickActions.uploadDocumentDesc')}
+                  </p>
+                </div>
+              </div>
+            </button>
+          </div>
+        </CardContent>
+      </Card>
     </div>
   )
 }

@@ -165,3 +165,4 @@ Twój asystent jest teraz:
 - 🔒 **Bezpieczny** - dane chronione przez AWS
 
 **Zacznij już teraz - otwórz stronę i przetestuj!** 🎯
+

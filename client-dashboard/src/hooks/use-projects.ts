@@ -1,12 +1,12 @@
-import { useEffect } from 'react'
-import { supabase } from '@/lib/supabase/client'
-import { useProjectsStore } from '@/lib/stores/projects-store'
-import { useAuthStore } from '@/lib/stores/auth-store'
+import { useEffect, useState } from 'react'
+import { useAWSAuth } from '@/hooks/use-aws-auth'
 import { Project } from '@/types/database'
 
 export function useProjects() {
-  const { projects, selectedProject, loading, setProjects, setSelectedProject, setLoading, addProject, updateProject, removeProject } = useProjectsStore()
-  const { user } = useAuthStore()
+  const { user } = useAWSAuth()
+  const [projects, setProjects] = useState<Project[]>([])
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null)
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     if (user) {
@@ -19,19 +19,12 @@ export function useProjects() {
 
     setLoading(true)
     try {
-      const { data, error } = await supabase
-        .from('projects')
-        .select(`
-          *,
-          client:profiles(*)
-        `)
-        .eq('client_id', user.id)
-        .order('created_at', { ascending: false })
-
-      if (error) throw error
-      setProjects(data || [])
+      // TODO: Implement AWS DynamoDB query for projects
+      // For now, return empty array as placeholder
+      setProjects([])
     } catch (error) {
       console.error('Error fetching projects:', error)
+      setProjects([])
     } finally {
       setLoading(false)
     }
@@ -41,16 +34,9 @@ export function useProjects() {
     if (!user) return { data: null, error: new Error('User not authenticated') }
 
     try {
-      const { data, error } = await supabase
-        .from('projects')
-        .insert([{ ...projectData, client_id: user.id }])
-        .select()
-        .single()
-
-      if (error) throw error
-      
-      addProject(data)
-      return { data, error: null }
+      // TODO: Implement AWS DynamoDB create project
+      // For now, return error as placeholder
+      return { data: null, error: new Error('AWS integration not yet implemented') }
     } catch (error) {
       console.error('Error creating project:', error)
       return { data: null, error }
@@ -59,17 +45,9 @@ export function useProjects() {
 
   const updateProjectData = async (id: string, updates: Partial<Project>) => {
     try {
-      const { data, error } = await supabase
-        .from('projects')
-        .update(updates)
-        .eq('id', id)
-        .select()
-        .single()
-
-      if (error) throw error
-      
-      updateProject(id, data)
-      return { data, error: null }
+      // TODO: Implement AWS DynamoDB update project
+      // For now, return error as placeholder
+      return { data: null, error: new Error('AWS integration not yet implemented') }
     } catch (error) {
       console.error('Error updating project:', error)
       return { data: null, error }
@@ -78,15 +56,9 @@ export function useProjects() {
 
   const deleteProject = async (id: string) => {
     try {
-      const { error } = await supabase
-        .from('projects')
-        .delete()
-        .eq('id', id)
-
-      if (error) throw error
-      
-      removeProject(id)
-      return { error: null }
+      // TODO: Implement AWS DynamoDB delete project
+      // For now, return error as placeholder
+      return { error: new Error('AWS integration not yet implemented') }
     } catch (error) {
       console.error('Error deleting project:', error)
       return { error }
@@ -101,8 +73,8 @@ export function useProjects() {
     return projects.filter(p => p.status === status)
   }
 
-  const getProjectsByType = (type: Project['type']) => {
-    return projects.filter(p => p.type === type)
+  const getProjectsByPriority = (priority: Project['priority']) => {
+    return projects.filter(p => p.priority === priority)
   }
 
   return {
@@ -112,10 +84,10 @@ export function useProjects() {
     setSelectedProject,
     fetchProjects,
     createProject,
-    updateProject: updateProjectData,
+    updateProjectData,
     deleteProject,
     getProjectById,
     getProjectsByStatus,
-    getProjectsByType,
+    getProjectsByPriority,
   }
 }

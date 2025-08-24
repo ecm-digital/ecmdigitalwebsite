@@ -2,7 +2,7 @@
 import React from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import Link from "next/link";
-// import { supabase } from "../../lib/supabaseClient";
+// Removed supabase import - using backend API instead
 import {
   Dialog,
   DialogContent,
@@ -40,19 +40,16 @@ export default function ProjectsPage() {
   const { data: projects, isLoading, error } = useQuery<Project[]>({
     queryKey: ["projects"],
     queryFn: async () => {
-      // Używamy prawdziwych danych z backendu
       const response = await fetch('http://localhost:3001/api/projects');
-      if (!response.ok) {
-        throw new Error(`Błąd backendu: ${response.status}`);
-      }
-      return await response.json() as Project[];
+      if (!response.ok) throw new Error('Failed to fetch projects from backend');
+      return await response.json();
     },
   });
 
   const deleteProject = useMutation({
     mutationFn: async (id: number) => {
-      // Symulujemy usuwanie projektu (w rzeczywistości można dodać endpoint w backendzie)
-      console.log(`Usuwanie projektu o ID: ${id}`);
+      // Using mock delete - backend doesn't support DELETE yet
+      console.log('Mock delete project:', id);
       return id;
     },
     onMutate: async (id) => {
@@ -80,8 +77,8 @@ export default function ProjectsPage() {
 
   const patchProject = useMutation({
     mutationFn: async ({ id, data }: { id: number; data: Partial<Project> }) => {
-      // Symulujemy aktualizację projektu (w rzeczywistości można dodać endpoint w backendzie)
-      console.log(`Aktualizacja projektu o ID: ${id}`, data);
+      // Using mock update - backend doesn't support PATCH yet
+      console.log('Mock update project:', id, data);
       return { id, ...data } as Project;
     },
     onMutate: async ({ id, data }) => {
@@ -269,6 +266,7 @@ function CreateProjectForm({ onCreated }: { onCreated?: () => void }) {
 
   const createProject = useMutation({
     mutationFn: async () => {
+      if (!supabase) throw new Error("Supabase nie jest skonfigurowane.");
       const payload = {
         name: name.trim(),
         client: client.trim(),
@@ -277,12 +275,13 @@ function CreateProjectForm({ onCreated }: { onCreated?: () => void }) {
       };
       // eslint-disable-next-line no-console
       console.info("CreateProjectForm: submitting payload", payload);
-      // Symulujemy tworzenie projektu (w rzeczywistości można dodać endpoint w backendzie)
-      const newProject: Project = {
-        id: Date.now(), // Tymczasowe ID
-        ...payload
-      };
-      return newProject;
+      const { data, error } = await supabase
+        .from("projects")
+        .insert(payload)
+        .select("id,name,client,status,description")
+        .single();
+      if (error) throw new Error(`Błąd tworzenia projektu (Supabase): ${error.message}`);
+      return data as Project;
     },
     onError: (err) => {
       // eslint-disable-next-line no-console

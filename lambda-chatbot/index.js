@@ -196,3 +196,4 @@ function getCorsHeaders() {
         'Content-Type': 'application/json'
     };
 }
+

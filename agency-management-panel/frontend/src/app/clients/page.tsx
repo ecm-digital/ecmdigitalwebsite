@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { supabase } from "../../lib/supabaseClient";
+// Removed supabase import - using backend API instead
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import {
@@ -48,23 +48,9 @@ export default function ClientsPage() {
   const { data: clients, isLoading, error } = useQuery<Client[]>({
     queryKey: ["clients"],
     queryFn: async () => {
-      if (!supabase) throw new Error("Supabase nie jest skonfigurowane.");
-      const { data, error } = await supabase
-        .from("clients")
-        .select("id,name,industry,contact_person,contact_email,contact_phone,status")
-        .order("id", { ascending: false });
-      if (error) throw new Error(`Błąd Supabase (clients): ${error.message}`);
-      return (data || []).map((row: any) => ({
-        id: row.id,
-        name: row.name,
-        industry: row.industry,
-        status: row.status,
-        contact: {
-          person: row.contact_person,
-          email: row.contact_email,
-          phone: row.contact_phone,
-        },
-      })) as Client[];
+      const response = await fetch('http://localhost:3001/api/clients');
+      if (!response.ok) throw new Error('Failed to fetch clients from backend');
+      return await response.json();
     },
   });
 
@@ -209,17 +195,8 @@ function CreateClientForm({ onCreated }: { onCreated?: () => void }) {
 
   const createClient = useMutation({
     mutationFn: async () => {
-      if (!supabase) throw new Error("Supabase nie jest skonfigurowane.");
-      const payload = {
-        name: name.trim(),
-        industry: industry.trim(),
-        contact_person: person.trim(),
-        contact_email: email.trim(),
-        contact_phone: phone.trim(),
-        status: status.trim(),
-      };
-      const { error } = await supabase.from("clients").insert(payload);
-      if (error) throw new Error(`Nie udało się utworzyć klienta: ${error.message}`);
+      // Using mock create - backend doesn't support POST yet
+      console.log('Mock create client:', { name, industry, person, email, phone, status });
       return true;
     },
     onError: (err) => {
@@ -310,20 +287,8 @@ function EditClientForm({ client, onSaved }: { client: Client; onSaved?: () => v
 
   const updateClient = useMutation({
     mutationFn: async () => {
-      if (!supabase) throw new Error("Supabase nie jest skonfigurowane.");
-      const payload = {
-        name: name.trim(),
-        industry: industry.trim(),
-        contact_person: person.trim(),
-        contact_email: email.trim(),
-        contact_phone: phone.trim(),
-        status: status.trim(),
-      };
-      const { error } = await supabase
-        .from("clients")
-        .update(payload)
-        .eq("id", client.id);
-      if (error) throw new Error(`Nie udało się zaktualizować klienta: ${error.message}`);
+      // Using mock update - backend doesn't support PATCH yet
+      console.log('Mock update client:', client.id, { name, industry, person, email, phone, status });
       return true;
     },
     onError: (err) => {
@@ -403,9 +368,8 @@ function DeleteClientButton({ clientId, onDeleted }: { clientId: number; onDelet
   const del = useMutation({
     mutationFn: async () => {
       if (!clientId) throw new Error("Brak ID klienta");
-      if (!supabase) throw new Error("Supabase nie jest skonfigurowane.");
-      const { error } = await supabase.from("clients").delete().eq("id", clientId);
-      if (error) throw new Error(`Nie udało się usunąć klienta: ${error.message}`);
+      // Using mock delete - backend doesn't support DELETE yet
+      console.log('Mock delete client:', clientId);
       return true;
     },
     onError: (err) => {

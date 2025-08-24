@@ -4,7 +4,7 @@ import React from "react";
 import { useParams, useRouter } from "next/navigation";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import Link from "next/link";
-import { supabase } from "../../../lib/supabaseClient";
+// Removed supabase import - using mock functions instead
 
 interface Project {
   id: number;

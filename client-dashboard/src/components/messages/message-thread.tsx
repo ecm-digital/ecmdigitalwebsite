@@ -21,17 +21,15 @@ import { pl } from 'date-fns/locale'
 
 interface MessageThreadProps {
   projectId: string
-  projectName: string
 }
 
-export function MessageThread({ projectId, projectName }: MessageThreadProps) {
+export function MessageThread({ projectId }: MessageThreadProps) {
   const {
     messages,
     loading,
     sending,
     sendMessage,
-    markAsRead,
-    unreadCount
+    markAsRead
   } = useMessages(projectId)
 
   const [isChatbotMode, setIsChatbotMode] = useState(false)
@@ -46,7 +44,7 @@ export function MessageThread({ projectId, projectName }: MessageThreadProps) {
 
   // Mark messages as read when component mounts or messages change
   useEffect(() => {
-    if (messages.length > 0 && unreadCount > 0) {
+    if (messages.length > 0) {
       const unreadMessageIds = messages
         .filter(msg => !msg.read_at && msg.sender_id !== messages[0]?.sender_id)
         .map(msg => msg.id)
@@ -55,7 +53,7 @@ export function MessageThread({ projectId, projectName }: MessageThreadProps) {
         markAsRead(unreadMessageIds)
       }
     }
-  }, [messages, unreadCount, markAsRead])
+  }, [messages, markAsRead])
 
   // Group messages by date
   const groupedMessages = messages.reduce((groups, message) => {
@@ -98,146 +96,90 @@ export function MessageThread({ projectId, projectName }: MessageThreadProps) {
   return (
     <Card className="h-full flex flex-col">
       {/* Header */}
-      <CardHeader className="pb-3">
+      <CardHeader className="pb-3 border-b">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-3">
-            {isChatbotMode ? (
-              <Bot className="h-5 w-5 text-blue-600" />
-            ) : (
+            <div className="p-2 bg-blue-100 rounded-lg">
               <MessageSquare className="h-5 w-5 text-blue-600" />
-            )}
+            </div>
             <div>
-              <CardTitle className="text-lg">{projectName}</CardTitle>
-              <p className="text-sm text-gray-500 mt-1">
-                {isChatbotMode
-                  ? 'AI Asystent ECM Digital - pomoc i konsultacje'
-                  : 'Komunikacja z zespołem ECM Digital'
-                }
+              <CardTitle className="text-lg">Wiadomości projektu</CardTitle>
+              <p className="text-sm text-gray-500">
+                {messages.length} wiadomości
               </p>
             </div>
           </div>
-
+          
           <div className="flex items-center space-x-2">
-            {/* Mode Toggle Button */}
             <Button
-              variant="outline"
+              variant={isChatbotMode ? "default" : "outline"}
               size="sm"
               onClick={() => setIsChatbotMode(!isChatbotMode)}
               className="flex items-center space-x-2"
             >
-              {isChatbotMode ? (
-                <>
-                  <MessageSquare className="h-4 w-4" />
-                  <span>{t('chatbot.buttons.messages')}</span>
-                </>
-              ) : (
-                <>
-                  <Bot className="h-4 w-4" />
-                  <span>{t('chatbot.buttons.aiAssistant')}</span>
-                </>
-              )}
+              <Bot className="h-4 w-4" />
+              <span>{isChatbotMode ? 'Tryb czatu' : 'AI Asystent'}</span>
             </Button>
-
-            {!isChatbotMode && (
-              <>
-                {unreadCount > 0 && (
-                  <Badge variant="secondary" className="bg-blue-100 text-blue-800">
-                    {unreadCount} nowych
-                  </Badge>
-                )}
-                <div className="flex items-center space-x-1 text-sm text-gray-500">
-                  <Users className="h-4 w-4" />
-                  <span>2</span>
-                </div>
-              </>
-            )}
-
-            {isChatbotMode && (
-              <Badge variant="secondary" className="bg-green-100 text-green-800">
-                Online
-              </Badge>
-            )}
           </div>
         </div>
       </CardHeader>
 
-      <Separator />
-
-      {/* Content */}
-      <CardContent className="flex-1 overflow-hidden p-0">
+      {/* Messages Area */}
+      <CardContent className="flex-1 p-0 overflow-hidden">
         {isChatbotMode ? (
-          // Chatbot Mode
-          <ChatbotComponent
-            projectId={projectId}
-            projectName={projectName}
-          />
+          <ChatbotComponent projectId={projectId} />
         ) : (
-          // Regular Messages Mode
-          <div
-            ref={messagesContainerRef}
-            className="h-full overflow-y-auto p-4 space-y-4"
-          >
-            {Object.keys(groupedMessages).length === 0 ? (
-              <div className="text-center py-12">
-                <MessageSquare className="h-12 w-12 mx-auto text-gray-300 mb-4" />
-                <h3 className="text-lg font-medium text-gray-900 mb-2">
-                  Rozpocznij rozmowę
-                </h3>
-                <p className="text-gray-500 mb-4">
-                  Napisz pierwszą wiadomość do zespołu ECM Digital
-                </p>
-                <Button
-                  variant="outline"
-                  onClick={() => setIsChatbotMode(true)}
-                  className="flex items-center space-x-2"
-                >
-                  <Bot className="h-4 w-4" />
-                  <span>{t('chatbot.buttons.aiAssistant')}</span>
-                </Button>
-              </div>
-            ) : (
-              Object.entries(groupedMessages).map(([date, dayMessages]) => (
-                <div key={date}>
-                  {/* Date Header */}
-                  <div className="flex items-center justify-center mb-4">
-                    <div className="bg-gray-100 rounded-full px-3 py-1">
-                      <span className="text-xs font-medium text-gray-600">
-                        {formatDateHeader(date)}
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Messages for this date */}
-                  <div className="space-y-4">
-                    {dayMessages.map((message, index) => {
-                      const prevMessage = dayMessages[index - 1]
-                      const showAvatar = !prevMessage ||
-                        prevMessage.sender_id !== message.sender_id ||
-                        new Date(message.created_at).getTime() - new Date(prevMessage.created_at).getTime() > 5 * 60 * 1000 // 5 minutes
-
-                      return (
-                        <div key={message.id} className={showAvatar ? '' : 'ml-11'}>
-                          <MessageBubble message={message} />
-                        </div>
-                      )
-                    })}
-                  </div>
+          <div className="h-full flex flex-col">
+            {/* Messages List */}
+            <div 
+              ref={messagesContainerRef}
+              className="flex-1 overflow-y-auto p-4 space-y-4"
+            >
+              {messages.length === 0 ? (
+                <div className="text-center py-12 text-gray-500">
+                  <MessageSquare className="h-16 w-16 mx-auto mb-4 text-gray-300" />
+                  <p className="text-lg font-medium">Brak wiadomości</p>
+                  <p className="text-sm">Rozpocznij konwersację wysyłając pierwszą wiadomość</p>
                 </div>
-              ))
-            )}
-            <div ref={messagesEndRef} />
+              ) : (
+                Object.entries(groupedMessages).map(([date, dateMessages]) => (
+                  <div key={date} className="space-y-3">
+                    {/* Date Header */}
+                    <div className="flex items-center space-x-3">
+                      <Separator className="flex-1" />
+                      <Badge variant="secondary" className="text-xs">
+                        {formatDateHeader(date)}
+                      </Badge>
+                      <Separator className="flex-1" />
+                    </div>
+                    
+                    {/* Messages for this date */}
+                    {dateMessages.map((message) => (
+                      <MessageBubble
+                        key={message.id}
+                        message={message}
+                        isOwnMessage={message.sender_id === 'current-user-id'}
+                      />
+                    ))}
+                  </div>
+                ))
+              )}
+              
+              {/* Auto-scroll anchor */}
+              <div ref={messagesEndRef} />
+            </div>
+
+            {/* Message Input */}
+            <div className="border-t p-4">
+              <MessageInput
+                onSendMessage={sendMessage}
+                disabled={sending}
+                placeholder="Napisz wiadomość..."
+              />
+            </div>
           </div>
         )}
       </CardContent>
-
-      {/* Message Input - Only show in regular message mode */}
-      {!isChatbotMode && (
-        <MessageInput
-          onSendMessage={sendMessage}
-          disabled={sending}
-          placeholder={`Napisz wiadomość do zespołu ${projectName}...`}
-        />
-      )}
     </Card>
   )
 }

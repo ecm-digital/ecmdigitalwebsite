@@ -1,22 +1,22 @@
 'use client'
 
-import { useAuth } from '@/hooks/use-auth'
+import { useAWSAuth } from '@/hooks/use-aws-auth'
 import { DashboardLayout } from '@/components/dashboard/dashboard-layout'
 import { ProjectsList } from '@/components/projects/projects-list'
 import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
 
 export default function ProjectsPage() {
-  const { isAuthenticated, loading } = useAuth()
+  const { isAuthenticated, isLoading } = useAWSAuth()
   const router = useRouter()
 
   useEffect(() => {
-    if (!loading && !isAuthenticated) {
+    if (!isLoading && !isAuthenticated) {
       router.push('/auth/login')
     }
-  }, [isAuthenticated, loading, router])
+  }, [isAuthenticated, isLoading, router])
 
-  if (loading) {
+  if (isLoading) {
     return (
       <div className="flex items-center justify-center min-h-screen">
         <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-600"></div>

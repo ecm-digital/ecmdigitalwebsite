@@ -6,7 +6,7 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { format } from 'date-fns'
 import { pl } from 'date-fns/locale'
-import { useAuthStore } from '@/lib/stores/auth-store'
+import { useAWSAuth } from '@/hooks/use-aws-auth'
 import { 
   Paperclip, 
   Download, 
@@ -15,15 +15,14 @@ import {
   File,
   ExternalLink
 } from 'lucide-react'
-import { formatFileSize, getFileIcon } from '@/lib/supabase/storage'
 
 interface MessageBubbleProps {
   message: Message
+  isOwnMessage?: boolean
 }
 
-export function MessageBubble({ message }: MessageBubbleProps) {
-  const { user } = useAuthStore()
-  const isOwnMessage = message.sender_id === user?.id
+export function MessageBubble({ message, isOwnMessage = false }: MessageBubbleProps) {
+  const { user } = useAWSAuth()
   
   const getInitials = (name?: string) => {
     if (!name) return 'U'
@@ -99,104 +98,39 @@ export function MessageBubble({ message }: MessageBubbleProps) {
           <p className="text-sm whitespace-pre-wrap break-words">
             {message.content}
           </p>
-
-          {/* Attachments */}
-          {message.attachments && message.attachments.length > 0 && (
-            <div className="mt-3 space-y-2">
-              {message.attachments.map((attachment: any, index: number) => (
-                <div key={index}>
-                  {/* Image Attachments - Show as preview */}
-                  {isImageFile(attachment.type) && attachment.url ? (
-                    <div className="relative group">
-                      <img
-                        src={attachment.url}
-                        alt={attachment.name}
-                        className="max-w-xs max-h-48 rounded-lg cursor-pointer hover:opacity-90 transition-opacity"
-                        onClick={() => window.open(attachment.url, '_blank')}
-                      />
-                      <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                        <Button
-                          size="sm"
-                          variant="secondary"
-                          onClick={() => handleDownload(attachment)}
-                          className="h-8 w-8 p-0"
-                        >
-                          <Download className="h-3 w-3" />
-                        </Button>
-                      </div>
-                      <div className="mt-1">
-                        <p className="text-xs opacity-75">{attachment.name}</p>
-                        {attachment.size && (
-                          <p className="text-xs opacity-60">{formatFileSize(attachment.size)}</p>
-                        )}
-                      </div>
-                    </div>
-                  ) : (
-                    /* Non-image Attachments - Show as file card */
-                    <div 
-                      className={`flex items-center space-x-3 p-3 rounded-lg border ${
-                        isOwnMessage 
-                          ? 'bg-blue-700 border-blue-600' 
-                          : 'bg-white border-gray-200'
-                      }`}
-                    >
-                      <div className="flex-shrink-0">
-                        {getAttachmentIcon(attachment.type)}
-                      </div>
-                      
-                      <div className="flex-1 min-w-0">
-                        <p className="text-sm font-medium truncate">
-                          {attachment.name || `Załącznik ${index + 1}`}
-                        </p>
-                        {attachment.size && (
-                          <p className="text-xs opacity-75">
-                            {formatFileSize(attachment.size)}
-                          </p>
-                        )}
-                      </div>
-
-                      <div className="flex items-center space-x-1">
-                        {attachment.url && (
-                          <>
-                            <Button
-                              size="sm"
-                              variant="ghost"
-                              onClick={() => window.open(attachment.url, '_blank')}
-                              className={`h-8 w-8 p-0 ${
-                                isOwnMessage 
-                                  ? 'hover:bg-blue-600 text-white' 
-                                  : 'hover:bg-gray-100'
-                              }`}
-                            >
-                              <ExternalLink className="h-3 w-3" />
-                            </Button>
-                            <Button
-                              size="sm"
-                              variant="ghost"
-                              onClick={() => handleDownload(attachment)}
-                              className={`h-8 w-8 p-0 ${
-                                isOwnMessage 
-                                  ? 'hover:bg-blue-600 text-white' 
-                                  : 'hover:bg-gray-100'
-                              }`}
-                            >
-                              <Download className="h-3 w-3" />
-                            </Button>
-                          </>
-                        )}
-                      </div>
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          )}
         </div>
 
-        {/* Read Status */}
+        {/* Attachments */}
+        {message.attachments && message.attachments.length > 0 && (
+          <div className="mt-2 space-y-2">
+            {message.attachments.map((attachment, index) => (
+              <div key={index} className="flex items-center space-x-2 p-2 bg-gray-50 rounded-lg">
+                {getAttachmentIcon(attachment.mime_type)}
+                <div className="flex-1 min-w-0">
+                  <p className="text-xs font-medium text-gray-900 truncate">
+                    {attachment.name}
+                  </p>
+                  <p className="text-xs text-gray-500">
+                    {attachment.size ? `${(attachment.size / 1024).toFixed(1)} KB` : 'Unknown size'}
+                  </p>
+                </div>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => handleDownload(attachment)}
+                  className="h-8 w-8 p-0"
+                >
+                  <Download className="h-4 w-4" />
+                </Button>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* Message Status */}
         {isOwnMessage && (
-          <div className="mt-1 text-right">
-            <span className="text-xs text-gray-400">
+          <div className="flex items-center justify-end space-x-1 mt-1">
+            <span className="text-xs text-gray-500">
               {message.read_at ? 'Przeczytane' : 'Wysłane'}
             </span>
           </div>

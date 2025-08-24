@@ -1,28 +1,25 @@
 'use client'
 
-import { useAuth } from '@/hooks/use-auth'
+import { useAWSAuth } from '@/hooks/use-aws-auth'
 import { DashboardLayout } from '@/components/dashboard/dashboard-layout'
-import { FileUploadTest } from '@/components/ui/file-upload-test'
 import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
 
 export default function TestPage() {
-  const { isAuthenticated, loading } = useAuth()
+  const { isAuthenticated, isLoading } = useAWSAuth()
   const router = useRouter()
 
   useEffect(() => {
-    if (!loading && !isAuthenticated) {
+    if (!isLoading && !isAuthenticated) {
       router.push('/auth/login')
     }
-  }, [isAuthenticated, loading, router])
+  }, [isAuthenticated, isLoading, router])
 
-  if (loading) {
+  if (isLoading) {
     return (
-      <DashboardLayout>
-        <div className="flex items-center justify-center h-full">
-          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-600"></div>
-        </div>
-      </DashboardLayout>
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-600"></div>
+      </div>
     )
   }
 
@@ -32,15 +29,11 @@ export default function TestPage() {
 
   return (
     <DashboardLayout>
-      <div className="space-y-6">
-        <div>
-          <h1 className="text-3xl font-bold text-gray-900">Test Upload Plików</h1>
-          <p className="text-gray-600 mt-2">
-            Strona testowa do sprawdzania funkcjonalności uploadu plików
-          </p>
-        </div>
-
-        <FileUploadTest />
+      <div className="p-6">
+        <h1 className="text-3xl font-bold text-gray-900 mb-6">Strona testowa</h1>
+        <p className="text-gray-600">
+          To jest strona testowa do sprawdzania funkcjonalności dashboardu.
+        </p>
       </div>
     </DashboardLayout>
   )

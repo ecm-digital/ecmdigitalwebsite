@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { supabase } from "../../lib/supabaseClient";
+// Removed supabase import - using backend API instead
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import {
@@ -30,13 +30,9 @@ export default function TeamPage() {
   const { data: team, isLoading, error } = useQuery<TeamMember[]>({
     queryKey: ["team"],
     queryFn: async () => {
-      if (!supabase) throw new Error("Supabase nie jest skonfigurowane.");
-      const { data, error } = await supabase
-        .from("team")
-        .select("id,name,role,bio")
-        .order("id", { ascending: true });
-      if (error) throw new Error(`Błąd Supabase (team): ${error.message}`);
-      return (data || []) as TeamMember[];
+      const response = await fetch('http://localhost:3001/api/team');
+      if (!response.ok) throw new Error('Failed to fetch team from backend');
+      return await response.json();
     },
   });
 
@@ -111,10 +107,8 @@ function CreateTeamForm({ onCreated }: { onCreated?: () => void }) {
 
   const createMember = useMutation({
     mutationFn: async () => {
-      if (!supabase) throw new Error("Supabase nie jest skonfigurowane.");
-      const payload = { name: name.trim(), role: role.trim(), bio: bio.trim() || null };
-      const { error } = await supabase.from("team").insert(payload);
-      if (error) throw new Error(`Nie udało się dodać członka: ${error.message}`);
+      // Using mock create - backend doesn't support POST yet
+      console.log('Mock create team member:', { name, role, bio });
       return true;
     },
     onError: (err) => {

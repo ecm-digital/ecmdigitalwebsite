@@ -255,7 +255,7 @@ Jeśli ten case study Cię zainspirował i chcesz zrealizować podobny projekt, 
     }
 
     try {
-      const response = await fetch('/api/case-studies/publish', {
+      const response = await fetch('http://localhost:3001/api/case-studies/publish', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
-import { supabase } from "../../lib/supabaseClient";
+// Removed supabase import - using backend API instead
 
 interface KPIs {
   mrr: number;
@@ -58,59 +58,9 @@ export default function FinancesPage() {
   const { data, isLoading, error } = useQuery<FinancesResponse>({
     queryKey: ["finances"],
     queryFn: async () => {
-      if (!supabase) {
-        throw new Error("Supabase nie jest skonfigurowane.");
-      }
-
-      // Fetch data from Supabase. If tables don't exist yet, return empty arrays gracefully.
-      const safeSelect = async <T,>(
-        table: string,
-        columns: string,
-        order?: { column: string; ascending?: boolean }
-      ): Promise<T[]> => {
-        try {
-          let q = supabase.from(table).select(columns);
-          if (order) q = q.order(order.column as any, { ascending: order.ascending ?? false });
-          const { data, error } = await q;
-          if (error) {
-            // eslint-disable-next-line no-console
-            console.warn(`Supabase select error on ${table}:`, error.message);
-            return [] as T[];
-          }
-          return (data as T[]) ?? [];
-        } catch (e) {
-          // eslint-disable-next-line no-console
-          console.warn(`Supabase query failed for ${table}:`, e);
-          return [] as T[];
-        }
-      };
-
-      const invoices = await safeSelect<Invoice>(
-        "invoices",
-        "id, client, amount, currency, issuedAt, dueAt, status",
-        { column: "issuedAt", ascending: false }
-      );
-      const expenses = await safeSelect<Expense>(
-        "expenses",
-        "id, category, amount, currency",
-        { column: "id", ascending: false }
-      );
-
-      // Compute KPIs (simple approximations for demo)
-      const now = new Date();
-      const days30 = 30 * 24 * 60 * 60 * 1000;
-      const last30 = new Date(now.getTime() - days30);
-
-      const mrr = invoices
-        .filter((i) => i.status === "Paid" && new Date(i.issuedAt) >= last30)
-        .reduce((sum, i) => sum + (Number(i.amount) || 0), 0);
-      const expensesMonthly = expenses.reduce((sum, e) => sum + (Number(e.amount) || 0), 0);
-      const arr = mrr * 12;
-      const profitMonthly = mrr - expensesMonthly;
-      const invoicesOverdue = invoices.filter((i) => i.status === "Overdue").length;
-
-      const kpis: KPIs = { mrr, arr, expensesMonthly, profitMonthly, invoicesOverdue };
-      return { kpis, invoices, expenses } satisfies FinancesResponse;
+      const response = await fetch('http://localhost:3001/api/finances');
+      if (!response.ok) throw new Error('Failed to fetch finances from backend');
+      return await response.json();
     },
   });
 

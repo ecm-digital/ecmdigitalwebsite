@@ -169,3 +169,4 @@ W przypadku problemów:
 ---
 
 **🎉 Chatbot jest teraz połączony z AWS i gotowy do użycia!**
+

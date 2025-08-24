@@ -1,182 +1,194 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import { useAuth } from '@/hooks/use-auth'
-import { useProjects } from '@/hooks/use-projects'
+import { useState } from 'react'
 import { DashboardLayout } from '@/components/dashboard/dashboard-layout'
-import { MessageThread } from '@/components/messages/message-thread'
+import { MessageThreadAWS } from '@/components/messages/message-thread-aws'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
+import { Badge } from '@/components/ui/badge'
 import { 
   MessageSquare, 
-  Search, 
-  FolderOpen,
+  Plus,
+  Search,
+  Bot,
+  Users,
   Clock,
-  CheckCircle
+  TrendingUp
 } from 'lucide-react'
-import { useRouter } from 'next/navigation'
-
-const statusColors = {
-  'discovery': 'bg-blue-100 text-blue-800',
-  'design': 'bg-purple-100 text-purple-800',
-  'development': 'bg-yellow-100 text-yellow-800',
-  'testing': 'bg-orange-100 text-orange-800',
-  'completed': 'bg-green-100 text-green-800',
-  'on-hold': 'bg-gray-100 text-gray-800',
-}
-
-const statusLabels = {
-  'discovery': 'Analiza',
-  'design': 'Projektowanie',
-  'development': 'Rozwój',
-  'testing': 'Testowanie',
-  'completed': 'Ukończone',
-  'on-hold': 'Wstrzymane',
-}
 
 export default function MessagesPage() {
-  const { isAuthenticated, loading: authLoading } = useAuth()
-  const { projects, loading: projectsLoading } = useProjects()
-  const [selectedProjectId, setSelectedProjectId] = useState<string | null>(null)
-  const [searchQuery, setSearchQuery] = useState('')
-  const router = useRouter()
+  const [selectedProjectId, setSelectedProjectId] = useState<string>('demo-project')
 
-  useEffect(() => {
-    if (!authLoading && !isAuthenticated) {
-      router.push('/auth/login')
-    }
-  }, [isAuthenticated, authLoading, router])
+  // Mock projects data
+  const projects = [
+    { id: 'demo-project', name: 'Demo Projekt', status: 'active', unread: 3 },
+    { id: 'project-1', name: 'Strona WWW', status: 'completed', unread: 0 },
+    { id: 'project-2', name: 'Sklep Online', status: 'in-progress', unread: 1 }
+  ]
 
-  useEffect(() => {
-    // Auto-select first project if none selected
-    if (projects.length > 0 && !selectedProjectId) {
-      setSelectedProjectId(projects[0].id)
-    }
-  }, [projects, selectedProjectId])
-
-  const filteredProjects = projects.filter(project =>
-    project.name.toLowerCase().includes(searchQuery.toLowerCase())
-  )
-
-  const selectedProject = projects.find(p => p.id === selectedProjectId)
-
-  if (authLoading || projectsLoading) {
-    return (
-      <DashboardLayout>
-        <div className="flex items-center justify-center h-full">
-          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-600"></div>
-        </div>
-      </DashboardLayout>
-    )
-  }
-
-  if (!isAuthenticated) {
-    return null
-  }
+  const totalMessages = 24
+  const unreadMessages = projects.reduce((sum, p) => sum + p.unread, 0)
+  const activeProjects = projects.filter(p => p.status === 'active').length
 
   return (
     <DashboardLayout>
-      <div className="h-full flex flex-col">
-        {/* Header */}
-        <div className="mb-6">
-          <h1 className="text-3xl font-bold text-gray-900">Wiadomości</h1>
-          <p className="text-gray-600 mt-2">
-            Komunikuj się z zespołem ECM Digital w czasie rzeczywistym
-          </p>
+      <div className="space-y-8">
+        {/* Hero Header */}
+        <div className="relative overflow-hidden bg-gradient-to-br from-green-600 via-green-700 to-emerald-800 rounded-3xl p-8 lg:p-12">
+          <div className="absolute inset-0 bg-black/10"></div>
+          <div className="relative z-10">
+            <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between">
+              <div className="flex-1">
+                <div className="inline-flex items-center px-3 py-1 rounded-full bg-white/20 backdrop-blur-sm text-white text-sm font-medium mb-4">
+                  <MessageSquare className="h-4 w-4 mr-2" />
+                  Komunikacja Real-time
+                </div>
+                <h1 className="text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight">
+                  Wiadomości
+                </h1>
+                <p className="text-xl text-green-100 mb-6 max-w-2xl">
+                  Komunikacja z zespołem ECM Digital w czasie rzeczywistym
+                </p>
+                <div className="flex flex-wrap gap-4">
+                  <div className="flex items-center text-white/80 text-sm">
+                    <MessageSquare className="h-4 w-4 mr-2" />
+                    Wszystkich: {totalMessages}
+                  </div>
+                  <div className="flex items-center text-white/80 text-sm">
+                    <Bot className="h-4 w-4 mr-2" />
+                    Nieprzeczytanych: {unreadMessages}
+                  </div>
+                  <div className="flex items-center text-white/80 text-sm">
+                    <Users className="h-4 w-4 mr-2" />
+                    Aktywnych projektów: {activeProjects}
+                  </div>
+                </div>
+              </div>
+              <div className="hidden lg:block mt-8 lg:mt-0">
+                <Button className="btn-primary-modern text-lg px-8 py-4 bg-green-600 hover:bg-green-700">
+                  <Plus className="h-5 w-5 mr-2" />
+                  Nowa Wiadomość
+                </Button>
+              </div>
+            </div>
+          </div>
+          
+          {/* Decorative elements */}
+          <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-32 translate-x-32"></div>
+          <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full translate-y-24 -translate-x-24"></div>
         </div>
 
-        {/* Main Content */}
-        <div className="flex-1 grid grid-cols-1 lg:grid-cols-4 gap-6 min-h-0">
+        {/* Quick Stats */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-2xl p-6 border border-green-200">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-green-600 font-medium text-sm">Wszystkich Wiadomości</p>
+                <p className="text-3xl font-bold text-green-900">{totalMessages}</p>
+              </div>
+              <div className="p-3 bg-green-200 rounded-xl">
+                <MessageSquare className="h-6 w-6 text-green-700" />
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-gradient-to-br from-orange-50 to-orange-100 rounded-2xl p-6 border border-orange-200">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-orange-600 font-medium text-sm">Nieprzeczytanych</p>
+                <p className="text-3xl font-bold text-orange-900">{unreadMessages}</p>
+              </div>
+              <div className="p-3 bg-orange-200 rounded-xl">
+                <Bot className="h-6 w-6 text-orange-700" />
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-6 border border-blue-200">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-blue-600 font-medium text-sm">Aktywnych Projektów</p>
+                <p className="text-3xl font-bold text-blue-900">{activeProjects}</p>
+              </div>
+              <div className="p-3 bg-blue-200 rounded-xl">
+                <Users className="h-6 w-6 text-blue-700" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
           {/* Projects Sidebar */}
           <div className="lg:col-span-1">
-            <Card className="h-full">
-              <CardHeader className="pb-3">
-                <CardTitle className="text-lg flex items-center space-x-2">
-                  <FolderOpen className="h-5 w-5" />
-                  <span>Projekty</span>
+            <Card className="border-0 bg-gradient-to-r from-slate-50 to-slate-100 shadow-lg">
+              <CardHeader className="pb-4">
+                <CardTitle className="text-xl font-bold text-slate-800 flex items-center">
+                  <Users className="h-5 w-5 mr-2 text-blue-600" />
+                  Projekty
                 </CardTitle>
-                
-                {/* Search */}
-                <div className="relative">
-                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
-                  <Input
-                    placeholder="Szukaj projektów..."
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="pl-10"
-                  />
-                </div>
               </CardHeader>
-
-              <CardContent className="p-0">
-                <div className="space-y-1">
-                  {filteredProjects.length === 0 ? (
-                    <div className="p-4 text-center text-gray-500">
-                      <MessageSquare className="h-8 w-8 mx-auto mb-2 text-gray-300" />
-                      <p className="text-sm">Brak projektów</p>
-                    </div>
-                  ) : (
-                    filteredProjects.map((project) => (
-                      <button
-                        key={project.id}
-                        onClick={() => setSelectedProjectId(project.id)}
-                        className={`w-full text-left p-3 hover:bg-gray-50 transition-colors ${
-                          selectedProjectId === project.id ? 'bg-blue-50 border-r-2 border-blue-500' : ''
-                        }`}
-                      >
-                        <div className="flex items-start justify-between">
-                          <div className="flex-1 min-w-0">
-                            <h4 className="font-medium text-sm truncate">
-                              {project.name}
-                            </h4>
-                            <div className="flex items-center space-x-2 mt-1">
-                              <Badge 
-                                variant="secondary" 
-                                className={`text-xs ${statusColors[project.status]}`}
-                              >
-                                {statusLabels[project.status]}
-                              </Badge>
-                            </div>
-                          </div>
-                          
-                          {/* Unread indicator placeholder */}
-                          <div className="ml-2">
-                            {/* TODO: Add unread count */}
-                          </div>
+              <CardContent className="space-y-3">
+                {projects.map((project) => (
+                  <Button
+                    key={project.id}
+                    variant={selectedProjectId === project.id ? "default" : "ghost"}
+                    className={`w-full justify-start h-auto p-4 rounded-xl transition-all duration-200 ${
+                      selectedProjectId === project.id 
+                        ? 'bg-blue-600 text-white shadow-lg' 
+                        : 'hover:bg-white hover:shadow-md'
+                    }`}
+                    onClick={() => setSelectedProjectId(project.id)}
+                  >
+                    <div className="flex items-center space-x-3 w-full">
+                      <div className={`p-2 rounded-lg ${
+                        selectedProjectId === project.id 
+                          ? 'bg-white/20' 
+                          : 'bg-slate-200'
+                      }`}>
+                        <MessageSquare className={`h-4 w-4 ${
+                          selectedProjectId === project.id 
+                            ? 'text-white' 
+                            : 'text-slate-600'
+                        }`} />
+                      </div>
+                      <div className="flex-1 text-left">
+                        <div className="font-medium truncate">{project.name}</div>
+                        <div className="text-xs opacity-80">
+                          {project.status === 'active' ? 'Aktywny' : 
+                           project.status === 'completed' ? 'Zakończony' : 'W trakcie'}
                         </div>
-                      </button>
-                    ))
-                  )}
-                </div>
+                      </div>
+                      {project.unread > 0 && (
+                        <Badge 
+                          variant="secondary" 
+                          className={`${
+                            selectedProjectId === project.id 
+                              ? 'bg-white/20 text-white border-white/30' 
+                              : 'bg-red-100 text-red-800 border-red-200'
+                          } border font-medium px-2 py-1 rounded-full`}
+                        >
+                          {project.unread}
+                        </Badge>
+                      )}
+                    </div>
+                  </Button>
+                ))}
               </CardContent>
             </Card>
           </div>
 
-          {/* Chat Area */}
+          {/* Messages Area */}
           <div className="lg:col-span-3">
-            {selectedProject ? (
-              <MessageThread
-                projectId={selectedProject.id}
-                projectName={selectedProject.name}
-              />
-            ) : (
-              <Card className="h-full">
-                <CardContent className="flex items-center justify-center h-full">
-                  <div className="text-center">
-                    <MessageSquare className="h-16 w-16 mx-auto text-gray-300 mb-4" />
-                    <h3 className="text-lg font-medium text-gray-900 mb-2">
-                      Wybierz projekt
-                    </h3>
-                    <p className="text-gray-500">
-                      Wybierz projekt z listy, aby rozpocząć komunikację z zespołem
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-            )}
+            <MessageThreadAWS projectId={selectedProjectId} />
           </div>
+        </div>
+
+        {/* Mobile New Message Button */}
+        <div className="lg:hidden">
+          <Button className="btn-primary-modern w-full text-lg py-4 bg-green-600 hover:bg-green-700">
+            <Plus className="h-5 w-5 mr-2" />
+            Nowa Wiadomość
+          </Button>
         </div>
       </div>
     </DashboardLayout>

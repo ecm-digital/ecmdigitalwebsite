@@ -28,7 +28,7 @@ export function CaseStudySync() {
   const fetchExistingCaseStudies = async () => {
     setLoading(true)
     try {
-      const response = await fetch('/api/case-studies/publish')
+      const response = await fetch('http://localhost:3001/api/case-studies/publish')
       const result = await response.json()
       
       if (result.success) {

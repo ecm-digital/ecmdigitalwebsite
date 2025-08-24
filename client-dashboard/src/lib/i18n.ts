@@ -53,13 +53,39 @@ export const translations = {
       overview: 'Oto przegląd Twoich projektów i aktywności',
       stats: {
         activeProjects: 'Aktywne Projekty',
+        activeProjectsDesc: 'projektów w trakcie realizacji',
         completed: 'Ukończone',
-        budget: 'Budżet',
-        averageProgress: 'Średni Postęp',
-        allProjects: 'wszystkich',
         completedProjects: 'projektów zakończonych',
+        completedProjectsDesc: 'projektów zakończonych',
+        budget: 'Budżet',
+        totalBudget: 'Całkowity Budżet',
+        totalBudgetDesc: 'całkowity budżet projektów',
+        averageProgress: 'Średni Postęp',
+        unreadMessages: 'Nieprzeczytane Wiadomości',
+        unreadMessagesDesc: 'nieprzeczytanych wiadomości',
+        allProjects: 'wszystkich',
         utilized: 'wykorzystane',
         allProjectsProgress: 'wszystkich projektów'
+      },
+      budget: {
+        title: 'Postęp Budżetu',
+        description: 'Śledź wykorzystanie budżetu w projektach',
+        used: 'Wykorzystane',
+        total: 'Całkowity'
+      },
+      recentProjects: {
+        title: 'Ostatnie Projekty',
+        description: 'Twoje najnowsze projekty i ich status'
+      },
+      quickActions: {
+        title: 'Szybkie Akcje',
+        description: 'Najczęściej używane funkcje',
+        newProject: 'Nowy Projekt',
+        newProjectDesc: 'Utwórz nowy projekt cyfrowy',
+        sendMessage: 'Wyślij Wiadomość',
+        sendMessageDesc: 'Skontaktuj się z zespołem',
+        uploadDocument: 'Dodaj Dokument',
+        uploadDocumentDesc: 'Prześlij plik do projektu'
       },
       sections: {
         recentProjects: 'Ostatnie Projekty',
@@ -79,6 +105,7 @@ export const translations = {
         communication: 'Komunikacja',
         documents: 'Dokumenty',
         invoices: 'Faktury',
+        calendar: 'Kalendarz',
         analytics: 'Analityka',
         settings: 'Ustawienia'
       },
@@ -176,13 +203,39 @@ export const translations = {
       overview: 'Here\'s an overview of your projects and activity',
       stats: {
         activeProjects: 'Active Projects',
+        activeProjectsDesc: 'projects in progress',
         completed: 'Completed',
-        budget: 'Budget',
-        averageProgress: 'Average Progress',
-        allProjects: 'of all',
         completedProjects: 'projects completed',
+        completedProjectsDesc: 'projects completed',
+        budget: 'Budget',
+        totalBudget: 'Total Budget',
+        totalBudgetDesc: 'total project budget',
+        averageProgress: 'Average Progress',
+        unreadMessages: 'Unread Messages',
+        unreadMessagesDesc: 'unread messages',
+        allProjects: 'of all',
         utilized: 'utilized',
         allProjectsProgress: 'of all projects'
+      },
+      budget: {
+        title: 'Budget Progress',
+        description: 'Track budget utilization in projects',
+        used: 'Used',
+        total: 'Total'
+      },
+      recentProjects: {
+        title: 'Recent Projects',
+        description: 'Your latest projects and their status'
+      },
+      quickActions: {
+        title: 'Quick Actions',
+        description: 'Most frequently used features',
+        newProject: 'New Project',
+        newProjectDesc: 'Create a new digital project',
+        sendMessage: 'Send Message',
+        sendMessageDesc: 'Contact the team',
+        uploadDocument: 'Upload Document',
+        uploadDocumentDesc: 'Upload file to project'
       },
       sections: {
         recentProjects: 'Recent Projects',
@@ -202,6 +255,7 @@ export const translations = {
         communication: 'Communication',
         documents: 'Documents',
         invoices: 'Invoices',
+        calendar: 'Calendar',
         analytics: 'Analytics',
         settings: 'Settings'
       },
