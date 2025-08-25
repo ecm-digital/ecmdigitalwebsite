@@ -193,7 +193,8 @@ class AWSChatbot {
         const secretAccessKey = localStorage.getItem('BEDROCK_SECRET_ACCESS_KEY');
         
         if (!accessKeyId || !secretAccessKey) {
-            console.warn('⚠️ AWS credentials not found, some services may not work');
+            console.warn('⚠️ AWS credentials not found; skipping AWS service init (using browser fallback)');
+            return; // Do not initialize AWS services without credentials
         }
         
         console.log('🔑 Credentials check:', {
@@ -444,7 +445,7 @@ class AWSChatbot {
         }
 
         // Use Amazon Bedrock for intelligent responses
-        const systemPrompt = `Jesteś cyfrowym asystentem głosowym Tomasza Gnata - CEO ECM Digital. Reprezentujesz firmę specjalizującą się w usługach cyfrowych.
+        const systemPrompt = `Jesteś cyfrowym asystentem ECM Digital. Reprezentujesz firmę specjalizującą się w usługach cyfrowych.
 
 INFORMACJE O FIRMIE:
 - Strony WWW: od 3,500 PLN
@@ -1839,7 +1840,7 @@ Co Cię najbardziej interesuje? Opowiedz mi o swoich potrzebach lub wybierz jedn
     }
     
     addWelcomeMessage() {
-        const welcomeMessage = 'Cześć! Jestem cyfrowym asystentem głosowym Tomasza Gnata - CEO ECM Digital. Mogę opowiedzieć Ci o naszych usługach, pomóc w wyborze rozwiązania lub umówić konsultację. Jak mogę Ci pomóc?';
+        const welcomeMessage = 'Cześć! Jestem cyfrowym asystentem ECM Digital. Mogę opowiedzieć Ci o naszych usługach, pomóc w wyborze rozwiązania lub umówić konsultację. Jak mogę Ci pomóc?';
         this.addMessage(welcomeMessage, 'bot');
     }
     

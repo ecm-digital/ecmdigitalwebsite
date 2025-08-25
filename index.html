@@ -31,7 +31,50 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Critical CSS -->
+    <link rel="stylesheet" href="src/styles.css">
     
+    <!-- Additional Dropdown Styles -->
+    <style>
+        .dropdown-menu {
+            background: #1C1C1E !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
+        }
+        
+        .dropdown-item {
+            color: #EBEBF5 !important;
+            background: transparent !important;
+        }
+        
+        .dropdown-item:hover {
+            background: #007AFF !important;
+            color: white !important;
+        }
+        
+        .language-switcher .dropdown-menu {
+            background: #1C1C1E !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
+        }
+        
+        .language-switcher .dropdown-item {
+            color: #EBEBF5 !important;
+            background: transparent !important;
+        }
+        
+        .language-switcher .dropdown-item:hover {
+            background: #007AFF !important;
+            color: white !important;
+        }
+        
+        .language-switcher .dropdown-item.active {
+            background: #007AFF !important;
+            color: white !important;
+        }
+    </style>
+
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-V309CX2XT8"></script>
     <script>
@@ -54,1497 +97,6 @@
         })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
     </script>
     
-    <style>
-        :root {
-            /* Apple Dark Mode Colors */
-            --primary: #007AFF;
-            --primary-dark: #0056CC;
-            --primary-light: #409CFF;
-            --accent: #30D158;
-            --accent-orange: #FF9F0A;
-            --accent-purple: #BF5AF2;
-            --accent-pink: #FF2D92;
-            
-            /* Dark Theme Colors */
-            --bg-primary: #000000;
-            --bg-secondary: #1C1C1E;
-            --bg-tertiary: #2C2C2E;
-            --bg-quaternary: #3A3A3C;
-            
-            /* Text Colors */
-            --text-primary: #FFFFFF;
-            --text-secondary: #EBEBF5;
-            --text-tertiary: #EBEBF599;
-            --text-quaternary: #EBEBF54D;
-            
-            /* System Colors */
-            --separator: #38383A;
-            --overlay: rgba(0, 0, 0, 0.4);
-            
-            /* Shadows */
-            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
-            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
-            --shadow-lg: 0 8px 25px rgba(0, 0, 0, 0.5);
-            --shadow-xl: 0 16px 40px rgba(0, 0, 0, 0.6);
-            
-            /* Glass Effect */
-            --glass-bg: rgba(28, 28, 30, 0.8);
-            --glass-border: rgba(255, 255, 255, 0.1);
-        }
-
-        body { 
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-        
-        .font-display { 
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Space Grotesk', sans-serif;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-        }
-        
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
-            color: var(--text-primary);
-            padding: 160px 0 120px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 30% 20%, var(--primary) 0%, transparent 50%),
-                        radial-gradient(circle at 70% 80%, var(--accent-purple) 0%, transparent 50%);
-            opacity: 0.1;
-            z-index: 1;
-        }
-        
-        .hero .container {
-            position: relative;
-            z-index: 2;
-        }
-        
-        .hero-title { 
-            font-size: clamp(2.5rem, 8vw, 5rem);
-            font-weight: 800; 
-            line-height: 1.05; 
-            margin-bottom: 2rem;
-            letter-spacing: -0.03em;
-            background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .hero-subtitle { 
-            font-size: 1.25rem; 
-            color: var(--text-tertiary);
-            font-weight: 400;
-            line-height: 1.5;
-            max-width: 600px;
-        }
-        
-        /* Service Cards */
-        .service-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 2.5rem 2rem;
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            height: 100%;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--accent-purple) 100%);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            border-radius: 20px;
-        }
-        
-        .service-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: var(--shadow-xl);
-            border-color: var(--glass-border);
-        }
-        
-        .service-card:hover::before {
-            opacity: 0.05;
-        }
-        
-        .service-card .service-icon {
-            position: relative;
-            z-index: 2;
-            margin-bottom: 1.5rem;
-        }
-        
-        .service-card h4 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-            position: relative;
-            z-index: 2;
-        }
-        
-        .service-card p {
-            color: var(--text-tertiary);
-            margin-bottom: 1.5rem;
-            position: relative;
-            z-index: 2;
-        }
-
-        /* Service Recommendations from API */
-        .service-recommendations {
-            margin-top: 1rem;
-            padding: 1rem;
-            background: var(--bg-primary);
-            border-radius: 12px;
-            border: 1px solid var(--separator);
-        }
-
-        .service-recommendations .service-card {
-            background: var(--bg-secondary);
-            border: 1px solid var(--separator);
-            border-radius: 8px;
-            padding: 0.75rem;
-            margin: 0.25rem 0;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            height: auto;
-            min-height: 60px;
-        }
-
-        .service-recommendations .service-card:hover {
-            background: var(--bg-tertiary);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
-            border-color: var(--primary);
-        }
-
-        .service-recommendations .service-card .service-name {
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 0.25rem;
-        }
-
-        .service-recommendations .service-card .service-meta {
-            font-size: 0.8rem;
-            color: var(--text-tertiary);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .service-recommendations .service-card .service-category {
-            font-weight: 500;
-            color: var(--accent);
-        }
-
-        .service-recommendations .service-card .service-priority {
-            padding: 0.2rem 0.5rem;
-            border-radius: 12px;
-            font-size: 0.7rem;
-            font-weight: 600;
-        }
-
-        .service-recommendations .service-card .service-priority.High {
-            background: var(--accent);
-            color: white;
-        }
-
-        .service-recommendations .service-card .service-priority.Medium {
-            background: var(--accent-orange);
-            color: white;
-        }
-        
-        .btn-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
-            text-decoration: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 12px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            position: relative;
-            z-index: 2;
-        }
-        
-        .btn-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
-            color: white;
-            text-decoration: none;
-        }
-        
-        /* Navbar */
-        .navbar {
-            background: var(--glass-bg) !important;
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--glass-border);
-            padding: 1rem 0;
-        }
-        
-        .navbar-brand {
-            font-weight: 700;
-            color: var(--text-primary) !important;
-            font-size: 1.5rem;
-        }
-        
-        .nav-link {
-            color: var(--text-secondary) !important;
-            font-weight: 500;
-            margin: 0 0.5rem;
-            transition: color 0.3s ease;
-        }
-        
-        .nav-link:hover {
-            color: var(--primary) !important;
-        }
-        
-        .dropdown-menu {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: 12px;
-        }
-        
-        .dropdown-item {
-            color: var(--text-secondary);
-            transition: all 0.3s ease;
-        }
-        
-        .dropdown-item:hover {
-            background: var(--primary);
-            color: white;
-        }
-        
-        .language-switcher {
-            margin-left: 1rem;
-        }
-        
-        .language-switcher .btn-link {
-            color: var(--text-tertiary);
-            text-decoration: none;
-            padding: 0.25rem 0.5rem;
-            border-radius: 6px;
-            transition: all 0.3s ease;
-            border: none;
-            background: none;
-        }
-        
-        .language-switcher .btn-link:hover,
-        .language-switcher .btn-link:focus {
-            color: var(--primary);
-            background: var(--glass-bg);
-            box-shadow: none;
-        }
-        
-        .language-switcher .dropdown-menu {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            backdrop-filter: blur(20px);
-            border-radius: 0.5rem;
-            margin-top: 0.5rem;
-        }
-        
-        .language-switcher .dropdown-item {
-            color: var(--text-tertiary);
-            transition: all 0.3s ease;
-        }
-        
-        .language-switcher .dropdown-item:hover {
-            color: var(--primary);
-            background: var(--glass-bg);
-        }
-        
-        .language-switcher .dropdown-item.active {
-            color: var(--primary);
-            background: var(--glass-bg);
-            font-weight: 600;
-        }
-
-        /* Skip Links for Accessibility */
-        .skip-links {
-            position: absolute;
-            top: -40px;
-            left: 0;
-            z-index: 10000;
-            width: 100%;
-        }
-
-        .skip-link {
-            position: absolute;
-            left: 6px;
-            top: -40px;
-            background: var(--primary);
-            color: white;
-            padding: 8px 16px;
-            text-decoration: none;
-            border-radius: 0 0 4px 4px;
-            font-weight: 600;
-            font-size: 14px;
-            transition: top 0.3s ease;
-            z-index: 10001;
-        }
-
-        .skip-link:focus {
-            top: 0;
-            outline: 3px solid #ffffff;
-            outline-offset: -3px;
-        }
-
-        .skip-link:nth-child(2) {
-            left: 160px;
-        }
-
-        .skip-link:nth-child(3) {
-            left: 280px;
-        }
-
-        /* Improved Focus States */
-        .btn-cta:focus,
-        .btn-primary:focus,
-        .btn-outline-primary:focus,
-        .nav-link:focus,
-        .dropdown-item:focus,
-        .language-switcher .btn-link:focus {
-            outline: 3px solid var(--primary);
-            outline-offset: 2px;
-            box-shadow: 0 0 0 6px rgba(0, 122, 255, 0.25);
-        }
-
-        /* Better Contrast for Text */
-        .text-muted {
-            color: var(--text-tertiary) !important;
-        }
-
-        .hero-subtitle {
-            color: var(--text-secondary) !important;
-        }
-
-        /* Improved Keyboard Navigation */
-        .service-card {
-            position: relative;
-        }
-
-        .service-card:focus-within {
-            outline: 3px solid var(--primary);
-            outline-offset: 2px;
-        }
-
-        /* Screen Reader Only Content */
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border: 0;
-        }
-
-        /* Loading States */
-        .loading {
-            position: relative;
-            pointer-events: none;
-            opacity: 0.6;
-        }
-
-        .loading::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 20px;
-            height: 20px;
-            margin: -10px 0 0 -10px;
-            border: 2px solid transparent;
-            border-top: 2px solid var(--primary);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* Progress Indicators */
-        .progress-step {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-
-        .progress-step::before {
-            content: '';
-            width: 24px;
-            height: 24px;
-            border: 2px solid var(--primary);
-            border-radius: 50%;
-            margin-right: 1rem;
-            background: var(--primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 12px;
-            font-weight: bold;
-        }
-
-        .progress-step.completed::before {
-            content: '✓';
-            background: var(--accent);
-            border-color: var(--accent);
-        }
-
-        .progress-step.active::before {
-            animation: pulse 2s infinite;
-        }
-
-        /* Better Tablet Responsiveness */
-        @media (max-width: 992px) {
-            .hero .container {
-                padding: 0 2rem;
-            }
-
-            .hero-title {
-                font-size: clamp(2.2rem, 6vw, 3.5rem);
-            }
-
-            .service-card {
-                margin-bottom: 2rem;
-            }
-
-            .btn-cta {
-                width: 100%;
-                margin-bottom: 1rem;
-                text-align: center;
-            }
-
-            .skip-link {
-                position: static;
-                display: inline-block;
-                margin-right: 1rem;
-                margin-bottom: 0.5rem;
-            }
-
-            .skip-links {
-                position: relative;
-                top: 0;
-                left: 0;
-                background: var(--bg-secondary);
-                padding: 1rem;
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 0.5rem;
-            }
-        }
-
-        /* Enhanced Mobile Navigation */
-        @media (max-width: 768px) {
-            .navbar-collapse {
-                background: var(--glass-bg);
-                backdrop-filter: blur(20px);
-                -webkit-backdrop-filter: blur(20px);
-                border-radius: 0 0 12px 12px;
-                margin-top: 1rem;
-                padding: 1rem;
-                border: 1px solid var(--glass-border);
-            }
-
-            .nav-link {
-                padding: 0.75rem 1rem;
-                border-radius: 8px;
-                margin: 0.25rem 0;
-            }
-
-            .dropdown-menu {
-                position: static;
-                float: none;
-                width: auto;
-                margin-top: 0.5rem;
-                background: transparent;
-                border: none;
-                box-shadow: none;
-            }
-
-            .dropdown-item {
-                padding: 0.75rem 1rem;
-                border-radius: 8px;
-                margin: 0.25rem 0;
-            }
-        }
-        
-        /* Section Styles */
-        .section-title {
-            font-size: clamp(2rem, 5vw, 3rem);
-            font-weight: 800;
-            margin-bottom: 1rem;
-            text-align: center;
-        }
-        
-        .text-muted {
-            color: var(--text-tertiary) !important;
-        }
-        
-        /* Feature Cards */
-        .feature-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 1rem;
-            backdrop-filter: blur(20px);
-            transition: all 0.3s ease;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .process-step {
-            padding: 2rem 1rem;
-        }
-        
-        .process-number {
-            width: 60px;
-            height: 60px;
-            background: var(--primary);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin: 0 auto;
-        }
-        
-        .tech-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 1rem;
-            backdrop-filter: blur(20px);
-        }
-        
-        .pricing-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 1rem;
-            backdrop-filter: blur(20px);
-            transition: all 0.3s ease;
-        }
-        
-        .pricing-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .price {
-            font-size: 2rem;
-            font-weight: 700;
-        }
-        
-        .price .currency {
-            font-size: 1rem;
-            color: var(--text-tertiary);
-        }
-        
-        .price .period {
-            font-size: 1rem;
-            color: var(--text-tertiary);
-        }
-        
-        .contact-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 1rem;
-            backdrop-filter: blur(20px);
-        }
-        
-        .footer {
-            background: var(--bg-secondary);
-            border-top: 1px solid var(--glass-border);
-        }
-        
-        .btn-primary {
-            background: var(--primary);
-            border: none;
-            border-radius: 0.5rem;
-            padding: 0.75rem 1.5rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-primary:hover {
-            background: #0056b3;
-            transform: translateY(-2px);
-        }
-        
-        .btn-outline-primary {
-            border: 2px solid var(--primary);
-            color: var(--primary);
-            background: transparent;
-            border-radius: 0.5rem;
-            padding: 0.75rem 1.5rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-outline-primary:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 123, 255, 0.3);
-        }
-        
-        .btn-success {
-            background: linear-gradient(135deg, #28a745, #20c997);
-            border: none;
-            color: white;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .btn-success:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(40, 167, 69, 0.3);
-        }
-        
-        .btn-success::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s;
-        }
-        
-        .btn-success:hover::before {
-            left: 100%;
-        }
-        
-        .hero-chatbot-btn {
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
-            border: 2px solid transparent;
-            background-clip: padding-box;
-        }
-        
-        .hero-chatbot-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 30px rgba(40, 167, 69, 0.4);
-        }
-        
-        .hero-chatbot-btn i {
-            font-size: 1.1em;
-            animation: pulse-robot 2s infinite;
-        }
-        
-        @keyframes pulse-robot {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-        }
-        
-        .btn-light {
-            background: rgba(255, 255, 255, 0.9);
-            color: var(--bg-primary);
-            border: none;
-            border-radius: 0.5rem;
-            padding: 0.75rem 1.5rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-light:hover {
-            background: white;
-            transform: translateY(-2px);
-        }
-        
-        .text-primary {
-            color: var(--primary) !important;
-        }
-        
-        .bg-primary {
-            background-color: var(--primary) !important;
-        }
-        
-        .border-primary {
-            border-color: var(--primary) !important;
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero {
-                padding: 120px 0 80px;
-            }
-
-            .hero-title {
-                font-size: clamp(2rem, 6vw, 3rem);
-            }
-
-            .btn-cta {
-                padding: 0.5rem 1rem;
-                font-size: 0.875rem;
-                margin-bottom: 1rem;
-                display: block;
-                text-align: center;
-                width: 100%;
-            }
-
-            .btn-cta.me-3 {
-                margin-right: 0 !important;
-                margin-bottom: 1rem;
-            }
-
-            .hero-buttons .btn {
-                width: 100%;
-                margin-bottom: 1rem;
-            }
-
-            .language-switcher {
-                justify-content: center;
-                margin: 1rem 0 0 0;
-            }
-
-            /* About section responsive */
-            .about-content p {
-                font-size: 0.95rem;
-                line-height: 1.4;
-                margin-bottom: 1rem;
-            }
-
-            /* Team section responsive */
-            .team-card {
-                margin-bottom: 2rem;
-                padding: 1.5rem;
-            }
-
-            .team-card h5 {
-                font-size: 1.1rem;
-                margin-bottom: 0.5rem;
-            }
-
-            .team-card p {
-                font-size: 0.9rem;
-            }
-
-            /* Service cards responsive */
-            .service-card {
-                margin-bottom: 1.5rem;
-                padding: 1.5rem 1rem;
-            }
-
-            .service-card h4 {
-                font-size: 1.2rem;
-                margin-bottom: 0.75rem;
-            }
-
-            /* Contact section responsive */
-            .contact-section .col-lg-4 {
-                margin-bottom: 2rem;
-            }
-
-            /* Process section responsive */
-            .process-step {
-                margin-bottom: 2rem;
-            }
-
-            .step-number {
-                width: 50px;
-                height: 50px;
-                font-size: 1.2rem;
-            }
-        }
-
-        @media (max-width: 576px) {
-            /* Extra small screens */
-            .hero-title {
-                font-size: 2rem;
-            }
-
-            .hero-subtitle {
-                font-size: 1rem;
-            }
-
-            .section-title {
-                font-size: 1.8rem;
-            }
-
-            .service-card {
-                padding: 1.25rem 0.75rem;
-            }
-
-            .team-card {
-                padding: 1.25rem;
-            }
-
-            .btn-cta {
-                padding: 0.75rem 1rem;
-                font-size: 0.9rem;
-            }
-
-            /* Stack team cards vertically on very small screens */
-            .team-card h5 {
-                font-size: 1rem;
-            }
-
-            .team-card p {
-                font-size: 0.85rem;
-            }
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .team-card {
-            background: var(--bg-secondary);
-            border-radius: 1rem;
-            padding: 2rem;
-            transition: all 0.3s ease;
-            border: 1px solid var(--border-color);
-        }
-
-        .team-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            border-color: var(--primary);
-        }
-
-        .team-avatar {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, var(--primary), #8b5cf6);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto;
-            color: white;
-        }
-        
-        /* Voice Chatbot Styles */
-        .voice-chatbot-widget {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 9999;
-            display: block;
-            visibility: visible;
-            opacity: 1;
-        }
-        
-        .voice-chatbot-button {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary), var(--accent-purple));
-            border: 3px solid rgba(255, 255, 255, 0.3);
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-            box-shadow: var(--shadow-lg);
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 10000;
-            padding: 0;
-            overflow: hidden;
-        }
-        
-        .voice-chatbot-avatar {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
-            transition: all 0.3s ease;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-        }
-        
-        .voice-chatbot-button:hover .voice-chatbot-avatar {
-            transform: scale(1.1);
-        }
-        
-        .voice-chatbot-fallback-icon {
-            display: none;
-            font-size: 1.5rem;
-            color: white;
-        }
-        
-        .voice-chatbot-button:hover .voice-chatbot-fallback-icon {
-            transform: scale(1.1);
-        }
-        
-        .voice-chatbot-button:hover {
-            transform: scale(1.1);
-            box-shadow: var(--shadow-xl);
-        }
-        
-        .voice-chatbot-button.recording {
-            background: linear-gradient(135deg, #FF3B30, #FF9500);
-            animation: pulse 1.5s infinite;
-        }
-        
-        .voice-chatbot-button.listening {
-            background: linear-gradient(135deg, var(--accent), var(--primary));
-            animation: wave 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
-        
-        @keyframes wave {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        
-        .voice-chatbot-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 1001;
-            display: none;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .voice-chatbot-modal.show {
-            display: flex;
-        }
-        
-        .voice-chatbot-content {
-            background: var(--bg-secondary);
-            border-radius: 20px;
-            padding: 2rem;
-            max-width: 500px;
-            width: 90%;
-            max-height: 80vh;
-            overflow-y: auto;
-            border: 1px solid var(--separator);
-            box-shadow: var(--shadow-xl);
-        }
-        
-        .voice-chatbot-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid var(--separator);
-        }
-        
-        .voice-chatbot-title-section {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-        
-        .voice-chatbot-header-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid var(--primary);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        
-        .voice-chatbot-title-text {
-            display: flex;
-            flex-direction: column;
-            gap: 0.25rem;
-        }
-        
-        .voice-chatbot-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin: 0;
-        }
-        
-        .voice-chatbot-subtitle {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            margin: 0;
-            font-weight: 500;
-        }
-        
-        .voice-chatbot-controls-header {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .voice-chatbot-mute {
-            background: none;
-            border: none;
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-            cursor: pointer;
-            padding: 0.5rem;
-            border-radius: 50%;
-            transition: all 0.3s ease;
-            width: 36px;
-            height: 36px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .voice-chatbot-mute:hover {
-            background: var(--bg-tertiary);
-            color: var(--text-primary);
-        }
-        
-        .voice-chatbot-mute.muted {
-            color: #dc3545;
-        }
-        
-        .voice-chatbot-mute.muted i {
-            transform: scale(0.8);
-        }
-        
-        .voice-chatbot-close {
-            background: none;
-            border: none;
-            color: var(--text-tertiary);
-            font-size: 1.5rem;
-            cursor: pointer;
-            padding: 0.5rem;
-        }
-        
-        .voice-chatbot-close:hover {
-            color: var(--text-primary);
-        }
-        
-        .voice-chatbot-messages {
-            margin-bottom: 1.5rem;
-            max-height: 300px;
-            overflow-y: auto;
-        }
-        
-        .voice-message {
-            margin-bottom: 1rem;
-            padding: 1rem;
-            border-radius: 15px;
-            max-width: 80%;
-        }
-        
-        .voice-message.bot {
-            background: var(--bg-tertiary);
-            color: var(--text-primary);
-            margin-right: auto;
-        }
-        
-        .voice-message.user {
-            background: var(--primary);
-            color: white;
-            margin-left: auto;
-        }
-        
-        .voice-change-confirmation {
-            background: var(--accent) !important;
-            color: white !important;
-            font-size: 0.9rem;
-            opacity: 0.9;
-            animation: fadeInOut 3s ease-in-out;
-        }
-        
-        .voice-details {
-            background: var(--bg-tertiary) !important;
-            border: 2px solid var(--separator);
-            animation: fadeInUp 0.5s ease-out;
-        }
-        
-        .voice-test {
-            background: var(--bg-tertiary) !important;
-            border: 2px solid var(--accent);
-            animation: fadeInUp 0.5s ease-out;
-        }
-        
-        @keyframes fadeInOut {
-            0% { opacity: 0; transform: translateY(-10px); }
-            20% { opacity: 1; transform: translateY(0); }
-            80% { opacity: 1; transform: translateY(0); }
-            100% { opacity: 0; transform: translateY(-10px); }
-        }
-        
-        @keyframes fadeInUp {
-            0% { opacity: 0; transform: translateY(10px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-        
-        .voice-chatbot-controls {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-        
-        .voice-controls-row {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-        }
-        
-        .text-input-row {
-            display: flex;
-            gap: 0.5rem;
-            align-items: center;
-        }
-        
-        .text-input-row input {
-            flex: 1;
-            padding: 0.75rem 1rem;
-            border: 2px solid var(--separator);
-            border-radius: 25px;
-            font-size: 0.9rem;
-            transition: border-color 0.3s ease;
-            background: white;
-        }
-        
-        .text-input-row input:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
-        }
-        
-        .text-input-row button {
-            padding: 0.75rem 1.5rem;
-            background: linear-gradient(135deg, #28a745, #20c997);
-            border: none;
-            border-radius: 25px;
-            color: white;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.9rem;
-        }
-        
-        .text-input-row button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
-        }
-        
-        /* Voice Selection Styles */
-        .voice-selection-row {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 0.75rem;
-            background: var(--bg-tertiary);
-            border-radius: 15px;
-            border: 1px solid var(--separator);
-        }
-        
-        .voice-selection-label {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            font-weight: 500;
-            white-space: nowrap;
-            display: flex;
-            align-items: center;
-        }
-        
-        .voice-selector {
-            flex: 1;
-            padding: 0.5rem 0.75rem;
-            border: 2px solid var(--separator);
-            border-radius: 10px;
-            font-size: 0.9rem;
-            background: var(--bg-secondary);
-            color: var(--text-primary);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        /* API Mode Toggle Styles */
-        .api-mode-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 0.75rem;
-            padding: 0.75rem;
-            background: var(--bg-tertiary);
-            border-radius: 15px;
-            border: 1px solid var(--separator);
-            margin-bottom: 0.5rem;
-        }
-
-        .api-mode-label {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            font-weight: 500;
-            white-space: nowrap;
-            display: flex;
-            align-items: center;
-        }
-
-        .api-mode-switch {
-            margin: 0;
-        }
-
-        .api-mode-text {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--accent);
-        }
-
-        .form-check-input:checked {
-            background-color: var(--accent);
-            border-color: var(--accent);
-        }
-
-        .form-check-input:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 0.25rem rgba(0, 122, 255, 0.25);
-        }
-        
-        .voice-selector:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
-        }
-        
-        .voice-selector:hover {
-            border-color: var(--primary-light);
-        }
-        
-        .voice-selector option {
-            background: var(--bg-secondary);
-            color: var(--text-primary);
-            padding: 0.5rem;
-        }
-        
-        .voice-reset-button {
-            padding: 0.5rem;
-            background: var(--bg-quaternary);
-            border: 1px solid var(--separator);
-            border-radius: 8px;
-            color: var(--text-secondary);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.9rem;
-        }
-        
-        .voice-reset-button:hover {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-            transform: scale(1.05);
-        }
-        
-        .current-voice-info {
-            text-align: center;
-            padding: 0.5rem;
-            background: var(--bg-secondary);
-            border-radius: 10px;
-            border: 1px solid var(--separator);
-            margin-top: 0.5rem;
-        }
-        
-        .current-voice-info small {
-            font-size: 0.8rem;
-        }
-        
-        #currentVoiceName {
-            font-weight: 600;
-            color: var(--primary);
-        }
-        
-        .voice-quality-indicator {
-            margin-top: 0.25rem;
-            text-align: center;
-            padding: 0.25rem;
-            border-radius: 8px;
-            background: var(--bg-tertiary);
-            border: 1px solid var(--separator);
-        }
-        
-        .voice-quality-indicator small {
-            font-size: 0.75rem;
-            display: block;
-        }
-        
-        .voice-input-button {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary), var(--accent-purple));
-            border: none;
-            color: white;
-            font-size: 1.3rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .voice-input-button:hover {
-            transform: scale(1.05);
-        }
-        
-        .voice-input-button.recording {
-            background: linear-gradient(135deg, #FF3B30, #FF9500);
-            animation: pulse 1.5s infinite;
-        }
-        
-        .voice-status {
-            color: var(--text-tertiary);
-            font-size: 0.9rem;
-            text-align: center;
-            margin-top: 1rem;
-        }
-        
-        .voice-chatbot-suggestions {
-            margin-top: 1rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 0.75rem;
-            max-height: 200px;
-            overflow-y: auto;
-        }
-        
-        .voice-suggestion {
-            background: var(--bg-tertiary);
-            color: var(--text-primary);
-            border: 1px solid var(--separator);
-            border-radius: 20px;
-            padding: 0.75rem 1rem;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-weight: 500;
-        }
-        
-        .voice-suggestion:hover {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 123, 255, 0.2);
-        }
-        
-        .voice-suggestion i {
-            font-size: 0.8rem;
-            opacity: 0.8;
-        }
-        
-        @media (max-width: 768px) {
-            .voice-chatbot-widget {
-                bottom: 20px;
-                right: 20px;
-            }
-            
-            .voice-chatbot-button {
-                width: 60px;
-                height: 60px;
-                font-size: 1.3rem;
-            }
-            
-            .voice-chatbot-avatar {
-                width: 100%;
-                height: 100%;
-            }
-            
-            .voice-chatbot-content {
-                margin: 1rem;
-                padding: 1.5rem;
-            }
-            
-            .voice-chatbot-title-section {
-                flex-direction: column;
-                gap: 0.75rem;
-                text-align: center;
-            }
-            
-            .voice-chatbot-header-avatar {
-                width: 60px;
-                height: 60px;
-            }
-            
-            .voice-selection-row {
-                flex-direction: column;
-                gap: 0.5rem;
-                text-align: center;
-            }
-            
-            .voice-selection-label {
-                font-size: 0.8rem;
-            }
-            
-            .voice-selector {
-                width: 100%;
-                text-align: center;
-            }
-            
-            .voice-reset-button {
-                width: 100%;
-                margin-top: 0.5rem;
-            }
-            
-            .voice-quality-indicator {
-                margin-top: 0.5rem;
-            }
-        }
-    </style>
-</head>
-<body>
-    <!-- Skip Links for Accessibility -->
-    <div class="skip-links">
         <a href="#main-content" class="skip-link">Przejdź do głównej treści</a>
         <a href="#services" class="skip-link">Przejdź do usług</a>
         <a href="#contact" class="skip-link">Przejdź do kontaktu</a>
@@ -1554,8 +106,8 @@
     <nav class="navbar navbar-expand-lg fixed-top" role="navigation" aria-label="Główna nawigacja">
         <div class="container">
             <a class="navbar-brand font-display" href="#">
-                <i class="fas fa-rocket me-2" style="color: var(--primary);"></i>
-                ECM Digital
+                <i class="fas fa-rocket me-2" style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"></i>
+                <span style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 700;">ECM Digital</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" style="border: none; background: none;">
                 <i class="fas fa-bars" style="color: var(--text-primary); font-size: 1.2rem;"></i>
@@ -1573,7 +125,7 @@
                             <li><a class="dropdown-item" href="dokumentacja-ecm/oferta-uslug/strony-www/" data-i18n="services.websites">Strony WWW</a></li>
                             <li><a class="dropdown-item" href="dokumentacja-ecm/oferta-uslug/sklepy-shopify/" data-i18n="services.shopify">Sklepy Shopify</a></li>
                             <li><a class="dropdown-item" href="dokumentacja-ecm/oferta-uslug/prototypy-mvp/" data-i18n="services.mvp">Prototypy MVP</a></li>
-                            <li><a class="dropdown-item" href="dokumentacja-ecm/oferta-uslug/audyty-ux/" data-i18n="services.uxAudit">Audyty UX</a></li>
+                            <li><a class="dropdown-item" href="dokumentacja-ecm/oferta-uslug/audyty-ux/" data-i18n="services.uxAudit">Audyty Wdrożenia AI w Twojej Firmie</a></li>
                             <li><a class="dropdown-item" href="dokumentacja-ecm/oferta-uslug/automatyzacje-n8n/" data-i18n="services.automation">Automatyzacje</a></li>
                             <li><a class="dropdown-item" href="dokumentacja-ecm/oferta-uslug/social-media-data-science/" data-i18n="services.socialMedia">Social Media & AI</a></li>
                             <li><a class="dropdown-item" href="dokumentacja-ecm/oferta-uslug/asystencja-ai-bedrock/" data-i18n="services.aiAssistants">Asystenci AI na Amazon Bedrock & Copilot Studio</a></li>
@@ -1602,139 +154,74 @@
 
     <!-- Hero Section -->
     <main id="main-content" role="main">
-        <section id="home" class="hero" aria-labelledby="hero-title">
+        <section id="home" class="hero" aria-labelledby="hero-title" style="padding: 120px 0; min-height: 100vh; display: flex; align-items: center;">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <h1 id="hero-title" class="hero-title" data-i18n="hero.title">Wdrażamy AI w Twojej Firmie</h1>
-                    <p class="hero-subtitle" data-i18n="hero.subtitle">
-                        Transformujemy Twoją firmę dzięki sztucznej inteligencji. Od chatbotów po zaawansowane automatyzacje - 
-                        AI, które naprawdę działa i generuje realne korzyści biznesowe.
-                    </p>
-                    <div class="d-flex gap-3 flex-wrap" role="group" aria-label="Akcje w sekcji hero">
-                        <a href="#services" class="btn btn-primary btn-lg" aria-describedby="services-desc">
-                            <i class="fas fa-rocket me-2" aria-hidden="true"></i>
-                            <span data-i18n="hero.exploreServices">Zobacz Ofertę</span>
-                        </a>
-                        <a href="#contact" class="btn btn-outline-primary btn-lg" aria-describedby="contact-desc">
-                            <i class="fas fa-envelope me-2" aria-hidden="true"></i>
-                            <span data-i18n="hero.getQuote">Darmowa Konsultacja</span>
-                        </a>
-                        <button class="btn btn-success btn-lg hero-chatbot-btn" id="heroChatbotButton" aria-describedby="chatbot-desc" aria-haspopup="dialog">
-                            <i class="fas fa-robot me-2" aria-hidden="true"></i>
-                            <span data-i18n="hero.cta_assistant">Porozmawiaj z naszym asystentem</span>
-                        </button>
-                    </div>
-                    <div id="services-desc" class="sr-only">Przejdź do sekcji z ofertą naszych usług</div>
-                    <div id="contact-desc" class="sr-only">Przejdź do formularza kontaktowego</div>
-                    <div id="chatbot-desc" class="sr-only">Otwórz czat głosowy z asystentem AI</div>
-    <div id="loading-message" class="sr-only">Trwa ładowanie, proszę czekać</div>
-                </div>
-                <div class="col-lg-6 text-center">
-                    <div class="hero-image">
-                        <i class="fas fa-rocket" style="font-size: 8rem; color: var(--primary); opacity: 0.8;"></i>
+            <div class="text-center mb-5">
+                <h1 id="hero-title" class="hero-title mb-4" data-i18n="hero.title" style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: clamp(2.5rem, 8vw, 5rem); font-weight: 800; line-height: 1.1; margin-bottom: 2rem;">Wdrażamy AI w Twojej Firmie</h1>
+                <p class="hero-subtitle mb-5" data-i18n="hero.subtitle" style="font-size: 1.3rem; color: #EBEBF599; max-width: 700px; margin: 0 auto 3rem auto; line-height: 1.6;">
+                    Transformujemy Twoją firmę dzięki sztucznej inteligencji. Od chatbotów po zaawansowane automatyzacje - 
+                    AI, które naprawdę działa i generuje realne korzyści biznesowe.
+                </p>
+                <div class="hero-visual mb-5">
+                    <div class="hero-icon-container">
+                        <i class="fas fa-rocket hero-main-icon" style="font-size: 6rem; background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"></i>
+                        <div class="hero-glow"></div>
                     </div>
                 </div>
             </div>
+            
+            <!-- Hero Stats -->
+            <div class="row g-4 justify-content-center">
+                <div class="col-lg-3 col-md-6">
+                    <div class="hero-stat-card text-center">
+                        <div class="stat-icon">🤖</div>
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Projektów AI</div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="hero-stat-card text-center">
+                        <div class="stat-icon">⚡</div>
+                        <div class="stat-number">70%</div>
+                        <div class="stat-label">Redukcja Kosztów</div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="hero-stat-card text-center">
+                        <div class="stat-icon">🚀</div>
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">AI Wsparcie</div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="hero-stat-card text-center">
+                        <div class="stat-icon">📈</div>
+                        <div class="stat-number">95%</div>
+                        <div class="stat-label">Satysfakcja</div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="loading-message" class="sr-only">Trwa ładowanie, proszę czekać</div>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="py-5">
+    <section id="services" class="py-5" style="background: transparent; padding: 100px 0;">
         <div class="container">
-            <h2 class="section-title" data-i18n="sections.services.title">Nasze Usługi</h2>
+            <div class="text-center mb-5">
+                <h2 class="section-title mb-3" data-i18n="sections.services.title" style="font-size: 3rem; font-weight: 800; background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Nasze Usługi</h2>
+                <p style="font-size: 1.2rem; color: #EBEBF599; max-width: 600px; margin: 0 auto;">Kompleksowe rozwiązania AI i automatyzacji, które transformują Twój biznes i zwiększają efektywność</p>
+            </div>
             <div class="row g-4">
+                <!-- 1. Asystenci AI na Amazon Bedrock & Copilot Studio -->
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="service-card">
-                        <div class="mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), #3b82f6); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
-                            <i class="fas fa-globe"></i>
-                        </div>
-                        <h4 data-i18n="services.websites">Strony WWW</h4>
-                        <p class="text-muted">Nowoczesne, responsywne strony internetowe z optymalizacją SEO. Design dopasowany do Twojej marki.</p>
-                        <a href="dokumentacja-ecm/oferta-uslug/strony-www/" class="btn-cta">
-                            <i class="fas fa-arrow-right"></i>
-                            <span>Dowiedz się więcej</span>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="service-card">
-                        <div class="mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), #10b981); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
-                            <i class="fab fa-shopify"></i>
-                        </div>
-                        <h4 data-i18n="services.shopify">Sklepy Shopify</h4>
-                        <p class="text-muted">Profesjonalne sklepy internetowe na platformie Shopify. Integracje płatności, zarządzanie produktami.</p>
-                        <a href="dokumentacja-ecm/oferta-uslug/sklepy-shopify/" class="btn-cta">
-                            <i class="fas fa-arrow-right"></i>
-                            <span>Dowiedz się więcej</span>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="service-card">
-                        <div class="mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), #f59e0b); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
-                            <i class="fas fa-lightbulb"></i>
-                        </div>
-                        <h4 data-i18n="services.mvp">Prototypy MVP</h4>
-                        <p class="text-muted">Szybkie prototypy i minimum viable products. Testuj pomysły przed pełnym rozwojem.</p>
-                        <a href="dokumentacja-ecm/oferta-uslug/prototypy-mvp/" class="btn-cta">
-                            <i class="fas fa-arrow-right"></i>
-                            <span>Dowiedz się więcej</span>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="service-card">
-                        <div class="mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), #8b5cf6); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
-                            <i class="fas fa-eye"></i>
-                        </div>
-                        <h4 data-i18n="services.uxAudit">Audyty UX</h4>
-                        <p class="text-muted">Kompleksowe audyty użyteczności i doświadczenia użytkownika. Popraw UX swojej strony.</p>
-                        <a href="dokumentacja-ecm/oferta-uslug/audyty-ux/" class="btn-cta">
-                            <i class="fas fa-arrow-right"></i>
-                            <span>Dowiedz się więcej</span>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="service-card">
-                        <div class="mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), #ef4444); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
-                            <i class="fas fa-cogs"></i>
-                        </div>
-                        <h4 data-i18n="services.automation">Automatyzacje</h4>
-                        <p class="text-muted">Automatyzacja procesów biznesowych z n8n, Zapier i Opal. Integracje API, workflow automation.</p>
-                        <a href="dokumentacja-ecm/oferta-uslug/automatyzacje-n8n/" class="btn-cta">
-                            <i class="fas fa-arrow-right"></i>
-                            <span>Dowiedz się więcej</span>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="service-card">
-                        <div class="mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), #06b6d4); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
-                        <h4 data-i18n="services.socialMedia">Social Media & AI</h4>
-                        <p class="text-muted">Analiza danych social media z wykorzystaniem sztucznej inteligencji. Insights i strategie marketingowe.</p>
-                        <a href="dokumentacja-ecm/oferta-uslug/social-media-data-science/" class="btn-cta">
-                            <i class="fas fa-arrow-right"></i>
-                            <span>Dowiedz się więcej</span>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="service-card">
-                        <div class="mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), #3b82f6); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                        <div class="service-icon mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
                             <i class="fas fa-robot"></i>
                         </div>
                         <h4 data-i18n="services.aiAssistants">Asystenci AI na Amazon Bedrock & Copilot Studio</h4>
-                        <p class="text-muted">Zaawansowane asystenty AI oparte na Amazon Bedrock i Microsoft Copilot Studio - automatyzacja procesów biznesowych i wsparcie klientów.</p>
+                        <p class="text-muted">Zautomatyzuj obsługę klientów 24/7 i zaoszczędź do 70% kosztów wsparcia. Inteligentne asystenty AI odpowiadają na pytania i rozwiązują problemy.</p>
                         <a href="dokumentacja-ecm/oferta-uslug/asystencja-ai-bedrock/" class="btn-cta">
                             <i class="fas fa-arrow-right"></i>
                             <span>Dowiedz się więcej</span>
@@ -1742,13 +229,104 @@
                     </div>
                 </div>
                 
+                <!-- 2. Automatyzacje -->
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="service-card">
-                        <div class="mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), #10b981); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                        <div class="service-icon mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h4 data-i18n="services.automation">Automatyzacje</h4>
+                        <p class="text-muted">Oszczędź 15-20 godzin tygodniowo automatyzując powtarzalne zadania. Integracje systemów, workflow automation i eliminacja błędów ludzkich.</p>
+                        <a href="dokumentacja-ecm/oferta-uslug/automatyzacje-n8n/" class="btn-cta">
+                            <i class="fas fa-arrow-right"></i>
+                            <span>Dowiedz się więcej</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- 3. Audyty UX -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="service-card">
+                        <div class="service-icon mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h4 data-i18n="services.uxAudit">Audyty Wdrożenia AI w Twojej Firmie</h4>
+                        <p class="text-muted">Analizujemy Twoje procesy biznesowe i identyfikujemy obszary do automatyzacji z AI. Kompleksowy plan wdrożenia sztucznej inteligencji.</p>
+                        <a href="dokumentacja-ecm/oferta-uslug/audyty-ux/" class="btn-cta">
+                            <i class="fas fa-arrow-right"></i>
+                            <span>Dowiedz się więcej</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- 4. Prototypy MVP -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="service-card">
+                        <div class="service-icon mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h4 data-i18n="services.mvp">Prototypy MVP</h4>
+                        <p class="text-muted">Przetestuj swój pomysł za 30% kosztu pełnej aplikacji. Szybki MVP pozwala zweryfikować rynek przed dużą inwestycją.</p>
+                        <a href="dokumentacja-ecm/oferta-uslug/prototypy-mvp/" class="btn-cta">
+                            <i class="fas fa-arrow-right"></i>
+                            <span>Dowiedz się więcej</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- 5. Strony WWW -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="service-card">
+                        <div class="service-icon mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <h4 data-i18n="services.websites">Strony WWW</h4>
+                        <p class="text-muted">Zwiększ konwersję o 25-40% dzięki profesjonalnemu designowi. Responsywne strony z SEO, które przyciągają i zatrzymują klientów.</p>
+                        <a href="dokumentacja-ecm/oferta-uslug/strony-www/" class="btn-cta">
+                            <i class="fas fa-arrow-right"></i>
+                            <span>Dowiedz się więcej</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- 6. Sklepy Shopify -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="service-card">
+                        <div class="service-icon mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                            <i class="fab fa-shopify"></i>
+                        </div>
+                        <h4 data-i18n="services.shopify">Sklepy Shopify</h4>
+                        <p class="text-muted">Sprzedawaj online już za 2 tygodnie - gotowy sklep z płatnościami i logistyką. Średnio 15-25% wzrost sprzedaży po wdrożeniu.</p>
+                        <a href="dokumentacja-ecm/oferta-uslug/sklepy-shopify/" class="btn-cta">
+                            <i class="fas fa-arrow-right"></i>
+                            <span>Dowiedz się więcej</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- 7. Social Media & AI -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="service-card">
+                        <div class="service-icon mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h4 data-i18n="services.socialMedia">Social Media & AI</h4>
+                        <p class="text-muted">Zwiększ engagement o 60% dzięki AI analizie treści. Dowiedz się, co naprawdę interesuje Twoich klientów.</p>
+                        <a href="dokumentacja-ecm/oferta-uslug/social-media-data-science/" class="btn-cta">
+                            <i class="fas fa-arrow-right"></i>
+                            <span>Dowiedz się więcej</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- 8. Aplikacje Mobilne -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="service-card">
+                        <div class="service-icon mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
                             <i class="fas fa-mobile-alt"></i>
                         </div>
                         <h4 data-i18n="services.mobileApps">Aplikacje Mobilne</h4>
-                        <p class="text-muted">Tworzymy nowoczesne aplikacje mobilne iOS, Android i React Native. Od pomysłu do App Store w 8-12 tygodni!</p>
+                        <p class="text-muted">Od pomysłu do App Store w 8-12 tygodni. Nowoczesne aplikacje iOS i Android, które zwiększają przychody i zaangażowanie klientów.</p>
                         <a href="dokumentacja-ecm/oferta-uslug/aplikacje-mobilne/" class="btn-cta">
                             <i class="fas fa-arrow-right"></i>
                             <span>Dowiedz się więcej</span>
@@ -1756,13 +334,14 @@
                     </div>
                 </div>
                 
+                <!-- 9. Asystenci Głosowi na Amazon Lex -->
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="service-card">
-                        <div class="mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), #8b5cf6); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                        <div class="service-icon mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
                             <i class="fas fa-microphone"></i>
                         </div>
                         <h4 data-i18n="services.voiceAssistants">Asystenci Głosowi na Amazon Lex</h4>
-                        <p class="text-muted">Tworzymy inteligentne asystenty głosowe i chatboty na platformie Amazon Lex. Automatyzacja obsługi klienta przez głos i tekst!</p>
+                        <p class="text-muted">Obsługa klienta przez głos - 24/7 dostępność bez kosztów call center. Naturalne rozmowy, inteligentne odpowiedzi.</p>
                         <a href="dokumentacja-ecm/oferta-uslug/asystenci-glosowi-lex/" class="btn-cta">
                             <i class="fas fa-arrow-right"></i>
                             <span>Dowiedz się więcej</span>
@@ -1774,33 +353,37 @@
     </section>
 
     <!-- About Us Section -->
-    <section id="about-us" class="py-5" style="background: var(--bg-secondary);">
+    <section id="about-us" class="py-5" style="background: transparent; padding: 100px 0;">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 about-content">
-                    <h2 class="section-title text-start" data-i18n="sections.about.title">O ECM Digital</h2>
-
-                    <!-- Desktop version - full text -->
-                    <div class="d-none d-lg-block">
-                        <p class="text-muted mb-4" data-i18n="sections.about.description1">
-                            Jesteśmy zespołem pasjonatów technologii, którzy wierzą, że każdy biznes zasługuje na cyfrową transformację.
-                            Łączymy kreatywność z innowacyjnymi rozwiązaniami technologicznymi.
-                        </p>
-                        <p class="text-muted mb-4" data-i18n="sections.about.description2">
-                            <strong>ECM Digital</strong> to marka oferująca kompleksowe i nowoczesne rozwiązania digitalowe.
-                            Specjalizujemy się w projektowaniu stron internetowych, e-commerce, audytach UX oraz automatyzacji procesów biznesowych,
-                            pomagając firmom rozwijać się w cyfrowym świecie.
-                        </p>
-                        <p class="text-muted mb-4" data-i18n="sections.about.description3">
-                            Marka ECM Digital działa w ramach spółki <strong>Scrum Software Sp. z o.o.</strong>, która jest formalnym właścicielem
-                            wszystkich świadczonych przez nas usług oraz odpowiedzialnym podmiotem prawnym. To Scrum Software Sp. z o.o.
-                            wystawia faktury, zawiera umowy i prowadzi rozliczenia finansowe.
-                        </p>
-                        <p class="text-muted mb-4" data-i18n="sections.about.description4">
-                            Dzięki takiemu rozwiązaniu łączymy nowoczesny branding i profesjonalną obsługę prawną,
-                            zapewniając naszym klientom pełne bezpieczeństwo i transparentność współpracy.
-                        </p>
+            <div class="text-center mb-5">
+                <h2 class="section-title mb-3" data-i18n="sections.about.title" style="font-size: 3rem; font-weight: 800; background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">O ECM Digital</h2>
+                <p style="font-size: 1.2rem; color: #EBEBF599; max-width: 600px; margin: 0 auto;">Zespół ekspertów AI, którzy transformują biznes poprzez inteligentne rozwiązania</p>
+            </div>
+            
+            <!-- About Cards -->
+            <div class="row g-4 mb-5">
+                <div class="col-lg-4 col-md-6">
+                    <div class="about-card text-center">
+                        <div class="about-icon">🚀</div>
+                        <h5>Misja</h5>
+                        <p class="text-muted">Demokratyzujemy dostęp do AI, pomagając firmom każdej wielkości wykorzystać potencjał sztucznej inteligencji do rozwoju biznesu.</p>
                     </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="about-card text-center">
+                        <div class="about-icon">🎯</div>
+                        <h5>Wizja</h5>
+                        <p class="text-muted">Być liderem w transformacji cyfrowej w Polsce, tworząc rozwiązania AI, które rzeczywiście zwiększają efektywność i przychody.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="about-card text-center">
+                        <div class="about-icon">⚡</div>
+                        <h5>Wartości</h5>
+                        <p class="text-muted">Innowacja, transparentność i rezultaty. Każdy projekt realizujemy z pasją, dostarczając mierzalne korzyści biznesowe.</p>
+                    </div>
+                </div>
+            </div>
 
                     <!-- Mobile version - accordion -->
                     <div class="d-lg-none">
@@ -1876,72 +459,159 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-6">
-                            <div class="text-center">
-                                <h4 class="text-primary" data-i18n="sections.about.stats.projects">50+</h4>
-                                <p class="text-muted" data-i18n="sections.about.stats.projectsLabel">Zrealizowanych projektów</p>
+            <!-- Company Stats -->
+            <div class="row g-4 mb-5">
+                <div class="col-lg-3 col-md-6">
+                    <div class="stat-card text-center">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Projektów AI</div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="stat-card text-center">
+                        <div class="stat-number">95%</div>
+                        <div class="stat-label">Satysfakcja Klientów</div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="stat-card text-center">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Wsparcie Techniczne</div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="stat-card text-center">
+                        <div class="stat-number">2019</div>
+                        <div class="stat-label">Rok Założenia</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Company Info -->
+            <div class="row mt-5">
+                <div class="col-12">
+                    <div class="company-info-card">
+                        <div class="row align-items-center">
+                            <div class="col-lg-8">
+                                <h4 style="color: #FFFFFF; font-weight: 700; margin-bottom: 1rem;">
+                                    <i class="fas fa-building me-2" style="color: #007AFF;"></i>
+                                    Scrum Software Sp. z o.o.
+                                </h4>
+                                <p class="text-muted mb-2">
+                                    <strong>ECM Digital</strong> działa w ramach spółki Scrum Software Sp. z o.o., 
+                                    która jest formalnym właścicielem wszystkich świadczonych usług oraz odpowiedzialnym podmiotem prawnym.
+                                </p>
+                                <p class="text-muted mb-0">
+                                    To Scrum Software Sp. z o.o. wystawia faktury i zawiera umowy z klientami, 
+                                    gwarantując pełną transparentność i bezpieczeństwo współpracy.
+                                </p>
                             </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="text-center">
-                                <h4 class="text-primary" data-i18n="sections.about.stats.clients">98%</h4>
-                                <p class="text-muted" data-i18n="sections.about.stats.clientsLabel">Zadowolonych klientów</p>
+                            <div class="col-lg-4 text-center">
+                                <div class="company-badge">
+                                    <div class="badge-icon">🏢</div>
+                                    <div class="badge-text">Zarejestrowana<br>Spółka z o.o.</div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
 
     <!-- Team Section -->
-    <section id="team" class="py-5" style="background: var(--bg-primary);">
+    <section id="team" class="py-5" style="background: transparent; padding: 100px 0;">
         <div class="container">
             <div class="text-center mb-5">
-                <h2 class="section-title" data-i18n="sections.team.title">Nasz Zespół</h2>
-                <p class="text-muted" data-i18n="sections.team.subtitle">Poznaj ekspertów, którzy tworzą Twoje projekty</p>
+                <h2 class="section-title mb-3" data-i18n="sections.team.title" style="font-size: 3rem; font-weight: 800; background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Nasz Zespół</h2>
+                <p style="font-size: 1.2rem; color: #EBEBF599; max-width: 600px; margin: 0 auto;">Eksperci AI i technologii, którzy przekształcają Twoje pomysły w innowacyjne rozwiązania</p>
             </div>
-            <div class="row">
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <div class="team-card text-center">
-                        <div class="team-avatar mb-3">
-                            <i class="fas fa-user-tie" style="font-size: 3rem; color: var(--primary);"></i>
+            
+            <!-- Team Members -->
+            <div class="row g-4 mb-5">
+                <div class="col-lg-3 col-md-6">
+                    <div class="team-member-card text-center">
+                        <div class="member-avatar">
+                            <div class="avatar-icon">🎯</div>
+                            <div class="avatar-glow"></div>
                         </div>
                         <h5 data-i18n="sections.team.members.tomasz.name">Tomasz Gnat</h5>
-                        <p class="text-muted" data-i18n="sections.team.members.tomasz.position">Discovery Consultant</p>
-                        <p class="text-muted small" data-i18n="sections.team.members.tomasz.description">Ekspert w odkrywaniu potrzeb biznesowych i strategii cyfrowej</p>
+                        <div class="member-role" data-i18n="sections.team.members.tomasz.position">Discovery Consultant</div>
+                        <p class="member-description text-muted" data-i18n="sections.team.members.tomasz.description">Ekspert w odkrywaniu potrzeb biznesowych i strategii AI. Pomaga firmom zidentyfikować obszary do automatyzacji.</p>
+                        <div class="member-skills">
+                            <span class="skill-tag">Business Analysis</span>
+                            <span class="skill-tag">AI Strategy</span>
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <div class="team-card text-center">
-                        <div class="team-avatar mb-3">
-                            <i class="fas fa-palette" style="font-size: 3rem; color: var(--primary);"></i>
+                <div class="col-lg-3 col-md-6">
+                    <div class="team-member-card text-center">
+                        <div class="member-avatar">
+                            <div class="avatar-icon">🎨</div>
+                            <div class="avatar-glow"></div>
                         </div>
                         <h5 data-i18n="sections.team.members.marta.name">Marta Górska</h5>
-                        <p class="text-muted" data-i18n="sections.team.members.marta.position">UX/UI Designer</p>
-                        <p class="text-muted small" data-i18n="sections.team.members.marta.description">Specjalistka od projektowania doświadczeń użytkownika</p>
+                        <div class="member-role" data-i18n="sections.team.members.marta.position">UX/UI Designer</div>
+                        <p class="member-description text-muted" data-i18n="sections.team.members.marta.description">Projektantka skupiona na potrzebach użytkowników w erze AI. Tworzy interfejsy, które łączą człowieka z technologią w naturalny sposób.</p>
+                        <div class="member-skills">
+                            <span class="skill-tag">UX Research</span>
+                            <span class="skill-tag">AI/UX Design</span>
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <div class="team-card text-center">
-                        <div class="team-avatar mb-3">
-                            <i class="fas fa-code" style="font-size: 3rem; color: var(--primary);"></i>
+                <div class="col-lg-3 col-md-6">
+                    <div class="team-member-card text-center">
+                        <div class="member-avatar">
+                            <div class="avatar-icon">💻</div>
+                            <div class="avatar-glow"></div>
                         </div>
                         <h5 data-i18n="sections.team.members.karol.name">Karol Czechowski</h5>
-                        <p class="text-muted" data-i18n="sections.team.members.karol.position">QA Specialist & Developer</p>
-                        <p class="text-muted small" data-i18n="sections.team.members.karol.description">Specjalista od zapewnienia jakości i testowania aplikacji</p>
+                        <div class="member-role" data-i18n="sections.team.members.karol.position">QA & AI Developer</div>
+                        <p class="member-description text-muted" data-i18n="sections.team.members.karol.description">Specjalista od zapewnienia jakości rozwiązań AI i testowania automatycznego. Gwarantuje niezawodność systemów.</p>
+                        <div class="member-skills">
+                            <span class="skill-tag">AI Testing</span>
+                            <span class="skill-tag">Quality Assurance</span>
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <div class="team-card text-center">
-                        <div class="team-avatar mb-3">
-                            <i class="fas fa-share-alt" style="font-size: 3rem; color: var(--primary);"></i>
+                <div class="col-lg-3 col-md-6">
+                    <div class="team-member-card text-center">
+                        <div class="member-avatar">
+                            <div class="avatar-icon">📊</div>
+                            <div class="avatar-glow"></div>
                         </div>
                         <h5 data-i18n="sections.team.members.roman.name">Roman Dominia</h5>
-                        <p class="text-muted" data-i18n="sections.team.members.roman.position">Social Media & Automations Specialist</p>
-                        <p class="text-muted small" data-i18n="sections.team.members.roman.description">Ekspert od social media i automatyzacji procesów biznesowych</p>
+                        <div class="member-role" data-i18n="sections.team.members.roman.position">AI Automation Specialist</div>
+                        <p class="member-description text-muted" data-i18n="sections.team.members.roman.description">Ekspert od automatyzacji procesów biznesowych z AI i analizy danych social media. Zwiększa efektywność operacyjną.</p>
+                        <div class="member-skills">
+                            <span class="skill-tag">Process Automation</span>
+                            <span class="skill-tag">AI Analytics</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Team Values -->
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="team-value-card text-center">
+                        <div class="value-icon">🚀</div>
+                        <h6>Innowacja</h6>
+                        <p class="text-muted">Zawsze szukamy najnowszych technologii AI, które przynoszą realne korzyści biznesowe</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="team-value-card text-center">
+                        <div class="value-icon">🤝</div>
+                        <h6>Współpraca</h6>
+                        <p class="text-muted">Pracujemy jako jeden zespół z Twoją firmą, dzieląc się wiedzą i doświadczeniem</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="team-value-card text-center">
+                        <div class="value-icon">📈</div>
+                        <h6>Rezultaty</h6>
+                        <p class="text-muted">Każde rozwiązanie mierzamy konkretymi wskaźnikami biznesowymi i ROI</p>
                     </div>
                 </div>
             </div>
@@ -1949,36 +619,107 @@
     </section>
 
     <!-- Process Section -->
-    <section class="py-5" id="process" aria-labelledby="process-title">
+    <section class="py-5" id="process" aria-labelledby="process-title" style="background: transparent; padding: 100px 0;">
         <div class="container">
-            <h2 id="process-title" class="section-title" data-i18n="sections.process.title">Nasz Proces Pracy</h2>
-            <div class="row g-4" role="tablist" aria-label="Kroki procesu pracy">
-                <div class="col-lg-3 col-md-6">
-                    <div class="process-step text-center" role="tab" tabindex="0" aria-selected="false" aria-controls="step1-content">
-                        <div class="process-number">1</div>
-                        <h5 data-i18n="sections.process.steps.discovery.title">Konsultacja</h5>
-                        <p class="text-muted" data-i18n="sections.process.steps.discovery.description">Analiza potrzeb i wymagań projektu</p>
+            <div class="text-center mb-5">
+                <h2 id="process-title" class="section-title mb-3" data-i18n="sections.process.title" style="font-size: 3rem; font-weight: 800; background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Nasz Proces Pracy</h2>
+                <p style="font-size: 1.2rem; color: #EBEBF599; max-width: 600px; margin: 0 auto;">Od pomysłu do gotowego rozwiązania AI - sprawdzony proces, który gwarantuje sukces</p>
+            </div>
+            
+            <!-- Process Timeline -->
+            <div class="process-timeline position-relative mb-5">
+                <div class="timeline-line"></div>
+                <div class="row g-4" role="tablist" aria-label="Kroki procesu pracy">
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <div class="process-step-wrapper text-center position-relative">
+                            <div class="process-step text-center" role="tab" tabindex="0" aria-selected="false" aria-controls="step1-content">
+                                <div class="step-number">1</div>
+                                <div class="step-icon">🔍</div>
+                                <h5 data-i18n="sections.process.steps.discovery.title">Discovery</h5>
+                                <p class="text-muted" data-i18n="sections.process.steps.discovery.description">Analizujemy Twoje procesy i identyfikujemy możliwości AI</p>
+                                <div class="step-duration">1-2 tygodnie</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <div class="process-step-wrapper text-center position-relative">
+                            <div class="process-step text-center" role="tab" tabindex="0" aria-selected="false" aria-controls="step2-content">
+                                <div class="step-number">2</div>
+                                <div class="step-icon">📋</div>
+                                <h5 data-i18n="sections.process.steps.strategy.title">Strategia & Plan</h5>
+                                <p class="text-muted" data-i18n="sections.process.steps.strategy.description">Tworzymy roadmapę wdrożenia z priorytetami i timeline</p>
+                                <div class="step-duration">1 tydzień</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <div class="process-step-wrapper text-center position-relative">
+                            <div class="process-step text-center" role="tab" tabindex="0" aria-selected="false" aria-controls="step3-content">
+                                <div class="step-number">3</div>
+                                <div class="step-icon">💡</div>
+                                <h5 data-i18n="sections.process.steps.prototype.title">Prototyp & MVP</h5>
+                                <p class="text-muted" data-i18n="sections.process.steps.prototype.description">Szybki prototyp do testowania i walidacji rozwiązania</p>
+                                <div class="step-duration">2-4 tygodnie</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <div class="process-step-wrapper text-center position-relative">
+                            <div class="process-step text-center active" role="tab" tabindex="0" aria-selected="true" aria-controls="step4-content">
+                                <div class="step-number">4</div>
+                                <div class="step-icon">⚙️</div>
+                                <h5 data-i18n="sections.process.steps.development.title">Rozwój & Integracja</h5>
+                                <p class="text-muted" data-i18n="sections.process.steps.development.description">Pełne wdrożenie AI, automatyzacji i integracji systemów</p>
+                                <div class="step-duration">4-8 tygodni</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <div class="process-step-wrapper text-center position-relative">
+                            <div class="process-step text-center" role="tab" tabindex="0" aria-selected="false" aria-controls="step5-content">
+                                <div class="step-number">5</div>
+                                <div class="step-icon">🚀</div>
+                                <h5 data-i18n="sections.process.steps.launch.title">Wdrożenie & Szkolenia</h5>
+                                <p class="text-muted" data-i18n="sections.process.steps.launch.description">Uruchomienie produkcyjne i przeszkolenie zespołu</p>
+                                <div class="step-duration">1-2 tygodnie</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <div class="process-step-wrapper text-center position-relative">
+                            <div class="process-step text-center" role="tab" tabindex="0" aria-selected="false" aria-controls="step6-content">
+                                <div class="step-number">6</div>
+                                <div class="step-icon">📈</div>
+                                <h5 data-i18n="sections.process.steps.optimization.title">Optymalizacja & Wsparcie</h5>
+                                <p class="text-muted" data-i18n="sections.process.steps.optimization.description">Ciągłe doskonalenie AI i wsparcie techniczne 24/7</p>
+                                <div class="step-duration">Ongoing</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="process-step text-center" role="tab" tabindex="0" aria-selected="false" aria-controls="step2-content">
-                        <div class="process-number">2</div>
-                        <h5 data-i18n="sections.process.steps.design.title">Planowanie</h5>
-                        <p class="text-muted" data-i18n="sections.process.steps.design.description">Strategia i architektura rozwiązania</p>
+            </div>
+            
+            <!-- Process Benefits -->
+            <div class="row mt-5">
+                <div class="col-md-4 text-center">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">⚡</div>
+                        <h6>Szybkie Rezultaty</h6>
+                        <p class="text-muted">MVP w 4 tygodnie, pełne rozwiązanie w 8-12 tygodni</p>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="process-step text-center active" role="tab" tabindex="0" aria-selected="true" aria-controls="step3-content">
-                        <div class="process-number">3</div>
-                        <h5 data-i18n="sections.process.steps.development.title">Realizacja</h5>
-                        <p class="text-muted" data-i18n="sections.process.steps.development.description">Development i testowanie</p>
+                <div class="col-md-4 text-center">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">🎯</div>
+                        <h6>Sprawdzona Metodologia</h6>
+                        <p class="text-muted">Proces przetestowany na 50+ projektach AI</p>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="process-step text-center" role="tab" tabindex="0" aria-selected="false" aria-controls="step4-content">
-                        <div class="process-number">4</div>
-                        <h5 data-i18n="sections.process.steps.launch.title">Wdrożenie</h5>
-                        <p class="text-muted" data-i18n="sections.process.steps.launch.description">Uruchomienie i wsparcie</p>
+                <div class="col-md-4 text-center">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">🔄</div>
+                        <h6>Ciągłe Wsparcie</h6>
+                        <p class="text-muted">24/7 monitoring i optymalizacja po wdrożeniu</p>
                     </div>
                 </div>
             </div>
@@ -1986,26 +727,41 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-5" style="background: var(--bg-secondary);">
+    <section id="contact" class="py-5" style="background: transparent; padding: 100px 0;">
         <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title mb-3" data-i18n="sections.contact.title" style="font-size: 3rem; font-weight: 800; background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Rozpocznij Projekt</h2>
+                <p style="font-size: 1.2rem; color: #EBEBF599; max-width: 600px; margin: 0 auto;">Skontaktuj się z nami, aby omówić Twój projekt. Oferujemy darmową konsultację i wycenę.</p>
+            </div>
+            
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <div class="contact-card p-5 text-center">
-                        <h2 class="section-title" data-i18n="sections.contact.title">Rozpocznij Projekt</h2>
-                        <p class="text-muted mb-4" data-i18n="sections.contact.description">
-                            Skontaktuj się z nami, aby omówić Twój projekt. 
-                            Oferujemy darmową konsultację i wycenę.
-                        </p>
-                        <div class="d-flex justify-content-center gap-3 flex-wrap">
-                            <a href="mailto:kontakt@ecm-digital.com" class="btn btn-primary btn-lg">
-                                <i class="fas fa-envelope me-2"></i>
-                                <span data-i18n="sections.contact.sendMessage">Napisz Email</span>
-                            </a>
-                            <a href="tel:+48123456789" class="btn btn-outline-primary btn-lg">
-                                <i class="fas fa-phone me-2"></i>
-                                <span data-i18n="sections.contact.phone">Zadzwoń</span>
-                            </a>
+                        <div class="row g-4 mb-4">
+                            <div class="col-md-4">
+                                <div class="contact-info-card text-center">
+                                    <div class="contact-icon">📧</div>
+                                    <h6>Email</h6>
+                                    <p class="text-muted">hello@ecm-digital.com</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="contact-info-card text-center">
+                                    <div class="contact-icon">📞</div>
+                                    <h6>Telefon</h6>
+                                    <p class="text-muted">+48 535 330 323</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="contact-info-card text-center">
+                                    <div class="contact-icon">⚡</div>
+                                    <h6>Czas odpowiedzi</h6>
+                                    <p class="text-muted">24 godziny</p>
+                                </div>
+                            </div>
                         </div>
+
+                        <div id="hubspot-form" class="mt-4"></div>
                     </div>
                 </div>
             </div>
@@ -2069,6 +825,1048 @@
     
     <!-- System wielojęzyczny -->
     <script src="src/js/i18n.js"></script>
+    
+    <!-- HubSpot Integration -->
+    <script src="src/js/hubspot.js"></script>
+    
+    <style>
+        /* Complete dark theme restoration */
+        html { 
+            background: linear-gradient(180deg, #000000 0%, #1C1C1E 100%) !important; 
+            min-height: 100vh !important;
+        }
+        body { 
+            background: linear-gradient(180deg, #000000 0%, #1C1C1E 100%) !important; 
+            color: #FFFFFF !important; 
+            min-height: 100vh !important;
+            position: relative !important;
+        }
+        body::before {
+            content: '' !important;
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
+            background: radial-gradient(circle at 30% 20%, #007AFF 0%, transparent 50%), radial-gradient(circle at 70% 80%, #BF5AF2 0%, transparent 50%) !important;
+            opacity: 0.1 !important;
+            z-index: -1 !important;
+            pointer-events: none !important;
+        }
+        
+        /* Hero section */
+        .hero { 
+            background: linear-gradient(180deg, #000000 0%, #1C1C1E 100%) !important; 
+            color: #FFFFFF !important; 
+            padding: 160px 0 120px !important;
+            position: relative !important;
+            overflow: hidden !important;
+        }
+        .hero::before {
+            content: '' !important;
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
+            background: radial-gradient(circle at 30% 20%, #007AFF 0%, transparent 50%), radial-gradient(circle at 70% 80%, #BF5AF2 0%, transparent 50%) !important;
+            opacity: 0.1 !important;
+            z-index: 1 !important;
+        }
+        .hero .container { position: relative !important; z-index: 2 !important; }
+        .hero-title { 
+            font-size: clamp(2.5rem, 8vw, 5rem) !important;
+            font-weight: 800 !important; 
+            line-height: 1.05 !important; 
+            margin-bottom: 2rem !important;
+            letter-spacing: -0.03em !important;
+            background: linear-gradient(135deg, #FFFFFF 0%, #EBEBF5 100%) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            background-clip: text !important;
+        }
+        .hero-subtitle { 
+            font-size: 1.3rem !important; 
+            color: #EBEBF599 !important;
+            font-weight: 400 !important;
+            line-height: 1.6 !important;
+            max-width: 700px !important;
+            margin: 0 auto 3rem auto !important;
+        }
+        
+        /* Hero Visual */
+        .hero-icon-container {
+            position: relative !important;
+            display: inline-block !important;
+            margin: 2rem 0 !important;
+        }
+        
+        .hero-main-icon {
+            position: relative !important;
+            z-index: 2 !important;
+            filter: drop-shadow(0 0 20px rgba(0, 122, 255, 0.3)) !important;
+            animation: heroFloat 3s ease-in-out infinite !important;
+        }
+        
+        .hero-glow {
+            position: absolute !important;
+            top: 50% !important;
+            left: 50% !important;
+            transform: translate(-50%, -50%) !important;
+            width: 200px !important;
+            height: 200px !important;
+            background: radial-gradient(circle, rgba(0, 122, 255, 0.2) 0%, transparent 70%) !important;
+            border-radius: 50% !important;
+            animation: heroGlow 4s ease-in-out infinite alternate !important;
+            z-index: 1 !important;
+        }
+        
+        @keyframes heroFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        @keyframes heroGlow {
+            0% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
+            100% { opacity: 0.6; transform: translate(-50%, -50%) scale(1.1); }
+        }
+        
+        /* Hero Stats */
+        .hero-stat-card {
+            background: rgba(28, 28, 30, 0.8) !important;
+            backdrop-filter: blur(20px) !important;
+            -webkit-backdrop-filter: blur(20px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            border-radius: 20px !important;
+            padding: 1.5rem 1rem !important;
+            transition: all 0.3s ease !important;
+            margin-bottom: 1rem !important;
+        }
+        
+        .hero-stat-card:hover {
+            transform: translateY(-5px) !important;
+            box-shadow: 0 12px 30px rgba(0, 122, 255, 0.15) !important;
+            border-color: rgba(0, 122, 255, 0.2) !important;
+        }
+        
+        .hero-stat-card .stat-icon {
+            font-size: 2rem !important;
+            margin-bottom: 0.5rem !important;
+            filter: grayscale(0.2) !important;
+        }
+        
+        .hero-stat-card .stat-number {
+            font-size: 1.8rem !important;
+            font-weight: 800 !important;
+            background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            background-clip: text !important;
+            margin-bottom: 0.3rem !important;
+        }
+        
+        .hero-stat-card .stat-label {
+            color: #EBEBF599 !important;
+            font-size: 0.8rem !important;
+            font-weight: 600 !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.5px !important;
+        }
+        
+        /* Service cards - glass effect */
+        /* Services Section */
+        #services {
+            background: transparent !important;
+            padding: 100px 0 !important;
+        }
+        
+        .service-card { 
+            background: rgba(28, 28, 30, 0.95) !important;
+            backdrop-filter: blur(30px) !important;
+            -webkit-backdrop-filter: blur(30px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            border-radius: 24px !important;
+            padding: 2.5rem 2rem !important;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            height: 100% !important;
+            position: relative !important;
+            overflow: hidden !important;
+            text-align: center !important;
+        }
+        
+        .service-card::before {
+            content: '' !important;
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
+            background: linear-gradient(135deg, rgba(0, 122, 255, 0.1) 0%, rgba(191, 90, 242, 0.1) 100%) !important;
+            opacity: 0 !important;
+            transition: opacity 0.3s ease !important;
+            z-index: -1 !important;
+        }
+        
+        .service-card:hover::before {
+            opacity: 1 !important;
+        }
+        .service-card:hover {
+            transform: translateY(-12px) scale(1.02) !important;
+            box-shadow: 0 20px 60px rgba(0, 122, 255, 0.2), 0 8px 30px rgba(191, 90, 242, 0.1) !important;
+            border-color: rgba(0, 122, 255, 0.3) !important;
+        }
+        .service-card h4 { color: #FFFFFF !important; }
+        .service-card p { color: #EBEBF599 !important; }
+        
+        /* Service icons */
+        .service-icon { 
+            background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%) !important;
+            border-radius: 1rem !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            margin-bottom: 1.5rem !important;
+            font-size: 1.5rem !important;
+            color: white !important;
+            box-shadow: 0 8px 25px rgba(0, 122, 255, 0.3) !important;
+            transition: all 0.3s ease !important;
+        }
+        
+        .service-card:hover .service-icon {
+            transform: translateY(-2px) scale(1.05) !important;
+            box-shadow: 0 12px 35px rgba(0, 122, 255, 0.4), 0 6px 20px rgba(191, 90, 242, 0.2) !important;
+        }
+        
+        /* Buttons */
+        .btn-primary { 
+            background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%) !important;
+            color: white !important;
+            border: none !important;
+            border-radius: 12px !important;
+            padding: 0.75rem 1.5rem !important;
+            font-weight: 600 !important;
+            transition: all 0.3s ease !important;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 8px 25px rgba(0, 122, 255, 0.3) !important;
+            color: white !important;
+        }
+        .btn-cta {
+            background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%) !important;
+            color: white !important;
+            text-decoration: none !important;
+            padding: 0.875rem 2rem !important;
+            border-radius: 16px !important;
+            font-weight: 700 !important;
+            font-size: 0.9rem !important;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 0.75rem !important;
+            margin-top: 1.5rem !important;
+            position: relative !important;
+            overflow: hidden !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            backdrop-filter: blur(10px) !important;
+            letter-spacing: 0.5px !important;
+            text-transform: uppercase !important;
+        }
+        
+        .btn-cta::before {
+            content: '' !important;
+            position: absolute !important;
+            top: 0 !important;
+            left: -100% !important;
+            width: 100% !important;
+            height: 100% !important;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent) !important;
+            transition: left 0.6s ease !important;
+        }
+        
+        .btn-cta:hover::before {
+            left: 100% !important;
+        }
+        
+        .btn-cta:hover {
+            transform: translateY(-3px) scale(1.02) !important;
+            box-shadow: 0 12px 35px rgba(0, 122, 255, 0.4), 0 6px 20px rgba(191, 90, 242, 0.2) !important;
+            color: white !important;
+            border-color: rgba(255, 255, 255, 0.2) !important;
+            text-decoration: none !important;
+        }
+        
+        .btn-cta i {
+            transition: transform 0.3s ease !important;
+        }
+        
+        .btn-cta:hover i {
+            transform: translateX(3px) !important;
+        }
+        
+        /* Navigation */
+        .navbar { 
+            background: rgba(28, 28, 30, 0.8) !important;
+            backdrop-filter: blur(20px) !important;
+            -webkit-backdrop-filter: blur(20px) !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+        }
+        .navbar-brand { color: #FFFFFF !important; }
+        .nav-link { color: #EBEBF5 !important; }
+        .nav-link:hover { color: #007AFF !important; }
+        
+        /* Contact section */
+        #contact {
+            background: transparent !important;
+            padding: 100px 0 !important;
+        }
+        
+        .contact-card { 
+            background: rgba(28, 28, 30, 0.95) !important;
+            backdrop-filter: blur(30px) !important;
+            -webkit-backdrop-filter: blur(30px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            border-radius: 24px !important;
+            position: relative !important;
+            overflow: hidden !important;
+        }
+        
+        .contact-card::before {
+            content: '' !important;
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
+            background: linear-gradient(135deg, rgba(0, 122, 255, 0.05) 0%, rgba(191, 90, 242, 0.05) 100%) !important;
+            z-index: -1 !important;
+        }
+        
+        .contact-info-card {
+            background: rgba(28, 28, 30, 0.8) !important;
+            backdrop-filter: blur(20px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            border-radius: 16px !important;
+            padding: 1.5rem 1rem !important;
+            transition: all 0.3s ease !important;
+        }
+        
+        .contact-info-card:hover {
+            transform: translateY(-3px) !important;
+            box-shadow: 0 8px 20px rgba(0, 122, 255, 0.15) !important;
+            border-color: rgba(0, 122, 255, 0.2) !important;
+        }
+        
+        .contact-icon {
+            font-size: 2rem !important;
+            margin-bottom: 0.5rem !important;
+            filter: grayscale(0.2) !important;
+        }
+        
+        .contact-info-card h6 {
+            color: #FFFFFF !important;
+            font-weight: 700 !important;
+            margin-bottom: 0.5rem !important;
+            font-size: 1rem !important;
+        }
+        
+        .contact-info-card p {
+            font-size: 0.9rem !important;
+            margin: 0 !important;
+        }
+        
+        /* HubSpot form styling */
+        #hubspot-form {
+            background: #FFFFFF !important;
+            border: 1px solid rgba(0, 0, 0, 0.1) !important;
+            border-radius: 20px !important;
+            padding: 2rem !important;
+            margin-top: 2rem !important;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
+        }
+        #hubspot-form .hs-form {
+            background: transparent !important;
+        }
+        #hubspot-form .hs-form-field {
+            margin-bottom: 1.5rem !important;
+        }
+        #hubspot-form .hs-form-field label {
+            color: #1C1C1E !important;
+            font-weight: 600 !important;
+            margin-bottom: 0.5rem !important;
+            display: block !important;
+        }
+        #hubspot-form .hs-input {
+            background: #FFFFFF !important;
+            border: 1px solid rgba(0, 0, 0, 0.2) !important;
+            border-radius: 10px !important;
+            padding: 12px 16px !important;
+            color: #1C1C1E !important;
+            font-size: 16px !important;
+            width: 100% !important;
+            transition: all 0.3s ease !important;
+        }
+        #hubspot-form .hs-input:focus {
+            background: #FFFFFF !important;
+            border-color: #007AFF !important;
+            outline: none !important;
+            box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1) !important;
+        }
+        #hubspot-form .hs-input::placeholder {
+            color: #8E8E93 !important;
+        }
+        #hubspot-form textarea.hs-input {
+            min-height: 120px !important;
+            resize: vertical !important;
+        }
+        #hubspot-form .hs-button {
+            background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%) !important;
+            border: none !important;
+            border-radius: 12px !important;
+            padding: 12px 32px !important;
+            color: white !important;
+            font-weight: 600 !important;
+            font-size: 16px !important;
+            cursor: pointer !important;
+            transition: all 0.3s ease !important;
+            box-shadow: 0 4px 15px rgba(0, 122, 255, 0.3) !important;
+        }
+        #hubspot-form .hs-button:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 8px 25px rgba(0, 122, 255, 0.4) !important;
+        }
+        #hubspot-form .hs-error-msgs {
+            color: #FF453A !important;
+            font-size: 14px !important;
+            margin-top: 0.5rem !important;
+        }
+        #hubspot-form .hs-richtext {
+            color: #8E8E93 !important;
+        }
+        #hubspot-form .hs-form-required {
+            color: #FF453A !important;
+        }
+        
+        /* Voice Chatbot Modal Styling */
+        .voice-chatbot-modal {
+            background: rgba(0, 0, 0, 0.8) !important;
+            backdrop-filter: blur(10px) !important;
+            -webkit-backdrop-filter: blur(10px) !important;
+        }
+        .voice-chatbot-content {
+            background: #FFFFFF !important;
+            border: 1px solid rgba(0, 0, 0, 0.1) !important;
+            border-radius: 20px !important;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3) !important;
+            max-width: 600px !important;
+            width: 90% !important;
+            max-height: 80vh !important;
+            overflow-y: auto !important;
+            display: flex !important;
+            flex-direction: column !important;
+        }
+        .voice-chatbot-header {
+            background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%) !important;
+            color: #FFFFFF !important;
+            padding: 1.5rem !important;
+            border-radius: 20px 20px 0 0 !important;
+        }
+        .voice-chatbot-title {
+            color: #FFFFFF !important;
+            font-size: 1.25rem !important;
+            font-weight: 700 !important;
+            margin: 0 !important;
+        }
+        .voice-chatbot-subtitle {
+            color: rgba(255, 255, 255, 0.8) !important;
+            font-size: 0.9rem !important;
+            margin: 0.25rem 0 0 0 !important;
+        }
+        .voice-chatbot-close {
+            background: rgba(255, 255, 255, 0.2) !important;
+            border: none !important;
+            border-radius: 50% !important;
+            width: 36px !important;
+            height: 36px !important;
+            color: #FFFFFF !important;
+            cursor: pointer !important;
+            transition: all 0.3s ease !important;
+        }
+        .voice-chatbot-close:hover {
+            background: rgba(255, 255, 255, 0.3) !important;
+            transform: scale(1.1) !important;
+        }
+
+        .voice-chatbot-messages {
+            background: #F8F9FA !important;
+            padding: 1.5rem !important;
+            min-height: 300px !important;
+            flex: 1 !important;
+            overflow-y: auto !important;
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 1rem !important;
+        }
+        .voice-message {
+            display: flex !important;
+            align-items: flex-start !important;
+            gap: 0.75rem !important;
+            padding: 1rem !important;
+            border-radius: 15px !important;
+            max-width: 80% !important;
+            word-wrap: break-word !important;
+            line-height: 1.5 !important;
+        }
+        .voice-message.bot {
+            background: #FFFFFF !important;
+            border: 1px solid rgba(0, 122, 255, 0.2) !important;
+            align-self: flex-start !important;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+        }
+        .voice-message.user {
+            background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%) !important;
+            color: #FFFFFF !important;
+            align-self: flex-end !important;
+            box-shadow: 0 2px 8px rgba(0, 122, 255, 0.3) !important;
+        }
+        .voice-message .message-icon {
+            width: 32px !important;
+            height: 32px !important;
+            background: #007AFF !important;
+            border-radius: 50% !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            color: white !important;
+            font-size: 0.875rem !important;
+            flex-shrink: 0 !important;
+        }
+        .voice-message.user .message-icon {
+            background: rgba(255, 255, 255, 0.2) !important;
+        }
+        .voice-message .message-text {
+            color: #000000 !important;
+            font-size: 0.95rem !important;
+        }
+        .voice-message.user .message-text {
+            color: #FFFFFF !important;
+        }
+        .voice-message.bot .message-text {
+            color: #000000 !important;
+        }
+        .voice-message.bot {
+            background: #FFFFFF !important;
+            border: 1px solid rgba(0, 122, 255, 0.2) !important;
+            align-self: flex-start !important;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+            color: #000000 !important;
+        }
+        .voice-message.bot * {
+            color: #000000 !important;
+        }
+        .voice-chatbot-controls {
+            background: #FFFFFF !important;
+            padding: 1.5rem !important;
+            border-top: 1px solid rgba(0, 0, 0, 0.1) !important;
+            flex-shrink: 0 !important;
+        }
+
+        .text-input-row {
+            display: flex !important;
+            gap: 0.75rem !important;
+            align-items: center !important;
+        }
+        #voiceChatbotTextInput {
+            background: #F8F9FA !important;
+            border: 1px solid rgba(0, 0, 0, 0.15) !important;
+            border-radius: 25px !important;
+            padding: 12px 20px !important;
+            color: #1C1C1E !important;
+            font-size: 16px !important;
+            flex: 1 !important;
+            transition: all 0.3s ease !important;
+        }
+        #voiceChatbotTextInput:focus {
+            border-color: #007AFF !important;
+            outline: none !important;
+            box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1) !important;
+            background: #FFFFFF !important;
+        }
+        #voiceChatbotSendButton {
+            background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%) !important;
+            border: none !important;
+            border-radius: 50% !important;
+            width: 48px !important;
+            height: 48px !important;
+            color: #FFFFFF !important;
+            cursor: pointer !important;
+            transition: all 0.3s ease !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            box-shadow: 0 2px 8px rgba(0, 122, 255, 0.3) !important;
+        }
+        #voiceChatbotSendButton:hover {
+            transform: scale(1.05) !important;
+            box-shadow: 0 4px 15px rgba(0, 122, 255, 0.4) !important;
+        }
+        .voice-chatbot-suggestions {
+            background: #FFFFFF !important;
+            padding: 1rem 1.5rem !important;
+            border-top: 1px solid rgba(0, 0, 0, 0.1) !important;
+            flex-shrink: 0 !important;
+        }
+        .voice-suggestion {
+            background: rgba(0, 122, 255, 0.1) !important;
+            border: 1px solid rgba(0, 122, 255, 0.2) !important;
+            border-radius: 20px !important;
+            padding: 0.75rem 1rem !important;
+            margin: 0.5rem 0 !important;
+            color: #007AFF !important;
+            cursor: pointer !important;
+            transition: all 0.3s ease !important;
+            font-size: 0.9rem !important;
+        }
+        .voice-suggestion:hover {
+            background: rgba(0, 122, 255, 0.2) !important;
+            transform: translateY(-2px) !important;
+        }
+        .voice-suggestion i {
+            margin-right: 0.5rem !important;
+            color: #007AFF !important;
+        }
+        
+        /* Section titles */
+        .section-title { 
+            background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            background-clip: text !important;
+            font-weight: 800 !important;
+        }
+        h1, h2, h3, h4, h5, h6 { color: #FFFFFF !important; }
+        
+        /* Text colors */
+        .text-muted { color: #EBEBF599 !important; }
+        p { color: #EBEBF5 !important; }
+        
+        /* Process section */
+        #process {
+            background: transparent !important;
+            padding: 100px 0 !important;
+            position: relative !important;
+        }
+        
+        /* Process Timeline */
+        .process-timeline {
+            position: relative !important;
+        }
+        .timeline-line {
+            position: absolute !important;
+            top: 80px !important;
+            left: 8.33% !important;
+            right: 8.33% !important;
+            height: 2px !important;
+            background: linear-gradient(90deg, #007AFF 0%, #BF5AF2 100%) !important;
+            z-index: 1 !important;
+        }
+        
+        .process-step-wrapper {
+            position: relative !important;
+            z-index: 2 !important;
+            margin-bottom: 2rem !important;
+            padding: 0 0.5rem !important;
+        }
+        
+        .process-step {
+            background: rgba(28, 28, 30, 0.95) !important;
+            backdrop-filter: blur(30px) !important;
+            -webkit-backdrop-filter: blur(30px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            border-radius: 24px !important;
+            padding: 2.5rem 1.5rem !important;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            position: relative !important;
+            height: 100% !important;
+            overflow: hidden !important;
+        }
+        
+        .process-step::before {
+            content: '' !important;
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
+            background: linear-gradient(135deg, rgba(0, 122, 255, 0.1) 0%, rgba(191, 90, 242, 0.1) 100%) !important;
+            opacity: 0 !important;
+            transition: opacity 0.3s ease !important;
+            z-index: -1 !important;
+        }
+        
+        .process-step:hover::before {
+            opacity: 1 !important;
+        }
+        
+        .process-step:hover {
+            transform: translateY(-12px) scale(1.02) !important;
+            box-shadow: 0 20px 60px rgba(0, 122, 255, 0.2), 0 8px 30px rgba(191, 90, 242, 0.1) !important;
+            border-color: rgba(0, 122, 255, 0.3) !important;
+        }
+        
+        .process-step.active {
+            background: rgba(0, 122, 255, 0.1) !important;
+            border-color: rgba(0, 122, 255, 0.4) !important;
+            transform: translateY(-8px) !important;
+            box-shadow: 0 16px 40px rgba(0, 122, 255, 0.25) !important;
+        }
+        
+        .step-number {
+            width: 70px !important;
+            height: 70px !important;
+            background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%) !important;
+            border-radius: 50% !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            color: white !important;
+            font-size: 1.8rem !important;
+            font-weight: 800 !important;
+            margin: 0 auto 1rem auto !important;
+            box-shadow: 0 10px 30px rgba(0, 122, 255, 0.4) !important;
+            position: relative !important;
+            z-index: 3 !important;
+        }
+        
+        .step-icon {
+            font-size: 2rem !important;
+            margin-bottom: 1rem !important;
+            filter: grayscale(0.3) !important;
+            transition: all 0.3s ease !important;
+        }
+        
+        .process-step:hover .step-icon {
+            filter: grayscale(0) !important;
+            transform: scale(1.1) !important;
+        }
+        
+        .process-step h5 {
+            color: #FFFFFF !important;
+            font-weight: 700 !important;
+            font-size: 1.1rem !important;
+            margin-bottom: 1rem !important;
+            letter-spacing: 0.5px !important;
+        }
+        
+        .process-step p {
+            color: #EBEBF599 !important;
+            line-height: 1.6 !important;
+            font-size: 0.9rem !important;
+            margin-bottom: 1rem !important;
+        }
+        
+        .step-duration {
+            background: rgba(0, 122, 255, 0.2) !important;
+            color: #007AFF !important;
+            padding: 0.4rem 1rem !important;
+            border-radius: 20px !important;
+            font-size: 0.8rem !important;
+            font-weight: 600 !important;
+            display: inline-block !important;
+            border: 1px solid rgba(0, 122, 255, 0.3) !important;
+        }
+        
+        /* Process Benefits */
+        .benefit-card {
+            background: rgba(28, 28, 30, 0.8) !important;
+            backdrop-filter: blur(20px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            border-radius: 20px !important;
+            padding: 2rem 1.5rem !important;
+            transition: all 0.3s ease !important;
+            margin-bottom: 2rem !important;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-5px) !important;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3) !important;
+            border-color: rgba(255, 255, 255, 0.2) !important;
+        }
+        
+        .benefit-icon {
+            font-size: 2.5rem !important;
+            margin-bottom: 1rem !important;
+            filter: grayscale(0.2) !important;
+        }
+        
+        .benefit-card h6 {
+            color: #FFFFFF !important;
+            font-weight: 700 !important;
+            margin-bottom: 0.8rem !important;
+            font-size: 1.1rem !important;
+        }
+        
+        .benefit-card p {
+            color: #EBEBF599 !important;
+            font-size: 0.9rem !important;
+            line-height: 1.5 !important;
+            margin: 0 !important;
+        }
+        
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .timeline-line {
+                display: none !important;
+            }
+            .process-step {
+                margin-bottom: 1.5rem !important;
+            }
+            #process {
+                padding: 60px 0 !important;
+            }
+        }
+        
+        /* About Section */
+        #about-us {
+            background: transparent !important;
+            padding: 100px 0 !important;
+        }
+        
+        .about-card {
+            background: rgba(28, 28, 30, 0.95) !important;
+            backdrop-filter: blur(30px) !important;
+            -webkit-backdrop-filter: blur(30px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            border-radius: 24px !important;
+            padding: 2.5rem 2rem !important;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            height: 100% !important;
+        }
+        
+        .about-card:hover {
+            transform: translateY(-10px) scale(1.02) !important;
+            box-shadow: 0 20px 50px rgba(0, 122, 255, 0.2) !important;
+            border-color: rgba(0, 122, 255, 0.3) !important;
+        }
+        
+        .about-icon {
+            font-size: 3rem !important;
+            margin-bottom: 1.5rem !important;
+            filter: grayscale(0.2) !important;
+            transition: all 0.3s ease !important;
+        }
+        
+        .about-card:hover .about-icon {
+            filter: grayscale(0) !important;
+            transform: scale(1.1) !important;
+        }
+        
+        .about-card h5 {
+            color: #FFFFFF !important;
+            font-weight: 700 !important;
+            font-size: 1.3rem !important;
+            margin-bottom: 1rem !important;
+        }
+        
+        .stat-card {
+            background: rgba(28, 28, 30, 0.8) !important;
+            backdrop-filter: blur(20px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            border-radius: 20px !important;
+            padding: 2rem 1.5rem !important;
+            transition: all 0.3s ease !important;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px) !important;
+            box-shadow: 0 12px 30px rgba(0, 122, 255, 0.15) !important;
+            border-color: rgba(0, 122, 255, 0.2) !important;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem !important;
+            font-weight: 800 !important;
+            background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            background-clip: text !important;
+            margin-bottom: 0.5rem !important;
+        }
+        
+        .stat-label {
+            color: #EBEBF599 !important;
+            font-size: 0.9rem !important;
+            font-weight: 600 !important;
+        }
+        
+        .company-info-card {
+            background: rgba(28, 28, 30, 0.9) !important;
+            backdrop-filter: blur(25px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            border-radius: 20px !important;
+            padding: 2.5rem !important;
+        }
+        
+        .company-badge {
+            background: rgba(0, 122, 255, 0.1) !important;
+            border: 1px solid rgba(0, 122, 255, 0.2) !important;
+            border-radius: 16px !important;
+            padding: 1.5rem !important;
+        }
+        
+        .badge-icon {
+            font-size: 2rem !important;
+            margin-bottom: 0.5rem !important;
+        }
+        
+        .badge-text {
+            color: #007AFF !important;
+            font-size: 0.9rem !important;
+            font-weight: 600 !important;
+            line-height: 1.3 !important;
+        }
+        
+        /* Team section */
+        #team {
+            background: transparent !important;
+            padding: 100px 0 !important;
+        }
+        
+        .team-member-card {
+            background: rgba(28, 28, 30, 0.95) !important;
+            backdrop-filter: blur(30px) !important;
+            -webkit-backdrop-filter: blur(30px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            border-radius: 24px !important;
+            padding: 2.5rem 2rem !important;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            height: 100% !important;
+            position: relative !important;
+            overflow: hidden !important;
+        }
+        
+        .team-member-card::before {
+            content: '' !important;
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
+            background: linear-gradient(135deg, rgba(0, 122, 255, 0.1) 0%, rgba(191, 90, 242, 0.1) 100%) !important;
+            opacity: 0 !important;
+            transition: opacity 0.3s ease !important;
+            z-index: -1 !important;
+        }
+        
+        .team-member-card:hover::before {
+            opacity: 1 !important;
+        }
+        
+        .team-member-card:hover {
+            transform: translateY(-12px) scale(1.02) !important;
+            box-shadow: 0 20px 60px rgba(0, 122, 255, 0.2), 0 8px 30px rgba(191, 90, 242, 0.1) !important;
+            border-color: rgba(0, 122, 255, 0.3) !important;
+        }
+        
+        .member-avatar {
+            position: relative !important;
+            width: 80px !important;
+            height: 80px !important;
+            margin: 0 auto 1.5rem auto !important;
+        }
+        
+        .avatar-icon {
+            font-size: 2.5rem !important;
+            width: 80px !important;
+            height: 80px !important;
+            background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%) !important;
+            border-radius: 50% !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            position: relative !important;
+            z-index: 2 !important;
+        }
+        
+        .avatar-glow {
+            position: absolute !important;
+            top: -5px !important;
+            left: -5px !important;
+            right: -5px !important;
+            bottom: -5px !important;
+            background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%) !important;
+            border-radius: 50% !important;
+            opacity: 0.3 !important;
+            filter: blur(10px) !important;
+            z-index: 1 !important;
+        }
+        
+        .team-member-card h5 {
+            color: #FFFFFF !important;
+            font-weight: 700 !important;
+            font-size: 1.3rem !important;
+            margin-bottom: 0.5rem !important;
+        }
+        
+        .member-role {
+            color: #007AFF !important;
+            font-weight: 600 !important;
+            font-size: 1rem !important;
+            margin-bottom: 1rem !important;
+        }
+        
+        .member-description {
+            font-size: 0.9rem !important;
+            line-height: 1.5 !important;
+            margin-bottom: 1.5rem !important;
+        }
+        
+        .member-skills {
+            display: flex !important;
+            flex-wrap: wrap !important;
+            gap: 0.5rem !important;
+            justify-content: center !important;
+        }
+        
+        .skill-tag {
+            background: rgba(0, 122, 255, 0.2) !important;
+            color: #007AFF !important;
+            padding: 0.3rem 0.8rem !important;
+            border-radius: 12px !important;
+            font-size: 0.75rem !important;
+            font-weight: 600 !important;
+            border: 1px solid rgba(0, 122, 255, 0.3) !important;
+        }
+        
+        .team-value-card {
+            background: rgba(28, 28, 30, 0.8) !important;
+            backdrop-filter: blur(20px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            border-radius: 20px !important;
+            padding: 2rem 1.5rem !important;
+            transition: all 0.3s ease !important;
+        }
+        
+        .team-value-card:hover {
+            transform: translateY(-5px) !important;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3) !important;
+            border-color: rgba(255, 255, 255, 0.2) !important;
+        }
+        
+        .value-icon {
+            font-size: 2.5rem !important;
+            margin-bottom: 1rem !important;
+            filter: grayscale(0.2) !important;
+        }
+        
+        .team-value-card h6 {
+            color: #FFFFFF !important;
+            font-weight: 700 !important;
+            margin-bottom: 0.8rem !important;
+            font-size: 1.1rem !important;
+        }
+    </style>
     
     <!-- AWS Chatbot Integration -->
     <script src="src/js/aws-chatbot.js"></script>
@@ -2350,63 +2148,26 @@
 
         images.forEach(img => imageObserver.observe(img));
 
-        // Voice Chatbot Functionality
-        class VoiceChatbot {
+        // Text Chatbot Functionality
+        class TextChatbot {
             constructor() {
-                this.isListening = false;
-                this.recognition = null;
-                this.synthesis = window.speechSynthesis;
                 this.messages = [];
                 this.currentLanguage = 'pl';
                 
                 try {
                     this.init();
                 } catch (error) {
-                    console.error('Error in VoiceChatbot constructor:', error);
+                    console.error('Error in TextChatbot constructor:', error);
                 }
             }
             
             init() {
                 try {
-                    // Initialize speech recognition
-                    if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
-                        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-                        this.recognition = new SpeechRecognition();
-                        this.recognition.continuous = false;
-                        this.recognition.interimResults = false;
-                        this.recognition.lang = 'pl-PL';
-                        
-                        this.recognition.onstart = () => {
-                            this.isListening = true;
-                            this.updateUI();
-                        };
-                        
-                        this.recognition.onresult = (event) => {
-                            const transcript = event.results[0][0].transcript;
-                            this.handleUserInput(transcript);
-                        };
-                        
-                        this.recognition.onend = () => {
-                            this.isListening = false;
-                            this.updateUI();
-                        };
-                        
-                        this.recognition.onerror = (event) => {
-                            console.error('Speech recognition error:', event.error);
-                            this.isListening = false;
-                            this.updateUI();
-                        };
-                        
-                        console.log('Speech recognition initialized successfully');
-                    } else {
-                        console.warn('Speech recognition not supported in this browser');
-                    }
-                    
                     this.bindEvents();
                     this.addWelcomeMessage();
-                    console.log('VoiceChatbot initialized successfully');
+                    console.log('TextChatbot initialized successfully');
                 } catch (error) {
-                    console.error('Error in VoiceChatbot init:', error);
+                    console.error('Error in TextChatbot init:', error);
                 }
             }
             
@@ -2427,13 +2188,7 @@
                         });
                     }
                     
-                    // Voice input button
-                    const voiceButton = document.getElementById('voiceInputButton');
-                    if (voiceButton) {
-                        voiceButton.addEventListener('click', () => {
-                            this.toggleListening();
-                        });
-                    }
+
                     
                     // Suggestion clicks
                     document.querySelectorAll('.voice-suggestion').forEach(suggestion => {
@@ -2468,27 +2223,7 @@
                 document.getElementById('voiceChatbotModal').classList.remove('show');
                 document.body.style.overflow = 'auto';
             }
-            
-            toggleListening() {
-                if (this.isListening) {
-                    this.recognition.stop();
-                } else {
-                    this.recognition.start();
-                }
-            }
-            
-            updateUI() {
-                const button = document.getElementById('voiceInputButton');
-                const status = document.getElementById('voiceStatus');
-                
-                if (this.isListening) {
-                    button.classList.add('recording');
-                    status.textContent = 'Słucham... Mów teraz!';
-                } else {
-                    button.classList.remove('recording');
-                    status.textContent = 'Kliknij mikrofon, aby rozpocząć rozmowę';
-                }
-            }
+
             
             handleUserInput(text) {
                 // Add user message
@@ -2500,7 +2235,6 @@
                 // Add bot response
                 setTimeout(() => {
                     this.addMessage(response, 'bot');
-                    this.speak(response);
                 }, 500);
             }
             
@@ -2627,7 +2361,7 @@
             }
             
             addWelcomeMessage() {
-                const welcomeMessage = 'Cześć! Jestem asystentem głosowym ECM Digital. Mogę opowiedzieć Ci o naszych usługach, pomóc w wyborze rozwiązania lub umówić konsultację. Jak mogę Ci pomóc?';
+                const welcomeMessage = 'Cześć! Jestem cyfrowym asystentem ECM Digital. Mogę opowiedzieć Ci o naszych usługach, pomóc w wyborze rozwiązania lub umówić konsultację. Jak mogę Ci pomóc?';
                 this.addMessage(welcomeMessage, 'bot');
             }
         }
@@ -2751,7 +2485,7 @@
                     }
 
                     addWelcomeMessage() {
-                        const welcomeMessage = 'Cześć! Jestem asystentem ECM Digital. Jak mogę Ci pomóc?';
+                        const welcomeMessage = 'Cześć! Jestem cyfrowym asystentem ECM Digital. Mogę opowiedzieć Ci o naszych usługach, pomóc w wyborze rozwiązania lub umówić konsultację. Jak mogę Ci pomóc?';
                         this.addMessage(welcomeMessage, 'bot');
                     }
                 }
@@ -2897,10 +2631,43 @@
         });
     </script>
     
+    <!-- Performance optimizations -->
+    <script>
+        // Lazy loading for images
+        document.addEventListener('DOMContentLoaded', function() {
+            const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.classList.add('loaded');
+                        observer.unobserve(img);
+                    }
+                });
+            });
+
+            lazyImages.forEach(img => {
+                imageObserver.observe(img);
+            });
+        });
+
+        // Critical CSS loading
+        const criticalCSS = `
+            .hero { font-family: 'Inter', sans-serif; background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%); color: var(--text-primary); }
+            .hero-title { font-family: 'Space Grotesk', sans-serif; font-weight: 800; color: var(--text-primary); }
+            .btn-primary { background-color: var(--primary); color: white; border-radius: 12px; padding: 12px 24px; }
+        `;
+
+        const style = document.createElement('style');
+        style.textContent = criticalCSS;
+        document.head.appendChild(style);
+    </script>
+
     <!-- Voice Chatbot Widget -->
     <div class="voice-chatbot-widget">
-        <button class="voice-chatbot-button" id="voiceChatbotButton" title="Rozmawiaj z naszym asystentem głosowym">
-            <img src="assets/images/tomasz-profile.jpg" alt="Tomasz Gnat" class="voice-chatbot-avatar" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <button class="voice-chatbot-button" id="voiceChatbotButton" title="Rozmawiaj z naszym asystentem">
+            <img src="assets/images/tomasz-profile-optimized.jpg" alt="Tomasz Gnat" class="voice-chatbot-avatar image-lazy" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
             <i class="fas fa-robot voice-chatbot-fallback-icon"></i>
         </button>
     </div>
@@ -2910,18 +2677,16 @@
         <div class="voice-chatbot-content">
             <div class="voice-chatbot-header">
                 <div class="voice-chatbot-title-section">
-                    <img src="assets/images/tomasz-profile.jpg" alt="Tomasz Gnat" class="voice-chatbot-header-avatar">
+                    <img src="assets/images/tomasz-profile-optimized.jpg" alt="Tomasz Gnat" class="voice-chatbot-header-avatar image-lazy" loading="lazy">
                     <div class="voice-chatbot-title-text">
                         <h3 id="voice-chatbot-title" class="voice-chatbot-title">
-                            Asystent Głosowy ECM Digital
+                            Asystent ECM Digital
                         </h3>
-                        <p id="voice-chatbot-subtitle" class="voice-chatbot-subtitle">Tomasz Gnat - CEO</p>
+                        <p id="voice-chatbot-subtitle" class="voice-chatbot-subtitle">Tomasz Gnat - Discovery Consultant</p>
                     </div>
                 </div>
                 <div class="voice-chatbot-controls-header">
-                    <button class="voice-chatbot-mute" id="voiceChatbotMute" title="Wycisz/Włącz dźwięk" aria-label="Wycisz lub włącz dźwięk">
-                        <i class="fas fa-volume-up" aria-hidden="true"></i>
-                    </button>
+
                     <button class="voice-chatbot-close" id="voiceChatbotClose" aria-label="Zamknij czat">
                         <i class="fas fa-times" aria-hidden="true"></i>
                     </button>
@@ -2933,14 +2698,6 @@
             </div>
             
             <div class="voice-chatbot-controls">
-                <div class="voice-controls-row">
-                    <button class="voice-input-button" id="voiceInputButton" title="Kliknij i mów" aria-label="Aktywuj głosowe wprowadzanie" aria-describedby="voice-status">
-                        <i class="fas fa-microphone" aria-hidden="true"></i>
-                    </button>
-                    <div class="voice-status" id="voiceStatus">
-                        Kliknij mikrofon, aby rozpocząć rozmowę
-                    </div>
-                </div>
                 
                 <div class="text-input-row">
                     <label for="voiceChatbotTextInput" class="sr-only">Wpisz wiadomość do asystenta</label>
@@ -2951,47 +2708,8 @@
                 </div>
                 <div id="voice-input-help" class="sr-only">Naciśnij Enter lub kliknij przycisk, aby wysłać wiadomość</div>
                 
-                <!-- API Mode Toggle -->
-                <div class="api-mode-row">
-                    <label class="api-mode-label">
-                        <i class="fas fa-server me-2"></i>
-                        Tryb asystenta:
-                    </label>
-                    <div class="form-check form-switch api-mode-switch">
-                        <input class="form-check-input" type="checkbox" id="apiModeToggle" checked>
-                        <label class="form-check-label" for="apiModeToggle">
-                            <span class="api-mode-text">AI AWS</span>
-                            <i class="fas fa-info-circle ms-1" title="Tryb AI z AWS - inteligentne odpowiedzi na podstawie danych usług"></i>
-                        </label>
-                    </div>
-                </div>
 
-                <!-- Voice Selection -->
-                <div class="voice-selection-row">
-                    <label for="voiceSelector" class="voice-selection-label">
-                        <i class="fas fa-microphone-alt me-2"></i>
-                        Wybierz głos:
-                    </label>
-                    <select id="voiceSelector" class="voice-selector" aria-label="Wybierz głos asystenta">
-                        <option value="auto">🎵 Automatyczny wybór</option>
-                        <option value="premium">⭐ Premium głosy</option>
-                        <option value="natural">🌿 Naturalny głos</option>
-                        <option value="ai">🤖 AI głos</option>
-                    </select>
-                    <button id="resetVoiceButton" class="voice-reset-button" title="Resetuj do domyślnego głosu" aria-label="Resetuj głos">
-                        <i class="fas fa-undo"></i>
-                    </button>
-                </div>
-                <div class="current-voice-info" id="currentVoiceInfo">
-                    <small class="text-muted">
-                        <i class="fas fa-info-circle me-1"></i>
-                        Aktualny głos: <span id="currentVoiceName">Automatyczny</span>
-                        <br>
-                        <span id="currentVoiceDetails" class="text-muted" style="font-size: 0.75rem;">
-                            Kliknij, aby zmienić głos
-                        </span>
-                    </small>
-                </div>
+
             </div>
             
             <div class="voice-chatbot-suggestions">

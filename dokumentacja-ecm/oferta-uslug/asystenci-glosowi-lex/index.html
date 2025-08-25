@@ -30,7 +30,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="../shared-styles.css" rel="stylesheet">
     
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-V309CX2XT8"></script>
@@ -699,11 +699,11 @@
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg fixed-top">
+    <nav class="navbar navbar-expand-lg fixed-top" role="navigation" aria-label="Główna nawigacja">
         <div class="container">
             <a class="navbar-brand font-display" href="../../../index.html">
-                <i class="fas fa-rocket me-2" style="color: var(--primary);"></i>
-                ECM Digital
+                <i class="fas fa-rocket me-2" style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"></i>
+                <span style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 700;">ECM Digital</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" style="border: none; background: none;">
                 <i class="fas fa-bars" style="color: var(--text-primary); font-size: 1.2rem;"></i>
@@ -721,7 +721,7 @@
                             <li><a class="dropdown-item" href="../strony-www/" data-i18n="services.websites">Strony WWW</a></li>
                             <li><a class="dropdown-item" href="../sklepy-shopify/" data-i18n="services.shopify">Sklepy Shopify</a></li>
                             <li><a class="dropdown-item" href="../prototypy-mvp/" data-i18n="services.mvp">Prototypy MVP</a></li>
-                            <li><a class="dropdown-item" href="../audyty-ux/" data-i18n="services.uxAudit">Audyty UX</a></li>
+                            <li><a class="dropdown-item" href="../audyty-ux/" data-i18n="services.uxAudit">Audyty Wdrożenia AI w Twojej Firmie</a></li>
                             <li><a class="dropdown-item" href="../automatyzacje-n8n/" data-i18n="services.automation">Automatyzacje</a></li>
                             <li><a class="dropdown-item" href="../social-media-data-science/" data-i18n="services.socialMedia">Social Media & AI</a></li>
                             <li><a class="dropdown-item" href="../asystencja-ai-bedrock/" data-i18n="services.aiAssistants">Asystenci AI na Amazon Bedrock & Copilot Studio</a></li>
@@ -749,206 +749,132 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero" data-aos="fade-up">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <h1 class="hero-title" data-i18n="services.voiceAssistants">Asystenci Głosowi na Amazon Lex</h1>
-                    <p class="hero-subtitle" data-i18n="services.voiceAssistants.description">
-                        Tworzymy inteligentne asystenty głosowe i chatboty na platformie Amazon Lex. 
-                        Automatyzacja obsługi klienta przez głos i tekst!
-                    </p>
-                    <div class="d-flex gap-3 flex-wrap">
-                        <a href="#services" class="btn btn-primary btn-lg">
-                            <i class="fas fa-microphone me-2"></i>
-                            Zobacz Ofertę
-                        </a>
-                        <a href="#contact" class="btn btn-outline-primary btn-lg">
-                            <i class="fas fa-envelope me-2"></i>
-                            Darmowa Konsultacja
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-6 text-center">
-                    <div class="voice-showcase">
-                        <div class="voice-wave">
-                            <div class="wave-bar"></div>
-                            <div class="wave-bar"></div>
-                            <div class="wave-bar"></div>
-                            <div class="wave-bar"></div>
-                            <div class="wave-bar"></div>
-                            <div class="wave-bar"></div>
-                            <div class="wave-bar"></div>
-                            <div class="wave-bar"></div>
-                        </div>
-                        <h4 class="mt-3">🎤 Głos • 💬 Tekst • 🤖 AI</h4>
-                        <p class="text-muted">Amazon Lex + Polly + Connect</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="py-5">
-        <div class="container">
-            <h2 class="section-title">Nasze Usługi Głosowe</h2>
-            <div class="row g-4">
-                <div class="col-lg-4 col-md-6">
-                    <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-                        <div class="voice-icon">
-                            <i class="fas fa-phone"></i>
-                        </div>
-                        <h4>IVR & Call Center AI</h4>
-                        <p class="text-muted">
-                            Inteligentne systemy IVR z rozpoznawaniem mowy. 
-                            Automatyzacja obsługi telefonicznej 24/7.
-                        </p>
-                        <ul class="text-muted">
-                            <li>Rozpoznawanie mowy (ASR)</li>
-                            <li>Natural Language Understanding</li>
-                            <li>Integracja z Amazon Connect</li>
-                            <li>Routing inteligentny</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="col-lg-4 col-md-6">
-                    <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-                        <div class="voice-icon">
-                            <i class="fas fa-comments"></i>
-                        </div>
-                        <h4>Chatboty Głosowe</h4>
-                        <p class="text-muted">
-                            Asystenci głosowi dla stron WWW i aplikacji. 
-                            Obsługa klienta przez głos i tekst.
-                        </p>
-                        <ul class="text-muted">
-                            <li>Voice & Text Chat</li>
-                            <li>Multi-language support</li>
-                            <li>Context awareness</li>
-                            <li>Seamless handoff</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="col-lg-4 col-md-6">
-                    <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-                        <div class="voice-icon">
-                            <i class="fab fa-amazon"></i>
-                        </div>
-                        <h4>Alexa Skills</h4>
-                        <p class="text-muted">
-                            Tworzenie customowych umiejętności dla Amazon Alexa. 
-                            Integracja z Twoimi systemami biznesowymi.
-                        </p>
-                        <ul class="text-muted">
-                            <li>Custom Alexa Skills</li>
-                            <li>Business integrations</li>
-                            <li>Multi-modal responses</li>
-                            <li>Analytics & insights</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Process Section -->
-    <section class="py-5" style="background: var(--bg-secondary);">
-        <div class="container">
-            <h2 class="section-title">Proces Tworzenia Asystenta Głosowego</h2>
-            <div class="row g-4">
-                <div class="col-lg-3 col-md-6">
-                    <div class="process-step text-center">
-                        <div class="process-number">1</div>
-                        <h5>Analiza & Design</h5>
-                        <p class="text-muted">Analiza wymagań, projektowanie konwersacji, user flows</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="process-step text-center">
-                        <div class="process-number">2</div>
-                        <h5>Development</h5>
-                        <p class="text-muted">Konfiguracja Amazon Lex, integracje, testy głosowe</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="process-step text-center">
-                        <div class="process-number">3</div>
-                        <h5>Training & Testing</h5>
-                        <p class="text-muted">Trenowanie modeli, testy użyteczności, optymalizacja</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="process-step text-center">
-                        <div class="process-number">4</div>
-                        <h5>Wdrożenie & Support</h5>
-                        <p class="text-muted">Uruchomienie, monitoring, ciągłe ulepszenia</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Technologies Section -->
-    <section class="py-5">
-        <div class="container">
-            <h2 class="section-title">Technologie & Integracje</h2>
-            <div class="row g-4">
-                <div class="col-lg-4 col-md-6">
-                    <div class="tech-card p-4">
-                        <h5><i class="fas fa-microphone text-primary"></i> Amazon Lex</h5>
-                        <ul class="text-muted">
-                            <li>Natural Language Understanding</li>
-                            <li>Automatic Speech Recognition</li>
-                            <li>Intent & Slot Recognition</li>
-                            <li>Conversation Management</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="tech-card p-4">
-                        <h5><i class="fas fa-volume-up text-primary"></i> Amazon Polly</h5>
-                        <ul class="text-muted">
-                            <li>Text-to-Speech (TTS)</li>
-                            <li>Neural voices</li>
-                            <li>Multi-language support</li>
-                            <li>SSML markup</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="tech-card p-4">
-                        <h5><i class="fas fa-phone-alt text-primary"></i> Amazon Connect</h5>
-                        <ul class="text-muted">
-                            <li>Cloud Contact Center</li>
-                            <li>Voice & Chat routing</li>
-                            <li>CRM integrations</li>
-                            <li>Analytics & reporting</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Proces Wdrażania Asystentów Głosowych -->
-    <section class="content-section" style="background: var(--bg-secondary);">
+    <section class="hero">
         <div class="container">
             <div class="text-center mb-5">
-                <h2 class="section-title">Jak Tworzymy Twojego Asystenta Głosowego</h2>
-                <p class="text-muted">Kompleksowy proces od analizy potrzeb po wdrożenie i optymalizację</p>
+                <h1 class="hero-title mb-4">Asystenci Głosowi Którzy <span style="color: #30D158;">Automatyzują</span></h1>
+                <p class="hero-subtitle mb-5">Tworzymy inteligentne asystenty głosowe i chatboty na platformie Amazon Lex. Automatyzacja obsługi klienta przez głos i tekst 24/7. Rozpoznawanie mowy, NLU i integracje z systemami biznesowymi.</p>
+                
+                <!-- Hero Stats -->
+                <div class="row g-4 justify-content-center">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="hero-stat-card text-center">
+                            <div class="stat-icon">🎤</div>
+                            <div class="stat-number">24/7</div>
+                            <div class="stat-label">Obsługa Głosowa</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="hero-stat-card text-center">
+                            <div class="stat-icon">🤖</div>
+                            <div class="stat-number">95%</div>
+                            <div class="stat-label">Dokładność ASR</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="hero-stat-card text-center">
+                            <div class="stat-icon">💰</div>
+                            <div class="stat-number">12,900</div>
+                            <div class="stat-label">PLN Start</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title mb-3">Co Otrzymasz</h2>
+                <p class="section-subtitle">Kompleksowe rozwiązanie dla Twojego asystenta głosowego</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card text-center">
+                        <div class="mb-3">
+                            <i class="fas fa-microphone fa-3x" style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"></i>
+                        </div>
+                        <h4>Rozpoznawanie Mowy</h4>
+                        <p class="text-muted">Zaawansowane ASR (Automatic Speech Recognition) z wysoką dokładnością</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card text-center">
+                        <div class="mb-3">
+                            <i class="fas fa-brain fa-3x" style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"></i>
+                        </div>
+                        <h4>Natural Language Understanding</h4>
+                        <p class="text-muted">Inteligentne rozumienie intencji i kontekstu rozmowy</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card text-center">
+                        <div class="mb-3">
+                            <i class="fas fa-volume-up fa-3x" style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"></i>
+                        </div>
+                        <h4>Text-to-Speech</h4>
+                        <p class="text-muted">Naturalne głosy w różnych językach i akcentach</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card text-center">
+                        <div class="mb-3">
+                            <i class="fas fa-phone fa-3x" style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"></i>
+                        </div>
+                        <h4>IVR & Call Center</h4>
+                        <p class="text-muted">Automatyzacja obsługi telefonicznej z inteligentnym routingiem</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card text-center">
+                        <div class="mb-3">
+                            <i class="fab fa-amazon fa-3x" style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"></i>
+                        </div>
+                        <h4>Amazon Lex Integration</h4>
+                        <p class="text-muted">Pełna integracja z ekosystemem AWS i Amazon Lex</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card text-center">
+                        <div class="mb-3">
+                            <i class="fas fa-chart-line fa-3x" style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"></i>
+                        </div>
+                        <h4>Analytics & Insights</h4>
+                        <p class="text-muted">Szczegółowe raporty i analityka rozmów z użytkownikami</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    <!-- Process Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title mb-3">Jak Tworzymy Twojego Asystenta Głosowego</h2>
+                <p class="section-subtitle">Kompleksowy proces od analizy potrzeb po wdrożenie i optymalizację</p>
             </div>
             
             <div class="row">
                 <div class="col-lg-8 mx-auto">
                     <div class="process-timeline">
-                        <!-- Etap 1: Analiza Potrzeb & Strategia Głosowa -->
+                        <!-- Etap 1: Discovery & Analiza Potrzeb -->
                         <div class="process-step">
                             <div class="step-number">1</div>
                             <div class="step-content">
-                                <h4><i class="fas fa-microphone text-primary me-2"></i>Analiza Potrzeb & Strategia Głosowa</h4>
+                                <h4><i class="fas fa-search text-primary me-2"></i>Discovery & Analiza Potrzeb</h4>
                                 <p class="text-muted">Rozpoczynamy od zrozumienia Twoich potrzeb komunikacji głosowej:</p>
                                 <ul class="text-muted">
                                     <li><strong>Analiza scenariuszy:</strong> Kiedy i jak użytkownicy będą używać głosu</li>
@@ -1096,165 +1022,103 @@
         </div>
     </section>
 
-    <!-- Integrations Section -->
-    <section class="py-5" style="background: var(--bg-secondary);">
-        <div class="container">
-            <h2 class="section-title">Integracje & Platformy</h2>
-            <div class="row g-4">
-                <div class="col-lg-3 col-md-6">
-                    <div class="integration-card">
-                        <div class="integration-icon">
-                            <i class="fab fa-slack"></i>
-                        </div>
-                        <h5>Slack</h5>
-                        <p class="text-muted">Asystenci w kanałach Slack</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="integration-card">
-                        <div class="integration-icon">
-                            <i class="fab fa-telegram"></i>
-                        </div>
-                        <h5>Telegram</h5>
-                        <p class="text-muted">Boty w Telegram</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="integration-card">
-                        <div class="integration-icon">
-                            <i class="fab fa-facebook-messenger"></i>
-                        </div>
-                        <h5>Facebook Messenger</h5>
-                        <p class="text-muted">Chatboty w Messenger</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="integration-card">
-                        <div class="integration-icon">
-                            <i class="fas fa-globe"></i>
-                        </div>
-                        <h5>Strony WWW</h5>
-                        <p class="text-muted">Widgety głosowe</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+
 
     <!-- Pricing Section -->
     <section class="py-5">
         <div class="container">
-            <h2 class="section-title">Cennik Asystentów Głosowych</h2>
+            <div class="text-center mb-5">
+                <h2 class="section-title mb-3">Cennik</h2>
+                <p class="section-subtitle">Elastyczne pakiety dostosowane do potrzeb Twojej organizacji</p>
+            </div>
+            
             <div class="row g-4">
-                <div class="col-lg-4 col-md-6">
-                    <div class="pricing-card p-4 text-center">
+                <div class="col-lg-4">
+                    <div class="pricing-card text-center">
                         <h4>Basic Voice Bot</h4>
-                        <div class="price">
-                            <span class="currency">od </span>12,900<span class="currency"> PLN</span>
+                        <div class="price mb-3" style="font-size: 2rem; font-weight: 700;">
+                            <span style="font-size: 1rem; color: #EBEBF599;">od</span>
+                            <span style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">12,900</span>
+                            <span style="font-size: 1rem; color: #EBEBF599;">PLN</span>
                         </div>
-                        <p class="text-muted">Podstawowy chatbot głosowy</p>
-                        <ul class="text-muted text-start">
-                            <li>1 język (polski)</li>
-                            <li>5 intencji</li>
-                            <li>Integracja z Amazon Lex</li>
-                            <li>Czas: 4-6 tygodni</li>
+                        <ul class="list-unstyled mb-4 text-start">
+                            <li class="mb-2">✓ 1 język (polski)</li>
+                            <li class="mb-2">✓ 5 intencji</li>
+                            <li class="mb-2">✓ Integracja z Amazon Lex</li>
+                            <li class="mb-2">✓ Podstawowe ASR & TTS</li>
+                            <li class="mb-2">✓ Czas: 4-6 tygodni</li>
                         </ul>
-                        <a href="#contact" class="btn btn-primary mt-3">Zamów Basic</a>
+                        <a href="../../../index.html#contact" class="btn-cta">
+                            <i class="fas fa-arrow-right"></i>
+                            <span>Rozpocznij</span>
+                        </a>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="pricing-card p-4 text-center border-primary">
+                
+                <div class="col-lg-4">
+                    <div class="pricing-card text-center" style="border-color: rgba(0, 122, 255, 0.4) !important; transform: translateY(-8px) !important;">
+                        <div class="badge bg-primary mb-3" style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%) !important;">Popularne</div>
                         <h4>Professional Voice Assistant</h4>
-                        <div class="price">
-                            <span class="currency">od </span>24,900<span class="currency"> PLN</span>
+                        <div class="price mb-3" style="font-size: 2rem; font-weight: 700;">
+                            <span style="font-size: 1rem; color: #EBEBF599;">od</span>
+                            <span style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">24,900</span>
+                            <span style="font-size: 1rem; color: #EBEBF599;">PLN</span>
                         </div>
-                        <p class="text-muted">Zaawansowany asystent głosowy</p>
-                        <ul class="text-muted text-start">
-                            <li>2 języki (PL + EN)</li>
-                            <li>15+ intencji</li>
-                            <li>Integracja z CRM</li>
-                            <li>Czas: 6-8 tygodni</li>
+                        <ul class="list-unstyled mb-4 text-start">
+                            <li class="mb-2">✓ 2 języki (PL + EN)</li>
+                            <li class="mb-2">✓ 15+ intencji</li>
+                            <li class="mb-2">✓ Integracja z CRM</li>
+                            <li class="mb-2">✓ Zaawansowane NLU</li>
+                            <li class="mb-2">✓ Analytics & reporting</li>
+                            <li class="mb-2">✓ Czas: 6-8 tygodni</li>
                         </ul>
-                        <a href="#contact" class="btn btn-primary mt-3">Zamów Professional</a>
+                        <a href="../../../index.html#contact" class="btn-cta">
+                            <i class="fas fa-arrow-right"></i>
+                            <span>Rozpocznij</span>
+                        </a>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="pricing-card p-4 text-center">
+                
+                <div class="col-lg-4">
+                    <div class="pricing-card text-center">
                         <h4>Enterprise Voice AI</h4>
-                        <div class="price">
-                            <span class="currency">od </span>39,900<span class="currency"> PLN</span>
+                        <div class="price mb-3" style="font-size: 2rem; font-weight: 700;">
+                            <span style="font-size: 1rem; color: #EBEBF599;">od</span>
+                            <span style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">39,900</span>
+                            <span style="font-size: 1rem; color: #EBEBF599;">PLN</span>
                         </div>
-                        <p class="text-muted">Kompleksowy system głosowy</p>
-                        <ul class="text-muted text-start">
-                            <li>Multi-language support</li>
-                            <li>Nieograniczone intencje</li>
-                            <li>Full-stack integration</li>
-                            <li>Czas: 8-12 tygodni</li>
+                        <ul class="list-unstyled mb-4 text-start">
+                            <li class="mb-2">✓ Multi-language support</li>
+                            <li class="mb-2">✓ Nieograniczone intencje</li>
+                            <li class="mb-2">✓ Full-stack integration</li>
+                            <li class="mb-2">✓ Custom voice training</li>
+                            <li class="mb-2">✓ Wsparcie 6 miesięcy</li>
+                            <li class="mb-2">✓ Czas: 8-12 tygodni</li>
                         </ul>
-                        <a href="#contact" class="btn btn-primary mt-3">Zamów Enterprise</a>
+                        <a href="../../../index.html#contact" class="btn-cta">
+                            <i class="fas fa-arrow-right"></i>
+                            <span>Rozpocznij</span>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Use Cases Section -->
-    <section class="py-5" style="background: var(--bg-secondary);">
-        <div class="container">
-            <h2 class="section-title">Zastosowania Asystentów Głosowych</h2>
-            <div class="row g-4">
-                <div class="col-lg-4 col-md-6">
-                    <div class="feature-card p-4">
-                        <i class="fas fa-headset" style="font-size: 3rem; color: var(--primary); margin-bottom: 1rem;"></i>
-                        <h5>Customer Service</h5>
-                        <p class="text-muted">
-                            24/7 obsługa klienta przez głos. Automatyczne odpowiedzi na najczęstsze pytania.
-                        </p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="feature-card p-4">
-                        <i class="fas fa-shopping-cart" style="font-size: 3rem; color: var(--primary); margin-bottom: 1rem;"></i>
-                        <h5>E-commerce Support</h5>
-                        <p class="text-muted">
-                            Asystenci w sklepach online. Pomoc w zakupach, śledzenie zamówień.
-                        </p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="feature-card p-4">
-                        <i class="fas fa-building" style="font-size: 3rem; color: var(--primary); margin-bottom: 1rem;"></i>
-                        <h5>Business Automation</h5>
-                        <p class="text-muted">
-                            Automatyzacja procesów biznesowych. Scheduling, reporting, data entry.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+
 
     <!-- Contact Section -->
-    <section id="contact" class="py-5">
+    <section class="contact-section py-5">
         <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title mb-3">Rozpocznij Projekt</h2>
+                <p class="section-subtitle">Skontaktuj się z nami, aby omówić Twój projekt. Oferujemy darmową konsultację i wycenę.</p>
+            </div>
+            
             <div class="row justify-content-center">
                 <div class="col-lg-8">
-                    <div class="contact-card p-5 text-center">
-                        <h2 class="section-title">Rozpocznij Projekt Asystenta Głosowego</h2>
-                        <p class="text-muted mb-4">
-                            Skontaktuj się z nami, aby omówić Twój pomysł na asystenta głosowego. 
-                            Oferujemy darmową konsultację i demo Amazon Lex.
-                        </p>
-                        <div class="d-flex justify-content-center gap-3 flex-wrap">
-                            <a href="mailto:kontakt@ecm-digital.com" class="btn btn-primary btn-lg">
-                                <i class="fas fa-envelope me-2"></i>
-                                Napisz Email
-                            </a>
-                            <a href="tel:+48123456789" class="btn btn-outline-primary btn-lg">
-                                <i class="fas fa-phone me-2"></i>
-                                Zadzwoń
-                            </a>
-                        </div>
+                    <div class="contact-card text-center">
+                        <div id="hubspot-form" class="mt-4"></div>
                     </div>
                 </div>
             </div>
@@ -1272,12 +1136,18 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
     <script src="../../../src/js/i18n.js"></script>
+    
+    <!-- HubSpot Integration -->
+    <script src="../../../src/js/hubspot.js"></script>
+    <style>
+        html, body { background: var(--bg-primary) !important; color: var(--text-primary) !important; }
+        .hs-form input, .hs-form textarea, .hs-form select { background: #ffffff; color: #000000; }
+        .hs-form label, .hs-form legend { color: var(--text-secondary); }
+        .hs-form .hs-error-msgs label { color: #ff6b6b; }
+    </style>
     <script>
-        // Initialize AOS
-        AOS.init();
-        
         // Initialize I18n
         const i18nManager = new I18nManager();
         i18nManager.init();

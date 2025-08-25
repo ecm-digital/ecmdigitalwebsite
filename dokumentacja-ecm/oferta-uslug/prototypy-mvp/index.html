@@ -3,482 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prototypy MVP - Szybka Walidacja Pomysłów | ECM Digital</title>
+    <title>Prototypy MVP - Szybkie Wdrożenie Produktów | ECM Digital</title>
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Tworzymy funkcjonalne prototypy MVP w 2-4 tygodnie. Szybka walidacja pomysłów biznesowych, minimalizacja ryzyka. Start od 4,900 PLN!">
-    <meta name="keywords" content="prototypy mvp, mvp development, walidacja pomysłów, szybki prototyp, lean startup, proof of concept">
-    <meta name="author" content="ECM Digital">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://www.ecm-digital.com/dokumentacja-ecm/oferta-uslug/prototypy-mvp/">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.ecm-digital.com/dokumentacja-ecm/oferta-uslug/prototypy-mvp/">
-    <meta property="og:title" content="Prototypy MVP - Szybka Walidacja Pomysłów | ECM Digital">
-    <meta property="og:description" content="Tworzymy funkcjonalne prototypy MVP w 2-4 tygodnie. Szybka walidacja pomysłów biznesowych, minimalizacja ryzyka.">
-    <meta property="og:image" content="https://www.ecm-digital.com/assets/images/mvp-og.jpg">
-    
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://www.ecm-digital.com/dokumentacja-ecm/oferta-uslug/prototypy-mvp/">
-    <meta name="twitter:title" content="Prototypy MVP - Szybka Walidacja Pomysłów | ECM Digital">
-    <meta name="twitter:description" content="Tworzymy funkcjonalne prototypy MVP w 2-4 tygodnie. Szybka walidacja pomysłów biznesowych, minimalizacja ryzyka.">
-    <meta name="twitter:image" content="https://www.ecm-digital.com/assets/images/mvp-og.jpg">
+    <meta name="description" content="Tworzymy prototypy MVP do szybkiej walidacji pomysłów biznesowych. Od koncepcji do działającego produktu w 4-8 tygodni. Start od 12,900 PLN!">
+    <meta name="keywords" content="prototypy mvp, minimum viable product, szybkie prototypowanie, walidacja pomysłu, startup development">
     
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
-    <!-- Google tag (gtag.js) -->
+    <!-- Shared Styles -->
+    <link rel="stylesheet" href="../shared-styles.css">
+    
+    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-V309CX2XT8"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-    
       gtag('config', 'G-V309CX2XT8');
     </script>
-    
-    <!-- Hotjar Tracking Code for ECM Digital -->
-    <script>
-        (function(h,o,t,j,a,r){
-            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments);};
-            h._hjSettings={hjid:6393562,hjsv:6};
-            a=o.getElementsByTagName('head')[0];
-            r=o.createElement('script');r.async=1;
-            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-            a.appendChild(r);
-        })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-    </script>
-    
-    <style>
-        :root {
-            --primary: #007AFF;
-            --primary-dark: #0056CC;
-            --accent: #30D158;
-            --bg-primary: #000000;
-            --bg-secondary: #1C1C1E;
-            --bg-tertiary: #2C2C2E;
-            --text-primary: #FFFFFF;
-            --text-secondary: #EBEBF5;
-            --text-muted: #EBEBF599;
-            --glass-bg: rgba(28, 28, 30, 0.8);
-            --glass-border: rgba(255, 255, 255, 0.1);
-        }
-
-        body { 
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.6;
-            margin: 0;
-        }
-
-        /* Navigation */
-        .navbar {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--glass-border);
-            padding: 1rem 0;
-        }
-
-        .navbar-brand {
-            font-weight: 700;
-            font-size: 1.5rem;
-            color: var(--text-primary) !important;
-        }
-
-        .nav-link {
-            color: var(--text-secondary) !important;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .nav-link:hover {
-            color: var(--primary) !important;
-        }
-
-        .dropdown-menu {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-        }
-
-        .dropdown-item {
-            color: var(--text-secondary);
-        }
-
-        .dropdown-item:hover {
-            background: var(--bg-tertiary);
-            color: var(--primary);
-        }
-
-        .language-switcher .dropdown-menu {
-            min-width: 200px;
-        }
-
-        .language-switcher .btn-link {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .language-switcher .btn-link:hover {
-            color: var(--primary);
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
-            padding: 120px 0 80px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23333" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-            opacity: 0.1;
-        }
-
-        .hero-title {
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            font-weight: 800;
-            margin-bottom: 1.5rem;
-            color: var(--text-primary);
-        }
-
-        .hero-subtitle {
-            font-size: 1.25rem;
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-            max-width: 600px;
-        }
-
-        .font-display {
-            font-family: 'Space Grotesk', sans-serif;
-        }
-
-        .btn-cta {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            border: none;
-            padding: 1rem 2rem;
-            font-weight: 600;
-            border-radius: 12px;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-            color: white;
-        }
-
-        .btn-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 122, 255, 0.3);
-            color: white;
-        }
-
-        /* Service Cards */
-        .service-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 16px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            backdrop-filter: blur(20px);
-            transition: all 0.3s ease;
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary);
-            box-shadow: 0 12px 40px rgba(0, 122, 255, 0.1);
-        }
-
-        .service-card h3 {
-            color: var(--primary);
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .service-card p {
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
-        }
-
-        /* Process Section */
-        .process-section {
-            background: var(--bg-secondary);
-            padding: 80px 0;
-        }
-
-        .section-title {
-            font-size: clamp(2rem, 5vw, 3rem);
-            font-weight: 800;
-            text-align: center;
-            margin-bottom: 3rem;
-            color: var(--text-primary);
-        }
-
-        .process-step {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .step-number {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: white;
-            margin: 0 auto 1rem;
-        }
-
-        .step-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-        }
-
-        .step-description {
-            color: var(--text-muted);
-            max-width: 300px;
-            margin: 0 auto;
-        }
-
-        /* Features */
-        .features-section {
-            padding: 80px 0;
-        }
-
-        .feature-item {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .feature-icon {
-            width: 80px;
-            height: 80px;
-            background: var(--glass-bg);
-            border: 2px solid var(--primary);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-            font-size: 2rem;
-            color: var(--primary);
-        }
-
-        .feature-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-        }
-
-        .feature-description {
-            color: var(--text-muted);
-            max-width: 300px;
-            margin: 0 auto;
-        }
-
-        .feature-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 16px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            transition: all 0.3s ease;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary);
-            box-shadow: 0 12px 40px rgba(0, 122, 255, 0.1);
-        }
-
-        /* CTA Section */
-        .cta-section {
-            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
-            padding: 80px 0;
-            text-align: center;
-        }
-
-        .cta-title {
-            font-size: clamp(2rem, 5vw, 3rem);
-            font-weight: 800;
-            margin-bottom: 1.5rem;
-            color: var(--text-primary);
-        }
-
-        .cta-description {
-            font-size: 1.25rem;
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .text-muted {
-            color: var(--text-tertiary) !important;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero {
-                padding: 100px 0 60px;
-            }
-
-            .hero-title {
-                font-size: 2.5rem;
-            }
-
-            .hero-subtitle {
-                font-size: 1.1rem;
-            }
-
-            .btn-cta {
-                width: 100%;
-                text-align: center;
-                margin-bottom: 1rem;
-            }
-
-            .service-card {
-                padding: 1.5rem;
-            }
-
-            .process-step {
-                margin-bottom: 3rem;
-            }
-
-            .step-number {
-                width: 50px;
-                height: 50px;
-                font-size: 1.25rem;
-            }
-
-            .navbar-collapse {
-                background: var(--glass-bg);
-                backdrop-filter: blur(20px);
-                -webkit-backdrop-filter: blur(20px);
-                border-radius: 12px;
-                margin-top: 1rem;
-                padding: 1rem;
-                border: 1px solid var(--glass-border);
-            }
-        }
-
-        @media (max-width: 576px) {
-            .hero-title {
-                font-size: 2rem;
-            }
-
-            .hero-subtitle {
-                font-size: 1rem;
-            }
-
-            .section-title {
-                font-size: 1.8rem;
-            }
-
-            .service-card {
-                padding: 1.25rem;
-            }
-        }
-    </style>
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg fixed-top">
+    <nav class="navbar navbar-expand-lg fixed-top" role="navigation" aria-label="Główna nawigacja">
         <div class="container">
             <a class="navbar-brand font-display" href="../../../index.html">
-                <i class="fas fa-rocket me-2" style="color: var(--primary);"></i>
-                ECM Digital
+                <i class="fas fa-rocket me-2" style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"></i>
+                <span style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 700;">ECM Digital</span>
             </a>
-            
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" style="border: none; background: none;">
                 <i class="fas fa-bars" style="color: var(--text-primary); font-size: 1.2rem;"></i>
             </button>
-            
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="../../../index.html#home" data-i18n="nav.home">Home</a>
+                        <a class="nav-link" href="../../../index.html#home">Home</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-i18n="nav.services">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Usługi
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="../strony-www/" data-i18n="services.websites">Strony WWW</a></li>
-                            <li><a class="dropdown-item" href="../sklepy-shopify/" data-i18n="services.shopify">Sklepy Shopify</a></li>
-                            <li><a class="dropdown-item active" href="../prototypy-mvp/" data-i18n="services.mvp">Prototypy MVP</a></li>
-                            <li><a class="nav-item"><a class="nav-link" href="../audyty-ux/" data-i18n="services.uxAudit">Audyty UX</a></li>
-                            <li><a class="dropdown-item" href="../automatyzacje-n8n/" data-i18n="services.automation">Automatyzacje</a></li>
-                            <li><a class="dropdown-item" href="../social-media-data-science/" data-i18n="services.socialMedia">Social Media & AI</a></li>
-                            <li><a class="dropdown-item" href="../asystencja-ai-bedrock/" data-i18n="services.aiAssistants">Asystenci AI na Amazon Bedrock & Copilot Studio</a></li>
-                            <li><a class="dropdown-item" href="../aplikacje-mobilne/" data-i18n="services.mobileApps">Aplikacje Mobilne</a></li>
-                            <li><a class="dropdown-item" href="../asystenci-glosowi-lex/" data-i18n="services.voiceAssistants">Asystenci Głosowi na Amazon Lex</a></li>
+                            <li><a class="dropdown-item" href="../strony-www/">Strony WWW</a></li>
+                            <li><a class="dropdown-item" href="../sklepy-shopify/">Sklepy Shopify</a></li>
+                            <li><a class="dropdown-item" href="../prototypy-mvp/">Prototypy MVP</a></li>
+                            <li><a class="dropdown-item" href="../audyty-ux/">Audyty Wdrożenia AI w Twojej Firmie</a></li>
+                            <li><a class="dropdown-item" href="../automatyzacje-n8n/">Automatyzacje</a></li>
+                            <li><a class="dropdown-item" href="../social-media-data-science/">Social Media & AI</a></li>
+                            <li><a class="dropdown-item" href="../asystencja-ai-bedrock/">Asystenci AI na Amazon Bedrock & Copilot Studio</a></li>
+                            <li><a class="dropdown-item" href="../aplikacje-mobilne/">Aplikacje Mobilne</a></li>
+                            <li><a class="dropdown-item" href="../asystenci-glosowi-lex/">Asystenci Głosowi na Amazon Lex</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="../../../index.html#about-us" data-i18n="nav.about">O nas</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../../../index.html#team" data-i18n="nav.team">Zespół</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/login" data-i18n="nav.clientPanel">Panel Klienta</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../../../index.html#contact" data-i18n="nav.contact">Kontakt</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../../index.html#about-us">O nas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../../index.html#team">Zespół</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/login">Panel Klienta</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../../index.html#contact">Kontakt</a></li>
                 </ul>
-                <div class="language-switcher dropdown">
-                    <button class="btn btn-link dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                        🇵🇱 PL
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="languageDropdown">
-                        <li><a class="dropdown-item lang-btn active" href="#" data-lang="pl">🇵🇱 Polski</a></li>
-                        <li><a class="dropdown-item lang-btn" href="#" data-lang="en">🇺🇸 English</a></li>
-                        <li><a class="dropdown-item" href="#" data-lang="de">🇩🇪 Deutsch</a></li>
-                    </ul>
-                </div>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero" data-aos="fade-up">
+    <section class="hero">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-8">
-                    <h1 class="hero-title font-display" data-i18n="services.mvp">Prototypy MVP</h1>
-                    <p class="hero-subtitle" data-i18n="services.mvp.description">
-                        Szybka walidacja pomysłów biznesowych poprzez tworzenie funkcjonalnych prototypów. 
-                        Minimalizujemy ryzyko i maksymalizujemy szanse na sukces w 2-4 tygodnie.
-                    </p>
-                    <div class="mt-4">
-                        <a href="#features" class="btn-cta">
-                            <i class="fas fa-arrow-right"></i>
-                            <span data-i18n="hero.exploreFeatures">Poznaj funkcje</span>
-                        </a>
+            <div class="text-center mb-5">
+                <h1 class="hero-title mb-4">Prototypy <span style="color: #FF6B35;">MVP</span> w <span style="color: #30D158;">4-8 Tygodni</span></h1>
+                <p class="hero-subtitle mb-5">Szybko waliduj swoje pomysły biznesowe z funkcjonalnym prototypem MVP. Od koncepcji do działającego produktu gotowego do testów z użytkownikami i pozyskiwania inwestycji.</p>
+                
+                <!-- Hero Stats -->
+                <div class="row g-4 justify-content-center">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="hero-stat-card text-center">
+                            <div class="stat-icon">⚡</div>
+                            <div class="stat-number">4-8</div>
+                            <div class="stat-label">Tygodni</div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="hero-image text-center">
-                        <img src="https://via.placeholder.com/600x400/FF6B6B/ffffff?text=MVP+Prototype" alt="Prototyp MVP ECM Digital" class="img-fluid rounded-4 shadow-lg">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="hero-stat-card text-center">
+                            <div class="stat-icon">💡</div>
+                            <div class="stat-number">90%</div>
+                            <div class="stat-label">Walidacja</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="hero-stat-card text-center">
+                            <div class="stat-icon">💰</div>
+                            <div class="stat-number">12,900</div>
+                            <div class="stat-label">PLN Start</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -486,71 +103,71 @@
     </section>
 
     <!-- Features Section -->
-    <section id="features" class="py-5">
+    <section class="py-5">
         <div class="container">
             <div class="text-center mb-5">
-                <h2 class="section-title font-display" data-i18n="sections.features.title">Kluczowe funkcje</h2>
-                <p class="text-muted" data-i18n="sections.features.mvp_subtitle">Wykorzystujemy metodologię Lean Startup do szybkiej walidacji pomysłów biznesowych</p>
+                <h2 class="section-title mb-3">Co Otrzymasz</h2>
+                <p class="section-subtitle">Funkcjonalny prototyp gotowy do walidacji rynkowej</p>
             </div>
             
             <div class="row g-4">
                 <div class="col-lg-4 col-md-6">
-                    <div class="feature-card text-center p-4 h-100" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-card text-center">
                         <div class="mb-3">
-                            <i class="fas fa-lightbulb fa-3x text-primary"></i>
+                            <i class="fas fa-rocket fa-3x" style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"></i>
                         </div>
-                        <h4>Discovery & Research</h4>
-                        <p class="text-muted">Analiza rynku, konkurencji i grupy docelowej w pierwszym tygodniu</p>
+                        <h4>Szybkie Wdrożenie</h4>
+                        <p class="text-muted">Od pomysłu do działającego produktu w 4-8 tygodni</p>
                     </div>
                 </div>
                 
                 <div class="col-lg-4 col-md-6">
-                    <div class="feature-card text-center p-4 h-100" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-card text-center">
                         <div class="mb-3">
-                            <i class="fas fa-pencil-ruler fa-3x text-primary"></i>
-                        </div>
-                        <h4>Rapid Prototyping</h4>
-                        <p class="text-muted">Szybkie tworzenie prototypów w Figma, Adobe XD lub kodzie</p>
-                    </div>
-                </div>
-                
-                <div class="col-lg-4 col-md-6">
-                    <div class="feature-card text-center p-4 h-100" data-aos="fade-up" data-aos-delay="300">
-                        <div class="mb-3">
-                            <i class="fas fa-users fa-3x text-primary"></i>
+                            <i class="fas fa-users fa-3x" style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"></i>
                         </div>
                         <h4>User Testing</h4>
-                        <p class="text-muted">Testowanie z realnymi użytkownikami i zbieranie feedbacku</p>
+                        <p class="text-muted">Walidacja z rzeczywistymi użytkownikami i feedback loop</p>
                     </div>
                 </div>
                 
                 <div class="col-lg-4 col-md-6">
-                    <div class="feature-card text-center p-4 h-100" data-aos="fade-up" data-aos-delay="400">
+                    <div class="feature-card text-center">
                         <div class="mb-3">
-                            <i class="fas fa-code fa-3x text-primary"></i>
+                            <i class="fas fa-chart-line fa-3x" style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"></i>
                         </div>
-                        <h4>Functional MVP</h4>
-                        <p class="text-muted">Działający prototyp z kluczowymi funkcjonalnościami</p>
+                        <h4>Market Validation</h4>
+                        <p class="text-muted">Dowody na product-market fit i gotowość do skalowania</p>
                     </div>
                 </div>
                 
                 <div class="col-lg-4 col-md-6">
-                    <div class="feature-card text-center p-4 h-100" data-aos="fade-up" data-aos-delay="500">
+                    <div class="feature-card text-center">
                         <div class="mb-3">
-                            <i class="fas fa-chart-line fa-3x text-primary"></i>
+                            <i class="fas fa-code fa-3x" style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"></i>
                         </div>
-                        <h4>Analytics & Metrics</h4>
-                        <p class="text-muted">Śledzenie kluczowych wskaźników i analiza zachowań użytkowników</p>
+                        <h4>Clean Code</h4>
+                        <p class="text-muted">Wysokiej jakości kod gotowy do dalszego rozwoju</p>
                     </div>
                 </div>
                 
                 <div class="col-lg-4 col-md-6">
-                    <div class="feature-card text-center p-4 h-100" data-aos="fade-up" data-aos-delay="600">
+                    <div class="feature-card text-center">
                         <div class="mb-3">
-                            <i class="fas fa-arrow-right fa-3x text-primary"></i>
+                            <i class="fas fa-mobile-alt fa-3x" style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"></i>
                         </div>
-                        <h4>Next Steps</h4>
-                        <p class="text-muted">Rekomendacje dotyczące dalszego rozwoju i skalowania</p>
+                        <h4>Cross-Platform</h4>
+                        <p class="text-muted">Web, mobile, desktop - dostosowane do Twoich potrzeb</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card text-center">
+                        <div class="mb-3">
+                            <i class="fas fa-dollar-sign fa-3x" style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"></i>
+                        </div>
+                        <h4>Investor Ready</h4>
+                        <p class="text-muted">Dokumentacja i prezentacja gotowa dla inwestorów</p>
                     </div>
                 </div>
             </div>
@@ -558,156 +175,352 @@
     </section>
 
     <!-- Process Section -->
-    <section class="process-section">
+    <section class="py-5">
         <div class="container">
-            <h2 class="section-title font-display" data-i18n="sections.process.title">Nasz 5-Etapowy Proces MVP</h2>
+            <div class="text-center mb-5">
+                <h2 class="section-title mb-3">Jak Budujemy Prototypy MVP</h2>
+                <p class="section-subtitle">Lean Startup methodology w praktyce</p>
+            </div>
+            
             <div class="row">
-                <div class="col-lg-2 col-md-4 col-6">
-                    <div class="process-step" data-aos="fade-up" data-aos-delay="100">
-                        <div class="step-number">1</div>
-                        <h4 class="step-title">Discovery</h4>
-                        <p class="step-description">
-                            Analiza pomysłu i badanie rynku
-                        </p>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4 col-6">
-                    <div class="process-step" data-aos="fade-up" data-aos-delay="200">
-                        <div class="step-number">2</div>
-                        <h4 class="step-title">Design</h4>
-                        <p class="step-description">
-                            Wireframes i prototypy UI/UX
-                        </p>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4 col-6">
-                    <div class="process-step" data-aos="fade-up" data-aos-delay="300">
-                        <div class="step-number">3</div>
-                        <h4 class="step-title">Build</h4>
-                        <p class="step-description">
-                            Development funkcjonalnego MVP
-                        </p>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4 col-6">
-                    <div class="process-step" data-aos="fade-up" data-aos-delay="400">
-                        <div class="step-number">4</div>
-                        <h4 class="step-title">Test</h4>
-                        <p class="step-description">
-                            Testowanie z użytkownikami
-                        </p>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4 col-6">
-                    <div class="process-step" data-aos="fade-up" data-aos-delay="500">
-                        <div class="step-number">5</div>
-                        <h4 class="step-title">Learn</h4>
-                        <p class="step-description">
-                            Analiza wyników i iteracja
-                        </p>
+                <div class="col-lg-8 mx-auto">
+                    <div class="process-timeline">
+                        <!-- Etap 1: Idea Validation & Research -->
+                        <div class="process-step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4><i class="fas fa-lightbulb text-primary me-2"></i>Idea Validation & Research</h4>
+                                <p class="text-muted">Walidujemy pomysł i badamy rynek przed rozpoczęciem rozwoju:</p>
+                                <ul class="text-muted">
+                                    <li><strong>Problem validation:</strong> Czy problem rzeczywiście istnieje?</li>
+                                    <li><strong>Market research:</strong> Analiza konkurencji i size of market</li>
+                                    <li><strong>Target audience:</strong> Definicja early adopters i user personas</li>
+                                    <li><strong>Value proposition:</strong> Unique selling point i competitive advantage</li>
+                                    <li><strong>Business model:</strong> Monetization strategy i revenue streams</li>
+                                </ul>
+                                <div class="step-deliverables">
+                                    <span class="badge bg-primary me-2">Market Research Report</span>
+                                    <span class="badge bg-primary me-2">User Personas</span>
+                                    <span class="badge bg-primary me-2">Business Model Canvas</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Etap 2: MVP Planning & Prioritization -->
+                        <div class="process-step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4><i class="fas fa-tasks text-primary me-2"></i>MVP Planning & Prioritization</h4>
+                                <p class="text-muted">Definiujemy minimalny zestaw funkcji do walidacji:</p>
+                                <ul class="text-muted">
+                                    <li><strong>Feature prioritization:</strong> MoSCoW method, user story mapping</li>
+                                    <li><strong>Core user flows:</strong> Kluczowe ścieżki użytkownika</li>
+                                    <li><strong>Technical architecture:</strong> Stack technologiczny i infrastruktura</li>
+                                    <li><strong>Success metrics:</strong> KPI do mierzenia sukcesu MVP</li>
+                                    <li><strong>Timeline & budget:</strong> Realistic planning i resource allocation</li>
+                                </ul>
+                                <div class="step-deliverables">
+                                    <span class="badge bg-primary me-2">Feature Backlog</span>
+                                    <span class="badge bg-primary me-2">Technical Specification</span>
+                                    <span class="badge bg-primary me-2">Project Timeline</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Etap 3: UX/UI Design & Prototyping -->
+                        <div class="process-step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4><i class="fas fa-palette text-primary me-2"></i>UX/UI Design & Prototyping</h4>
+                                <p class="text-muted">Projektujemy user experience i interfejs:</p>
+                                <ul class="text-muted">
+                                    <li><strong>User journey mapping:</strong> End-to-end experience design</li>
+                                    <li><strong>Wireframing:</strong> Low-fi prototypes i information architecture</li>
+                                    <li><strong>UI design:</strong> High-fidelity mockups i visual identity</li>
+                                    <li><strong>Interactive prototypes:</strong> Clickable prototypes do testowania</li>
+                                    <li><strong>Design system:</strong> Komponenty i style guide</li>
+                                </ul>
+                                <div class="step-deliverables">
+                                    <span class="badge bg-primary me-2">User Journey Maps</span>
+                                    <span class="badge bg-primary me-2">UI Mockups</span>
+                                    <span class="badge bg-primary me-2">Interactive Prototype</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Etap 4: MVP Development Sprint -->
+                        <div class="process-step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h4><i class="fas fa-code text-primary me-2"></i>MVP Development Sprint</h4>
+                                <p class="text-muted">Agile development w krótkich iteracjach:</p>
+                                <ul class="text-muted">
+                                    <li><strong>Sprint planning:</strong> 1-2 tygodniowe sprinty</li>
+                                    <li><strong>Core features:</strong> Implementacja kluczowych funkcjonalności</li>
+                                    <li><strong>API development:</strong> Backend services i data management</li>
+                                    <li><strong>Frontend implementation:</strong> Responsive UI i user interactions</li>
+                                    <li><strong>Continuous testing:</strong> Unit tests i integration testing</li>
+                                </ul>
+                                <div class="step-deliverables">
+                                    <span class="badge bg-primary me-2">Working MVP</span>
+                                    <span class="badge bg-primary me-2">Source Code</span>
+                                    <span class="badge bg-primary me-2">Technical Documentation</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Etap 5: User Testing & Feedback -->
+                        <div class="process-step">
+                            <div class="step-number">5</div>
+                            <div class="step-content">
+                                <h4><i class="fas fa-users text-primary me-2"></i>User Testing & Feedback</h4>
+                                <p class="text-muted">Testujemy z rzeczywistymi użytkownikami:</p>
+                                <ul class="text-muted">
+                                    <li><strong>User recruitment:</strong> Dobór target audience do testów</li>
+                                    <li><strong>Usability testing:</strong> Moderated i unmoderated sessions</li>
+                                    <li><strong>A/B testing:</strong> Różne wersje kluczowych elementów</li>
+                                    <li><strong>Analytics setup:</strong> User behavior tracking i heatmaps</li>
+                                    <li><strong>Feedback collection:</strong> Surveys, interviews, reviews</li>
+                                </ul>
+                                <div class="step-deliverables">
+                                    <span class="badge bg-primary me-2">User Testing Report</span>
+                                    <span class="badge bg-primary me-2">Analytics Dashboard</span>
+                                    <span class="badge bg-primary me-2">Improvement Backlog</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Etap 6: Market Launch & Validation -->
+                        <div class="process-step">
+                            <div class="step-number">6</div>
+                            <div class="step-content">
+                                <h4><i class="fas fa-rocket text-primary me-2"></i>Market Launch & Validation</h4>
+                                <p class="text-muted">Soft launch i walidacja product-market fit:</p>
+                                <ul class="text-muted">
+                                    <li><strong>Beta launch:</strong> Limited release do selected users</li>
+                                    <li><strong>Marketing setup:</strong> Landing pages, social media, PR</li>
+                                    <li><strong>Metrics tracking:</strong> User acquisition, retention, engagement</li>
+                                    <li><strong>Customer development:</strong> Interviews i feedback sessions</li>
+                                    <li><strong>Pivot or persevere:</strong> Data-driven decisions o kierunku</li>
+                                </ul>
+                                <div class="step-deliverables">
+                                    <span class="badge bg-primary me-2">Live MVP</span>
+                                    <span class="badge bg-primary me-2">Marketing Materials</span>
+                                    <span class="badge bg-primary me-2">Validation Report</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Etap 7: Iteration & Optimization -->
+                        <div class="process-step">
+                            <div class="step-number">7</div>
+                            <div class="step-content">
+                                <h4><i class="fas fa-sync text-primary me-2"></i>Iteration & Optimization</h4>
+                                <p class="text-muted">Ciągłe doskonalenie na podstawie danych:</p>
+                                <ul class="text-muted">
+                                    <li><strong>Data analysis:</strong> User behavior i business metrics</li>
+                                    <li><strong>Feature optimization:</strong> Improvements based on feedback</li>
+                                    <li><strong>Performance tuning:</strong> Speed, scalability, reliability</li>
+                                    <li><strong>User onboarding:</strong> Improved first-time user experience</li>
+                                    <li><strong>Growth experiments:</strong> A/B testing i growth hacking</li>
+                                </ul>
+                                <div class="step-deliverables">
+                                    <span class="badge bg-primary me-2">Optimized Product</span>
+                                    <span class="badge bg-primary me-2">Growth Strategy</span>
+                                    <span class="badge bg-primary me-2">Scaling Roadmap</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Etap 8: Scaling & Investment Prep -->
+                        <div class="process-step">
+                            <div class="step-number">8</div>
+                            <div class="step-content">
+                                <h4><i class="fas fa-chart-line text-primary me-2"></i>Scaling & Investment Prep</h4>
+                                <p class="text-muted">Przygotowanie do skalowania i pozyskiwania inwestycji:</p>
+                                <ul class="text-muted">
+                                    <li><strong>Business metrics:</strong> KPI dashboard i financial projections</li>
+                                    <li><strong>Investor deck:</strong> Pitch presentation i business plan</li>
+                                    <li><strong>Technical scalability:</strong> Architecture review i optimization</li>
+                                    <li><strong>Team scaling:</strong> Hiring plan i organizational structure</li>
+                                    <li><strong>Next phase planning:</strong> Roadmap for full product development</li>
+                                </ul>
+                                <div class="step-deliverables">
+                                    <span class="badge bg-primary me-2">Investor Deck</span>
+                                    <span class="badge bg-primary me-2">Business Plan</span>
+                                    <span class="badge bg-primary me-2">Scaling Strategy</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Benefits Section -->
-    <section class="features-section">
+    <!-- Pricing Section -->
+    <section class="py-5">
         <div class="container">
-            <h2 class="section-title font-display" data-i18n="sections.benefits.title">Dlaczego Wybrać Nas?</h2>
-            <div class="row">
-                <div class="col-lg-4 col-md-6">
-                    <div class="feature-item" data-aos="fade-up" data-aos-delay="100">
-                        <div class="feature-icon">
-                            <i class="fas fa-rocket"></i>
+            <div class="text-center mb-5">
+                <h2 class="section-title mb-3">Cennik</h2>
+                <p class="section-subtitle">Elastyczne pakiety dostosowane do potrzeb Twojego startupu</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="pricing-card text-center">
+                        <h4>Proof of Concept</h4>
+                        <div class="price mb-3" style="font-size: 2rem; font-weight: 700;">
+                            <span style="font-size: 1rem; color: #EBEBF599;">od</span>
+                            <span style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">12,900</span>
+                            <span style="font-size: 1rem; color: #EBEBF599;">PLN</span>
                         </div>
-                        <h4 class="feature-title">Szybka Realizacja</h4>
-                        <p class="feature-description">
-                            MVP gotowe w 2-4 tygodnie bez kompromisów w jakości
-                        </p>
+                        <ul class="list-unstyled mb-4 text-start">
+                            <li class="mb-2">✓ Basic MVP (2-3 core features)</li>
+                            <li class="mb-2">✓ Simple UI/UX design</li>
+                            <li class="mb-2">✓ User testing (10 users)</li>
+                            <li class="mb-2">✓ Basic analytics</li>
+                            <li class="mb-2">✓ Czas: 4-5 tygodni</li>
+                        </ul>
+                        <a href="../../../index.html#contact" class="btn-cta">
+                            <i class="fas fa-arrow-right"></i>
+                            <span>Rozpocznij</span>
+                        </a>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="feature-item" data-aos="fade-up" data-aos-delay="200">
-                        <div class="feature-icon">
-                            <i class="fas fa-shield-alt"></i>
+                
+                <div class="col-lg-4">
+                    <div class="pricing-card text-center" style="border-color: rgba(0, 122, 255, 0.4) !important; transform: translateY(-8px) !important;">
+                        <div class="badge bg-primary mb-3" style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%) !important;">Popularne</div>
+                        <h4>Market-Ready MVP</h4>
+                        <div class="price mb-3" style="font-size: 2rem; font-weight: 700;">
+                            <span style="font-size: 1rem; color: #EBEBF599;">od</span>
+                            <span style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">24,900</span>
+                            <span style="font-size: 1rem; color: #EBEBF599;">PLN</span>
                         </div>
-                        <h4 class="feature-title">Minimalizacja Ryzyka</h4>
-                        <p class="feature-description">
-                            Testujesz pomysł przed dużymi inwestycjami
-                        </p>
+                        <ul class="list-unstyled mb-4 text-start">
+                            <li class="mb-2">✓ Full MVP (5-7 features)</li>
+                            <li class="mb-2">✓ Professional UI/UX</li>
+                            <li class="mb-2">✓ Comprehensive user testing</li>
+                            <li class="mb-2">✓ Advanced analytics</li>
+                            <li class="mb-2">✓ Marketing materials</li>
+                            <li class="mb-2">✓ Czas: 6-8 tygodni</li>
+                        </ul>
+                        <a href="../../../index.html#contact" class="btn-cta">
+                            <i class="fas fa-arrow-right"></i>
+                            <span>Rozpocznij</span>
+                        </a>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="feature-item" data-aos="fade-up" data-aos-delay="300">
-                        <div class="feature-icon">
-                            <i class="fas fa-headset"></i>
+                
+                <div class="col-lg-4">
+                    <div class="pricing-card text-center">
+                        <h4>Investor-Ready Product</h4>
+                        <div class="price mb-3" style="font-size: 2rem; font-weight: 700;">
+                            <span style="font-size: 1rem; color: #EBEBF599;">od</span>
+                            <span style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">49,900</span>
+                            <span style="font-size: 1rem; color: #EBEBF599;">PLN</span>
                         </div>
-                        <h4 class="feature-title">Wsparcie 24/7</h4>
-                        <p class="feature-description">
-                            Stałe wsparcie techniczne i konsultacje po wdrożeniu
-                        </p>
+                        <ul class="list-unstyled mb-4 text-start">
+                            <li class="mb-2">✓ Enterprise MVP</li>
+                            <li class="mb-2">✓ Scalable architecture</li>
+                            <li class="mb-2">✓ Extensive market validation</li>
+                            <li class="mb-2">✓ Investor pitch deck</li>
+                            <li class="mb-2">✓ Business plan</li>
+                            <li class="mb-2">✓ Czas: 10-12 tygodni</li>
+                        </ul>
+                        <a href="../../../index.html#contact" class="btn-cta">
+                            <i class="fas fa-arrow-right"></i>
+                            <span>Rozpocznij</span>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta-section" id="contact">
+    <!-- Contact Section -->
+    <section class="contact-section py-5">
         <div class="container">
-            <h2 class="cta-title font-display" data-i18n="sections.cta.mvp_title">Gotowy na Walidację Pomysłu?</h2>
-            <p class="cta-description" data-i18n="sections.cta.mvp_description">
-                Skontaktuj się z nami i otrzymaj bezpłatną konsultację. 
-                Pomożemy Ci szybko przetestować pomysł i zminimalizować ryzyko biznesowe.
-            </p>
-            <div class="d-flex gap-3 justify-content-center flex-wrap">
-                <a href="../../../index.html#contact" class="btn btn-cta">
-                    <i class="fas fa-envelope me-2"></i>
-                    <span data-i18n="sections.cta.freeConsultation">Darmowa Konsultacja</span>
-                </a>
-                <a href="tel:+48123456789" class="btn btn-outline-light btn-lg">
-                    <i class="fas fa-phone me-2"></i>
-                    <span data-i18n="sections.cta.callNow">Zadzwoń Teraz</span>
-                </a>
+            <div class="text-center mb-5">
+                <h2 class="section-title mb-3">Rozpocznij Projekt</h2>
+                <p class="section-subtitle">Skontaktuj się z nami, aby omówić Twój projekt. Oferujemy darmową konsultację i wycenę.</p>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="contact-card text-center">
+                        <div id="hubspot-form" class="mt-4"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-4" style="background: var(--bg-secondary); border-top: 1px solid var(--glass-border);">
-        <div class="container text-center">
-            <p class="text-muted mb-0">
-                © 2024 ECM Digital. Wszystkie prawa zastrzeżone. 
-                <a href="../../../index.html" class="text-primary text-decoration-none">Wróć do strony głównej</a>
-            </p>
+    <footer class="footer py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2024 ECM Digital. Wszystkie prawa zastrzeżone.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="../../../index.html" class="text-muted me-3">Strona główna</a>
+                    <a href="../../../index.html#about-us" class="text-muted me-3">O nas</a>
+                    <a href="../../../index.html#contact" class="text-muted">Kontakt</a>
+                </div>
+            </div>
         </div>
     </footer>
 
+    <!-- HubSpot Integration -->
+    <script src="../../../src/js/hubspot.js"></script>
+    
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
-    <!-- AOS Animation -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    
-    <!-- i18n Manager -->
-    <script src="../../../src/js/i18n.js"></script>
-    
-    <script>
-        // Initialize AOS
-        AOS.init({
-            duration: 800,
-            easing: 'ease-out',
-            once: true,
-            offset: 100
-        });
-
-        // Initialize i18n
-        document.addEventListener('DOMContentLoaded', function() {
-            if (window.i18nManager) {
-                i18nManager.init();
-            }
-        });
-    </script>
+    <style>
+        /* Hero Stats */
+        .hero-stat-card {
+            background: rgba(28, 28, 30, 0.8) !important;
+            backdrop-filter: blur(20px) !important;
+            -webkit-backdrop-filter: blur(20px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            border-radius: 20px !important;
+            padding: 1.5rem 1rem !important;
+            transition: all 0.3s ease !important;
+            margin-bottom: 1rem !important;
+        }
+        
+        .hero-stat-card:hover {
+            transform: translateY(-5px) !important;
+            box-shadow: 0 12px 30px rgba(0, 122, 255, 0.15) !important;
+            border-color: rgba(0, 122, 255, 0.2) !important;
+        }
+        
+        .hero-stat-card .stat-icon {
+            font-size: 2rem !important;
+            margin-bottom: 0.5rem !important;
+            filter: grayscale(0.2) !important;
+        }
+        
+        .hero-stat-card .stat-number {
+            font-size: 1.8rem !important;
+            font-weight: 800 !important;
+            background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            background-clip: text !important;
+            margin-bottom: 0.3rem !important;
+        }
+        
+        .hero-stat-card .stat-label {
+            color: #EBEBF599 !important;
+            font-size: 0.8rem !important;
+            font-weight: 600 !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.5px !important;
+        }
+    </style>
 </body>
 </html>

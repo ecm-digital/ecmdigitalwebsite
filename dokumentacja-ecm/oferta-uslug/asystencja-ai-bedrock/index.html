@@ -9,628 +9,30 @@
     <meta name="description" content="Tworzymy asystentów AI na Amazon Bedrock i Microsoft Copilot Studio. Automatyzacja procesów biznesowych, obsługa klientów, analiza danych. Start od 15,900 PLN!">
     <meta name="keywords" content="asystenci ai, amazon bedrock, microsoft copilot studio, claude 3, gpt-4, automatyzacja ai, chatboty ai, business intelligence">
     
-    <!-- Allow crawling and analysis -->
-    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-    <meta name="googlebot" content="index, follow">
-    <meta name="bingbot" content="index, follow">
-    <meta name="allow-crawling" content="true">
-    <meta name="crawl-delay" content="0">
-    
-    <!-- Open Graph for better sharing -->
-    <meta property="og:title" content="Asystenci AI - Amazon Bedrock & Microsoft Copilot Studio | ECM Digital">
-    <meta property="og:description" content="Tworzymy asystentów AI na Amazon Bedrock i Microsoft Copilot Studio. Automatyzacja procesów biznesowych, obsługa klientów, analiza danych. Start od 15,900 PLN!">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://ecmdigital.pl/dokumentacja-ecm/oferta-uslug/asystencja-ai-bedrock/">
-    
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Asystenci AI - Amazon Bedrock & Microsoft Copilot Studio | ECM Digital">
-    <meta name="twitter:description" content="Tworzymy asystentów AI na Amazon Bedrock i Microsoft Copilot Studio. Automatyzacja procesów biznesowych, obsługa klientów, analiza danych. Start od 15,900 PLN!">
-    
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
-    <!-- Google tag (gtag.js) -->
+    <!-- Shared Styles -->
+    <link rel="stylesheet" href="../shared-styles.css">
+    
+    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-V309CX2XT8"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-    
       gtag('config', 'G-V309CX2XT8');
     </script>
-    
-    <!-- Hotjar Tracking Code for ECM Digital -->
-    <script>
-        (function(h,o,t,j,a,r){
-            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments);};
-            h._hjSettings={hjid:6393562,hjsv:6};
-            a=o.getElementsByTagName('head')[0];
-            r=o.createElement('script');r.async=1;
-            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-            a.appendChild(r);
-        })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-    </script>
-    
-    <style>
-        :root {
-            /* Apple Dark Mode Colors */
-            --primary: #007AFF;
-            --primary-dark: #0056CC;
-            --primary-light: #409CFF;
-            --accent: #30D158;
-            --accent-orange: #FF9F0A;
-            --accent-purple: #BF5AF2;
-            --accent-pink: #FF2D92;
-            
-            /* Dark Theme Colors */
-            --bg-primary: #000000;
-            --bg-secondary: #1C1C1E;
-            --bg-tertiary: #2C2C2E;
-            --bg-quaternary: #3A3A3C;
-            
-            /* Text Colors */
-            --text-primary: #FFFFFF;
-            --text-secondary: #EBEBF5;
-            --text-tertiary: #EBEBF599;
-            --text-quaternary: #EBEBF54D;
-            
-            /* System Colors */
-            --separator: #38383A;
-            --overlay: rgba(0, 0, 0, 0.4);
-            
-            /* Shadows */
-            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
-            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
-            --shadow-lg: 0 8px 25px rgba(0, 0, 0, 0.5);
-            --shadow-xl: 0 16px 40px rgba(0, 0, 0, 0.6);
-            
-            /* Glass Effect */
-            --glass-bg: rgba(28, 28, 30, 0.8);
-            --glass-border: rgba(255, 255, 255, 0.1);
-        }
-
-        body { 
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-        
-        .font-display { 
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Space Grotesk', sans-serif;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-        }
-        
-        /* Hero Section */
-        .hero {
-            min-height: 400px;
-            display: flex;
-            align-items: center;
-            background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
-            color: var(--text-primary);
-            padding: 160px 0 120px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 30% 20%, var(--primary) 0%, transparent 50%),
-                        radial-gradient(circle at 70% 80%, var(--accent-purple) 0%, transparent 50%);
-            opacity: 0.1;
-            z-index: 1;
-        }
-        
-        .hero .container {
-            position: relative;
-            z-index: 2;
-        }
-        
-        .hero-title { 
-            font-size: clamp(2.5rem, 8vw, 5rem);
-            font-weight: 800; 
-            line-height: 1.05; 
-            margin-bottom: 2rem;
-            letter-spacing: -0.03em;
-            background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .hero-subtitle { 
-            font-size: 1.25rem; 
-            color: var(--text-tertiary);
-            font-weight: 400;
-            line-height: 1.5;
-            max-width: 600px;
-        }
-        
-        /* Service Cards */
-        .service-card {
-            min-height: 200px;
-            opacity: 1;
-            transform: none;
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 2.5rem 2rem;
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            height: 100%;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--accent-purple) 100%);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            border-radius: 20px;
-        }
-        
-        .service-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: var(--shadow-xl);
-            border-color: var(--glass-border);
-        }
-        
-        .service-card:hover::before {
-            opacity: 0.05;
-        }
-        
-        .service-card .service-icon {
-            position: relative;
-            z-index: 2;
-            margin-bottom: 1.5rem;
-        }
-        
-        .service-card h4 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-            position: relative;
-            z-index: 2;
-        }
-        
-        .service-card p {
-            color: var(--text-tertiary);
-            margin-bottom: 1.5rem;
-            position: relative;
-            z-index: 2;
-        }
-        
-        .btn-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
-            text-decoration: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 12px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            position: relative;
-            z-index: 2;
-        }
-        
-        .btn-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
-            color: white;
-            text-decoration: none;
-        }
-        
-        /* Navbar */
-        .navbar {
-            background: var(--glass-bg) !important;
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--glass-border);
-            padding: 1rem 0;
-        }
-        
-        .navbar-brand {
-            font-weight: 700;
-            color: var(--text-primary) !important;
-            font-size: 1.5rem;
-        }
-        
-        .nav-link {
-            color: var(--text-secondary) !important;
-            font-weight: 500;
-            margin: 0 0.5rem;
-            transition: color 0.3s ease;
-        }
-        
-        .nav-link:hover {
-            color: var(--primary) !important;
-        }
-        
-        .dropdown-menu {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: 12px;
-        }
-        
-        .dropdown-item {
-            color: var(--text-secondary);
-            transition: all 0.3s ease;
-        }
-        
-        .dropdown-item:hover {
-            background: var(--primary);
-            color: white;
-        }
-        
-        .language-switcher {
-            margin-left: 1rem;
-        }
-        
-        .language-switcher .btn-link {
-            color: var(--text-tertiary);
-            text-decoration: none;
-            padding: 0.25rem 0.5rem;
-            border-radius: 6px;
-            transition: all 0.3s ease;
-            border: none;
-            background: none;
-        }
-        
-        .language-switcher .btn-link:hover,
-        .language-switcher .btn-link:focus {
-            color: var(--primary);
-            background: var(--glass-bg);
-            box-shadow: none;
-        }
-        
-        .language-switcher .dropdown-menu {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            backdrop-filter: blur(20px);
-            border-radius: 0.5rem;
-            margin-top: 0.5rem;
-        }
-        
-        .language-switcher .dropdown-item {
-            color: var(--text-tertiary);
-            transition: all 0.3s ease;
-        }
-        
-        .language-switcher .dropdown-item:hover {
-            color: var(--primary);
-            background: var(--glass-bg);
-        }
-        
-        .language-switcher .dropdown-item.active {
-            color: var(--primary);
-            background: var(--glass-bg);
-            font-weight: 600;
-        }
-        
-        /* Section Styles */
-        .section-title {
-            font-size: clamp(2rem, 5vw, 3rem);
-            font-weight: 800;
-            margin-bottom: 1rem;
-            text-align: center;
-        }
-        
-        .text-muted {
-            color: var(--text-tertiary) !important;
-        }
-        
-        /* Feature Cards */
-        .feature-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 1rem;
-            backdrop-filter: blur(20px);
-            transition: all 0.3s ease;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .process-step {
-            padding: 2rem 1rem;
-        }
-        
-        .process-number {
-            width: 60px;
-            height: 60px;
-            background: var(--primary);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin: 0 auto;
-        }
-        
-        .tech-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 1rem;
-            backdrop-filter: blur(20px);
-        }
-        
-        .pricing-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 1rem;
-            backdrop-filter: blur(20px);
-            transition: all 0.3s ease;
-        }
-        
-        .pricing-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .price {
-            font-size: 2rem;
-            font-weight: 700;
-        }
-        
-        .price .currency {
-            font-size: 1rem;
-            color: var(--text-tertiary);
-        }
-        
-        .price .period {
-            font-size: 1rem;
-            color: var(--text-tertiary);
-        }
-        
-        .contact-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 1rem;
-            backdrop-filter: blur(20px);
-        }
-        
-        .footer {
-            background: var(--bg-secondary);
-            border-top: 1px solid var(--glass-border);
-        }
-        
-        .btn-primary {
-            background: var(--primary);
-            border: none;
-            border-radius: 0.5rem;
-            padding: 0.75rem 1.5rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-primary:hover {
-            background: #0056b3;
-            transform: translateY(-2px);
-        }
-        
-        .btn-outline-primary {
-            border: 2px solid var(--primary);
-            color: var(--primary);
-            background: transparent;
-            border-radius: 0.5rem;
-            padding: 0.75rem 1.5rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-outline-primary:hover {
-            background: var(--primary);
-            color: white;
-        }
-        
-        .btn-light {
-            background: rgba(255, 255, 255, 0.9);
-            color: var(--bg-primary);
-            border: none;
-            border-radius: 0.5rem;
-            padding: 0.75rem 1.5rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-light:hover {
-            background: white;
-            transform: translateY(-2px);
-        }
-        
-        .text-primary {
-            color: var(--primary) !important;
-        }
-        
-        .bg-primary {
-            background-color: var(--primary) !important;
-        }
-        
-        .border-primary {
-            border-color: var(--primary) !important;
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero {
-            min-height: 400px;
-            display: flex;
-            align-items: center;
-                padding: 120px 0 80px;
-            }
-            
-            .hero-title {
-                font-size: clamp(2rem, 6vw, 3rem);
-            }
-            
-            .btn-cta {
-                padding: 0.5rem 1rem;
-                font-size: 0.875rem;
-                margin-bottom: 1rem;
-                display: block;
-                text-align: center;
-                width: 100%;
-            }
-            
-            .btn-cta.me-3 {
-                margin-right: 0 !important;
-                margin-bottom: 1rem;
-            }
-            
-            .language-switcher {
-                margin: 1rem 0 0 0;
-            }
-            
-            .language-switcher .dropdown-menu {
-                position: static !important;
-                transform: none !important;
-                width: 100%;
-                margin-top: 0.5rem;
-            }
-        }
-
-        .team-avatar {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, var(--primary), #8b5cf6);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto;
-            color: white;
-        }
-
-        /* Timeline Process Styles */
-        .process-timeline {
-            position: relative;
-        }
-
-        .process-timeline::before {
-            content: '';
-            position: absolute;
-            left: 30px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(135deg, var(--primary), #8b5cf6);
-        }
-
-        .process-step {
-            position: relative;
-            margin-bottom: 3rem;
-            padding-left: 80px;
-        }
-
-        .step-number {
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--primary), #8b5cf6);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-            font-weight: bold;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .step-content {
-            background: var(--bg-primary);
-            border-radius: 1rem;
-            padding: 2rem;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .step-content h4 {
-            color: var(--text-primary);
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-
-        .step-content ul {
-            margin: 1rem 0;
-            padding-left: 1.5rem;
-        }
-
-        .step-content li {
-            margin-bottom: 0.5rem;
-        }
-
-        .step-deliverables {
-            margin-top: 1.5rem;
-            padding-top: 1rem;
-            border-top: 1px solid var(--border-color);
-        }
-
-        .step-deliverables .badge {
-            font-size: 0.8rem;
-            padding: 0.5rem 1rem;
-        }
-
-        @media (max-width: 768px) {
-            .process-timeline::before {
-                left: 20px;
-            }
-            
-            .process-step {
-                padding-left: 60px;
-            }
-            
-            .step-number {
-                width: 40px;
-                height: 40px;
-                font-size: 1.2rem;
-            }
-            
-            .step-content {
-                padding: 1.5rem;
-            }
-        }
-    </style>
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg fixed-top">
+    <nav class="navbar navbar-expand-lg fixed-top" role="navigation" aria-label="Główna nawigacja">
         <div class="container">
             <a class="navbar-brand font-display" href="../../../index.html">
-                <i class="fas fa-rocket me-2" style="color: var(--primary);"></i>
-                ECM Digital
+                <i class="fas fa-rocket me-2" style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"></i>
+                <span style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 700;">ECM Digital</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" style="border: none; background: none;">
                 <i class="fas fa-bars" style="color: var(--text-primary); font-size: 1.2rem;"></i>
@@ -638,63 +40,62 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="../../../index.html#home" data-i18n="nav.home">Home</a>
+                        <a class="nav-link" href="../../../index.html#home">Home</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-i18n="nav.services">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Usługi
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="../strony-www/" data-i18n="services.websites">Strony WWW</a></li>
-                            <li><a class="dropdown-item" href="../sklepy-shopify/" data-i18n="services.shopify">Sklepy Shopify</a></li>
-                            <li><a class="dropdown-item" href="../prototypy-mvp/" data-i18n="services.mvp">Prototypy MVP</a></li>
-                            <li><a class="dropdown-item" href="../audyty-ux/" data-i18n="services.uxAudit">Audyty UX</a></li>
-                            <li><a class="dropdown-item" href="../automatyzacje-n8n/" data-i18n="services.automation">Automatyzacje</a></li>
-                            <li><a class="dropdown-item" href="../social-media-data-science/" data-i18n="services.socialMedia">Social Media & AI</a></li>
-                            <li><a class="dropdown-item active" href="../asystencja-ai-bedrock/" data-i18n="services.aiAssistants">Asystenci AI na Amazon Bedrock & Copilot Studio</a></li>
-                            <li><a class="dropdown-item" href="../aplikacje-mobilne/" data-i18n="services.mobileApps">Aplikacje Mobilne</a></li>
-                            <li><a class="dropdown-item" href="../asystenci-glosowi-lex/" data-i18n="services.voiceAssistants">Asystenci Głosowi na Amazon Lex</a></li>
+                            <li><a class="dropdown-item" href="../strony-www/">Strony WWW</a></li>
+                            <li><a class="dropdown-item" href="../sklepy-shopify/">Sklepy Shopify</a></li>
+                            <li><a class="dropdown-item" href="../prototypy-mvp/">Prototypy MVP</a></li>
+                            <li><a class="dropdown-item" href="../audyty-ux/">Audyty Wdrożenia AI w Twojej Firmie</a></li>
+                            <li><a class="dropdown-item" href="../automatyzacje-n8n/">Automatyzacje</a></li>
+                            <li><a class="dropdown-item" href="../social-media-data-science/">Social Media & AI</a></li>
+                            <li><a class="dropdown-item" href="../asystencja-ai-bedrock/">Asystenci AI na Amazon Bedrock & Copilot Studio</a></li>
+                            <li><a class="dropdown-item" href="../aplikacje-mobilne/">Aplikacje Mobilne</a></li>
+                            <li><a class="dropdown-item" href="../asystenci-glosowi-lex/">Asystenci Głosowi na Amazon Lex</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="../../../index.html#about-us" data-i18n="nav.about">O nas</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../../../index.html#team" data-i18n="nav.team">Zespół</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/login" data-i18n="nav.clientPanel">Panel Klienta</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../../../index.html#contact" data-i18n="nav.contact">Kontakt</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../../index.html#about-us">O nas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../../index.html#team">Zespół</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/login">Panel Klienta</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../../index.html#contact">Kontakt</a></li>
                 </ul>
-                <div class="language-switcher dropdown">
-                    <button class="btn btn-link dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                        🇵🇱 PL
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="languageDropdown">
-                        <li><a class="dropdown-item lang-btn active" href="#" data-lang="pl">🇵🇱 Polski</a></li>
-                        <li><a class="dropdown-item lang-btn" href="#" data-lang="en">🇺🇸 English</a></li>
-                        <li><a class="dropdown-item lang-btn" href="#" data-lang="de">🇩🇪 Deutsch</a></li>
-                    </ul>
-                </div>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero" data-aos="fade-up">
+    <section class="hero">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <h1 class="hero-title font-display" data-i18n="services.aiAssistants">Asystenci AI na <span style="color: #30D158;">Amazon Bedrock</span> & <span style="color: #0078D4;">Microsoft Copilot Studio</span></h1>
-                    <p class="hero-subtitle" data-i18n="services.aiAssistants.description">
-                        Tworzymy zaawansowane asystenty AI oparte na Amazon Bedrock i Microsoft Copilot Studio. 
-                        Automatyzacja procesów biznesowych, obsługa klientów i analiza danych z wykorzystaniem najnowszych modeli AI.
-                    </p>
-                    <div class="mt-4">
-                        <a href="#features" class="btn-cta">
-                            <i class="fas fa-arrow-right"></i>
-                            Poznaj funkcje
-                        </a>
+            <div class="text-center mb-5">
+                <h1 class="hero-title mb-4">Asystenci AI na <span style="color: #30D158;">Amazon Bedrock</span> & <span style="color: #0078D4;">Microsoft Copilot Studio</span></h1>
+                <p class="hero-subtitle mb-5">Tworzymy zaawansowane asystenty AI oparte na Amazon Bedrock i Microsoft Copilot Studio. Automatyzacja procesów biznesowych, obsługa klientów i analiza danych z wykorzystaniem najnowszych modeli AI.</p>
+                
+                <!-- Hero Stats -->
+                <div class="row g-4 justify-content-center">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="hero-stat-card text-center">
+                            <div class="stat-icon">🤖</div>
+                            <div class="stat-number">70%</div>
+                            <div class="stat-label">Redukcja Kosztów</div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="hero-image text-center">
-                        <img src="https://via.placeholder.com/600x400/3b82f6/ffffff?text=AI+Assistants" alt="AI Assistants Amazon Bedrock" class="img-fluid rounded-4 shadow-lg">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="hero-stat-card text-center">
+                            <div class="stat-icon">⚡</div>
+                            <div class="stat-number">24/7</div>
+                            <div class="stat-label">AI Wsparcie</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="hero-stat-card text-center">
+                            <div class="stat-icon">📈</div>
+                            <div class="stat-number">15,900</div>
+                            <div class="stat-label">PLN Start</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -702,18 +103,18 @@
     </section>
 
     <!-- Features Section -->
-    <section id="features" class="py-5">
+    <section class="py-5">
         <div class="container">
             <div class="text-center mb-5">
-                <h2 class="section-title font-display">Kluczowe funkcje</h2>
-                <p class="text-muted">Wykorzystujemy najnowsze technologie AI do automatyzacji i optymalizacji procesów biznesowych</p>
+                <h2 class="section-title mb-3">Kluczowe Funkcje</h2>
+                <p class="section-subtitle">Wykorzystujemy najnowsze technologie AI do automatyzacji i optymalizacji procesów biznesowych</p>
             </div>
             
             <div class="row g-4">
                 <div class="col-lg-4 col-md-6">
-                    <div class="feature-card text-center p-4 h-100">
+                    <div class="feature-card text-center">
                         <div class="mb-3">
-                            <i class="fas fa-brain fa-3x text-primary"></i>
+                            <i class="fas fa-brain fa-3x" style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"></i>
                         </div>
                         <h4>Inteligentne Asystenty</h4>
                         <p class="text-muted">Konwersacyjne AI oparte na najnowszych modelach językowych Amazon Bedrock</p>
@@ -721,9 +122,9 @@
                 </div>
                 
                 <div class="col-lg-4 col-md-6">
-                    <div class="feature-card text-center p-4 h-100">
+                    <div class="feature-card text-center">
                         <div class="mb-3">
-                            <i class="fas fa-cogs fa-3x text-primary"></i>
+                            <i class="fas fa-cogs fa-3x" style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"></i>
                         </div>
                         <h4>Automatyzacja Procesów</h4>
                         <p class="text-muted">Automatyzacja powtarzalnych zadań i optymalizacja workflow biznesowego</p>
@@ -731,9 +132,9 @@
                 </div>
                 
                 <div class="col-lg-4 col-md-6">
-                    <div class="feature-card text-center p-4 h-100">
+                    <div class="feature-card text-center">
                         <div class="mb-3">
-                            <i class="fas fa-headset fa-3x text-primary"></i>
+                            <i class="fas fa-headset fa-3x" style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"></i>
                         </div>
                         <h4>Wsparcie Klientów 24/7</h4>
                         <p class="text-muted">Nieustanne wsparcie klientów z natychmiastowymi odpowiedziami</p>
@@ -741,9 +142,9 @@
                 </div>
                 
                 <div class="col-lg-4 col-md-6">
-                    <div class="feature-card text-center p-4 h-100">
+                    <div class="feature-card text-center">
                         <div class="mb-3">
-                            <i class="fas fa-chart-line fa-3x text-primary"></i>
+                            <i class="fas fa-chart-line fa-3x" style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"></i>
                         </div>
                         <h4>Analiza Danych</h4>
                         <p class="text-muted">Zaawansowana analiza danych i generowanie insightów biznesowych</p>
@@ -751,9 +152,9 @@
                 </div>
                 
                 <div class="col-lg-4 col-md-6">
-                    <div class="feature-card text-center p-4 h-100">
+                    <div class="feature-card text-center">
                         <div class="mb-3">
-                            <i class="fas fa-shield-alt fa-3x text-primary"></i>
+                            <i class="fas fa-shield-alt fa-3x" style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"></i>
                         </div>
                         <h4>Bezpieczeństwo Enterprise</h4>
                         <p class="text-muted">Najwyższe standardy bezpieczeństwa i compliance zgodne z wymogami biznesowymi</p>
@@ -761,9 +162,9 @@
                 </div>
                 
                 <div class="col-lg-4 col-md-6">
-                    <div class="feature-card text-center p-4 h-100">
+                    <div class="feature-card text-center">
                         <div class="mb-3">
-                            <i class="fas fa-sync fa-3x text-primary"></i>
+                            <i class="fas fa-sync fa-3x" style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"></i>
                         </div>
                         <h4>Integracja Systemów</h4>
                         <p class="text-muted">Seamless integracja z istniejącymi systemami CRM, ERP i narzędziami biznesowymi</p>
@@ -773,65 +174,12 @@
         </div>
     </section>
 
-    <!-- Microsoft Copilot Studio Section -->
-    <section class="content-section" style="background: var(--bg-primary);">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-                        <h2><i class="fab fa-microsoft text-primary me-2"></i>Microsoft Copilot Studio</h2>
-                        <p class="text-muted">Tworzymy inteligentne agenty AI na platformie Microsoft Copilot Studio, integrując je z Twoimi systemami biznesowymi i danymi.</p>
-                        
-                        <h4 class="mt-4">Kluczowe Korzyści:</h4>
-                        <ul class="text-muted">
-                            <li><i class="fas fa-check text-success me-2"></i>Integracja z Microsoft 365 i Azure</li>
-                            <li><i class="fas fa-check text-success me-2"></i>Custom knowledge base i dokumenty</li>
-                            <li><i class="fas fa-check text-success me-2"></i>Multi-channel deployment (Teams, Web, Mobile)</li>
-                            <li><i class="fas fa-check text-success me-2"></i>Enterprise-grade security i compliance</li>
-                            <li><i class="fas fa-check text-success me-2"></i>Analytics i monitoring w czasie rzeczywistym</li>
-                        </ul>
-                        
-                        <h4 class="mt-4">Zastosowania:</h4>
-                        <div class="mt-3">
-                            <span class="badge bg-primary me-2 mb-2">Microsoft Teams</span>
-                            <span class="badge bg-primary me-2 mb-2">SharePoint</span>
-                            <span class="badge bg-primary me-2 mb-2">Outlook</span>
-                            <span class="badge bg-primary me-2 mb-2">Power BI</span>
-                            <span class="badge bg-primary me-2 mb-2">Azure Services</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-6">
-                    <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-                        <h3><i class="fas fa-lightbulb text-warning me-2"></i>Przykłady Użycia</h3>
-                        
-                        <div class="mt-4">
-                            <h5><i class="fas fa-users text-primary me-2"></i>HR Assistant</h5>
-                            <p class="text-muted">Asystent HR w Teams pomagający w rekrutacji, onboardingu i zarządzaniu pracownikami.</p>
-                        </div>
-                        
-                        <div class="mt-4">
-                            <h5><i class="fas fa-chart-line text-primary me-2"></i>Business Intelligence</h5>
-                            <p class="text-muted">AI agent analizujący dane w Power BI i generujący automatyczne raporty biznesowe.</p>
-                        </div>
-                        
-                        <div class="mt-4">
-                            <h5><i class="fas fa-file-alt text-primary me-2"></i>Document Assistant</h5>
-                            <p class="text-muted">Asystent dokumentów w SharePoint pomagający w tworzeniu, edycji i zarządzaniu treścią.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Proces Wdrażania Asystentów AI -->
-    <section class="content-section" style="background: var(--bg-secondary);">
+    <!-- Process Section -->
+    <section class="py-5">
         <div class="container">
             <div class="text-center mb-5">
-                <h2 class="section-title">Jak Wdrażamy Asystentów AI w Twojej Firmie</h2>
-                <p class="text-muted">Kompleksowy proces od analizy potrzeb po wdrożenie i utrzymanie</p>
+                <h2 class="section-title mb-3">Jak Wdrażamy Asystentów AI w Twojej Firmie</h2>
+                <p class="section-subtitle">Kompleksowy proces od analizy potrzeb po wdrożenie i utrzymanie</p>
             </div>
             
             <div class="row">
@@ -989,114 +337,78 @@
         </div>
     </section>
 
-    <!-- Technologies Section -->
+    <!-- Pricing Section -->
     <section class="py-5">
         <div class="container">
             <div class="text-center mb-5">
-                <h2 class="section-title font-display">Technologie i narzędzia</h2>
-                <p class="text-muted">Wykorzystujemy najnowsze technologie AI i cloud computing</p>
-            </div>
-            
-            <div class="row g-4">
-                <div class="col-lg-4 col-md-6">
-                    <div class="tech-card p-4 text-center h-100">
-                        <img src="https://via.placeholder.com/80x80/3b82f6/ffffff?text=AWS" alt="Amazon Web Services" class="mb-3">
-                        <h5>Amazon Bedrock</h5>
-                        <p class="text-muted">Najnowsze modele AI i machine learning w chmurze AWS</p>
-                    </div>
-                </div>
-                
-                <div class="col-lg-4 col-md-6">
-                    <div class="tech-card p-4 text-center h-100">
-                        <img src="https://via.placeholder.com/80x80/10b981/ffffff?text=API" alt="API Integration" class="mb-3">
-                        <h5>REST API & Webhooks</h5>
-                        <p class="text-muted">Seamless integracja z istniejącymi systemami i aplikacjami</p>
-                    </div>
-                </div>
-                
-                <div class="col-lg-4 col-md-6">
-                    <div class="tech-card p-4 text-center h-100">
-                        <img src="https://via.placeholder.com/80x80/f59e0b/ffffff?text=ML" alt="Machine Learning" class="mb-3">
-                        <h5>Machine Learning</h5>
-                        <p class="text-muted">Zaawansowane algorytmy ML dla personalizacji i optymalizacji</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="tech-card p-4">
-                        <h5><i class="fas fa-robot text-primary"></i> Platformy AI</h5>
-                        <ul class="text-muted">
-                            <li>Amazon Bedrock (Claude, Titan, Llama)</li>
-                            <li>Microsoft Copilot Studio</li>
-                            <li>OpenAI GPT-4</li>
-                            <li>Custom AI Models</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pricing Section -->
-    <section class="py-5" style="background: var(--secondary);">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="section-title font-display">Cennik</h2>
-                <p class="text-muted">Elastyczne pakiety dostosowane do potrzeb Twojej organizacji</p>
+                <h2 class="section-title mb-3">Cennik</h2>
+                <p class="section-subtitle">Elastyczne pakiety dostosowane do potrzeb Twojej organizacji</p>
             </div>
             
             <div class="row g-4">
                 <div class="col-lg-4">
-                    <div class="pricing-card p-4 text-center h-100">
+                    <div class="pricing-card text-center">
                         <h4>Starter</h4>
-                        <div class="price mb-3">
-                            <span class="currency">od</span>
-                            <span class="amount">4,900</span>
-                            <span class="period">PLN</span>
+                        <div class="price mb-3" style="font-size: 2rem; font-weight: 700;">
+                            <span style="font-size: 1rem; color: #EBEBF599;">od</span>
+                            <span style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">4,900</span>
+                            <span style="font-size: 1rem; color: #EBEBF599;">PLN</span>
                         </div>
-                        <ul class="list-unstyled mb-4">
-                            <li>✓ Podstawowy asystent AI</li>
-                            <li>✓ Integracja z 1 systemem</li>
-                            <li>✓ Wsparcie email</li>
-                            <li>✓ Aktualizacje miesięczne</li>
+                        <ul class="list-unstyled mb-4 text-start">
+                            <li class="mb-2">✓ Podstawowy asystent AI</li>
+                            <li class="mb-2">✓ Integracja z 1 systemem</li>
+                            <li class="mb-2">✓ Wsparcie email</li>
+                            <li class="mb-2">✓ Aktualizacje miesięczne</li>
                         </ul>
-                        <a href="#contact" class="btn btn-primary">Rozpocznij</a>
+                        <a href="../../../index.html#contact" class="btn-cta">
+                            <i class="fas fa-arrow-right"></i>
+                            <span>Rozpocznij</span>
+                        </a>
                     </div>
                 </div>
                 
                 <div class="col-lg-4">
-                    <div class="pricing-card p-4 text-center h-100 border-primary">
-                        <div class="badge bg-primary mb-3">Popularne</div>
+                    <div class="pricing-card text-center" style="border-color: rgba(0, 122, 255, 0.4) !important; transform: translateY(-8px) !important;">
+                        <div class="badge bg-primary mb-3" style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%) !important;">Popularne</div>
                         <h4>Basic AI Chatbot</h4>
-                        <div class="price">
-                            <span class="currency">od </span>15,900<span class="currency"> PLN</span>
+                        <div class="price mb-3" style="font-size: 2rem; font-weight: 700;">
+                            <span style="font-size: 1rem; color: #EBEBF599;">od</span>
+                            <span style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">15,900</span>
+                            <span style="font-size: 1rem; color: #EBEBF599;">PLN</span>
                         </div>
-                        <p class="text-muted">Podstawowy chatbot AI</p>
-                        <ul class="text-muted text-start">
-                            <li>Amazon Bedrock lub Copilot Studio</li>
-                            <li>Podstawowe funkcje AI</li>
-                            <li>Integracja z 1 systemem</li>
-                            <li>Web deployment</li>
-                            <li>Czas: 4-6 tygodni</li>
+                        <ul class="list-unstyled mb-4 text-start">
+                            <li class="mb-2">✓ Amazon Bedrock lub Copilot Studio</li>
+                            <li class="mb-2">✓ Podstawowe funkcje AI</li>
+                            <li class="mb-2">✓ Integracja z 1 systemem</li>
+                            <li class="mb-2">✓ Web deployment</li>
+                            <li class="mb-2">✓ Czas: 4-6 tygodni</li>
                         </ul>
-                        <a href="#contact" class="btn btn-primary">Rozpocznij</a>
+                        <a href="../../../index.html#contact" class="btn-cta">
+                            <i class="fas fa-arrow-right"></i>
+                            <span>Rozpocznij</span>
+                        </a>
                     </div>
                 </div>
                 
                 <div class="col-lg-4">
-                    <div class="pricing-card p-4 text-center h-100">
+                    <div class="pricing-card text-center">
                         <h4>Enterprise AI Solution</h4>
-                        <div class="price">
-                            <span class="currency">od </span>39,900<span class="currency"> PLN</span>
+                        <div class="price mb-3" style="font-size: 2rem; font-weight: 700;">
+                            <span style="font-size: 1rem; color: #EBEBF599;">od</span>
+                            <span style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">39,900</span>
+                            <span style="font-size: 1rem; color: #EBEBF599;">PLN</span>
                         </div>
-                        <p class="text-muted">Kompleksowe rozwiązanie AI</p>
-                        <ul class="text-muted text-start">
-                            <li>Amazon Bedrock + Copilot Studio</li>
-                            <li>Integracja z wszystkimi systemami</li>
-                            <li>Custom AI models</li>
-                            <li>Multi-channel + API</li>
-                            <li>Czas: 8-12 tygodni</li>
+                        <ul class="list-unstyled mb-4 text-start">
+                            <li class="mb-2">✓ Amazon Bedrock + Copilot Studio</li>
+                            <li class="mb-2">✓ Integracja z wszystkimi systemami</li>
+                            <li class="mb-2">✓ Custom AI models</li>
+                            <li class="mb-2">✓ Multi-channel + API</li>
+                            <li class="mb-2">✓ Czas: 8-12 tygodni</li>
                         </ul>
-                        <a href="#contact" class="btn btn-primary">Rozpocznij</a>
+                        <a href="../../../index.html#contact" class="btn-cta">
+                            <i class="fas fa-arrow-right"></i>
+                            <span>Rozpocznij</span>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -1104,60 +416,41 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-5">
+    <section class="contact-section py-5">
         <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8 text-center">
-                    <h2 class="section-title font-display mb-4">Rozpocznij projekt z AI</h2>
-                    <p class="lead mb-5">Gotowy na transformację cyfrową z asystentami AI? Skontaktuj się z nami i dowiedz się, jak możemy pomóc Twojej organizacji.</p>
-                    
-                    <div class="row g-4">
-                        <div class="col-md-6">
-                            <div class="contact-card p-4 text-center h-100">
-                                <i class="fas fa-phone fa-2x text-primary mb-3"></i>
-                                <h5>Telefon</h5>
-                                <p class="mb-2">+48 123 456 789</p>
-                                <small class="text-muted">Pon-Pt 9:00-17:00</small>
-                            </div>
-                        </div>
-                        
-                        <div class="col-md-6">
-                            <div class="contact-card p-4 text-center h-100">
-                                <i class="fas fa-envelope fa-2x text-primary mb-3"></i>
-                                <h5>Email</h5>
-                                <p class="mb-2">ai@ecmdigital.pl</p>
-                                <small class="text-muted">Odpowiadamy w ciągu 24h</small>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="mt-5">
-                        <a href="mailto:ai@ecmdigital.pl" class="btn btn-primary btn-lg me-3">Napisz do nas</a>
-                        <a href="tel:+48123456789" class="btn btn-outline-primary btn-lg">Zadzwoń teraz</a>
-                    </div>
-                </div>
+            <div class="text-center mb-5">
+                <h2 class="section-title mb-3">Rozpocznij Projekt</h2>
+                <p class="section-subtitle">Skontaktuj się z nami, aby omówić Twój projekt. Oferujemy darmową konsultację i wycenę.</p>
             </div>
-        </div>
-    </section>
-
-    <!-- Demo Section -->
-    <section class="py-5">
-        <div class="container">
+            
             <div class="row justify-content-center">
-                <div class="col-lg-8 text-center">
-                    <h2 class="section-title">🚀 Wypróbuj Amazon Bedrock</h2>
-                    <p class="text-muted mb-4">
-                        Interaktywne demo pozwala na testowanie różnych modeli AI w czasie rzeczywistym
-                    </p>
-                    <div class="d-flex justify-content-center gap-3 flex-wrap">
-                        <a href="bedrock-demo.html" class="btn btn-primary btn-lg" target="_blank">
-                            <i class="fas fa-play me-2"></i>
-                            Uruchom Demo
-                        </a>
-                        <a href="README.md" class="btn btn-outline-primary btn-lg" target="_blank">
-                            <i class="fas fa-book me-2"></i>
-                            Dokumentacja
-                        </a>
+                <div class="col-lg-8">
+                    <div class="contact-card text-center">
+                        <div class="row g-4 mb-4">
+                            <div class="col-md-4">
+                                <div class="contact-info-card text-center">
+                                    <div class="contact-icon">📧</div>
+                                    <h6>Email</h6>
+                                    <p class="text-muted">hello@ecm-digital.com</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="contact-info-card text-center">
+                                    <div class="contact-icon">📞</div>
+                                    <h6>Telefon</h6>
+                                    <p class="text-muted">+48 535 330 323</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="contact-info-card text-center">
+                                    <div class="contact-icon">⚡</div>
+                                    <h6>Czas odpowiedzi</h6>
+                                    <p class="text-muted">24 godziny</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="hubspot-form" class="mt-4"></div>
                     </div>
                 </div>
             </div>
@@ -1180,66 +473,110 @@
         </div>
     </footer>
 
+    <!-- HubSpot Integration -->
+    <script src="../../../src/js/hubspot.js"></script>
+    
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="../../../src/js/i18n.js"></script>
-    <script>
-        // Initialize AOS
-        AOS.init();
+    
+    <style>
+        /* Hero Stats */
+        .hero-stat-card {
+            background: rgba(28, 28, 30, 0.8) !important;
+            backdrop-filter: blur(20px) !important;
+            -webkit-backdrop-filter: blur(20px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            border-radius: 20px !important;
+            padding: 1.5rem 1rem !important;
+            transition: all 0.3s ease !important;
+            margin-bottom: 1rem !important;
+        }
         
-        // Initialize I18n
-        const i18nManager = new I18nManager();
-        i18nManager.init();
+        .hero-stat-card:hover {
+            transform: translateY(-5px) !important;
+            box-shadow: 0 12px 30px rgba(0, 122, 255, 0.15) !important;
+            border-color: rgba(0, 122, 255, 0.2) !important;
+        }
         
-        // Language switcher functionality
-        document.addEventListener("DOMContentLoaded", function() {
-            const langButtons = document.querySelectorAll(".lang-btn");
-            const languageDropdownButton = document.getElementById("languageDropdown");
-            
-            // Language names for button text
-            const languageNames = {
-                "pl": "🇵🇱 PL",
-                "en": "🇺🇸 EN", 
-                "de": "🇩🇪 DE"
-            };
-            
-            langButtons.forEach(btn => {
-                btn.addEventListener("click", function(e) {
-                    e.preventDefault();
-                    
-                    // Remove active class from all buttons
-                    langButtons.forEach(b => b.classList.remove("active"));
-                    
-                    // Add active class to clicked button
-                    this.classList.add("active");
-                    
-                    // Get language from data-lang attribute
-                    const lang = this.getAttribute("data-lang");
-                    
-                    // Update dropdown button text
-                    languageDropdownButton.innerHTML = languageNames[lang];
-                    
-                    // Set language in I18n manager
-                    i18nManager.setLanguage(lang);
-                    
-                    // Store language preference
-                    localStorage.setItem("preferredLanguage", lang);
-                });
-            });
-            
-            // Set initial language from localStorage or default to Polish
-            const savedLang = localStorage.getItem("preferredLanguage") || "pl";
-            i18nManager.setLanguage(savedLang);
-            
-            // Update active button and dropdown text
-            const activeBtn = document.querySelector(`[data-lang="${savedLang}"]`);
-            if (activeBtn) {
-                langButtons.forEach(b => b.classList.remove("active"));
-                activeBtn.classList.add("active");
-                languageDropdownButton.innerHTML = languageNames[savedLang];
-            }
-        });
-    </script>
+        .hero-stat-card .stat-icon {
+            font-size: 2rem !important;
+            margin-bottom: 0.5rem !important;
+            filter: grayscale(0.2) !important;
+        }
+        
+        .hero-stat-card .stat-number {
+            font-size: 1.8rem !important;
+            font-weight: 800 !important;
+            background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            background-clip: text !important;
+            margin-bottom: 0.3rem !important;
+        }
+        
+        .hero-stat-card .stat-label {
+            color: #EBEBF599 !important;
+            font-size: 0.8rem !important;
+            font-weight: 600 !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.5px !important;
+        }
+
+        .step-icon {
+            font-size: 2rem !important;
+            margin-bottom: 1rem !important;
+            filter: grayscale(0.3) !important;
+            transition: all 0.3s ease !important;
+        }
+        
+        .process-step:hover .step-icon {
+            filter: grayscale(0) !important;
+            transform: scale(1.1) !important;
+        }
+        
+        .step-duration {
+            background: rgba(0, 122, 255, 0.2) !important;
+            color: #007AFF !important;
+            padding: 0.4rem 1rem !important;
+            border-radius: 20px !important;
+            font-size: 0.8rem !important;
+            font-weight: 600 !important;
+            display: inline-block !important;
+            border: 1px solid rgba(0, 122, 255, 0.3) !important;
+        }
+
+        .contact-info-card {
+            background: rgba(28, 28, 30, 0.8) !important;
+            backdrop-filter: blur(20px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            border-radius: 16px !important;
+            padding: 1.5rem 1rem !important;
+            transition: all 0.3s ease !important;
+        }
+        
+        .contact-info-card:hover {
+            transform: translateY(-3px) !important;
+            box-shadow: 0 8px 20px rgba(0, 122, 255, 0.15) !important;
+            border-color: rgba(0, 122, 255, 0.2) !important;
+        }
+        
+        .contact-icon {
+            font-size: 2rem !important;
+            margin-bottom: 0.5rem !important;
+            filter: grayscale(0.2) !important;
+        }
+        
+        .contact-info-card h6 {
+            color: #FFFFFF !important;
+            font-weight: 700 !important;
+            margin-bottom: 0.5rem !important;
+            font-size: 1rem !important;
+        }
+        
+        .contact-info-card p {
+            font-size: 0.9rem !important;
+            margin: 0 !important;
+        }
+    </style>
 </body>
 </html>

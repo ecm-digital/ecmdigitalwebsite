@@ -8,616 +8,31 @@
     <!-- SEO Meta Tags -->
     <meta name="description" content="Automatyzacje n8n - automatyzacja procesów biznesowych, integracje API, workflow automation. Zwiększ efektywność i oszczędzaj czas!">
     <meta name="keywords" content="automatyzacja n8n, workflow automation, integracje api, automatyzacja procesów, n8n workflow, business process automation">
-    <meta name="author" content="ECM Digital">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://www.ecm-digital.com/dokumentacja-ecm/oferta-uslug/automatyzacje-n8n/">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.ecm-digital.com/dokumentacja-ecm/oferta-uslug/automatyzacje-n8n/">
-    <meta property="og:title" content="Automatyzacje n8n - Automatyzacja Procesów Biznesowych | ECM Digital">
-    <meta property="og:description" content="Automatyzacje n8n - automatyzacja procesów biznesowych, integracje API, workflow automation.">
-    <meta property="og:image" content="https://www.ecm-digital.com/assets/images/n8n-automation-og.jpg">
-    
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://www.ecm-digital.com/dokumentacja-ecm/oferta-uslug/automatyzacje-n8n/">
-    <meta name="twitter:title" content="Automatyzacje n8n - Automatyzacja Procesów Biznesowych | ECM Digital">
-    <meta name="twitter:description" content="Automatyzacje n8n - automatyzacja procesów biznesowych, integracje API, workflow automation.">
-    <meta name="twitter:image" content="https://www.ecm-digital.com/assets/images/n8n-automation-og.jpg">
     
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
-    <!-- Google tag (gtag.js) -->
+    <!-- Shared Styles -->
+    <link rel="stylesheet" href="../shared-styles.css">
+    
+    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-V309CX2XT8"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-    
       gtag('config', 'G-V309CX2XT8');
     </script>
-    
-    <!-- Hotjar Tracking Code for ECM Digital -->
-    <script>
-        (function(h,o,t,j,a,r){
-            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments);};
-            h._hjSettings={hjid:6393562,hjsv:6};
-            a=o.getElementsByTagName('head')[0];
-            r=o.createElement('script');r.async=1;
-            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-            a.appendChild(r);
-        })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-    </script>
-    
-    <style>
-        :root {
-            /* Apple Dark Mode Colors */
-            --primary: #007AFF;
-            --primary-dark: #0056CC;
-            --primary-light: #409CFF;
-            --accent: #30D158;
-            --accent-orange: #FF9F0A;
-            --accent-purple: #BF5AF2;
-            --accent-pink: #FF2D92;
-            
-            /* Dark Theme Colors */
-            --bg-primary: #000000;
-            --bg-secondary: #1C1C1E;
-            --bg-tertiary: #2C2C2E;
-            --bg-quaternary: #3A3A3C;
-            
-            /* Text Colors */
-            --text-primary: #FFFFFF;
-            --text-secondary: #EBEBF5;
-            --text-tertiary: #EBEBF599;
-            --text-quaternary: #EBEBF54D;
-            
-            /* System Colors */
-            --separator: #38383A;
-            --overlay: rgba(0, 0, 0, 0.4);
-            
-            /* Shadows */
-            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
-            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
-            --shadow-lg: 0 8px 25px rgba(0, 0, 0, 0.5);
-            --shadow-xl: 0 16px 40px rgba(0, 0, 0, 0.6);
-            
-            /* Glass Effect */
-            --glass-bg: rgba(28, 28, 30, 0.8);
-            --glass-border: rgba(255, 255, 255, 0.1);
-        }
-
-        body { 
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-        
-        .font-display { 
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Space Grotesk', sans-serif;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-        }
-        
-        /* Hero Section */
-        .hero {
-            min-height: 400px;
-            display: flex;
-            align-items: center;
-            background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
-            color: var(--text-primary);
-            padding: 160px 0 120px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 30% 20%, var(--primary) 0%, transparent 50%),
-                        radial-gradient(circle at 70% 80%, var(--accent-purple) 0%, transparent 50%);
-            opacity: 0.1;
-            z-index: 1;
-        }
-        
-        .hero .container {
-            position: relative;
-            z-index: 2;
-        }
-        
-        .hero-title { 
-            font-size: clamp(2.5rem, 8vw, 5rem);
-            font-weight: 800; 
-            line-height: 1.05; 
-            margin-bottom: 2rem;
-            letter-spacing: -0.03em;
-            background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .hero-subtitle { 
-            font-size: 1.25rem; 
-            color: var(--text-tertiary);
-            font-weight: 400;
-            line-height: 1.5;
-            max-width: 600px;
-        }
-        
-        /* Service Cards */
-        .service-card {
-            min-height: 200px;
-            opacity: 1;
-            transform: none;
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 2.5rem 2rem;
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            height: 100%;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--accent-purple) 100%);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            border-radius: 20px;
-        }
-        
-        .service-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: var(--shadow-xl);
-            border-color: var(--glass-border);
-        }
-        
-        .service-card:hover::before {
-            opacity: 0.05;
-        }
-        
-        .service-card .service-icon {
-            position: relative;
-            z-index: 2;
-            margin-bottom: 1.5rem;
-        }
-        
-        .service-card h4 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-            position: relative;
-            z-index: 2;
-        }
-        
-        .service-card p {
-            color: var(--text-tertiary);
-            margin-bottom: 1.5rem;
-            position: relative;
-            z-index: 2;
-        }
-        
-        .btn-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
-            text-decoration: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 12px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            position: relative;
-            z-index: 2;
-        }
-        
-        .btn-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
-            color: white;
-            text-decoration: none;
-        }
-        
-        /* Navbar */
-        .navbar {
-            background: var(--glass-bg) !important;
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--glass-border);
-            padding: 1rem 0;
-        }
-        
-        .navbar-brand {
-            font-weight: 700;
-            color: var(--text-primary) !important;
-            font-size: 1.5rem;
-        }
-        
-        .nav-link {
-            color: var(--text-secondary) !important;
-            font-weight: 500;
-            margin: 0 0.5rem;
-            transition: color 0.3s ease;
-        }
-        
-        .nav-link:hover {
-            color: var(--primary) !important;
-        }
-        
-        .dropdown-menu {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: 12px;
-        }
-        
-        .dropdown-item {
-            color: var(--text-secondary);
-            transition: all 0.3s ease;
-        }
-        
-        .dropdown-item:hover {
-            background: var(--primary);
-            color: white;
-        }
-        
-        .language-switcher {
-            margin-left: 1rem;
-        }
-        
-        .language-switcher .btn-link {
-            color: var(--text-tertiary);
-            text-decoration: none;
-            padding: 0.25rem 0.5rem;
-            border-radius: 6px;
-            transition: all 0.3s ease;
-            border: none;
-            background: none;
-        }
-        
-        .language-switcher .btn-link:hover,
-        .language-switcher .btn-link:focus {
-            color: var(--primary);
-            background: var(--glass-bg);
-            box-shadow: none;
-        }
-        
-        .language-switcher .dropdown-menu {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            backdrop-filter: blur(20px);
-            border-radius: 0.5rem;
-            margin-top: 0.5rem;
-        }
-        
-        .language-switcher .dropdown-item {
-            color: var(--text-tertiary);
-            transition: all 0.3s ease;
-        }
-        
-        .language-switcher .dropdown-item:hover {
-            color: var(--primary);
-            background: var(--glass-bg);
-        }
-        
-        .language-switcher .dropdown-item.active {
-            color: var(--primary);
-            background: var(--glass-bg);
-            font-weight: 600;
-        }
-        
-        /* Section Styles */
-        .section-title {
-            font-size: clamp(2rem, 5vw, 3rem);
-            font-weight: 800;
-            margin-bottom: 1rem;
-            text-align: center;
-        }
-        
-        .text-muted {
-            color: var(--text-tertiary) !important;
-        }
-        
-        /* Feature Cards */
-        .feature-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 1rem;
-            backdrop-filter: blur(20px);
-            transition: all 0.3s ease;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .process-step {
-            padding: 2rem 1rem;
-        }
-        
-        .process-number {
-            width: 60px;
-            height: 60px;
-            background: var(--primary);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin: 0 auto;
-        }
-        
-        .tech-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 1rem;
-            backdrop-filter: blur(20px);
-        }
-        
-        .pricing-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 1rem;
-            backdrop-filter: blur(20px);
-            transition: all 0.3s ease;
-        }
-        
-        .pricing-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .price {
-            font-size: 2rem;
-            font-weight: 700;
-        }
-        
-        .price .currency {
-            font-size: 1rem;
-            color: var(--text-tertiary);
-        }
-        
-        .price .period {
-            font-size: 1rem;
-            color: var(--text-tertiary);
-        }
-        
-        .contact-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 1rem;
-            backdrop-filter: blur(20px);
-        }
-        
-        .footer {
-            background: var(--bg-secondary);
-            border-top: 1px solid var(--glass-border);
-        }
-        
-        .btn-primary {
-            background: var(--primary);
-            border: none;
-            border-radius: 0.5rem;
-            padding: 0.75rem 1.5rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-primary:hover {
-            background: #0056b3;
-            transform: translateY(-2px);
-        }
-        
-        .btn-outline-primary {
-            border: 2px solid var(--primary);
-            color: var(--primary);
-            background: transparent;
-            border-radius: 0.5rem;
-            padding: 0.75rem 1.5rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-outline-primary:hover {
-            background: var(--primary);
-            color: white;
-        }
-        
-        .btn-light {
-            background: rgba(255, 255, 255, 0.9);
-            color: var(--bg-primary);
-            border: none;
-            border-radius: 0.5rem;
-            padding: 0.75rem 1.5rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-light:hover {
-            background: white;
-            transform: translateY(-2px);
-        }
-        
-        .text-primary {
-            color: var(--primary) !important;
-        }
-        
-        .bg-primary {
-            background-color: var(--primary) !important;
-        }
-        
-        .border-primary {
-            border-color: var(--primary) !important;
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero {
-            min-height: 400px;
-            display: flex;
-            align-items: center;
-                padding: 120px 0 80px;
-            }
-            
-            .hero-title {
-                font-size: clamp(2rem, 6vw, 3rem);
-            }
-            
-            .btn-cta {
-                padding: 0.5rem 1rem;
-                font-size: 0.875rem;
-                margin-bottom: 1rem;
-                display: block;
-                text-align: center;
-                width: 100%;
-            }
-            
-            .btn-cta.me-3 {
-                margin-right: 0 !important;
-                margin-bottom: 1rem;
-            }
-            
-            .language-switcher {
-                margin: 1rem 0 0 0;
-            }
-            
-            .language-switcher .dropdown-menu {
-                position: static !important;
-                transform: none !important;
-                width: 100%;
-                margin-top: 0.5rem;
-            }
-        }
-        
-        /* Timeline Process Styles */
-        .process-timeline {
-            position: relative;
-        }
-
-        .process-timeline::before {
-            content: '';
-            position: absolute;
-            left: 30px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(135deg, var(--primary), #8b5cf6);
-        }
-
-        .process-step {
-            position: relative;
-            margin-bottom: 3rem;
-            padding-left: 80px;
-        }
-
-        .step-number {
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--primary), #8b5cf6);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-            font-weight: bold;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .step-content {
-            background: var(--bg-primary);
-            border-radius: 1rem;
-            padding: 2rem;
-            border: 1px solid var(--separator);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .step-content h4 {
-            color: var(--text-primary);
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-
-        .step-content ul {
-            margin: 1rem 0;
-            padding-left: 1.5rem;
-        }
-
-        .step-content li {
-            margin-bottom: 0.5rem;
-        }
-
-        .step-deliverables {
-            margin-top: 1.5rem;
-            padding-top: 1rem;
-            border-top: 1px solid var(--separator);
-        }
-
-        .step-deliverables .badge {
-            font-size: 0.8rem;
-            padding: 0.5rem 1rem;
-        }
-
-        @media (max-width: 768px) {
-            .process-timeline::before {
-                left: 20px;
-            }
-            
-            .process-step {
-                padding-left: 60px;
-            }
-            
-            .step-number {
-                width: 40px;
-                height: 40px;
-                font-size: 1.2rem;
-            }
-            
-            .step-content {
-                padding: 1.5rem;
-            }
-        }
-    </style>
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg fixed-top">
+    <nav class="navbar navbar-expand-lg fixed-top" role="navigation" aria-label="Główna nawigacja">
         <div class="container">
             <a class="navbar-brand font-display" href="../../../index.html">
-                <i class="fas fa-rocket me-2" style="color: var(--primary);"></i>
-                ECM Digital
+                <i class="fas fa-rocket me-2" style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"></i>
+                <span style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 700;">ECM Digital</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" style="border: none; background: none;">
                 <i class="fas fa-bars" style="color: var(--text-primary); font-size: 1.2rem;"></i>
@@ -625,409 +40,273 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="../../../index.html#home" data-i18n="nav.home">Home</a>
+                        <a class="nav-link" href="../../../index.html#home">Home</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-i18n="nav.services">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Usługi
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="../strony-www/" data-i18n="services.websites">Strony WWW</a></li>
-                            <li><a class="dropdown-item" href="../sklepy-shopify/" data-i18n="services.shopify">Sklepy Shopify</a></li>
-                            <li><a class="dropdown-item" href="../prototypy-mvp/" data-i18n="services.mvp">Prototypy MVP</a></li>
-                            <li><a class="dropdown-item" href="../audyty-ux/" data-i18n="services.uxAudit">Audyty UX</a></li>
-                            <li><a class="dropdown-item active" href="../automatyzacje-n8n/" data-i18n="services.automation">Automatyzacje</a></li>
-                            <li><a class="dropdown-item" href="../social-media-data-science/" data-i18n="services.socialMedia">Social Media & AI</a></li>
-                            <li><a class="dropdown-item" href="../asystencja-ai-bedrock/" data-i18n="services.aiAssistants">Asystenci AI na Amazon Bedrock & Copilot Studio</a></li>
-                            <li><a class="dropdown-item" href="../aplikacje-mobilne/" data-i18n="services.mobileApps">Aplikacje Mobilne</a></li>
-                            <li><a class="dropdown-item" href="../asystenci-glosowi-lex/" data-i18n="services.voiceAssistants">Asystenci Głosowi na Amazon Lex</a></li>
+                            <li><a class="dropdown-item" href="../strony-www/">Strony WWW</a></li>
+                            <li><a class="dropdown-item" href="../sklepy-shopify/">Sklepy Shopify</a></li>
+                            <li><a class="dropdown-item" href="../prototypy-mvp/">Prototypy MVP</a></li>
+                            <li><a class="dropdown-item" href="../audyty-ux/">Audyty Wdrożenia AI w Twojej Firmie</a></li>
+                            <li><a class="dropdown-item" href="../automatyzacje-n8n/">Automatyzacje</a></li>
+                            <li><a class="dropdown-item" href="../social-media-data-science/">Social Media & AI</a></li>
+                            <li><a class="dropdown-item" href="../asystencja-ai-bedrock/">Asystenci AI na Amazon Bedrock & Copilot Studio</a></li>
+                            <li><a class="dropdown-item" href="../aplikacje-mobilne/">Aplikacje Mobilne</a></li>
+                            <li><a class="dropdown-item" href="../asystenci-glosowi-lex/">Asystenci Głosowi na Amazon Lex</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="../../../index.html#about-us" data-i18n="nav.about">O nas</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../../../index.html#team" data-i18n="nav.team">Zespół</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/login" data-i18n="nav.clientPanel">Panel Klienta</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../../../index.html#contact" data-i18n="nav.contact">Kontakt</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../../index.html#about-us">O nas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../../index.html#team">Zespół</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/login">Panel Klienta</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../../index.html#contact">Kontakt</a></li>
                 </ul>
-                <div class="language-switcher dropdown">
-                    <button class="btn btn-link dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                        🇵🇱 PL
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="languageDropdown">
-                        <li><a class="dropdown-item lang-btn active" href="#" data-lang="pl">🇵🇱 Polski</a></li>
-                        <li><a class="dropdown-item lang-btn" href="#" data-lang="en">🇺🇸 English</a></li>
-                        <li><a class="dropdown-item lang-btn" href="#" data-lang="de">🇩🇪 Deutsch</a></li>
-                    </ul>
-                </div>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero" data-aos="fade-up">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8">
-                    <h1 class="hero-title" data-i18n="services.automation">Automatyzacje n8n</h1>
-                    <p class="lead text-muted" data-i18n="services.automation.description">Automatyzacja procesów biznesowych w celu oszczędności czasu i zasobów. Zwiększ efektywność swojego biznesu dzięki inteligentnym automatyzacjom.</p>
-                    <a href="#contact" class="btn btn-primary btn-lg mt-3">
-                        <i class="fas fa-cogs me-2"></i>
-                        Zautomatyzuj procesy
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Introduction Section -->
-    <section class="content-section" data-aos="fade-up">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-                        <h2>Czym są Automatyzacje z n8n?</h2>
-                        <p class="text-muted">ECM Digital oferuje zaawansowane rozwiązania automatyzacji procesów biznesowych z wykorzystaniem platformy n8n. Nasze automatyzacje pomagają firmom oszczędzać czas, redukować koszty operacyjne i eliminować błędy ludzkie poprzez inteligentne połączenie różnych systemów i aplikacji.</p>
-                        
-                        <p class="text-muted">n8n to potężne narzędzie typu no-code/low-code, które pozwala na tworzenie złożonych workflow'ów bez konieczności pisania skomplikowanego kodu. Dzięki naszemu doświadczeniu w integracji systemów, możemy zaprojektować i wdrożyć automatyzacje, które znacząco przyspieszą działanie Twojej firmy.</p>
-                        
-                        <p class="text-muted">Oferujemy również automatyzacje na platformach Zapier i Opal, zapewniając elastyczność w wyborze najlepszego rozwiązania dla Twoich potrzeb.</p>
-                    </div>
-                </div>
-
-                <div class="col-lg-4">
-                    <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-                        <h3><i class="fas fa-trophy text-warning me-2"></i>Kluczowe Korzyści</h3>
-                    <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-                        <h4>Integracje</h4>
-                        <div class="mt-3">
-                            <span class="badge bg-primary me-2 mb-2">Google Sheets</span>
-                            <span class="badge bg-primary me-2 mb-2">Slack</span>
-                            <span class="badge bg-primary me-2 mb-2">Mailchimp</span>
-                            <span class="badge bg-primary me-2 mb-2">Shopify</span>
-                            <span class="badge bg-primary me-2 mb-2">HubSpot</span>
-                            <span class="badge bg-primary me-2 mb-2">Zapier</span>
-                            <span class="badge bg-primary me-2 mb-2">Opal</span>
-                            <span class="badge bg-primary me-2 mb-2">WordPress</span>
-                        </div>
-                    </div>
-
-                    <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-                        <h4>Proces Wdrożenia</h4>
-                        <ol class="list-unstyled mt-3">
-                            <li class="mb-2">1. Analiza procesów</li>
-                            <li class="mb-2">2. Projektowanie workflow</li>
-                            <li class="mb-2">3. Implementacja</li>
-                            <li class="mb-2">4. Testowanie</li>
-                            <li class="mb-2">5. Wdrożenie i szkolenie</li>
-                        </ol>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Example Workflows Section -->
-    <section class="content-section" style="background: var(--bg-primary);">
+    <section class="hero">
         <div class="container">
             <div class="text-center mb-5">
-                <h2 class="display-6 fw-bold">Przykładowe Automatyzacje</h2>
-                <p class="lead text-muted">Sprawdzone workflow'y dla różnych branż</p>
+                <h1 class="hero-title mb-4">Automatyzacje <span style="color: #FF6B35;">n8n</span> & <span style="color: #30D158;">Workflow</span></h1>
+                <p class="hero-subtitle mb-5">Automatyzujemy powtarzalne procesy biznesowe, integrujemy systemy i tworzymy wydajne workflow. Oszczędzaj czas i zwiększ efektywność zespołu dzięki inteligentnej automatyzacji.</p>
+                
+                <!-- Hero Stats -->
+                <div class="row g-4 justify-content-center">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="hero-stat-card text-center">
+                            <div class="stat-icon">⚡</div>
+                            <div class="stat-number">80%</div>
+                            <div class="stat-label">Oszczędność Czasu</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="hero-stat-card text-center">
+                            <div class="stat-icon">🔗</div>
+                            <div class="stat-number">500+</div>
+                            <div class="stat-label">Integracji</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="hero-stat-card text-center">
+                            <div class="stat-icon">💰</div>
+                            <div class="stat-number">4,900</div>
+                            <div class="stat-label">PLN Start</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title mb-3">Kluczowe Funkcje</h2>
+                <p class="section-subtitle">Wykorzystujemy n8n do stworzenia wydajnych automatyzacji i integracji systemów</p>
             </div>
             
-            <div class="row">
-                <div class="col-lg-6 mb-4">
-                    <div class="service-card h-100">
-                        <h5><i class="fas fa-user-tie text-primary me-2"></i>Lead Management Workflow</h5>
-                        <div class="bg-light p-3 rounded mt-3">
-                            <code class="small">
-                                Nowy lead z formularza → Walidacja danych → Dodanie do CRM →<br>
-                                Przypisanie do sprzedawcy → Wysłanie welcome email →<br>
-                                Zaplanowanie follow-up → Powiadomienie zespołu
-                            </code>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card text-center">
+                        <div class="mb-3">
+                            <i class="fas fa-robot fa-3x" style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"></i>
                         </div>
-                        <p class="text-muted small mt-2">Automatyzacja pełnego procesu obsługi nowych leadów od pierwszego kontaktu do przekazania sprzedawcy.</p>
+                        <h4>Workflow Automation</h4>
+                        <p class="text-muted">Automatyzacja złożonych procesów biznesowych z wizualnym edytorem workflow</p>
                     </div>
                 </div>
                 
-                <div class="col-lg-6 mb-4">
-                    <div class="service-card h-100">
-                        <h5><i class="fas fa-shopping-cart text-primary me-2"></i>E-commerce Order Processing</h5>
-                        <div class="bg-light p-3 rounded mt-3">
-                            <code class="small">
-                                Nowe zamówienie → Weryfikacja płatności → Aktualizacja inventory →<br>
-                                Generowanie faktury → Wysłanie do magazynu →<br>
-                                Email potwierdzający → Tracking notification
-                            </code>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card text-center">
+                        <div class="mb-3">
+                            <i class="fas fa-plug fa-3x" style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"></i>
                         </div>
-                        <p class="text-muted small mt-2">Kompleksowa automatyzacja procesu obsługi zamówień od płatności do wysyłki.</p>
+                        <h4>Integracje API</h4>
+                        <p class="text-muted">Połączenie różnych systemów poprzez API - CRM, ERP, e-commerce, marketing tools</p>
                     </div>
                 </div>
                 
-                <div class="col-lg-6 mb-4">
-                    <div class="service-card h-100">
-                        <h5><i class="fas fa-share-alt text-primary me-2"></i>Social Media Automation</h5>
-                        <div class="bg-light p-3 rounded mt-3">
-                            <code class="small">
-                                Nowy post na blogu → Automatyczne udostępnienie na social media →<br>
-                                Monitoring engagement → Odpowiedzi na komentarze →<br>
-                                Raportowanie wyników → Optymalizacja treści
-                            </code>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card text-center">
+                        <div class="mb-3">
+                            <i class="fas fa-clock fa-3x" style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"></i>
                         </div>
-                        <p class="text-muted small mt-2">Automatyczne zarządzanie obecnością w mediach społeczniościowych i analiza wyników.</p>
+                        <h4>Harmonogramowanie</h4>
+                        <p class="text-muted">Automatyczne wykonywanie zadań w określonych terminach i interwałach</p>
                     </div>
                 </div>
                 
-                <div class="col-lg-6 mb-4">
-                    <div class="service-card h-100">
-                        <h5><i class="fas fa-headset text-primary me-2"></i>Customer Support Automation</h5>
-                        <div class="bg-light p-3 rounded mt-3">
-                            <code class="small">
-                                Nowe zgłoszenie → Kategoryzacja → Przypisanie do agenta →<br>
-                                Automatyczne odpowiedzi → Eskalacja przy braku odpowiedzi →<br>
-                                Ankieta satysfakcji → Analiza feedback
-                            </code>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card text-center">
+                        <div class="mb-3">
+                            <i class="fas fa-database fa-3x" style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"></i>
                         </div>
-                        <p class="text-muted small mt-2">Inteligentna automatyzacja obsługi klienta z eskalacją i monitoringiem jakości.</p>
+                        <h4>Przetwarzanie Danych</h4>
+                        <p class="text-muted">Automatyczne przetwarzanie, transformacja i synchronizacja danych między systemami</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card text-center">
+                        <div class="mb-3">
+                            <i class="fas fa-bell fa-3x" style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"></i>
+                        </div>
+                        <h4>Powiadomienia</h4>
+                        <p class="text-muted">Inteligentny system alertów i powiadomień przez email, Slack, Teams</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card text-center">
+                        <div class="mb-3">
+                            <i class="fas fa-chart-bar fa-3x" style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"></i>
+                        </div>
+                        <h4>Monitoring & Analytics</h4>
+                        <p class="text-muted">Śledzenie wydajności workflow i analiza efektywności automatyzacji</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Packages Section -->
-    <section class="content-section" data-aos="fade-up">
+    <!-- Process Section -->
+    <section class="py-5">
         <div class="container">
             <div class="text-center mb-5">
-                <h2 class="display-6 fw-bold">Pakiety Usług</h2>
-                <p class="lead text-muted">Wybierz pakiet dopasowany do skali Twojego biznesu</p>
-            </div>
-            
-            <div class="row">
-                <div class="col-lg-4 mb-4">
-                    <div class="service-card h-100 text-center">
-                        <div class="mb-3">
-                            <i class="fas fa-rocket fa-3x text-primary"></i>
-                        </div>
-                        <h4 class="text-primary">STARTER - Podstawowe Automatyzacje</h4>
-                        <p class="text-muted"><strong>Idealne dla:</strong> Małych firm, pierwszych automatyzacji</p>
-                        <hr>
-                        <ul class="list-unstyled text-start">
-                            <li><i class="fas fa-check text-success me-2"></i>Do 5 podstawowych automatyzacji</li>
-                            <li><i class="fas fa-check text-success me-2"></i>Do 10 połączeń z popularnymi narzędziami</li>
-                            <li><i class="fas fa-check text-success me-2"></i>Podstawowa konfiguracja i szkolenie</li>
-                            <li><i class="fas fa-check text-success me-2"></i>30 dni wsparcia technicznego</li>
-                            <li><i class="fas fa-check text-success me-2"></i>Dokumentacja procesów</li>
-                        </ul>
-                        <div class="mt-auto">
-                            <p class="h5 text-primary">8 000 - 15 000 PLN</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-4 mb-4">
-                    <div class="service-card h-100 text-center position-relative">
-                        <div class="position-absolute top-0 start-50 translate-middle">
-                            <span class="badge bg-warning text-dark px-3 py-2">NAJPOPULARNIEJSZY</span>
-                        </div>
-                        <div class="mb-3 mt-3">
-                            <i class="fas fa-star fa-3x text-warning"></i>
-                        </div>
-                        <h4 class="text-warning">BUSINESS - Zaawansowane Rozwiązania</h4>
-                        <p class="text-muted"><strong>Idealne dla:</strong> Średnich firm, złożone procesy</p>
-                        <hr>
-                        <ul class="list-unstyled text-start">
-                            <li><i class="fas fa-check text-success me-2"></i>Do 15 zaawansowanych automatyzacji</li>
-                            <li><i class="fas fa-check text-success me-2"></i>Unlimited integracje</li>
-                            <li><i class="fas fa-check text-success me-2"></i>Custom connectors i API</li>
-                            <li><i class="fas fa-check text-success me-2"></i>Advanced monitoring i alerting</li>
-                            <li><i class="fas fa-check text-success me-2"></i>60 dni wsparcia premium</li>
-                            <li><i class="fas fa-check text-success me-2"></i>Szkolenie zespołu</li>
-                        </ul>
-                        <div class="mt-auto">
-                            <p class="h5 text-warning">25 000 - 45 000 PLN</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-4 mb-4">
-                    <div class="service-card h-100 text-center">
-                        <div class="mb-3">
-                            <i class="fas fa-crown fa-3x text-primary"></i>
-                        </div>
-                        <h4 class="text-primary">ENTERPRISE - Pełna Automatyzacja</h4>
-                        <p class="text-muted"><strong>Idealne dla:</strong> Dużych firm, kompleksowe systemy</p>
-                        <hr>
-                        <ul class="list-unstyled text-start">
-                            <li><i class="fas fa-check text-success me-2"></i>Unlimited automatyzacje</li>
-                            <li><i class="fas fa-check text-success me-2"></i>Unlimited, custom connectors</li>
-                            <li><i class="fas fa-check text-success me-2"></i>Dedicated hosting, high availability</li>
-                            <li><i class="fas fa-check text-success me-2"></i>Dedykowane rozwiązania</li>
-                            <li><i class="fas fa-check text-success me-2"></i>Comprehensive training program</li>
-                            <li><i class="fas fa-check text-success me-2"></i>90 dni wsparcia enterprise</li>
-                            <li><i class="fas fa-check text-success me-2"></i>99.9% uptime guarantee</li>
-                        </ul>
-                        <div class="mt-auto">
-                            <p class="h5 text-primary">60 000 - 150 000 PLN</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Proces Wdrażania Automatyzacji -->
-    <section class="content-section" style="background: var(--bg-secondary);">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="section-title">Jak Wdrażamy Automatyzacje w Twojej Firmie</h2>
-                <p class="text-muted">Systematyczny proces od analizy procesów po wdrożenie i optymalizację</p>
+                <h2 class="section-title mb-3">Jak Wdrażamy Automatyzacje w Twojej Firmie</h2>
+                <p class="section-subtitle">Systematyczny proces od analizy procesów po pełną automatyzację</p>
             </div>
             
             <div class="row">
                 <div class="col-lg-8 mx-auto">
                     <div class="process-timeline">
-                        <!-- Etap 1: Analiza Procesów & Mapowanie -->
+                        <!-- Etap 1: Analiza Procesów -->
                         <div class="process-step">
                             <div class="step-number">1</div>
                             <div class="step-content">
-                                <h4><i class="fas fa-project-diagram text-primary me-2"></i>Analiza Procesów & Mapowanie</h4>
-                                <p class="text-muted">Rozpoczynamy od zrozumienia obecnych procesów w firmie:</p>
+                                <h4><i class="fas fa-search text-primary me-2"></i>Analiza Procesów & Discovery</h4>
+                                <p class="text-muted">Głęboka analiza istniejących procesów biznesowych i identyfikacja możliwości automatyzacji:</p>
                                 <ul class="text-muted">
-                                    <li><strong>Mapowanie procesów:</strong> Dokumentacja obecnych workflow'ów</li>
-                                    <li><strong>Identyfikacja wąskich gardeł:</strong> Punkty spowalniające pracę</li>
-                                    <li><strong>Analiza czasochłonności:</strong> Pomiar czasu wykonywania zadań</li>
-                                    <li><strong>Analiza powtarzalności:</strong> Identyfikacja zadań do automatyzacji</li>
-                                    <li><strong>Wywiady z zespołem:</strong> Zrozumienie codziennych wyzwań</li>
+                                    <li><strong>Mapowanie procesów:</strong> Dokumentacja obecnych workflow'ów i procedur</li>
+                                    <li><strong>Identyfikacja wąskich gardeł:</strong> Znajdowanie punktów opóźnień i problemów</li>
+                                    <li><strong>Analiza powtarzalnych zadań:</strong> Wykrywanie czynności do automatyzacji</li>
+                                    <li><strong>Audyt systemów:</strong> Przegląd używanych narzędzi i platform</li>
+                                    <li><strong>ROI assessment:</strong> Kalkulacja potencjalnych oszczędności</li>
                                 </ul>
                                 <div class="step-deliverables">
                                     <span class="badge bg-primary me-2">Mapa procesów</span>
-                                    <span class="badge bg-primary me-2">Analiza wąskich gardeł</span>
-                                    <span class="badge bg-primary me-2">Raport czasochłonności</span>
+                                    <span class="badge bg-primary me-2">Raport analityczny</span>
+                                    <span class="badge bg-primary me-2">Plan automatyzacji</span>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Etap 2: Strategia Automatyzacji & Wybór Platformy -->
+                        <!-- Etap 2: Projektowanie Workflow -->
                         <div class="process-step">
                             <div class="step-number">2</div>
                             <div class="step-content">
-                                <h4><i class="fas fa-chess text-primary me-2"></i>Strategia Automatyzacji & Wybór Platformy</h4>
-                                <p class="text-muted">Projektujemy strategię i wybieramy najlepsze narzędzia:</p>
+                                <h4><i class="fas fa-project-diagram text-primary me-2"></i>Projektowanie Workflow</h4>
+                                <p class="text-muted">Tworzenie optymalnych schematów automatyzacji i integracji:</p>
                                 <ul class="text-muted">
-                                    <li><strong>Priorytetyzacja procesów:</strong> Ranking według potencjału automatyzacji</li>
-                                    <li><strong>Wybór platformy:</strong> n8n, Zapier, Opal - analiza porównawcza</li>
-                                    <li><strong>Architektura integracji:</strong> Plan połączeń między systemami</li>
-                                    <li><strong>Strategia bezpieczeństwa:</strong> Zarządzanie danymi i dostępem</li>
-                                    <li><strong>ROI automatyzacji:</strong> Oszacowanie korzyści finansowych</li>
+                                    <li><strong>Projektowanie flow:</strong> Wizualne schematy automatyzacji w n8n</li>
+                                    <li><strong>Definicja triggerów:</strong> Określenie warunków uruchamiania</li>
+                                    <li><strong>Mapowanie danych:</strong> Transformacje i przepływ informacji</li>
+                                    <li><strong>Error handling:</strong> Obsługa błędów i scenariusze awaryjne</li>
+                                    <li><strong>Testowanie koncepcji:</strong> Walidacja logiki biznesowej</li>
                                 </ul>
                                 <div class="step-deliverables">
-                                    <span class="badge bg-primary me-2">Strategia automatyzacji</span>
-                                    <span class="badge bg-primary me-2">Wybór platformy</span>
+                                    <span class="badge bg-primary me-2">Diagramy workflow</span>
+                                    <span class="badge bg-primary me-2">Specyfikacja techniczna</span>
                                     <span class="badge bg-primary me-2">Plan integracji</span>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Etap 3: Projektowanie Workflow'ów & Prototypowanie -->
+                        <!-- Etap 3: Konfiguracja & Integracja -->
                         <div class="process-step">
                             <div class="step-number">3</div>
                             <div class="step-content">
-                                <h4><i class="fas fa-pencil-ruler text-primary me-2"></i>Projektowanie Workflow'ów & Prototypowanie</h4>
-                                <p class="text-muted">Tworzymy wizualne koncepcje automatyzacji:</p>
+                                <h4><i class="fas fa-cogs text-primary me-2"></i>Konfiguracja & Integracja</h4>
+                                <p class="text-muted">Implementacja automatyzacji i połączenie z systemami:</p>
                                 <ul class="text-muted">
-                                    <li><strong>Diagramy workflow'ów:</strong> Wizualne mapy procesów</li>
-                                    <li><strong>Definicja triggerów:</strong> Co uruchamia automatyzację</li>
-                                    <li><strong>Mapowanie akcji:</strong> Jakie kroki wykonuje automatyzacja</li>
-                                    <li><strong>Projektowanie logiki:</strong> Warunki i decyzje w procesie</li>
-                                    <li><strong>Prototypy workflow'ów:</strong> Testowanie koncepcji</li>
+                                    <li><strong>Setup n8n:</strong> Instalacja i konfiguracja platformy</li>
+                                    <li><strong>Konfiguracja API:</strong> Połączenia z systemami zewnętrznymi</li>
+                                    <li><strong>Tworzenie workflow:</strong> Budowa automatyzacji w edytorze</li>
+                                    <li><strong>Testy integracyjne:</strong> Sprawdzenie połączeń i przepływu danych</li>
+                                    <li><strong>Bezpieczeństwo:</strong> Konfiguracja zabezpieczeń i uprawnień</li>
                                 </ul>
                                 <div class="step-deliverables">
-                                    <span class="badge bg-primary me-2">Diagramy workflow'ów</span>
-                                    <span class="badge bg-primary me-2">Prototypy</span>
-                                    <span class="badge bg-primary me-2">Specyfikacja techniczna</span>
+                                    <span class="badge bg-primary me-2">Działające workflow</span>
+                                    <span class="badge bg-primary me-2">Dokumentacja API</span>
+                                    <span class="badge bg-primary me-2">Testy integracji</span>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Etap 4: Implementacja & Konfiguracja -->
+                        <!-- Etap 4: Testowanie & Optymalizacja -->
                         <div class="process-step">
                             <div class="step-number">4</div>
                             <div class="step-content">
-                                <h4><i class="fas fa-cogs text-primary me-2"></i>Implementacja & Konfiguracja</h4>
-                                <p class="text-muted">Implementujemy automatyzacje w wybranej platformie:</p>
+                                <h4><i class="fas fa-vial text-primary me-2"></i>Testowanie & Optymalizacja</h4>
+                                <p class="text-muted">Kompleksowe testy i dostrajanie wydajności:</p>
                                 <ul class="text-muted">
-                                    <li><strong>Konfiguracja platformy:</strong> n8n, Zapier lub Opal</li>
-                                    <li><strong>Konfiguracja integracji:</strong> API, webhooki, konektory</li>
-                                    <li><strong>Implementacja workflow'ów:</strong> Kodowanie automatyzacji</li>
-                                    <li><strong>Konfiguracja danych:</strong> Mapowanie pól i transformacje</li>
-                                    <li><strong>Testy jednostkowe:</strong> Sprawdzenie poszczególnych kroków</li>
-                                </ul>
-                                <div class="step-deliverables">
-                                    <span class="badge bg-primary me-2">Workflow'y skonfigurowane</span>
-                                    <span class="badge bg-primary me-2">Integracje aktywne</span>
-                                    <span class="badge bg-primary me-2">Dokumentacja techniczna</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Etap 5: Testy & Walidacja -->
-                        <div class="process-step">
-                            <div class="step-number">5</div>
-                            <div class="step-content">
-                                <h4><i class="fas fa-vial text-primary me-2"></i>Testy & Walidacja</h4>
-                                <p class="text-muted">Sprawdzamy jakość i poprawność automatyzacji:</p>
-                                <ul class="text-muted">
-                                    <li><strong>Testy end-to-end:</strong> Sprawdzenie całego procesu</li>
-                                    <li><strong>Testy scenariuszowe:</strong> Różne przypadki użycia</li>
-                                    <li><strong>Testy wydajnościowe:</strong> Czas wykonania i przepustowość</li>
-                                    <li><strong>Testy błędów:</strong> Obsługa wyjątków i problemów</li>
-                                    <li><strong>Walidacja z użytkownikami:</strong> Testy z zespołem</li>
+                                    <li><strong>Testy funkcjonalne:</strong> Sprawdzenie wszystkich scenariuszy</li>
+                                    <li><strong>Testy obciążeniowe:</strong> Wydajność przy dużym ruchu</li>
+                                    <li><strong>Testy błędów:</strong> Obsługa sytuacji awaryjnych</li>
+                                    <li><strong>Optymalizacja wydajności:</strong> Poprawa szybkości wykonania</li>
+                                    <li><strong>User Acceptance Testing:</strong> Testy z użytkownikami końcowymi</li>
                                 </ul>
                                 <div class="step-deliverables">
                                     <span class="badge bg-primary me-2">Raport z testów</span>
-                                    <span class="badge bg-primary me-2">Lista poprawek</span>
-                                    <span class="badge bg-primary me-2">Certyfikat jakości</span>
+                                    <span class="badge bg-primary me-2">Metryki wydajności</span>
+                                    <span class="badge bg-primary me-2">Lista optymalizacji</span>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Etap 6: Wdrożenie & Szkolenia -->
+                        <!-- Etap 5: Wdrożenie Produkcyjne -->
+                        <div class="process-step">
+                            <div class="step-number">5</div>
+                            <div class="step-content">
+                                <h4><i class="fas fa-rocket text-primary me-2"></i>Wdrożenie Produkcyjne</h4>
+                                <p class="text-muted">Uruchomienie automatyzacji w środowisku produkcyjnym:</p>
+                                <ul class="text-muted">
+                                    <li><strong>Migracja na produkcję:</strong> Przeniesienie z środowiska testowego</li>
+                                    <li><strong>Konfiguracja monitoringu:</strong> Śledzenie wydajności i błędów</li>
+                                    <li><strong>Szkolenia zespołu:</strong> Instruktaż użytkowników końcowych</li>
+                                    <li><strong>Dokumentacja:</strong> Instrukcje obsługi i troubleshooting</li>
+                                    <li><strong>Go-live support:</strong> Wsparcie podczas uruchomienia</li>
+                                </ul>
+                                <div class="step-deliverables">
+                                    <span class="badge bg-primary me-2">System produkcyjny</span>
+                                    <span class="badge bg-primary me-2">Materiały szkoleniowe</span>
+                                    <span class="badge bg-primary me-2">Dokumentacja użytkownika</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Etap 6: Monitoring & Wsparcie -->
                         <div class="process-step">
                             <div class="step-number">6</div>
                             <div class="step-content">
-                                <h4><i class="fas fa-rocket text-primary me-2"></i>Wdrożenie & Szkolenia</h4>
-                                <p class="text-muted">Uruchamiamy automatyzacje i szkolimy zespół:</p>
+                                <h4><i class="fas fa-chart-line text-primary me-2"></i>Monitoring & Wsparcie</h4>
+                                <p class="text-muted">Ciągłe monitorowanie i doskonalenie automatyzacji:</p>
                                 <ul class="text-muted">
-                                    <li><strong>Wdrożenie na produkcję:</strong> Uruchomienie w środowisku produkcyjnym</li>
-                                    <li><strong>Konfiguracja monitoringu:</strong> Systemy nadzoru i alertów</li>
-                                    <li><strong>Szkolenia zespołu:</strong> Instruktaż zarządzania automatyzacjami</li>
-                                    <li><strong>Dokumentacja użytkownika:</strong> Instrukcje i FAQ</li>
-                                    <li><strong>Go-live:</strong> Oficjalne uruchomienie automatyzacji</li>
-                                </ul>
-                                <div class="step-deliverables">
-                                    <span class="badge bg-primary me-2">Automatyzacje aktywne</span>
-                                    <span class="badge bg-primary me-2">Materiały szkoleniowe</span>
-                                    <span class="badge bg-primary me-2">System monitoringu</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Etap 7: Monitoring & Optymalizacja Ciągła -->
-                        <div class="process-step">
-                            <div class="step-number">7</div>
-                            <div class="step-content">
-                                <h4><i class="fas fa-chart-line text-primary me-2"></i>Monitoring & Optymalizacja Ciągła</h4>
-                                <p class="text-muted">Wspieramy rozwój i optymalizację automatyzacji:</p>
-                                <ul class="text-muted">
-                                    <li><strong>Monitoring 24/7:</strong> Nadzór nad wydajnością i błędami</li>
-                                    <li><strong>Analiza metryk:</strong> Śledzenie efektywności automatyzacji</li>
-                                    <li><strong>Optymalizacja workflow'ów:</strong> Poprawa wydajności</li>
-                                    <li><strong>Rozszerzanie funkcjonalności:</strong> Dodawanie nowych automatyzacji</li>
+                                    <li><strong>24/7 Monitoring:</strong> Nadzór nad działaniem automatyzacji</li>
+                                    <li><strong>Analiza metryk:</strong> Śledzenie wydajności i ROI</li>
+                                    <li><strong>Regularne aktualizacje:</strong> Poprawki i nowe funkcje</li>
                                     <li><strong>Wsparcie techniczne:</strong> Pomoc w rozwiązywaniu problemów</li>
+                                    <li><strong>Optymalizacja ciągła:</strong> Doskonalenie na podstawie danych</li>
                                 </ul>
                                 <div class="step-deliverables">
                                     <span class="badge bg-primary me-2">Raporty miesięczne</span>
-                                    <span class="badge bg-primary me-2">Plan optymalizacji</span>
                                     <span class="badge bg-primary me-2">SLA wsparcia</span>
+                                    <span class="badge bg-primary me-2">Plan rozwoju</span>
                                 </div>
                             </div>
                         </div>
@@ -1037,35 +316,78 @@
         </div>
     </section>
 
-    <!-- ROI Section -->
-    <section class="content-section" data-aos="fade-up">
+    <!-- Pricing Section -->
+    <section class="py-5">
         <div class="container">
             <div class="text-center mb-5">
-                <h2 class="display-6 fw-bold">ROI i Korzyści Biznesowe</h2>
-                <p class="lead text-muted">Mierzalne rezultaty z automatyzacji procesów</p>
+                <h2 class="section-title mb-3">Cennik</h2>
+                <p class="section-subtitle">Elastyczne pakiety dostosowane do potrzeb Twojej organizacji</p>
             </div>
             
-            <div class="row">
-                <div class="col-lg-6 mb-4">
-                    <div class="service-card h-100">
-                        <h5><i class="fas fa-chart-line text-primary me-2"></i>Typowe Oszczędności</h5>
-                        <ul class="list-unstyled mt-3">
-                            <li class="mb-2"><i class="fas fa-clock text-success me-2"></i><strong>Lead management:</strong> 20-30h/tydzień oszczędności</li>
-                            <li class="mb-2"><i class="fas fa-database text-success me-2"></i><strong>Integracja systemów:</strong> Eliminacja 80% ręcznego wprowadzania</li>
-                            <li class="mb-2"><i class="fas fa-file-alt text-success me-2"></i><strong>Raportowanie:</strong> 15-25h/miesiąc oszczędności</li>
-                            <li class="mb-2"><i class="fas fa-headset text-success me-2"></i><strong>Customer support:</strong> 40% redukcja czasu odpowiedzi</li>
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="pricing-card text-center">
+                        <h4>Starter Automation</h4>
+                        <div class="price mb-3" style="font-size: 2rem; font-weight: 700;">
+                            <span style="font-size: 1rem; color: #EBEBF599;">od</span>
+                            <span style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">4,900</span>
+                            <span style="font-size: 1rem; color: #EBEBF599;">PLN</span>
+                        </div>
+                        <ul class="list-unstyled mb-4 text-start">
+                            <li class="mb-2">✓ 1-3 proste automatyzacje</li>
+                            <li class="mb-2">✓ Podstawowe integracje API</li>
+                            <li class="mb-2">✓ Email support</li>
+                            <li class="mb-2">✓ Dokumentacja workflow</li>
                         </ul>
+                        <a href="../../../index.html#contact" class="btn-cta">
+                            <i class="fas fa-arrow-right"></i>
+                            <span>Rozpocznij</span>
+                        </a>
                     </div>
                 </div>
                 
-                <div class="col-lg-6 mb-4">
-                    <div class="service-card h-100">
-                        <h5><i class="fas fa-percentage text-primary me-2"></i>Przykładowe ROI</h5>
-                        <ul class="list-unstyled mt-3">
-                            <li class="mb-2"><i class="fas fa-building text-success me-2"></i><strong>Mała firma (10-50 pracowników):</strong> ROI 300-500% w pierwszym roku</li>
-                            <li class="mb-2"><i class="fas fa-industry text-success me-2"></i><strong>Średnia firma (50-200 pracowników):</strong> ROI 400-700% w pierwszym roku</li>
-                            <li class="mb-2"><i class="fas fa-city text-success me-2"></i><strong>Duża firma (200+ pracowników):</strong> ROI 500-1000% w pierwszym roku</li>
+                <div class="col-lg-4">
+                    <div class="pricing-card text-center" style="border-color: rgba(0, 122, 255, 0.4) !important; transform: translateY(-8px) !important;">
+                        <div class="badge bg-primary mb-3" style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%) !important;">Popularne</div>
+                        <h4>Business Automation</h4>
+                        <div class="price mb-3" style="font-size: 2rem; font-weight: 700;">
+                            <span style="font-size: 1rem; color: #EBEBF599;">od</span>
+                            <span style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">12,900</span>
+                            <span style="font-size: 1rem; color: #EBEBF599;">PLN</span>
+                        </div>
+                        <ul class="list-unstyled mb-4 text-start">
+                            <li class="mb-2">✓ 5-10 złożonych automatyzacji</li>
+                            <li class="mb-2">✓ Integracje CRM/ERP</li>
+                            <li class="mb-2">✓ Custom workflow design</li>
+                            <li class="mb-2">✓ Monitoring & analytics</li>
+                            <li class="mb-2">✓ Czas: 3-5 tygodni</li>
                         </ul>
+                        <a href="../../../index.html#contact" class="btn-cta">
+                            <i class="fas fa-arrow-right"></i>
+                            <span>Rozpocznij</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="pricing-card text-center">
+                        <h4>Enterprise Solution</h4>
+                        <div class="price mb-3" style="font-size: 2rem; font-weight: 700;">
+                            <span style="font-size: 1rem; color: #EBEBF599;">od</span>
+                            <span style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">29,900</span>
+                            <span style="font-size: 1rem; color: #EBEBF599;">PLN</span>
+                        </div>
+                        <ul class="list-unstyled mb-4 text-start">
+                            <li class="mb-2">✓ Unlimited automatyzacje</li>
+                            <li class="mb-2">✓ All systems integration</li>
+                            <li class="mb-2">✓ Custom nodes & functions</li>
+                            <li class="mb-2">✓ 24/7 monitoring</li>
+                            <li class="mb-2">✓ Czas: 6-10 tygodni</li>
+                        </ul>
+                        <a href="../../../index.html#contact" class="btn-cta">
+                            <i class="fas fa-arrow-right"></i>
+                            <span>Rozpocznij</span>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -1073,102 +395,110 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="content-section" style="background: linear-gradient(135deg, var(--primary), var(--accent));">
+    <section class="contact-section py-5">
         <div class="container">
-            <div class="text-center text-white">
-                <h2 class="display-6 fw-bold mb-4">Chcesz zautomatyzować procesy w swojej firmie?</h2>
-                <p class="lead mb-4">Skontaktuj się z nami, aby otrzymać bezpłatną konsultację i dowiedzieć się, jak automatyzacje mogą przyspieszyć Twój biznes.</p>
-                
-                <div class="row justify-content-center">
-                    <div class="col-md-8">
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <a href="mailto:hello@ecm-digital.com" class="btn btn-light btn-lg w-100">
-                                    <i class="fas fa-envelope me-2"></i>
-                                    hello@ecm-digital.com
-                                </a>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <a href="tel:+48535330323" class="btn btn-outline-light btn-lg w-100">
-                                    <i class="fas fa-phone me-2"></i>
-                                    +48 535 330 323
-                                </a>
-                            </div>
-                        </div>
-                        
-                        <div class="mt-4">
-                            <h5 class="text-white mb-3">Bezpłatna Konsultacja</h5>
-                            <p class="text-white-50 small">
-                                Oferujemy bezpłatną konsultację, podczas której przeanalizujemy Twoje procesy biznesowe,
-                                zidentyfikujemy obszary do automatyzacji, oszacujemy potencjalne oszczędności i ROI,
-                                oraz zaproponujemy optymalne rozwiązanie.
-                            </p>
-                        </div>
+            <div class="text-center mb-5">
+                <h2 class="section-title mb-3">Rozpocznij Projekt</h2>
+                <p class="section-subtitle">Skontaktuj się z nami, aby omówić Twój projekt. Oferujemy darmową konsultację i wycenę.</p>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="contact-card text-center">
+                        <div id="hubspot-form" class="mt-4"></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Footer -->
+    <footer class="footer py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2024 ECM Digital. Wszystkie prawa zastrzeżone.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="../../../index.html" class="text-muted me-3">Strona główna</a>
+                    <a href="../../../index.html#about-us" class="text-muted me-3">O nas</a>
+                    <a href="../../../index.html#contact" class="text-muted">Kontakt</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- HubSpot Integration -->
+    <script src="../../../src/js/hubspot.js"></script>
+    
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="../../../src/js/i18n.js"></script>
-    <script>
-        // Initialize AOS
-        AOS.init();
+    
+    <style>
+        /* Hero Stats */
+        .hero-stat-card {
+            background: rgba(28, 28, 30, 0.8) !important;
+            backdrop-filter: blur(20px) !important;
+            -webkit-backdrop-filter: blur(20px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            border-radius: 20px !important;
+            padding: 1.5rem 1rem !important;
+            transition: all 0.3s ease !important;
+            margin-bottom: 1rem !important;
+        }
         
-        // Initialize I18n
-        const i18nManager = new I18nManager();
-        i18nManager.init();
+        .hero-stat-card:hover {
+            transform: translateY(-5px) !important;
+            box-shadow: 0 12px 30px rgba(0, 122, 255, 0.15) !important;
+            border-color: rgba(0, 122, 255, 0.2) !important;
+        }
         
-        // Language switcher functionality
-        document.addEventListener("DOMContentLoaded", function() {
-            const langButtons = document.querySelectorAll(".lang-btn");
-            const languageDropdownButton = document.getElementById("languageDropdown");
-            
-            // Language names for button text
-            const languageNames = {
-                "pl": "🇵🇱 PL",
-                "en": "🇺🇸 EN", 
-                "de": "🇩🇪 DE"
-            };
-            
-            langButtons.forEach(btn => {
-                btn.addEventListener("click", function(e) {
-                    e.preventDefault();
-                    
-                    // Remove active class from all buttons
-                    langButtons.forEach(b => b.classList.remove("active"));
-                    
-                    // Add active class to clicked button
-                    this.classList.add("active");
-                    
-                    // Get language from data-lang attribute
-                    const lang = this.getAttribute("data-lang");
-                    
-                    // Update dropdown button text
-                    languageDropdownButton.innerHTML = languageNames[lang];
-                    
-                    // Set language in I18n manager
-                    i18nManager.setLanguage(lang);
-                    
-                    // Store language preference
-                    localStorage.setItem("preferredLanguage", lang);
-                });
-            });
-            
-            // Set initial language from localStorage or default to Polish
-            const savedLang = localStorage.getItem("preferredLanguage") || "pl";
-            i18nManager.setLanguage(savedLang);
-            
-            // Update active button and dropdown text
-            const activeBtn = document.querySelector(`[data-lang="${savedLang}"]`);
-            if (activeBtn) {
-                langButtons.forEach(b => b.classList.remove("active"));
-                activeBtn.classList.add("active");
-                languageDropdownButton.innerHTML = languageNames[savedLang];
-            }
-        });
-    </script>
+        .hero-stat-card .stat-icon {
+            font-size: 2rem !important;
+            margin-bottom: 0.5rem !important;
+            filter: grayscale(0.2) !important;
+        }
+        
+        .hero-stat-card .stat-number {
+            font-size: 1.8rem !important;
+            font-weight: 800 !important;
+            background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            background-clip: text !important;
+            margin-bottom: 0.3rem !important;
+        }
+        
+        .hero-stat-card .stat-label {
+            color: #EBEBF599 !important;
+            font-size: 0.8rem !important;
+            font-weight: 600 !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.5px !important;
+        }
+
+        .step-icon {
+            font-size: 2rem !important;
+            margin-bottom: 1rem !important;
+            filter: grayscale(0.3) !important;
+            transition: all 0.3s ease !important;
+        }
+        
+        .process-step:hover .step-icon {
+            filter: grayscale(0) !important;
+            transform: scale(1.1) !important;
+        }
+        
+        .step-duration {
+            background: rgba(0, 122, 255, 0.2) !important;
+            color: #007AFF !important;
+            padding: 0.4rem 1rem !important;
+            border-radius: 20px !important;
+            font-size: 0.8rem !important;
+            font-weight: 600 !important;
+            display: inline-block !important;
+            border: 1px solid rgba(0, 122, 255, 0.3) !important;
+        }
+    </style>
 </body>
 </html>
