@@ -117,7 +117,7 @@
                 <span style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 700;">ECM Digital</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" style="border: none; background: none;">
-                <i class="fas fa-bars" style="color: var(--text-primary); font-size: 1.2rem;"></i>
+                <i class="fas fa-bars" style="color: #FFFFFF !important; font-size: 1.2rem;"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
@@ -1253,6 +1253,94 @@
         }
         #hubspot-form .hs-form-required {
             color: #FF453A !important;
+        }
+        
+        /* Mobile HubSpot Form Optimizations */
+        @media (max-width: 768px) {
+            #hubspot-form {
+                padding: 1rem !important;
+                margin-top: 1rem !important;
+            }
+            
+            #hubspot-form .hs-form-field {
+                margin-bottom: 1rem !important;
+            }
+            
+            #hubspot-form .hs-form-field label {
+                font-size: 14px !important;
+                margin-bottom: 0.5rem !important;
+            }
+            
+            #hubspot-form .hs-input {
+                padding: 16px !important;
+                font-size: 16px !important;
+                border-radius: 8px !important;
+                min-height: 48px !important;
+            }
+            
+            #hubspot-form textarea.hs-input {
+                min-height: 100px !important;
+                padding: 12px !important;
+            }
+            
+            #hubspot-form .hs-button {
+                width: 100% !important;
+                padding: 16px 24px !important;
+                font-size: 16px !important;
+                min-height: 48px !important;
+                border-radius: 8px !important;
+            }
+            
+            /* Fix HubSpot form layout on mobile */
+            #hubspot-form .hs-form-field .input {
+                margin-right: 0 !important;
+            }
+            
+            #hubspot-form .hs-error-msgs {
+                font-size: 12px !important;
+                margin-top: 0.25rem !important;
+            }
+            
+            /* Ensure form elements are properly sized on mobile */
+            #hubspot-form select.hs-input {
+                height: 48px !important;
+                padding: 12px 16px !important;
+            }
+            
+            /* Fix checkbox and radio button alignment */
+            #hubspot-form .hs-form-field input[type="checkbox"],
+            #hubspot-form .hs-form-field input[type="radio"] {
+                margin-right: 8px !important;
+                margin-top: 2px !important;
+            }
+            
+            #hubspot-form .hs-form-field .hs-form-checkbox {
+                display: flex !important;
+                align-items: flex-start !important;
+                gap: 8px !important;
+            }
+            
+            #hubspot-form .hs-form-checkbox label {
+                margin-bottom: 0 !important;
+                line-height: 1.4 !important;
+            }
+        }
+        
+        /* Extra small mobile devices */
+        @media (max-width: 480px) {
+            #hubspot-form {
+                padding: 0.75rem !important;
+            }
+            
+            #hubspot-form .hs-input {
+                padding: 14px !important;
+                font-size: 16px !important;
+            }
+            
+            #hubspot-form .hs-button {
+                padding: 14px 20px !important;
+                font-size: 15px !important;
+            }
         }
         
         /* Voice Chatbot Modal Styling */

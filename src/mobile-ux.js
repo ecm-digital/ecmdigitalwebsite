@@ -350,6 +350,127 @@ class MobileUXOptimizer {
                 }
             });
         });
+        
+        // HubSpot form mobile optimizations
+        this.setupHubSpotFormMobile();
+    }
+    
+    // HubSpot form mobile optimizations
+    setupHubSpotFormMobile() {
+        // Wait for HubSpot form to load
+        const checkHubSpotForm = setInterval(() => {
+            const hubspotForm = document.querySelector('#hubspot-form');
+            if (hubspotForm) {
+                clearInterval(checkHubSpotForm);
+                this.optimizeHubSpotForm(hubspotForm);
+            }
+        }, 1000);
+    }
+    
+    optimizeHubSpotForm(form) {
+        // Ensure proper mobile styling
+        const inputs = form.querySelectorAll('.hs-input');
+        const labels = form.querySelectorAll('label');
+        const buttons = form.querySelectorAll('.hs-button');
+        
+        inputs.forEach(input => {
+            // Set proper mobile attributes
+            input.setAttribute('autocomplete', 'off');
+            input.setAttribute('autocorrect', 'off');
+            input.setAttribute('autocapitalize', 'off');
+            input.setAttribute('spellcheck', 'false');
+            
+            // Add mobile-specific classes
+            input.classList.add('mobile-optimized');
+            
+            // Ensure proper sizing on mobile
+            if (window.innerWidth <= 768) {
+                input.style.fontSize = '16px';
+                input.style.minHeight = '48px';
+                input.style.padding = '16px';
+            }
+        });
+        
+        labels.forEach(label => {
+            label.classList.add('mobile-optimized');
+        });
+        
+        buttons.forEach(button => {
+            button.classList.add('mobile-optimized');
+            
+            // Ensure button is full width on mobile
+            if (window.innerWidth <= 768) {
+                button.style.width = '100%';
+                button.style.minHeight = '48px';
+            }
+        });
+        
+        // Fix form layout issues
+        const formFields = form.querySelectorAll('.hs-form-field');
+        formFields.forEach(field => {
+            field.classList.add('mobile-optimized');
+            
+            // Ensure proper spacing
+            if (window.innerWidth <= 768) {
+                field.style.marginBottom = '1rem';
+            }
+        });
+        
+        // Add touch-friendly interactions
+        inputs.forEach(input => {
+            input.addEventListener('touchstart', () => {
+                input.style.transform = 'scale(0.98)';
+            });
+            
+            input.addEventListener('touchend', () => {
+                input.style.transform = 'scale(1)';
+            });
+        });
+        
+        // Handle form submission on mobile
+        form.addEventListener('submit', (e) => {
+            if (window.innerWidth <= 768) {
+                // Show loading state
+                const submitButton = form.querySelector('.hs-button');
+                if (submitButton) {
+                    submitButton.textContent = 'Wysyłanie...';
+                    submitButton.disabled = true;
+                }
+                
+                // Hide keyboard
+                document.activeElement.blur();
+            }
+        });
+        
+        // Handle form success/error states
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.type === 'childList') {
+                    const successMessage = form.querySelector('.hs-form-success');
+                    const errorMessage = form.querySelector('.hs-form-error');
+                    
+                    if (successMessage || errorMessage) {
+                        // Scroll to message
+                        const message = successMessage || errorMessage;
+                        message.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        
+                        // Auto-hide after 5 seconds
+                        setTimeout(() => {
+                            if (message.parentNode) {
+                                message.style.opacity = '0';
+                                setTimeout(() => {
+                                    if (message.parentNode) {
+                                        message.parentNode.removeChild(message);
+                                    }
+                                }, 300);
+                            }
+                        }, 5000);
+                    }
+                }
+            });
+        });
+        
+        observer.observe(form, { childList: true, subtree: true });
     }
 
     // Mobile chatbot optimizations
