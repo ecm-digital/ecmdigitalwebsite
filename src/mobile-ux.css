@@ -1,0 +1,764 @@
+/* ===== MOBILE UX OPTIMIZATIONS ===== */
+
+/* Mobile-First Touch Targets */
+@media (max-width: 768px) {
+    /* Ensure minimum 44px touch targets for accessibility */
+    .btn,
+    .nav-link,
+    .dropdown-item,
+    .service-card,
+    .team-card,
+    .feature-card,
+    .hero-stat-card {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    /* Enhanced mobile navigation */
+    .navbar-toggler {
+        width: 48px;
+        height: 48px;
+        padding: 12px;
+        border-radius: 8px;
+        background: rgba(28, 28, 30, 0.8);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        transition: all 0.3s ease;
+    }
+    
+    .navbar-toggler:focus {
+        box-shadow: 0 0 0 3px #007AFF;
+        outline: none;
+    }
+    
+    .navbar-toggler:hover {
+        background: rgba(28, 28, 30, 0.9);
+        transform: scale(1.05);
+    }
+    
+    /* Animated hamburger icon */
+    .navbar-toggler i {
+        transition: all 0.3s ease;
+    }
+    
+    .navbar-toggler[aria-expanded="true"] i {
+        transform: rotate(90deg);
+        opacity: 0.8;
+    }
+    
+    /* Enhanced mobile menu */
+    .navbar-collapse {
+        background: rgba(28, 28, 30, 0.95);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-radius: 16px;
+        margin-top: 1rem;
+        padding: 1.5rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        animation: slideDown 0.3s ease-out;
+    }
+    
+    @keyframes slideDown {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    /* Mobile nav items */
+    .nav-link {
+        padding: 0.75rem 1rem;
+        border-radius: 8px;
+        margin: 0.25rem 0;
+        transition: all 0.3s ease;
+    }
+    
+    .nav-link:hover,
+    .nav-link:focus {
+        background: rgba(0, 122, 255, 0.1);
+        color: #007AFF !important;
+    }
+    
+    /* Mobile dropdown */
+    .dropdown-menu {
+        position: static;
+        float: none;
+        width: auto;
+        margin-top: 0.5rem;
+        background: rgba(28, 28, 30, 0.8) !important;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+        border-radius: 8px;
+    }
+    
+    .dropdown-item {
+        padding: 0.75rem 1rem;
+        border-radius: 8px;
+        margin: 0.25rem 0;
+        transition: all 0.3s ease;
+    }
+    
+    .dropdown-item:hover,
+    .dropdown-item:focus {
+        background: #007AFF !important;
+        color: white !important;
+        transform: translateX(5px);
+    }
+    
+    /* Mobile language switcher */
+    .language-switcher .dropdown-menu {
+        background: rgba(28, 28, 30, 0.8) !important;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+        border-radius: 8px;
+    }
+    
+    .language-switcher .dropdown-item {
+        color: #EBEBF5 !important;
+        background: transparent !important;
+    }
+    
+    .language-switcher .dropdown-item:hover {
+        background: #007AFF !important;
+        color: white !important;
+    }
+    
+    .language-switcher .dropdown-item.active {
+        background: #007AFF !important;
+        color: white !important;
+    }
+}
+
+/* Mobile Hero Optimization */
+@media (max-width: 768px) {
+    .hero {
+        padding: 100px 0 80px;
+        min-height: 100vh;
+    }
+    
+    .hero-title {
+        font-size: clamp(2.5rem, 8vw, 3.5rem);
+        line-height: 1.1;
+        margin-bottom: 1.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+        padding: 0 1rem;
+    }
+    
+    /* Mobile hero stats */
+    .hero-stat-card {
+        padding: 1.5rem 1rem;
+        margin-bottom: 1rem;
+        border-radius: 16px;
+        background: rgba(28, 28, 30, 0.8);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+    }
+    
+    .stat-icon {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .stat-number {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 0.25rem;
+    }
+    
+    .stat-label {
+        font-size: 0.9rem;
+        color: #EBEBF599;
+    }
+    
+    /* Mobile hero visual */
+    .hero-main-icon {
+        font-size: 4rem !important;
+    }
+    
+    .hero-glow {
+        width: 200px;
+        height: 200px;
+        opacity: 0.3;
+    }
+}
+
+/* Mobile Service Cards */
+@media (max-width: 768px) {
+    .service-card {
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        border-radius: 16px;
+        transition: all 0.3s ease;
+    }
+    
+    .service-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    }
+    
+    .service-card h4 {
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
+    }
+    
+    .service-card p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+    }
+    
+    .service-icon {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 1rem;
+    }
+    
+    /* Mobile CTA buttons */
+    .btn-cta {
+        width: 100%;
+        padding: 16px 24px;
+        font-size: 1.1rem;
+        min-height: 56px;
+        border-radius: 12px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+    
+    .btn-cta:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 122, 255, 0.3);
+    }
+    
+    .btn-cta:active {
+        transform: translateY(0);
+        box-shadow: 0 4px 15px rgba(0, 122, 255, 0.3);
+    }
+}
+
+/* Mobile Process Timeline */
+@media (max-width: 768px) {
+    .process-step {
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        border-radius: 16px;
+        background: rgba(28, 28, 30, 0.8);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+    }
+    
+    .process-number {
+        width: 56px;
+        height: 56px;
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
+    }
+    
+    .process-step h4 {
+        font-size: 1.2rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .process-step p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+}
+
+/* Mobile Team Section */
+@media (max-width: 768px) {
+    .team-card {
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        border-radius: 16px;
+        background: rgba(28, 28, 30, 0.8);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+    }
+    
+    .team-avatar {
+        width: 72px;
+        height: 72px;
+        margin-bottom: 1rem;
+    }
+    
+    .team-card h5 {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .team-card p {
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+}
+
+/* Mobile Contact Section */
+@media (max-width: 768px) {
+    .contact-section {
+        padding: 3rem 0;
+    }
+    
+    .contact-card {
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        border-radius: 16px;
+        background: rgba(28, 28, 30, 0.8);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+    }
+    
+    /* Mobile form optimization */
+    .hs-form-field {
+        margin-bottom: 1.5rem;
+    }
+    
+    .hs-form-field input,
+    .hs-form-field textarea,
+    .hs-form-field select {
+        padding: 16px;
+        font-size: 16px; /* Prevents zoom on iOS */
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(28, 28, 30, 0.8);
+        color: #FFFFFF;
+        width: 100%;
+        transition: all 0.3s ease;
+    }
+    
+    .hs-form-field input:focus,
+    .hs-form-field textarea:focus,
+    .hs-form-field select:focus {
+        outline: none;
+        border-color: #007AFF;
+        box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
+        background: rgba(28, 28, 30, 0.9);
+    }
+    
+    .hs-form-field label {
+        color: #EBEBF5;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+    }
+}
+
+/* Mobile Chatbot Optimization */
+@media (max-width: 768px) {
+    .chatbot-modal {
+        width: 95vw;
+        height: 80vh;
+        max-width: 400px;
+        border-radius: 20px;
+        bottom: 20px;
+        right: 20px;
+    }
+    
+    .chatbot-header {
+        padding: 1rem 1.5rem;
+        border-radius: 20px 20px 0 0;
+    }
+    
+    .chatbot-messages {
+        padding: 1rem;
+        max-height: calc(80vh - 140px);
+        overflow-y: auto;
+    }
+    
+    .chatbot-input {
+        padding: 1rem 1.5rem;
+        border-radius: 0 0 20px 20px;
+    }
+    
+    .chatbot-input input {
+        padding: 12px 16px;
+        font-size: 16px;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(28, 28, 30, 0.8);
+        color: #FFFFFF;
+    }
+    
+    .chatbot-input button {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        background: #007AFF;
+        border: none;
+        color: white;
+        transition: all 0.3s ease;
+    }
+    
+    .chatbot-input button:hover {
+        background: #0056CC;
+        transform: scale(1.05);
+    }
+    
+    /* Mobile chatbot toggle button */
+    .chatbot-toggle {
+        width: 60px;
+        height: 60px;
+        bottom: 20px;
+        right: 20px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%);
+        border: none;
+        color: white;
+        font-size: 1.5rem;
+        box-shadow: 0 4px 20px rgba(0, 122, 255, 0.4);
+        transition: all 0.3s ease;
+    }
+    
+    .chatbot-toggle:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 25px rgba(0, 122, 255, 0.5);
+    }
+}
+
+/* Extra Small Mobile Devices */
+@media (max-width: 480px) {
+    .hero {
+        padding: 80px 0 60px;
+    }
+    
+    .hero-title {
+        font-size: 2.25rem;
+        line-height: 1.15;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+        padding: 0 0.5rem;
+    }
+    
+    .section-title {
+        font-size: 1.75rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .service-card {
+        padding: 1.25rem;
+    }
+    
+    .service-card h4 {
+        font-size: 1.2rem;
+    }
+    
+    .process-step {
+        padding: 1.25rem;
+    }
+    
+    .team-card {
+        padding: 1.25rem;
+    }
+    
+    .contact-card {
+        padding: 1.25rem;
+    }
+    
+    /* Optimize spacing for very small screens */
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    .row {
+        margin-left: -0.5rem;
+        margin-right: -0.5rem;
+    }
+    
+    .col,
+    .col-12,
+    .col-md-6,
+    .col-lg-3,
+    .col-lg-4 {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+    
+    /* Mobile hero stats on small screens */
+    .hero-stat-card {
+        padding: 1rem 0.75rem;
+    }
+    
+    .stat-icon {
+        font-size: 1.5rem;
+    }
+    
+    .stat-number {
+        font-size: 1.25rem;
+    }
+    
+    .stat-label {
+        font-size: 0.8rem;
+    }
+}
+
+/* Landscape Mobile Optimization */
+@media (max-width: 768px) and (orientation: landscape) {
+    .hero {
+        padding: 80px 0 60px;
+        min-height: 100vh;
+    }
+    
+    .hero-title {
+        font-size: clamp(2rem, 6vw, 3rem);
+    }
+    
+    .navbar-collapse {
+        max-height: 70vh;
+        overflow-y: auto;
+    }
+    
+    .hero-visual {
+        margin-bottom: 2rem;
+    }
+    
+    .hero-main-icon {
+        font-size: 3rem !important;
+    }
+}
+
+/* High-DPI Mobile Devices */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .service-icon,
+    .team-avatar,
+    .process-number,
+    .hero-main-icon {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
+
+/* Mobile Performance Optimizations */
+@media (max-width: 768px) {
+    /* Reduce animations on mobile for better performance */
+    .service-card:hover,
+    .team-card:hover,
+    .feature-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* Optimize glassmorphism for mobile */
+    .feature-card,
+    .service-card,
+    .team-card,
+    .hero-stat-card,
+    .process-step,
+    .contact-card {
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+    
+    /* Reduce shadow complexity on mobile */
+    .feature-card,
+    .service-card,
+    .team-card,
+    .hero-stat-card,
+    .process-step,
+    .contact-card {
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* Smooth transitions */
+    .btn,
+    .service-card,
+    .team-card,
+    .feature-card,
+    .hero-stat-card,
+    .process-step,
+    .contact-card {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+}
+
+/* Mobile Accessibility Improvements */
+@media (max-width: 768px) {
+    /* Ensure sufficient color contrast */
+    .text-muted {
+        color: #EBEBF5 !important;
+    }
+    
+    /* Improve focus indicators */
+    .btn:focus,
+    .nav-link:focus,
+    .service-card:focus,
+    .dropdown-item:focus {
+        outline: 2px solid #007AFF;
+        outline-offset: 2px;
+    }
+    
+    /* Better touch feedback */
+    .btn:active,
+    .service-card:active,
+    .nav-link:active {
+        transform: scale(0.98);
+        transition: transform 0.1s ease;
+    }
+    
+    /* Skip links for accessibility */
+    .skip-link {
+        position: absolute;
+        top: -40px;
+        left: 6px;
+        background: #007AFF;
+        color: white;
+        padding: 8px;
+        text-decoration: none;
+        border-radius: 4px;
+        z-index: 1000;
+        transition: top 0.3s;
+    }
+    
+    .skip-link:focus {
+        top: 6px;
+    }
+}
+
+/* Mobile Scroll Behavior */
+@media (max-width: 768px) {
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    /* Custom scrollbar for mobile */
+    .chatbot-messages::-webkit-scrollbar {
+        width: 6px;
+    }
+    
+    .chatbot-messages::-webkit-scrollbar-track {
+        background: rgba(28, 28, 30, 0.5);
+        border-radius: 3px;
+    }
+    
+    .chatbot-messages::-webkit-scrollbar-thumb {
+        background: #007AFF;
+        border-radius: 3px;
+    }
+    
+    /* Smooth scrolling for sections */
+    .navbar-nav .nav-link {
+        scroll-margin-top: 80px;
+    }
+}
+
+/* Mobile Loading States */
+@media (max-width: 768px) {
+    .loading-skeleton {
+        background: linear-gradient(90deg, 
+            rgba(28, 28, 30, 0.8) 25%, 
+            rgba(44, 44, 46, 0.8) 50%, 
+            rgba(28, 28, 30, 0.8) 75%);
+        background-size: 200% 100%;
+        animation: loading 1.5s infinite;
+        border-radius: 8px;
+        height: 20px;
+        margin-bottom: 1rem;
+    }
+    
+    @keyframes loading {
+        0% { background-position: 200% 0; }
+        100% { background-position: -200% 0; }
+    }
+    
+    /* Loading states for cards */
+    .service-card.loading,
+    .team-card.loading,
+    .hero-stat-card.loading {
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .service-card.loading::before,
+    .team-card.loading::before,
+    .hero-stat-card.loading::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(90deg, 
+            rgba(28, 28, 30, 0.8) 25%, 
+            rgba(44, 44, 46, 0.8) 50%, 
+            rgba(28, 28, 30, 0.8) 75%);
+        background-size: 200% 100%;
+        animation: loading 1.5s infinite;
+        border-radius: 16px;
+    }
+}
+
+/* Mobile Touch Gestures */
+@media (max-width: 768px) {
+    /* Swipe gestures for mobile */
+    .service-card,
+    .team-card,
+    .feature-card {
+        touch-action: pan-y pinch-zoom;
+    }
+    
+    /* Pull to refresh indicator */
+    .pull-to-refresh {
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #EBEBF5;
+        font-size: 0.9rem;
+    }
+    
+    /* Mobile gesture feedback */
+    .swipeable {
+        transition: transform 0.3s ease;
+    }
+    
+    .swipeable.swiped-left {
+        transform: translateX(-100%);
+    }
+    
+    .swipeable.swiped-right {
+        transform: translateX(100%);
+    }
+}
+
+/* Mobile Dark Mode Support */
+@media (max-width: 768px) {
+    /* Ensure proper dark mode on mobile */
+    .navbar,
+    .navbar-collapse,
+    .dropdown-menu {
+        background: rgba(28, 28, 30, 0.95) !important;
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+    }
+    
+    /* Mobile status bar color */
+    meta[name="theme-color"] {
+        content: #000000;
+    }
+    
+    /* Mobile safe area support */
+    .navbar {
+        padding-top: env(safe-area-inset-top);
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+    
+    .hero {
+        padding-top: calc(120px + env(safe-area-inset-top));
+        padding-bottom: calc(80px + env(safe-area-inset-bottom));
+    }
+}
