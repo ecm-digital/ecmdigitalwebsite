@@ -1,0 +1,235 @@
+{
+  "services": [
+    {
+      "id": "1",
+      "title": "Strony WWW",
+      "title_en": "Websites",
+      "description": "Nowoczesne strony internetowe z responsywnym designem",
+      "description_en": "Modern websites with responsive design",
+      "icon": "globe",
+      "color": "bg-blue-500",
+      "stats": {
+        "projects": 25,
+        "avgTime": "4-6 tyg",
+        "avgTime_en": "4-6 weeks",
+        "satisfaction": 4.8
+      },
+      "features": [
+        "Responsywny design",
+        "SEO",
+        "Analytics",
+        "CMS"
+      ],
+      "features_en": [
+        "Responsive design",
+        "SEO",
+        "Analytics",
+        "CMS"
+      ],
+      "priceRange": "3000-15000 PLN",
+      "priceRange_en": "3000-15000 PLN",
+      "category": "web",
+      "priority": "high",
+      "tags": ["website", "responsive", "seo", "cms"]
+    },
+    {
+      "id": "2",
+      "title": "Sklepy Shopify",
+      "title_en": "Shopify Stores",
+      "description": "Profesjonalne sklepy internetowe na platformie Shopify",
+      "description_en": "Professional e-commerce stores on Shopify platform",
+      "icon": "shopping-cart",
+      "color": "bg-green-500",
+      "stats": {
+        "projects": 18,
+        "avgTime": "6-8 tyg",
+        "avgTime_en": "6-8 weeks",
+        "satisfaction": 4.9
+      },
+      "features": [
+        "Integracje płatności",
+        "Zarządzanie produktami",
+        "Analytics",
+        "Mobile-first"
+      ],
+      "features_en": [
+        "Payment integrations",
+        "Product management",
+        "Analytics",
+        "Mobile-first"
+      ],
+      "priceRange": "5000-25000 PLN",
+      "priceRange_en": "5000-25000 PLN",
+      "category": "ecommerce",
+      "priority": "high",
+      "tags": ["shopify", "ecommerce", "payment", "mobile"]
+    },
+    {
+      "id": "3",
+      "title": "Prototypy MVP",
+      "title_en": "MVP Prototypes",
+      "description": "Szybkie prototypy i aplikacje MVP",
+      "description_en": "Rapid prototypes and MVP applications",
+      "icon": "zap",
+      "color": "bg-yellow-500",
+      "stats": {
+        "projects": 12,
+        "avgTime": "2-4 tyg",
+        "avgTime_en": "2-4 weeks",
+        "satisfaction": 4.7
+      },
+      "features": [
+        "Rapid prototyping",
+        "User testing",
+        "Iteracje",
+        "Launch ready"
+      ],
+      "features_en": [
+        "Rapid prototyping",
+        "User testing",
+        "Iterations",
+        "Launch ready"
+      ],
+      "priceRange": "8000-40000 PLN",
+      "priceRange_en": "8000-40000 PLN",
+      "category": "mvp",
+      "priority": "medium",
+      "tags": ["mvp", "prototype", "testing", "launch"]
+    },
+    {
+      "id": "4",
+      "title": "Audyty UX",
+      "title_en": "UX Audits",
+      "description": "Kompleksowe audyty użyteczności i doświadczenia użytkownika",
+      "description_en": "Comprehensive usability and user experience audits",
+      "icon": "eye",
+      "color": "bg-purple-500",
+      "stats": {
+        "projects": 32,
+        "avgTime": "1-2 tyg",
+        "avgTime_en": "1-2 weeks",
+        "satisfaction": 4.9
+      },
+      "features": [
+        "Heurystyki UX",
+        "User research",
+        "Raporty",
+        "Rekomendacje"
+      ],
+      "features_en": [
+        "UX Heuristics",
+        "User research",
+        "Reports",
+        "Recommendations"
+      ],
+      "priceRange": "2000-8000 PLN",
+      "priceRange_en": "2000-8000 PLN",
+      "category": "ux",
+      "priority": "medium",
+      "tags": ["ux", "audit", "research", "usability"]
+    },
+    {
+      "id": "5",
+      "title": "Aplikacje Mobilne",
+      "title_en": "Mobile Apps",
+      "description": "Natywne i cross-platform aplikacje mobilne",
+      "description_en": "Native and cross-platform mobile applications",
+      "icon": "smartphone",
+      "color": "bg-indigo-500",
+      "stats": {
+        "projects": 15,
+        "avgTime": "8-12 tyg",
+        "avgTime_en": "8-12 weeks",
+        "satisfaction": 4.8
+      },
+      "features": [
+        "iOS & Android",
+        "React Native",
+        "Flutter",
+        "API Integration"
+      ],
+      "features_en": [
+        "iOS & Android",
+        "React Native",
+        "Flutter",
+        "API Integration"
+      ],
+      "priceRange": "15000-60000 PLN",
+      "priceRange_en": "15000-60000 PLN",
+      "category": "mobile",
+      "priority": "high",
+      "tags": ["mobile", "ios", "android", "react-native", "flutter"]
+    },
+    {
+      "id": "6",
+      "title": "Asystenci AI",
+      "title_en": "AI Assistants",
+      "description": "Asystenci AI na Amazon Bedrock i innych platformach",
+      "description_en": "AI assistants on Amazon Bedrock and other platforms",
+      "icon": "bot",
+      "color": "bg-pink-500",
+      "stats": {
+        "projects": 8,
+        "avgTime": "6-10 tyg",
+        "avgTime_en": "6-10 weeks",
+        "satisfaction": 4.9
+      },
+      "features": [
+        "Amazon Bedrock",
+        "Claude, Titan, Llama",
+        "Custom prompts",
+        "Integration"
+      ],
+      "features_en": [
+        "Amazon Bedrock",
+        "Claude, Titan, Llama",
+        "Custom prompts",
+        "Integration"
+      ],
+      "priceRange": "12000-50000 PLN",
+      "priceRange_en": "12000-50000 PLN",
+      "category": "ai",
+      "priority": "high",
+      "tags": ["ai", "bedrock", "claude", "titan", "llama"]
+    },
+    {
+      "id": "7",
+      "title": "Automatyzacje",
+      "title_en": "Automations",
+      "description": "Automatyzacja procesów biznesowych z n8n, Zapier, Opal",
+      "description_en": "Business process automation with n8n, Zapier, Opal",
+      "icon": "settings",
+      "color": "bg-orange-500",
+      "stats": {
+        "projects": 20,
+        "avgTime": "2-4 tyg",
+        "avgTime_en": "2-4 weeks",
+        "satisfaction": 4.8
+      },
+      "features": [
+        "n8n workflows",
+        "Zapier automations",
+        "Opal scripts",
+        "API connections"
+      ],
+      "features_en": [
+        "n8n workflows",
+        "Zapier automations",
+        "Opal scripts",
+        "API connections"
+      ],
+      "priceRange": "3000-15000 PLN",
+      "priceRange_en": "3000-15000 PLN",
+      "category": "automation",
+      "priority": "medium",
+      "tags": ["automation", "n8n", "zapier", "opal", "workflows"]
+    }
+  ],
+  "meta": {
+    "totalServices": 7,
+    "categories": ["web", "ecommerce", "mvp", "ux", "mobile", "ai", "automation"],
+    "languages": ["pl", "en"],
+    "lastUpdated": "2025-08-24T10:00:00Z",
+    "version": "1.0.0"
+  }
+}

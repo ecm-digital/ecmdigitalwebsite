@@ -1842,6 +1842,116 @@ Co Cię najbardziej interesuje? Opowiedz mi o swoich potrzebach lub wybierz jedn
     addWelcomeMessage() {
         const welcomeMessage = 'Cześć! Jestem cyfrowym asystentem ECM Digital. Mogę opowiedzieć Ci o naszych usługach, pomóc w wyborze rozwiązania lub umówić konsultację. Jak mogę Ci pomóc?';
         this.addMessage(welcomeMessage, 'bot');
+        
+        // Add automatic follow-up question after 2 seconds
+        setTimeout(() => {
+            this.addAutomaticQuestion();
+        }, 2000);
+    }
+    
+    addAutomaticQuestion() {
+        const questions = [
+            '🤖 Czy chcesz poznać nasze rozwiązania AI?',
+            '💼 Potrzebujesz pomocy w wyborze usługi?',
+            '📞 Chcesz umówić bezpłatną konsultację?',
+            '⚡ Interesują Cię automatyzacje procesów?',
+            '🌐 Szukasz nowej strony internetowej?'
+        ];
+        
+        const randomQuestion = questions[Math.floor(Math.random() * questions.length)];
+        this.addMessage(randomQuestion, 'bot', 'automatic-question');
+        
+        // Add quick action buttons
+        this.addQuickActions();
+    }
+    
+    addQuickActions() {
+        const quickActions = [
+            { text: '🤖 Rozwiązania AI', action: 'ai-solutions' },
+            { text: '💼 Usługi', action: 'services' },
+            { text: '📞 Konsultacja', action: 'consultation' },
+            { text: '💰 Cennik', action: 'pricing' }
+        ];
+        
+        const actionsContainer = document.createElement('div');
+        actionsContainer.className = 'quick-actions';
+        actionsContainer.style.cssText = `
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            justify-content: center;
+        `;
+        
+        quickActions.forEach(action => {
+            const button = document.createElement('button');
+            button.className = 'quick-action-btn';
+            button.textContent = action.text;
+            button.style.cssText = `
+                background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%);
+                color: white;
+                border: none;
+                padding: 0.5rem 1rem;
+                border-radius: 20px;
+                font-size: 0.9rem;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                font-weight: 500;
+            `;
+            
+            button.onmouseenter = () => {
+                button.style.transform = 'translateY(-2px)';
+                button.style.boxShadow = '0 4px 12px rgba(0, 122, 255, 0.3)';
+            };
+            
+            button.onmouseleave = () => {
+                button.style.transform = 'translateY(0)';
+                button.style.boxShadow = 'none';
+            };
+            
+            button.onclick = () => {
+                this.handleQuickAction(action.action);
+            };
+            
+            actionsContainer.appendChild(button);
+        });
+        
+        const messagesContainer = document.getElementById('voiceChatbotMessages');
+        if (messagesContainer) {
+            messagesContainer.appendChild(actionsContainer);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+    }
+    
+    handleQuickAction(action) {
+        let response = '';
+        let followUp = '';
+        
+        switch (action) {
+            case 'ai-solutions':
+                response = '🤖 Nasze rozwiązania AI obejmują:\n• Asystentów AI na Amazon Bedrock\n• Chatboty z Amazon Lex\n• Automatyzacje procesów\n• Analizę danych i predykcje\n\nKtóre rozwiązanie Cię najbardziej interesuje?';
+                followUp = '💡 Chcesz poznać szczegóły konkretnego rozwiązania?';
+                break;
+            case 'services':
+                response = '💼 Oferujemy kompleksowe usługi:\n• Strony WWW i e-commerce\n• Aplikacje mobilne\n• Prototypy MVP\n• Audyty UX i AI\n\nW jakiej dziedzinie szukasz wsparcia?';
+                followUp = '🎯 Potrzebujesz wyceny konkretnej usługi?';
+                break;
+            case 'consultation':
+                response = '📞 Świetnie! Oferujemy bezpłatną konsultację:\n• 30-minutowe spotkanie online\n• Analiza Twoich potrzeb\n• Rekomendacje rozwiązań\n• Wycena projektu\n\nPodaj swój numer telefonu lub email:';
+                followUp = '📅 Kiedy masz czas na spotkanie?';
+                break;
+            case 'pricing':
+                response = '💰 Nasze ceny zaczynają się od:\n• Strony WWW: od 4,900 PLN\n• E-commerce: od 9,900 PLN\n• Aplikacje mobilne: od 19,900 PLN\n• AI Asystenci: od 29,900 PLN\n\nChcesz otrzymać dokładną wycenę?';
+                followUp = '💬 Opowiedz mi o swoim projekcie!';
+                break;
+        }
+        
+        this.addMessage(response, 'bot', 'quick-response');
+        
+        // Add follow-up question after 3 seconds
+        setTimeout(() => {
+            this.addMessage(followUp, 'bot', 'follow-up');
+        }, 3000);
     }
     
     toggleListening() {

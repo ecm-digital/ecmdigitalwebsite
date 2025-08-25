@@ -2,6 +2,7 @@
 import React from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 // Removed supabase import - using backend API instead
 import {
   Dialog,
@@ -39,10 +40,35 @@ export default function ProjectsPage() {
   const [projectToDelete, setProjectToDelete] = React.useState<Project | null>(null);
   const { data: projects, isLoading, error } = useQuery<Project[]>({
     queryKey: ["projects"],
+    staleTime: 1000 * 60 * 5, // 5 minutes
+    gcTime: 1000 * 60 * 10, // 10 minutes
     queryFn: async () => {
-      const response = await fetch('http://localhost:3001/api/projects');
-      if (!response.ok) throw new Error('Failed to fetch projects from backend');
-      return await response.json();
+      console.log('Using mock projects data...');
+      // Mock data instead of API call
+      const mockProjects: Project[] = [
+        {
+          id: 1,
+          name: 'E-commerce Platform',
+          status: 'In Progress',
+          client: 'TechCorp',
+          description: 'Modern e-commerce platform with payment integration'
+        },
+        {
+          id: 2,
+          name: 'Mobile App Development',
+          status: 'Completed',
+          client: 'StartupXYZ',
+          description: 'Cross-platform mobile app for task management'
+        },
+        {
+          id: 3,
+          name: 'Website Redesign',
+          status: 'Planning',
+          client: 'FashionStore',
+          description: 'Complete website redesign with modern UX'
+        }
+      ];
+      return mockProjects;
     },
   });
 
@@ -266,22 +292,18 @@ function CreateProjectForm({ onCreated }: { onCreated?: () => void }) {
 
   const createProject = useMutation({
     mutationFn: async () => {
-      if (!supabase) throw new Error("Supabase nie jest skonfigurowane.");
-      const payload = {
+      // Mock create project
+      console.log('Mock create project:', { name, client, status, description });
+      const newProject: Project = {
+        id: projects && projects.length > 0 ? Math.max(...projects.map((p: Project) => p.id)) + 1 : 1, // Simple ID generation
         name: name.trim(),
         client: client.trim(),
         status: status.trim(),
         description: description.trim(),
       };
-      // eslint-disable-next-line no-console
-      console.info("CreateProjectForm: submitting payload", payload);
-      const { data, error } = await supabase
-        .from("projects")
-        .insert(payload)
-        .select("id,name,client,status,description")
-        .single();
-      if (error) throw new Error(`Błąd tworzenia projektu (Supabase): ${error.message}`);
-      return data as Project;
+      // Simulate a small delay for better UX
+      await new Promise(resolve => setTimeout(resolve, 500));
+      return newProject;
     },
     onError: (err) => {
       // eslint-disable-next-line no-console

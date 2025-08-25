@@ -19,9 +19,14 @@ export function useProjects() {
 
     setLoading(true)
     try {
-      // TODO: Implement AWS DynamoDB query for projects
-      // For now, return empty array as placeholder
-      setProjects([])
+      const resp = await fetch('/api/projects', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ userId: user.email }),
+      })
+      if (!resp.ok) throw new Error('Failed to load projects')
+      const data = await resp.json()
+      setProjects((data.projects || []) as Project[])
     } catch (error) {
       console.error('Error fetching projects:', error)
       setProjects([])
@@ -34,9 +39,24 @@ export function useProjects() {
     if (!user) return { data: null, error: new Error('User not authenticated') }
 
     try {
-      // TODO: Implement AWS DynamoDB create project
-      // For now, return error as placeholder
-      return { data: null, error: new Error('AWS integration not yet implemented') }
+      const resp = await fetch('/api/projects', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          userId: user.email,
+          name: projectData.name,
+          description: (projectData as any).description,
+          type: (projectData as any).type,
+          status: projectData.status,
+          budget_total: (projectData as any).budget_total,
+          budget_used: (projectData as any).budget_used,
+          deadline: (projectData as any).deadline,
+        }),
+      })
+      if (!resp.ok) throw new Error('Failed to create project')
+      const data = await resp.json()
+      await fetchProjects()
+      return { data: data.project as Project, error: null }
     } catch (error) {
       console.error('Error creating project:', error)
       return { data: null, error }
@@ -45,9 +65,15 @@ export function useProjects() {
 
   const updateProjectData = async (id: string, updates: Partial<Project>) => {
     try {
-      // TODO: Implement AWS DynamoDB update project
-      // For now, return error as placeholder
-      return { data: null, error: new Error('AWS integration not yet implemented') }
+      const resp = await fetch(`/api/projects/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(updates),
+      })
+      if (!resp.ok) throw new Error('Failed to update project')
+      const data = await resp.json()
+      await fetchProjects()
+      return { data: data.project as Project, error: null }
     } catch (error) {
       console.error('Error updating project:', error)
       return { data: null, error }
@@ -56,9 +82,10 @@ export function useProjects() {
 
   const deleteProject = async (id: string) => {
     try {
-      // TODO: Implement AWS DynamoDB delete project
-      // For now, return error as placeholder
-      return { error: new Error('AWS integration not yet implemented') }
+      const resp = await fetch(`/api/projects/${id}`, { method: 'DELETE' })
+      if (!resp.ok) throw new Error('Failed to delete project')
+      await fetchProjects()
+      return { error: null }
     } catch (error) {
       console.error('Error deleting project:', error)
       return { error }

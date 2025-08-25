@@ -1,3 +1,5 @@
+"use client";
+
 import { AgencyServices } from "@/components/dashboard/agency-services";
 
 export default function ServicesPage() {

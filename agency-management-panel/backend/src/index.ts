@@ -12,6 +12,8 @@ declare global {
 }
 import morgan from 'morgan';
 import dotenv from 'dotenv';
+import { DynamoDBClient, ScanCommand, QueryCommand } from '@aws-sdk/client-dynamodb';
+import { unmarshall } from '@aws-sdk/util-dynamodb';
 
 dotenv.config();
 
@@ -38,6 +40,9 @@ import {
 
 const app = express();
 const PORT = process.env.PORT || 3001;
+const AWS_REGION = process.env.AWS_REGION || 'eu-west-1'
+
+const ddb = new DynamoDBClient({ region: AWS_REGION })
 
 // Middleware
 app.use(helmet());
@@ -48,6 +53,15 @@ app.use(express.urlencoded({ extended: true }));
 
 // In-memory stores (dev only) - keeping for other entities
 type Task = { id: string; title: string; assignee: string; status: string; dueAt?: string };
+type Notification = {
+  id: string;
+  type: string;
+  priority: 'low' | 'medium' | 'high';
+  message: string;
+  data: any;
+  createdAt: string;
+  read: boolean;
+};
 type Milestone = { id: string; name: string; date: string; status: string };
 type User = {
   id: string;
@@ -109,6 +123,8 @@ const milestonesStore: Record<number, Milestone[]> = {
     { id: 'M-4', name: 'Beta użytkowników', date: '2025-08-30', status: 'At Risk' },
   ],
 };
+
+const notifications: Notification[] = [];
 
 let usersStore: User[] = [
   {
@@ -475,18 +491,21 @@ app.get('/auth/validate', authenticate, (req, res) => {
 });
 
 // Users management endpoints
-app.get('/api/users', authenticate, authorize('users'), (req, res) => {
-  const users = usersStore.map(u => ({
-    id: u.id,
-    email: u.email,
-    name: u.name,
-    role: u.role,
-    avatar: u.avatar,
-    lastLogin: u.lastLogin,
-    isActive: u.isActive,
-    permissions: u.permissions
-  }));
-  res.json(users);
+app.get('/api/users', authenticate, authorize('users'), async (req, res) => {
+  try {
+    const baseUrl = process.env.API_BASE_URL || 'https://suimqa3s1h.execute-api.eu-west-1.amazonaws.com/prod'
+    const resp = await fetch(`${baseUrl}/auth/users`)
+    if (!resp.ok) {
+      const text = await resp.text()
+      return res.status(502).json({ error: 'Failed to fetch users from API', details: text })
+    }
+    const json = await resp.json() as any
+    const users = json.users || []
+    return res.json(users)
+  } catch (error) {
+    console.error('Error fetching users from API:', error)
+    return res.status(500).json({ error: 'Internal error fetching users' })
+  }
 });
 
 app.get('/api/users/:id', authenticate, authorize('users'), (req, res) => {
@@ -681,43 +700,22 @@ app.get('/api/faq', (req, res) => {
 // Projekty
 app.get('/api/projects', async (req, res) => {
   try {
-    // Using mock data instead of AWS RDS
-    const mockProjects = [
-      {
-        id: '1',
-        name: 'E-commerce Platform',
-        status: 'In Progress',
-        client: 'TechCorp',
-        progress: 75,
-        dueDate: '2025-09-15',
-        budget: 45000,
-        description: 'Modern e-commerce platform with payment integration'
-      },
-      {
-        id: '2',
-        name: 'Mobile App Development',
-        status: 'Completed',
-        client: 'StartupXYZ',
-        progress: 100,
-        dueDate: '2025-08-30',
-        budget: 32000,
-        description: 'Cross-platform mobile app for task management'
-      },
-      {
-        id: '3',
-        name: 'Website Redesign',
-        status: 'Planning',
-        client: 'FashionStore',
-        progress: 20,
-        dueDate: '2025-10-01',
-        budget: 18000,
-        description: 'Complete website redesign with modern UX'
-      }
-    ];
-    res.json(mockProjects);
+    const out = await ddb.send(new ScanCommand({ TableName: 'ecm-projects' }))
+    const items = (out.Items || []).map(i => unmarshall(i))
+    const projects = items.map((p: any) => ({
+      id: p.id,
+      name: p.name,
+      status: p.status,
+      client: p.userId,
+      progress: Math.min(100, Math.round(((p.budget_used || 0) / Math.max(1, p.budget_total || 0)) * 100)),
+      dueDate: p.deadline || p.updatedAt || p.createdAt,
+      budget: p.budget_total || 0,
+      description: p.description || '',
+    }))
+    res.json(projects)
   } catch (error) {
-    console.error('Error getting projects:', error);
-    res.status(500).json({ error: 'Failed to get projects from database' });
+    console.error('Error getting projects (DynamoDB):', error)
+    res.status(500).json({ error: 'Failed to get projects from DynamoDB' })
   }
 });
 
@@ -784,42 +782,217 @@ app.delete('/api/projects/:id', async (req, res) => {
 });
 
 // Klienci
-app.get('/api/clients', (req, res) => {
-  res.json([
-    {
-      id: 1,
-      name: "LogisticsPro Sp. z o.o.",
-      industry: "Logistyka",
-      contact: {
-        person: "Anna Kowalska",
-        email: "anna.kowalska@logisticspro.pl",
-        phone: "+48 600 100 200"
-      },
-      status: "Aktywny"
-    },
-    {
-      id: 2,
-      name: "EstateNow S.A.",
-      industry: "Nieruchomości",
-      contact: {
-        person: "Piotr Nowak",
-        email: "piotr.nowak@estatenow.com",
-        phone: "+48 500 300 100"
-      },
-      status: "Współpraca"
-    },
-    {
-      id: 3,
-      name: "EduSmart",
-      industry: "Edukacja",
-      contact: {
-        person: "Marta Zielińska",
-        email: "marta.zielinska@edusmart.io",
-        phone: "+48 790 111 222"
-      },
-      status: "Prospekt"
+app.get('/api/clients', async (req, res) => {
+  try {
+    const out = await ddb.send(new ScanCommand({ TableName: 'ecm-users' }))
+    const items = (out.Items || []).map(i => unmarshall(i))
+    const clients = items.map((user: any) => ({
+      id: user.id,
+      email: user.email,
+      firstName: user.firstName || '',
+      lastName: user.lastName || '',
+      name: user.name || `${user.firstName || ''} ${user.lastName || ''}`.trim(),
+      company: user.company || '',
+      role: user.role || 'client',
+      status: user.isEmailVerified ? 'Zweryfikowany' : 'Niezweryfikowany',
+      registration_date: user.createdAt,
+      lastLoginAt: user.lastLoginAt || null
+    }))
+    res.json(clients)
+  } catch (error) {
+    console.error('Błąd podczas pobierania klientów (DynamoDB):', error)
+    res.json([])
+  }
+});
+
+// Dodaj nowego klienta
+app.post('/api/clients', (req, res) => {
+  try {
+    const clientData = req.body;
+
+    // Walidacja danych
+    if (!clientData.email || !clientData.contact_person) {
+      return res.status(400).json({
+        error: 'Email i osoba kontaktowa są wymagane'
+      });
     }
-  ]);
+
+    // Tutaj będzie logika zapisywania do bazy danych
+    console.log('Nowy klient:', clientData);
+
+    // Na razie zwracamy sukces
+    res.status(201).json({
+      message: 'Klient dodany pomyślnie',
+      client: {
+        id: Date.now().toString(),
+        ...clientData,
+        status: 'active',
+        registration_date: new Date().toISOString()
+      }
+    });
+  } catch (error) {
+    console.error('Błąd dodawania klienta:', error);
+    res.status(500).json({
+      error: 'Błąd serwera podczas dodawania klienta'
+    });
+  }
+});
+
+// Edytuj klienta
+app.put('/api/clients/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const updateData = req.body;
+
+    if (!id) {
+      return res.status(400).json({
+        error: 'ID klienta jest wymagane'
+      });
+    }
+
+    console.log(`Edytowanie klienta ${id}:`, updateData);
+
+    // Pobierz klienta z panelu klienta, żeby sprawdzić czy istnieje
+    const clientDashboardUrl = process.env.CLIENT_DASHBOARD_API_BASE_URL || 'http://localhost:3002';
+
+    // Najpierw pobierz wszystkich klientów, żeby znaleźć tego z właściwym ID
+    const getResponse = await fetch(`${clientDashboardUrl}/api/auth/users`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (!getResponse.ok) {
+      return res.status(500).json({
+        error: 'Błąd pobierania listy klientów'
+      });
+    }
+
+    const { users } = await getResponse.json() as { users: any[] };
+    const existingClient = users.find((user: any) => user.id === id);
+
+    if (!existingClient) {
+      return res.status(404).json({
+        error: 'Klient nie znaleziony'
+      });
+    }
+
+    // Przygotuj dane do aktualizacji
+    const updatedClient = {
+      ...existingClient,
+      ...updateData
+    };
+
+    // Aktualizuj klienta w panelu klienta
+    const updateResponse = await fetch(`${clientDashboardUrl}/api/auth/users/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(updateData),
+    });
+
+    if (!updateResponse.ok) {
+      return res.status(500).json({
+        error: 'Błąd aktualizacji klienta w bazie danych'
+      });
+    }
+
+    const updatedUser = await updateResponse.json() as any;
+    console.log(`✅ Klient zaktualizowany: ${existingClient.email} -> ${updatedUser.email || existingClient.email}`);
+
+    res.json({
+      message: 'Klient zaktualizowany pomyślnie',
+      client: {
+        id: updatedUser.id || updatedClient.id,
+        email: updatedUser.email || existingClient.email,
+        firstName: updatedUser.firstName || existingClient.firstName,
+        lastName: updatedUser.lastName || existingClient.lastName,
+        name: updatedUser.name || existingClient.name,
+        company: updatedUser.company || existingClient.company,
+        role: updatedUser.role || existingClient.role,
+        status: updatedUser.isEmailVerified ? 'Zweryfikowany' : 'Niezweryfikowany',
+        registration_date: updatedUser.createdAt || existingClient.createdAt,
+        lastLoginAt: updatedUser.lastLoginAt || existingClient.lastLoginAt
+      }
+    });
+  } catch (error) {
+    console.error('Błąd edycji klienta:', error);
+    res.status(500).json({
+      error: 'Błąd serwera podczas edycji klienta'
+    });
+  }
+});
+
+// Usuń klienta
+app.delete('/api/clients/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    if (!id) {
+      return res.status(400).json({
+        error: 'ID klienta jest wymagane'
+      });
+    }
+
+    // Pobierz klienta z panelu klienta, żeby sprawdzić czy istnieje
+    const clientDashboardUrl = process.env.CLIENT_DASHBOARD_API_BASE_URL || 'http://localhost:3002';
+
+    // Najpierw pobierz wszystkich klientów, żeby znaleźć tego z właściwym ID
+    const getResponse = await fetch(`${clientDashboardUrl}/api/auth/users`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (!getResponse.ok) {
+      return res.status(500).json({
+        error: 'Błąd pobierania listy klientów'
+      });
+    }
+
+    const { users } = await getResponse.json() as { users: any[] };
+    const clientToDelete = users.find((user: any) => user.id === id);
+
+    if (!clientToDelete) {
+      return res.status(404).json({
+        error: 'Klient nie znaleziony'
+      });
+    }
+
+    // Usuń klienta z panelu klienta
+    const deleteResponse = await fetch(`${clientDashboardUrl}/api/auth/users/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (!deleteResponse.ok) {
+      return res.status(500).json({
+        error: 'Błąd usuwania klienta z bazy danych'
+      });
+    }
+
+    console.log(`✅ Klient usunięty: ${clientToDelete.email}`);
+
+    res.json({
+      message: 'Klient usunięty pomyślnie',
+      deletedClient: {
+        id: clientToDelete.id,
+        email: clientToDelete.email,
+        name: clientToDelete.name
+      }
+    });
+
+  } catch (error) {
+    console.error('Błąd usuwania klienta:', error);
+    res.status(500).json({
+      error: 'Błąd serwera podczas usuwania klienta'
+    });
+  }
 });
 
 // Zespół
@@ -850,6 +1023,83 @@ app.get('/api/team', (req, res) => {
       bio: "Ekspert od social media i automatyzacji procesów biznesowych"
     }
   ]);
+});
+
+// 🔥 MARKETING ANALYTICS - Statystyki marketingowe
+app.get('/api/marketing/stats', async (req, res) => {
+  try {
+    // Pobierz statystyki klientów z DynamoDB
+    const currentDate = new Date();
+    const today = currentDate.toISOString().split('T')[0];
+    const weekAgo = new Date(currentDate.getTime() - 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
+    const monthAgo = new Date(currentDate.getTime() - 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
+
+    // Symulacja danych - w rzeczywistości pobrać z DynamoDB
+    const stats = {
+      overview: {
+        totalClients: 8,
+        activeClients: 7,
+        newClientsToday: 1,
+        newClientsThisWeek: 3,
+        newClientsThisMonth: 5,
+        conversionRate: 85.7,
+        avgProjectValue: 25000,
+        totalRevenue: 420000
+      },
+      trends: {
+        clientsByDay: [
+          { date: today, count: 1 },
+          { date: weekAgo, count: 2 },
+          { date: monthAgo, count: 5 }
+        ],
+        revenueByMonth: [
+          { month: '2025-01', revenue: 150000 },
+          { month: '2025-02', revenue: 270000 }
+        ]
+      },
+      sources: {
+        organic: 45,
+        referral: 25,
+        paid: 20,
+        direct: 10
+      },
+      topPerforming: {
+        services: [
+          { name: 'Strony WWW', conversions: 12, revenue: 180000 },
+          { name: 'Sklepy Shopify', conversions: 8, revenue: 120000 },
+          { name: 'Automatyzacje', conversions: 5, revenue: 75000 }
+        ],
+        clients: [
+          { name: 'Tech Solutions', revenue: 45000, projects: 3 },
+          { name: 'Design Studio', revenue: 35000, projects: 2 },
+          { name: 'Test Company', revenue: 28000, projects: 2 }
+        ]
+      },
+      alerts: [
+        {
+          type: 'success',
+          message: '🎉 Świetna konwersja! 85.7% rejestracji przechodzi do klientów',
+          timestamp: new Date().toISOString()
+        },
+        {
+          type: 'info',
+          message: '📈 3 nowych klientów w tym tygodniu',
+          timestamp: new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString()
+        },
+        {
+          type: 'warning',
+          message: '⚡ Sprawdź lead quality - 2 potencjalnych klientów wymaga follow-up',
+          timestamp: new Date(Date.now() - 4 * 60 * 60 * 1000).toISOString()
+        }
+      ]
+    };
+
+    res.json(stats);
+
+  } catch (error) {
+    console.error('Error fetching marketing stats:', error);
+    res.status(500).json({ error: 'Failed to fetch marketing statistics' });
+  }
 });
 
 // Finanse
@@ -899,6 +1149,180 @@ app.get('/api/finances', (req, res) => {
   });
 });
 
+// 🔥 NOTIFICATIONS SYSTEM - System powiadomień o nowych klientach
+app.post('/api/notifications/new-client', (req, res) => {
+  try {
+    const { type, client, priority, message } = req.body;
+
+    if (!client || !message) {
+      return res.status(400).json({ error: 'Missing required fields: client, message' });
+    }
+
+    // Utwórz nową powiadomienie
+    const notification: Notification = {
+      id: `notif-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+      type: type || 'new_client_registration',
+      priority: priority || 'high',
+      message,
+      data: client,
+      createdAt: new Date().toISOString(),
+      read: false
+    };
+
+    // Dodaj do in-memory store
+    notifications.unshift(notification); // Dodaj na początek (najnowsze)
+
+    // Ogranicz do 100 powiadomień
+    if (notifications.length > 100) {
+      notifications.splice(100);
+    }
+
+    console.log(`🔔 NEW CLIENT NOTIFICATION: ${message}`);
+    console.log(`   👤 Client: ${client.fullName} (${client.email})`);
+    console.log(`   🏢 Company: ${client.companyName || 'Not provided'}`);
+    console.log(`   📞 Phone: ${client.phone || 'Not provided'}`);
+
+    res.json({
+      success: true,
+      notification,
+      message: 'Notification created successfully'
+    });
+
+  } catch (error) {
+    console.error('Error creating notification:', error);
+    res.status(500).json({ error: 'Failed to create notification' });
+  }
+});
+
+// Pobierz wszystkie powiadomienia
+app.get('/api/notifications', (req, res) => {
+  try {
+    const { limit = 50, unreadOnly = false } = req.query;
+
+    let filteredNotifications = notifications;
+
+    if (unreadOnly === 'true') {
+      filteredNotifications = notifications.filter(n => !n.read);
+    }
+
+    const limitedNotifications = filteredNotifications.slice(0, parseInt(limit as string));
+
+    res.json({
+      notifications: limitedNotifications,
+      total: notifications.length,
+      unread: notifications.filter(n => !n.read).length
+    });
+
+  } catch (error) {
+    console.error('Error fetching notifications:', error);
+    res.status(500).json({ error: 'Failed to fetch notifications' });
+  }
+});
+
+// Oznacz powiadomienie jako przeczytane
+app.patch('/api/notifications/:id/read', (req, res) => {
+  try {
+    const { id } = req.params;
+    const notification = notifications.find(n => n.id === id);
+
+    if (!notification) {
+      return res.status(404).json({ error: 'Notification not found' });
+    }
+
+    notification.read = true;
+
+    res.json({
+      success: true,
+      notification
+    });
+
+  } catch (error) {
+    console.error('Error marking notification as read:', error);
+    res.status(500).json({ error: 'Failed to update notification' });
+  }
+});
+
+// Usuń powiadomienie
+app.delete('/api/notifications/:id', (req, res) => {
+  try {
+    const { id } = req.params;
+    const index = notifications.findIndex(n => n.id === id);
+
+    if (index === -1) {
+      return res.status(404).json({ error: 'Notification not found' });
+    }
+
+    const deletedNotification = notifications.splice(index, 1)[0];
+
+    res.json({
+      success: true,
+      deletedNotification
+    });
+
+  } catch (error) {
+    console.error('Error deleting notification:', error);
+    res.status(500).json({ error: 'Failed to delete notification' });
+  }
+});
+
+// Oznacz wszystkie powiadomienia jako przeczytane
+app.patch('/api/notifications/mark-all-read', (req, res) => {
+  try {
+    notifications.forEach(notification => {
+      notification.read = true;
+    });
+
+    res.json({
+      success: true,
+      updated: notifications.length
+    });
+
+  } catch (error) {
+    console.error('Error marking all notifications as read:', error);
+    res.status(500).json({ error: 'Failed to update notifications' });
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
+});
+
+app.get('/api/clients/:id/projects', async (req, res) => {
+  try {
+    const { id } = req.params;
+    if (!id) return res.status(400).json({ error: 'Client id is required' });
+
+    // Resolve client email from users table by id
+    const usersOut = await ddb.send(new ScanCommand({ TableName: 'ecm-users' }))
+    const users = (usersOut.Items || []).map(i => unmarshall(i))
+    const matched = users.find((u: any) => u.id === id)
+    if (!matched) return res.status(404).json({ error: 'Client not found' })
+    const email = matched.email
+
+    // Query projects by GSI userId
+    const projOut = await ddb.send(new QueryCommand({
+      TableName: 'ecm-projects',
+      IndexName: 'UserIdIndex',
+      KeyConditionExpression: '#uid = :uid',
+      ExpressionAttributeNames: { '#uid': 'userId' },
+      ExpressionAttributeValues: { ':uid': { S: email } },
+    }))
+    const items = (projOut.Items || []).map(i => unmarshall(i))
+    const projects = items.map((p: any) => ({
+      id: p.id,
+      name: p.name,
+      status: p.status,
+      client: p.userId,
+      progress: Math.min(100, Math.round(((p.budget_used || 0) / Math.max(1, p.budget_total || 0)) * 100)),
+      dueDate: p.deadline || p.updatedAt || p.createdAt,
+      budget: p.budget_total || 0,
+      description: p.description || '',
+      createdAt: p.createdAt,
+      updatedAt: p.updatedAt,
+    }))
+    return res.json({ projects })
+  } catch (error) {
+    console.error('Error fetching client projects (DynamoDB):', error)
+    return res.status(500).json({ error: 'Internal error fetching client projects' })
+  }
 });

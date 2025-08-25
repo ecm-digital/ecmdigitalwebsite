@@ -111,6 +111,20 @@
         transform: translateX(5px);
     }
     
+    .dropdown-header {
+        color: #007AFF !important;
+        font-weight: 700 !important;
+        font-size: 0.8rem !important;
+        padding: 0.5rem 0.75rem !important;
+        margin-bottom: 0.25rem !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    }
+    
+    .dropdown-divider {
+        border-color: rgba(255, 255, 255, 0.1) !important;
+        margin: 0.25rem 0 !important;
+    }
+    
     /* Mobile language switcher */
     .language-switcher .dropdown-menu {
         background: rgba(28, 28, 30, 0.8) !important;
@@ -304,6 +318,145 @@
         font-size: 0.9rem;
         line-height: 1.6;
     }
+}
+
+/* Mobile Case Studies Section */
+@media (max-width: 768px) {
+    .case-study-card {
+        margin-bottom: 1.5rem !important;
+        padding: 1.5rem !important;
+        border-radius: 16px !important;
+    }
+    
+    .case-study-card .case-study-header h5 {
+        font-size: 1.1rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+    
+    .case-study-card .case-study-stats .stat-value {
+        font-size: 1.2rem !important;
+    }
+    
+    .case-study-card .case-study-stats .stat-label {
+        font-size: 0.7rem !important;
+    }
+    
+    .case-study-card .tech-tag {
+        font-size: 0.7rem !important;
+        padding: 0.2rem 0.5rem !important;
+        margin-bottom: 0.25rem !important;
+        display: inline-block !important;
+    }
+    
+    .case-study-card .btn {
+        padding: 0.75rem 1rem !important;
+        font-size: 0.9rem !important;
+    }
+    
+    /* Mobile Case Study Stats */
+    .case-study-card .case-study-stats .row {
+        margin: 0 !important;
+    }
+    
+    .case-study-card .case-study-stats .col-4 {
+        padding: 0 0.25rem !important;
+    }
+    
+    /* Mobile Case Study Icons */
+    .case-study-card .case-study-icon {
+        width: 50px !important;
+        height: 50px !important;
+        font-size: 1.2rem !important;
+    }
+    
+    /* Mobile Quick Actions */
+    .quick-actions {
+        flex-direction: column !important;
+        gap: 0.5rem !important;
+    }
+    
+    .quick-action-btn {
+        width: 100% !important;
+        padding: 0.75rem 1rem !important;
+        font-size: 1rem !important;
+        min-height: 44px !important;
+    }
+    
+    /* Mobile Message Types */
+    .voice-message.automatic-question,
+    .voice-message.quick-response,
+    .voice-message.follow-up {
+        font-size: 0.9rem !important;
+        padding: 0.75rem !important;
+        margin-bottom: 0.75rem !important;
+    }
+}
+
+/* Mobile Blog Section */
+@media (max-width: 768px) {
+    .blog-card {
+        margin-bottom: 1.5rem !important;
+        padding: 1.5rem !important;
+        border-radius: 16px !important;
+    }
+    
+    .blog-card .blog-card-header h5 {
+        font-size: 1.1rem !important;
+        margin-bottom: 0.5rem !important;
+        line-height: 1.3 !important;
+    }
+    
+    .blog-card .blog-card-header p {
+        font-size: 0.85rem !important;
+        line-height: 1.4 !important;
+    }
+    
+    .blog-card .blog-category {
+        font-size: 0.7rem !important;
+        padding: 0.4rem 0.8rem !important;
+    }
+    
+    .blog-card .blog-meta {
+        flex-direction: column !important;
+        gap: 0.5rem !important;
+        text-align: center !important;
+    }
+    
+    .blog-card .blog-tag {
+        font-size: 0.7rem !important;
+        padding: 0.2rem 0.5rem !important;
+        margin-bottom: 0.25rem !important;
+    }
+    
+    .blog-card .btn {
+        padding: 0.75rem 1rem !important;
+        font-size: 0.9rem !important;
+        min-height: 44px !important;
+    }
+    
+    .newsletter-card {
+        padding: 2rem 1.5rem !important;
+    }
+    
+    .newsletter-form {
+        flex-direction: column !important;
+        gap: 1rem !important;
+    }
+    
+    .newsletter-form .form-control {
+        width: 100% !important;
+        padding: 1rem !important;
+        font-size: 16px !important;
+        min-height: 48px !important;
+    }
+    
+    .newsletter-form .btn {
+        width: 100% !important;
+        padding: 1rem !important;
+        font-size: 1rem !important;
+        min-height: 48px !important;
+    }
+    
 }
 
 /* Mobile Contact Section */

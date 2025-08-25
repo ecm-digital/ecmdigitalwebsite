@@ -19,6 +19,10 @@ const navigationItems = [
     href: "/clients"
   },
   {
+    name: "Marketing",
+    href: "/marketing"
+  },
+  {
     name: "Case Studies",
     href: "/dashboard/case-studies"
   },

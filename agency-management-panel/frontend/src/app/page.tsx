@@ -19,19 +19,14 @@ interface User {
 }
 
 export default function Home() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [user, setUser] = useState<User | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isAuthenticated, setIsAuthenticated] = useState(true);
+  const [user, setUser] = useState<User | null>({ id: 'u-local', email: 'admin@ecm-digital.com', name: 'Admin', role: 'admin', permissions: ['all'] });
+  const [isLoading, setIsLoading] = useState(false);
   const [loginError, setLoginError] = useState<string | null>(null);
 
   useEffect(() => {
-    // Check if user is already authenticated
-    const token = localStorage.getItem('authToken');
-    if (token) {
-      checkAuthStatus(token);
-    } else {
-      setIsLoading(false);
-    }
+    // Disable auth check: render dashboard immediately
+    setIsLoading(false);
   }, []);
 
   const checkAuthStatus = async (token: string) => {
@@ -115,9 +110,7 @@ export default function Home() {
     );
   }
 
-  if (!isAuthenticated) {
-    return <LoginForm onLogin={handleLogin} isLoading={false} error={loginError} />;
-  }
+  // Auth disabled: always show dashboard
 
   return (
     <div className="min-h-screen bg-background">

@@ -1,10 +1,12 @@
 'use client'
 
 import { useState, useMemo } from 'react'
+import { useRouter } from 'next/navigation'
 import { useProjects } from '@/hooks/use-projects'
 import { ProjectCard } from './project-card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
+import { Textarea } from '@/components/ui/textarea'
 import { Badge } from '@/components/ui/badge'
 import { 
   Select,
@@ -47,10 +49,19 @@ const typeOptions = [
 ]
 
 export function ProjectsList() {
-  const { projects, loading } = useProjects()
+  const { projects, loading, createProject } = useProjects()
+  const router = useRouter()
   const [searchQuery, setSearchQuery] = useState('')
   const [statusFilter, setStatusFilter] = useState('all')
   const [typeFilter, setTypeFilter] = useState('all')
+  const [showCreate, setShowCreate] = useState(false)
+  const [creating, setCreating] = useState(false)
+  const [formName, setFormName] = useState('')
+  const [formDescription, setFormDescription] = useState('')
+  const [formType, setFormType] = useState('website')
+  const [formStatus, setFormStatus] = useState<ProjectStatus>('discovery')
+  const [formBudget, setFormBudget] = useState<number | ''>('')
+  const [formDeadline, setFormDeadline] = useState<string>('')
 
   const filteredProjects = useMemo(() => {
     return projects.filter(project => {
@@ -65,8 +76,35 @@ export function ProjectsList() {
   }, [projects, searchQuery, statusFilter, typeFilter])
 
   const handleViewDetails = (project: Project) => {
-    // TODO: Navigate to project details page
-    console.log('View project details:', project.id)
+    router.push(`/dashboard/projects/${project.id}`)
+  }
+
+  const handleCreate = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!formName.trim()) return
+    setCreating(true)
+    try {
+      await createProject({
+        name: formName.trim(),
+        description: formDescription || undefined,
+        status: formStatus,
+        // The hook accepts additional fields via any-casting
+        ...(formType ? { type: formType } : {}),
+        ...(formBudget !== '' ? { budget_total: Number(formBudget) } : {}),
+        ...(formDeadline ? { deadline: formDeadline } : {}),
+      } as any)
+      setShowCreate(false)
+      setFormName('')
+      setFormDescription('')
+      setFormType('website')
+      setFormStatus('discovery')
+      setFormBudget('')
+      setFormDeadline('')
+    } catch (err) {
+      console.error('Create project failed:', err)
+    } finally {
+      setCreating(false)
+    }
   }
 
   const activeProjects = projects.filter(p => p.status !== 'completed')
@@ -90,6 +128,93 @@ export function ProjectsList() {
 
   return (
     <div className="space-y-8">
+      {/* Create Project Bar */}
+      <div className="bg-white/80 backdrop-blur-sm rounded-2xl border border-slate-200/50 p-4">
+        {!showCreate ? (
+          <div className="flex items-center justify-between gap-4">
+            <div>
+              <h3 className="text-lg font-semibold text-slate-900">Nowy projekt</h3>
+              <p className="text-slate-600 text-sm">Utwórz nowy projekt i rozpocznij współpracę</p>
+            </div>
+            <Button className="btn-primary-modern" onClick={() => setShowCreate(true)}>
+              <Plus className="h-5 w-5 mr-2" /> Dodaj projekt
+            </Button>
+          </div>
+        ) : (
+          <form onSubmit={handleCreate} className="grid grid-cols-1 md:grid-cols-6 gap-3">
+            <div className="md:col-span-2">
+              <Input
+                placeholder="Nazwa projektu *"
+                value={formName}
+                onChange={(e) => setFormName(e.target.value)}
+                required
+                className="input-modern"
+              />
+            </div>
+            <div className="md:col-span-2">
+              <Input
+                placeholder="Budżet (opcjonalnie)"
+                type="number"
+                min={0}
+                value={formBudget}
+                onChange={(e) => setFormBudget(e.target.value === '' ? '' : Number(e.target.value))}
+                className="input-modern"
+              />
+            </div>
+            <div className="md:col-span-2">
+              <Input
+                type="date"
+                placeholder="Termin (opcjonalnie)"
+                value={formDeadline}
+                onChange={(e) => setFormDeadline(e.target.value)}
+                className="input-modern"
+              />
+            </div>
+
+            <div className="md:col-span-2">
+              <Select value={formStatus} onValueChange={(v) => setFormStatus(v as ProjectStatus)}>
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Status" />
+                </SelectTrigger>
+                <SelectContent>
+                  {statusOptions.filter(s => s.value !== 'all').map(s => (
+                    <SelectItem key={s.value} value={s.value}>{s.label}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="md:col-span-2">
+              <Select value={formType} onValueChange={setFormType}>
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Typ" />
+                </SelectTrigger>
+                <SelectContent>
+                  {typeOptions.filter(t => t.value !== 'all').map(t => (
+                    <SelectItem key={t.value} value={t.value}>{t.label}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="md:col-span-6">
+              <Textarea
+                placeholder="Opis (opcjonalnie)"
+                value={formDescription}
+                onChange={(e) => setFormDescription(e.target.value)}
+                className="input-modern"
+              />
+            </div>
+
+            <div className="md:col-span-6 flex items-center justify-end gap-3">
+              <Button type="button" variant="ghost" onClick={() => { setShowCreate(false); }}>
+                Anuluj
+              </Button>
+              <Button type="submit" className="btn-primary-modern" disabled={creating}>
+                {creating ? 'Tworzenie...' : 'Utwórz projekt'}
+              </Button>
+            </div>
+          </form>
+        )}
+      </div>
       {/* Hero Header */}
       <div className="relative overflow-hidden bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 rounded-3xl p-8 lg:p-12">
         <div className="absolute inset-0 bg-black/10"></div>
@@ -252,7 +377,7 @@ export function ProjectsList() {
             }
           </p>
           {(!searchQuery && statusFilter === 'all' && typeFilter === 'all') && (
-            <Button className="btn-primary-modern text-lg px-8 py-4">
+            <Button className="btn-primary-modern text-lg px-8 py-4" onClick={() => setShowCreate(true)}>
               <Plus className="h-5 w-5 mr-2" />
               Rozpocznij nowy projekt
             </Button>
@@ -262,7 +387,7 @@ export function ProjectsList() {
 
       {/* Mobile New Project Button */}
       <div className="lg:hidden">
-        <Button className="btn-primary-modern w-full text-lg py-4">
+        <Button className="btn-primary-modern w-full text-lg py-4" onClick={() => setShowCreate(true)}>
           <Plus className="h-5 w-5 mr-2" />
           Nowy Projekt
         </Button>

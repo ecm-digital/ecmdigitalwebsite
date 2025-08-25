@@ -1,8 +1,9 @@
 "use client";
 
-import { Bell, Search, Settings, User } from "lucide-react";
+import { Search, Settings, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Navigation } from "./navigation";
+import { NotificationsPanel } from "./notifications";
 
 import { usePathname } from "next/navigation";
 
@@ -61,12 +62,7 @@ export function DashboardHeader() {
             </div>
 
             {/* Notifications */}
-            <Button variant="ghost" size="icon" className="relative">
-              <Bell className="w-5 h-5" />
-              <span className="absolute -top-1 -right-1 w-3 h-3 bg-destructive rounded-full text-xs flex items-center justify-center">
-                <span className="w-1.5 h-1.5 bg-white rounded-full"></span>
-              </span>
-            </Button>
+            <NotificationsPanel />
 
             {/* Settings */}
             <Button variant="ghost" size="icon">

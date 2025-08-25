@@ -1,392 +1,270 @@
 "use client";
 
 import React from "react";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-// Removed supabase import - using backend API instead
-import { toast } from "sonner";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-  DialogFooter,
-} from "@/components/ui/dialog";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import {
-  Select,
-  SelectTrigger,
-  SelectValue,
-  SelectContent,
-  SelectItem,
-} from "@/components/ui/select";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 
-interface ClientContact {
-  person: string;
+interface ClientRow {
+  id: string;
   email: string;
-  phone: string;
+  firstName: string;
+  lastName: string;
+  name: string;
+  company: string;
+  role: string;
+  status: string;
+  registration_date: string;
+  lastLoginAt: string | null;
 }
 
-interface Client {
-  id: number;
+interface ProjectRow {
+  id: string;
   name: string;
-  industry: string;
-  // For Supabase we may store flattened columns; keep backward compatibility by shaping data
-  contact: ClientContact;
   status: string;
+  client: string;
+  progress: number;
+  dueDate?: string;
+  budget?: number;
+  description?: string;
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 export default function ClientsPage() {
-  const qc = useQueryClient();
-  const [open, setOpen] = React.useState(false);
-  const [editOpen, setEditOpen] = React.useState(false);
-  const [deleteOpen, setDeleteOpen] = React.useState(false);
-  const [selected, setSelected] = React.useState<Client | null>(null);
-  const { data: clients, isLoading, error } = useQuery<Client[]>({
-    queryKey: ["clients"],
-    queryFn: async () => {
-      const response = await fetch('http://localhost:3001/api/clients');
-      if (!response.ok) throw new Error('Failed to fetch clients from backend');
-      return await response.json();
-    },
-  });
+  const [clients, setClients] = React.useState<ClientRow[]>([]);
+  const [loading, setLoading] = React.useState(false);
+  const [error, setError] = React.useState<string | null>(null);
 
-  return (
-    <main className="container mx-auto py-8 px-4">
-      <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold">Klienci</h1>
-        <Button size="sm" onClick={() => setOpen(true)}>Dodaj klienta</Button>
-      </div>
-      <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="sm:max-w-2xl">
-          <DialogHeader>
-            <DialogTitle>Dodaj klienta</DialogTitle>
-            <DialogDescription>Wprowadź dane klienta. Pola z * są wymagane.</DialogDescription>
-          </DialogHeader>
-          <CreateClientForm
-            onCreated={() => {
-              qc.invalidateQueries({ queryKey: ["clients"] });
-              setOpen(false);
-            }}
-          />
-          <DialogFooter>
-            <Button variant="secondary" onClick={() => setOpen(false)}>Anuluj</Button>
-            <Button type="submit" form="create-client-form">Zapisz</Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
-      {isLoading && <div className="text-muted-foreground">Ładowanie klientów...</div>}
-      {error && (
-        <div className="text-destructive">
-          {error instanceof Error ? error.message : "Błąd podczas pobierania klientów."}
-        </div>
-      )}
+  const [projectsOpen, setProjectsOpen] = React.useState(false);
+  const [selectedClient, setSelectedClient] = React.useState<ClientRow | null>(null);
+  const [projects, setProjects] = React.useState<ProjectRow[]>([]);
+  const [projectsLoading, setProjectsLoading] = React.useState(false);
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {clients && clients.map((client) => (
-          <div
-            key={client.id}
-            className="rounded-lg border bg-card p-6 shadow hover:shadow-lg transition-all"
-          >
-            <h2 className="font-semibold text-lg mb-2">{client.name}</h2>
+  React.useEffect(() => {
+    const loadClients = async () => {
+      setLoading(true);
+      setError(null);
+      try {
+        // Mock data instead of API call
+        const mockClients: ClientRow[] = [
+          {
+            id: '1',
+            email: 'john@techcorp.com',
+            firstName: 'John',
+            lastName: 'Smith',
+            name: 'John Smith',
+            company: 'TechCorp',
+            role: 'client',
+            status: 'Zweryfikowany',
+            registration_date: '2025-01-15T10:30:00Z',
+            lastLoginAt: '2025-01-20T14:20:00Z'
+          },
+          {
+            id: '2',
+            email: 'sarah@startupxyz.com',
+            firstName: 'Sarah',
+            lastName: 'Johnson',
+            name: 'Sarah Johnson',
+            company: 'StartupXYZ',
+            role: 'client',
+            status: 'Zweryfikowany',
+            registration_date: '2025-01-18T09:15:00Z',
+            lastLoginAt: '2025-01-21T11:45:00Z'
+          },
+          {
+            id: '3',
+            email: 'mike@fashionstore.com',
+            firstName: 'Mike',
+            lastName: 'Brown',
+            name: 'Mike Brown',
+            company: 'FashionStore',
+            role: 'client',
+            status: 'Niezweryfikowany',
+            registration_date: '2025-01-22T16:00:00Z',
+            lastLoginAt: null
+          }
+        ];
+        setClients(mockClients);
+      } catch (e: any) {
+        setError(e?.message || 'Błąd pobierania klientów');
+        setClients([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadClients();
+  }, []);
 
-            <div className="text-sm text-muted-foreground mb-1">
-              Branża: <span className="font-medium">{client.industry}</span>
-            </div>
-
-            <div className="text-xs mb-2">
-              Status: <span className="inline-block px-2 py-1 rounded bg-primary/10 text-primary font-semibold">{client.status}</span>
-            </div>
-
-            <div className="mt-3 text-sm">
-              <div className="font-medium mb-1">Kontakt</div>
-              <div className="text-muted-foreground">{client.contact.person}</div>
-              <div>
-                <a className="text-primary hover:underline" href={`mailto:${client.contact.email}`}>
-                  {client.contact.email}
-                </a>
-              </div>
-              <div>
-                <a className="text-primary hover:underline" href={`tel:${client.contact.phone.replace(/\s+/g, "")}`}>
-                  {client.contact.phone}
-                </a>
-              </div>
-            </div>
-
-            <div className="mt-4 flex items-center gap-2">
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => { setSelected(client); setEditOpen(true); }}
-              >
-                Edytuj
-              </Button>
-              <Button
-                variant="destructive"
-                size="sm"
-                onClick={() => { setSelected(client); setDeleteOpen(true); }}
-              >
-                Usuń
-              </Button>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Edit client dialog */}
-      <Dialog open={editOpen} onOpenChange={(v) => { setEditOpen(v); if (!v) setSelected(null); }}>
-        <DialogContent className="sm:max-w-2xl">
-          <DialogHeader>
-            <DialogTitle>Edytuj klienta</DialogTitle>
-            <DialogDescription>Zaktualizuj dane klienta. Pola z * są wymagane.</DialogDescription>
-          </DialogHeader>
-          {selected && (
-            <EditClientForm
-              client={selected}
-              onSaved={() => {
-                qc.invalidateQueries({ queryKey: ["clients"] });
-                setEditOpen(false);
-                setSelected(null);
-              }}
-            />
-          )}
-          <DialogFooter>
-            <Button variant="secondary" onClick={() => { setEditOpen(false); setSelected(null); }}>Anuluj</Button>
-            <Button type="submit" form="edit-client-form">Zapisz zmiany</Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
-
-      {/* Delete confirmation dialog */}
-      <Dialog open={deleteOpen} onOpenChange={(v) => { setDeleteOpen(v); if (!v) setSelected(null); }}>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>Usuń klienta</DialogTitle>
-            <DialogDescription>Tej operacji nie można cofnąć. Czy na pewno chcesz usunąć klienta "{selected?.name}"?</DialogDescription>
-          </DialogHeader>
-          <DialogFooter>
-            <Button variant="secondary" onClick={() => { setDeleteOpen(false); setSelected(null); }}>Anuluj</Button>
-            <DeleteClientButton
-              clientId={selected?.id || 0}
-              onDeleted={() => {
-                qc.invalidateQueries({ queryKey: ["clients"] });
-                setDeleteOpen(false);
-                setSelected(null);
-              }}
-            />
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
-    </main>
-  );
-}
-
-function CreateClientForm({ onCreated }: { onCreated?: () => void }) {
-  const qc = useQueryClient();
-  const [name, setName] = React.useState("");
-  const [industry, setIndustry] = React.useState("");
-  const [person, setPerson] = React.useState("");
-  const [email, setEmail] = React.useState("");
-  const [phone, setPhone] = React.useState("");
-  const [status, setStatus] = React.useState("Aktywny");
-
-  const createClient = useMutation({
-    mutationFn: async () => {
-      // Using mock create - backend doesn't support POST yet
-      console.log('Mock create client:', { name, industry, person, email, phone, status });
-      return true;
-    },
-    onError: (err) => {
-      // eslint-disable-next-line no-console
-      console.error("CreateClientForm: error", err);
-      toast.error((err as Error)?.message || "Nie udało się utworzyć klienta.");
-    },
-    onSuccess: () => {
-      setName(""); setIndustry(""); setPerson(""); setEmail(""); setPhone(""); setStatus("Aktywny");
-      qc.invalidateQueries({ queryKey: ["clients"] });
-      toast.success("Klient został utworzony");
-      onCreated?.();
+  const openProjects = async (client: ClientRow) => {
+    setSelectedClient(client);
+    setProjectsOpen(true);
+    setProjects([]);
+    setProjectsLoading(true);
+    try {
+      // Mock projects data
+      const mockProjects: ProjectRow[] = [
+        {
+          id: '1',
+          name: 'E-commerce Platform',
+          status: 'In Progress',
+          client: client.email,
+          progress: 75,
+          dueDate: '2025-09-15',
+          budget: 45000,
+          description: 'Modern e-commerce platform with payment integration'
+        },
+        {
+          id: '2',
+          name: 'Mobile App Development',
+          status: 'Completed',
+          client: client.email,
+          progress: 100,
+          dueDate: '2025-08-30',
+          budget: 32000,
+          description: 'Cross-platform mobile app for task management'
+        }
+      ];
+      setProjects(mockProjects);
+    } catch (e) {
+      // Keep modal open, but show empty state
+      console.error('Błąd pobierania projektów klienta:', e);
+      setProjects([]);
+    } finally {
+      setProjectsLoading(false);
     }
-  });
+  };
 
   return (
-    <form
-      id="create-client-form"
-      className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm"
-      onSubmit={(e) => {
-        e.preventDefault();
-        const valid = name.trim() && industry.trim() && person.trim() && email.trim() && phone.trim() && status.trim();
-        if (!valid || createClient.isPending) return;
-        createClient.mutate();
-      }}
-      onKeyDown={(e) => {
-        if ((e.metaKey || e.ctrlKey) && e.key === "Enter") {
-          const valid = name.trim() && industry.trim() && person.trim() && email.trim() && phone.trim() && status.trim();
-          if (valid && !createClient.isPending) {
-            e.preventDefault();
-            createClient.mutate();
-          }
-        }
-      }}
-    >
-      <div className="space-y-1">
-        <Label htmlFor="c-name">Nazwa *</Label>
-        <Input id="c-name" required value={name} onChange={(e) => setName(e.target.value)} placeholder="Nazwa klienta" />
+    <div className="container mx-auto px-4 py-8">
+      <div className="mb-8">
+        <h1 className="text-3xl font-bold">Zarządzanie Klientami</h1>
+        <p className="text-muted-foreground mt-2">Analiza klientów i ich projekty</p>
       </div>
-      <div className="space-y-1">
-        <Label htmlFor="c-industry">Branża *</Label>
-        <Input id="c-industry" required value={industry} onChange={(e) => setIndustry(e.target.value)} placeholder="Branża" />
-      </div>
-      <div className="space-y-1">
-        <Label htmlFor="c-person">Osoba kontaktowa *</Label>
-        <Input id="c-person" required value={person} onChange={(e) => setPerson(e.target.value)} placeholder="Imię i nazwisko" />
-      </div>
-      <div className="space-y-1">
-        <Label htmlFor="c-email">E-mail *</Label>
-        <Input id="c-email" type="email" required value={email} onChange={(e) => setEmail(e.target.value)} placeholder="email@firma.com" />
-      </div>
-      <div className="space-y-1">
-        <Label htmlFor="c-phone">Telefon *</Label>
-        <Input id="c-phone" required value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="+48 600 000 000" />
-      </div>
-      <div className="space-y-1">
-        <Label>Status *</Label>
-        <Select value={status} onValueChange={setStatus}>
-          <SelectTrigger>
-            <SelectValue placeholder="Wybierz status" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="Aktywny">Aktywny</SelectItem>
-            <SelectItem value="Współpraca zawieszona">Współpraca zawieszona</SelectItem>
-            <SelectItem value="Zakończony">Zakończony</SelectItem>
-          </SelectContent>
-        </Select>
-      </div>
-      <div className="md:col-span-2">
-        <Label htmlFor="c-notes">Notatki</Label>
-        <Textarea id="c-notes" placeholder="Dodatkowe informacje (opcjonalnie)" rows={3} />
-      </div>
-      {createClient.isError && (
-        <div className="md:col-span-2 text-xs text-destructive mt-1">{(createClient.error as Error)?.message || "Błąd podczas tworzenia klienta."}</div>
-      )}
-    </form>
-  );
-}
 
-function EditClientForm({ client, onSaved }: { client: Client; onSaved?: () => void }) {
-  const qc = useQueryClient();
-  const [name, setName] = React.useState(client.name);
-  const [industry, setIndustry] = React.useState(client.industry);
-  const [person, setPerson] = React.useState(client.contact.person || "");
-  const [email, setEmail] = React.useState(client.contact.email || "");
-  const [phone, setPhone] = React.useState(client.contact.phone || "");
-  const [status, setStatus] = React.useState(client.status || "Aktywny");
+      {/* Quick Stats */}
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Liczba Klientów</CardTitle>
+            <Badge variant="secondary">{clients.length}</Badge>
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{clients.length}</div>
+            <p className="text-xs text-muted-foreground">Łącznie</p>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Zweryfikowani</CardTitle>
+            <Badge variant="outline">{clients.filter(c => c.status === 'Zweryfikowany').length}</Badge>
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{clients.filter(c => c.status === 'Zweryfikowany').length}</div>
+            <p className="text-xs text-muted-foreground">Active</p>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Niezweryfikowani</CardTitle>
+            <Badge variant="default">{clients.filter(c => c.status !== 'Zweryfikowany').length}</Badge>
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{clients.filter(c => c.status !== 'Zweryfikowany').length}</div>
+            <p className="text-xs text-muted-foreground">Do follow-up</p>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Ostatnie logowania</CardTitle>
+            <Badge variant="secondary">{clients.filter(c => !!c.lastLoginAt).length}</Badge>
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{clients.filter(c => !!c.lastLoginAt).length}</div>
+            <p className="text-xs text-muted-foreground">Z aktywnością</p>
+          </CardContent>
+        </Card>
+      </div>
 
-  const updateClient = useMutation({
-    mutationFn: async () => {
-      // Using mock update - backend doesn't support PATCH yet
-      console.log('Mock update client:', client.id, { name, industry, person, email, phone, status });
-      return true;
-    },
-    onError: (err) => {
-      // eslint-disable-next-line no-console
-      console.error("EditClientForm: error", err);
-      toast.error((err as Error)?.message || "Nie udało się zaktualizować klienta.");
-    },
-    onSuccess: () => {
-      qc.invalidateQueries({ queryKey: ["clients"] });
-      toast.success("Klient został zaktualizowany");
-      onSaved?.();
-    },
-  });
+      {/* Clients Table */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Lista klientów</CardTitle>
+        </CardHeader>
+        <CardContent>
+          {loading ? (
+            <div className="py-10 text-center text-muted-foreground">Ładowanie...</div>
+          ) : error ? (
+            <div className="py-10 text-center text-red-500">{error}</div>
+          ) : clients.length === 0 ? (
+            <div className="py-10 text-center text-muted-foreground">Brak klientów</div>
+          ) : (
+            <div className="overflow-x-auto">
+              <table className="min-w-full divide-y divide-gray-200">
+                <thead>
+                  <tr>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Imię</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nazwisko</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Firma</th>
+                    <th className="px-6 py-3"></th>
+                  </tr>
+                </thead>
+                <tbody className="bg-white divide-y divide-gray-200">
+                  {clients.map((c) => (
+                    <tr key={c.id} className="hover:bg-gray-50">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                        <a href={`mailto:${c.email}`} className="text-blue-600 hover:text-blue-800">{c.email}</a>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{c.firstName}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{c.lastName}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{c.company}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-right text-sm">
+                        <Button size="sm" onClick={() => openProjects(c)}>Projekty</Button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+        </CardContent>
+      </Card>
 
-  return (
-    <form
-      id="edit-client-form"
-      className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm"
-      onSubmit={(e) => {
-        e.preventDefault();
-        const valid = name.trim() && industry.trim() && person.trim() && email.trim() && phone.trim() && status.trim();
-        if (!valid || updateClient.isPending) return;
-        updateClient.mutate();
-      }}
-      onKeyDown={(e) => {
-        if ((e.metaKey || e.ctrlKey) && e.key === "Enter") {
-          const valid = name.trim() && industry.trim() && person.trim() && email.trim() && phone.trim() && status.trim();
-          if (valid && !updateClient.isPending) {
-            e.preventDefault();
-            updateClient.mutate();
-          }
-        }
-      }}
-    >
-      <div className="space-y-1">
-        <Label htmlFor="e-name">Nazwa *</Label>
-        <Input id="e-name" required value={name} onChange={(e) => setName(e.target.value)} placeholder="Nazwa klienta" />
-      </div>
-      <div className="space-y-1">
-        <Label htmlFor="e-industry">Branża *</Label>
-        <Input id="e-industry" required value={industry} onChange={(e) => setIndustry(e.target.value)} placeholder="Branża" />
-      </div>
-      <div className="space-y-1">
-        <Label htmlFor="e-person">Osoba kontaktowa *</Label>
-        <Input id="e-person" required value={person} onChange={(e) => setPerson(e.target.value)} placeholder="Imię i nazwisko" />
-      </div>
-      <div className="space-y-1">
-        <Label htmlFor="e-email">E-mail *</Label>
-        <Input id="e-email" type="email" required value={email} onChange={(e) => setEmail(e.target.value)} placeholder="email@firma.com" />
-      </div>
-      <div className="space-y-1">
-        <Label htmlFor="e-phone">Telefon *</Label>
-        <Input id="e-phone" required value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="+48 600 000 000" />
-      </div>
-      <div className="space-y-1">
-        <Label>Status *</Label>
-        <Select value={status} onValueChange={setStatus}>
-          <SelectTrigger>
-            <SelectValue placeholder="Wybierz status" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="Aktywny">Aktywny</SelectItem>
-            <SelectItem value="Współpraca zawieszona">Współpraca zawieszona</SelectItem>
-            <SelectItem value="Zakończony">Zakończony</SelectItem>
-          </SelectContent>
-        </Select>
-      </div>
-      {updateClient.isError && (
-        <div className="md:col-span-2 text-xs text-destructive mt-1">{(updateClient.error as Error)?.message || "Błąd podczas aktualizacji klienta."}</div>
-      )}
-    </form>
-  );
-}
+      {/* Projects Modal */}
+      <Dialog open={projectsOpen} onOpenChange={setProjectsOpen}>
+        <DialogContent className="max-w-2xl">
+          <DialogHeader>
+            <DialogTitle>
+              Projekty {selectedClient ? `— ${selectedClient.name || selectedClient.email}` : ''}
+            </DialogTitle>
+          </DialogHeader>
 
-function DeleteClientButton({ clientId, onDeleted }: { clientId: number; onDeleted?: () => void }) {
-  const qc = useQueryClient();
-  const del = useMutation({
-    mutationFn: async () => {
-      if (!clientId) throw new Error("Brak ID klienta");
-      // Using mock delete - backend doesn't support DELETE yet
-      console.log('Mock delete client:', clientId);
-      return true;
-    },
-    onError: (err) => {
-      // eslint-disable-next-line no-console
-      console.error("DeleteClientButton: error", err);
-      toast.error((err as Error)?.message || "Nie udało się usunąć klienta.");
-    },
-    onSuccess: () => {
-      qc.invalidateQueries({ queryKey: ["clients"] });
-      toast.success("Klient został usunięty");
-      onDeleted?.();
-    },
-  });
-
-  return (
-    <Button variant="destructive" onClick={() => { if (!del.isPending) del.mutate(); }} disabled={del.isPending}>
-      {del.isPending ? "Usuwanie..." : "Usuń"}
-    </Button>
+          {projectsLoading ? (
+            <div className="py-8 text-center text-muted-foreground">Ładowanie projektów...</div>
+          ) : projects.length === 0 ? (
+            <div className="py-8 text-center text-muted-foreground">Brak projektów</div>
+          ) : (
+            <div className="space-y-3">
+              {projects.map((p) => (
+                <div key={p.id} className="border rounded-lg p-4">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <div className="font-medium">{p.name}</div>
+                      <div className="text-xs text-muted-foreground">Status: {p.status}</div>
+                    </div>
+                    <div className="text-sm text-muted-foreground">Budżet: {p.budget ?? 0} zł</div>
+                  </div>
+                  {p.description && (
+                    <div className="text-sm mt-2 text-slate-600">{p.description}</div>
+                  )}
+                </div>
+              ))}
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
+    </div>
   );
 }

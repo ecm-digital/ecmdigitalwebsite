@@ -56,6 +56,38 @@ dokumentacja-ecm/
 - Kompatybilna z GitHub Pages, Netlify, Vercel
 - CDN dla optymalnej wydajności
 
+## 🔗 Integracje
+
+- AWS (Bedrock, Lambda, Lex/Polly)
+- Google Analytics (gtag)
+- Hotjar
+- HubSpot (tracking + formularz)
+
+### HubSpot (statyczna strona)
+
+1. Uzupełnij `hubspot-config.json` w katalogu projektu:
+
+```
+{
+  "portalId": "YOUR_PORTAL_ID",
+  "formId": "YOUR_FORM_ID",
+  "region": "na1",
+  "formTargetId": "hubspot-form"
+}
+```
+
+2. W `index.html` dodano placeholder `<div id="hubspot-form"></div>` w sekcji `#contact` oraz loader `src/js/hubspot.js`.
+
+### HubSpot (Next.js aplikacje)
+
+Dodaj w `.env.local` odpowiedniej aplikacji:
+
+```
+NEXT_PUBLIC_HUBSPOT_PORTAL_ID=YOUR_PORTAL_ID
+```
+
+Skrypt śledzący jest wstrzykiwany w `src/app/layout.tsx` przez `next/script` dla obu aplikacji.
+
 ## 🚀 Uruchomienie Lokalnie
 
 ### Opcja 1: Python HTTP Server

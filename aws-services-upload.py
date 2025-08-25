@@ -7,7 +7,8 @@ Uploads services analysis to AWS DynamoDB and S3
 import boto3
 import json
 import os
-from datetime import datetime
+import uuid
+from datetime import datetime, timedelta
 from botocore.exceptions import ClientError
 
 class ECMServicesUploader:
@@ -45,6 +46,53 @@ class ECMServicesUploader:
             else:
                 print(f"❌ Error creating table: {e}")
                 return None
+
+    def create_ecm_users_table(self):
+        """Create DynamoDB table for ECM users if it doesn't exist"""
+        try:
+            table = self.dynamodb.create_table(
+                TableName='ecm-users',
+                KeySchema=[
+                    {
+                        'AttributeName': 'id',
+                        'KeyType': 'HASH'  # Partition key
+                    }
+                ],
+                AttributeDefinitions=[
+                    {
+                        'AttributeName': 'id',
+                        'AttributeType': 'S'
+                    },
+                    {
+                        'AttributeName': 'email',
+                        'AttributeType': 'S'
+                    }
+                ],
+                GlobalSecondaryIndexes=[
+                    {
+                        'IndexName': 'email-index',
+                        'KeySchema': [
+                            {
+                                'AttributeName': 'email',
+                                'KeyType': 'HASH'
+                            }
+                        ],
+                        'Projection': {
+                            'ProjectionType': 'ALL'
+                        }
+                    }
+                ],
+                BillingMode='PAY_PER_REQUEST'
+            )
+            print("✅ DynamoDB table 'ecm-users' created successfully")
+            return table
+        except ClientError as e:
+            if e.response['Error']['Code'] == 'ResourceInUseException':
+                print("ℹ️ Table 'ecm-users' already exists")
+                return self.dynamodb.Table('ecm-users')
+            else:
+                print(f"❌ Error creating users table: {e}")
+                return None
     
     def upload_to_dynamodb(self, services_data):
         """Upload services data to DynamoDB"""
@@ -54,11 +102,12 @@ class ECMServicesUploader:
         
         for service_id, service_data in services_data['services'].items():
             try:
-                # Add metadata
+                # Add service_id and metadata
+                service_data['service_id'] = service_id  # Add the required service_id field
                 service_data['upload_date'] = datetime.now().isoformat()
                 service_data['company'] = services_data['metadata']['company']
                 service_data['version'] = services_data['metadata']['version']
-                
+
                 # Upload to DynamoDB
                 table.put_item(Item=service_data)
                 print(f"✅ Uploaded: {service_data['name']}")
@@ -67,7 +116,59 @@ class ECMServicesUploader:
                 print(f"❌ Error uploading {service_id}: {e}")
         
         print("✅ DynamoDB upload completed!")
-    
+
+    def upsert_ecm_user(self, user_data):
+        """Upsert ECM user to DynamoDB"""
+        try:
+            table = self.dynamodb.Table('ecm-users')
+
+            # Prepare user data with defaults
+            user_item = {
+                'id': user_data.get('id', str(uuid.uuid4())),
+                'email': user_data['email'],
+                'firstName': user_data.get('firstName', ''),
+                'lastName': user_data.get('lastName', ''),
+                'name': user_data.get('name', f"{user_data.get('firstName', '')} {user_data.get('lastName', '')}".strip()),
+                'company': user_data.get('company', ''),
+                'role': user_data.get('role', 'client'),
+                'isEmailVerified': user_data.get('isEmailVerified', False),
+                'createdAt': user_data.get('createdAt', datetime.now().isoformat()),
+                'lastLoginAt': user_data.get('lastLoginAt', None)
+            }
+
+            # Remove None values
+            user_item = {k: v for k, v in user_item.items() if v is not None}
+
+            # Upsert user
+            table.put_item(Item=user_item)
+            print(f"✅ User upserted: {user_data['email']}")
+            return user_item
+
+        except ClientError as e:
+            print(f"❌ Error upserting user {user_data.get('email', 'unknown')}: {e}")
+            return None
+
+    def get_ecm_users(self):
+        """Get all ECM users from DynamoDB"""
+        try:
+            table = self.dynamodb.Table('ecm-users')
+
+            # Scan all users
+            response = table.scan()
+            users = response['Items']
+
+            # Handle pagination if needed
+            while 'LastEvaluatedKey' in response:
+                response = table.scan(ExclusiveStartKey=response['LastEvaluatedKey'])
+                users.extend(response['Items'])
+
+            print(f"✅ Retrieved {len(users)} users from DynamoDB")
+            return users
+
+        except ClientError as e:
+            print(f"❌ Error retrieving users: {e}")
+            return []
+
     def upload_to_s3(self, services_data):
         """Upload services analysis to S3"""
         try:
@@ -195,7 +296,57 @@ class ECMServicesUploader:
     def run_upload(self):
         """Main upload process"""
         print("🚀 Starting ECM Digital Services Upload to AWS...")
-        
+
+        # Create DynamoDB tables
+        self.create_dynamodb_table()
+        self.create_ecm_users_table()
+
+        # Add test users for demonstration
+        test_users = [
+            {
+                'id': 'test-user-123',
+                'email': 'test@example.com',
+                'firstName': 'Jan',
+                'lastName': 'Kowalski',
+                'name': 'Jan Kowalski',
+                'company': 'Test Company Sp. z o.o.',
+                'role': 'client',
+                'isEmailVerified': True,
+                'createdAt': datetime.now().isoformat(),
+                'lastLoginAt': datetime.now().isoformat()
+            },
+            {
+                'id': 'test-user-456',
+                'email': 'anna.nowak@example.com',
+                'firstName': 'Anna',
+                'lastName': 'Nowak',
+                'name': 'Anna Nowak',
+                'company': 'Design Studio',
+                'role': 'client',
+                'isEmailVerified': False,
+                'createdAt': (datetime.now() - timedelta(days=5)).isoformat(),
+                'lastLoginAt': (datetime.now() - timedelta(days=2)).isoformat()
+            },
+            {
+                'id': 'test-user-789',
+                'email': 'michal.wisniewski@example.com',
+                'firstName': 'Michał',
+                'lastName': 'Wiśniewski',
+                'name': 'Michał Wiśniewski',
+                'company': 'Tech Solutions',
+                'role': 'client',
+                'isEmailVerified': True,
+                'createdAt': (datetime.now() - timedelta(days=10)).isoformat(),
+                'lastLoginAt': datetime.now().isoformat()
+            }
+        ]
+
+        for user in test_users:
+            self.upsert_ecm_user(user)
+            print(f"✅ Test user added: {user['email']}")
+
+        print(f"✅ {len(test_users)} test users added to DynamoDB")
+
         # Load services data
         try:
             with open('services-analysis.json', 'r', encoding='utf-8') as f:
@@ -207,10 +358,7 @@ class ECMServicesUploader:
         except json.JSONDecodeError as e:
             print(f"❌ Invalid JSON: {e}")
             return
-        
-        # Create DynamoDB tables
-        self.create_dynamodb_table()
-        
+
         # Upload services to DynamoDB
         self.upload_to_dynamodb(services_data)
         
