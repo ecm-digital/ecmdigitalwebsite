@@ -6,29 +6,21 @@
   "framework": null,
   "regions": ["iad1"],
   "rewrites": [
+    { "source": "/contact", "destination": "/contact.html" },
+    { "source": "/login", "destination": "/login.html" },
+    { "source": "/panel", "destination": "/panel.html" },
+    { "source": "/projekty", "destination": "/projekty.html" }
+  ],
+  "redirects": [
     {
-      "source": "/contact",
-      "destination": "/contact.html"
+      "source": "/client-dashboard/(.*)",
+      "destination": "https://client-dashboard-ecm.vercel.app/$1",
+      "permanent": false
     },
     {
-      "source": "/login",
-      "destination": "/login.html"
-    },
-    {
-      "source": "/panel",
-      "destination": "/panel.html"
-    },
-    {
-      "source": "/projekty",
-      "destination": "/projekty.html"
-    },
-    {
-      "source": "/client-dashboard/:path*",
-      "destination": "https://client-dashboard-ecm.vercel.app/:path*"
-    },
-    {
-      "source": "/panel-klienta/:path*",
-      "destination": "https://client-dashboard-ecm.vercel.app/:path*"
+      "source": "/panel-klienta/(.*)",
+      "destination": "https://client-dashboard-ecm.vercel.app/$1",
+      "permanent": false
     }
   ]
 }
