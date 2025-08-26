@@ -276,6 +276,13 @@ export default function LoginForm() {
             <strong>AWS Integration:</strong> Panel klienta zintegrowany z AWS Cognito, 
             DynamoDB, S3 i Lambda.
           </p>
+          {/* Debug info - remove after fixing */}
+          <div className="mt-2 p-2 bg-gray-800/50 rounded text-xs text-gray-300">
+            <p>Debug: {process.env.NODE_ENV === 'development' ? 'dev' : 'prod'}</p>
+            <p>AWS Region: {process.env.NEXT_PUBLIC_AWS_REGION || 'not set'}</p>
+            <p>User Pool: {process.env.NEXT_PUBLIC_COGNITO_USER_POOL_ID ? 'set' : 'missing'}</p>
+            <p>Client ID: {process.env.NEXT_PUBLIC_COGNITO_CLIENT_ID ? 'set' : 'missing'}</p>
+          </div>
         </div>
       </form>
     </div>
