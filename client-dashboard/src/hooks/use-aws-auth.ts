@@ -52,24 +52,91 @@ export const useAWSAuth = () => {
             error: null
           })
         } else {
-          setAuthState(prev => ({ ...prev, isLoading: false }))
+          // Fallback for local development
+          const devUser = localStorage.getItem('dev_user')
+          if (devUser && process.env.NODE_ENV === 'development') {
+            const user = JSON.parse(devUser)
+            setAuthState({
+              isAuthenticated: true,
+              user,
+              isLoading: false,
+              error: null
+            })
+          } else {
+            setAuthState(prev => ({ ...prev, isLoading: false }))
+          }
         }
       } catch (error) {
         console.error('Auth check failed:', error)
         localStorage.removeItem('aws_access_token')
-        setAuthState({
-          isAuthenticated: false,
-          user: null,
-          isLoading: false,
-          error: null
-        })
+        
+        // Fallback for local development
+        if (process.env.NODE_ENV === 'development') {
+          const devUser = localStorage.getItem('dev_user')
+          if (devUser) {
+            const user = JSON.parse(devUser)
+            setAuthState({
+              isAuthenticated: true,
+              user,
+              isLoading: false,
+              error: null
+            })
+          } else {
+            setAuthState({
+              isAuthenticated: false,
+              user: null,
+              isLoading: false,
+              error: null
+            })
+          }
+        } else {
+          setAuthState({
+            isAuthenticated: false,
+            user: null,
+            isLoading: false,
+            error: null
+          })
+        }
       }
     }
 
     if (isAWSConfigured()) {
       checkAuth()
     } else {
-      setAuthState(prev => ({ ...prev, isLoading: false }))
+      // Fallback for local development without AWS
+      if (process.env.NODE_ENV === 'development') {
+        const devUser = localStorage.getItem('dev_user')
+        if (devUser) {
+          const user = JSON.parse(devUser)
+          setAuthState({
+            isAuthenticated: true,
+            user,
+            isLoading: false,
+            error: null
+          })
+        } else {
+          // Create default dev user
+          const defaultUser = {
+            id: 'dev-user-1',
+            email: 'dev@ecm-digital.com',
+            name: 'Tomasz Gnat',
+            company: 'ECM Digital',
+            role: 'client' as const,
+            isEmailVerified: true,
+            createdAt: new Date().toISOString(),
+            lastLoginAt: new Date().toISOString()
+          }
+          localStorage.setItem('dev_user', JSON.stringify(defaultUser))
+          setAuthState({
+            isAuthenticated: true,
+            user: defaultUser,
+            isLoading: false,
+            error: null
+          })
+        }
+      } else {
+        setAuthState(prev => ({ ...prev, isLoading: false }))
+      }
     }
   }, [])
 

@@ -19,11 +19,13 @@ export interface Project {
   description?: string
   type: ProjectType
   status: ProjectStatus
+  priority?: 'low' | 'medium' | 'high'
   client_id: string
   budget_total?: number
   budget_used?: number
   start_date?: string
   end_date?: string
+  deadline?: string
   metadata?: Record<string, any>
   created_at: string
   updated_at: string

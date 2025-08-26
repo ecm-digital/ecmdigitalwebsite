@@ -47,14 +47,19 @@ export function DashboardOverview() {
   const unreadCount = useUnreadMessages()
   const { t } = useLanguage()
 
-  const activeProjects = projects.filter(p => p.status !== 'completed')
-  const completedProjects = projects.filter(p => p.status === 'completed')
+  // Fallback data if user or projects are not available
+  const safeUser = user || { name: 'Użytkownik', email: 'user@example.com', role: 'client' }
+  const safeProjects = projects || []
+  const safeUnreadCount = unreadCount || 0
+
+  const activeProjects = safeProjects.filter(p => p.status !== 'completed')
+  const completedProjects = safeProjects.filter(p => p.status === 'completed')
   
-  const totalBudget = projects.reduce((sum, p) => sum + (p.budget_total || 0), 0)
-  const usedBudget = projects.reduce((sum, p) => sum + (p.budget_used || 0), 0)
+  const totalBudget = safeProjects.reduce((sum, p) => sum + (p.budget_total || 0), 0)
+  const usedBudget = safeProjects.reduce((sum, p) => sum + (p.budget_used || 0), 0)
   const budgetProgress = totalBudget > 0 ? (usedBudget / totalBudget) * 100 : 0
 
-  const recentProjects = projects.slice(0, 5)
+  const recentProjects = safeProjects.slice(0, 5)
 
   if (loading) {
     return (
@@ -84,7 +89,7 @@ export function DashboardOverview() {
                 Panel Klienta
               </div>
               <h1 className="text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight">
-                {t('dashboard.welcome')}, {user?.name || user?.email || 'User'}! 👋
+                {t('dashboard.welcome')}, {safeUser?.name || safeUser?.email || 'User'}! 👋
               </h1>
               <p className="text-xl text-blue-100 mb-6 max-w-2xl">
                 {t('dashboard.overview')}
@@ -167,7 +172,7 @@ export function DashboardOverview() {
             </div>
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold text-orange-900 mb-1">{unreadCount}</div>
+            <div className="text-3xl font-bold text-orange-900 mb-1">{safeUnreadCount}</div>
             <p className="text-sm text-orange-700 font-medium">
               {t('dashboard.stats.unreadMessagesDesc')}
             </p>

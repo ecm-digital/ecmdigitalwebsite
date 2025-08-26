@@ -113,8 +113,8 @@ Po zarejestrowaniu możesz dodać przykładowe projekty klikając przycisk "Doda
 1. Push kod do GitHub
 2. Połącz repozytorium z Vercel
 3. Dodaj zmienne środowiskowe:
-   - `NEXT_PUBLIC_SUPABASE_URL`
-   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+   - `AWS_ACCESS_KEY_ID`
+- `AWS_SECRET_ACCESS_KEY`
 4. Deploy!
 
 ### Inne platformy
