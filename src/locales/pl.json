@@ -8,25 +8,71 @@
     "contact": "Kontakt",
     "language": "PL"
   },
+  "navigation": {
+    "home": "Strona główna",
+    "services": "Usługi",
+    "about": "O nas",
+    "blog": "Blog",
+    "caseStudies": "Studia Przypadków",
+    "team": "Zespół",
+    "myAccount": "Moje Konto",
+    "contact": "Kontakt",
+    "dropdown": {
+      "aiSolutions": "🤖 Rozwiązania AI",
+      "aiAssistants": "Asystenci AI na Amazon Bedrock",
+      "voiceAssistants": "Asystenci Głosowi na Amazon Lex",
+      "aiAudits": "Audyty Wdrożenia AI",
+      "socialMediaAI": "Social Media & AI",
+      "digitalProducts": "🌐 Produkty Cyfrowe",
+      "websites": "Strony WWW",
+      "shopifyStores": "Sklepy Shopify",
+      "mobileApps": "Aplikacje Mobilne",
+      "automationMvp": "⚡ Automatyzacja & MVP",
+      "n8nAutomation": "Automatyzacje N8N",
+      "mvpPrototypes": "Prototypy MVP",
+      "viewAllServices": "Zobacz wszystkie usługi"
+    }
+  },
+  "common": {
+    "learnMore": "Dowiedz się więcej"
+  },
   "services": {
-    "websites": "Strony WWW",
-    "websites.description": "Profesjonalne strony internetowe dostosowane do potrzeb biznesowych. Zoptymalizowane pod kątem SEO, wydajności i konwersji.",
-    "shopify": "Sklepy Shopify",
-    "shopify.description": "Profesjonalne sklepy internetowe na platformie Shopify, które skutecznie sprzedają i skalują się wraz z Twoim biznesem.",
-    "mvp": "Prototypy MVP",
-    "mvp.description": "Szybka walidacja pomysłów biznesowych poprzez tworzenie funkcjonalnych prototypów. Minimalizujemy ryzyko i maksymalizujemy szanse na sukces.",
-    "uxAudit": "Audyty UX",
-    "uxAudit.description": "Kompleksowa analiza doświadczeń użytkownika w celu zwiększenia konwersji. Identyfikujemy problemy i proponujemy konkretne rozwiązania.",
-    "automation": "Automatyzacje",
-    "automation.description": "Automatyzacja procesów biznesowych w celu oszczędności czasu i zasobów. Zwiększ efektywność swojego biznesu dzięki inteligentnym automatyzacjom.",
-    "socialMedia": "Social Media & AI",
-    "socialMedia.description": "Kampanie social media oparte na data science z wysokimi współczynnikami konwersji. Wykorzystujemy AI i analizę danych do maksymalizacji ROI.",
-    "aiAssistants": "Asystenci AI na Amazon Bedrock & Copilot Studio",
-    "aiAssistants.description": "Tworzymy zaawansowane asystenty AI oparte na Amazon Bedrock i Microsoft Copilot Studio. Automatyzacja procesów biznesowych, obsługa klientów i analiza danych z wykorzystaniem najnowszych modeli AI.",
-    "mobileApps": "Aplikacje Mobilne",
-    "mobileApps.description": "Tworzymy nowoczesne aplikacje mobilne iOS, Android i React Native. Od pomysłu do App Store w 8-12 tygodni!",
-    "voiceAssistants": "Asystenci Głosowi na Amazon Lex",
-    "voiceAssistants.description": "Tworzymy inteligentne asystenty głosowe i chatboty na platformie Amazon Lex. Automatyzacja obsługi klienta przez głos i tekst!"
+    "websites": {
+      "title": "Strony WWW",
+      "description": "Profesjonalne strony internetowe dostosowane do potrzeb biznesowych. Zoptymalizowane pod kątem SEO, wydajności i konwersji."
+    },
+    "shopifyStores": {
+      "title": "Sklepy Shopify",
+      "description": "Profesjonalne sklepy internetowe na platformie Shopify, które skutecznie sprzedają i skalują się wraz z Twoim biznesem."
+    },
+    "mvpPrototypes": {
+      "title": "Prototypy MVP",
+      "description": "Szybka walidacja pomysłów biznesowych poprzez tworzenie funkcjonalnych prototypów. Minimalizujemy ryzyko i maksymalizujemy szanse na sukces."
+    },
+    "uxAudits": {
+      "title": "Audyty Wdrożenia AI w Twojej Firmie",
+      "description": "Analizujemy Twoje procesy biznesowe i identyfikujemy obszary do automatyzacji AI. Kompleksowy plan wdrożenia sztucznej inteligencji."
+    },
+    "automation": {
+      "title": "Automatyzacje",
+      "description": "Oszczędzaj 15-20 godzin tygodniowo automatyzując powtarzalne zadania. Integracje systemów, automatyzacja workflow i eliminacja błędów ludzkich."
+    },
+    "socialMediaAI": {
+      "title": "Social Media & AI",
+      "description": "Zwiększ zaangażowanie o 60% dzięki analizie treści AI. Dowiedz się, co naprawdę interesuje Twoich klientów."
+    },
+    "aiAssistants": {
+      "title": "Asystenci AI na Amazon Bedrock & Copilot Studio",
+      "description": "Automatyzuj obsługę klienta 24/7 i oszczędzaj do 70% kosztów wsparcia. Inteligentni asystenci AI odpowiadają na pytania i rozwiązują problemy."
+    },
+    "mobileApps": {
+      "title": "Aplikacje Mobilne",
+      "description": "Od pomysłu do App Store w 8-12 tygodni. Nowoczesne aplikacje iOS i Android, które zwiększają przychody i zaangażowanie klientów."
+    },
+    "voiceAssistants": {
+      "title": "Asystenci Głosowi na Amazon Lex",
+      "description": "Głosowa obsługa klienta - dostępność 24/7 bez kosztów call center. Naturalne rozmowy, inteligentne odpowiedzi."
+    }
   },
       "hero": {
         "title": "Wdrażamy AI w Twojej Firmie",
@@ -35,7 +81,17 @@
         "exploreServices": "Poznaj Usługi",
         "getQuote": "Otrzymaj Ofertę",
         "cta_assistant": "Porozmawiaj z naszym asystentem",
-        "exploreFeatures": "Poznaj funkcje"
+        "exploreFeatures": "Poznaj funkcje",
+        "stats": {
+          "aiProjects": "50+",
+          "aiProjectsLabel": "Projektów AI",
+          "costReduction": "70%",
+          "costReductionLabel": "Redukcja Kosztów",
+          "support": "24/7",
+          "supportLabel": "AI Wsparcie",
+          "satisfaction": "95%",
+          "satisfactionLabel": "Satysfakcja"
+        }
     },
   "sections": {
     "services": {

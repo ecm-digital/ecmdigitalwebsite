@@ -10,25 +10,71 @@
     "contact": "Contact",
     "language": "EN"
   },
+  "navigation": {
+    "home": "Home",
+    "services": "Services",
+    "about": "About Us",
+    "blog": "Blog",
+    "caseStudies": "Case Studies",
+    "team": "Team",
+    "myAccount": "My Account",
+    "contact": "Contact",
+    "dropdown": {
+      "aiSolutions": "🤖 AI Solutions",
+      "aiAssistants": "AI Assistants on Amazon Bedrock",
+      "voiceAssistants": "Voice Assistants on Amazon Lex",
+      "aiAudits": "AI Implementation Audits",
+      "socialMediaAI": "Social Media & AI",
+      "digitalProducts": "🌐 Digital Products",
+      "websites": "Websites",
+      "shopifyStores": "Shopify Stores",
+      "mobileApps": "Mobile Applications",
+      "automationMvp": "⚡ Automation & MVP",
+      "n8nAutomation": "N8N Automations",
+      "mvpPrototypes": "MVP Prototypes",
+      "viewAllServices": "View All Services"
+    }
+  },
+  "common": {
+    "learnMore": "Learn More"
+  },
   "services": {
-    "websites": "Websites",
-    "websites.description": "Professional websites tailored to business needs. Optimized for SEO, performance and conversion.",
-    "shopify": "Shopify Stores",
-    "shopify.description": "Professional online stores on the Shopify platform that effectively sell and scale with your business.",
-    "mvp": "MVP Prototypes",
-    "mvp.description": "Quick validation of business ideas through creating functional prototypes. We minimize risk and maximize chances of success.",
-    "uxAudit": "UX Audits",
-    "uxAudit.description": "Comprehensive analysis of user experience to increase conversion. We identify problems and propose specific solutions.",
-    "automation": "Automation",
-    "automation.description": "Business process automation to save time and resources. Increase your business efficiency with intelligent automations.",
-    "socialMedia": "Social Media & AI",
-    "socialMedia.description": "Social media campaigns based on data science with high conversion rates. We use AI and data analysis to maximize ROI.",
-    "aiAssistants": "AI Assistants on Amazon Bedrock & Copilot Studio",
-    "aiAssistants.description": "We create advanced AI assistants based on Amazon Bedrock and Microsoft Copilot Studio. Business process automation, customer service and data analysis using the latest AI models.",
-    "mobileApps": "Mobile Applications",
-    "mobileApps.description": "We create modern mobile applications for iOS, Android and React Native. From idea to App Store in 8-12 weeks!",
-    "voiceAssistants": "Voice Assistants on Amazon Lex",
-    "voiceAssistants.description": "We create intelligent voice assistants and chatbots on the Amazon Lex platform. Automation of customer service through voice and text!"
+    "websites": {
+      "title": "Websites",
+      "description": "Professional websites tailored to business needs. Optimized for SEO, performance and conversion."
+    },
+    "shopifyStores": {
+      "title": "Shopify Stores",
+      "description": "Professional online stores on the Shopify platform that effectively sell and scale with your business."
+    },
+    "mvpPrototypes": {
+      "title": "MVP Prototypes",
+      "description": "Quick validation of business ideas through creating functional prototypes. We minimize risk and maximize chances of success."
+    },
+    "uxAudits": {
+      "title": "AI Implementation Audits in Your Company",
+      "description": "We analyze your business processes and identify areas for AI automation. Comprehensive artificial intelligence implementation plan."
+    },
+    "automation": {
+      "title": "Automation",
+      "description": "Save 15-20 hours weekly by automating repetitive tasks. System integrations, workflow automation and elimination of human errors."
+    },
+    "socialMediaAI": {
+      "title": "Social Media & AI",
+      "description": "Increase engagement by 60% through AI content analysis. Learn what really interests your customers."
+    },
+    "aiAssistants": {
+      "title": "AI Assistants on Amazon Bedrock & Copilot Studio",
+      "description": "Automate customer service 24/7 and save up to 70% on support costs. Intelligent AI assistants answer questions and solve problems."
+    },
+    "mobileApps": {
+      "title": "Mobile Applications",
+      "description": "From idea to App Store in 8-12 weeks. Modern iOS and Android applications that increase revenue and customer engagement."
+    },
+    "voiceAssistants": {
+      "title": "Voice Assistants on Amazon Lex",
+      "description": "Voice customer service - 24/7 availability without call center costs. Natural conversations, intelligent responses."
+    }
   },
   "hero": {
     "title": "We Implement AI in Your Company",
@@ -37,14 +83,19 @@
     "exploreServices": "View Offer",
     "getQuote": "Free Consultation",
     "cta_assistant": "Chat with our AI Assistant",
-    "exploreFeatures": "Explore Features"
+    "exploreFeatures": "Explore Features",
+    "stats": {
+      "aiProjects": "50+",
+      "aiProjectsLabel": "AI Projects",
+      "costReduction": "70%",
+      "costReductionLabel": "Cost Reduction",
+      "support": "24/7",
+      "supportLabel": "AI Support",
+      "satisfaction": "95%",
+      "satisfactionLabel": "Satisfaction"
+    }
   },
-  "heroStats": {
-    "aiProjects": "AI Projects",
-    "costReduction": "Cost Reduction",
-    "aiSupport": "AI Support",
-    "satisfaction": "Satisfaction"
-  },
+
   "sections": {
     "services": {
       "title": "Our Services",

@@ -81,24 +81,93 @@ class I18nManager {
                     clientPanel: "Panel Klienta",
                     contact: "Kontakt"
                 },
+                navigation: {
+                    home: "Strona główna",
+                    services: "Usługi",
+                    about: "O nas",
+                    blog: "Blog",
+                    caseStudies: "Studia Przypadków",
+                    team: "Zespół",
+                    myAccount: "Moje Konto",
+                    contact: "Kontakt",
+                    dropdown: {
+                        aiSolutions: "🤖 Rozwiązania AI",
+                        aiAssistants: "Asystenci AI na Amazon Bedrock",
+                        voiceAssistants: "Asystenci Głosowi na Amazon Lex",
+                        aiAudits: "Audyty Wdrożenia AI",
+                        socialMediaAI: "Social Media & AI",
+                        digitalProducts: "🌐 Produkty Cyfrowe",
+                        websites: "Strony WWW",
+                        shopifyStores: "Sklepy Shopify",
+                        mobileApps: "Aplikacje Mobilne",
+                        automationMvp: "⚡ Automatyzacja & MVP",
+                        n8nAutomation: "Automatyzacje N8N",
+                        mvpPrototypes: "Prototypy MVP",
+                        viewAllServices: "Zobacz wszystkie usługi"
+                    }
+                },
+                common: {
+                    learnMore: "Dowiedz się więcej"
+                },
                 hero: {
-                    subtitle: "Profesjonalna agencja cyfrowa tworząca nowoczesne rozwiązania internetowe. Od prostych stron WWW po zaawansowane aplikacje mobilne i systemy AI.",
+                    title: "Wdrażamy AI w Twojej Firmie",
+                    subtitle: "Transformujemy Twoją firmę dzięki sztucznej inteligencji. Od chatbotów po zaawansowane automatyzacje - AI, które naprawdę działa i generuje realne korzyści biznesowe.",
                     exploreServices: "Zobacz Ofertę",
-                    getQuote: "Darmowa Konsultacja"
+                    getQuote: "Darmowa Konsultacja",
+                    stats: {
+                        aiProjects: "50+",
+                        aiProjectsLabel: "Projektów AI",
+                        costReduction: "70%",
+                        costReductionLabel: "Redukcja Kosztów",
+                        support: "24/7",
+                        supportLabel: "AI Wsparcie",
+                        satisfaction: "95%",
+                        satisfactionLabel: "Satysfakcja"
+                    }
                 },
                 services: {
-                    websites: "Strony WWW",
-                    shopify: "Sklepy Shopify",
-                    mvp: "Prototypy MVP",
-                    uxAudit: "Audyty UX",
-                    automation: "Automatyzacje",
-                    socialMedia: "Social Media & AI",
-                    aiAssistants: "Asystenci AI na Amazon Bedrock & Copilot Studio",
-                    mobileApps: "Aplikacje Mobilne",
-                    voiceAssistants: "Asystenci Głosowi na Amazon Lex"
+                    websites: {
+                        title: "Strony WWW",
+                        description: "Profesjonalne strony internetowe dostosowane do potrzeb biznesowych. Zoptymalizowane pod kątem SEO, wydajności i konwersji."
+                    },
+                    shopifyStores: {
+                        title: "Sklepy Shopify",
+                        description: "Profesjonalne sklepy internetowe na platformie Shopify, które skutecznie sprzedają i skalują się wraz z Twoim biznesem."
+                    },
+                    mvpPrototypes: {
+                        title: "Prototypy MVP",
+                        description: "Szybka walidacja pomysłów biznesowych poprzez tworzenie funkcjonalnych prototypów. Minimalizujemy ryzyko i maksymalizujemy szanse na sukces."
+                    },
+                    uxAudits: {
+                        title: "Audyty Wdrożenia AI w Twojej Firmie",
+                        description: "Analizujemy Twoje procesy biznesowe i identyfikujemy obszary do automatyzacji AI. Kompleksowy plan wdrożenia sztucznej inteligencji."
+                    },
+                    automation: {
+                        title: "Automatyzacje",
+                        description: "Oszczędzaj 15-20 godzin tygodniowo automatyzując powtarzalne zadania. Integracje systemów, automatyzacja workflow i eliminacja błędów ludzkich."
+                    },
+                    socialMediaAI: {
+                        title: "Social Media & AI",
+                        description: "Zwiększ zaangażowanie o 60% dzięki analizie treści AI. Dowiedz się, co naprawdę interesuje Twoich klientów."
+                    },
+                    aiAssistants: {
+                        title: "Asystenci AI na Amazon Bedrock & Copilot Studio",
+                        description: "Automatyzuj obsługę klienta 24/7 i oszczędzaj do 70% kosztów wsparcia. Inteligentni asystenci AI odpowiadają na pytania i rozwiązują problemy."
+                    },
+                    mobileApps: {
+                        title: "Aplikacje Mobilne",
+                        description: "Od pomysłu do App Store w 8-12 tygodni. Nowoczesne aplikacje iOS i Android, które zwiększają przychody i zaangażowanie klientów."
+                    },
+                    voiceAssistants: {
+                        title: "Asystenci Głosowi na Amazon Lex",
+                        description: "Głosowa obsługa klienta - dostępność 24/7 bez kosztów call center. Naturalne rozmowy, inteligentne odpowiedzi."
+                    }
                 },
                 sections: {
-                    services: { title: "Nasze Usługi" },
+                    services: { 
+                        title: "Nasze Usługi",
+                        subtitle: "Kompleksowe rozwiązania AI i automatyzacji, które transformują Twój biznes i zwiększają efektywność"
+                    },
                     about: { title: "O ECM Digital" },
                     team: { title: "Nasz Zespół", subtitle: "Poznaj ekspertów, którzy tworzą Twoje projekty" },
                     process: { 
@@ -129,24 +198,93 @@ class I18nManager {
                     clientPanel: "Client Panel",
                     contact: "Contact"
                 },
+                navigation: {
+                    home: "Home",
+                    services: "Services",
+                    about: "About Us",
+                    blog: "Blog",
+                    caseStudies: "Case Studies",
+                    team: "Team",
+                    myAccount: "My Account",
+                    contact: "Contact",
+                    dropdown: {
+                        aiSolutions: "🤖 AI Solutions",
+                        aiAssistants: "AI Assistants on Amazon Bedrock",
+                        voiceAssistants: "Voice Assistants on Amazon Lex",
+                        aiAudits: "AI Implementation Audits",
+                        socialMediaAI: "Social Media & AI",
+                        digitalProducts: "🌐 Digital Products",
+                        websites: "Websites",
+                        shopifyStores: "Shopify Stores",
+                        mobileApps: "Mobile Applications",
+                        automationMvp: "⚡ Automation & MVP",
+                        n8nAutomation: "N8N Automations",
+                        mvpPrototypes: "MVP Prototypes",
+                        viewAllServices: "View All Services"
+                    }
+                },
+                common: {
+                    learnMore: "Learn More"
+                },
                 hero: {
-                    subtitle: "Professional digital agency creating modern internet solutions. From simple websites to advanced mobile applications and AI systems.",
+                    title: "We Implement AI in Your Company",
+                    subtitle: "We transform your company through artificial intelligence. From chatbots to advanced automation - AI that really works and generates real business benefits.",
                     exploreServices: "View Offer",
-                    getQuote: "Free Consultation"
+                    getQuote: "Free Consultation",
+                    stats: {
+                        aiProjects: "50+",
+                        aiProjectsLabel: "AI Projects",
+                        costReduction: "70%",
+                        costReductionLabel: "Cost Reduction",
+                        support: "24/7",
+                        supportLabel: "AI Support",
+                        satisfaction: "95%",
+                        satisfactionLabel: "Satisfaction"
+                    }
                 },
                 services: {
-                    websites: "Websites",
-                    shopify: "Shopify Stores",
-                    mvp: "MVP Prototypes",
-                    uxAudit: "UX Audits",
-                    automation: "Automation",
-                    socialMedia: "Social Media & AI",
-                    aiAssistants: "AI Assistants on Amazon Bedrock & Copilot Studio",
-                    mobileApps: "Mobile Applications",
-                    voiceAssistants: "Voice Assistants on Amazon Lex"
+                    websites: {
+                        title: "Websites",
+                        description: "Professional websites tailored to business needs. Optimized for SEO, performance and conversion."
+                    },
+                    shopifyStores: {
+                        title: "Shopify Stores",
+                        description: "Professional online stores on the Shopify platform that effectively sell and scale with your business."
+                    },
+                    mvpPrototypes: {
+                        title: "MVP Prototypes",
+                        description: "Quick validation of business ideas through creating functional prototypes. We minimize risk and maximize chances of success."
+                    },
+                    uxAudits: {
+                        title: "AI Implementation Audits in Your Company",
+                        description: "We analyze your business processes and identify areas for AI automation. Comprehensive artificial intelligence implementation plan."
+                    },
+                    automation: {
+                        title: "Automation",
+                        description: "Save 15-20 hours weekly by automating repetitive tasks. System integrations, workflow automation and elimination of human errors."
+                    },
+                    socialMediaAI: {
+                        title: "Social Media & AI",
+                        description: "Increase engagement by 60% through AI content analysis. Learn what really interests your customers."
+                    },
+                    aiAssistants: {
+                        title: "AI Assistants on Amazon Bedrock & Copilot Studio",
+                        description: "Automate customer service 24/7 and save up to 70% on support costs. Intelligent AI assistants answer questions and solve problems."
+                    },
+                    mobileApps: {
+                        title: "Mobile Applications",
+                        description: "From idea to App Store in 8-12 weeks. Modern iOS and Android applications that increase revenue and customer engagement."
+                    },
+                    voiceAssistants: {
+                        title: "Voice Assistants on Amazon Lex",
+                        description: "Voice customer service - 24/7 availability without call center costs. Natural conversations, intelligent responses."
+                    }
                 },
                 sections: {
-                    services: { title: "Our Services" },
+                    services: { 
+                        title: "Our Services",
+                        subtitle: "Comprehensive AI and automation solutions that transform your business and increase efficiency"
+                    },
                     about: { title: "About ECM Digital" },
                     team: { title: "Our Team", subtitle: "Meet the experts who create your projects" },
                     process: { 
@@ -177,24 +315,93 @@ class I18nManager {
                     clientPanel: "Kundenbereich",
                     contact: "Kontakt"
                 },
+                navigation: {
+                    home: "Startseite",
+                    services: "Dienstleistungen",
+                    about: "Über uns",
+                    blog: "Blog",
+                    caseStudies: "Fallstudien",
+                    team: "Team",
+                    myAccount: "Mein Konto",
+                    contact: "Kontakt",
+                    dropdown: {
+                        aiSolutions: "🤖 KI-Lösungen",
+                        aiAssistants: "KI-Assistenten auf Amazon Bedrock",
+                        voiceAssistants: "Sprachassistenten auf Amazon Lex",
+                        aiAudits: "KI-Implementierungsaudits",
+                        socialMediaAI: "Social Media & KI",
+                        digitalProducts: "🌐 Digitale Produkte",
+                        websites: "Websites",
+                        shopifyStores: "Shopify Stores",
+                        mobileApps: "Mobile Anwendungen",
+                        automationMvp: "⚡ Automatisierung & MVP",
+                        n8nAutomation: "N8N-Automatisierungen",
+                        mvpPrototypes: "MVP-Prototypen",
+                        viewAllServices: "Alle Dienstleistungen anzeigen"
+                    }
+                },
+                common: {
+                    learnMore: "Mehr erfahren"
+                },
                 hero: {
-                    subtitle: "Professionelle Digitalagentur, die moderne Internetlösungen erstellt. Von einfachen Websites bis hin zu fortschrittlichen mobilen Anwendungen und KI-Systemen.",
+                    title: "Wir implementieren KI in Ihrem Unternehmen",
+                    subtitle: "Wir transformieren Ihr Unternehmen durch künstliche Intelligenz. Von Chatbots bis hin zu fortschrittlicher Automatisierung - KI, die wirklich funktioniert und echte Geschäftsvorteile generiert.",
                     exploreServices: "Angebot ansehen",
-                    getQuote: "Kostenlose Beratung"
+                    getQuote: "Kostenlose Beratung",
+                    stats: {
+                        aiProjects: "50+",
+                        aiProjectsLabel: "KI-Projekte",
+                        costReduction: "70%",
+                        costReductionLabel: "Kostensenkung",
+                        support: "24/7",
+                        supportLabel: "KI-Unterstützung",
+                        satisfaction: "95%",
+                        satisfactionLabel: "Zufriedenheit"
+                    }
                 },
                 services: {
-                    websites: "Websites",
-                    shopify: "Shopify Stores",
-                    mvp: "MVP Prototypen",
-                    uxAudit: "UX Audits",
-                    automation: "Automatisierung",
-                    socialMedia: "Social Media & KI",
-                    aiAssistants: "KI-Assistenten auf Amazon Bedrock & Copilot Studio",
-                    mobileApps: "Mobile Anwendungen",
-                    voiceAssistants: "Sprachassistenten auf Amazon Lex"
+                    websites: {
+                        title: "Websites",
+                        description: "Professionelle Websites, die auf Geschäftsanforderungen zugeschnitten sind. Optimiert für SEO, Leistung und Konversion."
+                    },
+                    shopifyStores: {
+                        title: "Shopify Stores",
+                        description: "Professionelle Online-Shops auf der Shopify-Plattform, die effektiv verkaufen und mit Ihrem Unternehmen wachsen."
+                    },
+                    mvpPrototypes: {
+                        title: "MVP-Prototypen",
+                        description: "Schnelle Validierung von Geschäftsideen durch die Erstellung funktionaler Prototypen. Wir minimieren Risiken und maximieren Erfolgschancen."
+                    },
+                    uxAudits: {
+                        title: "KI-Implementierungsaudits in Ihrem Unternehmen",
+                        description: "Wir analysieren Ihre Geschäftsprozesse und identifizieren Bereiche für KI-Automatisierung. Umfassender künstlicher Intelligenz-Implementierungsplan."
+                    },
+                    automation: {
+                        title: "Automatisierung",
+                        description: "Sparen Sie 15-20 Stunden pro Woche durch die Automatisierung sich wiederholender Aufgaben. Systemintegrationen, Workflow-Automatisierung und Eliminierung menschlicher Fehler."
+                    },
+                    socialMediaAI: {
+                        title: "Social Media & KI",
+                        description: "Steigern Sie das Engagement um 60% durch KI-Inhaltsanalyse. Erfahren Sie, was Ihre Kunden wirklich interessiert."
+                    },
+                    aiAssistants: {
+                        title: "KI-Assistenten auf Amazon Bedrock & Copilot Studio",
+                        description: "Automatisieren Sie den Kundenservice 24/7 und sparen Sie bis zu 70% der Supportkosten. Intelligente KI-Assistenten beantworten Fragen und lösen Probleme."
+                    },
+                    mobileApps: {
+                        title: "Mobile Anwendungen",
+                        description: "Von der Idee zum App Store in 8-12 Wochen. Moderne iOS- und Android-Anwendungen, die den Umsatz und das Kundenengagement steigern."
+                    },
+                    voiceAssistants: {
+                        title: "Sprachassistenten auf Amazon Lex",
+                        description: "Sprachbasierter Kundenservice - 24/7-Verfügbarkeit ohne Call-Center-Kosten. Natürliche Gespräche, intelligente Antworten."
+                    }
                 },
                 sections: {
-                    services: { title: "Unsere Dienstleistungen" },
+                    services: { 
+                        title: "Unsere Dienstleistungen",
+                        subtitle: "Umfassende KI- und Automatisierungslösungen, die Ihr Unternehmen transformieren und die Effizienz steigern"
+                    },
                     about: { title: "Über ECM Digital" },
                     team: { title: "Unser Team", subtitle: "Lernen Sie die Experten kennen, die Ihre Projekte erstellen" },
                     process: { 
