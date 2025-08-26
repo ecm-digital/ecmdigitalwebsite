@@ -157,7 +157,16 @@
                     <li class="nav-item"><a class="nav-link" href="#contact">Kontakt</a></li>
                     <li class="nav-item" id="userMenuPlaceholder" style="display: none;"></li>
                 </ul>
-                <!-- Język switcher wyłączony - strona tylko po polsku -->
+                <div class="language-switcher dropdown">
+                    <button class="btn btn-link dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        🇵🇱 PL
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="languageDropdown">
+                        <li><a class="dropdown-item lang-btn active" href="#" data-lang="pl">🇵🇱 Polski</a></li>
+                        <li><a class="dropdown-item lang-btn" href="#" data-lang="en">🇺🇸 English</a></li>
+                        <li><a class="dropdown-item lang-btn" href="#" data-lang="de">🇩🇪 Deutsch</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </nav>
@@ -2289,7 +2298,59 @@
         // Initialize AOS
         AOS.init();
         
-        // Language switcher wyłączony - strona tylko po polsku
+        // Prosty język switcher (bez systemu i18n)
+        document.addEventListener('DOMContentLoaded', function() {
+            const langButtons = document.querySelectorAll('.lang-btn');
+            const languageDropdownButton = document.getElementById('languageDropdown');
+            
+            // Language names for button text
+            const languageNames = {
+                'pl': '🇵🇱 Polski',
+                'en': '🇺🇸 English', 
+                'de': '🇩🇪 Deutsch'
+            };
+            
+            langButtons.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Remove active class from all buttons
+                    langButtons.forEach(b => b.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Get language from data-lang attribute
+                    const lang = this.getAttribute('data-lang');
+                    
+                    // Update dropdown button text
+                    languageDropdownButton.innerHTML = languageNames[lang];
+                    
+                    // Store language preference
+                    localStorage.setItem('preferredLanguage', lang);
+                    
+                    // Show message about language change
+                    if (lang === 'pl') {
+                        alert('Język zmieniony na polski - strona już jest po polsku!');
+                    } else if (lang === 'en') {
+                        alert('Język zmieniony na angielski - system tłumaczeń będzie dostępny wkrótce!');
+                    } else if (lang === 'de') {
+                        alert('Język zmieniony na niemiecki - system tłumaczeń będzie dostępny wkrótce!');
+                    }
+                });
+            });
+            
+            // Set initial language from localStorage or default to Polish
+            const savedLang = localStorage.getItem('preferredLanguage') || 'pl';
+            
+            // Update active button and dropdown text
+            const activeBtn = document.querySelector(`[data-lang="${savedLang}"]`);
+            if (activeBtn) {
+                langButtons.forEach(b => b.classList.remove('active'));
+                activeBtn.classList.add('active');
+                languageDropdownButton.innerHTML = languageNames[savedLang];
+            }
+        });
         
         // Enhanced Keyboard Navigation
         document.addEventListener('keydown', function(e) {
