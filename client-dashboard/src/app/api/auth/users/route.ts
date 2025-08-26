@@ -1,24 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server';
-
-const AWS = require('aws-sdk');
-
-// Configure AWS
-AWS.config.update({
-  region: process.env.AWS_REGION || 'eu-west-1',
-  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-});
-
-const dynamodb = new AWS.DynamoDB.DocumentClient();
+import { ScanCommand } from '@aws-sdk/lib-dynamodb';
+import { getDynamoDBDocumentClient, isAwsEnabled, TABLES } from '@/lib/aws-server';
 
 export async function GET(request: NextRequest) {
   try {
     // Scan all users from DynamoDB
-    const params = {
-      TableName: 'ecm-users'
-    };
+    if (!isAwsEnabled) {
+      return NextResponse.json({ users: [], total: 0 });
+    }
 
-    const result = await dynamodb.scan(params).promise();
+    const doc = getDynamoDBDocumentClient();
+    const result = await doc.send(new ScanCommand({ TableName: TABLES.users }));
 
     // Transform data for the management panel
     const users = result.Items?.map(user => ({
@@ -36,10 +28,7 @@ export async function GET(request: NextRequest) {
       fullName: user.name || `${user.firstName || ''} ${user.lastName || ''}`.trim() || user.email
     })) || [];
 
-    return NextResponse.json({
-      users: users,
-      total: users.length
-    });
+    return NextResponse.json({ users, total: users.length });
 
   } catch (error) {
     console.error('Error fetching users:', error);

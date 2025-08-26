@@ -172,16 +172,23 @@ export function ProjectsList() {
             </div>
 
             <div className="md:col-span-2">
-              <Select value={formStatus} onValueChange={(v) => setFormStatus(v as ProjectStatus)}>
-                <SelectTrigger className="w-full">
-                  <SelectValue placeholder="Status" />
-                </SelectTrigger>
-                <SelectContent>
-                  {statusOptions.filter(s => s.value !== 'all').map(s => (
-                    <SelectItem key={s.value} value={s.value}>{s.label}</SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Status
+                </label>
+                <Select value={formStatus} onValueChange={(value) => setFormStatus(value as ProjectStatus)}>
+                  <SelectTrigger>
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {statusOptions.filter(opt => opt.value !== 'all').map((option) => (
+                      <SelectItem key={option.value} value={option.value}>
+                        {option.label}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
             </div>
             <div className="md:col-span-2">
               <Select value={formType} onValueChange={setFormType}>

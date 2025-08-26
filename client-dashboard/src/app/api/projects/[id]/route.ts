@@ -1,15 +1,22 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { GetCommand, UpdateCommand, DeleteCommand } from '@aws-sdk/lib-dynamodb'
+import { getDynamoDBDocumentClient, isAwsEnabled, TABLES } from '@/lib/aws-server'
 
-const AWS = require('aws-sdk')
+const PROJECTS_TABLE = TABLES.projects
 
-AWS.config.update({
-  region: process.env.AWS_REGION || 'eu-west-1',
-  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-})
+const hasAwsCreds = isAwsEnabled && Boolean(process.env.AWS_ACCESS_KEY_ID && process.env.AWS_SECRET_ACCESS_KEY)
+let dynamodb: any = null
 
-const dynamodb = new AWS.DynamoDB.DocumentClient()
-const PROJECTS_TABLE = 'ecm-projects'
+// Share the same in-memory store as root route by using a module-level singleton
+const devStore: { projects: any[] } = (globalThis as any).__ECM_DEV_STORE__ || { projects: [] }
+;(globalThis as any).__ECM_DEV_STORE__ = devStore
+
+function ensureAws() {
+  if (!hasAwsCreds) return
+  if (!dynamodb) {
+    dynamodb = getDynamoDBDocumentClient()
+  }
+}
 
 export async function GET(
   request: NextRequest,
@@ -17,7 +24,13 @@ export async function GET(
 ) {
   try {
     const { id } = params
-    const result = await dynamodb.get({ TableName: PROJECTS_TABLE, Key: { id } }).promise()
+    if (!hasAwsCreds) {
+      const item = devStore.projects.find(p => p.id === id)
+      if (!item) return NextResponse.json({ error: 'Project not found' }, { status: 404 })
+      return NextResponse.json({ project: item })
+    }
+    ensureAws()
+    const result = await dynamodb.send(new GetCommand({ TableName: PROJECTS_TABLE, Key: { id } }))
     if (!result.Item) {
       return NextResponse.json({ error: 'Project not found' }, { status: 404 })
     }
@@ -72,17 +85,23 @@ export async function PUT(
       ExpressionAttributeValues[valueKey] = updates[key]
     }
 
-    const result = await dynamodb
-      .update({
-        TableName: PROJECTS_TABLE,
-        Key: { id },
-        UpdateExpression,
-        ExpressionAttributeNames,
-        ExpressionAttributeValues,
-        ReturnValues: 'ALL_NEW',
-      })
-      .promise()
+    if (!hasAwsCreds) {
+      const index = devStore.projects.findIndex(p => p.id === id)
+      if (index === -1) return NextResponse.json({ error: 'Project not found' }, { status: 404 })
+      const updated = { ...devStore.projects[index], ...updates, updatedAt: nowIso }
+      devStore.projects[index] = updated
+      return NextResponse.json({ project: updated })
+    }
 
+    ensureAws()
+    const result = await dynamodb.send(new UpdateCommand({
+      TableName: PROJECTS_TABLE,
+      Key: { id },
+      UpdateExpression,
+      ExpressionAttributeNames,
+      ExpressionAttributeValues,
+      ReturnValues: 'ALL_NEW',
+    }))
     return NextResponse.json({ project: result.Attributes })
   } catch (error) {
     console.error('Project PUT error:', error)
@@ -96,14 +115,21 @@ export async function DELETE(
 ) {
   try {
     const { id } = params
+    if (!hasAwsCreds) {
+      const index = devStore.projects.findIndex(p => p.id === id)
+      if (index === -1) return NextResponse.json({ error: 'Project not found' }, { status: 404 })
+      devStore.projects.splice(index, 1)
+      return NextResponse.json({ success: true, deletedId: id })
+    }
 
+    ensureAws()
     // Ensure the item exists first
-    const existing = await dynamodb.get({ TableName: PROJECTS_TABLE, Key: { id } }).promise()
+    const existing = await dynamodb.send(new GetCommand({ TableName: PROJECTS_TABLE, Key: { id } }))
     if (!existing.Item) {
       return NextResponse.json({ error: 'Project not found' }, { status: 404 })
     }
 
-    await dynamodb.delete({ TableName: PROJECTS_TABLE, Key: { id } }).promise()
+    await dynamodb.send(new DeleteCommand({ TableName: PROJECTS_TABLE, Key: { id } }))
     return NextResponse.json({ success: true, deletedId: id })
   } catch (error) {
     console.error('Project DELETE error:', error)

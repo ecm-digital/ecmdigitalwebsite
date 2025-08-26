@@ -10,7 +10,6 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   output: isExport ? 'export' : 'standalone',
-  trailingSlash: true,
   webpack: (config, { isServer }) => {
     if (!isServer) {
       config.resolve.fallback = {

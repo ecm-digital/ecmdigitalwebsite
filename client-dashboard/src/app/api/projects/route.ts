@@ -1,17 +1,27 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { QueryCommand, PutCommand, ScanCommand } from '@aws-sdk/lib-dynamodb'
+import { getDynamoDBDocumentClient, isAwsEnabled, TABLES } from '@/lib/aws-server'
 
-const AWS = require('aws-sdk')
-
-AWS.config.update({
-  region: process.env.AWS_REGION || 'eu-west-1',
-  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-})
-
-const dynamodb = new AWS.DynamoDB.DocumentClient()
-const PROJECTS_TABLE = 'ecm-projects'
-const USER_ID_INDEX = 'UserIdIndex'
 const AGENCY_BACKEND_URL = process.env.AGENCY_BACKEND_URL || process.env.NEXT_PUBLIC_AGENCY_BACKEND_URL || 'http://localhost:3001'
+
+// Prefer local mock by default in dev unless explicitly opted-in
+const isDev = process.env.NODE_ENV !== 'production'
+const allowAwsInDev = process.env.USE_AWS_IN_DEV === '1'
+const hasAwsCreds = isAwsEnabled && Boolean(process.env.AWS_ACCESS_KEY_ID && process.env.AWS_SECRET_ACCESS_KEY)
+
+// Lazy-init AWS only when creds exist (to avoid invalid token errors locally)
+let dynamoDoc = null as any
+const PROJECTS_TABLE = TABLES.projects
+const USER_ID_INDEX = 'UserIdIndex'
+
+// Simple in-memory store for local dev fallback (shared across module reloads)
+const devStore: { projects: any[] } = (globalThis as any).__ECM_DEV_STORE__ || { projects: [] }
+;(globalThis as any).__ECM_DEV_STORE__ = devStore
+
+function ensureAws() {
+  if (!hasAwsCreds) return
+  if (!dynamoDoc) dynamoDoc = getDynamoDBDocumentClient()
+}
 
 interface CreateProjectBody {
   userId: string // usually user email for now
@@ -35,15 +45,19 @@ export async function POST(request: NextRequest) {
     // List by userId when only userId is provided
     if (body && body.userId && !body.name) {
       const userId = String(body.userId)
-      const queryParams = {
+      if (!hasAwsCreds) {
+        const items = devStore.projects.filter(p => p.userId === userId)
+        return NextResponse.json({ projects: items })
+      }
+      ensureAws()
+      const queryParams = new QueryCommand({
         TableName: PROJECTS_TABLE,
         IndexName: USER_ID_INDEX,
         KeyConditionExpression: '#uid = :uid',
         ExpressionAttributeNames: { '#uid': 'userId' },
         ExpressionAttributeValues: { ':uid': userId },
-      }
-
-      const result = await dynamodb.query(queryParams).promise()
+      })
+      const result = await dynamoDoc.send(queryParams)
       return NextResponse.json({ projects: result.Items || [] })
     }
 
@@ -69,7 +83,12 @@ export async function POST(request: NextRequest) {
       updatedAt: nowIso,
     }
 
-    await dynamodb.put({ TableName: PROJECTS_TABLE, Item: projectItem }).promise()
+    if (!hasAwsCreds) {
+      devStore.projects.push(projectItem)
+    } else {
+      ensureAws()
+      await dynamoDoc.send(new PutCommand({ TableName: PROJECTS_TABLE, Item: projectItem }))
+    }
 
     // Notify agency backend (fire-and-forget)
     try {
@@ -119,19 +138,28 @@ export async function GET(request: NextRequest) {
     const userId = searchParams.get('userId')
 
     if (userId) {
-      const queryParams = {
+      if (!hasAwsCreds) {
+        const items = devStore.projects.filter(p => p.userId === userId)
+        return NextResponse.json({ projects: items })
+      }
+      ensureAws()
+      const queryParams = new QueryCommand({
         TableName: PROJECTS_TABLE,
         IndexName: USER_ID_INDEX,
         KeyConditionExpression: '#uid = :uid',
         ExpressionAttributeNames: { '#uid': 'userId' },
         ExpressionAttributeValues: { ':uid': userId },
-      }
-      const result = await dynamodb.query(queryParams).promise()
+      })
+      const result = await dynamoDoc.send(queryParams)
       return NextResponse.json({ projects: result.Items || [] })
     }
 
     // Fallback: list all projects (scan)
-    const result = await dynamodb.scan({ TableName: PROJECTS_TABLE }).promise()
+    if (!hasAwsCreds) {
+      return NextResponse.json({ projects: devStore.projects })
+    }
+    ensureAws()
+    const result = await dynamoDoc.send(new ScanCommand({ TableName: PROJECTS_TABLE }))
     return NextResponse.json({ projects: result.Items || [] })
   } catch (error) {
     console.error('Projects API GET error:', error)

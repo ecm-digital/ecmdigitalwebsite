@@ -1,15 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-
-const AWS = require('aws-sdk');
-
-// Configure AWS
-AWS.config.update({
-  region: process.env.AWS_REGION || 'eu-west-1',
-  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-});
-
-const dynamodb = new AWS.DynamoDB.DocumentClient();
+import { GetCommand, UpdateCommand, DeleteCommand } from '@aws-sdk/lib-dynamodb';
+import { getDynamoDBDocumentClient, isAwsEnabled, TABLES } from '@/lib/aws-server';
 
 export async function PUT(
   request: NextRequest,
@@ -28,16 +19,14 @@ export async function PUT(
       );
     }
 
-    // First check if user exists
-    const getParams = {
-      TableName: 'ecm-users',
-      Key: {
-        id: id
-      }
-    };
+    if (!isAwsEnabled) {
+      return NextResponse.json({ message: 'AWS not enabled' }, { status: 503 });
+    }
 
+    // First check if user exists
+    const doc = getDynamoDBDocumentClient();
     console.log('Checking if user exists...');
-    const existingUser = await dynamodb.get(getParams).promise();
+    const existingUser = await doc.send(new GetCommand({ TableName: TABLES.users, Key: { id } }));
 
     if (!existingUser.Item) {
       console.log('User not found:', id);
@@ -50,17 +39,11 @@ export async function PUT(
     console.log('User found, updating...');
 
     // Prepare update data
-    const updateParams = {
-      TableName: 'ecm-users',
-      Key: {
-        id: id
-      },
+    const result = await doc.send(new UpdateCommand({
+      TableName: TABLES.users,
+      Key: { id },
       UpdateExpression: 'SET firstName = :firstName, lastName = :lastName, #email = :email, company = :company, #role = :role, #name = :name, lastLoginAt = :lastLoginAt',
-      ExpressionAttributeNames: {
-        '#email': 'email',
-        '#role': 'role',
-        '#name': 'name'
-      },
+      ExpressionAttributeNames: { '#email': 'email', '#role': 'role', '#name': 'name' },
       ExpressionAttributeValues: {
         ':firstName': updateData.firstName || existingUser.Item.firstName || '',
         ':lastName': updateData.lastName || existingUser.Item.lastName || '',
@@ -71,9 +54,7 @@ export async function PUT(
         ':lastLoginAt': new Date().toISOString()
       },
       ReturnValues: 'ALL_NEW'
-    };
-
-    const result = await dynamodb.update(updateParams).promise();
+    }))
     const updatedUser = result.Attributes;
 
     console.log(`✅ User updated: ${id} (${updatedUser?.email})`);
@@ -111,16 +92,13 @@ export async function DELETE(
       );
     }
 
-    // First check if user exists
-    const getParams = {
-      TableName: 'ecm-users',
-      Key: {
-        id: id
-      }
-    };
+    if (!isAwsEnabled) {
+      return NextResponse.json({ message: 'AWS not enabled' }, { status: 503 });
+    }
 
+    const doc = getDynamoDBDocumentClient();
     console.log('Checking if user exists...');
-    const existingUser = await dynamodb.get(getParams).promise();
+    const existingUser = await doc.send(new GetCommand({ TableName: TABLES.users, Key: { id } }));
 
     if (!existingUser.Item) {
       console.log('User not found:', id);
@@ -133,14 +111,7 @@ export async function DELETE(
     console.log('User found, deleting...');
 
     // Delete user from DynamoDB
-    const deleteParams = {
-      TableName: 'ecm-users',
-      Key: {
-        id: id
-      }
-    };
-
-    await dynamodb.delete(deleteParams).promise();
+    await doc.send(new DeleteCommand({ TableName: TABLES.users, Key: { id } }));
 
     console.log(`✅ User deleted: ${id} (${existingUser.Item.email})`);
 

@@ -9,7 +9,9 @@
     "build": "next build",
     "build:standalone": "BUILD_TARGET=standalone next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "deploy:vercel": "vercel deploy --prod --yes --confirm",
+    "prepare": "simple-git-hooks"
   },
   "dependencies": {
     "@aws-sdk/client-cognito-identity-provider": "^3.873.0",
@@ -44,10 +46,11 @@
     "tailwind-merge": "^3.3.1",
     "util": "^0.12.5",
     "zod": "^4.0.14",
-    "zustand": "^5.0.7",
-    "@supabase/supabase-js": "^2.47.10"
+    "zustand": "^5.0.7"
   },
   "devDependencies": {
+    "@aws-sdk/lib-dynamodb": "^3.876.0",
+    "@aws-sdk/lib-dynamodb": "^3.876.0",
     "@eslint/eslintrc": "^3",
     "@types/node": "^20",
     "@types/react": "^19",
@@ -56,9 +59,14 @@
     "eslint": "^9",
     "eslint-config-next": "15.4.5",
     "postcss": "^8.5.6",
+    "simple-git-hooks": "^2.11.1",
     "tailwindcss": "^3.4.17",
     "tailwindcss-animate": "^1.0.7",
     "typescript": "^5",
+    "vercel": "^39.2.6",
     "webpack": "^5.101.3"
+  },
+  "simple-git-hooks": {
+    "post-commit": "bash scripts/deploy-vercel.sh"
   }
 }

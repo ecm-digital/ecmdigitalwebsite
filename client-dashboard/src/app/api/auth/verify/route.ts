@@ -1,15 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { PutCommand, ScanCommand } from '@aws-sdk/lib-dynamodb';
+import { getDynamoDBDocumentClient, isAwsEnabled, TABLES } from '@/lib/aws-server';
 
-const AWS = require('aws-sdk');
-
-// Configure AWS
-AWS.config.update({
-  region: process.env.AWS_REGION || 'eu-west-1',
-  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-});
-
-const dynamodb = new AWS.DynamoDB.DocumentClient();
 const AGENCY_BACKEND_URL = process.env.AGENCY_BACKEND_URL || process.env.NEXT_PUBLIC_AGENCY_BACKEND_URL || 'http://localhost:3001';
 
 export async function POST(request: NextRequest) {
@@ -56,20 +48,21 @@ export async function POST(request: NextRequest) {
     // 🔥 OBSŁUGA DANYCH MARKETINGOWYCH
     const marketingData = body?.marketingData || {};
 
-    // Try to find existing user by email (scan or GSI if available)
+    // Try to find existing user by email
     let existingUser: any | null = null;
-    try {
-      const scanResult = await dynamodb.scan({
-        TableName: 'ecm-users',
-        FilterExpression: '#email = :email',
-        ExpressionAttributeNames: { '#email': 'email' },
-        ExpressionAttributeValues: { ':email': email }
-      }).promise();
-      existingUser = (scanResult.Items && scanResult.Items[0]) || null;
-    } catch (scanErr) {
-      // Non-fatal; proceed with insert
-      // eslint-disable-next-line no-console
-      console.warn('Warn: could not scan ecm-users for existing email:', scanErr);
+    if (isAwsEnabled) {
+      try {
+        const doc = getDynamoDBDocumentClient();
+        const scanResult = await doc.send(new ScanCommand({
+          TableName: TABLES.users,
+          FilterExpression: '#email = :email',
+          ExpressionAttributeNames: { '#email': 'email' },
+          ExpressionAttributeValues: { ':email': email },
+        }));
+        existingUser = (scanResult.Items && scanResult.Items[0]) || null;
+      } catch (scanErr) {
+        console.warn('Warn: could not scan users table for existing email:', scanErr);
+      }
     }
 
     const nowIso = new Date().toISOString();
@@ -99,8 +92,12 @@ export async function POST(request: NextRequest) {
       }
     };
 
-    console.log('💾 Saving user to DynamoDB:', userData);
-    await dynamodb.put({ TableName: 'ecm-users', Item: userData }).promise();
+    if (isAwsEnabled) {
+      const doc = getDynamoDBDocumentClient();
+      await doc.send(new PutCommand({ TableName: TABLES.users, Item: userData }));
+    } else {
+      console.warn('AWS not enabled; skipping DynamoDB write for verify route');
+    }
 
     // Fire-and-forget webhook to agency backend (do not block or fail verification if this errors)
     try {

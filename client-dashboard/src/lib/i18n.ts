@@ -113,6 +113,177 @@ export const translations = {
         online: 'Online'
       }
     },
+    // AI Assistant
+    aiAssistant: {
+      title: 'AI Asystent',
+      subtitle: 'Inteligentny asystent do obsługi projektów',
+      welcome: 'Cześć! Jestem Twoim AI asystentem. Mogę pomóc Ci w sprawach związanych z projektem. Jak mogę Ci dzisiaj pomóc?',
+      quickActions: {
+        status: 'Status Projektu',
+        statusDesc: 'Sprawdź postęp i status',
+        faq: 'Częste Pytania',
+        faqDesc: 'Odpowiedzi na popularne pytania',
+        task: 'Moje Zadania',
+        taskDesc: 'Co muszę przygotować',
+        contact: 'Kontakt Zespołu',
+        contactDesc: 'Porozmawiaj z developerem'
+      },
+      projectStatus: {
+        name: 'E-commerce Platform',
+        progress: 'Postęp',
+        status: 'Status',
+        nextMilestone: 'Następny kamień milowy',
+        team: 'Zespół'
+      },
+      messages: {
+        placeholder: 'Wpisz wiadomość...',
+        send: 'Wyślij',
+        loading: 'AI myśli...',
+        error: 'Wystąpił błąd. Spróbuj ponownie.'
+      },
+      responses: {
+        status: 'Twój projekt "E-commerce Platform" ma postęp 75% i status "W trakcie". Następny kamień milowy to 15 lutego 2025. Zespół: Anna Kowalska, Piotr Wiśniewski.',
+        faq: 'Oto najczęściej zadawane pytania:\n\n1. Jak sprawdzić postęp projektu?\n2. Gdzie znaleźć dokumenty?\n3. Jak skontaktować się z zespołem?\n4. Kiedy następne spotkanie?\n\nKtóre pytanie Cię interesuje?',
+        task: 'Twoje zadania do przygotowania:\n\n1. Materiały referencyjne - do 20 stycznia\n2. Feedback do mockupów - do 25 stycznia\n3. Zatwierdzenie finalnej wersji - do 30 stycznia\n\nCzy chcesz, żebym przypomniał Ci o którymś z zadań?',
+        contact: 'Mogę połączyć Cię z zespołem:\n\n- Anna Kowalska (Project Manager)\n- Piotr Wiśniewski (Lead Developer)\n- Marta Nowak (UX Designer)\n\nKogo chcesz skontaktować?'
+      }
+    },
+    // Projects
+    projects: {
+      title: 'Projekty',
+      subtitle: 'Zarządzaj swoimi projektami cyfrowymi',
+      search: 'Szukaj projektów...',
+      filters: {
+        status: 'Status',
+        type: 'Typ',
+        allStatuses: 'Wszystkie statusy',
+        allTypes: 'Wszystkie typy'
+      },
+      status: {
+        discovery: 'Analiza',
+        design: 'Projektowanie',
+        development: 'Rozwój',
+        testing: 'Testowanie',
+        completed: 'Ukończone',
+        onHold: 'Wstrzymane'
+      },
+      types: {
+        website: 'Strona WWW',
+        shopify: 'Sklep Shopify',
+        mvp: 'Prototyp MVP',
+        uxAudit: 'Audyt UX',
+        automation: 'Automatyzacja',
+        socialMedia: 'Social Media'
+      },
+      actions: {
+        create: 'Nowy Projekt',
+        view: 'Zobacz Szczegóły',
+        edit: 'Edytuj',
+        delete: 'Usuń'
+      },
+      form: {
+        name: 'Nazwa projektu',
+        description: 'Opis',
+        type: 'Typ projektu',
+        status: 'Status',
+        budget: 'Budżet',
+        deadline: 'Termin',
+        submit: 'Utwórz Projekt',
+        creating: 'Tworzenie...'
+      }
+    },
+    // Messages
+    messages: {
+      title: 'Wiadomości',
+      subtitle: 'Komunikacja z zespołem projektowym',
+      newMessage: 'Nowa Wiadomość',
+      search: 'Szukaj wiadomości...',
+      compose: 'Napisz Wiadomość',
+      form: {
+        to: 'Do',
+        subject: 'Temat',
+        message: 'Wiadomość',
+        send: 'Wyślij',
+        sending: 'Wysyłanie...'
+      },
+      status: {
+        unread: 'Nieprzeczytane',
+        read: 'Przeczytane',
+        sent: 'Wysłane'
+      }
+    },
+    // Documents
+    documents: {
+      title: 'Dokumenty',
+      subtitle: 'Biblioteka plików projektowych',
+      upload: 'Dodaj Dokument',
+      search: 'Szukaj dokumentów...',
+      categories: {
+        contracts: 'Umowy',
+        designs: 'Projekty',
+        reports: 'Raporty',
+        invoices: 'Faktury',
+        other: 'Inne'
+      },
+      actions: {
+        download: 'Pobierz',
+        preview: 'Podgląd',
+        delete: 'Usuń'
+      }
+    },
+    // Invoices
+    invoices: {
+      title: 'Faktury',
+      subtitle: 'Historia płatności i rozliczeń',
+      search: 'Szukaj faktur...',
+      status: {
+        paid: 'Opłacone',
+        pending: 'Oczekujące',
+        overdue: 'Przeterminowane'
+      },
+      actions: {
+        download: 'Pobierz PDF',
+        pay: 'Zapłać',
+        view: 'Zobacz Szczegóły'
+      }
+    },
+    // Calendar
+    calendar: {
+      title: 'Kalendarz',
+      subtitle: 'Harmonogram spotkań i kamieni milowych',
+      today: 'Dzisiaj',
+      week: 'Tydzień',
+      month: 'Miesiąc',
+      newEvent: 'Nowe Wydarzenie',
+      form: {
+        title: 'Tytuł',
+        date: 'Data',
+        time: 'Czas',
+        description: 'Opis',
+        save: 'Zapisz'
+      }
+    },
+    // Analytics
+    analytics: {
+      title: 'Analityka',
+      subtitle: 'Metryki i raporty projektów',
+      overview: 'Przegląd',
+      performance: 'Wydajność',
+      budget: 'Budżet',
+      timeline: 'Harmonogram',
+      export: 'Eksportuj Raport'
+    },
+    // Settings
+    settings: {
+      title: 'Ustawienia',
+      subtitle: 'Konfiguracja konta i preferencji',
+      profile: 'Profil',
+      notifications: 'Powiadomienia',
+      security: 'Bezpieczeństwo',
+      language: 'Język',
+      theme: 'Motyw',
+      save: 'Zapisz Zmiany'
+    },
     // Chatbot
     chatbot: {
       title: 'AI Asystent ECM Digital',
@@ -262,6 +433,177 @@ export const translations = {
       status: {
         online: 'Online'
       }
+    },
+    // AI Assistant
+    aiAssistant: {
+      title: 'AI Assistant',
+      subtitle: 'Intelligent project management assistant',
+      welcome: 'Hello! I\'m your AI assistant. I can help you with project-related matters. How can I help you today?',
+      quickActions: {
+        status: 'Project Status',
+        statusDesc: 'Check progress and status',
+        faq: 'Frequently Asked Questions',
+        faqDesc: 'Answers to popular questions',
+        task: 'My Tasks',
+        taskDesc: 'What I need to prepare',
+        contact: 'Team Contact',
+        contactDesc: 'Talk to the developer'
+      },
+      projectStatus: {
+        name: 'E-commerce Platform',
+        progress: 'Progress',
+        status: 'Status',
+        nextMilestone: 'Next milestone',
+        team: 'Team'
+      },
+      messages: {
+        placeholder: 'Type your message...',
+        send: 'Send',
+        loading: 'AI is thinking...',
+        error: 'An error occurred. Please try again.'
+      },
+      responses: {
+        status: 'Your project "E-commerce Platform" has 75% progress and status "In Progress". Next milestone is February 15, 2025. Team: Anna Kowalska, Piotr Wiśniewski.',
+        faq: 'Here are the most frequently asked questions:\n\n1. How to check project progress?\n2. Where to find documents?\n3. How to contact the team?\n4. When is the next meeting?\n\nWhich question interests you?',
+        task: 'Your tasks to prepare:\n\n1. Reference materials - by January 20\n2. Feedback on mockups - by January 25\n3. Final version approval - by January 30\n\nWould you like me to remind you about any of these tasks?',
+        contact: 'I can connect you with the team:\n\n- Anna Kowalska (Project Manager)\n- Piotr Wiśniewski (Lead Developer)\n- Marta Nowak (UX Designer)\n\nWho would you like to contact?'
+      }
+    },
+    // Projects
+    projects: {
+      title: 'Projects',
+      subtitle: 'Manage your digital projects',
+      search: 'Search projects...',
+      filters: {
+        status: 'Status',
+        type: 'Type',
+        allStatuses: 'All statuses',
+        allTypes: 'All types'
+      },
+      status: {
+        discovery: 'Discovery',
+        design: 'Design',
+        development: 'Development',
+        testing: 'Testing',
+        completed: 'Completed',
+        onHold: 'On Hold'
+      },
+      types: {
+        website: 'Website',
+        shopify: 'Shopify Store',
+        mvp: 'MVP Prototype',
+        uxAudit: 'UX Audit',
+        automation: 'Automation',
+        socialMedia: 'Social Media'
+      },
+      actions: {
+        create: 'New Project',
+        view: 'View Details',
+        edit: 'Edit',
+        delete: 'Delete'
+      },
+      form: {
+        name: 'Project name',
+        description: 'Description',
+        type: 'Project type',
+        status: 'Status',
+        budget: 'Budget',
+        deadline: 'Deadline',
+        submit: 'Create Project',
+        creating: 'Creating...'
+      }
+    },
+    // Messages
+    messages: {
+      title: 'Messages',
+      subtitle: 'Communication with the project team',
+      newMessage: 'New Message',
+      search: 'Search messages...',
+      compose: 'Compose Message',
+      form: {
+        to: 'To',
+        subject: 'Subject',
+        message: 'Message',
+        send: 'Send',
+        sending: 'Sending...'
+      },
+      status: {
+        unread: 'Unread',
+        read: 'Read',
+        sent: 'Sent'
+      }
+    },
+    // Documents
+    documents: {
+      title: 'Documents',
+      subtitle: 'Project files library',
+      upload: 'Upload Document',
+      search: 'Search documents...',
+      categories: {
+        contracts: 'Contracts',
+        designs: 'Designs',
+        reports: 'Reports',
+        invoices: 'Invoices',
+        other: 'Other'
+      },
+      actions: {
+        download: 'Download',
+        preview: 'Preview',
+        delete: 'Delete'
+      }
+    },
+    // Invoices
+    invoices: {
+      title: 'Invoices',
+      subtitle: 'Payment history and billing',
+      search: 'Search invoices...',
+      status: {
+        paid: 'Paid',
+        pending: 'Pending',
+        overdue: 'Overdue'
+      },
+      actions: {
+        download: 'Download PDF',
+        pay: 'Pay',
+        view: 'View Details'
+      }
+    },
+    // Calendar
+    calendar: {
+      title: 'Calendar',
+      subtitle: 'Meeting schedule and milestones',
+      today: 'Today',
+      week: 'Week',
+      month: 'Month',
+      newEvent: 'New Event',
+      form: {
+        title: 'Title',
+        date: 'Date',
+        time: 'Time',
+        description: 'Description',
+        save: 'Save'
+      }
+    },
+    // Analytics
+    analytics: {
+      title: 'Analytics',
+      subtitle: 'Project metrics and reports',
+      overview: 'Overview',
+      performance: 'Performance',
+      budget: 'Budget',
+      timeline: 'Timeline',
+      export: 'Export Report'
+    },
+    // Settings
+    settings: {
+      title: 'Settings',
+      subtitle: 'Account configuration and preferences',
+      profile: 'Profile',
+      notifications: 'Notifications',
+      security: 'Security',
+      language: 'Language',
+      theme: 'Theme',
+      save: 'Save Changes'
     },
     // Chatbot
     chatbot: {
