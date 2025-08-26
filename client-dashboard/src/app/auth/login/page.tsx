@@ -8,16 +8,20 @@ export const metadata: Metadata = {
 
 export default function LoginPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10"></div>
-        <div 
-          className="absolute inset-0" 
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Ccircle cx='30' cy='30' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
-          }}
-        ></div>
+    <div className="min-h-screen bg-black relative overflow-hidden">
+      {/* Background Pattern - matching main website */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5"></div>
+        <div className="absolute inset-0 opacity-30">
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23007AFF' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+            }}
+          ></div>
+        </div>
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
       </div>
 
       <div className="relative flex min-h-screen">
@@ -36,27 +40,27 @@ export default function LoginPage() {
             </div>
 
             <div className="space-y-6">
-              <div className="flex items-center space-x-3 text-slate-300">
+              <div className="flex items-center space-x-3 text-gray-300">
                 <div className="flex-shrink-0">
                   <svg className="h-5 w-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
-                <span>Bezpieczne i szyfrowane połączenie</span>
+                <span>Bezpieczne i szyfrowane połączenie SSL</span>
               </div>
 
-              <div className="flex items-center space-x-3 text-slate-300">
+              <div className="flex items-center space-x-3 text-gray-300">
                 <div className="flex-shrink-0">
                   <svg className="h-5 w-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
-                <span>Zgodność z RODO i najwyższymi standardami</span>
+                <span>Zgodność z RODO i standardami bezpieczeństwa</span>
               </div>
 
-              <div className="flex items-center space-x-3 text-slate-300">
+              <div className="flex items-center space-x-3 text-gray-300">
                 <div className="flex-shrink-0">
-                  <svg className="h-5 w-5 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="h-5 w-5 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
                 </div>
@@ -66,17 +70,17 @@ export default function LoginPage() {
 
             <div className="mt-12 grid grid-cols-2 gap-6">
               <div className="group">
-                <div className="flex items-center space-x-3 p-4 rounded-xl bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 hover:border-slate-600/50 transition-all duration-300">
+                <div className="flex items-center space-x-3 p-4 rounded-xl bg-gray-900/50 backdrop-blur-sm border border-gray-700/50 hover:border-blue-500/50 transition-all duration-300 hover:shadow-lg">
                   <div className="flex-shrink-0">
                     <svg className="h-6 w-6 text-blue-400 group-hover:text-blue-300 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z" />
                     </svg>
                   </div>
                   <div>
-                    <h3 className="text-sm font-semibold text-white group-hover:text-blue-100 transition-colors">
+                    <h3 className="text-sm font-semibold text-white group-hover:text-white transition-colors">
                       Zarządzanie Projektami
                     </h3>
-                    <p className="text-xs text-slate-400 mt-1">
+                    <p className="text-xs text-gray-400 mt-1">
                       Śledź postęp swoich projektów w czasie rzeczywistym
                     </p>
                   </div>
@@ -84,17 +88,17 @@ export default function LoginPage() {
               </div>
 
               <div className="group">
-                <div className="flex items-center space-x-3 p-4 rounded-xl bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 hover:border-slate-600/50 transition-all duration-300">
+                <div className="flex items-center space-x-3 p-4 rounded-xl bg-gray-900/50 backdrop-blur-sm border border-gray-700/50 hover:border-blue-500/50 transition-all duration-300 hover:shadow-lg">
                   <div className="flex-shrink-0">
                     <svg className="h-6 w-6 text-blue-400 group-hover:text-blue-300 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                     </svg>
                   </div>
                   <div>
-                    <h3 className="text-sm font-semibold text-white group-hover:text-blue-100 transition-colors">
+                    <h3 className="text-sm font-semibold text-white group-hover:text-white transition-colors">
                       Komunikacja Real-time
                     </h3>
-                    <p className="text-xs text-slate-400 mt-1">
+                    <p className="text-xs text-gray-400 mt-1">
                       Bezpośredni kontakt z zespołem projektowym
                     </p>
                   </div>
@@ -102,17 +106,17 @@ export default function LoginPage() {
               </div>
 
               <div className="group">
-                <div className="flex items-center space-x-3 p-4 rounded-xl bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 hover:border-slate-600/50 transition-all duration-300">
+                <div className="flex items-center space-x-3 p-4 rounded-xl bg-gray-900/50 backdrop-blur-sm border border-gray-700/50 hover:border-blue-500/50 transition-all duration-300 hover:shadow-lg">
                   <div className="flex-shrink-0">
                     <svg className="h-6 w-6 text-blue-400 group-hover:text-blue-300 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                     </svg>
                   </div>
                   <div>
-                    <h3 className="text-sm font-semibold text-white group-hover:text-blue-100 transition-colors">
+                    <h3 className="text-sm font-semibold text-white group-hover:text-white transition-colors">
                       Biblioteka Dokumentów
                     </h3>
-                    <p className="text-xs text-slate-400 mt-1">
+                    <p className="text-xs text-gray-400 mt-1">
                       Wszystkie pliki projektowe w jednym miejscu
                     </p>
                   </div>
@@ -120,17 +124,17 @@ export default function LoginPage() {
               </div>
 
               <div className="group">
-                <div className="flex items-center space-x-3 p-4 rounded-xl bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 hover:border-slate-600/50 transition-all duration-300">
+                <div className="flex items-center space-x-3 p-4 rounded-xl bg-gray-900/50 backdrop-blur-sm border border-gray-700/50 hover:border-blue-500/50 transition-all duration-300 hover:shadow-lg">
                   <div className="flex-shrink-0">
                     <svg className="h-6 w-6 text-blue-400 group-hover:text-blue-300 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
                     </svg>
                   </div>
                   <div>
-                    <h3 className="text-sm font-semibold text-white group-hover:text-blue-100 transition-colors">
+                    <h3 className="text-sm font-semibold text-white group-hover:text-white transition-colors">
                       Faktury i Płatności
                     </h3>
-                    <p className="text-xs text-slate-400 mt-1">
+                    <p className="text-xs text-gray-400 mt-1">
                       Przejrzyste rozliczenia i historia płatności
                     </p>
                   </div>
@@ -155,11 +159,11 @@ export default function LoginPage() {
               </div>
             </div>
 
-            <div className="bg-slate-800/80 backdrop-blur-xl border border-slate-700/50 shadow-2xl rounded-xl p-6">
+            <div className="bg-gray-900/90 backdrop-blur-xl border border-gray-700/50 shadow-2xl rounded-xl p-6" style={{background: 'var(--glass-bg)', border: '1px solid var(--glass-border)'}}>
               <LoginForm />
 
               <div className="mt-6 text-center">
-                <p className="text-sm text-slate-400">
+                <p className="text-sm text-gray-400">
                   Nie masz konta?{' '}
                   <button className="font-medium text-blue-400 hover:text-blue-300 transition-colors">
                     Skontaktuj się z nami
@@ -167,8 +171,8 @@ export default function LoginPage() {
                 </p>
               </div>
 
-              <div className="mt-6 pt-6 border-t border-slate-700">
-                <p className="text-xs text-slate-500 text-center">
+              <div className="mt-6 pt-6 border-t border-gray-700">
+                <p className="text-xs text-gray-500 text-center">
                   Bezpieczne logowanie chronione szyfrowaniem SSL
                 </p>
               </div>

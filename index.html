@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pl" data-lang="pl">
+<html lang="en" data-lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
@@ -8,11 +8,11 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="ECM Digital">
     <meta name="mobile-web-app-capable" content="yes">
-    <title>ECM Digital - Agencja Cyfrowa | Strony WWW, Sklepy, Aplikacje Mobilne</title>
+    <title>ECM Digital - Digital Agency | Websites, Stores, Mobile Applications</title>
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="ECM Digital - profesjonalna agencja cyfrowa. Tworzymy strony WWW, sklepy Shopify, aplikacje mobilne, prototypy MVP i audyty UX. Start od 2,900 PLN!">
-    <meta name="keywords" content="agencja cyfrowa, strony WWW, sklepy internetowe, aplikacje mobilne, UX design, web development, digital agency">
+    <meta name="description" content="ECM Digital - professional digital agency. We create websites, Shopify stores, mobile applications, MVP prototypes and UX audits. Starting from 2,900 PLN!">
+    <meta name="keywords" content="digital agency, websites, online stores, mobile applications, UX design, web development, digital agency">
     <meta name="author" content="ECM Digital">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://www.ecm-digital.com/">
@@ -20,15 +20,15 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.ecm-digital.com/">
-    <meta property="og:title" content="ECM Digital - Agencja Cyfrowa | Strony WWW, Sklepy, Aplikacje Mobilne">
-    <meta property="og:description" content="ECM Digital - profesjonalna agencja cyfrowa. Tworzymy strony WWW, sklepy Shopify, aplikacje mobilne, prototypy MVP i audyty UX.">
+    <meta property="og:title" content="ECM Digital - Digital Agency | Websites, Stores, Mobile Applications">
+    <meta property="og:description" content="ECM Digital - professional digital agency. We create websites, Shopify stores, mobile applications, MVP prototypes and UX audits.">
     <meta property="og:image" content="https://www.ecm-digital.com/assets/images/ecm-digital-og.jpg">
     
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://www.ecm-digital.com/">
-    <meta name="twitter:title" content="ECM Digital - Agencja Cyfrowa | Strony WWW, Sklepy, Aplikacje Mobilne">
-    <meta name="twitter:description" content="ECM Digital - profesjonalna agencja cyfrowa. Tworzymy strony WWW, sklepy Shopify, aplikacje mobilne, prototypy MVP i audyty UX.">
+    <meta name="twitter:title" content="ECM Digital - Digital Agency | Websites, Stores, Mobile Applications">
+    <meta name="twitter:description" content="ECM Digital - professional digital agency. We create websites, Shopify stores, mobile applications, MVP prototypes and UX audits.">
     <meta name="twitter:image" content="https://www.ecm-digital.com/assets/images/ecm-digital-og.jpg">
     
     <!-- Fonts -->
@@ -104,9 +104,9 @@
         })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
     </script>
     
-        <a href="#main-content" class="skip-link">Przejdź do głównej treści</a>
-        <a href="#services" class="skip-link">Przejdź do usług</a>
-        <a href="#contact" class="skip-link">Przejdź do kontaktu</a>
+        <a href="#main-content" class="skip-link" data-i18n="accessibility.skipToMain">Skip to main content</a>
+        <a href="#services" class="skip-link" data-i18n="accessibility.skipToServices">Skip to services</a>
+        <a href="#contact" class="skip-link" data-i18n="accessibility.skipToContact">Skip to contact</a>
     </div>
 
     <!-- Navigation -->
@@ -155,14 +155,15 @@
                     <li class="nav-item"><a class="nav-link" href="#team" data-i18n="nav.team">Zespół</a></li>
                     <li class="nav-item"><a class="nav-link" href="/login" data-i18n="nav.clientPanel">Panel Klienta</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact" data-i18n="nav.contact">Kontakt</a></li>
+                    <li class="nav-item" id="userMenuPlaceholder" style="display: none;"></li>
                 </ul>
                 <div class="language-switcher dropdown">
                     <button class="btn btn-link dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                        🇵🇱 PL
+                        🇺🇸 EN
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="languageDropdown">
-                        <li><a class="dropdown-item lang-btn active" href="#" data-lang="pl">🇵🇱 Polski</a></li>
-                        <li><a class="dropdown-item lang-btn" href="#" data-lang="en">🇺🇸 English</a></li>
+                        <li><a class="dropdown-item lang-btn" href="#" data-lang="pl">🇵🇱 Polski</a></li>
+                        <li><a class="dropdown-item lang-btn active" href="#" data-lang="en">🇺🇸 English</a></li>
                         <li><a class="dropdown-item lang-btn" href="#" data-lang="de">🇩🇪 Deutsch</a></li>
                     </ul>
                 </div>
@@ -185,6 +186,17 @@
                         <i class="fas fa-rocket hero-main-icon" style="font-size: 6rem; background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"></i>
                         <div class="hero-glow"></div>
                     </div>
+                </div>
+
+                <div class="hero-buttons d-flex flex-column flex-lg-row gap-3 justify-content-center align-items-center mb-5">
+                    <button class="btn btn-primary btn-lg px-5 py-3" data-auth-modal="login" style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); border: none; border-radius: 0.75rem; font-weight: 600; font-size: 1.1rem; display: inline-flex; align-items: center; gap: 0.5rem; transition: all 0.3s ease;">
+                        <i class="fas fa-sign-in-alt"></i>
+                        Zaloguj się do Panelu Klienta
+                    </button>
+                    <button class="btn btn-outline-primary btn-lg px-5 py-3" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})" style="border: 2px solid #007AFF; color: #007AFF; border-radius: 0.75rem; font-weight: 600; font-size: 1.1rem; background: transparent; transition: all 0.3s ease;">
+                        <i class="fas fa-rocket"></i>
+                        Rozpocznij Projekt
+                    </button>
                 </div>
             </div>
             
@@ -232,92 +244,92 @@
                 <p style="font-size: 1.2rem; color: #EBEBF599; max-width: 600px; margin: 0 auto;">Kompleksowe rozwiązania AI i automatyzacji, które transformują Twój biznes i zwiększają efektywność</p>
             </div>
             <div class="row g-4">
-                <!-- 1. Asystenci AI na Amazon Bedrock & Copilot Studio -->
+                <!-- 1. AI Assistants on Amazon Bedrock & Copilot Studio -->
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="service-card">
                         <div class="service-icon mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
                             <i class="fas fa-robot"></i>
                         </div>
-                        <h4 data-i18n="services.aiAssistants">Asystenci AI na Amazon Bedrock & Copilot Studio</h4>
-                        <p class="text-muted">Zautomatyzuj obsługę klientów 24/7 i zaoszczędź do 70% kosztów wsparcia. Inteligentne asystenty AI odpowiadają na pytania i rozwiązują problemy.</p>
+                        <h4 data-i18n="services.aiAssistants">AI Assistants on Amazon Bedrock & Copilot Studio</h4>
+                        <p class="text-muted">Automate 24/7 customer service and save up to 70% on support costs. Intelligent AI assistants answer questions and solve problems.</p>
                         <a href="dokumentacja-ecm/oferta-uslug/asystencja-ai-bedrock/" class="btn-cta">
                             <i class="fas fa-arrow-right"></i>
-                            <span>Dowiedz się więcej</span>
+                            <span>Learn more</span>
                         </a>
                     </div>
                 </div>
                 
-                <!-- 2. Automatyzacje -->
+                <!-- 2. Automation -->
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="service-card">
                         <div class="service-icon mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
                             <i class="fas fa-cogs"></i>
                         </div>
-                        <h4 data-i18n="services.automation">Automatyzacje</h4>
-                        <p class="text-muted">Oszczędź 15-20 godzin tygodniowo automatyzując powtarzalne zadania. Integracje systemów, workflow automation i eliminacja błędów ludzkich.</p>
+                        <h4 data-i18n="services.automation">Automation</h4>
+                        <p class="text-muted">Save 15-20 hours weekly by automating repetitive tasks. System integrations, workflow automation and elimination of human errors.</p>
                         <a href="dokumentacja-ecm/oferta-uslug/automatyzacje-n8n/" class="btn-cta">
                             <i class="fas fa-arrow-right"></i>
-                            <span>Dowiedz się więcej</span>
+                            <span>Learn more</span>
                         </a>
                     </div>
                 </div>
                 
-                <!-- 3. Audyty UX -->
+                <!-- 3. UX Audits -->
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="service-card">
                         <div class="service-icon mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
                             <i class="fas fa-eye"></i>
                         </div>
-                        <h4 data-i18n="services.uxAudit">Audyty Wdrożenia AI w Twojej Firmie</h4>
-                        <p class="text-muted">Analizujemy Twoje procesy biznesowe i identyfikujemy obszary do automatyzacji z AI. Kompleksowy plan wdrożenia sztucznej inteligencji.</p>
+                        <h4 data-i18n="services.uxAudit">AI Implementation Audits in Your Company</h4>
+                        <p class="text-muted">We analyze your business processes and identify areas for AI automation. Comprehensive artificial intelligence implementation plan.</p>
                         <a href="dokumentacja-ecm/oferta-uslug/audyty-ux/" class="btn-cta">
                             <i class="fas fa-arrow-right"></i>
-                            <span>Dowiedz się więcej</span>
+                            <span>Learn more</span>
                         </a>
                     </div>
                 </div>
                 
-                <!-- 4. Prototypy MVP -->
+                <!-- 4. MVP Prototypes -->
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="service-card">
                         <div class="service-icon mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
                             <i class="fas fa-lightbulb"></i>
                         </div>
-                        <h4 data-i18n="services.mvp">Prototypy MVP</h4>
-                        <p class="text-muted">Przetestuj swój pomysł za 30% kosztu pełnej aplikacji. Szybki MVP pozwala zweryfikować rynek przed dużą inwestycją.</p>
+                        <h4 data-i18n="services.mvp">MVP Prototypes</h4>
+                        <p class="text-muted">Test your idea for 30% of the cost of a full application. Quick MVP allows you to verify the market before a large investment.</p>
                         <a href="dokumentacja-ecm/oferta-uslug/prototypy-mvp/" class="btn-cta">
                             <i class="fas fa-arrow-right"></i>
-                            <span>Dowiedz się więcej</span>
+                            <span>Learn more</span>
                         </a>
                     </div>
                 </div>
                 
-                <!-- 5. Strony WWW -->
+                <!-- 5. Websites -->
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="service-card">
                         <div class="service-icon mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
                             <i class="fas fa-globe"></i>
                         </div>
-                        <h4 data-i18n="services.websites">Strony WWW</h4>
-                        <p class="text-muted">Zwiększ konwersję o 25-40% dzięki profesjonalnemu designowi. Responsywne strony z SEO, które przyciągają i zatrzymują klientów.</p>
+                        <h4 data-i18n="services.websites">Websites</h4>
+                        <p class="text-muted">Increase conversion by 25-40% with professional design. Responsive websites with SEO that attract and retain customers.</p>
                         <a href="dokumentacja-ecm/oferta-uslug/strony-www/" class="btn-cta">
                             <i class="fas fa-arrow-right"></i>
-                            <span>Dowiedz się więcej</span>
+                            <span>Learn more</span>
                         </a>
                     </div>
                 </div>
                 
-                <!-- 6. Sklepy Shopify -->
+                <!-- 6. Shopify Stores -->
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="service-card">
                         <div class="service-icon mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
                             <i class="fab fa-shopify"></i>
                         </div>
-                        <h4 data-i18n="services.shopify">Sklepy Shopify</h4>
-                        <p class="text-muted">Sprzedawaj online już za 2 tygodnie - gotowy sklep z płatnościami i logistyką. Średnio 15-25% wzrost sprzedaży po wdrożeniu.</p>
+                        <h4 data-i18n="services.shopify">Shopify Stores</h4>
+                        <p class="text-muted">Sell online in just 2 weeks - ready store with payments and logistics. Average 15-25% sales increase after implementation.</p>
                         <a href="dokumentacja-ecm/oferta-uslug/sklepy-shopify/" class="btn-cta">
                             <i class="fas fa-arrow-right"></i>
-                            <span>Dowiedz się więcej</span>
+                            <span>Learn more</span>
                         </a>
                     </div>
                 </div>
@@ -329,40 +341,40 @@
                             <i class="fas fa-chart-line"></i>
                         </div>
                         <h4 data-i18n="services.socialMedia">Social Media & AI</h4>
-                        <p class="text-muted">Zwiększ engagement o 60% dzięki AI analizie treści. Dowiedz się, co naprawdę interesuje Twoich klientów.</p>
+                        <p class="text-muted">Increase engagement by 60% with AI content analysis. Learn what really interests your customers.</p>
                         <a href="dokumentacja-ecm/oferta-uslug/social-media-data-science/" class="btn-cta">
                             <i class="fas fa-arrow-right"></i>
-                            <span>Dowiedz się więcej</span>
+                            <span>Learn more</span>
                         </a>
                     </div>
                 </div>
                 
-                <!-- 8. Aplikacje Mobilne -->
+                <!-- 8. Mobile Applications -->
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="service-card">
                         <div class="service-icon mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
                             <i class="fas fa-mobile-alt"></i>
                         </div>
-                        <h4 data-i18n="services.mobileApps">Aplikacje Mobilne</h4>
-                        <p class="text-muted">Od pomysłu do App Store w 8-12 tygodni. Nowoczesne aplikacje iOS i Android, które zwiększają przychody i zaangażowanie klientów.</p>
+                        <h4 data-i18n="services.mobileApps">Mobile Applications</h4>
+                        <p class="text-muted">From idea to App Store in 8-12 weeks. Modern iOS and Android applications that increase revenue and customer engagement.</p>
                         <a href="dokumentacja-ecm/oferta-uslug/aplikacje-mobilne/" class="btn-cta">
                             <i class="fas fa-arrow-right"></i>
-                            <span>Dowiedz się więcej</span>
+                            <span>Learn more</span>
                         </a>
                     </div>
                 </div>
                 
-                <!-- 9. Asystenci Głosowi na Amazon Lex -->
+                <!-- 9. Voice Assistants on Amazon Lex -->
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="service-card">
                         <div class="service-icon mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
                             <i class="fas fa-microphone"></i>
                         </div>
-                        <h4 data-i18n="services.voiceAssistants">Asystenci Głosowi na Amazon Lex</h4>
-                        <p class="text-muted">Obsługa klienta przez głos - 24/7 dostępność bez kosztów call center. Naturalne rozmowy, inteligentne odpowiedzi.</p>
+                        <h4 data-i18n="services.voiceAssistants">Voice Assistants on Amazon Lex</h4>
+                        <p class="text-muted">Voice customer service - 24/7 availability without call center costs. Natural conversations, intelligent responses.</p>
                         <a href="dokumentacja-ecm/oferta-uslug/asystenci-glosowi-lex/" class="btn-cta">
                             <i class="fas fa-arrow-right"></i>
-                            <span>Dowiedz się więcej</span>
+                            <span>Learn more</span>
                         </a>
                     </div>
                 </div>
@@ -374,8 +386,8 @@
     <section id="about-us" class="py-5" style="background: transparent; padding: 100px 0;">
         <div class="container">
             <div class="text-center mb-5">
-                <h2 class="section-title mb-3" data-i18n="sections.about.title" style="font-size: 3rem; font-weight: 800; background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">O ECM Digital</h2>
-                <p style="font-size: 1.2rem; color: #EBEBF599; max-width: 600px; margin: 0 auto;">Zespół ekspertów AI, którzy transformują biznes poprzez inteligentne rozwiązania</p>
+                <h2 class="section-title mb-3" data-i18n="sections.about.title" style="font-size: 3rem; font-weight: 800; background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">About ECM Digital</h2>
+                <p style="font-size: 1.2rem; color: #EBEBF599; max-width: 600px; margin: 0 auto;" data-i18n="sections.about.subtitle">Team of AI experts who transform business through intelligent solutions</p>
             </div>
             
             <!-- About Cards -->
@@ -383,22 +395,22 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="about-card text-center">
                         <div class="about-icon">🚀</div>
-                        <h5>Misja</h5>
-                        <p class="text-muted">Demokratyzujemy dostęp do AI, pomagając firmom każdej wielkości wykorzystać potencjał sztucznej inteligencji do rozwoju biznesu.</p>
+                        <h5 data-i18n="sections.about.mission">Mission</h5>
+                        <p class="text-muted" data-i18n="sections.about.mission.description">We democratize access to AI, helping companies of all sizes leverage the potential of artificial intelligence for business growth.</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="about-card text-center">
                         <div class="about-icon">🎯</div>
-                        <h5>Wizja</h5>
-                        <p class="text-muted">Być liderem w transformacji cyfrowej w Polsce, tworząc rozwiązania AI, które rzeczywiście zwiększają efektywność i przychody.</p>
+                        <h5 data-i18n="sections.about.vision">Vision</h5>
+                        <p class="text-muted" data-i18n="sections.about.vision.description">To be a leader in digital transformation in Poland, creating AI solutions that actually increase efficiency and revenue.</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="about-card text-center">
                         <div class="about-icon">⚡</div>
-                        <h5>Wartości</h5>
-                        <p class="text-muted">Innowacja, transparentność i rezultaty. Każdy projekt realizujemy z pasją, dostarczając mierzalne korzyści biznesowe.</p>
+                        <h5 data-i18n="sections.about.values">Values</h5>
+                        <p class="text-muted" data-i18n="sections.about.values.description">Innovation, transparency and results. We implement every project with passion, delivering measurable business benefits.</p>
                     </div>
                 </div>
             </div>
@@ -482,25 +494,25 @@
                 <div class="col-lg-3 col-md-6">
                     <div class="stat-card text-center">
                         <div class="stat-number">50+</div>
-                        <div class="stat-label">Projektów AI</div>
+                        <div class="stat-label">AI Projects</div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <div class="stat-card text-center">
                         <div class="stat-number">95%</div>
-                        <div class="stat-label">Satysfakcja Klientów</div>
+                        <div class="stat-label">Client Satisfaction</div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <div class="stat-card text-center">
                         <div class="stat-number">24/7</div>
-                        <div class="stat-label">Wsparcie Techniczne</div>
+                        <div class="stat-label">Technical Support</div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <div class="stat-card text-center">
                         <div class="stat-number">2019</div>
-                        <div class="stat-label">Rok Założenia</div>
+                        <div class="stat-label">Year Founded</div>
                     </div>
                 </div>
             </div>
@@ -513,21 +525,21 @@
                             <div class="col-lg-8">
                                 <h4 style="color: #FFFFFF; font-weight: 700; margin-bottom: 1rem;">
                                     <i class="fas fa-building me-2" style="color: #007AFF;"></i>
-                                    Scrum Software Sp. z o.o.
+                                    <span data-i18n="company.name">Scrum Software Sp. z o.o.</span>
                                 </h4>
-                                <p class="text-muted mb-2">
-                                    <strong>ECM Digital</strong> działa w ramach spółki Scrum Software Sp. z o.o., 
-                                    która jest formalnym właścicielem wszystkich świadczonych usług oraz odpowiedzialnym podmiotem prawnym.
+                                <p class="text-muted mb-2" data-i18n="company.description1">
+                                    <strong>ECM Digital</strong> operates within Scrum Software Sp. z o.o., 
+                                    which is the formal owner of all services we provide and the legally responsible entity.
                                 </p>
-                                <p class="text-muted mb-0">
-                                    To Scrum Software Sp. z o.o. wystawia faktury i zawiera umowy z klientami, 
-                                    gwarantując pełną transparentność i bezpieczeństwo współpracy.
+                                <p class="text-muted mb-0" data-i18n="company.description2">
+                                    It is Scrum Software Sp. z o.o. that issues invoices and enters into contracts with clients, 
+                                    guaranteeing full transparency and security of cooperation.
                                 </p>
                             </div>
                             <div class="col-lg-4 text-center">
                                 <div class="company-badge">
                                     <div class="badge-icon">🏢</div>
-                                    <div class="badge-text">Zarejestrowana<br>Spółka z o.o.</div>
+                                    <div class="badge-text" data-i18n="company.badge">Registered<br>Limited Company</div>
                                 </div>
                             </div>
                         </div>
@@ -541,8 +553,8 @@
     <section id="blog" class="py-5" style="background: transparent; padding: 100px 0;">
         <div class="container">
             <div class="text-center mb-5">
-                <h2 class="section-title mb-3" data-i18n="sections.blog.title" style="font-size: 3rem; font-weight: 800; background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Blog & Inspiracje</h2>
-                <p style="font-size: 1.2rem; color: #EBEBF599; max-width: 600px; margin: 0 auto;">Najnowsze trendy w AI, case studies i praktyczne wskazówki dla Twojego biznesu</p>
+                <h2 class="section-title mb-3" data-i18n="sections.blog.title" style="font-size: 3rem; font-weight: 800; background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Blog & Insights</h2>
+                <p style="font-size: 1.2rem; color: #EBEBF599; max-width: 600px; margin: 0 auto;" data-i18n="sections.blog.subtitle">Latest AI trends, case studies and practical tips for your business</p>
             </div>
             
             <!-- Featured Articles -->
@@ -551,15 +563,15 @@
                     <article class="blog-card" style="background: var(--glass-bg); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem; height: 100%; transition: all 0.4s ease; cursor: pointer;">
                         <div class="blog-card-header mb-3">
                             <div class="blog-category mb-2" style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); color: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; display: inline-block;">🤖 AI Trends</div>
-                            <h5 style="color: var(--text-primary); font-weight: 700; margin-bottom: 0.5rem; line-height: 1.3;">Jak AI zmienia e-commerce w 2024?</h5>
-                            <p class="text-muted mb-0" style="font-size: 0.9rem; line-height: 1.4;">
-                                Odkryj najnowsze trendy w AI dla e-commerce: personalizacja, chatboty, rekomendacje produktów i automatyzacja procesów sprzedaży.
+                            <h5 style="color: var(--text-primary); font-weight: 700; margin-bottom: 0.5rem; line-height: 1.3;" data-i18n="blog.aiTrends.title">How AI is changing e-commerce in 2024?</h5>
+                            <p class="text-muted mb-0" style="font-size: 0.9rem; line-height: 1.4;" data-i18n="blog.aiTrends.description">
+                                Discover the latest AI trends for e-commerce: personalization, chatbots, product recommendations and sales process automation.
                             </p>
                         </div>
                         <div class="blog-card-content">
                             <div class="blog-meta mb-3" style="display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; color: var(--text-tertiary);">
-                                <span><i class="fas fa-calendar me-1"></i>15 min czytania</span>
-                                <span><i class="fas fa-eye me-1"></i>2.5k wyświetleń</span>
+                                <span><i class="fas fa-calendar me-1"></i><span data-i18n="blog.aiTrends.readTime">15 min reading</span></span>
+                                <span><i class="fas fa-eye me-1"></i><span data-i18n="blog.aiTrends.views">2.5k views</span></span>
                             </div>
                             <div class="blog-tags mb-3">
                                 <span class="blog-tag" style="background: rgba(0, 122, 255, 0.1); color: var(--primary); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; margin-right: 0.5rem;">E-commerce</span>
@@ -567,7 +579,7 @@
                                 <span class="blog-tag" style="background: rgba(48, 209, 88, 0.1); color: var(--accent); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Trends</span>
                             </div>
                             <button class="btn btn-outline-primary w-100" style="border-color: var(--primary); color: var(--primary);">
-                                <i class="fas fa-arrow-right me-2"></i>Czytaj więcej
+                                <i class="fas fa-arrow-right me-2"></i><span data-i18n="blog.readMore">Read more</span>
                             </button>
                         </div>
                     </article>
@@ -630,18 +642,18 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <div class="newsletter-card text-center" style="background: linear-gradient(135deg, rgba(0, 122, 255, 0.1) 0%, rgba(191, 90, 242, 0.1) 100%); border: 1px solid var(--glass-border); border-radius: 20px; padding: 3rem; backdrop-filter: blur(20px);">
-                        <h4 style="color: var(--text-primary); font-weight: 700; margin-bottom: 1rem;">📧 Bądź na bieżąco z trendami AI</h4>
-                        <p style="color: var(--text-secondary); margin-bottom: 2rem; font-size: 1.1rem;">
-                            Otrzymuj najnowsze artykuły, case studies i ekskluzywne wskazówki prosto na swoją skrzynkę
+                        <h4 style="color: var(--text-primary); font-weight: 700; margin-bottom: 1rem;" data-i18n="blog.newsletter.title">📧 Stay up to date with AI trends</h4>
+                        <p style="color: var(--text-secondary); margin-bottom: 2rem; font-size: 1.1rem;" data-i18n="blog.newsletter.description">
+                            Receive the latest articles, case studies and exclusive tips directly to your inbox
                         </p>
                         <div class="newsletter-form" style="display: flex; gap: 1rem; max-width: 500px; margin: 0 auto;">
-                            <input type="email" placeholder="Twój email" class="form-control" style="background: var(--bg-secondary); border: 1px solid var(--glass-border); color: var(--text-primary); border-radius: 12px; padding: 1rem; flex: 1;">
+                            <input type="email" placeholder="Your email" class="form-control" style="background: var(--bg-secondary); border: 1px solid var(--glass-border); color: var(--text-primary); border-radius: 12px; padding: 1rem; flex: 1;">
                             <button class="btn btn-cta" style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); color: white; border: none; padding: 1rem 2rem; border-radius: 12px; font-weight: 600; white-space: nowrap;">
-                                <i class="fas fa-paper-plane me-2"></i>Subskrybuj
+                                <i class="fas fa-paper-plane me-2"></i><span data-i18n="blog.newsletter.subscribe">Subscribe</span>
                             </button>
                         </div>
-                        <p style="color: var(--text-tertiary); font-size: 0.9rem; margin-top: 1rem; margin-bottom: 0;">
-                            🔒 Nie spamujemy. Możesz się wypisać w każdej chwili.
+                        <p style="color: var(--text-tertiary); font-size: 0.9rem; margin-top: 1rem; margin-bottom: 0;" data-i18n="blog.newsletter.privacy">
+                            🔒 We don't spam. You can unsubscribe at any time.
                         </p>
                     </div>
                 </div>
@@ -653,8 +665,8 @@
     <section id="team" class="py-5" style="background: transparent; padding: 100px 0;">
         <div class="container">
             <div class="text-center mb-5">
-                <h2 class="section-title mb-3" data-i18n="sections.team.title" style="font-size: 3rem; font-weight: 800; background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Nasz Zespół</h2>
-                <p style="font-size: 1.2rem; color: #EBEBF599; max-width: 600px; margin: 0 auto;">Eksperci AI i technologii, którzy przekształcają Twoje pomysły w innowacyjne rozwiązania</p>
+                <h2 class="section-title mb-3" data-i18n="sections.team.title" style="font-size: 3rem; font-weight: 800; background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Our Team</h2>
+                <p style="font-size: 1.2rem; color: #EBEBF599; max-width: 600px; margin: 0 auto;" data-i18n="sections.team.subtitle">AI and technology experts who transform your ideas into innovative solutions</p>
             </div>
             
             <!-- Team Members -->
@@ -667,7 +679,7 @@
                         </div>
                         <h5 data-i18n="sections.team.members.tomasz.name">Tomasz Gnat</h5>
                         <div class="member-role" data-i18n="sections.team.members.tomasz.position">Discovery Consultant</div>
-                        <p class="member-description text-muted" data-i18n="sections.team.members.tomasz.description">Ekspert w odkrywaniu potrzeb biznesowych i strategii AI. Pomaga firmom zidentyfikować obszary do automatyzacji.</p>
+                        <p class="member-description text-muted" data-i18n="sections.team.members.tomasz.description">Expert in discovering business needs and AI strategy. Helps companies identify areas for automation.</p>
                         <div class="member-skills">
                             <span class="skill-tag">Business Analysis</span>
                             <span class="skill-tag">AI Strategy</span>
@@ -682,7 +694,7 @@
                         </div>
                         <h5 data-i18n="sections.team.members.marta.name">Marta Górska</h5>
                         <div class="member-role" data-i18n="sections.team.members.marta.position">UX/UI Designer</div>
-                        <p class="member-description text-muted" data-i18n="sections.team.members.marta.description">Projektantka skupiona na potrzebach użytkowników w erze AI. Tworzy interfejsy, które łączą człowieka z technologią w naturalny sposób.</p>
+                        <p class="member-description text-muted" data-i18n="sections.team.members.marta.description">Designer focused on user needs in the AI era. Creates interfaces that naturally connect humans with technology.</p>
                         <div class="member-skills">
                             <span class="skill-tag">UX Research</span>
                             <span class="skill-tag">AI/UX Design</span>
@@ -697,7 +709,7 @@
                         </div>
                         <h5 data-i18n="sections.team.members.karol.name">Karol Czechowski</h5>
                         <div class="member-role" data-i18n="sections.team.members.karol.position">QA & AI Developer</div>
-                        <p class="member-description text-muted" data-i18n="sections.team.members.karol.description">Specjalista od zapewnienia jakości rozwiązań AI i testowania automatycznego. Gwarantuje niezawodność systemów.</p>
+                        <p class="member-description text-muted" data-i18n="sections.team.members.karol.description">Specialist in AI solution quality assurance and automated testing. Guarantees system reliability.</p>
                         <div class="member-skills">
                             <span class="skill-tag">AI Testing</span>
                             <span class="skill-tag">Quality Assurance</span>
@@ -712,7 +724,7 @@
                         </div>
                         <h5 data-i18n="sections.team.members.roman.name">Roman Dominia</h5>
                         <div class="member-role" data-i18n="sections.team.members.roman.position">AI Automation Specialist</div>
-                        <p class="member-description text-muted" data-i18n="sections.team.members.roman.description">Ekspert od automatyzacji procesów biznesowych z AI i analizy danych social media. Zwiększa efektywność operacyjną.</p>
+                        <p class="member-description text-muted" data-i18n="sections.team.members.roman.description">Expert in business process automation with AI and social media data analysis. Increases operational efficiency.</p>
                         <div class="member-skills">
                             <span class="skill-tag">Process Automation</span>
                             <span class="skill-tag">AI Analytics</span>
@@ -726,22 +738,22 @@
                 <div class="col-md-4">
                     <div class="team-value-card text-center">
                         <div class="value-icon">🚀</div>
-                        <h6>Innowacja</h6>
-                        <p class="text-muted">Zawsze szukamy najnowszych technologii AI, które przynoszą realne korzyści biznesowe</p>
+                        <h6 data-i18n="sections.team.values.innovation">Innovation</h6>
+                        <p class="text-muted" data-i18n="sections.team.values.innovation.description">We always seek the latest AI technologies that bring real business benefits</p>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="team-value-card text-center">
                         <div class="value-icon">🤝</div>
-                        <h6>Współpraca</h6>
-                        <p class="text-muted">Pracujemy jako jeden zespół z Twoją firmą, dzieląc się wiedzą i doświadczeniem</p>
+                        <h6 data-i18n="sections.team.values.collaboration">Collaboration</h6>
+                        <p class="text-muted" data-i18n="sections.team.values.collaboration.description">We work as one team with your company, sharing knowledge and experience</p>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="team-value-card text-center">
                         <div class="value-icon">📈</div>
-                        <h6>Rezultaty</h6>
-                        <p class="text-muted">Każde rozwiązanie mierzamy konkretymi wskaźnikami biznesowymi i ROI</p>
+                        <h6 data-i18n="sections.team.values.results">Results</h6>
+                        <p class="text-muted" data-i18n="sections.team.values.results.description">Every solution is measured by concrete business indicators and ROI</p>
                     </div>
                 </div>
             </div>
@@ -753,7 +765,7 @@
         <div class="container">
             <div class="text-center mb-5">
                 <h2 id="case-studies-title" class="section-title mb-3" data-i18n="sections.caseStudies.title" style="font-size: 3rem; font-weight: 800; background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Case Studies & Portfolio</h2>
-                <p style="font-size: 1.2rem; color: #EBEBF599; max-width: 600px; margin: 0 auto;">Realne projekty, konkretne rezultaty - zobacz jak transformujemy biznesy dzięki AI</p>
+                <p style="font-size: 1.2rem; color: #EBEBF599; max-width: 600px; margin: 0 auto;" data-i18n="sections.caseStudies.subtitle">Real projects, concrete results - see how we transform businesses through AI</p>
             </div>
             
             <!-- Case Studies Grid -->
@@ -762,28 +774,28 @@
                     <div class="case-study-card" style="background: var(--glass-bg); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem; height: 100%; transition: all 0.4s ease; cursor: pointer;">
                         <div class="case-study-header mb-3">
                             <div class="case-study-icon mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); border-radius: 15px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: white;">🤖</div>
-                            <h5 style="color: var(--text-primary); font-weight: 700; margin-bottom: 0.5rem;">AI Asystent dla E-commerce</h5>
-                            <p class="text-muted mb-0" style="font-size: 0.9rem;">Sklep online - branża modowa</p>
+                            <h5 style="color: var(--text-primary); font-weight: 700; margin-bottom: 0.5rem;" data-i18n="caseStudies.aiAssistant.title">AI Assistant for E-commerce</h5>
+                            <p class="text-muted mb-0" style="font-size: 0.9rem;" data-i18n="caseStudies.aiAssistant.subtitle">Online store - fashion industry</p>
                         </div>
                         <div class="case-study-content">
                             <div class="case-study-stats mb-3">
                                 <div class="row text-center">
                                     <div class="col-4">
                                         <div class="stat-value" style="font-size: 1.5rem; font-weight: 700; color: var(--primary);">25%</div>
-                                        <div class="stat-label" style="font-size: 0.8rem; color: var(--text-tertiary);">Wzrost konwersji</div>
+                                        <div class="stat-label" style="font-size: 0.8rem; color: var(--text-tertiary);" data-i18n="caseStudies.aiAssistant.conversionLabel">Conversion increase</div>
                                     </div>
                                     <div class="col-4">
                                         <div class="stat-value" style="font-size: 1.5rem; font-weight: 700; color: var(--accent);">40%</div>
-                                        <div class="stat-label" style="font-size: 0.8rem; color: var(--text-tertiary);">Redukcja kosztów</div>
+                                        <div class="stat-label" style="font-size: 0.8rem; color: var(--text-tertiary);" data-i18n="caseStudies.aiAssistant.costReductionLabel">Cost reduction</div>
                                     </div>
                                     <div class="col-4">
                                         <div class="stat-value" style="font-size: 1.5rem; font-weight: 700; color: var(--accent-purple);">24/7</div>
-                                        <div class="stat-label" style="font-size: 0.8rem; color: var(--text-tertiary);">Wsparcie klientów</div>
+                                        <div class="stat-label" style="font-size: 0.8rem; color: var(--text-tertiary);" data-i18n="caseStudies.aiAssistant.supportLabel">Customer support</div>
                                     </div>
                                 </div>
                             </div>
-                            <p class="text-muted mb-3" style="font-size: 0.9rem; line-height: 1.5;">
-                                Wdrożenie AI asystenta obsługującego 80% zapytań klientów, automatyczne rekomendacje produktów i personalizacja doświadczenia zakupowego.
+                            <p class="text-muted mb-3" style="font-size: 0.9rem; line-height: 1.5;" data-i18n="caseStudies.aiAssistant.description">
+                                Implementation of AI assistant handling 80% of customer inquiries, automatic product recommendations and personalized shopping experience.
                             </p>
                             <div class="case-study-tech mb-3">
                                 <span class="tech-tag" style="background: rgba(0, 122, 255, 0.1); color: var(--primary); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; margin-right: 0.5rem;">Amazon Bedrock</span>
@@ -791,7 +803,7 @@
                                 <span class="tech-tag" style="background: rgba(48, 209, 88, 0.1); color: var(--accent); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Analytics</span>
                             </div>
                             <button class="btn btn-outline-primary w-100" style="border-color: var(--primary); color: var(--primary);">
-                                <i class="fas fa-eye me-2"></i>Zobacz szczegóły
+                                <i class="fas fa-eye me-2"></i><span data-i18n="caseStudies.aiAssistant.viewDetails">View details</span>
                             </button>
                         </div>
                     </div>
@@ -889,8 +901,8 @@
     <section class="py-5" id="process" aria-labelledby="process-title" style="background: transparent; padding: 100px 0;">
         <div class="container">
             <div class="text-center mb-5">
-                <h2 id="process-title" class="section-title mb-3" data-i18n="sections.process.title" style="font-size: 3rem; font-weight: 800; background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Nasz Proces Pracy</h2>
-                <p style="font-size: 1.2rem; color: #EBEBF599; max-width: 600px; margin: 0 auto;">Od pomysłu do gotowego rozwiązania AI - sprawdzony proces, który gwarantuje sukces</p>
+                <h2 id="process-title" class="section-title mb-3" data-i18n="sections.process.title" style="font-size: 3rem; font-weight: 800; background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Our Work Process</h2>
+                <p style="font-size: 1.2rem; color: #EBEBF599; max-width: 600px; margin: 0 auto;" data-i18n="sections.process.subtitle">From idea to ready AI solution - proven process that guarantees success</p>
             </div>
             
             <!-- Process Timeline -->
@@ -997,8 +1009,8 @@
     <section id="contact" class="py-5" style="background: transparent; padding: 100px 0;">
         <div class="container">
             <div class="text-center mb-5">
-                <h2 class="section-title mb-3" data-i18n="sections.contact.title" style="font-size: 3rem; font-weight: 800; background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Rozpocznij Projekt</h2>
-                <p style="font-size: 1.2rem; color: #EBEBF599; max-width: 600px; margin: 0 auto;">Skontaktuj się z nami, aby omówić Twój projekt. Oferujemy darmową konsultację i wycenę.</p>
+                <h2 class="section-title mb-3" data-i18n="sections.contact.title" style="font-size: 3rem; font-weight: 800; background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Start Your Project</h2>
+                <p style="font-size: 1.2rem; color: #EBEBF599; max-width: 600px; margin: 0 auto;" data-i18n="sections.contact.subtitle">Contact us to discuss your project. We offer free consultation and quote.</p>
             </div>
             
             <div class="row justify-content-center">
@@ -1008,24 +1020,35 @@
                             <div class="col-md-4">
                                 <div class="contact-info-card text-center">
                                     <div class="contact-icon">📧</div>
-                                    <h6>Email</h6>
+                                    <h6 data-i18n="sections.contact.email">Email</h6>
                                     <p class="text-muted">hello@ecm-digital.com</p>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="contact-info-card text-center">
                                     <div class="contact-icon">📞</div>
-                                    <h6>Telefon</h6>
+                                    <h6 data-i18n="sections.contact.phone">Phone</h6>
                                     <p class="text-muted">+48 535 330 323</p>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="contact-info-card text-center">
                                     <div class="contact-icon">⚡</div>
-                                    <h6>Czas odpowiedzi</h6>
-                                    <p class="text-muted">24 godziny</p>
+                                    <h6 data-i18n="sections.contact.responseTime">Response Time</h6>
+                                    <p class="text-muted" data-i18n="sections.contact.responseTimeValue">24 hours</p>
                                 </div>
                             </div>
+                        </div>
+
+                        <div class="d-flex flex-column flex-lg-row gap-3 justify-content-center mb-4">
+                            <button class="btn btn-primary btn-lg px-5 py-3" data-auth-modal="login" style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); border: none; border-radius: 0.75rem; font-weight: 600; font-size: 1.1rem; display: inline-flex; align-items: center; gap: 0.5rem; transition: all 0.3s ease;">
+                                <i class="fas fa-sign-in-alt"></i>
+                                Masz już konto? Zaloguj się
+                            </button>
+                            <button class="btn btn-outline-primary btn-lg px-5 py-3" data-auth-modal="register" style="border: 2px solid #007AFF; color: #007AFF; border-radius: 0.75rem; font-weight: 600; font-size: 1.1rem; background: transparent; transition: all 0.3s ease;">
+                                <i class="fas fa-user-plus"></i>
+                                Utwórz nowe konto
+                            </button>
                         </div>
 
                         <div id="hubspot-form" class="mt-4"></div>
@@ -1040,9 +1063,9 @@
     <!-- Footer -->
     <footer class="footer py-4" role="contentinfo">
         <div class="container text-center">
-            <p class="text-muted mb-0" data-i18n="footer.copyright">
-                © 2025 ECM Digital. Wszystkie prawa zastrzeżone.
-            </p>
+                    <p class="text-muted mb-0" data-i18n="footer.copyright">
+            © 2025 ECM Digital. All rights reserved.
+        </p>
         </div>
     </footer>
 
@@ -1091,6 +1114,7 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     
     <!-- System wielojęzyczny -->
+    <script src="src/js/auth-modal.js"></script>
     <script src="src/js/i18n.js"></script>
     
     <!-- HubSpot Integration -->
@@ -2330,8 +2354,8 @@
                 });
             });
             
-            // Set initial language from localStorage or default to Polish
-            const savedLang = localStorage.getItem('preferredLanguage') || 'pl';
+            // Set initial language from localStorage or default to English
+            const savedLang = localStorage.getItem('preferredLanguage') || 'en';
             if (window.i18nManager) {
                 window.i18nManager.setLanguage(savedLang);
             }
@@ -3034,10 +3058,10 @@
                 <div class="voice-chatbot-title-section">
                     <img src="assets/images/tomasz-profile-optimized.jpg" alt="Tomasz Gnat" class="voice-chatbot-header-avatar image-lazy" loading="lazy">
                     <div class="voice-chatbot-title-text">
-                        <h3 id="voice-chatbot-title" class="voice-chatbot-title">
-                            Asystent ECM Digital
+                        <h3 id="voice-chatbot-title" class="voice-chatbot-title" data-i18n="chatbot.title">
+                            ECM Digital Assistant
                         </h3>
-                        <p id="voice-chatbot-subtitle" class="voice-chatbot-subtitle">Tomasz Gnat - Discovery Consultant</p>
+                        <p id="voice-chatbot-subtitle" class="voice-chatbot-subtitle" data-i18n="chatbot.subtitle">Tomasz Gnat - Discovery Consultant</p>
                     </div>
                 </div>
                 <div class="voice-chatbot-controls-header">
@@ -3056,7 +3080,7 @@
                 
                 <div class="text-input-row">
                     <label for="voiceChatbotTextInput" class="sr-only">Wpisz wiadomość do asystenta</label>
-                    <input type="text" id="voiceChatbotTextInput" placeholder="Wpisz wiadomość..." aria-describedby="voice-input-help">
+                    <input type="text" id="voiceChatbotTextInput" placeholder="Type a message..." aria-describedby="voice-input-help">
                     <button id="voiceChatbotSendButton" aria-label="Wyślij wiadomość">
                         <i class="fas fa-paper-plane" aria-hidden="true"></i>
                     </button>
@@ -3068,29 +3092,29 @@
             </div>
             
             <div class="voice-chatbot-suggestions">
-                <div class="voice-suggestion" data-suggestion="Jakie usługi oferujecie?">
+                <div class="voice-suggestion" data-suggestion="What services do you offer?">
                     <i class="fas fa-lightbulb"></i>
-                    Jakie usługi oferujecie?
+                    <span data-i18n="chatbot.suggestions.services">What services do you offer?</span>
                 </div>
-                <div class="voice-suggestion" data-suggestion="Ile kosztują wasze usługi?">
+                <div class="voice-suggestion" data-suggestion="How much do your services cost?">
                     <i class="fas fa-tag"></i>
-                    Ile kosztują wasze usługi?
+                    <span data-i18n="chatbot.suggestions.pricing">How much do your services cost?</span>
                 </div>
-                <div class="voice-suggestion" data-suggestion="Chcę umówić konsultację">
+                <div class="voice-suggestion" data-suggestion="I want to arrange a consultation">
                     <i class="fas fa-calendar"></i>
-                    Chcę umówić konsultację
+                    <span data-i18n="chatbot.suggestions.consultation">I want to arrange a consultation</span>
                 </div>
-                <div class="voice-suggestion" data-suggestion="Pokaż mi portfolio projektów">
+                <div class="voice-suggestion" data-suggestion="Show me portfolio projects">
                     <i class="fas fa-folder-open"></i>
-                    Pokaż mi portfolio
+                    <span data-i18n="chatbot.suggestions.portfolio">Show me portfolio projects</span>
                 </div>
-                <div class="voice-suggestion" data-suggestion="Opowiedz o waszych asystentach AI">
+                <div class="voice-suggestion" data-suggestion="Tell me about your AI assistants">
                     <i class="fas fa-robot"></i>
-                    Asystenci AI
+                    <span data-i18n="chatbot.suggestions.aiAssistants">Tell me about your AI assistants</span>
                 </div>
-                <div class="voice-suggestion" data-suggestion="Jak automatyzujecie procesy biznesowe?">
+                <div class="voice-suggestion" data-suggestion="How do you automate business processes?">
                     <i class="fas fa-cogs"></i>
-                    Automatyzacje
+                    <span data-i18n="chatbot.suggestions.automation">How do you automate business processes?</span>
                 </div>
             </div>
         </div>

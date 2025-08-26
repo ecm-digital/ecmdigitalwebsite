@@ -20,7 +20,8 @@ import {
   Menu,
   Bell,
   Search,
-  CalendarIcon
+  CalendarIcon,
+  Bot
 } from 'lucide-react'
 import { useState } from 'react'
 
@@ -41,6 +42,7 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
     { name: t('dashboard.navigation.documents'), href: '/dashboard/documents', icon: FileText },
     { name: t('dashboard.navigation.invoices'), href: '/dashboard/invoices', icon: CreditCard },
     { name: t('dashboard.navigation.calendar'), href: '/dashboard/calendar', icon: CalendarIcon },
+    { name: 'AI Asystent', href: '/ai-assistant', icon: Bot },
     { name: t('dashboard.navigation.analytics'), href: '/dashboard/analytics', icon: BarChart3 },
     { name: t('dashboard.navigation.settings'), href: '/dashboard/settings', icon: Settings },
   ]
