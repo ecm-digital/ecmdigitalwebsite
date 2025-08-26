@@ -29,9 +29,9 @@ export default function RootLayout({
   const hubspotPortalId = process.env.NEXT_PUBLIC_HUBSPOT_PORTAL_ID || "145940599";
   const hubspotCluster = process.env.NEXT_PUBLIC_HUBSPOT_CLUSTER || "eu1"; // eu1 per provided embed
   return (
-    <html lang="en">
+    <html lang="pl" className="dark">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
       >
         <Providers>
           <DashboardHeader />

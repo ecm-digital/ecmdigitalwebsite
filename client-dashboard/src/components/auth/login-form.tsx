@@ -61,11 +61,23 @@ export default function LoginForm() {
         setMode('signin')
       }
     } else if (showSignUp) {
-      const fullName = `${firstName} ${lastName}`.trim() || email.split('@')[0]
+      // Validation for signup
+      if (!firstName.trim() || !lastName.trim()) {
+        setFormError('Imię i nazwisko są wymagane')
+        return
+      }
+      if (password.length < 8) {
+        setFormError('Hasło musi mieć co najmniej 8 znaków')
+        return
+      }
+      
+      const fullName = `${firstName} ${lastName}`.trim()
       const result = await signUp(email, password, fullName, company || undefined)
       if (result.success) {
-        alert('Sprawdź email i wpisz kod weryfikacyjny!')
+        setFormError(null)
         setMode('confirm')
+      } else {
+        setFormError(result.error || 'Błąd rejestracji')
       }
     } else if (showForgotPassword) {
       const result = await forgotPassword(email)
@@ -109,18 +121,45 @@ export default function LoginForm() {
         )}
 
         {showSignUp && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="space-y-2">
-              <Label htmlFor="firstName" className="text-gray-200">Imię</Label>
-              <Input id="firstName" value={firstName} onChange={(e) => setFirstName(e.target.value)} required className="bg-gray-800/50 border-gray-600 text-white placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500" />
+          <div className="space-y-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <Label htmlFor="firstName" className="text-gray-200">Imię *</Label>
+                <Input 
+                  id="firstName" 
+                  value={firstName} 
+                  onChange={(e) => setFirstName(e.target.value)} 
+                  required 
+                  placeholder="Twoje imię"
+                  className="bg-gray-800/50 border-gray-600 text-white placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500" 
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="lastName" className="text-gray-200">Nazwisko *</Label>
+                <Input 
+                  id="lastName" 
+                  value={lastName} 
+                  onChange={(e) => setLastName(e.target.value)} 
+                  required 
+                  placeholder="Twoje nazwisko"
+                  className="bg-gray-800/50 border-gray-600 text-white placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500" 
+                />
+              </div>
             </div>
             <div className="space-y-2">
-              <Label htmlFor="lastName" className="text-gray-200">Nazwisko</Label>
-              <Input id="lastName" value={lastName} onChange={(e) => setLastName(e.target.value)} required className="bg-gray-800/50 border-gray-600 text-white placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500" />
-            </div>
-            <div className="space-y-2 md:col-span-2">
               <Label htmlFor="company" className="text-gray-200">Firma (opcjonalnie)</Label>
-              <Input id="company" value={company} onChange={(e) => setCompany(e.target.value)} placeholder="ECM Digital Sp. z o.o." className="bg-gray-800/50 border-gray-600 text-white placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500" />
+              <Input 
+                id="company" 
+                value={company} 
+                onChange={(e) => setCompany(e.target.value)} 
+                placeholder="ECM Digital Sp. z o.o." 
+                className="bg-gray-800/50 border-gray-600 text-white placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500" 
+              />
+            </div>
+            <div className="p-3 bg-blue-500/10 border border-blue-500/20 rounded">
+              <p className="text-xs text-blue-400">
+                📧 Po rejestracji otrzymasz email z kodem weryfikacyjnym
+              </p>
             </div>
           </div>
         )}
@@ -155,8 +194,13 @@ export default function LoginForm() {
               className="bg-gray-800/50 border-gray-600 text-white placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500"
             />
             <p className="text-xs text-gray-400">
-              Sprawdź email i wpisz kod weryfikacyjny
+              Sprawdź email i wpisz kod weryfikacyjny. Kod został wysłany na adres: <strong>{email}</strong>
             </p>
+            <div className="mt-2 p-2 bg-blue-500/10 border border-blue-500/20 rounded">
+              <p className="text-xs text-blue-400">
+                💡 Po potwierdzeniu emaila będziesz mógł się zalogować
+              </p>
+            </div>
           </div>
         )}
         

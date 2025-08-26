@@ -4,23 +4,10 @@
   "outputDirectory": ".",
   "installCommand": "echo 'No install needed'",
   "framework": null,
-  "regions": ["iad1"],
   "rewrites": [
     { "source": "/contact", "destination": "/contact.html" },
     { "source": "/login", "destination": "/login.html" },
     { "source": "/panel", "destination": "/panel.html" },
     { "source": "/projekty", "destination": "/projekty.html" }
-  ],
-  "redirects": [
-    {
-      "source": "/client-dashboard/(.*)",
-      "destination": "https://client-dashboard-ecm.vercel.app/$1",
-      "permanent": false
-    },
-    {
-      "source": "/panel-klienta/(.*)",
-      "destination": "https://client-dashboard-ecm.vercel.app/$1",
-      "permanent": false
-    }
   ]
 }

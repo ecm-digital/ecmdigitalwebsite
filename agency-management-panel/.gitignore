@@ -104,6 +104,6 @@ temp/
 Dockerfile.prod
 docker-compose.prod.yml
 
-# Supabase
-supabase/.branches
-supabase/.temp
+# AWS
+.aws/
+*.pem

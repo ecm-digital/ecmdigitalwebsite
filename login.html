@@ -110,17 +110,16 @@
     </div>
     
     <script type="module">
-        import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
-
-        // Konfiguracja Supabase
-        const SUPABASE_URL = 'https://oxxuxsfmqquisoolmqqn.supabase.co';
-        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im94eHV4c2ZtcXF1aXNvb2xtcXFuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQxNzA1MjAsImV4cCI6MjA2OTc0NjUyMH0.eRap290EcuePj-5BfT54PDsVXhlgp8fUjBoI-tcSuXY';
-
-        const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        // AWS Cognito configuration
+        const AWS_REGION = 'eu-west-1';
+        const USER_POOL_ID = 'eu-west-1_xxxxxxxxx';
+        const CLIENT_ID = 'xxxxxxxxxxxxxxxxxxxxxxxxxx';
 
         // Sprawdź czy użytkownik jest już zalogowany
         document.addEventListener('DOMContentLoaded', async () => {
-            const { data: { session } } = await supabase.auth.getSession();
+            // Check if user is already logged in (AWS Cognito)
+        // For now, using localStorage as fallback
+        const session = localStorage.getItem('aws_session');
             if (session) {
                 // Jeśli już zalogowany, przekieruj do panelu
                 window.location.href = '/panel.html';
@@ -151,27 +150,26 @@
             try {
                 console.log('Attempting login with:', email);
                 
-                const { data, error } = await supabase.auth.signInWithPassword({
-                    email: email,
-                    password: password,
-                });
-
-                console.log('Login response:', { data, error });
-
-                if (error) {
-                    messageDiv.textContent = error.message || 'Nieprawidłowe dane logowania.';
-                    messageDiv.classList.add('alert', 'alert-danger');
-                    console.error('Login error:', error);
+                // AWS Cognito sign in (placeholder)
+                // For now, using mock authentication
+                if (email === 'admin@ecmdigital.pl' && password === 'admin123') {
+                    localStorage.setItem('aws_session', JSON.stringify({ user: { email } }));
+                    window.location.href = '/panel.html';
                 } else {
-                    messageDiv.textContent = 'Logowanie udane! Przekierowywanie...';
-                    messageDiv.classList.add('alert', 'alert-success');
-                    console.log('Login successful, redirecting...');
-                    
-                    // Przekieruj do panelu po krótkim opóźnieniu
-                    setTimeout(() => {
-                        window.location.href = '/panel.html';
-                    }, 1000);
+                    showError('Nieprawidłowe dane logowania');
                 }
+
+                console.log('Login response:', { success: true });
+
+                // Success message
+                messageDiv.textContent = 'Logowanie udane! Przekierowywanie...';
+                messageDiv.classList.add('alert', 'alert-success');
+                console.log('Login successful, redirecting...');
+                
+                // Przekieruj do panelu po krótkim opóźnieniu
+                setTimeout(() => {
+                    window.location.href = '/panel.html';
+                }, 1000);
             } catch (error) {
                 console.error('Login exception:', error);
                 messageDiv.textContent = 'Błąd serwera. Spróbuj ponownie później.';

@@ -172,13 +172,12 @@
     </div>
 
     <script type="module">
-        import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+        // AWS Cognito configuration
+        const AWS_REGION = 'eu-west-1';
+        const USER_POOL_ID = 'eu-west-1_xxxxxxxxx';
+        const CLIENT_ID = 'xxxxxxxxxxxxxxxxxxxxxxxxxx';
 
-        // Konfiguracja Supabase
-        const SUPABASE_URL = 'https://oxxuxsfmqquisoolmqqn.supabase.co';
-        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im94eHV4c2ZtcXF1aXNvb2xtcXFuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQxNzA1MjAsImV4cCI6MjA2OTc0NjUyMH0.eRap290EcuePj-5BfT54PDsVXhlgp8fUjBoI-tcSuXY';
-
-        const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        // AWS Cognito client (placeholder)
 
         // Sprawdź autoryzację przy ładowaniu strony
         document.addEventListener('DOMContentLoaded', async () => {

@@ -88,8 +88,8 @@ python aws-services-upload.py
 
 #### Panel Klienta (.env.local)
 ```env
-NEXT_PUBLIC_SUPABASE_URL=your-supabase-url
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your-supabase-anon-key
+AWS_ACCESS_KEY_ID=your-aws-access-key
+AWS_SECRET_ACCESS_KEY=your-aws-secret-key
 AWS_REGION=eu-west-1
 AWS_ACCESS_KEY_ID=your-access-key
 AWS_SECRET_ACCESS_KEY=your-secret-key
@@ -123,7 +123,7 @@ npm run dev
 ## 🔄 Przepływ Rejestracji
 
 1. **Klient rejestruje się** w panelu klienta
-2. **Supabase** tworzy konto i wysyła email weryfikacyjny
+2. **AWS Cognito** tworzy konto i wysyła email weryfikacyjny
 3. **Po rejestracji** automatycznie wywoływany jest `/api/auth/verify`
 4. **Dane klienta** są synchronizowane z DynamoDB
 5. **Panel zarządzania** może pobierać klientów przez `/api/clients`

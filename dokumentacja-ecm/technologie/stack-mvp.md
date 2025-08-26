@@ -309,20 +309,26 @@ export const addUser = async (userData) => {
 - **Row Level Security** - Zaawansowane bezpieczeństwo
 - **Open Source** - Pełna kontrola nad danymi
 
-**Supabase Integration:**
+**AWS Integration:**
 ```javascript
-import { createClient } from '@supabase/supabase-js';
+import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
+import { CognitoIdentityProviderClient } from '@aws-sdk/client-cognito-identity-provider';
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+const awsRegion = process.env.AWS_REGION;
+const awsAccessKey = process.env.AWS_ACCESS_KEY_ID;
 
-export const supabase = createClient(supabaseUrl, supabaseKey);
+export const dynamoClient = new DynamoDBClient({ region: awsRegion });
+export const cognitoClient = new CognitoIdentityProviderClient({ region: awsRegion });
 
 // Authentication
 export const signUp = async (email, password) => {
-  const { user, error } = await supabase.auth.signUp({
-    email,
-    password,
+  const { user, error } = await cognitoClient.signUp({
+    ClientId: process.env.COGNITO_CLIENT_ID,
+    Username: email,
+    Password: password,
+    UserAttributes: [
+      { Name: 'email', Value: email }
+    ]
   });
   
   if (error) throw error;
@@ -331,20 +337,22 @@ export const signUp = async (email, password) => {
 
 // Database operations
 export const getUsers = async () => {
-  const { data, error } = await supabase
-    .from('users')
-    .select('*');
+  const { data, error } = await dynamoClient.scan({
+    TableName: 'users'
+  });
     
   if (error) throw error;
-  return data;
+  return data.Items;
 };
 
-// Real-time subscriptions
+// Real-time subscriptions (using AWS AppSync or WebSocket)
 export const subscribeToUsers = (callback) => {
-  return supabase
-    .from('users')
-    .on('*', callback)
-    .subscribe();
+  // Implementation using AWS AppSync or WebSocket
+  // For now, using polling as fallback
+  setInterval(async () => {
+    const users = await getUsers();
+    callback(users);
+  }, 5000);
 };
 ```
 

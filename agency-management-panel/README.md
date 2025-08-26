@@ -26,7 +26,7 @@ agency-management-panel/
 │   ├── src/components/      # Reusable components
 │   └── src/lib/            # Utilities and configurations
 ├── backend/                 # Node.js/Express API
-├── supabase/               # Database migrations
+├── aws/                    # AWS configuration and services
 └── docker-compose.yml      # Development environment
 ```
 
@@ -42,7 +42,7 @@ agency-management-panel/
 ### Backend
 - **Node.js + Express.js** - API server
 - **TypeScript** - Type safety
-- **Supabase** - Database and authentication
+- **AWS** - Database (RDS), authentication, and services
 
 ### Development
 - **Docker Compose** - Local development environment
@@ -122,8 +122,9 @@ npm start           # Start production server
 
 Create `.env.local` in the frontend directory:
 ```env
-NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+AWS_ACCESS_KEY_ID=your_aws_access_key
+AWS_SECRET_ACCESS_KEY=your_aws_secret_key
+AWS_REGION=eu-west-1
 ```
 
 ## 📊 Dashboard Features

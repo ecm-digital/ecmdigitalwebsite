@@ -50,7 +50,6 @@
   },
   "devDependencies": {
     "@aws-sdk/lib-dynamodb": "^3.876.0",
-    "@aws-sdk/lib-dynamodb": "^3.876.0",
     "@eslint/eslintrc": "^3",
     "@types/node": "^20",
     "@types/react": "^19",
@@ -64,7 +63,8 @@
     "tailwindcss-animate": "^1.0.7",
     "typescript": "^5",
     "vercel": "^39.2.6",
-    "webpack": "^5.101.3"
+    "webpack": "^5.101.3",
+    "webpack-bundle-analyzer": "^4.10.2"
   },
   "simple-git-hooks": {
     "post-commit": "bash scripts/deploy-vercel.sh"

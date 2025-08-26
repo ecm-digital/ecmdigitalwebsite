@@ -1,7 +1,7 @@
 // System wielojęzyczny ECM Digital
 class I18nManager {
     constructor() {
-        this.currentLanguage = 'pl';
+        this.currentLanguage = 'en';
         this.translations = {};
         this.initialized = false;
     }
@@ -16,7 +16,7 @@ class I18nManager {
             this.initialized = true;
             
             // Ustawienie domyślnego języka
-            this.setLanguage(this.getStoredLanguage() || 'pl');
+            this.setLanguage(this.getStoredLanguage() || 'en');
             
             console.log('✅ I18n system initialized successfully');
             console.log('📊 Available translations:', Object.keys(this.translations));
@@ -24,7 +24,7 @@ class I18nManager {
             console.error('❌ Failed to initialize I18n system:', error);
             // Fallback do wbudowanych tłumaczeń
             this.loadFallbackTranslations();
-            this.setLanguage('pl');
+            this.setLanguage('en');
         }
     }
 

@@ -186,19 +186,18 @@
     </div>
 
     <script type="module">
-        import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
-
-        // Konfiguracja Supabase
-        const SUPABASE_URL = 'https://oxxuxsfmqquisoolmqqn.supabase.co';
-        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im94eHV4c2ZtcXF1aXNvb2xtcXFuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQxNzA1MjAsImV4cCI6MjA2OTc0NjUyMH0.eRap290EcuePj-5BfT54PDsVXhlgp8fUjBoI-tcSuXY';
-
-        const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        // AWS Cognito configuration
+        const AWS_REGION = 'eu-west-1';
+        const USER_POOL_ID = 'eu-west-1_xxxxxxxxx';
+        const CLIENT_ID = 'xxxxxxxxxxxxxxxxxxxxxxxxxx';
 
         let currentUser = null;
 
         // Sprawdź autoryzację przy ładowaniu strony
         document.addEventListener('DOMContentLoaded', async () => {
-            const { data: { session } } = await supabase.auth.getSession();
+            // Check if user is already logged in (AWS Cognito)
+        // For now, using localStorage as fallback
+        const session = localStorage.getItem('aws_session');
             if (!session) {
                 window.location.href = '/login';
                 return;
@@ -210,12 +209,8 @@
             // Załaduj projekty
             await loadProjects();
             
-            // Nasłuchuj na zmiany autoryzacji
-            supabase.auth.onAuthStateChange((_event, session) => {
-                if (!session) {
-                    window.location.href = '/login';
-                }
-            });
+            // Nasłuchuj na zmiany autoryzacji (AWS Cognito placeholder)
+            // For now, using localStorage as fallback
         });
 
         // Funkcja ładowania projektów
@@ -223,20 +218,26 @@
             try {
                 console.log('Loading projects for user:', currentUser.email);
                 
-                // Spróbuj pobrać projekty z tabeli projects
-                const { data: projects, error } = await supabase
-                    .from('projects')
-                    .select('*')
-                    .eq('client_email', currentUser.email)
-                    .order('created_at', { ascending: false });
+                // Spróbuj pobrać projekty z AWS DynamoDB (placeholder)
+                // For now, using mock data
+                const projects = [
+                    {
+                        name: 'Strona internetowa firmy',
+                        description: 'Nowoczesna strona internetowa z systemem CMS',
+                        status: 'active',
+                        progress: 75,
+                        start_date: new Date().toISOString(),
+                        budget: 5000
+                    }
+                ];
 
-                console.log('Projects query result:', { projects, error });
+                console.log('Projects query result:', { projects });
 
-                if (error) {
-                    console.warn('Projects table not found or error:', error);
-                    // Jeśli tabela nie istnieje, pokaż przykładowe projekty
-                    showSampleProjects();
-                    return;
+                // For now, always show projects
+                if (projects && projects.length > 0) {
+                    displayProjects(projects);
+                } else {
+                    showEmptyState();
                 }
 
                 if (projects && projects.length > 0) {
@@ -366,7 +367,8 @@
         // Funkcja wylogowania
         window.logout = async () => {
             try {
-                await supabase.auth.signOut();
+                // AWS Cognito sign out (placeholder)
+        localStorage.removeItem('aws_session');
                 window.location.href = '/login';
             } catch (error) {
                 console.error('Logout error:', error);

@@ -159,11 +159,11 @@
                 </ul>
                 <div class="language-switcher dropdown">
                     <button class="btn btn-link dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                        🇵🇱 PL
+                        🇺🇸 EN
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="languageDropdown">
-                        <li><a class="dropdown-item lang-btn active" href="#" data-lang="pl">🇵🇱 Polski</a></li>
-                        <li><a class="dropdown-item lang-btn" href="#" data-lang="en">🇺🇸 English</a></li>
+                        <li><a class="dropdown-item lang-btn" href="#" data-lang="pl">🇵🇱 Polski</a></li>
+                        <li><a class="dropdown-item lang-btn active" href="#" data-lang="en">🇺🇸 English</a></li>
                         <li><a class="dropdown-item lang-btn" href="#" data-lang="de">🇩🇪 Deutsch</a></li>
                     </ul>
                 </div>
@@ -1098,6 +1098,20 @@
     <!-- System wielojęzyczny -->
     <script src="src/js/auth-modal.js"></script>
     <script src="src/js/i18n.js"></script>
+    
+    <!-- Inicjalizacja systemu i18n -->
+    <script>
+        // Inicjalizacja systemu wielojęzycznego
+        document.addEventListener('DOMContentLoaded', function() {
+            if (window.I18nManager) {
+                window.i18nManager = new window.I18nManager();
+                window.i18nManager.init();
+                console.log('✅ I18n system initialized');
+            } else {
+                console.error('❌ I18nManager not found!');
+            }
+        });
+    </script>
     
     <!-- HubSpot Integration -->
     <script src="src/js/hubspot.js"></script>

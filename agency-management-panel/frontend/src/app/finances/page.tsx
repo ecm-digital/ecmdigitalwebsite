@@ -48,9 +48,9 @@ function formatCurrency(amount: number, currency: string) {
 
 function StatusBadge({ status }: { status: Invoice["status"] }) {
   const map = {
-    Paid: "bg-emerald-100 text-emerald-700 border-emerald-200",
-    Unpaid: "bg-amber-100 text-amber-700 border-amber-200",
-    Overdue: "bg-red-100 text-red-700 border-red-200",
+    Paid: "chip-gradient text-emerald-400 border-emerald-500/20",
+    Unpaid: "chip-gradient text-amber-400 border-amber-500/20",
+    Overdue: "chip-gradient text-red-400 border-red-500/20",
   } as const;
   return (
     <span className={`px-2 py-0.5 rounded text-xs font-semibold border ${map[status]}`}>{status}</span>
@@ -60,10 +60,10 @@ function StatusBadge({ status }: { status: Invoice["status"] }) {
 export default function FinancesPage() {
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="mb-8">
+      <section className="mb-8 rounded-2xl border border-border/40 bg-secondary/60 p-6 backdrop-blur-xl supports-[backdrop-filter]:bg-secondary/50 animate-fade-in">
         <h1 className="text-3xl font-bold">Finanse i Analiza</h1>
         <p className="text-muted-foreground mt-2">Przegląd przychodów, wydatków i efektywności finansowej</p>
-      </div>
+      </section>
 
       {/* Quick Actions */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">

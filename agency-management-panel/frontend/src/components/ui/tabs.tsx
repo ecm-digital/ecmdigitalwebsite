@@ -49,7 +49,7 @@ export function TabsList({ className, ...props }: React.HTMLAttributes<HTMLDivEl
   return (
     <div
       role="tablist"
-      className={cn("inline-flex items-center gap-1 rounded-md bg-muted p-1", className)}
+      className={cn("inline-flex items-center gap-1 rounded-xl bg-secondary/60 p-1 backdrop-blur-xl border border-border/40 supports-[backdrop-filter]:bg-secondary/50", className)}
       {...props}
     />
   )
@@ -71,8 +71,8 @@ export function TabsTrigger({ value, className, children, ...props }: TabsTrigge
       data-state={active ? "active" : "inactive"}
       onClick={() => ctx.setValue(value)}
       className={cn(
-        "px-3 py-1.5 text-sm rounded-md transition-colors",
-        active ? "bg-background shadow-sm" : "text-muted-foreground hover:text-foreground",
+        "px-3 py-1.5 text-sm rounded-lg transition-colors",
+        active ? "bg-background/90 shadow-sm" : "text-muted-foreground hover:text-foreground",
         className
       )}
       {...props}
@@ -97,6 +97,7 @@ export function TabsContent({ value, className, children, ...props }: TabsConten
     </div>
   )
 }
+
 
 
 

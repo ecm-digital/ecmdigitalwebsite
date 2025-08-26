@@ -50,7 +50,7 @@ agency-management-panel/
 ├── docker-compose.yml           # Konfiguracja Docker
 ├── frontend/                    # Aplikacja Next.js
 ├── backend/                     # API Node.js
-└── supabase/                   # Migracje bazy danych
+└── aws/                        # Konfiguracja AWS
 ```
 
 ## Następne kroki

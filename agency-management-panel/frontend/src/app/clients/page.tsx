@@ -138,10 +138,10 @@ export default function ClientsPage() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="mb-8">
+      <section className="mb-8 rounded-2xl border border-border/40 bg-secondary/60 p-6 backdrop-blur-xl supports-[backdrop-filter]:bg-secondary/50 animate-fade-in">
         <h1 className="text-3xl font-bold">Zarządzanie Klientami</h1>
         <p className="text-muted-foreground mt-2">Analiza klientów i ich projekty</p>
-      </div>
+      </section>
 
       {/* Quick Stats */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
@@ -188,7 +188,7 @@ export default function ClientsPage() {
       </div>
 
       {/* Clients Table */}
-      <Card>
+      <Card className="border border-border/40 bg-card/70 backdrop-blur-xl supports-[backdrop-filter]:bg-card/60 animate-slide-up">
         <CardHeader>
           <CardTitle>Lista klientów</CardTitle>
         </CardHeader>
@@ -201,25 +201,25 @@ export default function ClientsPage() {
             <div className="py-10 text-center text-muted-foreground">Brak klientów</div>
           ) : (
             <div className="overflow-x-auto">
-              <table className="min-w-full divide-y divide-gray-200">
-                <thead>
+              <table className="min-w-full divide-y divide-border/40">
+                <thead className="bg-secondary/50">
                   <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Imię</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nazwisko</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Firma</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Email</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Imię</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Nazwisko</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Firma</th>
                     <th className="px-6 py-3"></th>
                   </tr>
                 </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
+                <tbody className="bg-transparent divide-y divide-border/40">
                   {clients.map((c) => (
-                    <tr key={c.id} className="hover:bg-gray-50">
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                        <a href={`mailto:${c.email}`} className="text-blue-600 hover:text-blue-800">{c.email}</a>
+                    <tr key={c.id} className="hover:bg-secondary/40">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-foreground">
+                        <a href={`mailto:${c.email}`} className="text-primary hover:text-primary/90">{c.email}</a>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{c.firstName}</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{c.lastName}</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{c.company}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-foreground">{c.firstName}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-foreground">{c.lastName}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-foreground">{c.company}</td>
                       <td className="px-6 py-4 whitespace-nowrap text-right text-sm">
                         <Button size="sm" onClick={() => openProjects(c)}>Projekty</Button>
                       </td>
@@ -248,7 +248,7 @@ export default function ClientsPage() {
           ) : (
             <div className="space-y-3">
               {projects.map((p) => (
-                <div key={p.id} className="border rounded-lg p-4">
+                <div key={p.id} className="border border-border/40 rounded-lg p-4 bg-secondary/50">
                   <div className="flex items-center justify-between">
                     <div>
                       <div className="font-medium">{p.name}</div>
@@ -257,7 +257,7 @@ export default function ClientsPage() {
                     <div className="text-sm text-muted-foreground">Budżet: {p.budget ?? 0} zł</div>
                   </div>
                   {p.description && (
-                    <div className="text-sm mt-2 text-slate-600">{p.description}</div>
+                    <div className="text-sm mt-2 text-foreground/80">{p.description}</div>
                   )}
                 </div>
               ))}

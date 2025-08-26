@@ -130,16 +130,17 @@ export default function ProjectsPage() {
 
   return (
     <main className="container mx-auto py-8 px-4">
-        <div className="flex items-center justify-between mb-4">
-          <h1 className="text-2xl font-bold">Projekty</h1>
-          <button
-            type="button"
-            className="border rounded px-3 py-1 bg-primary text-primary-foreground"
-            onClick={() => setShowCreate(true)}
-          >
-            Dodaj projekt
-          </button>
-        </div>
+        <section className="mb-6 rounded-2xl border border-border/40 bg-secondary/60 p-6 backdrop-blur-xl supports-[backdrop-filter]:bg-secondary/50 animate-fade-in">
+          <div className="flex items-center justify-between">
+            <div>
+              <h1 className="text-3xl font-bold">Projekty</h1>
+              <p className="text-muted-foreground mt-1">Zarządzaj projektami i edytuj szczegóły</p>
+            </div>
+            <Button onClick={() => setShowCreate(true)}>
+              Dodaj projekt
+            </Button>
+          </div>
+        </section>
         <Dialog open={showCreate} onOpenChange={setShowCreate}>
           <DialogContent className="sm:max-w-2xl">
             <DialogHeader>
@@ -198,7 +199,7 @@ export default function ProjectsPage() {
           {projects && projects.map((project) => (
             <div
               key={project.id}
-              className="rounded-lg border bg-card p-6 shadow hover:shadow-lg transition-all"
+              className="rounded-xl border border-border/40 bg-card/70 p-6 shadow-lg backdrop-blur-xl transition-all hover:shadow-xl supports-[backdrop-filter]:bg-card/60 animate-slide-up"
             >
               {editProjectId === project.id ? (
                 <div className="space-y-2">

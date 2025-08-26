@@ -38,10 +38,12 @@ export default function TeamPage() {
 
   return (
     <main className="container mx-auto py-8 px-4">
-      <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold">Zespół</h1>
-        <Button size="sm" onClick={() => setOpen(true)}>Dodaj członka</Button>
-      </div>
+      <section className="mb-6 rounded-2xl border border-border/40 bg-secondary/60 p-6 backdrop-blur-xl supports-[backdrop-filter]:bg-secondary/50 animate-fade-in">
+        <div className="flex items-center justify-between">
+          <h1 className="text-3xl font-bold">Zespół</h1>
+          <Button size="sm" onClick={() => setOpen(true)}>Dodaj członka</Button>
+        </div>
+      </section>
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent className="sm:max-w-xl">
           <DialogHeader>
@@ -72,7 +74,7 @@ export default function TeamPage() {
           team.map((member) => (
             <div
               key={member.id}
-              className="rounded-lg border bg-card p-6 shadow hover:shadow-lg transition-all flex flex-col"
+              className="rounded-xl border border-border/40 bg-card/70 p-6 shadow-lg backdrop-blur-xl transition-all hover:shadow-xl supports-[backdrop-filter]:bg-card/60 flex flex-col animate-slide-up"
             >
               <div className="flex items-center gap-4 mb-3">
                 <div className="w-12 h-12 rounded-full bg-primary/15 text-primary flex items-center justify-center font-bold">

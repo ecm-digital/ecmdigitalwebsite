@@ -46,15 +46,17 @@ export function DashboardStats() {
         const TrendIcon = stat.trend === "up" ? TrendingUp : TrendingDown;
         
         return (
-          <Card key={index}>
+          <Card key={index} className="animate-slide-up">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium text-muted-foreground">
                 {stat.title}
               </CardTitle>
-              <Icon className="h-4 w-4 text-muted-foreground" />
+              <div className="p-2 rounded-lg chip-gradient">
+                <Icon className="h-4 w-4 text-foreground/80" />
+              </div>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{stat.value}</div>
+              <div className="text-2xl font-bold gradient-text-primary">{stat.value}</div>
               <div className="flex items-center space-x-1 text-xs text-muted-foreground">
                 <TrendIcon 
                   className={`h-3 w-3 ${
