@@ -1,45 +1,45 @@
 // AWS Configuration for ECM Digital Client Dashboard
 export const AWS_CONFIG = {
-  region: process.env.NEXT_PUBLIC_AWS_REGION || 'eu-west-1',
+  region: (process.env.NEXT_PUBLIC_AWS_REGION || 'eu-west-1').trim(),
   
   // Cognito User Pool
   cognito: {
-    userPoolId: process.env.NEXT_PUBLIC_COGNITO_USER_POOL_ID || '',
-    clientId: process.env.NEXT_PUBLIC_COGNITO_CLIENT_ID || '',
-    identityPoolId: process.env.NEXT_PUBLIC_COGNITO_IDENTITY_POOL_ID || '',
+    userPoolId: (process.env.NEXT_PUBLIC_COGNITO_USER_POOL_ID || '').trim(),
+    clientId: (process.env.NEXT_PUBLIC_COGNITO_CLIENT_ID || '').trim(),
+    identityPoolId: (process.env.NEXT_PUBLIC_COGNITO_IDENTITY_POOL_ID || '').trim(),
   },
   
   // DynamoDB Tables
   dynamodb: {
-    users: process.env.NEXT_PUBLIC_DYNAMODB_USERS_TABLE || 'ecm-users',
-    projects: process.env.NEXT_PUBLIC_DYNAMODB_PROJECTS_TABLE || 'ecm-projects',
-    messages: process.env.NEXT_PUBLIC_DYNAMODB_MESSAGES_TABLE || 'ecm-messages',
-    documents: process.env.NEXT_PUBLIC_DYNAMODB_DOCUMENTS_TABLE || 'ecm-documents',
+    users: (process.env.NEXT_PUBLIC_DYNAMODB_USERS_TABLE || 'ecm-users').trim(),
+    projects: (process.env.NEXT_PUBLIC_DYNAMODB_PROJECTS_TABLE || 'ecm-projects').trim(),
+    messages: (process.env.NEXT_PUBLIC_DYNAMODB_MESSAGES_TABLE || 'ecm-messages').trim(),
+    documents: (process.env.NEXT_PUBLIC_DYNAMODB_DOCUMENTS_TABLE || 'ecm-documents').trim(),
   },
   
   // S3 Buckets
   s3: {
-    documents: process.env.NEXT_PUBLIC_S3_DOCUMENTS_BUCKET || 'ecm-documents',
-    avatars: process.env.NEXT_PUBLIC_S3_AVATARS_BUCKET || 'ecm-avatars',
-    projectFiles: process.env.NEXT_PUBLIC_S3_PROJECT_FILES_BUCKET || 'ecm-project-files',
+    documents: (process.env.NEXT_PUBLIC_S3_DOCUMENTS_BUCKET || 'ecm-documents').trim(),
+    avatars: (process.env.NEXT_PUBLIC_S3_AVATARS_BUCKET || 'ecm-avatars').trim(),
+    projectFiles: (process.env.NEXT_PUBLIC_S3_PROJECT_FILES_BUCKET || 'ecm-project-files').trim(),
   },
   
   // Lambda Functions
   lambda: {
-    auth: process.env.NEXT_PUBLIC_LAMBDA_AUTH_FUNCTION || 'ecm-auth-function',
-    projects: process.env.NEXT_PUBLIC_LAMBDA_PROJECTS_FUNCTION || 'ecm-projects-function',
-    documents: process.env.NEXT_PUBLIC_LAMBDA_DOCUMENTS_FUNCTION || 'ecm-documents-function',
-    chatbot: process.env.NEXT_PUBLIC_LAMBDA_CHATBOT_FUNCTION || 'ecm-chatbot-function',
+    auth: (process.env.NEXT_PUBLIC_LAMBDA_AUTH_FUNCTION || 'ecm-auth-function').trim(),
+    projects: (process.env.NEXT_PUBLIC_LAMBDA_PROJECTS_FUNCTION || 'ecm-projects-function').trim(),
+    documents: (process.env.NEXT_PUBLIC_LAMBDA_DOCUMENTS_FUNCTION || 'ecm-documents-function').trim(),
+    chatbot: (process.env.NEXT_PUBLIC_LAMBDA_CHATBOT_FUNCTION || 'ecm-chatbot-function').trim(),
   },
   
   // CloudFront
   cloudfront: {
-    domain: process.env.NEXT_PUBLIC_CLOUDFRONT_DOMAIN || '',
+    domain: (process.env.NEXT_PUBLIC_CLOUDFRONT_DOMAIN || '').trim(),
   },
   
   // API Gateway
   api: {
-    baseUrl: process.env.NEXT_PUBLIC_API_BASE_URL || '',
+    baseUrl: (process.env.NEXT_PUBLIC_API_BASE_URL || '').trim(),
   }
 }
 
@@ -64,6 +64,7 @@ export const isAWSConfigured = () => {
     AWS_CONFIG.cognito.identityPoolId
   )
 }
+
 
 
 

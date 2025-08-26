@@ -10,8 +10,8 @@ const dynamoClient = new DynamoDBClient({
   region: process.env.AWS_REGION || 'eu-west-1',
 })
 
-const USER_POOL_ID = process.env.NEXT_PUBLIC_COGNITO_USER_POOL_ID!
-const CLIENT_ID = process.env.NEXT_PUBLIC_COGNITO_CLIENT_ID!
+const USER_POOL_ID = (process.env.NEXT_PUBLIC_COGNITO_USER_POOL_ID || '').trim()
+const CLIENT_ID = (process.env.NEXT_PUBLIC_COGNITO_CLIENT_ID || '').trim()
 
 export async function POST(request: NextRequest) {
   try {
