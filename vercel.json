@@ -21,6 +21,14 @@
     {
       "source": "/projekty",
       "destination": "/projekty.html"
+    },
+    {
+      "source": "/client-dashboard/:path*",
+      "destination": "https://client-dashboard-ecm.vercel.app/:path*"
+    },
+    {
+      "source": "/panel-klienta/:path*",
+      "destination": "https://client-dashboard-ecm.vercel.app/:path*"
     }
   ]
 }
