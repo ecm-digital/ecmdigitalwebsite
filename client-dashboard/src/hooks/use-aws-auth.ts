@@ -91,6 +91,12 @@ export const useAWSAuth = () => {
       
       if (response.AuthenticationResult?.AccessToken) {
         localStorage.setItem('aws_access_token', response.AuthenticationResult.AccessToken)
+        const rememberMePref = localStorage.getItem('aws_remember_me') === 'true'
+        if (rememberMePref && response.AuthenticationResult.RefreshToken) {
+          localStorage.setItem('aws_refresh_token', response.AuthenticationResult.RefreshToken)
+        } else {
+          localStorage.removeItem('aws_refresh_token')
+        }
         
         const user = await getCurrentUser(response.AuthenticationResult.AccessToken)
         setAuthState({
@@ -229,15 +235,14 @@ export const useAWSAuth = () => {
     try {
       const token = localStorage.getItem('aws_access_token')
       if (token) {
-        const command = new GlobalSignOutCommand({
-          AccessToken: token,
-        })
+        const command = new GlobalSignOutCommand({ AccessToken: token })
         await awsClients.cognito.send(command)
       }
     } catch (error) {
       console.error('Sign out error:', error)
     } finally {
       localStorage.removeItem('aws_access_token')
+      localStorage.removeItem('aws_refresh_token')
       setAuthState({
         isAuthenticated: false,
         user: null,
@@ -325,6 +330,7 @@ const isAWSConfigured = () => {
     AWS_CONFIG.cognito.identityPoolId
   )
 }
+
 
 
 

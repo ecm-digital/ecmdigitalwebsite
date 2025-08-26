@@ -13,11 +13,14 @@ type AuthMode = 'signin' | 'signup' | 'forgot' | 'confirm'
 export default function LoginForm() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [showPassword, setShowPassword] = useState(false)
+  const [rememberMe, setRememberMe] = useState(true)
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [company, setCompany] = useState('')
   const [confirmationCode, setConfirmationCode] = useState('')
   const [mode, setMode] = useState<AuthMode>('signin')
+  const [formError, setFormError] = useState<string | null>(null)
   
   const showSignUp = mode === 'signup'
   const showForgotPassword = mode === 'forgot'
@@ -38,6 +41,17 @@ export default function LoginForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     clearError()
+    setFormError(null)
+
+    // Basic validation
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setFormError('Podaj poprawny adres email')
+      return
+    }
+    if (!showConfirmation && !showForgotPassword && password.length < 8) {
+      setFormError('Hasło musi mieć co najmniej 8 znaków')
+      return
+    }
     
     if (showConfirmation) {
       const result = await confirmSignUp(email, confirmationCode)
@@ -60,6 +74,9 @@ export default function LoginForm() {
         setMode('signin')
       }
     } else {
+      try {
+        localStorage.setItem('aws_remember_me', rememberMe ? 'true' : 'false')
+      } catch {}
       const result = await signIn(email, password)
       if (result.success) {
         router.push('/dashboard')
@@ -148,18 +165,59 @@ export default function LoginForm() {
             <Label htmlFor="password" className="text-gray-200">
               Hasło
             </Label>
-            <Input
-              id="password"
-              type="password"
-              placeholder="••••••••"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              className="bg-gray-800/50 border-gray-600 text-white placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500"
-            />
+            <div className="relative">
+              <Input
+                id="password"
+                type={showPassword ? 'text' : 'password'}
+                placeholder="••••••••"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                autoComplete="current-password"
+                className="bg-gray-800/50 border-gray-600 text-white placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 pr-12"
+              />
+              <button
+                type="button"
+                aria-label={showPassword ? 'Ukryj hasło' : 'Pokaż hasło'}
+                onClick={() => setShowPassword((v) => !v)}
+                className="absolute inset-y-0 right-0 px-3 text-gray-400 hover:text-gray-200"
+              >
+                {showPassword ? 'Ukryj' : 'Pokaż'}
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* Remember me + forgot password inline */}
+        {mode === 'signin' && (
+          <div className="flex items-center justify-between">
+            <label className="inline-flex items-center gap-2 text-sm text-gray-300 select-none">
+              <input
+                type="checkbox"
+                className="h-4 w-4 rounded border-gray-600 bg-gray-800/50 text-blue-600 focus:ring-blue-500"
+                checked={rememberMe}
+                onChange={(e) => setRememberMe(e.target.checked)}
+              />
+              Zapamiętaj mnie
+            </label>
+
+            <button
+              type="button"
+              onClick={() => toggleMode('forgot')}
+              className="text-blue-400 hover:text-blue-300 transition-colors text-sm font-medium"
+            >
+              Zapomniałeś hasła?
+            </button>
           </div>
         )}
         
+        {/* Form error */}
+        {formError && (
+          <div className="p-3 rounded-lg bg-red-500/10 border border-red-500/20">
+            <p className="text-sm text-red-400">{formError}</p>
+          </div>
+        )}
+
         <Button
           type="submit"
           disabled={isLoading}
