@@ -222,8 +222,8 @@ class I18nManager {
     // Ustawienie języka
     setLanguage(lang) {
         if (!this.translations[lang]) {
-            console.warn(`Language ${lang} not supported, falling back to en`);
-            lang = 'en';
+            console.warn(`Language ${lang} not supported, falling back to pl`);
+            lang = 'pl';
         }
 
         this.currentLanguage = lang;
@@ -232,8 +232,10 @@ class I18nManager {
         // Aktualizacja HTML
         document.documentElement.lang = lang;
         
-        // Aktualizacja wszystkich elementów z data-i18n
-        this.updatePageContent();
+        // Aktualizacja wszystkich elementów z data-i18n tylko jeśli nie jest to inicjalizacja
+        if (this.initialized) {
+            this.updatePageContent();
+        }
         
         console.log(`Language changed to: ${lang}`);
     }
