@@ -44,7 +44,8 @@
     "tailwind-merge": "^3.3.1",
     "util": "^0.12.5",
     "zod": "^4.0.14",
-    "zustand": "^5.0.7"
+    "zustand": "^5.0.7",
+    "@supabase/supabase-js": "^2.47.10"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
