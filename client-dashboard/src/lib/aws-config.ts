@@ -1,5 +1,9 @@
 // AWS Configuration for ECM Digital Client Dashboard
-const sanitizeId = (value: string) => (value || '').trim().replace(/\s+/g, '')
+const sanitizeId = (value: string) =>
+  (value || '')
+    .trim()
+    .replace(/\s+/g, '')
+    .replace(/[^\w+]/g, '')
 
 export const AWS_CONFIG = {
   region: (process.env.NEXT_PUBLIC_AWS_REGION || 'eu-west-1').trim(),

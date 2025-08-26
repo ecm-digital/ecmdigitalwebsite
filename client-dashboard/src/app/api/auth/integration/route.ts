@@ -10,9 +10,9 @@ const dynamoClient = new DynamoDBClient({
   region: process.env.AWS_REGION || 'eu-west-1',
 })
 
-const stripWhitespace = (v: string) => (v || '').trim().replace(/\s+/g, '')
-const USER_POOL_ID = stripWhitespace(process.env.NEXT_PUBLIC_COGNITO_USER_POOL_ID || '')
-const CLIENT_ID = stripWhitespace(process.env.NEXT_PUBLIC_COGNITO_CLIENT_ID || '')
+const sanitizeId = (v: string) => (v || '').trim().replace(/\s+/g, '').replace(/[^\w+]/g, '')
+const USER_POOL_ID = sanitizeId(process.env.NEXT_PUBLIC_COGNITO_USER_POOL_ID || '')
+const CLIENT_ID = sanitizeId(process.env.NEXT_PUBLIC_COGNITO_CLIENT_ID || '')
 
 export async function POST(request: NextRequest) {
   try {
