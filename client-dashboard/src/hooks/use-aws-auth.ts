@@ -78,14 +78,6 @@ export const useAWSAuth = () => {
     setAuthState(prev => ({ ...prev, isLoading: true, error: null }))
     
     try {
-      // Log AWS config for debugging
-      console.log('AWS Config check:', {
-        region: AWS_CONFIG.region,
-        userPoolId: AWS_CONFIG.cognito.userPoolId ? 'SET' : 'MISSING',
-        clientId: AWS_CONFIG.cognito.clientId ? 'SET' : 'MISSING',
-        identityPoolId: AWS_CONFIG.cognito.identityPoolId ? 'SET' : 'MISSING'
-      })
-
       const command = new InitiateAuthCommand({
         AuthFlow: 'USER_PASSWORD_AUTH',
         ClientId: AWS_CONFIG.cognito.clientId,
@@ -94,8 +86,6 @@ export const useAWSAuth = () => {
           PASSWORD: password,
         },
       })
-
-      console.log('Attempting login for:', email)
       const response = await awsClients.cognito.send(command)
       
       if (response.AuthenticationResult?.AccessToken) {
@@ -120,13 +110,6 @@ export const useAWSAuth = () => {
         throw new Error('Authentication failed')
       }
     } catch (error: any) {
-      console.error('Login error details:', {
-        name: error.name,
-        message: error.message,
-        code: error.$metadata?.httpStatusCode,
-        requestId: error.$metadata?.requestId
-      })
-      
       const errorMessage = getCognitoErrorMessage(error)
       setAuthState(prev => ({
         ...prev,
