@@ -1,12 +1,14 @@
 // AWS Configuration for ECM Digital Client Dashboard
+const sanitizeId = (value: string) => (value || '').trim().replace(/\s+/g, '')
+
 export const AWS_CONFIG = {
   region: (process.env.NEXT_PUBLIC_AWS_REGION || 'eu-west-1').trim(),
   
   // Cognito User Pool
   cognito: {
-    userPoolId: (process.env.NEXT_PUBLIC_COGNITO_USER_POOL_ID || '').trim(),
-    clientId: (process.env.NEXT_PUBLIC_COGNITO_CLIENT_ID || '').trim(),
-    identityPoolId: (process.env.NEXT_PUBLIC_COGNITO_IDENTITY_POOL_ID || '').trim(),
+    userPoolId: sanitizeId(process.env.NEXT_PUBLIC_COGNITO_USER_POOL_ID || ''),
+    clientId: sanitizeId(process.env.NEXT_PUBLIC_COGNITO_CLIENT_ID || ''),
+    identityPoolId: sanitizeId(process.env.NEXT_PUBLIC_COGNITO_IDENTITY_POOL_ID || ''),
   },
   
   // DynamoDB Tables
