@@ -1099,14 +1099,17 @@
     <script src="src/js/auth-modal.js"></script>
     <script src="src/js/i18n.js"></script>
     
-    <!-- Inicjalizacja systemu i18n -->
+    <!-- Inicjalizacja systemu i18n - TYMCZASOWO WYŁĄCZONY -->
     <script>
+        // Tymczasowo wyłączony system i18n - zostawiamy polskie teksty
+        console.log('⚠️ I18n system temporarily disabled - keeping Polish texts');
+        
         // Inicjalizacja systemu wielojęzycznego
         document.addEventListener('DOMContentLoaded', function() {
             if (window.I18nManager) {
                 window.i18nManager = new window.I18nManager();
-                window.i18nManager.init();
-                console.log('✅ I18n system initialized');
+                // window.i18nManager.init(); // TYMCZASOWO WYŁĄCZONE
+                console.log('⚠️ I18n system created but not initialized - keeping Polish texts');
             } else {
                 console.error('❌ I18nManager not found!');
             }

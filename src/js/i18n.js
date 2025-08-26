@@ -11,14 +11,14 @@ class I18nManager {
         try {
             console.log('🔄 Initializing I18n system...');
             
-            // Ładowanie tłumaczeń
-            await this.loadTranslations();
+            // Użyj wbudowanych tłumaczeń jako domyślnych
+            this.loadFallbackTranslations();
             this.initialized = true;
             
             // Ustawienie domyślnego języka
             this.setLanguage(this.getStoredLanguage() || 'pl');
             
-            console.log('✅ I18n system initialized successfully');
+            console.log('✅ I18n system initialized successfully with fallback translations');
             console.log('📊 Available translations:', Object.keys(this.translations));
         } catch (error) {
             console.error('❌ Failed to initialize I18n system:', error);
