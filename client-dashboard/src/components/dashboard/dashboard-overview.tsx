@@ -216,8 +216,8 @@ export function DashboardOverview() {
       )}
 
       {/* Recent Projects */}
-      {recentProjects.length > 0 && (
-        <Card className="border-0 bg-gradient-to-r from-slate-50 to-slate-100 shadow-lg">
+      {recentProjects.length > 0 ? (
+        <Card className="dashboard-card">
           <CardHeader className="flex flex-row items-center justify-between">
             <div>
               <CardTitle className="text-xl font-bold text-slate-800 flex items-center">
@@ -228,7 +228,7 @@ export function DashboardOverview() {
                 Twoje najnowsze projekty i ich status
               </CardDescription>
             </div>
-            <button className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors flex items-center">
+            <button className="dashboard-button flex items-center">
               <Plus className="h-4 w-4 mr-2" />
               Wszystkie projekty
             </button>
@@ -248,7 +248,7 @@ export function DashboardOverview() {
                       </div>
                     </div>
                     <div className="flex items-center space-x-4">
-                      <Badge className={`${statusColors[project.status as keyof typeof statusColors]} border font-medium`}>
+                      <Badge className={`dashboard-badge ${statusColors[project.status as keyof typeof statusColors]} border font-medium`}>
                         {statusLabels[project.status as keyof typeof statusLabels]}
                       </Badge>
                       <div className="text-right">
@@ -260,6 +260,29 @@ export function DashboardOverview() {
                   </div>
                 </div>
               ))}
+            </div>
+          </CardContent>
+        </Card>
+      ) : (
+        <Card className="dashboard-card">
+          <CardHeader>
+            <CardTitle className="text-xl font-bold text-slate-800 flex items-center">
+              <FolderOpen className="h-5 w-5 mr-2 text-blue-600" />
+              Brak Projektów
+            </CardTitle>
+            <CardDescription className="text-slate-600 text-base">
+              Nie masz jeszcze żadnych projektów. Utwórz pierwszy!
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="text-center py-8">
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Plus className="h-8 w-8 text-blue-600" />
+              </div>
+              <p className="text-slate-600 mb-4">Rozpocznij swoją pierwszą współpracę z ECM Digital</p>
+              <button className="dashboard-button">
+                Utwórz Projekt
+              </button>
             </div>
           </CardContent>
         </Card>

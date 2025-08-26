@@ -11,10 +11,7 @@ const nextConfig = {
   },
   output: isExport ? 'export' : 'standalone',
   // Removed: trailingSlash: true,
-  experimental: {
-    webpackBuildWorker: false,
-    optimizeCss: true,
-  },
+
   images: {
     unoptimized: true,
   },

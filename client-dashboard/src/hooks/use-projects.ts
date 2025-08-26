@@ -9,49 +9,73 @@ export function useProjects() {
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
+    // Force dev data in development mode
+    if (process.env.NODE_ENV === 'development') {
+      const defaultProjects: Project[] = [
+        {
+          id: 'dev-project-1',
+          name: 'Strona WWW ECM Digital',
+          description: 'Nowoczesna strona internetowa z AI chatbotem',
+          type: 'website' as const,
+          status: 'development' as const,
+          priority: 'high' as const,
+          client_id: 'dev-user-1',
+          budget_total: 15000,
+          budget_used: 8500,
+          deadline: '2025-02-15',
+          created_at: '2025-01-15T10:00:00Z',
+          updated_at: '2025-01-26T15:30:00Z'
+        },
+        {
+          id: 'dev-project-2',
+          name: 'Sklep Shopify',
+          description: 'E-commerce platform dla firmy technologicznej',
+          type: 'shopify' as const,
+          status: 'design' as const,
+          priority: 'medium' as const,
+          client_id: 'dev-user-1',
+          budget_total: 25000,
+          budget_used: 5000,
+          deadline: '2025-03-20',
+          created_at: '2025-01-20T14:00:00Z',
+          updated_at: '2025-01-25T11:15:00Z'
+        },
+        {
+          id: 'dev-project-3',
+          name: 'AI Chatbot',
+          description: 'Inteligentny asystent dla klientów',
+          type: 'automation' as const,
+          status: 'testing' as const,
+          priority: 'high' as const,
+          client_id: 'dev-user-1',
+          budget_total: 8000,
+          budget_used: 7200,
+          deadline: '2025-01-30',
+          created_at: '2025-01-10T09:00:00Z',
+          updated_at: '2025-01-26T16:45:00Z'
+        }
+      ]
+      
+      // Save to localStorage
+      localStorage.setItem('dev_projects', JSON.stringify(defaultProjects))
+      localStorage.setItem('dev_user', JSON.stringify({
+        id: 'dev-user-1',
+        email: 'dev@ecm-digital.com',
+        name: 'Tomasz Gnat',
+        company: 'ECM Digital',
+        role: 'client' as const,
+        isEmailVerified: true,
+        createdAt: new Date().toISOString(),
+        lastLoginAt: new Date().toISOString()
+      }))
+      
+      setProjects(defaultProjects)
+      setLoading(false)
+      return
+    }
+
     if (user) {
       fetchProjects()
-    } else if (process.env.NODE_ENV === 'development') {
-      // Fallback for local development
-      const devProjects = localStorage.getItem('dev_projects')
-      if (devProjects) {
-        setProjects(JSON.parse(devProjects))
-      } else {
-        // Create default dev projects
-        const defaultProjects: Project[] = [
-          {
-            id: 'dev-project-1',
-            name: 'Strona WWW ECM Digital',
-            description: 'Nowoczesna strona internetowa z AI chatbotem',
-            type: 'website' as const,
-            status: 'development' as const,
-            priority: 'high' as const,
-            client_id: 'dev-user-1',
-            budget_total: 15000,
-            budget_used: 8500,
-            deadline: '2025-02-15',
-            created_at: '2025-01-15T10:00:00Z',
-            updated_at: '2025-01-26T15:30:00Z'
-          },
-          {
-            id: 'dev-project-2',
-            name: 'Sklep Shopify',
-            description: 'E-commerce platform dla firmy technologicznej',
-            type: 'shopify' as const,
-            status: 'design' as const,
-            priority: 'medium' as const,
-            client_id: 'dev-user-1',
-            budget_total: 25000,
-            budget_used: 5000,
-            deadline: '2025-03-20',
-            created_at: '2025-01-20T14:00:00Z',
-            updated_at: '2025-01-25T11:15:00Z'
-          }
-        ]
-        localStorage.setItem('dev_projects', JSON.stringify(defaultProjects))
-        setProjects(defaultProjects)
-      }
-      setLoading(false)
     }
   }, [user])
 
