@@ -7,15 +7,17 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
             const href = this.getAttribute('href');
             let newHref = href;
-            
+
+            // TEMPORARY: Use local development server for testing
+            // TODO: Replace with production Vercel URL when ready
             if (href.startsWith('/client-dashboard/')) {
-                newHref = href.replace('/client-dashboard/', 'https://client-dashboard-jl678m0h1-ecm-digitals-projects.vercel.app/');
+                newHref = href.replace('/client-dashboard/', 'http://localhost:3002/');
             } else if (href.startsWith('/panel-klienta/')) {
-                newHref = href.replace('/panel-klienta/', 'https://client-dashboard-jl678m0h1-ecm-digitals-projects.vercel.app/');
+                newHref = href.replace('/panel-klienta/', 'http://localhost:3002/');
             } else if (href.startsWith('/login')) {
-                newHref = href.replace('/login', 'https://client-dashboard-jl678m0h1-ecm-digitals-projects.vercel.app/auth/login');
+                newHref = href.replace('/login', 'http://localhost:3002/auth/login');
             }
-            
+
             window.location.href = newHref;
         });
     });

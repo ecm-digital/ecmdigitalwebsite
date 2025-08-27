@@ -26,6 +26,9 @@ import {
   ProjectsService 
 } from './aws';
 
+// Import n8n service
+import { n8nService } from './n8n';
+
 const app = express();
 const PORT = process.env.PORT || 3001;
 const AWS_REGION = process.env.AWS_REGION || 'eu-west-1'
@@ -170,6 +173,55 @@ const userPasswords: Record<string, string> = {
 // Health check
 app.get('/health', (req, res) => {
   res.json({ status: 'OK', timestamp: new Date().toISOString() });
+});
+
+// Contact form endpoint
+app.post('/api/contact', async (req, res) => {
+  try {
+    const { name, email, phone, company, service, budget, message } = req.body;
+
+    if (!name || !email || !message) {
+      return res.status(400).json({
+        error: 'Imię, email i wiadomość są wymagane'
+      });
+    }
+
+    const contactData = {
+      id: Date.now().toString(),
+      name,
+      email,
+      phone: phone || '',
+      company: company || '',
+      service: service || '',
+      budget: budget || '',
+      message,
+      timestamp: new Date().toISOString(),
+      source: 'contact-form'
+    };
+
+    console.log('Nowa wiadomość kontaktowa:', contactData);
+
+    // Na razie zwracamy sukces
+    res.status(201).json({
+      message: 'Wiadomość wysłana pomyślnie',
+      contact: contactData
+    });
+
+    // 🔥 N8N INTEGRATION: Wyślij dane kontaktowe do n8n
+    try {
+      await n8nService.sendContactMessage(contactData);
+      console.log(`✅ Contact message sent to n8n: ${contactData.email}`);
+    } catch (n8nError) {
+      console.error('❌ Failed to send contact message to n8n:', n8nError);
+      // Nie blokujemy odpowiedzi - integracja z n8n nie powinna wpływać na główną funkcjonalność
+    }
+
+  } catch (error) {
+    console.error('Błąd wysyłania wiadomości kontaktowej:', error);
+    res.status(500).json({
+      error: 'Błąd serwera podczas wysyłania wiadomości'
+    });
+  }
 });
 
 // Test AWS RDS connection
@@ -743,8 +795,19 @@ app.post('/api/projects', async (req, res) => {
       return res.status(400).json({ error: 'Missing fields (name, client, status, description)' });
     }
     
-    const project = await ProjectsService.createProject({ id: Date.now().toString(), name, client, status, description });
-    res.status(201).json(project);
+    const projectData = { id: Date.now().toString(), name, client, status, description };
+    const project = await ProjectsService.createProject(projectData);
+    res.status(201).json(projectData);
+
+    // 🔥 N8N INTEGRATION: Wyślij dane nowego projektu do n8n
+    try {
+      await n8nService.sendNewProject(projectData);
+      console.log(`✅ Project data sent to n8n: ${projectData.name}`);
+    } catch (n8nError) {
+      console.error('❌ Failed to send project data to n8n:', n8nError);
+      // Nie blokujemy odpowiedzi - integracja z n8n nie powinna wpływać na główną funkcjonalność
+    }
+
   } catch (error) {
     console.error('Error creating project:', error);
     res.status(500).json({ error: 'Failed to create project in database' });
@@ -807,7 +870,7 @@ app.get('/api/clients', async (req, res) => {
 });
 
 // Dodaj nowego klienta
-app.post('/api/clients', (req, res) => {
+app.post('/api/clients', async (req, res) => {
   try {
     const clientData = req.body;
 
@@ -821,16 +884,28 @@ app.post('/api/clients', (req, res) => {
     // Tutaj będzie logika zapisywania do bazy danych
     console.log('Nowy klient:', clientData);
 
-    // Na razie zwracamy sukces
-    res.status(201).json({
-      message: 'Klient dodany pomyślnie',
-      client: {
+    const newClient = {
         id: Date.now().toString(),
         ...clientData,
         status: 'active',
         registration_date: new Date().toISOString()
-      }
+    };
+
+    // Na razie zwracamy sukces
+    res.status(201).json({
+      message: 'Klient dodany pomyślnie',
+      client: newClient
     });
+
+    // 🔥 N8N INTEGRATION: Wyślij dane nowego klienta do n8n
+    try {
+      await n8nService.sendNewClient(newClient);
+      console.log(`✅ Client data sent to n8n: ${newClient.email}`);
+    } catch (n8nError) {
+      console.error('❌ Failed to send client data to n8n:', n8nError);
+      // Nie blokujemy odpowiedzi - integracja z n8n nie powinna wpływać na główną funkcjonalność
+    }
+
   } catch (error) {
     console.error('Błąd dodawania klienta:', error);
     res.status(500).json({
@@ -1284,8 +1359,270 @@ app.patch('/api/notifications/mark-all-read', (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on port ${PORT}`);
+// 🔥 N8N INTEGRATION ENDPOINTS
+
+// Middleware do walidacji n8n API token
+const validateN8nToken = (req: any, res: any, next: any) => {
+  const authHeader = req.headers.authorization;
+  const expectedToken = process.env.N8N_API_TOKEN || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjYTNjNWEwYS1jMGQ1LTQ5ODEtOWQ4NS00MjlkOGI2OGZlOGIiLCJpc3MiOiJuOG4iLCJhdWQiOiJwdWJsaWMtYXBpIiwiaWF0IjoxNzU2MjYyMDk4LCJleHAiOjE3NTg4Mzc2MDB9.HBznfCBaPGKYnDSVVegBqCpReW8pBWW5A6-pKTzNfdw';
+
+  if (!authHeader || !authHeader.startsWith('Bearer ')) {
+    return res.status(401).json({ error: 'Unauthorized - No token provided' });
+  }
+
+  const token = authHeader.substring(7);
+  if (token !== expectedToken) {
+    return res.status(401).json({ error: 'Unauthorized - Invalid token' });
+  }
+
+  next();
+};
+
+// Endpoint do wysyłania danych nowego klienta do n8n
+app.post('/api/n8n/clients/new', validateN8nToken, async (req, res) => {
+  try {
+    const clientData = req.body;
+
+    if (!clientData.email || !clientData.contact_person) {
+      return res.status(400).json({
+        error: 'Missing required fields: email, contact_person'
+      });
+    }
+
+    console.log(`📤 Sending new client to n8n: ${clientData.email}`);
+
+    const result = await n8nService.sendNewClient(clientData);
+
+    res.json({
+      success: true,
+      message: 'Client data sent to n8n successfully',
+      result,
+      timestamp: new Date().toISOString()
+    });
+
+  } catch (error) {
+    console.error('Error sending client to n8n:', error);
+    res.status(500).json({
+      error: 'Failed to send client data to n8n',
+      details: error instanceof Error ? error.message : 'Unknown error'
+    });
+  }
+});
+
+// Endpoint do wysyłania danych nowego projektu do n8n
+app.post('/api/n8n/projects/new', validateN8nToken, async (req, res) => {
+  try {
+    const projectData = req.body;
+
+    if (!projectData.name || !projectData.client) {
+      return res.status(400).json({
+        error: 'Missing required fields: name, client'
+      });
+    }
+
+    console.log(`📤 Sending new project to n8n: ${projectData.name}`);
+
+    const result = await n8nService.sendNewProject(projectData);
+
+    res.json({
+      success: true,
+      message: 'Project data sent to n8n successfully',
+      result,
+      timestamp: new Date().toISOString()
+    });
+
+  } catch (error) {
+    console.error('Error sending project to n8n:', error);
+    res.status(500).json({
+      error: 'Failed to send project data to n8n',
+      details: error instanceof Error ? error.message : 'Unknown error'
+    });
+  }
+});
+
+// Endpoint do wysyłania wiadomości kontaktowej do n8n
+app.post('/api/n8n/contact', validateN8nToken, async (req, res) => {
+  try {
+    const messageData = req.body;
+
+    if (!messageData.email || !messageData.message) {
+      return res.status(400).json({
+        error: 'Missing required fields: email, message'
+      });
+    }
+
+    console.log(`📤 Sending contact message to n8n: ${messageData.email}`);
+
+    const result = await n8nService.sendContactMessage(messageData);
+
+    res.json({
+      success: true,
+      message: 'Contact message sent to n8n successfully',
+      result,
+      timestamp: new Date().toISOString()
+    });
+
+  } catch (error) {
+    console.error('Error sending contact message to n8n:', error);
+    res.status(500).json({
+      error: 'Failed to send contact message to n8n',
+      details: error instanceof Error ? error.message : 'Unknown error'
+    });
+  }
+});
+
+// Endpoint do wysyłania danych marketingowych do n8n
+app.post('/api/n8n/marketing', validateN8nToken, async (req, res) => {
+  try {
+    const marketingData = req.body;
+
+    console.log(`📤 Sending marketing data to n8n`);
+
+    const result = await n8nService.sendMarketingData(marketingData);
+
+    res.json({
+      success: true,
+      message: 'Marketing data sent to n8n successfully',
+      result,
+      timestamp: new Date().toISOString()
+    });
+
+  } catch (error) {
+    console.error('Error sending marketing data to n8n:', error);
+    res.status(500).json({
+      error: 'Failed to send marketing data to n8n',
+      details: error instanceof Error ? error.message : 'Unknown error'
+    });
+  }
+});
+
+// Endpoint do ręcznego triggerowania dowolnego workflow
+app.post('/api/n8n/trigger/:workflowId', validateN8nToken, async (req, res) => {
+  try {
+    const { workflowId } = req.params;
+    const workflowData = req.body;
+
+    console.log(`📤 Triggering n8n workflow: ${workflowId}`);
+
+    const result = await n8nService.triggerWorkflow({
+      workflowId,
+      data: workflowData.data || workflowData,
+      metadata: workflowData.metadata || {
+        source: 'manual-trigger',
+        timestamp: new Date().toISOString()
+      }
+    });
+
+    res.json({
+      success: true,
+      message: `Workflow ${workflowId} triggered successfully`,
+      result,
+      timestamp: new Date().toISOString()
+    });
+
+  } catch (error) {
+    console.error(`Error triggering workflow ${req.params.workflowId}:`, error);
+    res.status(500).json({
+      error: `Failed to trigger workflow ${req.params.workflowId}`,
+      details: error instanceof Error ? error.message : 'Unknown error'
+    });
+  }
+});
+
+// Endpoint do pobierania listy dostępnych workflow-ów
+app.get('/api/n8n/workflows', validateN8nToken, async (req, res) => {
+  try {
+    console.log(`📋 Getting n8n workflows list`);
+
+    const result = await n8nService.getWorkflows();
+
+    res.json({
+      success: true,
+      workflows: result,
+      timestamp: new Date().toISOString()
+    });
+
+  } catch (error) {
+    console.error('Error getting workflows:', error);
+    res.status(500).json({
+      error: 'Failed to get workflows from n8n',
+      details: error instanceof Error ? error.message : 'Unknown error'
+    });
+  }
+});
+
+// Endpoint do pobierania statusu wykonania workflow
+app.get('/api/n8n/executions/:executionId', validateN8nToken, async (req, res) => {
+  try {
+    const { executionId } = req.params;
+
+    console.log(`📊 Getting execution status: ${executionId}`);
+
+    const result = await n8nService.getWorkflowExecutionStatus(executionId);
+
+    res.json({
+      success: true,
+      execution: result,
+      timestamp: new Date().toISOString()
+    });
+
+  } catch (error) {
+    console.error(`Error getting execution status ${req.params.executionId}:`, error);
+    res.status(500).json({
+      error: `Failed to get execution status ${req.params.executionId}`,
+      details: error instanceof Error ? error.message : 'Unknown error'
+    });
+  }
+});
+
+// Webhook endpoint do odbierania danych z n8n
+app.post('/api/n8n/webhook/:workflowId', async (req, res) => {
+  try {
+    const { workflowId } = req.params;
+    const payload = req.body;
+    const signature = req.headers['x-n8n-signature'] as string;
+
+    console.log(`🎣 Received webhook from n8n workflow: ${workflowId}`);
+
+    // Walidacja podpisu jeśli skonfigurowana
+    if (signature && !n8nService.validateWebhookSignature(JSON.stringify(payload), signature)) {
+      console.error('❌ Invalid webhook signature');
+      return res.status(401).json({ error: 'Invalid webhook signature' });
+    }
+
+    // Logowanie otrzymanych danych
+    console.log(`📦 Webhook payload:`, JSON.stringify(payload, null, 2));
+
+    // Tutaj można dodać logikę przetwarzania webhook-a
+    // np. zapis do bazy danych, wywołanie innych usług, etc.
+
+    res.json({
+      success: true,
+      message: `Webhook from ${workflowId} processed successfully`,
+      timestamp: new Date().toISOString()
+    });
+
+  } catch (error) {
+    console.error(`Error processing webhook ${req.params.workflowId}:`, error);
+    res.status(500).json({
+      error: `Failed to process webhook ${req.params.workflowId}`,
+      details: error instanceof Error ? error.message : 'Unknown error'
+    });
+  }
+});
+
+// Health check dla n8n integracji
+app.get('/api/n8n/health', (req, res) => {
+  res.json({
+    status: 'OK',
+    service: 'n8n-integration',
+    timestamp: new Date().toISOString(),
+    config: {
+      baseUrl: process.env.N8N_BASE_URL ? 'configured' : 'not configured',
+      apiToken: process.env.N8N_API_TOKEN ? 'configured' : 'not configured',
+      webhookSecret: process.env.N8N_WEBHOOK_SECRET ? 'configured' : 'not configured'
+    }
+  });
 });
 
 app.get('/api/clients/:id/projects', async (req, res) => {
@@ -1326,4 +1663,9 @@ app.get('/api/clients/:id/projects', async (req, res) => {
     console.error('Error fetching client projects (DynamoDB):', error)
     return res.status(500).json({ error: 'Internal error fetching client projects' })
   }
+});
+
+app.listen(PORT, () => {
+  console.log(`🚀 Server running on port ${PORT}`);
+  console.log(`🔗 n8n integration ready at http://localhost:${PORT}/api/n8n`);
 });
