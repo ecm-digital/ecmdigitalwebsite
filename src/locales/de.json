@@ -93,25 +93,7 @@
           "satisfactionLabel": "Zufriedenheit"
         }
     },
-  "sections": {
-    "services": {
-      "title": "Unsere Dienstleistungen",
-      "subtitle": "Umfassende digitale Lösungen für moderne Unternehmen"
-    },
-    "about": {
-      "title": "Über ECM Digital",
-      "description1": "Wir sind ein Team von Technologie-Enthusiasten, die glauben, dass jedes Unternehmen eine digitale Transformation verdient. Wir verbinden Kreativität mit innovativen technologischen Lösungen.",
-      "description2": "ECM Digital ist eine Marke, die umfassende und moderne digitale Lösungen anbietet. Wir sind spezialisiert auf Webdesign, E-Commerce, UX-Audits und Geschäftsprozessautomatisierung und helfen Unternehmen dabei, sich in der digitalen Welt zu entwickeln.",
-      "description3": "Die Marke ECM Digital operiert innerhalb der Scrum Software Sp. z o.o., die der formelle Eigentümer aller von uns bereitgestellten Dienstleistungen und die rechtlich verantwortliche Einheit ist. Es ist Scrum Software Sp. z o.o., die Rechnungen ausstellt, Verträge abschließt und Finanzabwicklungen durchführt.",
-      "description4": "Dank dieser Lösung verbinden wir modernes Branding mit professionellem Rechtsservice und gewährleisten unseren Kunden vollständige Sicherheit und Transparenz der Zusammenarbeit.",
-      "stats": {
-        "projects": "50+",
-        "projectsLabel": "Abgeschlossene Projekte",
-        "clients": "98%",
-        "clientsLabel": "Zufriedene Kunden"
-      }
-    },
-    "team": {
+            "team": {
       "title": "Unser Team",
       "subtitle": "Lernen Sie die Experten kennen, die Ihre Projekte erstellen",
       "members": {

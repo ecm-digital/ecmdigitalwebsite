@@ -107,7 +107,8 @@ class I18nManager {
                     }
                 },
                 common: {
-                    learnMore: "Dowiedz się więcej"
+                    learnMore: "Dowiedz się więcej",
+                    readMore: "Czytaj więcej"
                 },
                 hero: {
                     title: "Wdrażamy AI w Twojej Firmie",
@@ -163,12 +164,49 @@ class I18nManager {
                         description: "Głosowa obsługa klienta - dostępność 24/7 bez kosztów call center. Naturalne rozmowy, inteligentne odpowiedzi."
                     }
                 },
+                blog: {
+                    aiTrends: {
+                        category: "🤖 AI Trends",
+                        title: "Jak AI zmienia e-commerce w 2024?",
+                        description: "Odkryj najnowsze trendy AI dla e-commerce: personalizacja, chatboty, rekomendacje produktów i automatyzacja procesów sprzedaży.",
+                        readTime: "15 min czytania",
+                        views: "2.5k wyświetleń",
+                        tags: {
+                            ecommerce: "E-commerce",
+                            ai: "AI",
+                            trends: "Trends"
+                        }
+                    },
+                    automation: {
+                        category: "⚡ Automation",
+                        title: "10 procesów biznesowych do automatyzacji",
+                        description: "Praktyczny przewodnik po procesach, które warto zautomatyzować w pierwszej kolejności. Oszczędzaj czas i pieniądze dzięki AI.",
+                        readTime: "12 min czytania",
+                        views: "1.8k wyświetleń",
+                        tags: {
+                            automation: "Automatyzacja",
+                            process: "Proces",
+                            roi: "ROI"
+                        }
+                    }
+                },
+                newsletter: {
+                    title: "📧 Bądź na bieżąco z trendami AI",
+                    description: "Otrzymuj najnowsze artykuły, case studies i ekskluzywne wskazówki bezpośrednio na swoją skrzynkę",
+                    placeholder: "Twój email",
+                    subscribe: "Subskrybuj",
+                    privacy: "🔒 Nie spamujemy. Możesz zrezygnować z subskrypcji w dowolnym momencie."
+                },
                 sections: {
                     services: { 
                         title: "Nasze Usługi",
                         subtitle: "Kompleksowe rozwiązania AI i automatyzacji, które transformują Twój biznes i zwiększają efektywność"
                     },
                     about: { title: "O ECM Digital" },
+                    blog: {
+                        title: "Blog & Insights",
+                        subtitle: "Najnowsze trendy AI, case studies i praktyczne wskazówki dla Twojego biznesu"
+                    },
                     team: { title: "Nasz Zespół", subtitle: "Poznaj ekspertów, którzy tworzą Twoje projekty" },
                     process: { 
                         title: "Nasz Proces Pracy",
@@ -185,6 +223,22 @@ class I18nManager {
                         contactUs: "Skontaktuj się z nami",
                         sendMessage: "Napisz Email",
                         phone: "Zadzwoń"
+                    }
+                },
+                company: {
+                    name: "Scrum Software Sp. z o.o.",
+                    description1: "ECM Digital działa w ramach Scrum Software Sp. z o.o., która jest formalnym właścicielem wszystkich świadczonych przez nas usług i prawnie odpowiedzialnym podmiotem.",
+                    description2: "To Scrum Software Sp. z o.o. wystawia faktury i zawiera umowy z klientami, gwarantując pełną transparentność i bezpieczeństwo współpracy.",
+                    badge: "Spółka Zarejestrowana<br>Sp. z o.o.",
+                    stats: {
+                        aiProjects: "50+",
+                        aiProjectsLabel: "Projektów AI",
+                        clientSatisfaction: "95%",
+                        clientSatisfactionLabel: "Satysfakcja Klienta",
+                        technicalSupport: "24/7",
+                        technicalSupportLabel: "Wsparcie Techniczne",
+                        yearFounded: "2019",
+                        yearFoundedLabel: "Rok Założenia"
                     }
                 },
                 footer: { copyright: "© 2025 ECM Digital. Wszystkie prawa zastrzeżone." }
@@ -224,7 +278,8 @@ class I18nManager {
                     }
                 },
                 common: {
-                    learnMore: "Learn More"
+                    learnMore: "Learn More",
+                    readMore: "Read more"
                 },
                 hero: {
                     title: "We Implement AI in Your Company",
@@ -280,12 +335,49 @@ class I18nManager {
                         description: "Voice customer service - 24/7 availability without call center costs. Natural conversations, intelligent responses."
                     }
                 },
+                blog: {
+                    aiTrends: {
+                        category: "🤖 AI Trends",
+                        title: "How AI is changing e-commerce in 2024?",
+                        description: "Discover the latest AI trends for e-commerce: personalization, chatbots, product recommendations and sales process automation.",
+                        readTime: "15 min read",
+                        views: "2.5k views",
+                        tags: {
+                            ecommerce: "E-commerce",
+                            ai: "AI",
+                            trends: "Trends"
+                        }
+                    },
+                    automation: {
+                        category: "⚡ Automation",
+                        title: "10 business processes to automate",
+                        description: "Practical guide to processes worth automating first. Save time and money with AI.",
+                        readTime: "12 min read",
+                        views: "1.8k views",
+                        tags: {
+                            automation: "Automation",
+                            process: "Process",
+                            roi: "ROI"
+                        }
+                    }
+                },
+                newsletter: {
+                    title: "📧 Stay up to date with AI trends",
+                    description: "Receive the latest articles, case studies and exclusive tips directly to your inbox",
+                    placeholder: "Your email",
+                    subscribe: "Subscribe",
+                    privacy: "🔒 We don't spam. You can unsubscribe at any time."
+                },
                 sections: {
                     services: { 
                         title: "Our Services",
                         subtitle: "Comprehensive AI and automation solutions that transform your business and increase efficiency"
                     },
                     about: { title: "About ECM Digital" },
+                    blog: {
+                        title: "Blog & Insights",
+                        subtitle: "Latest AI trends, case studies and practical tips for your business"
+                    },
                     team: { title: "Our Team", subtitle: "Meet the experts who create your projects" },
                     process: { 
                         title: "Our Work Process",
@@ -302,6 +394,22 @@ class I18nManager {
                         contactUs: "Contact Us",
                         sendMessage: "Write Email",
                         phone: "Call"
+                    }
+                },
+                company: {
+                    name: "Scrum Software Sp. z o.o.",
+                    description1: "ECM Digital operates within Scrum Software Sp. z o.o., which is the formal owner of all services we provide and the legally responsible entity.",
+                    description2: "It is Scrum Software Sp. z o.o. that issues invoices and enters into contracts with clients, guaranteeing full transparency and security of cooperation.",
+                    badge: "Registered Company<br>Sp. z o.o.",
+                    stats: {
+                        aiProjects: "50+",
+                        aiProjectsLabel: "AI Projects",
+                        clientSatisfaction: "95%",
+                        clientSatisfactionLabel: "Client Satisfaction",
+                        technicalSupport: "24/7",
+                        technicalSupportLabel: "Technical Support",
+                        yearFounded: "2019",
+                        yearFoundedLabel: "Year Founded"
                     }
                 },
                 footer: { copyright: "© 2025 ECM Digital. All rights reserved." }
@@ -341,7 +449,8 @@ class I18nManager {
                     }
                 },
                 common: {
-                    learnMore: "Mehr erfahren"
+                    learnMore: "Mehr erfahren",
+                    readMore: "Weiterlesen"
                 },
                 hero: {
                     title: "Wir implementieren KI in Ihrem Unternehmen",
@@ -397,12 +506,49 @@ class I18nManager {
                         description: "Sprachbasierter Kundenservice - 24/7-Verfügbarkeit ohne Call-Center-Kosten. Natürliche Gespräche, intelligente Antworten."
                     }
                 },
+                blog: {
+                    aiTrends: {
+                        category: "🤖 KI-Trends",
+                        title: "Wie KI den E-Commerce 2024 verändert?",
+                        description: "Entdecken Sie die neuesten KI-Trends für E-Commerce: Personalisierung, Chatbots, Produktempfehlungen und Verkaufsprozessautomatisierung.",
+                        readTime: "15 Min. Lesen",
+                        views: "2.5k Aufrufe",
+                        tags: {
+                            ecommerce: "E-Commerce",
+                            ai: "KI",
+                            trends: "Trends"
+                        }
+                    },
+                    automation: {
+                        category: "⚡ Automatisierung",
+                        title: "10 Geschäftsprozesse zu automatisieren",
+                        description: "Praktischer Leitfaden zu Prozessen, die es sich lohnt, zuerst zu automatisieren. Sparen Sie Zeit und Geld mit KI.",
+                        readTime: "12 Min. Lesen",
+                        views: "1.8k Aufrufe",
+                        tags: {
+                            automation: "Automatisierung",
+                            process: "Prozess",
+                            roi: "ROI"
+                        }
+                    }
+                },
+                newsletter: {
+                    title: "📧 Bleiben Sie auf dem Laufenden mit KI-Trends",
+                    description: "Erhalten Sie die neuesten Artikel, Fallstudien und exklusive Tipps direkt in Ihren Posteingang",
+                    placeholder: "Ihre E-Mail",
+                    subscribe: "Abonnieren",
+                    privacy: "🔒 Wir spammen nicht. Sie können sich jederzeit abmelden."
+                },
                 sections: {
                     services: { 
                         title: "Unsere Dienstleistungen",
                         subtitle: "Umfassende KI- und Automatisierungslösungen, die Ihr Unternehmen transformieren und die Effizienz steigern"
                     },
                     about: { title: "Über ECM Digital" },
+                    blog: {
+                        title: "Blog & Insights",
+                        subtitle: "Neueste KI-Trends, Fallstudien und praktische Tipps für Ihr Unternehmen"
+                    },
                     team: { title: "Unser Team", subtitle: "Lernen Sie die Experten kennen, die Ihre Projekte erstellen" },
                     process: { 
                         title: "Unser Arbeitsprozess",
@@ -419,6 +565,22 @@ class I18nManager {
                         contactUs: "Kontaktieren Sie uns",
                         sendMessage: "E-Mail schreiben",
                         phone: "Anrufen"
+                    }
+                },
+                company: {
+                    name: "Scrum Software Sp. z o.o.",
+                    description1: "Die Marke ECM Digital operiert innerhalb der Scrum Software Sp. z o.o., die der formelle Eigentümer aller von uns bereitgestellten Dienstleistungen und die rechtlich verantwortliche Einheit ist.",
+                    description2: "Es ist Scrum Software Sp. z o.o., die Rechnungen ausstellt und Verträge mit Kunden abschließt und vollständige Transparenz und Sicherheit der Zusammenarbeit garantiert.",
+                    badge: "Registrierte Gesellschaft<br>Sp. z o.o.",
+                    stats: {
+                        aiProjects: "50+",
+                        aiProjectsLabel: "KI-Projekte",
+                        clientSatisfaction: "95%",
+                        clientSatisfactionLabel: "Kundenzufriedenheit",
+                        technicalSupport: "24/7",
+                        technicalSupportLabel: "Technischer Support",
+                        yearFounded: "2019",
+                        yearFoundedLabel: "Gründungsjahr"
                     }
                 },
                 footer: { copyright: "© 2025 ECM Digital. Alle Rechte vorbehalten." }

@@ -36,7 +36,8 @@
     }
   },
   "common": {
-    "learnMore": "Learn More"
+    "learnMore": "Learn More",
+    "readMore": "Read more"
   },
   "services": {
     "websites": {
@@ -124,6 +125,48 @@
     "blog": {
       "title": "Blog & Insights",
       "subtitle": "Latest AI trends, case studies and practical tips for your business"
+    },
+    "blog": {
+      "aiTrends": {
+        "category": "🤖 AI Trends",
+        "title": "How AI is changing e-commerce in 2024?",
+        "description": "Discover the latest AI trends for e-commerce: personalization, chatbots, product recommendations and sales process automation.",
+        "readTime": "15 min read",
+        "views": "2.5k views",
+        "tags": {
+          "ecommerce": "E-commerce",
+          "ai": "AI",
+          "trends": "Trends"
+        }
+      },
+      "automation": {
+        "category": "⚡ Automation",
+        "title": "10 business processes to automate",
+        "description": "Practical guide to processes worth automating first. Save time and money with AI.",
+        "readTime": "12 min read",
+        "views": "1.8k views",
+        "tags": {
+          "automation": "Automation",
+          "process": "Process",
+          "roi": "ROI"
+        }
+      }
+    },
+    "company": {
+      "name": "Scrum Software Sp. z o.o.",
+      "description1": "ECM Digital operates within Scrum Software Sp. z o.o., which is the formal owner of all services we provide and the legally responsible entity.",
+      "description2": "It is Scrum Software Sp. z o.o. that issues invoices and enters into contracts with clients, guaranteeing full transparency and security of cooperation.",
+      "badge": "Registered Company<br>Sp. z o.o.",
+      "stats": {
+        "aiProjects": "50+",
+        "aiProjectsLabel": "AI Projects",
+        "clientSatisfaction": "95%",
+        "clientSatisfactionLabel": "Client Satisfaction",
+        "technicalSupport": "24/7",
+        "technicalSupportLabel": "Technical Support",
+        "yearFounded": "2019",
+        "yearFoundedLabel": "Year Founded"
+      }
     },
     "team": {
       "title": "Our Team",

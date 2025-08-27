@@ -34,7 +34,8 @@
     }
   },
   "common": {
-    "learnMore": "Dowiedz się więcej"
+    "learnMore": "Dowiedz się więcej",
+    "readMore": "Czytaj więcej"
   },
   "services": {
     "websites": {
@@ -96,19 +97,70 @@
   "sections": {
     "services": {
       "title": "Nasze Usługi",
-      "subtitle": "Kompleksowe rozwiązania cyfrowe dla nowoczesnych firm"
+      "subtitle": "Kompleksowe rozwiązania AI i automatyzacji, które transformują Twój biznes i zwiększają efektywność"
     },
     "about": {
       "title": "O ECM Digital",
+      "subtitle": "Zespół ekspertów AI, którzy transformują biznes poprzez inteligentne rozwiązania",
       "description1": "Jesteśmy zespołem pasjonatów technologii, którzy wierzą, że każdy biznes zasługuje na cyfrową transformację. Łączymy kreatywność z innowacyjnymi rozwiązaniami technologicznymi.",
       "description2": "ECM Digital to marka oferująca kompleksowe i nowoczesne rozwiązania digitalowe. Specjalizujemy się w projektowaniu stron internetowych, e-commerce, audytach UX oraz automatyzacji procesów biznesowych, pomagając firmom rozwijać się w cyfrowym świecie.",
       "description3": "Marka ECM Digital działa w ramach spółki Scrum Software Sp. z o.o., która jest formalnym właścicielem wszystkich świadczonych przez nas usług oraz odpowiedzialnym podmiotem prawnym. To Scrum Software Sp. z o.o. wystawia faktury, zawiera umowy i prowadzi rozliczenia finansowe.",
       "description4": "Dzięki takiemu rozwiązaniu łączymy nowoczesny branding i profesjonalną obsługę prawną, zapewniając naszym klientom pełne bezpieczeństwo i transparentność współpracy.",
+      "mission": "Misja",
+      "mission.description": "Demokratyzujemy dostęp do AI, pomagając firmom każdej wielkości wykorzystać potencjał sztucznej inteligencji dla wzrostu biznesowego.",
+      "vision": "Wizja",
+      "vision.description": "Być liderem cyfrowej transformacji w Polsce, tworząc rozwiązania AI, które rzeczywiście zwiększają efektywność i przychody.",
+      "values": "Wartości",
+      "values.description": "Innowacyjność, transparentność i rezultaty. Realizujemy każdy projekt z pasją, dostarczając mierzalne korzyści biznesowe.",
       "stats": {
         "projects": "50+",
         "projectsLabel": "Zrealizowanych projektów",
         "clients": "98%",
         "clientsLabel": "Zadowolonych klientów"
+      }
+    },
+    "blog": {
+      "title": "Blog & Insights",
+      "subtitle": "Najnowsze trendy AI, case studies i praktyczne wskazówki dla Twojego biznesu",
+      "aiTrends": {
+        "category": "🤖 AI Trends",
+        "title": "Jak AI zmienia e-commerce w 2024?",
+        "description": "Odkryj najnowsze trendy AI dla e-commerce: personalizacja, chatboty, rekomendacje produktów i automatyzacja procesów sprzedaży.",
+        "readTime": "15 min czytania",
+        "views": "2.5k wyświetleń",
+        "tags": {
+          "ecommerce": "E-commerce",
+          "ai": "AI",
+          "trends": "Trends"
+        }
+      },
+      "automation": {
+        "category": "⚡ Automation",
+        "title": "10 procesów biznesowych do automatyzacji",
+        "description": "Praktyczny przewodnik po procesach, które warto zautomatyzować w pierwszej kolejności. Oszczędzaj czas i pieniądze dzięki AI.",
+        "readTime": "12 min czytania",
+        "views": "1.8k wyświetleń",
+        "tags": {
+          "automation": "Automatyzacja",
+          "process": "Proces",
+          "roi": "ROI"
+        }
+      }
+    },
+    "company": {
+      "name": "Scrum Software Sp. z o.o.",
+      "description1": "ECM Digital działa w ramach Scrum Software Sp. z o.o., która jest formalnym właścicielem wszystkich świadczonych przez nas usług i prawnie odpowiedzialnym podmiotem.",
+      "description2": "To Scrum Software Sp. z o.o. wystawia faktury i zawiera umowy z klientami, gwarantując pełną transparentność i bezpieczeństwo współpracy.",
+      "badge": "Spółka Zarejestrowana<br>Sp. z o.o.",
+      "stats": {
+        "aiProjects": "50+",
+        "aiProjectsLabel": "Projektów AI",
+        "clientSatisfaction": "95%",
+        "clientSatisfactionLabel": "Satysfakcja Klienta",
+        "technicalSupport": "24/7",
+        "technicalSupportLabel": "Wsparcie Techniczne",
+        "yearFounded": "2019",
+        "yearFoundedLabel": "Rok Założenia"
       }
     },
     "team": {
