@@ -157,22 +157,7 @@
                         <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fas fa-user me-2"></i>Moje Konto
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="accountDropdown">
-                            <li><h6 class="dropdown-header text-primary fw-bold">👤 Dostęp do systemów</h6></li>
-                            <li><a class="dropdown-item" href="/public/panel/" target="_blank">
-                                <i class="fas fa-tachometer-alt me-2"></i>Panel Klienta
-                                <small class="text-muted d-block">Zarządzaj projektami i dokumentami</small>
-                            </a></li>
-                            <li><a class="dropdown-item" href="/agency-management-panel/" target="_blank">
-                                <i class="fas fa-cogs me-2"></i>Panel Zarządzania
-                                <small class="text-muted d-block">Administracja i zarządzanie agencją</small>
-                            </a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="/public/panel/auth/login.html">
-                                <i class="fas fa-sign-in-alt me-2"></i>Logowanie
-                                <small class="text-muted d-block">Dostęp do istniejących kont</small>
-                            </a></li>
-                        </ul>
+
                     </li>
                     <li class="nav-item"><a class="nav-link" href="#contact" data-i18n="navigation.contact">Kontakt</a></li>
                     <li class="nav-item" id="userMenuPlaceholder" style="display: none;"></li>
@@ -208,14 +193,7 @@
                     </div>
                 </div>
 
-                <div class="hero-buttons d-flex flex-column flex-lg-row gap-3 justify-content-center align-items-center mb-5">
-                    <a href="/public/panel/" class="btn btn-primary btn-lg px-4 py-3" target="_blank" style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); border: none; border-radius: 1rem; font-weight: 600; text-decoration: none; transition: all 0.3s ease;">
-                        <i class="fas fa-tachometer-alt me-2"></i>Panel Klienta
-                    </a>
-                    <a href="/agency-management-panel/" class="btn btn-outline-light btn-lg px-4 py-3" target="_blank" style="border: 2px solid #FFFFFF; border-radius: 1rem; font-weight: 600; text-decoration: none; transition: all 0.3s ease; color: #FFFFFF;">
-                        <i class="fas fa-cogs me-2"></i>Panel Zarządzania
-                    </a>
-                </div>
+
             </div>
             
             <!-- Hero Stats -->
@@ -1069,55 +1047,8 @@
 
     </main>
 
-    <!-- Quick Access to Panels -->
-    <section class="py-5" style="background: linear-gradient(135deg, #1C1C1E 0%, #2C2C2E 100%); border-top: 1px solid rgba(255, 255, 255, 0.1);">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h3 class="mb-3" style="font-size: 2.5rem; font-weight: 700; background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
-                    🚀 Szybki Dostęp do Systemów
-                </h3>
-                <p class="text-muted" style="font-size: 1.1rem; max-width: 600px; margin: 0 auto;">
-                    Zarządzaj projektami, dokumentami i administracją agencji z naszych dedykowanych paneli
-                </p>
-            </div>
-            
-            <div class="row g-4 justify-content-center">
-                <div class="col-lg-5 col-md-6">
-                    <div class="card h-100" style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 1rem; backdrop-filter: blur(10px);">
-                        <div class="card-body text-center p-4">
-                            <div class="mb-3">
-                                <i class="fas fa-tachometer-alt" style="font-size: 3rem; background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"></i>
-                            </div>
-                            <h4 class="card-title mb-3">Panel Klienta</h4>
-                            <p class="card-text text-muted mb-4">
-                                Zarządzaj swoimi projektami, przeglądaj dokumenty, śledź postępy i komunikuj się z zespołem ECM Digital.
-                            </p>
-                            <a href="/client-dashboard/" class="btn btn-primary btn-lg px-4 py-2" target="_blank" style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); border: none; border-radius: 0.75rem; font-weight: 600;">
-                                <i class="fas fa-external-link-alt me-2"></i>Otwórz Panel
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-5 col-md-6">
-                    <div class="card h-100" style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 1rem; backdrop-filter: blur(10px);">
-                        <div class="card-body text-center p-4">
-                            <div class="mb-3">
-                                <i class="fas fa-cogs" style="font-size: 3rem; background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"></i>
-                            </div>
-                            <h4 class="card-title mb-3">Panel Zarządzania</h4>
-                            <p class="card-text text-muted mb-4">
-                                Administracja agencji, zarządzanie zespołem, monitoring projektów i analityka biznesowa.
-                            </p>
-                            <a href="/agency-management-panel/" class="btn btn-outline-primary btn-lg px-4 py-2" target="_blank" style="border: 2px solid #007AFF; border-radius: 0.75rem; font-weight: 600; color: #007AFF;">
-                                <i class="fas fa-external-link-alt me-2"></i>Otwórz Panel
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- Quick Access to Authentication -->
+
 
     <!-- Footer -->
     <footer class="footer py-4" role="contentinfo">
