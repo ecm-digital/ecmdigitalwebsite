@@ -549,7 +549,48 @@ class I18nManager {
                         title: "Blog & Insights",
                         subtitle: "Neueste KI-Trends, Fallstudien und praktische Tipps für Ihr Unternehmen"
                     },
-                    team: { title: "Unser Team", subtitle: "Lernen Sie die Experten kennen, die Ihre Projekte erstellen" },
+                    team: { 
+                        title: "Unser Team", 
+                        subtitle: "Lernen Sie die Experten kennen, die Ihre Projekte erstellen",
+                        members: {
+                            tomasz: {
+                                name: "Tomasz Gnat",
+                                position: "Discovery Consultant",
+                                description: "Experte für die Entdeckung von Geschäftsanforderungen und digitale Strategie",
+                                skills: {
+                                    businessAnalysis: "Geschäftsanalyse",
+                                    aiStrategy: "KI-Strategie"
+                                }
+                            },
+                            marta: {
+                                name: "Marta Górska",
+                                position: "UX/UI Designer",
+                                description: "Spezialistin für Benutzererfahrungsdesign",
+                                skills: {
+                                    uxResearch: "UX-Forschung",
+                                    aiUxDesign: "KI/UX-Design"
+                                }
+                            },
+                            karol: {
+                                name: "Karol Czechowski",
+                                position: "QA-Spezialist & Entwickler",
+                                description: "Spezialist für Qualitätssicherung und Anwendungstests",
+                                skills: {
+                                    aiTesting: "KI-Tests",
+                                    qualityAssurance: "Qualitätssicherung"
+                                }
+                            },
+                            roman: {
+                                name: "Roman Dominia",
+                                position: "Social Media & Automatisierungsspezialist",
+                                description: "Experte für Social Media und Geschäftsprozessautomatisierung",
+                                skills: {
+                                    processAutomation: "Prozessautomatisierung",
+                                    aiAnalytics: "KI-Analytik"
+                                }
+                            }
+                        }
+                    },
                     process: { 
                         title: "Unser Arbeitsprozess",
                         steps: {

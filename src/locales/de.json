@@ -100,7 +100,11 @@
         "tomasz": {
           "name": "Tomasz Gnat",
           "position": "Discovery Consultant",
-          "description": "Experte für die Entdeckung von Geschäftsanforderungen und digitale Strategie"
+          "description": "Experte für die Entdeckung von Geschäftsanforderungen und digitale Strategie",
+          "skills": {
+            "businessAnalysis": "Geschäftsanalyse",
+            "aiStrategy": "KI-Strategie"
+          }
         },
         "karol": {
           "name": "Karol Czechowski",

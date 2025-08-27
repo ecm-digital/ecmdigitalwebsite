@@ -175,22 +175,38 @@
         "tomasz": {
           "name": "Tomasz Gnat",
           "position": "Discovery Consultant",
-          "description": "Expert in discovering business needs and AI strategy. Helps companies identify areas for automation."
+          "description": "Expert in discovering business needs and AI strategy. Helps companies identify areas for automation.",
+          "skills": {
+            "businessAnalysis": "Business Analysis",
+            "aiStrategy": "AI Strategy"
+          }
         },
         "marta": {
           "name": "Marta Górska",
           "position": "UX/UI Designer",
-          "description": "Designer focused on user needs in the AI era. Creates interfaces that naturally connect humans with technology."
+          "description": "Designer focused on user needs in the AI era. Creates interfaces that naturally connect humans with technology.",
+          "skills": {
+            "uxResearch": "UX Research",
+            "aiUxDesign": "AI/UX Design"
+          }
         },
         "karol": {
           "name": "Karol Czechowski",
           "position": "QA & AI Developer",
-          "description": "Specialist in AI solution quality assurance and automated testing. Guarantees system reliability."
+          "description": "Specialist in AI solution quality assurance and automated testing. Guarantees system reliability.",
+          "skills": {
+            "aiTesting": "AI Testing",
+            "qualityAssurance": "Quality Assurance"
+          }
         },
         "roman": {
           "name": "Roman Dominia",
           "position": "AI Automation Specialist",
-          "description": "Expert in business process automation with AI and social media data analysis. Increases operational efficiency."
+          "description": "Expert in business process automation with AI and social media data analysis. Increases operational efficiency.",
+          "skills": {
+            "processAutomation": "Process Automation",
+            "aiAnalytics": "AI Analytics"
+          }
         }
       },
       "values": {

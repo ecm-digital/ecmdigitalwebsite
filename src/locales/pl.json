@@ -169,8 +169,12 @@
       "members": {
                 "tomasz": {
             "name": "Tomasz Gnat",
-            "position": "Discovery Consultant",
-            "description": "Ekspert w odkrywaniu potrzeb biznesowych i strategii cyfrowej"
+            "position": "Konsultant Discovery",
+            "description": "Ekspert w odkrywaniu potrzeb biznesowych i strategii AI. Pomaga firmom identyfikować obszary do automatyzacji.",
+            "skills": {
+                "businessAnalysis": "Business Analysis",
+                "aiStrategy": "AI Strategy"
+            }
         },
         "karol": {
             "name": "Karol Czechowski",
