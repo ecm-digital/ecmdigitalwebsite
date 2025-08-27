@@ -9,11 +9,11 @@ document.addEventListener('DOMContentLoaded', function() {
             let newHref = href;
             
             if (href.startsWith('/client-dashboard/')) {
-                newHref = href.replace('/client-dashboard/', 'https://panel.ecm-digital.com/');
+                newHref = href.replace('/client-dashboard/', 'https://client-dashboard-jl678m0h1-ecm-digitals-projects.vercel.app/');
             } else if (href.startsWith('/panel-klienta/')) {
-                newHref = href.replace('/panel-klienta/', 'https://panel.ecm-digital.com/');
+                newHref = href.replace('/panel-klienta/', 'https://client-dashboard-jl678m0h1-ecm-digitals-projects.vercel.app/');
             } else if (href.startsWith('/login')) {
-                newHref = href.replace('/login', 'https://panel.ecm-digital.com/auth/login');
+                newHref = href.replace('/login', 'https://client-dashboard-jl678m0h1-ecm-digitals-projects.vercel.app/auth/login');
             }
             
             window.location.href = newHref;
