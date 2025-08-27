@@ -5,8 +5,8 @@
   "installCommand": "echo 'No install needed'",
   "framework": null,
   "redirects": [
-    { "source": "/client-dashboard/(.*)", "destination": "https://client-dashboard-ecm.vercel.app/$1", "permanent": false },
-    { "source": "/panel-klienta/(.*)", "destination": "https://client-dashboard-ecm.vercel.app/$1", "permanent": false }
+    { "source": "/client-dashboard/(.*)", "destination": "https://panel.ecm-digital.com/$1", "permanent": false },
+    { "source": "/panel-klienta/(.*)", "destination": "https://panel.ecm-digital.com/$1", "permanent": false }
   ],
   "rewrites": [
     { "source": "/contact", "destination": "/contact.html" },
