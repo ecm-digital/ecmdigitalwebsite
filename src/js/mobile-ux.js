@@ -10,11 +10,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Use local panel directory for client dashboard
             if (href.startsWith('/client-dashboard/')) {
-                newHref = href.replace('/client-dashboard/', '/panel/');
+                newHref = href.replace('/client-dashboard/', '/public/panel/');
             } else if (href.startsWith('/panel-klienta/')) {
-                newHref = href.replace('/panel-klienta/', '/panel/');
+                newHref = href.replace('/panel-klienta/', '/public/panel/');
             } else if (href.startsWith('/login')) {
-                newHref = href.replace('/login', '/panel/auth/login.html');
+                newHref = href.replace('/login', '/public/panel/auth/login.html');
+            } else if (href.startsWith('/panel/')) {
+                newHref = href.replace('/panel/', '/public/panel/');
             }
 
             window.location.href = newHref;

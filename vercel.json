@@ -10,6 +10,7 @@
     { "source": "/contact", "destination": "/contact.html" },
     { "source": "/login", "destination": "/login.html" },
     { "source": "/panel", "destination": "/panel.html" },
+    { "source": "/panel/", "destination": "/panel.html" },
     { "source": "/projekty", "destination": "/projekty.html" }
   ]
 }
