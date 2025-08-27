@@ -107,3 +107,4 @@ docker-compose.prod.yml
 # AWS
 .aws/
 *.pem
+.vercel

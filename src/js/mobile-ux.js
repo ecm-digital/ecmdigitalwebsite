@@ -8,14 +8,13 @@ document.addEventListener('DOMContentLoaded', function() {
             const href = this.getAttribute('href');
             let newHref = href;
 
-            // TEMPORARY: Use local development server for testing
-            // TODO: Replace with production Vercel URL when ready
+            // Use local panel directory for client dashboard
             if (href.startsWith('/client-dashboard/')) {
-                newHref = href.replace('/client-dashboard/', 'http://localhost:3002/');
+                newHref = href.replace('/client-dashboard/', '/panel/');
             } else if (href.startsWith('/panel-klienta/')) {
-                newHref = href.replace('/panel-klienta/', 'http://localhost:3002/');
+                newHref = href.replace('/panel-klienta/', '/panel/');
             } else if (href.startsWith('/login')) {
-                newHref = href.replace('/login', 'http://localhost:3002/auth/login');
+                newHref = href.replace('/login', '/panel/auth/login.html');
             }
 
             window.location.href = newHref;
