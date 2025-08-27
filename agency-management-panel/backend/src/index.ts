@@ -18,8 +18,13 @@ import { unmarshall } from '@aws-sdk/util-dynamodb';
 dotenv.config();
 
 // Import AWS services
-// AWS services will be imported when backend is restructured
-// For now, using mock implementations
+// Import AWS services
+import { 
+  initializeRDSDatabase, 
+  CognitoService, 
+  UsersService, 
+  ProjectsService 
+} from './aws';
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -67,8 +72,8 @@ type AuthToken = {
 app.use(async (req, res, next) => {
   if (!req.app.locals.dbInitialized) {
     try {
-      console.log('🚀 Initializing database...');
-      // Mock database initialization for now
+      console.log('🚀 Initializing AWS RDS database...');
+      await initializeRDSDatabase();
       req.app.locals.dbInitialized = true;
       console.log('✅ Database initialized successfully');
     } catch (error) {
@@ -719,8 +724,7 @@ app.get('/api/projects', async (req, res) => {
 app.get('/api/projects/:id', async (req, res) => {
   try {
     const id = Number(req.params.id);
-    // Mock project data for now
-    const project = { id, name: 'Mock Project', client: 'Mock Client', status: 'Active', description: 'Mock description' };
+    const project = await ProjectsService.getProject(id.toString());
     if (!project) {
       return res.status(404).json({ error: 'Project not found' });
     }
@@ -739,8 +743,7 @@ app.post('/api/projects', async (req, res) => {
       return res.status(400).json({ error: 'Missing fields (name, client, status, description)' });
     }
     
-    // Mock project creation for now
-    const project = { id: Math.floor(Math.random() * 1000), name, client, status, description };
+    const project = await ProjectsService.createProject({ id: Date.now().toString(), name, client, status, description });
     res.status(201).json(project);
   } catch (error) {
     console.error('Error creating project:', error);
@@ -754,8 +757,7 @@ app.patch('/api/projects/:id', async (req, res) => {
     const id = Number(req.params.id);
     const { name, client, status, description } = req.body;
     
-    // Mock project update for now
-    const updatedProject = { id, name, client, status, description };
+    const updatedProject = await ProjectsService.updateProject(id.toString(), { name, client, status, description });
     res.json(updatedProject);
   } catch (error) {
     console.error('Error updating project:', error);
@@ -767,8 +769,7 @@ app.patch('/api/projects/:id', async (req, res) => {
 app.delete('/api/projects/:id', async (req, res) => {
   try {
     const id = Number(req.params.id);
-    // Mock project deletion for now
-    console.log(`Mock deleting project ${id}`);
+    await ProjectsService.deleteProject(id.toString());
     
     // Also clean related stores (best-effort)
     delete tasksStore[id];
