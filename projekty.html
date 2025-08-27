@@ -199,7 +199,7 @@
         // For now, using localStorage as fallback
         const session = localStorage.getItem('aws_session');
             if (!session) {
-                window.location.href = '/login';
+                window.location.href = '/panel/auth/login.html';
                 return;
             }
 
@@ -369,7 +369,7 @@
             try {
                 // AWS Cognito sign out (placeholder)
         localStorage.removeItem('aws_session');
-                window.location.href = '/login';
+                window.location.href = '/panel/auth/login.html';
             } catch (error) {
                 console.error('Logout error:', error);
                 alert('Błąd podczas wylogowywania');
