@@ -43,7 +43,110 @@
     },
     "shopifyStores": {
       "title": "Shopify Stores",
-      "description": "Professionelle Online-Shops auf der Shopify-Plattform, die effektiv verkaufen und mit Ihrem Unternehmen wachsen."
+      "description": "Professionelle Online-Shops auf der Shopify-Plattform, die effektiv verkaufen und mit Ihrem Unternehmen wachsen.",
+      "heroTitle": "Shopify & Wix Shops die <span style=\"color: #96BF47;\">verkaufen</span>",
+      "heroDescription": "Wir erstellen professionelle E-Commerce-Shops auf Shopify- und Wix-Plattformen, die Besucher in Kunden umwandeln. Custom Design, fortschrittliche Integrationen und Verkaufsautomatisierung.",
+      "stats": {
+        "salesGrowth": "Umsatzwachstum",
+        "loadTime": "Ladezeit",
+        "startPrice": "Startpreis"
+      },
+      "features": {
+        "title": "Was Sie erhalten",
+        "subtitle": "Umfassende E-Commerce-Lösung auf Shopify- und Wix-Plattformen",
+        "customDesign": {
+          "title": "Custom Design",
+          "description": "Einzigartiges Design, das auf Ihre Marke und Zielgruppe zugeschnitten ist"
+        },
+        "mobileFirst": {
+          "title": "Mobile-First",
+          "description": "Optimiert für mobile Geräte, wo 70% der Käufe stattfinden"
+        },
+        "payments": {
+          "title": "Zahlungen & Versand",
+          "description": "Integrationen mit beliebten Zahlungsgateways und Kurierunternehmen"
+        },
+        "seo": {
+          "title": "SEO & Marketing",
+          "description": "Suchmaschinenoptimierung und Marketing-Integrationen"
+        },
+        "analytics": {
+          "title": "Analytics & Berichte",
+          "description": "Verkaufsverfolgung, Kundenverhalten und Conversion-Optimierung"
+        },
+        "support": {
+          "title": "Support & Wartung",
+          "description": "Laufender technischer Support und Sicherheitsupdates"
+        }
+      },
+      "process": {
+        "title": "Wie wir arbeiten",
+        "subtitle": "Bewährtes Verfahren zur Erstellung von E-Commerce-Shops",
+        "steps": {
+          "consultation": {
+            "title": "Beratung",
+            "description": "Analyse der Geschäftsanforderungen und Plattformauswahl"
+          },
+          "design": {
+            "title": "Design & Plan",
+            "description": "Erstellung von Designkonzept und Shop-Architektur"
+          },
+          "development": {
+            "title": "Entwicklung",
+            "description": "Implementierung von Custom Design und Integrationen"
+          },
+          "testing": {
+            "title": "Testen",
+            "description": "Funktionstests und Leistungsoptimierung"
+          },
+          "launch": {
+            "title": "Start",
+            "description": "Produktive Bereitstellung und Teamschulung"
+          }
+        }
+      },
+      "pricing": {
+        "title": "Preise",
+        "subtitle": "Transparente Preise ohne versteckte Kosten",
+        "starter": {
+          "name": "Starter",
+          "price": "€2.200",
+          "features": [
+            "Custom Design",
+            "Responsive",
+            "Basis-Integrationen",
+            "Basis-SEO",
+            "30 Tage Support"
+          ]
+        },
+        "professional": {
+          "name": "Professional",
+          "price": "€3.900",
+          "features": [
+            "Erweitertes Design",
+            "Vollständige Zahlungsintegrationen",
+            "Erweitertes SEO",
+            "Verkaufsanalytik",
+            "6 Monate Support"
+          ]
+        },
+        "enterprise": {
+          "name": "Enterprise",
+          "price": "€7.200",
+          "features": [
+            "Premium Design",
+            "Alle Integrationen",
+            "Vollständige Automatisierung",
+            "Dedizierter Manager",
+            "12 Monate Support"
+          ]
+        }
+      },
+      "cta": {
+        "title": "Bereit für einen Shop, der verkauft?",
+        "subtitle": "Kontaktieren Sie uns und starten Sie Ihr E-Commerce-Abenteuer",
+        "button": "Projekt starten"
+      }
     },
     "mvpPrototypes": {
       "title": "MVP-Prototypen",

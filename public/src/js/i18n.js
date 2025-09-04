@@ -54,7 +54,7 @@ class I18nManager {
             }
 
             console.log('📁 Attempting to load translations from:', translationPaths);
-
+            
             const [plTranslations, enTranslations, deTranslations] = await Promise.all([
                 fetch(translationPaths[0]).then(res => res.json()).catch(() => this.getEmbeddedTranslations('pl')),
                 fetch(translationPaths[1]).then(res => res.json()).catch(() => this.getEmbeddedTranslations('en')),
@@ -66,7 +66,7 @@ class I18nManager {
                 en: enTranslations,
                 de: deTranslations
             };
-
+            
             console.log('✅ Translations loaded successfully');
             console.log('🇵🇱 Polish keys:', Object.keys(plTranslations));
         } catch (error) {
@@ -117,6 +117,19 @@ class I18nManager {
                 "sections.team.members.roman.skills.processAutomation": "Automatyzacja Procesów",
                 "sections.team.members.roman.skills.aiAnalytics": "Analityka AI"
             },
+            "services.shopifyStores.heroTitle": "Sklepy <span style=\"color: #96BF47;\">Shopify & Wix</span> Które <span style=\"color: #30D158;\">Sprzedają</span>",
+            "services.shopifyStores.heroDescription": "Tworzymy profesjonalne sklepy e-commerce na platformach Shopify i Wix, które konwertują odwiedzających w klientów. Custom design, zaawansowane integracje i automatyzacja sprzedaży.",
+            "services.shopifyStores.stats.salesGrowth": "Wzrost Sprzedaży",
+            "services.shopifyStores.stats.loadTime": "Czas Ładowania",
+            "services.shopifyStores.stats.startPrice": "PLN Start",
+            "services.shopifyStores.features.title": "Co Otrzymasz",
+            "services.shopifyStores.features.subtitle": "Kompleksowe rozwiązanie e-commerce na platformach Shopify i Wix",
+            "services.shopifyStores.features.customDesign.title": "Custom Design",
+            "services.shopifyStores.features.customDesign.description": "Unikalny design dopasowany do Twojej marki i grupy docelowej",
+            "services.shopifyStores.features.mobileFirst.title": "Mobile-First",
+            "services.shopifyStores.features.mobileFirst.description": "Zoptymalizowany pod kątem urządzeń mobilnych, gdzie odbywa się 70% zakupów",
+            "services.shopifyStores.features.payments.title": "Płatności & Dostawa",
+            "services.shopifyStores.features.payments.description": "Integracje z popularnymi bramkami płatności i firmami kurierskimi",
             en: {
                 "sections.about.title": "About ECM Digital",
                 "sections.about.subtitle": "Team of AI experts who transform business through intelligent solutions",
@@ -155,6 +168,19 @@ class I18nManager {
                 "sections.team.members.roman.skills.processAutomation": "Process Automation",
                 "sections.team.members.roman.skills.aiAnalytics": "AI Analytics"
             },
+            "services.shopifyStores.heroTitle": "Shopify & Wix Stores That <span style=\"color: #96BF47;\">Sell</span>",
+            "services.shopifyStores.heroDescription": "We create professional e-commerce stores on Shopify and Wix platforms that convert visitors into customers. Custom design, advanced integrations and sales automation.",
+            "services.shopifyStores.stats.salesGrowth": "Sales Growth",
+            "services.shopifyStores.stats.loadTime": "Load Time",
+            "services.shopifyStores.stats.startPrice": "Starting Price",
+            "services.shopifyStores.features.title": "What You Get",
+            "services.shopifyStores.features.subtitle": "Comprehensive e-commerce solution on Shopify and Wix platforms",
+            "services.shopifyStores.features.customDesign.title": "Custom Design",
+            "services.shopifyStores.features.customDesign.description": "Unique design tailored to your brand and target audience",
+            "services.shopifyStores.features.mobileFirst.title": "Mobile-First",
+            "services.shopifyStores.features.mobileFirst.description": "Optimized for mobile devices where 70% of purchases take place",
+            "services.shopifyStores.features.payments.title": "Payments & Shipping",
+            "services.shopifyStores.features.payments.description": "Integrations with popular payment gateways and courier companies",
             de: {
                 "sections.about.title": "Über ECM Digital",
                 "sections.about.subtitle": "KI-Experten, die Geschäft durch intelligente Lösungen transformieren",
@@ -192,7 +218,20 @@ class I18nManager {
                 "sections.team.members.roman.description": "Experte für Geschäftsprozessautomatisierung mit KI und Social-Media-Datenanalyse. Steigert die Betriebseffizienz.",
                 "sections.team.members.roman.skills.processAutomation": "Prozessautomatisierung",
                 "sections.team.members.roman.skills.aiAnalytics": "KI-Analytik"
-            }
+            },
+            "services.shopifyStores.heroTitle": "Shopify & Wix Shops die <span style=\"color: #96BF47;\">verkaufen</span>",
+            "services.shopifyStores.heroDescription": "Wir erstellen professionelle E-Commerce-Shops auf Shopify- und Wix-Plattformen, die Besucher in Kunden umwandeln. Custom Design, fortschrittliche Integrationen und Verkaufsautomatisierung.",
+            "services.shopifyStores.stats.salesGrowth": "Umsatzwachstum",
+            "services.shopifyStores.stats.loadTime": "Ladezeit",
+            "services.shopifyStores.stats.startPrice": "Startpreis",
+            "services.shopifyStores.features.title": "Was Sie erhalten",
+            "services.shopifyStores.features.subtitle": "Umfassende E-Commerce-Lösung auf Shopify- und Wix-Plattformen",
+            "services.shopifyStores.features.customDesign.title": "Custom Design",
+            "services.shopifyStores.features.customDesign.description": "Einzigartiges Design, das auf Ihre Marke und Zielgruppe zugeschnitten ist",
+            "services.shopifyStores.features.mobileFirst.title": "Mobile-First",
+            "services.shopifyStores.features.mobileFirst.description": "Optimiert für mobile Geräte, wo 70% der Käufe stattfinden",
+            "services.shopifyStores.features.payments.title": "Zahlungen & Versand",
+            "services.shopifyStores.features.payments.description": "Integrationen mit beliebten Zahlungsgateways und Kurierunternehmen"
         };
 
         return embeddedTranslations[lang] || {};
@@ -994,8 +1033,8 @@ class I18nManager {
                     // If translation contains HTML (e.g., spans for colored text), set innerHTML
                     if (typeof translation === 'string' && translation.includes('<')) {
                         element.innerHTML = translation;
-                    } else {
-                        element.textContent = translation;
+                } else {
+                    element.textContent = translation;
                     }
                 }
                 console.log(`✅ Updated ${key}: ${translation}`);

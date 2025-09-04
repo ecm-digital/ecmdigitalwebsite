@@ -46,7 +46,110 @@
     },
     "shopifyStores": {
       "title": "Shopify Stores",
-      "description": "Professional online stores on the Shopify platform that effectively sell and scale with your business."
+      "description": "Professional online stores on the Shopify platform that effectively sell and scale with your business.",
+      "heroTitle": "Shopify & Wix Stores That <span style=\"color: #96BF47;\">Sell</span>",
+      "heroDescription": "We create professional e-commerce stores on Shopify and Wix platforms that convert visitors into customers. Custom design, advanced integrations and sales automation.",
+      "stats": {
+        "salesGrowth": "Sales Growth",
+        "loadTime": "Load Time",
+        "startPrice": "Starting Price"
+      },
+      "features": {
+        "title": "What You Get",
+        "subtitle": "Comprehensive e-commerce solution on Shopify and Wix platforms",
+        "customDesign": {
+          "title": "Custom Design",
+          "description": "Unique design tailored to your brand and target audience"
+        },
+        "mobileFirst": {
+          "title": "Mobile-First",
+          "description": "Optimized for mobile devices where 70% of purchases take place"
+        },
+        "payments": {
+          "title": "Payments & Shipping",
+          "description": "Integrations with popular payment gateways and courier companies"
+        },
+        "seo": {
+          "title": "SEO & Marketing",
+          "description": "Search engine optimization and marketing integrations"
+        },
+        "analytics": {
+          "title": "Analytics & Reports",
+          "description": "Sales tracking, customer behavior and conversion optimization"
+        },
+        "support": {
+          "title": "Support & Maintenance",
+          "description": "Ongoing technical support and security updates"
+        }
+      },
+      "process": {
+        "title": "How We Work",
+        "subtitle": "Proven process of creating e-commerce stores",
+        "steps": {
+          "consultation": {
+            "title": "Consultation",
+            "description": "Analysis of business needs and platform selection"
+          },
+          "design": {
+            "title": "Design & Plan",
+            "description": "Creating design concept and store architecture"
+          },
+          "development": {
+            "title": "Development",
+            "description": "Implementation of custom design and integrations"
+          },
+          "testing": {
+            "title": "Testing",
+            "description": "Functionality tests and performance optimization"
+          },
+          "launch": {
+            "title": "Launch",
+            "description": "Production deployment and team training"
+          }
+        }
+      },
+      "pricing": {
+        "title": "Pricing",
+        "subtitle": "Transparent pricing without hidden costs",
+        "starter": {
+          "name": "Starter",
+          "price": "€2,200",
+          "features": [
+            "Custom design",
+            "Responsiveness",
+            "Basic integrations",
+            "Basic SEO",
+            "30 days support"
+          ]
+        },
+        "professional": {
+          "name": "Professional",
+          "price": "€3,900",
+          "features": [
+            "Advanced design",
+            "Full payment integrations",
+            "Advanced SEO",
+            "Sales analytics",
+            "6 months support"
+          ]
+        },
+        "enterprise": {
+          "name": "Enterprise",
+          "price": "€7,200",
+          "features": [
+            "Premium design",
+            "All integrations",
+            "Full automation",
+            "Dedicated manager",
+            "12 months support"
+          ]
+        }
+      },
+      "cta": {
+        "title": "Ready for a Store That Sells?",
+        "subtitle": "Contact us and start your e-commerce adventure",
+        "button": "Start Project"
+      }
     },
     "mvpPrototypes": {
       "title": "MVP Prototypes",

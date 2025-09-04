@@ -44,7 +44,110 @@
     },
     "shopifyStores": {
       "title": "Sklepy Shopify",
-      "description": "Profesjonalne sklepy internetowe na platformie Shopify, które skutecznie sprzedają i skalują się wraz z Twoim biznesem."
+      "description": "Profesjonalne sklepy internetowe na platformie Shopify, które skutecznie sprzedają i skalują się wraz z Twoim biznesem.",
+      "heroTitle": "Sklepy <span style=\"color: #96BF47;\">Shopify & Wix</span> Które <span style=\"color: #30D158;\">Sprzedają</span>",
+      "heroDescription": "Tworzymy profesjonalne sklepy e-commerce na platformach Shopify i Wix, które konwertują odwiedzających w klientów. Custom design, zaawansowane integracje i automatyzacja sprzedaży.",
+      "stats": {
+        "salesGrowth": "Wzrost Sprzedaży",
+        "loadTime": "Czas Ładowania",
+        "startPrice": "PLN Start"
+      },
+      "features": {
+        "title": "Co Otrzymasz",
+        "subtitle": "Kompleksowe rozwiązanie e-commerce na platformach Shopify i Wix",
+        "customDesign": {
+          "title": "Custom Design",
+          "description": "Unikalny design dopasowany do Twojej marki i grupy docelowej"
+        },
+        "mobileFirst": {
+          "title": "Mobile-First",
+          "description": "Zoptymalizowany pod kątem urządzeń mobilnych, gdzie odbywa się 70% zakupów"
+        },
+        "payments": {
+          "title": "Płatności & Dostawa",
+          "description": "Integracje z popularnymi bramkami płatności i firmami kurierskimi"
+        },
+        "seo": {
+          "title": "SEO & Marketing",
+          "description": "Optymalizacja pod kątem wyszukiwarek i integracje marketingowe"
+        },
+        "analytics": {
+          "title": "Analityka & Raporty",
+          "description": "Śledzenie sprzedaży, zachowań klientów i optymalizacja konwersji"
+        },
+        "support": {
+          "title": "Wsparcie & Utrzymanie",
+          "description": "Ciągłe wsparcie techniczne i aktualizacje bezpieczeństwa"
+        }
+      },
+      "process": {
+        "title": "Jak Pracujemy",
+        "subtitle": "Sprawdzony proces tworzenia sklepów e-commerce",
+        "steps": {
+          "consultation": {
+            "title": "Konsultacja",
+            "description": "Analiza potrzeb biznesowych i wybór platformy"
+          },
+          "design": {
+            "title": "Projekt & Plan",
+            "description": "Tworzenie koncepcji designu i architektury sklepu"
+          },
+          "development": {
+            "title": "Rozwój",
+            "description": "Implementacja custom designu i integracji"
+          },
+          "testing": {
+            "title": "Testowanie",
+            "description": "Testy funkcjonalności i optymalizacji wydajności"
+          },
+          "launch": {
+            "title": "Uruchomienie",
+            "description": "Wdrożenie produkcyjne i szkolenie zespołu"
+          }
+        }
+      },
+      "pricing": {
+        "title": "Cennik",
+        "subtitle": "Przejrzyste ceny bez ukrytych kosztów",
+        "starter": {
+          "name": "Starter",
+          "price": "8,900 PLN",
+          "features": [
+            "Custom design",
+            "Responsywność",
+            "Podstawowe integracje",
+            "SEO podstawowe",
+            "Wsparcie 30 dni"
+          ]
+        },
+        "professional": {
+          "name": "Professional",
+          "price": "15,900 PLN",
+          "features": [
+            "Zaawansowany design",
+            "Pełne integracje płatności",
+            "Zaawansowane SEO",
+            "Analityka sprzedażowa",
+            "Wsparcie 6 miesięcy"
+          ]
+        },
+        "enterprise": {
+          "name": "Enterprise",
+          "price": "28,900 PLN",
+          "features": [
+            "Premium design",
+            "Wszystkie integracje",
+            "Pełna automatyzacja",
+            "Dedykowany manager",
+            "Wsparcie 12 miesięcy"
+          ]
+        }
+      },
+      "cta": {
+        "title": "Gotowy na Sklep, Który Sprzedaje?",
+        "subtitle": "Skontaktuj się z nami i rozpocznij swoją przygodę z e-commerce",
+        "button": "Rozpocznij Projekt"
+      }
     },
     "mvpPrototypes": {
       "title": "Prototypy MVP",
