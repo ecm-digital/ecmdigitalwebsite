@@ -42,16 +42,16 @@ class I18nManager {
             let translationPaths = [];
             if (window.location.hostname.includes('vercel.app')) {
                 translationPaths = [
-                    '/src/locales/pl.json',
-                    '/src/locales/en.json',
-                    '/src/locales/de.json'
+                    '/locales/pl.json',
+                    '/locales/en.json',
+                    '/locales/de.json'
                 ];
                 console.log('🌐 Using Vercel paths:', translationPaths);
             } else {
                 translationPaths = [
-                    `${basePath}src/locales/pl.json`,
-                    `${basePath}src/locales/en.json`,
-                    `${basePath}src/locales/de.json`
+                    `${basePath}locales/pl.json`,
+                    `${basePath}locales/en.json`,
+                    `${basePath}locales/de.json`
                 ];
             }
 
