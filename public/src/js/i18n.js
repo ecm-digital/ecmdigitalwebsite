@@ -36,9 +36,8 @@ class I18nManager {
             console.log('🔍 Base path determined:', basePath);
             console.log('🔍 Current pathname:', window.location.pathname);
             console.log('🔍 Current hostname:', window.location.hostname);
-            console.log('🔍 Full URL:', window.location.href);
 
-            // Spróbuj różne ścieżki na Vercelu
+            // Spróbuj najpierw załadować z plików
             let translationPaths = [];
             if (window.location.hostname.includes('vercel.app')) {
                 translationPaths = [
@@ -46,7 +45,6 @@ class I18nManager {
                     '/locales/en.json',
                     '/locales/de.json'
                 ];
-                console.log('🌐 Using Vercel paths:', translationPaths);
             } else {
                 translationPaths = [
                     `${basePath}locales/pl.json`,
@@ -58,18 +56,9 @@ class I18nManager {
             console.log('📁 Attempting to load translations from:', translationPaths);
 
             const [plTranslations, enTranslations, deTranslations] = await Promise.all([
-                fetch(translationPaths[0]).then(res => {
-                    console.log('🇵🇱 PL response status:', res.status);
-                    return res.json();
-                }),
-                fetch(translationPaths[1]).then(res => {
-                    console.log('🇬🇧 EN response status:', res.status);
-                    return res.json();
-                }),
-                fetch(translationPaths[2]).then(res => {
-                    console.log('🇩🇪 DE response status:', res.status);
-                    return res.json();
-                })
+                fetch(translationPaths[0]).then(res => res.json()).catch(() => this.getEmbeddedTranslations('pl')),
+                fetch(translationPaths[1]).then(res => res.json()).catch(() => this.getEmbeddedTranslations('en')),
+                fetch(translationPaths[2]).then(res => res.json()).catch(() => this.getEmbeddedTranslations('de'))
             ]);
 
             this.translations = {
@@ -77,7 +66,7 @@ class I18nManager {
                 en: enTranslations,
                 de: deTranslations
             };
-            
+
             console.log('✅ Translations loaded successfully');
             console.log('🇵🇱 Polish keys:', Object.keys(plTranslations));
         } catch (error) {
@@ -85,6 +74,128 @@ class I18nManager {
             // Fallback do wbudowanych tłumaczeń
             this.loadFallbackTranslations();
         }
+    }
+
+    // Wbudowane tłumaczenia dla krytycznych sekcji (fallback gdy pliki nie są dostępne)
+    getEmbeddedTranslations(lang) {
+        const embeddedTranslations = {
+            pl: {
+                "sections.about.title": "O ECM Digital",
+                "sections.about.subtitle": "Zespół ekspertów AI, którzy transformują biznes poprzez inteligentne rozwiązania",
+                "sections.services.title": "Nasze Usługi",
+                "sections.services.subtitle": "Kompleksowe rozwiązania AI i automatyzacji, które transformują Twój biznes i zwiększają efektywność",
+                "sections.team.title": "Nasz Zespół",
+                "sections.team.subtitle": "Poznaj ekspertów, którzy tworzą Twoje projekty",
+                "hero.title": "Wdrażamy AI w Twojej Firmie",
+                "hero.subtitle": "Transformujemy Twoją firmę dzięki sztucznej inteligencji. Od chatbotów po zaawansowane automatyzacje - AI, które naprawdę działa i generuje realne korzyści biznesowe.",
+                "hero.stats.aiProjects": "50+",
+                "hero.stats.aiProjectsLabel": "Projektów AI",
+                "hero.stats.costReduction": "70%",
+                "hero.stats.costReductionLabel": "Redukcja Kosztów",
+                "hero.stats.support": "24/7",
+                "hero.stats.supportLabel": "AI Wsparcie",
+                "hero.stats.satisfaction": "95%",
+                "hero.stats.satisfactionLabel": "Satysfakcja",
+                "sections.team.members.tomasz.name": "Tomasz Gnat",
+                "sections.team.members.tomasz.position": "Konsultant Discovery",
+                "sections.team.members.tomasz.description": "Ekspert w odkrywaniu potrzeb biznesowych i strategii AI. Pomaga firmom identyfikować obszary do automatyzacji.",
+                "sections.team.members.tomasz.skills.businessAnalysis": "Business Analysis",
+                "sections.team.members.tomasz.skills.aiStrategy": "AI Strategy",
+                "sections.team.members.karol.name": "Karol Czechowski",
+                "sections.team.members.karol.position": "QA & AI Developer",
+                "sections.team.members.karol.description": "Specjalista od zapewnienia jakości rozwiązań AI i automatycznego testowania. Gwarantuje niezawodność systemów.",
+                "sections.team.members.karol.skills.aiTesting": "Testowanie AI",
+                "sections.team.members.karol.skills.qualityAssurance": "Zapewnienie Jakości",
+                "sections.team.members.marta.name": "Marta Górska",
+                "sections.team.members.marta.position": "UX/UI Designer",
+                "sections.team.members.marta.description": "Projektantka skupiająca się na potrzebach użytkowników w erze AI. Tworzy interfejsy, które naturalnie łączą ludzi z technologią.",
+                "sections.team.members.marta.skills.uxResearch": "Badania UX",
+                "sections.team.members.marta.skills.aiUxDesign": "Projektowanie AI/UX",
+                "sections.team.members.roman.name": "Roman Dominia",
+                "sections.team.members.roman.position": "Specjalista Automatyzacji AI",
+                "sections.team.members.roman.description": "Ekspert od automatyzacji procesów biznesowych z AI i analizy danych social media. Zwiększa efektywność operacyjną.",
+                "sections.team.members.roman.skills.processAutomation": "Automatyzacja Procesów",
+                "sections.team.members.roman.skills.aiAnalytics": "Analityka AI"
+            },
+            en: {
+                "sections.about.title": "About ECM Digital",
+                "sections.about.subtitle": "Team of AI experts who transform business through intelligent solutions",
+                "sections.services.title": "Our Services",
+                "sections.services.subtitle": "Comprehensive AI and automation solutions that transform your business and increase efficiency",
+                "sections.team.title": "Our Team",
+                "sections.team.subtitle": "Meet the experts who create your projects",
+                "hero.title": "We implement AI in your company",
+                "hero.subtitle": "We transform your company through artificial intelligence. From chatbots to advanced automation - AI that really works and generates real business benefits.",
+                "hero.stats.aiProjects": "50+",
+                "hero.stats.aiProjectsLabel": "AI Projects",
+                "hero.stats.costReduction": "70%",
+                "hero.stats.costReductionLabel": "Cost Reduction",
+                "hero.stats.support": "24/7",
+                "hero.stats.supportLabel": "AI Support",
+                "hero.stats.satisfaction": "95%",
+                "hero.stats.satisfactionLabel": "Satisfaction",
+                "sections.team.members.tomasz.name": "Tomasz Gnat",
+                "sections.team.members.tomasz.position": "Discovery Consultant",
+                "sections.team.members.tomasz.description": "Expert in discovering business needs and AI strategy. Helps companies identify areas for automation.",
+                "sections.team.members.tomasz.skills.businessAnalysis": "Business Analysis",
+                "sections.team.members.tomasz.skills.aiStrategy": "AI Strategy",
+                "sections.team.members.marta.name": "Marta Górska",
+                "sections.team.members.marta.position": "UX/UI Designer",
+                "sections.team.members.marta.description": "Designer focused on user needs in the AI era. Creates interfaces that naturally connect humans with technology.",
+                "sections.team.members.marta.skills.uxResearch": "UX Research",
+                "sections.team.members.marta.skills.aiUxDesign": "AI/UX Design",
+                "sections.team.members.karol.name": "Karol Czechowski",
+                "sections.team.members.karol.position": "QA & AI Developer",
+                "sections.team.members.karol.description": "Specialist in AI solution quality assurance and automated testing. Guarantees system reliability.",
+                "sections.team.members.karol.skills.aiTesting": "AI Testing",
+                "sections.team.members.karol.skills.qualityAssurance": "Quality Assurance",
+                "sections.team.members.roman.name": "Roman Dominia",
+                "sections.team.members.roman.position": "AI Automation Specialist",
+                "sections.team.members.roman.description": "Expert in business process automation with AI and social media data analysis. Increases operational efficiency.",
+                "sections.team.members.roman.skills.processAutomation": "Process Automation",
+                "sections.team.members.roman.skills.aiAnalytics": "AI Analytics"
+            },
+            de: {
+                "sections.about.title": "Über ECM Digital",
+                "sections.about.subtitle": "KI-Experten, die Geschäft durch intelligente Lösungen transformieren",
+                "sections.services.title": "Unsere Dienstleistungen",
+                "sections.services.subtitle": "Komplexe KI-Lösungen und Automatisierung, die Ihr Unternehmen transformieren und die Effizienz steigern",
+                "sections.team.title": "Unser Team",
+                "sections.team.subtitle": "Lernen Sie die Experten kennen, die Ihre Projekte erstellen",
+                "hero.title": "Wir implementieren KI in Ihrem Unternehmen",
+                "hero.subtitle": "Wir transformieren Ihr Unternehmen durch künstliche Intelligenz. Von Chatbots bis hin zu fortschrittlicher Automatisierung.",
+                "hero.stats.aiProjects": "50+",
+                "hero.stats.aiProjectsLabel": "KI-Projekte",
+                "hero.stats.costReduction": "70%",
+                "hero.stats.costReductionLabel": "Kostensenkung",
+                "hero.stats.support": "24/7",
+                "hero.stats.supportLabel": "KI-Unterstützung",
+                "hero.stats.satisfaction": "95%",
+                "hero.stats.satisfactionLabel": "Zufriedenheit",
+                "sections.team.members.tomasz.name": "Tomasz Gnat",
+                "sections.team.members.tomasz.position": "Discovery-Berater",
+                "sections.team.members.tomasz.description": "Experte für die Entdeckung von Geschäftsanforderungen und KI-Strategien. Hilft Unternehmen, Bereiche für die Automatisierung zu identifizieren.",
+                "sections.team.members.tomasz.skills.businessAnalysis": "Business Analysis",
+                "sections.team.members.tomasz.skills.aiStrategy": "KI-Strategie",
+                "sections.team.members.marta.name": "Marta Górska",
+                "sections.team.members.marta.position": "UX/UI Designerin",
+                "sections.team.members.marta.description": "Designerin mit Fokus auf Benutzerbedürfnisse im KI-Zeitalter. Erstellt Schnittstellen, die Menschen und Technologie natürlich verbinden.",
+                "sections.team.members.marta.skills.uxResearch": "UX Research",
+                "sections.team.members.marta.skills.aiUxDesign": "KI/UX Design",
+                "sections.team.members.karol.name": "Karol Czechowski",
+                "sections.team.members.karol.position": "QA & KI-Entwickler",
+                "sections.team.members.karol.description": "Spezialist für Qualitätssicherung von KI-Lösungen und automatisiertes Testen. Garantiert Systemzuverlässigkeit.",
+                "sections.team.members.karol.skills.aiTesting": "KI-Tests",
+                "sections.team.members.karol.skills.qualityAssurance": "Qualitätssicherung",
+                "sections.team.members.roman.name": "Roman Dominia",
+                "sections.team.members.roman.position": "KI-Automatisierungs-Spezialist",
+                "sections.team.members.roman.description": "Experte für Geschäftsprozessautomatisierung mit KI und Social-Media-Datenanalyse. Steigert die Betriebseffizienz.",
+                "sections.team.members.roman.skills.processAutomation": "Prozessautomatisierung",
+                "sections.team.members.roman.skills.aiAnalytics": "KI-Analytik"
+            }
+        };
+
+        return embeddedTranslations[lang] || {};
     }
 
     // Określ bazową ścieżkę na podstawie aktualnej lokalizacji
