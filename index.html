@@ -11,7 +11,7 @@
     <title>ECM Digital - Agencja Cyfrowa | Strony WWW, Sklepy, Aplikacje Mobilne</title>
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="ECM Digital - profesjonalna agencja cyfrowa. Tworzymy strony WWW, sklepy Shopify, aplikacje mobilne, prototypy MVP i audyty UX. Już od 2,900 PLN!">
+    <meta name="description" content="ECM Digital - profesjonalna agencja cyfrowa. Tworzymy strony WWW, sklepy Shopify & Wix, aplikacje mobilne, prototypy MVP i audyty UX. Już od 2,900 PLN!">
     <meta name="keywords" content="agencja cyfrowa, strony WWW, sklepy internetowe, aplikacje mobilne, projektowanie UX, tworzenie stron, agencja cyfrowa">
     <meta name="author" content="ECM Digital">
     <meta name="robots" content="index, follow">
@@ -21,14 +21,14 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.ecm-digital.com/">
     <meta property="og:title" content="ECM Digital - Agencja Cyfrowa | Strony WWW, Sklepy, Aplikacje Mobilne">
-    <meta property="og:description" content="ECM Digital - profesjonalna agencja cyfrowa. Tworzymy strony WWW, sklepy Shopify, aplikacje mobilne, prototypy MVP i audyty UX.">
+    <meta property="og:description" content="ECM Digital - profesjonalna agencja cyfrowa. Tworzymy strony WWW, sklepy Shopify & Wix, aplikacje mobilne, prototypy MVP i audyty UX.">
     <meta property="og:image" content="https://www.ecm-digital.com/assets/images/ecm-digital-og.jpg">
     
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://www.ecm-digital.com/">
     <meta name="twitter:title" content="ECM Digital - Agencja Cyfrowa | Strony WWW, Sklepy, Aplikacje Mobilne">
-    <meta name="twitter:description" content="ECM Digital - profesjonalna agencja cyfrowa. Tworzymy strony WWW, sklepy Shopify, aplikacje mobilne, prototypy MVP i audyty UX.">
+    <meta name="twitter:description" content="ECM Digital - profesjonalna agencja cyfrowa. Tworzymy strony WWW, sklepy Shopify & Wix, aplikacje mobilne, prototypy MVP i audyty UX.">
     <meta name="twitter:image" content="https://www.ecm-digital.com/assets/images/ecm-digital-og.jpg">
     
     <!-- Fonts -->
@@ -80,6 +80,15 @@
             background: #007AFF !important;
             color: white !important;
         }
+        /* Equalize case study cards */
+        .case-study-card{min-height:520px;display:flex;flex-direction:column}
+        .case-study-content{display:flex;flex-direction:column;gap:12px}
+        .case-study-tech{margin-top:auto}
+        .case-study-desc{display:-webkit-box;-webkit-line-clamp:3;line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+        /* One-line subtitle under case study title */
+        .case-study-sub{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+        /* One-line title */
+        .case-study-title{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
     </style>
 
     <!-- Google tag (gtag.js) -->
@@ -130,19 +139,19 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><h6 class="dropdown-header text-primary fw-bold" data-i18n="navigation.dropdown.aiSolutions">🤖 Rozwiązania AI</h6></li>
-                            <li><a class="dropdown-item" href="dokumentacja-ecm/oferta-uslug/asystencja-ai-bedrock/" data-i18n="navigation.dropdown.aiAssistants">Asystenci AI na Amazon Bedrock</a></li>
-                            <li><a class="dropdown-item" href="dokumentacja-ecm/oferta-uslug/asystenci-glosowi-lex/" data-i18n="navigation.dropdown.voiceAssistants">Asystenci Głosowi na Amazon Lex</a></li>
-                            <li><a class="dropdown-item" href="dokumentacja-ecm/oferta-uslug/audyty-ux/" data-i18n="navigation.dropdown.aiAudits">Audyty Wdrożenia AI</a></li>
-                            <li><a class="dropdown-item" href="dokumentacja-ecm/oferta-uslug/social-media-data-science/" data-i18n="navigation.dropdown.socialMediaAI">Social Media & AI</a></li>
+                            <li><a class="dropdown-item" href="dokumentacja-ecm/oferta-uslug/asystencja-ai-bedrock/index.html" data-i18n="navigation.dropdown.aiAssistants">Asystenci AI na Amazon Bedrock</a></li>
+                            <li><a class="dropdown-item" href="dokumentacja-ecm/oferta-uslug/asystenci-glosowi-lex/index.html" data-i18n="navigation.dropdown.voiceAssistants">Asystenci Głosowi na Amazon Lex</a></li>
+                            <li><a class="dropdown-item" href="dokumentacja-ecm/oferta-uslug/audyty-ux/index.html" data-i18n="navigation.dropdown.aiAudits">Audyty Wdrożenia AI</a></li>
+                            <li><a class="dropdown-item" href="dokumentacja-ecm/oferta-uslug/social-media-data-science/index.html" data-i18n="navigation.dropdown.socialMediaAI">Social Media & AI</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><h6 class="dropdown-header text-primary fw-bold" data-i18n="navigation.dropdown.digitalProducts">🌐 Produkty Cyfrowe</h6></li>
-                            <li><a class="dropdown-item" href="dokumentacja-ecm/oferta-uslug/strony-www/" data-i18n="navigation.dropdown.websites">Strony WWW</a></li>
-                            <li><a class="dropdown-item" href="dokumentacja-ecm/oferta-uslug/sklepy-shopify/" data-i18n="navigation.dropdown.shopifyStores">Sklepy Shopify</a></li>
-                            <li><a class="dropdown-item" href="dokumentacja-ecm/oferta-uslug/aplikacje-mobilne/" data-i18n="navigation.dropdown.mobileApps">Aplikacje Mobilne</a></li>
+                            <li><a class="dropdown-item" href="dokumentacja-ecm/oferta-uslug/strony-www/index.html" data-i18n="navigation.dropdown.websites">Strony WWW</a></li>
+                            <li><a class="dropdown-item" href="dokumentacja-ecm/oferta-uslug/sklepy-shopify/index.html" data-i18n="navigation.dropdown.shopifyStores">Sklepy Shopify & Wix</a></li>
+                            <li><a class="dropdown-item" href="dokumentacja-ecm/oferta-uslug/aplikacje-mobilne/index.html" data-i18n="navigation.dropdown.mobileApps">Aplikacje Mobilne</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><h6 class="dropdown-header text-primary fw-bold" data-i18n="navigation.dropdown.automationMvp">⚡ Automatyzacja & MVP</h6></li>
-                            <li><a class="dropdown-item" href="dokumentacja-ecm/oferta-uslug/automatyzacje-n8n/" data-i18n="navigation.dropdown.n8nAutomation">Automatyzacje N8N</a></li>
-                            <li><a class="dropdown-item" href="dokumentacja-ecm/oferta-uslug/prototypy-mvp/" data-i18n="navigation.dropdown.mvpPrototypes">Prototypy MVP</a></li>
+                            <li><a class="dropdown-item" href="dokumentacja-ecm/oferta-uslug/automatyzacje-n8n/index.html" data-i18n="navigation.dropdown.n8nAutomation">Automatyzacje N8N</a></li>
+                            <li><a class="dropdown-item" href="dokumentacja-ecm/oferta-uslug/prototypy-mvp/index.html" data-i18n="navigation.dropdown.mvpPrototypes">Prototypy MVP</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item text-center fw-bold" href="#services" style="color: var(--primary);" data-i18n="navigation.dropdown.viewAllServices">
                                 <i class="fas fa-eye me-2"></i>Zobacz wszystkie usługi
@@ -208,14 +217,7 @@
                     </div>
                 </div>
 
-                <div class="hero-buttons d-flex flex-column flex-lg-row gap-3 justify-content-center align-items-center mb-5">
-                    <a href="/public/panel/" class="btn btn-primary btn-lg px-4 py-3" target="_blank" style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); border: none; border-radius: 1rem; font-weight: 600; text-decoration: none; transition: all 0.3s ease;">
-                        <i class="fas fa-tachometer-alt me-2"></i>Panel Klienta
-                    </a>
-                    <a href="/agency-management-panel/" class="btn btn-outline-light btn-lg px-4 py-3" target="_blank" style="border: 2px solid #FFFFFF; border-radius: 1rem; font-weight: 600; text-decoration: none; transition: all 0.3s ease; color: #FFFFFF;">
-                        <i class="fas fa-cogs me-2"></i>Panel Zarządzania
-                    </a>
-                </div>
+                
             </div>
             
             <!-- Hero Stats -->
@@ -270,7 +272,7 @@
                         </div>
                         <h4 data-i18n="services.aiAssistants.title">Asystenci AI na Amazon Bedrock & Copilot Studio</h4>
                         <p class="text-muted" data-i18n="services.aiAssistants.description">Automatyzuj obsługę klienta 24/7 i oszczędzaj do 70% kosztów wsparcia. Inteligentni asystenci AI odpowiadają na pytania i rozwiązują problemy.</p>
-                        <a href="dokumentacja-ecm/oferta-uslug/asystencja-ai-bedrock/" class="btn-cta">
+                        <a href="dokumentacja-ecm/oferta-uslug/asystencja-ai-bedrock/index.html" class="btn-cta">
                             <i class="fas fa-arrow-right"></i>
                             <span data-i18n="common.learnMore">Dowiedz się więcej</span>
                         </a>
@@ -285,7 +287,7 @@
                         </div>
                         <h4 data-i18n="services.automation.title">Automatyzacje</h4>
                         <p class="text-muted" data-i18n="services.automation.description">Oszczędzaj 15-20 godzin tygodniowo automatyzując powtarzalne zadania. Integracje systemów, automatyzacja workflow i eliminacja błędów ludzkich.</p>
-                        <a href="dokumentacja-ecm/oferta-uslug/automatyzacje-n8n/" class="btn-cta">
+                        <a href="dokumentacja-ecm/oferta-uslug/automatyzacje-n8n/index.html" class="btn-cta">
                             <i class="fas fa-arrow-right"></i>
                             <span data-i18n="common.learnMore">Dowiedz się więcej</span>
                         </a>
@@ -300,7 +302,7 @@
                         </div>
                         <h4 data-i18n="services.uxAudits.title">Audyty Wdrożenia AI w Twojej Firmie</h4>
                         <p class="text-muted" data-i18n="services.uxAudits.description">Analizujemy Twoje procesy biznesowe i identyfikujemy obszary do automatyzacji AI. Kompleksowy plan wdrożenia sztucznej inteligencji.</p>
-                        <a href="dokumentacja-ecm/oferta-uslug/audyty-ux/" class="btn-cta">
+                        <a href="dokumentacja-ecm/oferta-uslug/audyty-ux/index.html" class="btn-cta">
                             <i class="fas fa-arrow-right"></i>
                             <span data-i18n="common.learnMore">Dowiedz się więcej</span>
                         </a>
@@ -315,7 +317,7 @@
                         </div>
                         <h4 data-i18n="services.mvpPrototypes.title">Prototypy MVP</h4>
                         <p class="text-muted" data-i18n="services.mvpPrototypes.description">Przetestuj swój pomysł za 30% kosztu pełnej aplikacji. Szybki MVP pozwala zweryfikować rynek przed dużym inwestowaniem.</p>
-                        <a href="dokumentacja-ecm/oferta-uslug/prototypy-mvp/" class="btn-cta">
+                        <a href="dokumentacja-ecm/oferta-uslug/prototypy-mvp/index.html" class="btn-cta">
                             <i class="fas fa-arrow-right"></i>
                             <span data-i18n="common.learnMore">Dowiedz się więcej</span>
                         </a>
@@ -330,22 +332,22 @@
                         </div>
                         <h4 data-i18n="services.websites.title">Strony WWW</h4>
                         <p class="text-muted" data-i18n="services.websites.description">Zwiększ konwersję o 25-40% dzięki profesjonalnemu projektowi. Responsywne strony z SEO, które przyciągają i zatrzymują klientów.</p>
-                        <a href="dokumentacja-ecm/oferta-uslug/strony-www/" class="btn-cta">
+                        <a href="dokumentacja-ecm/oferta-uslug/strony-www/index.html" class="btn-cta">
                             <i class="fas fa-arrow-right"></i>
                             <span data-i18n="common.learnMore">Dowiedz się więcej</span>
                         </a>
                     </div>
                 </div>
                 
-                <!-- 6. Shopify Stores -->
+                <!-- 6. Shopify & Wix Stores -->
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="service-card">
                         <div class="service-icon mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
                             <i class="fab fa-shopify"></i>
                         </div>
-                        <h4 data-i18n="services.shopifyStores.title">Sklepy Shopify</h4>
+                        <h4 data-i18n="services.shopifyStores.title">Sklepy Shopify & Wix</h4>
                         <p class="text-muted" data-i18n="services.shopifyStores.description">Sprzedawaj online już za 2 tygodnie - gotowy sklep z płatnościami i logistyką. Średnio 15-25% wzrost sprzedaży po wdrożeniu.</p>
-                        <a href="dokumentacja-ecm/oferta-uslug/sklepy-shopify/" class="btn-cta">
+                        <a href="dokumentacja-ecm/oferta-uslug/sklepy-shopify/index.html" class="btn-cta">
                             <i class="fas fa-arrow-right"></i>
                             <span data-i18n="common.learnMore">Dowiedz się więcej</span>
                         </a>
@@ -360,7 +362,7 @@
                         </div>
                         <h4 data-i18n="services.socialMediaAI.title">Social Media & AI</h4>
                         <p class="text-muted" data-i18n="services.socialMediaAI.description">Zwiększ zaangażowanie o 60% dzięki analizie treści AI. Dowiedz się, co naprawdę interesuje Twoich klientów.</p>
-                        <a href="dokumentacja-ecm/oferta-uslug/social-media-data-science/" class="btn-cta">
+                        <a href="dokumentacja-ecm/oferta-uslug/social-media-data-science/index.html" class="btn-cta">
                             <i class="fas fa-arrow-right"></i>
                             <span data-i18n="common.learnMore">Dowiedz się więcej</span>
                         </a>
@@ -375,7 +377,7 @@
                         </div>
                         <h4 data-i18n="services.mobileApps.title">Aplikacje Mobilne</h4>
                         <p class="text-muted" data-i18n="services.mobileApps.description">Od pomysłu do App Store w 8-12 tygodni. Nowoczesne aplikacje iOS i Android, które zwiększają przychody i zaangażowanie klientów.</p>
-                        <a href="dokumentacja-ecm/oferta-uslug/aplikacje-mobilne/" class="btn-cta">
+                        <a href="dokumentacja-ecm/oferta-uslug/aplikacje-mobilne/index.html" class="btn-cta">
                             <i class="fas fa-arrow-right"></i>
                             <span data-i18n="common.learnMore">Dowiedz się więcej</span>
                         </a>
@@ -409,7 +411,7 @@
             </div>
             
             <!-- About Cards -->
-            <div class="row g-4 mb-5">
+            <div class="row g-4 mb-5" style="align-items: stretch;">
                 <div class="col-lg-4 col-md-6">
                     <div class="about-card text-center">
                         <div class="about-icon">🚀</div>
@@ -596,9 +598,9 @@
                                 <span class="blog-tag" data-i18n="blog.aiTrends.tags.ai" style="background: rgba(191, 90, 242, 0.1); color: var(--accent-purple); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">AI</span>
                                 <span class="blog-tag" data-i18n="blog.aiTrends.tags.trends" style="background: rgba(48, 209, 88, 0.1); color: var(--accent); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Trends</span>
                             </div>
-                            <button class="btn btn-outline-primary w-100" style="border-color: var(--primary); color: var(--primary);">
+                            <a href="/blog/ai-trends-2024.html" class="btn btn-outline-primary w-100" style="border-color: var(--primary); color: var(--primary); text-decoration:none; display:inline-block; text-align:center;">
                                 <i class="fas fa-arrow-right me-2"></i><span data-i18n="common.readMore">Czytaj więcej</span>
-                            </button>
+                            </a>
                         </div>
                     </article>
                 </div>
@@ -622,9 +624,9 @@
                                 <span class="blog-tag" data-i18n="blog.automation.tags.process" style="background: rgba(0, 122, 255, 0.1); color: var(--primary); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Process</span>
                                 <span class="blog-tag" data-i18n="blog.automation.tags.roi" style="background: rgba(48, 209, 88, 0.1); color: var(--accent); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">ROI</span>
                             </div>
-                            <button class="btn btn-outline-primary w-100" style="border-color: var(--primary); color: var(--primary);">
+                            <a href="/blog/automation-top10.html" class="btn btn-outline-primary w-100" style="border-color: var(--primary); color: var(--primary); text-decoration:none; display:inline-block; text-align:center;">
                                 <i class="fas fa-arrow-right me-2"></i><span data-i18n="common.readMore">Czytaj więcej</span>
-                            </button>
+                            </a>
                         </div>
                     </article>
                 </div>
@@ -648,9 +650,9 @@
                                 <span class="blog-tag" style="background: rgba(0, 122, 255, 0.1); color: var(--primary); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">UX</span>
                                 <span class="blog-tag" style="background: rgba(191, 90, 242, 0.1); color: var(--accent-purple); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">AI</span>
                             </div>
-                            <button class="btn btn-outline-primary w-100" style="border-color: var(--primary); color: var(--primary);">
+                            <a href="/blog/mobile-ai-ux.html" class="btn btn-outline-primary w-100" style="border-color: var(--primary); color: var(--primary); text-decoration:none; display:inline-block; text-align:center;">
                                 <i class="fas fa-arrow-right me-2"></i>Czytaj więcej
-                            </button>
+                            </a>
                         </div>
                     </article>
                 </div>
@@ -664,9 +666,9 @@
                         <p style="color: var(--text-secondary); margin-bottom: 2rem; font-size: 1.1rem;" data-i18n="newsletter.description">
                             Otrzymuj najnowsze artykuły, case studies i ekskluzywne wskazówki bezpośrednio na swoją skrzynkę
                         </p>
-                        <div class="newsletter-form" style="display: flex; gap: 1rem; max-width: 500px; margin: 0 auto;">
-                            <input type="email" placeholder="Twój email" class="form-control" data-i18n="newsletter.placeholder" style="background: var(--bg-secondary); border: 1px solid var(--glass-border); color: var(--text-primary); border-radius: 12px; padding: 1rem; flex: 1;">
-                            <button class="btn btn-cta" style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); color: white; border: none; padding: 1rem 2rem; border-radius: 12px; font-weight: 600; white-space: nowrap;">
+                        <div class="newsletter-form" style="display: flex; gap: 0.75rem; max-width: 500px; margin: 0 auto;">
+                            <input type="email" placeholder="Twój email" class="form-control" data-i18n="newsletter.placeholder" style="background: var(--bg-secondary); border: 1px solid var(--glass-border); color: var(--text-primary); border-radius: 12px; padding: 0.75rem 1rem; flex: 1; font-size: 1rem;">
+                            <button class="btn btn-cta" style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 12px; font-weight: 600; white-space: nowrap; font-size: 1rem; flex-shrink: 0;">
                                 <i class="fas fa-paper-plane me-2"></i><span data-i18n="newsletter.subscribe">Subskrybuj</span>
                             </button>
                         </div>
@@ -789,13 +791,14 @@
             <!-- Case Studies Grid -->
             <div class="row g-4 mb-5">
                 <div class="col-lg-4 col-md-6">
-                    <div class="case-study-card" style="background: var(--glass-bg); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem; height: 100%; transition: all 0.4s ease; cursor: pointer;">
+                    <div class="case-study-card" style="background: var(--glass-bg); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem; min-height: 520px; display: flex; flex-direction: column; transition: all 0.4s ease; cursor: pointer;">
                         <div class="case-study-header mb-3">
                             <div class="case-study-icon mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); border-radius: 15px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: white;">🤖</div>
-                            <h5 style="color: var(--text-primary); font-weight: 700; margin-bottom: 0.5rem;">Asystent AI dla E-commerce</h5>
-                            <p class="text-muted mb-0" style="font-size: 0.9rem;">Sklep internetowy - branża modowa</p>
+                            <h5 class="case-study-title" style="color: var(--text-primary); font-weight: 700; margin-bottom: 0.5rem;">Asystent AI dla E-commerce</h5>
+                            <p class="text-muted mb-0 case-study-sub" style="font-size: 0.9rem;">Sklep internetowy - branża modowa</p>
                         </div>
-                        <div class="case-study-content">
+                        
+                        <div class="case-study-content" style="display: flex; flex-direction: column; gap: 12px;">
                             <div class="case-study-stats mb-3">
                                 <div class="row text-center">
                                     <div class="col-4">
@@ -812,29 +815,34 @@
                                     </div>
                                 </div>
                             </div>
-                            <p class="text-muted mb-3" style="font-size: 0.9rem; line-height: 1.5;">
+                            <p class="text-muted mb-3 case-study-desc" style="font-size: 0.9rem; line-height: 1.5;">
                                 Wdrożenie asystenta AI obsługującego 80% zapytań klientów, automatyczne rekomendacje produktów i spersonalizowane doświadczenie zakupowe.
                             </p>
-                            <div class="case-study-tech mb-3">
+                            <div class="case-study-tech mb-3" style="margin-top: auto;">
                                 <span class="tech-tag" style="background: rgba(0, 122, 255, 0.1); color: var(--primary); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; margin-right: 0.5rem;">Amazon Bedrock</span>
                                 <span class="tech-tag" style="background: rgba(191, 90, 242, 0.1); color: var(--accent-purple); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">NLP</span>
                                 <span class="tech-tag" style="background: rgba(48, 209, 88, 0.1); color: var(--accent); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Analytics</span>
                             </div>
-                            <button class="btn btn-outline-primary w-100" style="border-color: var(--primary); color: var(--primary);">
+                            <a href="/case-studies/ai-assistant-ecommerce.html" class="btn btn-outline-primary w-100" style="border-color: var(--primary); color: var(--primary); text-decoration: none; display: inline-block; text-align: center;">
                                 <i class="fas fa-eye me-2"></i><span>Zobacz szczegóły</span>
-                            </button>
+                            </a>
+                            <div class="mt-2">
+                                <a href="#contact" class="btn btn-cta w-100" style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); color: white; border: none; padding: 0.75rem 1rem; border-radius: 12px; font-weight: 600; text-decoration: none;">
+                                    <i class="fas fa-paper-plane me-2"></i>Zapytaj o podobny projekt
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
                 <div class="col-lg-4 col-md-6">
-                    <div class="case-study-card" style="background: var(--glass-bg); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem; height: 100%; transition: all 0.4s ease; cursor: pointer;">
+                    <div class="case-study-card" style="background: var(--glass-bg); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem; min-height: 520px; display: flex; flex-direction: column; transition: all 0.4s ease; cursor: pointer;">
                         <div class="case-study-header mb-3">
                             <div class="case-study-icon mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, #FF9F0A 0%, #FF6B35 100%); border-radius: 15px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: white;">⚡</div>
-                            <h5 style="color: var(--text-primary); font-weight: 700; margin-bottom: 0.5rem;">Automatyzacja Procesów HR</h5>
-                            <p class="text-muted mb-0" style="font-size: 0.9rem;">Firma IT - 200+ pracowników</p>
+                            <h5 class="case-study-title" style="color: var(--text-primary); font-weight: 700; margin-bottom: 0.5rem;">Automatyzacja Procesów HR</h5>
+                            <p class="text-muted mb-0 case-study-sub" style="font-size: 0.9rem;">Firma IT - 200+ pracowników</p>
                         </div>
-                        <div class="case-study-content">
+                        <div class="case-study-content" style="display: flex; flex-direction: column; gap: 12px;">
                             <div class="case-study-stats mb-3">
                                 <div class="row text-center">
                                     <div class="col-4">
@@ -851,29 +859,34 @@
                                     </div>
                                 </div>
                             </div>
-                            <p class="text-muted mb-3" style="font-size: 0.9rem; line-height: 1.5;">
+                            <p class="text-muted mb-3 case-study-desc" style="font-size: 0.9rem; line-height: 1.5;">
                                 Automatyzacja procesów rekrutacyjnych, onboardingu i zarządzania dokumentami HR z integracją z systemami firmowymi.
                             </p>
-                            <div class="case-study-tech mb-3">
+                            <div class="case-study-tech mb-3" style="margin-top: auto;">
                                 <span class="tech-tag" style="background: rgba(255, 159, 10, 0.1); color: var(--accent-orange); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; margin-right: 0.5rem;">N8N</span>
                                 <span class="tech-tag" style="background: rgba(0, 122, 255, 0.1); color: var(--primary); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">API Integration</span>
                                 <span class="tech-tag" style="background: rgba(48, 209, 88, 0.1); color: var(--accent); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Workflow</span>
                             </div>
-                            <button class="btn btn-outline-primary w-100" style="border-color: var(--primary); color: var(--primary);">
+                            <a href="/case-studies/hr-automation.html" class="btn btn-outline-primary w-100" style="border-color: var(--primary); color: var(--primary); text-decoration: none; display: inline-block; text-align: center;">
                                 <i class="fas fa-eye me-2"></i>Zobacz szczegóły
-                            </button>
+                            </a>
+                            <div class="mt-2">
+                                <a href="#contact" class="btn btn-cta w-100" style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); color: white; border: none; padding: 0.75rem 1rem; border-radius: 12px; font-weight: 600; text-decoration: none;">
+                                    <i class="fas fa-paper-plane me-2"></i>Zapytaj o podobny projekt
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
                 <div class="col-lg-4 col-md-6">
-                    <div class="case-study-card" style="background: var(--glass-bg); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem; height: 100%; transition: all 0.4s ease; cursor: pointer;">
+                    <div class="case-study-card" style="background: var(--glass-bg); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem; min-height: 520px; display: flex; flex-direction: column; transition: all 0.4s ease; cursor: pointer;">
                         <div class="case-study-header mb-3">
-                            <div class="case-study-icon mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, #30D158 0%, #64D2FF 100%); border-radius: 15px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: white;">📱</div>
-                            <h5 style="color: var(--text-primary); font-weight: 700; margin-bottom: 0.5rem;">Aplikacja Mobilna FinTech</h5>
-                            <p class="text-muted mb-0" style="font-size: 0.9rem;">Startup fintech - płatności mobilne</p>
+                            <div class="case-study-icon mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, #30D158 0%, #64D2FF 100%); border-radius: 15px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: white;">🛍️</div>
+                            <h5 class="case-study-title" style="color: var(--text-primary); font-weight: 700; margin-bottom: 0.5rem;">Shopify: sklep z 60 agentami AI</h5>
+                            <p class="text-muted mb-0 case-study-sub" style="font-size: 0.9rem;">Nowoczesny e‑commerce zgodny z UX, z 60 agentami AI (Dropified)</p>
                         </div>
-                        <div class="case-study-content">
+                        <div class="case-study-content" style="display: flex; flex-direction: column; gap: 12px;">
                             <div class="case-study-stats mb-3">
                                 <div class="row text-center">
                                     <div class="col-4">
@@ -890,17 +903,22 @@
                                     </div>
                                 </div>
                             </div>
-                            <p class="text-muted mb-3" style="font-size: 0.9rem; line-height: 1.5;">
-                                Aplikacja mobilna do płatności z AI-powered fraud detection, biometrią i integracją z bankami.
+                            <p class="text-muted mb-3 case-study-desc" style="font-size: 0.9rem; line-height: 1.5;">
+                                W naszym case study pokazujemy, jak powstał sklep e‑commerce na Shopify, stworzony zgodnie z najnowszymi standardami UX i przetestowany z rzeczywistymi użytkownikami. Wdrożyliśmy 60 agentów AI z Dropified do automatyzacji i usprawnienia działania sklepu oraz zaplanowaliśmy inteligentne kampanie AI wspierające marketing i pozyskiwanie ruchu. Efekt: kompletny, nowoczesny sklep z pełną automatyzacją i dbałością o doświadczenia użytkowników.
                             </p>
-                            <div class="case-study-tech mb-3">
-                                <span class="tech-tag" style="background: rgba(48, 209, 88, 0.1); color: var(--accent); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; margin-right: 0.5rem;">React Native</span>
-                                <span class="tech-tag" style="background: rgba(0, 122, 255, 0.1); color: var(--primary); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">AI/ML</span>
-                                <span class="tech-tag" style="background: rgba(191, 90, 242, 0.1); color: var(--accent-purple); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Blockchain</span>
+                            <div class="case-study-tech mb-3" style="margin-top: auto;">
+                                <span class="tech-tag" style="background: rgba(48, 209, 88, 0.1); color: var(--accent); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; margin-right: 0.5rem;">Shopify</span>
+                                <span class="tech-tag" style="background: rgba(0, 122, 255, 0.1); color: var(--primary); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">AI Agents</span>
+                                <span class="tech-tag" style="background: rgba(191, 90, 242, 0.1); color: var(--accent-purple); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">UX Research</span>
                             </div>
-                            <button class="btn btn-outline-primary w-100" style="border-color: var(--primary); color: var(--primary);">
+                            <a href="/case-studies/shopify-ai.html" class="btn btn-outline-primary w-100" style="border-color: var(--primary); color: var(--primary); text-decoration: none; display: inline-block; text-align: center;">
                                 <i class="fas fa-eye me-2"></i>Zobacz szczegóły
-                            </button>
+                            </a>
+                            <div class="mt-2">
+                                <a href="#contact" class="btn btn-cta w-100" style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); color: white; border: none; padding: 0.75rem 1rem; border-radius: 12px; font-weight: 600; text-decoration: none;">
+                                    <i class="fas fa-paper-plane me-2"></i>Zapytaj o podobny projekt
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -926,8 +944,8 @@
             <!-- Process Timeline -->
             <div class="process-timeline position-relative mb-5">
                 <div class="timeline-line"></div>
-                <div class="row g-4" role="tablist" aria-label="Kroki procesu pracy">
-                    <div class="col-lg-2 col-md-4 col-sm-6">
+                <div class="row g-5 justify-content-center" role="tablist" aria-label="Kroki procesu pracy">
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-4">
                         <div class="process-step-wrapper text-center position-relative">
                             <div class="process-step text-center" role="tab" tabindex="0" aria-selected="false" aria-controls="step1-content">
                                 <div class="step-number">1</div>
@@ -938,7 +956,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-2 col-md-4 col-sm-6">
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-4">
                         <div class="process-step-wrapper text-center position-relative">
                             <div class="process-step text-center" role="tab" tabindex="0" aria-selected="false" aria-controls="step2-content">
                                 <div class="step-number">2</div>
@@ -949,7 +967,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-2 col-md-4 col-sm-6">
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-4">
                         <div class="process-step-wrapper text-center position-relative">
                             <div class="process-step text-center" role="tab" tabindex="0" aria-selected="false" aria-controls="step3-content">
                                 <div class="step-number">3</div>
@@ -960,7 +978,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-2 col-md-4 col-sm-6">
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-4">
                         <div class="process-step-wrapper text-center position-relative">
                             <div class="process-step text-center active" role="tab" tabindex="0" aria-selected="true" aria-controls="step4-content">
                                 <div class="step-number">4</div>
@@ -971,7 +989,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-2 col-md-4 col-sm-6">
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-4">
                         <div class="process-step-wrapper text-center position-relative">
                             <div class="process-step text-center" role="tab" tabindex="0" aria-selected="false" aria-controls="step5-content">
                                 <div class="step-number">5</div>
@@ -982,7 +1000,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-2 col-md-4 col-sm-6">
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-4">
                         <div class="process-step-wrapper text-center position-relative">
                             <div class="process-step text-center" role="tab" tabindex="0" aria-selected="false" aria-controls="step6-content">
                                 <div class="step-number">6</div>
@@ -1069,55 +1087,7 @@
 
     </main>
 
-    <!-- Quick Access to Panels -->
-    <section class="py-5" style="background: linear-gradient(135deg, #1C1C1E 0%, #2C2C2E 100%); border-top: 1px solid rgba(255, 255, 255, 0.1);">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h3 class="mb-3" style="font-size: 2.5rem; font-weight: 700; background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
-                    🚀 Szybki Dostęp do Systemów
-                </h3>
-                <p class="text-muted" style="font-size: 1.1rem; max-width: 600px; margin: 0 auto;">
-                    Zarządzaj projektami, dokumentami i administracją agencji z naszych dedykowanych paneli
-                </p>
-            </div>
-            
-            <div class="row g-4 justify-content-center">
-                <div class="col-lg-5 col-md-6">
-                    <div class="card h-100" style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 1rem; backdrop-filter: blur(10px);">
-                        <div class="card-body text-center p-4">
-                            <div class="mb-3">
-                                <i class="fas fa-tachometer-alt" style="font-size: 3rem; background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"></i>
-                            </div>
-                            <h4 class="card-title mb-3">Panel Klienta</h4>
-                            <p class="card-text text-muted mb-4">
-                                Zarządzaj swoimi projektami, przeglądaj dokumenty, śledź postępy i komunikuj się z zespołem ECM Digital.
-                            </p>
-                            <a href="/client-dashboard/" class="btn btn-primary btn-lg px-4 py-2" target="_blank" style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); border: none; border-radius: 0.75rem; font-weight: 600;">
-                                <i class="fas fa-external-link-alt me-2"></i>Otwórz Panel
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-5 col-md-6">
-                    <div class="card h-100" style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 1rem; backdrop-filter: blur(10px);">
-                        <div class="card-body text-center p-4">
-                            <div class="mb-3">
-                                <i class="fas fa-cogs" style="font-size: 3rem; background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"></i>
-                            </div>
-                            <h4 class="card-title mb-3">Panel Zarządzania</h4>
-                            <p class="card-text text-muted mb-4">
-                                Administracja agencji, zarządzanie zespołem, monitoring projektów i analityka biznesowa.
-                            </p>
-                            <a href="/agency-management-panel/" class="btn btn-outline-primary btn-lg px-4 py-2" target="_blank" style="border: 2px solid #007AFF; border-radius: 0.75rem; font-weight: 600; color: #007AFF;">
-                                <i class="fas fa-external-link-alt me-2"></i>Otwórz Panel
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    
 
     <!-- Footer -->
     <footer class="footer py-4" role="contentinfo">
@@ -1626,6 +1596,22 @@
                 border-radius: 8px !important;
                 min-height: 48px !important;
             }
+
+            /* Newsletter form mobile optimization */
+            .newsletter-form {
+                flex-direction: column !important;
+                gap: 0.5rem !important;
+                max-width: 100% !important;
+            }
+
+            .newsletter-form input,
+            .newsletter-form button {
+                width: 100% !important;
+            }
+
+            .newsletter-card {
+                padding: 2rem !important;
+            }
             
             #hubspot-form textarea.hs-input {
                 min-height: 100px !important;
@@ -1919,20 +1905,20 @@
         .process-step-wrapper {
             position: relative !important;
             z-index: 2 !important;
-            margin-bottom: 2rem !important;
-            padding: 0 0.5rem !important;
+            margin-bottom: 3rem !important;
+            padding: 0 1rem !important;
         }
-        
+
         .process-step {
             background: rgba(28, 28, 30, 0.95) !important;
             backdrop-filter: blur(30px) !important;
             -webkit-backdrop-filter: blur(30px) !important;
             border: 1px solid rgba(255, 255, 255, 0.1) !important;
-            border-radius: 24px !important;
-            padding: 2.5rem 1.5rem !important;
+            border-radius: 28px !important;
+            padding: 3.5rem 2rem !important;
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
             position: relative !important;
-            height: 100% !important;
+            min-height: 280px !important;
             overflow: hidden !important;
         }
         
@@ -1967,8 +1953,8 @@
         }
         
         .step-number {
-            width: 70px !important;
-            height: 70px !important;
+            width: 80px !important;
+            height: 80px !important;
             background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%) !important;
             border-radius: 50% !important;
             display: flex !important;
@@ -2064,10 +2050,34 @@
                 display: none !important;
             }
             .process-step {
-                margin-bottom: 1.5rem !important;
+                margin-bottom: 2rem !important;
+                padding: 2.5rem 1.5rem !important;
+                min-height: 240px !important;
+            }
+            .process-step-wrapper {
+                margin-bottom: 2rem !important;
+                padding: 0 0.5rem !important;
+            }
+            .step-number {
+                width: 70px !important;
+                height: 70px !important;
             }
             #process {
                 padding: 60px 0 !important;
+            }
+            .row.g-5 {
+                --bs-gutter-x: 1rem !important;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .process-step {
+                padding: 2rem 1rem !important;
+                min-height: 220px !important;
+            }
+            .step-number {
+                width: 60px !important;
+                height: 60px !important;
             }
         }
         
@@ -2685,11 +2695,11 @@
                 
                 // Service-related responses
                 if (lowerInput.includes('usług') || lowerInput.includes('oferta')) {
-                    return 'Oferujemy kompleksowe usługi cyfrowe: Strony WWW od 3,500 PLN, Sklepy Shopify od 8,000 PLN, Aplikacje Mobilne od 15,000 PLN, Asystenci AI na Amazon Bedrock, Automatyzacje z n8n/Zapier/Opal, Audyty UX i Social Media z AI. Która usługa Cię najbardziej interesuje?';
+                    return 'Oferujemy kompleksowe usługi cyfrowe: Strony WWW od 3,500 PLN, Sklepy Shopify & Wix od 8,000 PLN, Aplikacje Mobilne od 15,000 PLN, Asystenci AI na Amazon Bedrock, Automatyzacje z n8n/Zapier/Opal, Audyty UX i Social Media z AI. Która usługa Cię najbardziej interesuje?';
                 }
                 
                 if (lowerInput.includes('ceny') || lowerInput.includes('pakiety') || lowerInput.includes('koszt')) {
-                    return 'Nasze ceny zaczynają się od: Strony WWW - 3,500 PLN, Sklepy Shopify - 8,000 PLN, Aplikacje Mobilne - 15,000 PLN, Asystenci AI - 12,000 PLN. Wszystkie ceny są indywidualne i zależą od złożoności projektu. Chcesz otrzymać dokładną wycenę?';
+                    return 'Nasze ceny zaczynają się od: Strony WWW - 3,500 PLN, Sklepy Shopify & Wix - 8,000 PLN, Aplikacje Mobilne - 15,000 PLN, Asystenci AI - 12,000 PLN. Wszystkie ceny są indywidualne i zależą od złożoności projektu. Chcesz otrzymać dokładną wycenę?';
                 }
                 
                 if (lowerInput.includes('konsultac') || lowerInput.includes('spotkanie')) {
@@ -2697,7 +2707,7 @@
                 }
                 
                 if (lowerInput.includes('case') || lowerInput.includes('portfolio') || lowerInput.includes('projekty')) {
-                    return 'Mamy bogate portfolio projektów: Strony WWW dla firm z różnych branż, Sklepy Shopify z wysoką konwersją, Aplikacje Mobilne dla startupów, Asystenci AI dla korporacji. Chcesz zobaczyć konkretne przykłady?';
+                    return 'Mamy bogate portfolio projektów: Strony WWW dla firm z różnych branż, Sklepy Shopify & Wix z wysoką konwersją, Aplikacje Mobilne dla startupów, Asystenci AI dla korporacji. Chcesz zobaczyć konkretne przykłady?';
                 }
                 
                 if (lowerInput.includes('ai') || lowerInput.includes('sztuczna inteligencja')) {
@@ -3107,7 +3117,7 @@
     </script>
 
     <!-- Voice Chatbot Widget -->
-    <div class="voice-chatbot-widget">
+    <div class="voice-chatbot-widget" style="display:none;">
         <button class="voice-chatbot-button" id="voiceChatbotButton" title="Rozmawiaj z naszym asystentem">
             <img src="assets/images/tomasz-profile-optimized.jpg" alt="Tomasz Gnat" class="voice-chatbot-avatar image-lazy" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
             <i class="fas fa-robot voice-chatbot-fallback-icon"></i>
@@ -3115,7 +3125,7 @@
     </div>
     
     <!-- Voice Chatbot Modal -->
-    <div class="voice-chatbot-modal" id="voiceChatbotModal" role="dialog" aria-modal="true" aria-labelledby="voice-chatbot-title" aria-describedby="voice-chatbot-subtitle">
+    <div class="voice-chatbot-modal" id="voiceChatbotModal" role="dialog" aria-modal="true" aria-labelledby="voice-chatbot-title" aria-describedby="voice-chatbot-subtitle" style="display:none;">
         <div class="voice-chatbot-content">
             <div class="voice-chatbot-header">
                 <div class="voice-chatbot-title-section">
@@ -3185,5 +3195,113 @@
     
     <!-- Mobile UX Optimizations -->
     <script src="src/mobile-ux.js"></script>
+<style>
+  #__next, [id^="__next"], #__next-build-watcher, .nextjs-error-boundary,
+  .nextjs-container, .nextjs-dev-overlay, .nextjs-portal,
+  [class*="nextjs"], [id*="nextjs"], .__nextjs,
+  body > div[style*="position: fixed"][style*="bottom"], body > div[style*="position:fixed"][style*="bottom"] {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    position: static !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    z-index: -9999 !important;
+  }
+</style>
 </body>
+<script>
+  (function(){
+    function aggressivePurge(){
+      // Method 1: Remove by ID/class patterns
+      var selectors = [
+        '#__next', '[id^="__next"]', '[class*="__next"]',
+        '.nextjs-error-boundary', '.nextjs-container',
+        '.nextjs-dev-overlay', '.nextjs-portal',
+        '[class*="nextjs"]', '[id*="nextjs"]',
+        '.__nextjs', '.nextjs-'
+      ];
+
+      selectors.forEach(function(sel){
+        var elements = document.querySelectorAll(sel);
+        elements.forEach(function(el){
+          if (el && el.parentNode) {
+            el.parentNode.removeChild(el);
+          }
+        });
+      });
+
+      // Method 2: Remove by text content
+      var allElements = document.querySelectorAll('body *');
+      allElements.forEach(function(el){
+        var text = (el.textContent || '').trim();
+        var innerHTML = (el.innerHTML || '').trim();
+        if (text === 'This page could not be found.' ||
+            text === '404' ||
+            innerHTML.includes('This page could not be found.') ||
+            innerHTML.includes('404')) {
+          var container = el.closest('[style*="position: fixed"], [style*="position:fixed"], [id^="__next"], .nextjs-container') || el;
+          if (container && container.parentNode) {
+            container.parentNode.removeChild(container);
+          }
+        }
+      });
+
+      // Method 3: Remove fixed positioned elements at bottom
+      var fixedElements = document.querySelectorAll('body > div[style*="position: fixed"], body > div[style*="position:fixed"]');
+      fixedElements.forEach(function(el){
+        var style = window.getComputedStyle(el);
+        if (style.position === 'fixed' &&
+            (style.bottom === '0px' || style.bottom === '0' ||
+             parseInt(style.bottom || '0', 10) <= 20)) {
+          if (el.parentNode) {
+            el.parentNode.removeChild(el);
+          }
+        }
+      });
+
+      // Method 4: Reset body styles
+      document.body.style.marginBottom = '0px';
+      document.body.style.paddingBottom = '0px';
+      document.documentElement.style.marginBottom = '0px';
+      document.documentElement.style.paddingBottom = '0px';
+
+      // Method 5: Force remove any remaining overlays
+      setTimeout(function(){
+        var bodyChildren = Array.from(document.body.children);
+        bodyChildren.forEach(function(child){
+          if (child.id && child.id.includes('__next') ||
+              child.className && child.className.toString().includes('nextjs')) {
+            child.remove();
+          }
+        });
+      }, 100);
+    }
+
+    // Run immediately
+    aggressivePurge();
+
+    // Run on DOM changes
+    var observer = new MutationObserver(function(mutations){
+      mutations.forEach(function(mutation){
+        if (mutation.type === 'childList') {
+          aggressivePurge();
+        }
+      });
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    // Run multiple times with delays
+    setTimeout(aggressivePurge, 100);
+    setTimeout(aggressivePurge, 300);
+    setTimeout(aggressivePurge, 500);
+    setTimeout(aggressivePurge, 1000);
+    setTimeout(aggressivePurge, 2000);
+
+    // Additional aggressive removal
+    window.addEventListener('load', aggressivePurge);
+    window.addEventListener('DOMContentLoaded', aggressivePurge);
+  })();
+</script>
 </html>

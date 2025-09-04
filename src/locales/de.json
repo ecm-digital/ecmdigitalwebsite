@@ -32,7 +32,7 @@
       "mvpPrototypes": "MVP-Prototypen",
       "viewAllServices": "Alle Dienstleistungen anzeigen"
     }
-  },
+  }
   "common": {
     "learnMore": "Mehr erfahren"
   },
@@ -193,207 +193,13 @@
       "form.budget.25k+": "Über 25.000 PLN",
       "form.budget.consultation": "Beratung benötigt",
       "form.message": "Nachricht *",
-              "form.submit": "Nachricht senden"
-      }
-    },
-    "features": {
-      "title": "Hauptfunktionen",
-      "subtitle": "Wir nutzen die neuesten Technologien für professionelle Websites",
-      "shopify_subtitle": "Wir nutzen die neuesten Shopify-Technologien für professionelle E-Commerce-Shops",
-      "mvp_subtitle": "Wir nutzen die Lean-Startup-Methodik für die schnelle Validierung von Geschäftsideen",
-      "socialMedia_subtitle": "Wir verbinden Social Media Marketing mit fortschrittlicher Datenanalyse und KI"
-    },
-    "benefits": {
-      "title": "Warum uns wählen?"
-    },
-    "cta": {
-      "title": "Bereit für eine professionelle Website?",
-      "description": "Kontaktieren Sie uns und erhalten Sie eine kostenlose Beratung. Wir helfen Ihnen dabei, eine Website zu erstellen, die Kunden anzieht und den Umsatz steigert.",
-      "shopify_title": "Bereit für einen professionellen Shop?",
-      "shopify_description": "Kontaktieren Sie uns und erhalten Sie eine kostenlose Beratung. Wir helfen Ihnen dabei, einen Shop zu erstellen, der den Umsatz steigert und Ihr Geschäft skaliert.",
-      "mvp_title": "Bereit, Ihre Idee zu validieren?",
-      "mvp_description": "Kontaktieren Sie uns und erhalten Sie eine kostenlose Beratung. Wir helfen Ihnen dabei, Ihre Idee schnell zu testen und das Geschäftsrisiko zu minimieren.",
-      "socialMedia_title": "Bereit für KI-gestützten Marketing?",
-      "socialMedia_description": "Kontaktieren Sie uns und erhalten Sie eine kostenlose Beratung. Wir helfen Ihnen dabei, Social Media Kampagnen zu erstellen, die den ROI durch KI und Data Science maximieren.",
-      "freeConsultation": "Kostenlose Beratung",
-      "callNow": "Jetzt anrufen"
-    }
-  },
-  "serviceProcesses": {
-    "websites": {
-      "title": "Unser Website-Entwicklungsprozess",
-      "discovery": {
-        "title": "Discovery & Strategie (Woche 1)",
-        "description": "Geschäftsziele-Analyse und Zielgruppenforschung"
-      },
-      "design": {
-        "title": "Design & UX (Woche 2-3)",
-        "description": "Wireframes, UI-Design und interaktive Prototypen"
-      },
-      "development": {
-        "title": "Entwicklung (Woche 4-5)",
-        "description": "Frontend, Backend und externe Systemintegrationen"
-      },
-      "launch": {
-        "title": "Testing & Launch (Woche 6)",
-        "description": "Cross-Browser-Testing und Produktionsbereitstellung"
-      }
-    },
-    "shopify": {
-      "title": "Shopify-Store-Erstellungsprozess",
-      "discovery": {
-        "title": "Geschäftsanalyse (Woche 1)",
-        "description": "Geschäftsmodell-Analyse und Verkaufsstrategie"
-      },
-      "design": {
-        "title": "Store-Design (Woche 2)",
-        "description": "UX/UI-Design und Informationsarchitektur"
-      },
-      "development": {
-        "title": "Entwicklung (Woche 3-4)",
-        "description": "Shopify-Implementierung und Integrationen"
-      },
-      "launch": {
-        "title": "Bereitstellung (Woche 5)",
-        "description": "Tests, Optimierung und Start"
-      }
-    },
-    "mvp": {
-      "title": "Unser 5-Stufen-MVP-Prozess",
-      "discovery": {
-        "title": "Discovery & Forschung (Woche 1)",
-        "description": "Ideenanalyse und Geschäftsmodell"
-      },
-      "design": {
-        "title": "Design & Prototyping (Woche 2)",
-        "description": "User Experience (UX) Design und Wireframes"
-      },
-      "development": {
-        "title": "Entwicklung (Woche 3-4)",
-        "description": "Infrastruktur-Setup und Entwicklung"
-      },
-      "launch": {
-        "title": "Testing & Launch (Woche 5)",
-        "description": "Quality Assurance und Bereitstellung"
-      }
-    },
-    "uxAudit": {
-      "title": "UX-Audit-Implementierungsprozess",
-      "discovery": {
-        "title": "Vorbereitung und Planung",
-        "description": "Aktueller Zustand-Analyse und Audit-Plan"
-      },
-      "design": {
-        "title": "Analyse und Forschung",
-        "description": "Heuristische Analyse und Benutzertests"
-      },
-      "development": {
-        "title": "Empfehlungen",
-        "description": "Bericht mit Empfehlungen und Prioritäten"
-      },
-      "launch": {
-        "title": "Implementierung",
-        "description": "Änderungsimplementierung und Überwachung"
-      }
-    },
-    "automation": {
-      "title": "Automatisierungs-Implementierungsprozess",
-      "discovery": {
-        "title": "Prozessanalyse & Mapping",
-        "description": "Aktuelle Workflow-Mapping und Engpass-Identifikation"
-      },
-      "design": {
-        "title": "Workflow-Design",
-        "description": "Workflow-Diagramme und Logik-Design"
-      },
-      "development": {
-        "title": "Implementierung und Tests",
-        "description": "Automatisierungsentwicklung und End-to-End-Tests"
-      },
-      "launch": {
-        "title": "Bereitstellung und Optimierung",
-        "description": "Go-Live, Überwachung und kontinuierliche Optimierung"
-      }
-    },
-    "socialMedia": {
-      "title": "Social Media Kampagnen-Implementierungsprozess",
-      "discovery": {
-        "title": "Analyse und Strategie",
-        "description": "Marktanalyse, Wettbewerb und Zielgruppe"
-      },
-      "design": {
-        "title": "Kreatives Konzept",
-        "description": "Kampagnen-Design und Content-Strategie"
-      },
-      "development": {
-        "title": "Implementierung",
-        "description": "Kampagnenausführung und Überwachung"
-      },
-      "launch": {
-        "title": "Optimierung",
-        "description": "Ergebnisanalyse und Optimierung"
-      }
-    },
-    "aiAssistants": {
-      "title": "KI-Assistenten-Implementierungsprozess",
-      "discovery": {
-        "title": "Bedürfnis- und Prozessanalyse",
-        "description": "Aktuelle Workflow-Mapping und Engpass-Identifikation"
-      },
-      "design": {
-        "title": "KI-Architektur und Prompt-Engineering",
-        "description": "KI-System-Design und Prompt-Optimierung"
-      },
-      "development": {
-        "title": "Entwicklung und Integrationen",
-        "description": "Assistenten-Implementierung und Systemintegrationen"
-      },
-      "launch": {
-        "title": "Bereitstellung und Wartung",
-        "description": "Go-Live, Überwachung und kontinuierliche Optimierung"
-      }
-    },
-    "mobileApps": {
-      "title": "Mobile App-Erstellungsprozess",
-      "discovery": {
-        "title": "Analyse und Konzept",
-        "description": "Ideenanalyse und Funktionalitätsdefinition"
-      },
-      "design": {
-        "title": "UX/UI-Design",
-        "description": "Interface-Design und Benutzererfahrung"
-      },
-      "development": {
-        "title": "Entwicklung",
-        "description": "Implementierung auf iOS, Android oder React Native"
-      },
-      "launch": {
-        "title": "Bereitstellung",
-        "description": "Tests, Optimierung und App Store-Veröffentlichung"
-      }
-    },
-    "voiceAssistants": {
-      "title": "Sprachassistenten-Erstellungsprozess",
-      "discovery": {
-        "title": "Bedürfnisanalyse",
-        "description": "Prozessanalyse und Anwendungsfall-Definition"
-      },
-      "design": {
-        "title": "Dialog-Design",
-        "description": "Gesprächsdesign und Benutzerabläufe"
-      },
-      "development": {
-        "title": "Entwicklung auf Amazon Lex",
-        "description": "Intent- und Slot-Implementierung"
-      },
-      "launch": {
-        "title": "Bereitstellung und Tests",
-        "description": "Systemintegration und Sprachtests"
+      "form.submit": "Nachricht senden"
       }
     }
+  }
   },
   "footer": {
-    "copyright": "© 2024 ECM Digital. Alle Rechte vorbehalten.",
+    "copyright": "© 2025 ECM Digital. Alle Rechte vorbehalten.",
     "poweredBy": "Powered by Scrum Software Sp. z o.o."
   }
 }

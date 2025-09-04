@@ -124,9 +124,7 @@
     },
     "blog": {
       "title": "Blog & Insights",
-      "subtitle": "Latest AI trends, case studies and practical tips for your business"
-    },
-    "blog": {
+      "subtitle": "Latest AI trends, case studies and practical tips for your business",
       "aiTrends": {
         "category": "🤖 AI Trends",
         "title": "How AI is changing e-commerce in 2024?",

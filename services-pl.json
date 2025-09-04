@@ -34,10 +34,10 @@
     },
     {
       "id": "2",
-      "title": "Sklepy Shopify",
-      "title_en": "Shopify Stores",
-      "description": "Profesjonalne sklepy internetowe na platformie Shopify",
-      "description_en": "Professional e-commerce stores on Shopify platform",
+      "title": "Sklepy Shopify & Wix",
+      "title_en": "Shopify & Wix Stores",
+      "description": "Profesjonalne sklepy internetowe na platformach Shopify i Wix",
+      "description_en": "Professional e-commerce stores on Shopify and Wix platforms",
       "icon": "shopping-cart",
       "color": "bg-green-500",
       "stats": {
@@ -62,7 +62,7 @@
       "priceRange_en": "5000-25000 PLN",
       "category": "ecommerce",
       "priority": "high",
-      "tags": ["shopify", "ecommerce", "payment", "mobile"]
+      "tags": ["shopify", "wix", "ecommerce", "payment", "mobile"]
     },
     {
       "id": "3",
