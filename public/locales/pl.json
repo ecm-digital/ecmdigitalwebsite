@@ -109,7 +109,9 @@
       "mission": "Misja",
       "mission.description": "Demokratyzujemy dostęp do AI, pomagając firmom każdej wielkości wykorzystać potencjał sztucznej inteligencji dla wzrostu biznesowego.",
       "vision": "Wizja",
-      "vision.description": "Być liderem cyfrowej transformacji w Polsce, tworząc rozwiązania AI, które rzeczywiście zwiększają efektywność i przychody."
+      "vision.description": "Być liderem cyfrowej transformacji w Polsce, tworząc rozwiązania AI, które rzeczywiście zwiększają efektywność i przychody.",
+      "values": "Wartości",
+      "values.description": "Innowacyjność, transparentność i rezultaty. Realizujemy każdy projekt z pasją, dostarczając mierzalne korzyści biznesowe."
     },
     "sections": {
       "about": {

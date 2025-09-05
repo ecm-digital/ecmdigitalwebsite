@@ -79,7 +79,13 @@
   "sections": {
     "about": {
       "title": "Über ECM Digital",
-      "subtitle": "KI-Experten, die Geschäft durch intelligente Lösungen transformieren"
+      "subtitle": "KI-Experten, die Geschäft durch intelligente Lösungen transformieren",
+      "mission": "Mission",
+      "mission.description": "Wir demokratisieren den Zugang zu KI und helfen Unternehmen jeder Größe, das Potenzial künstlicher Intelligenz für Geschäftswachstum zu nutzen.",
+      "vision": "Vision",
+      "vision.description": "Führend in der digitalen Transformation in Polen zu sein und KI-Lösungen zu schaffen, die Effizienz und Umsatz wirklich steigern.",
+      "values": "Werte",
+      "values.description": "Innovation, Transparenz und Ergebnisse. Wir setzen jedes Projekt mit Leidenschaft um und liefern messbare Geschäftsvorteile."
     },
     "services": {
       "title": "Unsere Dienstleistungen",
