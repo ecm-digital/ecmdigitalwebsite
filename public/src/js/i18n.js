@@ -130,6 +130,12 @@ class I18nManager {
             "services.shopifyStores.features.mobileFirst.description": "Zoptymalizowany pod kątem urządzeń mobilnych, gdzie odbywa się 70% zakupów",
             "services.shopifyStores.features.payments.title": "Płatności & Dostawa",
             "services.shopifyStores.features.payments.description": "Integracje z popularnymi bramkami płatności i firmami kurierskimi",
+            "sections.about.mission": "Misja",
+            "sections.about.mission.description": "Demokratyzujemy dostęp do AI, pomagając firmom każdej wielkości wykorzystać potencjał sztucznej inteligencji dla wzrostu biznesowego.",
+            "sections.about.vision": "Wizja",
+            "sections.about.vision.description": "Być liderem cyfrowej transformacji w Polsce, tworząc rozwiązania AI, które rzeczywiście zwiększają efektywność i przychody.",
+            "sections.about.values": "Wartości",
+            "sections.about.values.description": "Innowacyjność, transparentność i rezultaty. Realizujemy każdy projekt z pasją, dostarczając mierzalne korzyści biznesowe.",
             en: {
                 "sections.about.title": "About ECM Digital",
                 "sections.about.subtitle": "Team of AI experts who transform business through intelligent solutions",
@@ -181,6 +187,12 @@ class I18nManager {
             "services.shopifyStores.features.mobileFirst.description": "Optimized for mobile devices where 70% of purchases take place",
             "services.shopifyStores.features.payments.title": "Payments & Shipping",
             "services.shopifyStores.features.payments.description": "Integrations with popular payment gateways and courier companies",
+            "sections.about.mission": "Mission",
+            "sections.about.mission.description": "We democratize access to AI, helping companies of all sizes leverage the potential of artificial intelligence for business growth.",
+            "sections.about.vision": "Vision",
+            "sections.about.vision.description": "To be a leader in digital transformation in Poland, creating AI solutions that really increase efficiency and revenue.",
+            "sections.about.values": "Values",
+            "sections.about.values.description": "Innovation, transparency and results. We implement every project with passion, delivering measurable business benefits.",
             de: {
                 "sections.about.title": "Über ECM Digital",
                 "sections.about.subtitle": "KI-Experten, die Geschäft durch intelligente Lösungen transformieren",
@@ -231,7 +243,13 @@ class I18nManager {
             "services.shopifyStores.features.mobileFirst.title": "Mobile-First",
             "services.shopifyStores.features.mobileFirst.description": "Optimiert für mobile Geräte, wo 70% der Käufe stattfinden",
             "services.shopifyStores.features.payments.title": "Zahlungen & Versand",
-            "services.shopifyStores.features.payments.description": "Integrationen mit beliebten Zahlungsgateways und Kurierunternehmen"
+            "services.shopifyStores.features.payments.description": "Integrationen mit beliebten Zahlungsgateways und Kurierunternehmen",
+            "sections.about.mission": "Mission",
+            "sections.about.mission.description": "Wir demokratisieren den Zugang zu KI und helfen Unternehmen jeder Größe, das Potenzial künstlicher Intelligenz für Geschäftswachstum zu nutzen.",
+            "sections.about.vision": "Vision",
+            "sections.about.vision.description": "Führend in der digitalen Transformation in Polen zu sein und KI-Lösungen zu schaffen, die Effizienz und Umsatz wirklich steigern.",
+            "sections.about.values": "Werte",
+            "sections.about.values.description": "Innovation, Transparenz und Ergebnisse. Wir setzen jedes Projekt mit Leidenschaft um und liefern messbare Geschäftsvorteile."
         };
 
         return embeddedTranslations[lang] || {};
