@@ -37,21 +37,12 @@ class I18nManager {
             console.log('🔍 Current pathname:', window.location.pathname);
             console.log('🔍 Current hostname:', window.location.hostname);
 
-            // Spróbuj najpierw załadować z plików
-            let translationPaths = [];
-            if (window.location.hostname.includes('vercel.app')) {
-                translationPaths = [
-                    '/locales/pl.json',
-                    '/locales/en.json',
-                    '/locales/de.json'
-                ];
-            } else {
-                translationPaths = [
-                    `${basePath}locales/pl.json`,
-                    `${basePath}locales/en.json`,
-                    `${basePath}locales/de.json`
-                ];
-            }
+            // Spróbuj najpierw załadować z plików - zawsze używaj ścieżki bezwzględnej
+            const translationPaths = [
+                '/locales/pl.json',
+                '/locales/en.json',
+                '/locales/de.json'
+            ];
 
             console.log('📁 Attempting to load translations from:', translationPaths);
             
