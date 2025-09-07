@@ -20,7 +20,9 @@ import {
   Plus,
   ArrowRight,
   Users,
-  Clock
+  Clock,
+  Bot,
+  Send
 } from 'lucide-react'
 
 const statusColors = {
@@ -351,6 +353,7 @@ export function DashboardOverview() {
           </div>
         </CardContent>
       </Card>
+
     </div>
   )
 }

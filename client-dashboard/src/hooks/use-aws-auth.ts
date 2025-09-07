@@ -10,7 +10,6 @@ import {
   GetUserCommand,
   GlobalSignOutCommand
 } from '@aws-sdk/client-cognito-identity-provider'
-import { awsClients, AWS_CONFIG } from '@/lib/aws-config'
 
 export interface AWSUser {
   id: string
@@ -38,6 +37,12 @@ export const useAWSAuth = () => {
     error: null
   })
 
+  // Dynamic import for AWS config to avoid SSR issues
+  const getAWSConfig = async () => {
+    const { awsClients, AWS_CONFIG } = await import('@/lib/aws-config')
+    return { awsClients, AWS_CONFIG }
+  }
+
   // Check if user is already authenticated
   useEffect(() => {
     // Force dev user in development mode
@@ -53,8 +58,10 @@ export const useAWSAuth = () => {
         lastLoginAt: new Date().toISOString()
       }
       
-      // Save to localStorage
-      localStorage.setItem('dev_user', JSON.stringify(defaultUser))
+      // Save to localStorage only if in browser
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('dev_user', JSON.stringify(defaultUser))
+      }
       
       setAuthState({
         isAuthenticated: true,
@@ -65,9 +72,10 @@ export const useAWSAuth = () => {
       return
     }
 
+    // In production, check for existing auth
     const checkAuth = async () => {
       try {
-        const token = localStorage.getItem('aws_access_token')
+        const token = typeof window !== 'undefined' ? localStorage.getItem('aws_access_token') : null
         if (token) {
           const user = await getCurrentUser(token)
           setAuthState({
@@ -81,7 +89,9 @@ export const useAWSAuth = () => {
         }
       } catch (error) {
         console.error('Auth check failed:', error)
-        localStorage.removeItem('aws_access_token')
+        if (typeof window !== 'undefined') {
+          localStorage.removeItem('aws_access_token')
+        }
         setAuthState({
           isAuthenticated: false,
           user: null,
@@ -91,8 +101,33 @@ export const useAWSAuth = () => {
       }
     }
 
-    if (isAWSConfigured()) {
-      checkAuth()
+    // Only check AWS auth in production
+    if (typeof window !== 'undefined') {
+      getAWSConfig().then(({ AWS_CONFIG }) => {
+        if (isAWSConfigured(AWS_CONFIG)) {
+          checkAuth()
+        } else {
+          // Fallback: read demo/local user if present
+          const localDemoUser = localStorage.getItem('ecm_user') || localStorage.getItem('dev_user')
+          if (localDemoUser) {
+            try {
+              const parsed = JSON.parse(localDemoUser)
+              setAuthState({
+                isAuthenticated: true,
+                user: parsed,
+                isLoading: false,
+                error: null,
+              })
+            } catch {
+              setAuthState(prev => ({ ...prev, isLoading: false }))
+            }
+          } else {
+            setAuthState(prev => ({ ...prev, isLoading: false }))
+          }
+        }
+      }).catch(() => {
+        setAuthState(prev => ({ ...prev, isLoading: false }))
+      })
     } else {
       setAuthState(prev => ({ ...prev, isLoading: false }))
     }
@@ -102,7 +137,54 @@ export const useAWSAuth = () => {
   const signIn = useCallback(async (email: string, password: string) => {
     setAuthState(prev => ({ ...prev, isLoading: true, error: null }))
     
+    // In development mode, just simulate success
+    if (process.env.NODE_ENV === 'development') {
+      const defaultUser = {
+        id: 'dev-user-1',
+        email: email,
+        name: 'Tomasz Gnat',
+        company: 'ECM Digital',
+        role: 'client' as const,
+        isEmailVerified: true,
+        createdAt: new Date().toISOString(),
+        lastLoginAt: new Date().toISOString()
+      }
+      
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('dev_user', JSON.stringify(defaultUser))
+      }
+      
+      setAuthState({
+        isAuthenticated: true,
+        user: defaultUser,
+        isLoading: false,
+        error: null
+      })
+      
+      return { success: true, user: defaultUser }
+    }
+    
     try {
+      const { awsClients, AWS_CONFIG } = await getAWSConfig()
+
+      // DEMO fallback when AWS Cognito is not configured on prod
+      if (!isAWSConfigured(AWS_CONFIG)) {
+        const demoUser: AWSUser = {
+          id: 'demo-user-1',
+          email: email || 'demo@ecm-digital.com',
+          name: 'Gość (DEMO)',
+          company: 'ECM Digital',
+          role: 'client',
+          isEmailVerified: true,
+          createdAt: new Date().toISOString(),
+          lastLoginAt: new Date().toISOString(),
+        }
+        if (typeof window !== 'undefined') {
+          localStorage.setItem('ecm_user', JSON.stringify(demoUser))
+        }
+        setAuthState({ isAuthenticated: true, user: demoUser, isLoading: false, error: null })
+        return { success: true, user: demoUser }
+      }
       const command = new InitiateAuthCommand({
         AuthFlow: 'USER_PASSWORD_AUTH',
         ClientId: AWS_CONFIG.cognito.clientId,
@@ -114,12 +196,14 @@ export const useAWSAuth = () => {
       const response = await awsClients.cognito.send(command)
       
       if (response.AuthenticationResult?.AccessToken) {
-        localStorage.setItem('aws_access_token', response.AuthenticationResult.AccessToken)
-        const rememberMePref = localStorage.getItem('aws_remember_me') === 'true'
-        if (rememberMePref && response.AuthenticationResult.RefreshToken) {
-          localStorage.setItem('aws_refresh_token', response.AuthenticationResult.RefreshToken)
-        } else {
-          localStorage.removeItem('aws_refresh_token')
+        if (typeof window !== 'undefined') {
+          localStorage.setItem('aws_access_token', response.AuthenticationResult.AccessToken)
+          const rememberMePref = localStorage.getItem('aws_remember_me') === 'true'
+          if (rememberMePref && response.AuthenticationResult.RefreshToken) {
+            localStorage.setItem('aws_refresh_token', response.AuthenticationResult.RefreshToken)
+          } else {
+            localStorage.removeItem('aws_refresh_token')
+          }
         }
         
         const user = await getCurrentUser(response.AuthenticationResult.AccessToken)
@@ -150,6 +234,7 @@ export const useAWSAuth = () => {
     setAuthState(prev => ({ ...prev, isLoading: true, error: null }))
     
     try {
+      const { awsClients, AWS_CONFIG } = await getAWSConfig()
       const command = new SignUpCommand({
         ClientId: AWS_CONFIG.cognito.clientId,
         Username: email,
@@ -181,6 +266,7 @@ export const useAWSAuth = () => {
     setAuthState(prev => ({ ...prev, isLoading: true, error: null }))
     
     try {
+      const { awsClients, AWS_CONFIG } = await getAWSConfig()
       const command = new ConfirmSignUpCommand({
         ClientId: AWS_CONFIG.cognito.clientId,
         Username: email,
@@ -207,6 +293,7 @@ export const useAWSAuth = () => {
     setAuthState(prev => ({ ...prev, isLoading: true, error: null }))
     
     try {
+      const { awsClients, AWS_CONFIG } = await getAWSConfig()
       const command = new ForgotPasswordCommand({
         ClientId: AWS_CONFIG.cognito.clientId,
         Username: email,
@@ -232,6 +319,7 @@ export const useAWSAuth = () => {
     setAuthState(prev => ({ ...prev, isLoading: true, error: null }))
     
     try {
+      const { awsClients, AWS_CONFIG } = await getAWSConfig()
       const command = new ConfirmForgotPasswordCommand({
         ClientId: AWS_CONFIG.cognito.clientId,
         Username: email,
@@ -257,16 +345,19 @@ export const useAWSAuth = () => {
   // Sign Out
   const signOut = useCallback(async () => {
     try {
-      const token = localStorage.getItem('aws_access_token')
+      const token = typeof window !== 'undefined' ? localStorage.getItem('aws_access_token') : null
       if (token) {
+        const { awsClients } = await getAWSConfig()
         const command = new GlobalSignOutCommand({ AccessToken: token })
         await awsClients.cognito.send(command)
       }
     } catch (error) {
       console.error('Sign out error:', error)
     } finally {
-      localStorage.removeItem('aws_access_token')
-      localStorage.removeItem('aws_refresh_token')
+      if (typeof window !== 'undefined') {
+        localStorage.removeItem('aws_access_token')
+        localStorage.removeItem('aws_refresh_token')
+      }
       setAuthState({
         isAuthenticated: false,
         user: null,
@@ -279,6 +370,7 @@ export const useAWSAuth = () => {
   // Get current user info
   const getCurrentUser = useCallback(async (token: string): Promise<AWSUser> => {
     try {
+      const { awsClients } = await getAWSConfig()
       const command = new GetUserCommand({
         AccessToken: token,
       })
@@ -347,7 +439,7 @@ const getCognitoErrorMessage = (error: any): string => {
 }
 
 // Helper function to check if AWS is configured
-const isAWSConfigured = () => {
+const isAWSConfigured = (AWS_CONFIG: any) => {
   return !!(
     AWS_CONFIG.cognito.userPoolId &&
     AWS_CONFIG.cognito.clientId &&

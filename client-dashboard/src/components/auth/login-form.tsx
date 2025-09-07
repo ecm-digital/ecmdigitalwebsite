@@ -96,6 +96,17 @@ export default function LoginForm() {
     }
   }
 
+  const handleDemo = async () => {
+    clearError()
+    setFormError(null)
+    const result = await signIn('demo@ecm-digital.com', 'Demo12345')
+    if (result.success) {
+      router.push('/dashboard')
+    } else {
+      setFormError(result.error || 'Nie udało się zalogować w trybie DEMO')
+    }
+  }
+
   const toggleMode = (m: AuthMode) => {
     clearError()
     setMode(m)
@@ -273,6 +284,19 @@ export default function LoginForm() {
            showForgotPassword ? 'Wyślij kod resetowania' :
            'Zaloguj się'}
         </Button>
+
+        {mode === 'signin' && (
+          <div className="mt-3">
+            <Button
+              type="button"
+              onClick={handleDemo}
+              className="w-full bg-white/10 hover:bg-white/20 text-white font-semibold py-3 rounded-lg transition-all duration-300"
+            >
+              Wejdź jako demo
+            </Button>
+            <p className="text-center text-xs text-gray-400 mt-2">lub użyj: demo@ecm-digital.com / Demo12345</p>
+          </div>
+        )}
 
         <div className="flex justify-between text-sm">
           {mode === 'signin' && (

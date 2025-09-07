@@ -1,4 +1,5 @@
 const webpack = require("webpack");
+const path = require("path");
 
 const isExport = process.env.BUILD_TARGET === 'export'
 
@@ -9,6 +10,10 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  experimental: {
+    outputFileTracingRoot: path.resolve(__dirname),
+  },
+  // Note: outputFileTracingRoot is not supported in Next 14; removed
   output: isExport ? 'export' : 'standalone',
   // Removed: trailingSlash: true,
 
@@ -55,11 +60,9 @@ const nextConfig = {
       };
     }
 
-    // Fix for module resolution
+    // Keep default React resolution; avoid overriding jsx-runtime mapping
     config.resolve.alias = {
       ...config.resolve.alias,
-      'react': require.resolve('react'),
-      'react-dom': require.resolve('react-dom'),
     };
 
     return config;

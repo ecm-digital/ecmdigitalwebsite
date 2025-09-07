@@ -15,6 +15,7 @@ export default function ClientWrapper({ children }: ClientWrapperProps) {
   const { logout } = useAWSAuth()
   const pathname = usePathname()
   const isAuthPage = pathname?.startsWith('/auth')
+  const isDashboardPage = pathname?.startsWith('/dashboard') || pathname === '/ai-assistant'
 
   useEffect(() => {
     // Check if user is logged in
@@ -55,8 +56,8 @@ export default function ClientWrapper({ children }: ClientWrapperProps) {
 
   return (
     <>
-      {!isAuthPage && <Navigation user={user} onLogout={handleLogout} />}
-      <main className={isAuthPage ? "pt-0" : "pt-16"}>
+      {!(isAuthPage || isDashboardPage) && <Navigation user={user} onLogout={handleLogout} />}
+      <main className={!(isAuthPage || isDashboardPage) ? "pt-16" : "pt-0"}>
         {children}
       </main>
     </>
