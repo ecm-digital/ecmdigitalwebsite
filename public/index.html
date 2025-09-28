@@ -354,6 +354,31 @@
         </div>
     </section>
 
+    <script>
+      // Feature flag: toggle Blog section
+      (function(){
+        try {
+          var flag = localStorage.getItem('feature_blog_visible');
+          var showBlog = flag === 'true';
+          var blogSection = document.getElementById('blog');
+          if (blogSection) {
+            // remove inline display:none to allow JS control
+            blogSection.style.display = '';
+            if (!showBlog) {
+              blogSection.classList.add('feature-hidden');
+            } else {
+              blogSection.classList.remove('feature-hidden');
+            }
+          }
+          // Optional helper for manual toggle via console:
+          window.setFeatureBlogVisible = function(val){
+            localStorage.setItem('feature_blog_visible', val ? 'true' : 'false');
+            location.reload();
+          };
+        } catch(e) { /* noop */ }
+      })();
+    </script>
+
     <!-- Services Section -->
     <section id="services" class="py-5" style="background: transparent; padding: 100px 0;">
         <div class="container">

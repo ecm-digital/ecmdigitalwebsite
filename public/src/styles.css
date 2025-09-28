@@ -1550,7 +1550,7 @@ body {
         margin-top: 0.5rem;
     }
 }
-/* End of ECM Digital Styles */
+.feature-hidden{display:none !important;}
 
     /* Performance optimizations */
     .gpu-accelerated {
