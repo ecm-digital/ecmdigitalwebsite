@@ -1,4 +1,6 @@
-// ECM Digital Auth Modal - AWS Cognito Integration
+// ECM Digital Auth Modal - AWS Cognito Integration with DynamoDB Storage
+import { storageManager } from './storage-manager-browser.js';
+
 class AuthModal {
   constructor() {
     this.currentForm = 'login';
@@ -244,9 +246,9 @@ class AuthModal {
       const result = await response.json();
 
       if (result.success) {
-        // Store user data locally
-        localStorage.setItem('ecm_user', JSON.stringify(result.user));
-        localStorage.setItem('ecm_token', result.user.token);
+        // Store user data using storage manager (DynamoDB + localStorage fallback)
+        await storageManager.setUser(result.user.id, result.user);
+        await storageManager.setItem('ecm_token', result.user.token);
 
         // Show success message
         this.showSuccess('login', 'Zalogowano pomyślnie!');
@@ -285,8 +287,8 @@ class AuthModal {
       const result = await response.json();
 
       if (result.success) {
-        // Store email for confirmation
-        localStorage.setItem('confirmationEmail', userData.email);
+        // Store email for confirmation using storage manager
+        await storageManager.setItem('confirmationEmail', userData.email);
 
         // Show success message and switch to confirmation
         this.showSuccess('register', 'Konto zostało utworzone! Sprawdź email i wpisz kod potwierdzający.');
@@ -453,10 +455,10 @@ class AuthModal {
 
   async logout() {
     try {
-      // Clear local storage
-      localStorage.removeItem('ecm_user');
-      localStorage.removeItem('ecm_token');
-      localStorage.removeItem('confirmationEmail');
+      // Clear storage using storage manager
+      await storageManager.removeItem('ecm_user');
+      await storageManager.removeItem('ecm_token');
+      await storageManager.removeItem('confirmationEmail');
 
       // Reset UI
       this.resetUI();
@@ -581,7 +583,7 @@ class AuthModal {
     });
   }
 
-  checkUserSession() {
+  async checkUserSession() {
     // Check if user is already logged in from client dashboard
     const urlParams = new URLSearchParams(window.location.search);
     const token = urlParams.get('token');
@@ -592,9 +594,9 @@ class AuthModal {
         const user = JSON.parse(decodeURIComponent(userData));
         this.user = user;
 
-        // Store user data
-        localStorage.setItem('ecm_user', JSON.stringify(user));
-        localStorage.setItem('ecm_token', token);
+        // Store user data using storage manager
+        await storageManager.setUser(user.id, user);
+        await storageManager.setItem('ecm_token', token);
 
         // Clean URL
         window.history.replaceState({}, document.title, window.location.pathname);

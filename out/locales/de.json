@@ -1,0 +1,132 @@
+{
+  "nav": {
+    "home": "Startseite",
+    "services": "Dienstleistungen",
+    "about": "Über uns",
+    "team": "Team",
+    "clientPanel": "Kundenpanel",
+    "contact": "Kontakt",
+    "language": "DE"
+  },
+  "navigation": {
+    "home": "Startseite",
+    "services": "Dienstleistungen",
+    "about": "Über uns",
+    "blog": "Blog",
+    "caseStudies": "Fallstudien",
+    "team": "Team",
+    "myAccount": "Mein Konto",
+    "contact": "Kontakt",
+    "dropdown": {
+      "aiSolutions": "🤖 KI-Lösungen",
+      "aiAssistants": "KI-Assistenten auf Amazon Bedrock",
+      "voiceAssistants": "Sprachassistenten auf Amazon Lex",
+      "aiAudits": "KI-Implementierungsaudits",
+      "socialMediaAI": "Social Media & KI",
+      "digitalProducts": "🌐 Digitale Produkte",
+      "websites": "Websites",
+      "shopifyStores": "Shopify Stores",
+      "mobileApps": "Mobile Anwendungen",
+      "automationMvp": "⚡ Automatisierung & MVP",
+      "n8nAutomation": "N8N-Automatisierungen",
+      "mvpPrototypes": "MVP-Prototypen",
+      "viewAllServices": "Alle Dienstleistungen anzeigen"
+    }
+  },
+  "common": {
+    "learnMore": "Mehr erfahren"
+  },
+  "services": {
+    "websites": {
+      "title": "Websites",
+      "description": "Professionelle Websites, die auf Geschäftsanforderungen zugeschnitten sind. Optimiert für SEO, Leistung und Konversion."
+    },
+    "shopifyStores": {
+      "title": "Shopify Stores",
+      "description": "Professionelle Online-Shops auf der Shopify-Plattform, die effektiv verkaufen und mit Ihrem Unternehmen wachsen."
+    },
+    "mvpPrototypes": {
+      "title": "MVP-Prototypen",
+      "description": "Schnelle Validierung von Geschäftsideen durch die Erstellung funktionaler Prototypen."
+    },
+    "uxAudits": {
+      "title": "KI-Implementierungsaudits",
+      "description": "Wir analysieren Ihre Geschäftsprozesse und identifizieren Bereiche für KI-Automatisierung."
+    },
+    "automation": {
+      "title": "Automatisierung",
+      "description": "Sparen Sie 15-20 Stunden pro Woche durch die Automatisierung sich wiederholender Aufgaben."
+    },
+    "aiAssistants": {
+      "title": "KI-Assistenten",
+      "description": "Automatisieren Sie den Kundenservice 24/7 und sparen Sie bis zu 70% der Supportkosten."
+    }
+  },
+  "hero": {
+    "title": "Wir implementieren KI in Ihrem Unternehmen",
+    "subtitle": "Wir transformieren Ihr Unternehmen durch künstliche Intelligenz. Von Chatbots bis hin zu fortschrittlicher Automatisierung.",
+    "stats": {
+      "aiProjects": "50+",
+      "aiProjectsLabel": "KI-Projekte",
+      "costReduction": "70%",
+      "costReductionLabel": "Kostensenkung",
+      "support": "24/7",
+      "supportLabel": "KI-Unterstützung",
+      "satisfaction": "95%",
+      "satisfactionLabel": "Zufriedenheit"
+    }
+  },
+  "sections": {
+    "about": {
+      "title": "Über ECM Digital",
+      "subtitle": "KI-Experten, die Geschäft durch intelligente Lösungen transformieren",
+      "mission": "Mission",
+      "mission.description": "Wir demokratisieren den Zugang zu KI und helfen Unternehmen jeder Größe, das Potenzial künstlicher Intelligenz für Geschäftswachstum zu nutzen.",
+      "vision": "Vision",
+      "vision.description": "Führend in der digitalen Transformation in Polen zu sein und KI-Lösungen zu schaffen, die Effizienz und Umsatz wirklich steigern.",
+      "values": "Werte",
+      "values.description": "Innovation, Transparenz und Ergebnisse. Wir setzen jedes Projekt mit Leidenschaft um und liefern messbare Geschäftsvorteile."
+    },
+    "services": {
+      "title": "Unsere Dienstleistungen",
+      "subtitle": "Komplexe KI-Lösungen und Automatisierung, die Ihr Unternehmen transformieren und die Effizienz steigern"
+    },
+    "team": {
+      "title": "Unser Team",
+      "subtitle": "KI- und Technologieexperten, die Ihre Ideen in innovative Lösungen verwandeln",
+      "members": {
+        "tomasz": {
+          "name": "Tomasz Gnat",
+          "position": "Discovery-Berater",
+          "description": "Experte für die Entdeckung von Geschäftsanforderungen und KI-Strategien.",
+          "skills": {
+            "businessAnalysis": "Business Analysis",
+            "aiStrategy": "KI-Strategie"
+          }
+        },
+        "marta": {
+          "name": "Marta Górska",
+          "position": "Designerin",
+          "description": "Designerin mit Fokus auf Benutzerbedürfnisse im KI-Zeitalter.",
+          "skills": {
+            "uxResearch": "UX Research",
+            "aiUxDesign": "KI/UX Design"
+          }
+        },
+        "karol": {
+          "name": "Karol Czechowski",
+          "position": "QA & KI-Entwickler",
+          "description": "Spezialist für Qualitätssicherung von KI-Lösungen.",
+          "skills": {
+            "aiTesting": "KI-Tests",
+            "qualityAssurance": "Qualitätssicherung"
+          }
+        }
+      }
+    }
+  },
+  "footer": {
+    "copyright": "© 2025 ECM Digital. Alle Rechte vorbehalten.",
+    "poweredBy": "Powered by Scrum Software Sp. z o.o."
+  }
+}

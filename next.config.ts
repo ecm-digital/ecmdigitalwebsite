@@ -10,6 +10,13 @@ const nextConfig: NextConfig = {
   experimental: {
     esmExternals: false,
   },
+  // Disable TypeScript checks during development
+  webpack: (config) => {
+    config.infrastructureLogging = {
+      level: 'error',
+    }
+    return config
+  }
 }
 
 export default nextConfig

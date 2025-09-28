@@ -40,7 +40,7 @@
 }
 
 body { 
-    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'TT Hoves', sans-serif;
     background: var(--bg-primary);
     color: var(--text-primary);
     line-height: 1.6;
@@ -51,7 +51,7 @@ body {
 }
 
 .font-display { 
-    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Space Grotesk', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'TT Hoves', sans-serif;
     font-weight: 700;
     letter-spacing: -0.02em;
 }
@@ -189,6 +189,11 @@ body {
     position: relative;
     z-index: 2;
     transition: all 0.3s ease;
+}
+
+.case-study-card .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
 }
 
 .case-study-card .btn:hover {
@@ -755,278 +760,6 @@ body {
 
     .service-card {
         margin-bottom: 2rem;
-    }
-
-    .btn-cta {
-        width: 100%;
-        margin-bottom: 1rem;
-        text-align: center;
-    }
-
-    .skip-link {
-        position: static;
-        display: inline-block;
-        margin-right: 1rem;
-        margin-bottom: 0.5rem;
-    }
-
-    .skip-links {
-        position: relative;
-        top: 0;
-        left: 0;
-        background: var(--bg-secondary);
-        padding: 1rem;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 0.5rem;
-    }
-}
-
-/* Enhanced Mobile Navigation */
-@media (max-width: 768px) {
-    .navbar-collapse {
-        background: var(--glass-bg);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        border-radius: 0 0 12px 12px;
-        margin-top: 1rem;
-        padding: 1rem;
-        border: 1px solid var(--glass-border);
-    }
-
-    .nav-link {
-        padding: 0.75rem 1rem;
-        border-radius: 8px;
-        margin: 0.25rem 0;
-    }
-
-    .dropdown-menu {
-        position: static;
-        float: none;
-        width: auto;
-        margin-top: 0.5rem;
-        background: var(--bg-secondary) !important;
-        border: 1px solid var(--glass-border);
-        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
-    }
-
-    .dropdown-item {
-        padding: 0.75rem 1rem;
-        border-radius: 8px;
-        margin: 0.25rem 0;
-    }
-}
-
-/* Section Styles */
-.section-title {
-    font-size: clamp(2rem, 5vw, 3rem);
-    font-weight: 800;
-    margin-bottom: 1rem;
-    text-align: center;
-}
-
-.text-muted {
-    color: var(--text-tertiary) !important;
-}
-
-/* Feature Cards */
-.feature-card {
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    border-radius: 1rem;
-    backdrop-filter: blur(20px);
-    transition: all 0.3s ease;
-}
-
-.feature-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-lg);
-}
-
-.process-step {
-    padding: 2rem 1rem;
-}
-
-.process-number {
-    width: 60px;
-    height: 60px;
-    background: var(--primary);
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin: 0 auto;
-}
-
-.tech-card {
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    border-radius: 1rem;
-    backdrop-filter: blur(20px);
-}
-
-.pricing-card {
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    border-radius: 1rem;
-    backdrop-filter: blur(20px);
-    transition: all 0.3s ease;
-}
-
-.pricing-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-lg);
-}
-
-.price {
-    font-size: 2rem;
-    font-weight: 700;
-}
-
-.price .currency {
-    font-size: 1rem;
-    color: var(--text-tertiary);
-}
-
-.price .period {
-    font-size: 1rem;
-    color: var(--text-tertiary);
-}
-
-.contact-card {
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    border-radius: 1rem;
-    backdrop-filter: blur(20px);
-}
-
-.footer {
-    background: var(--bg-secondary);
-    border-top: 1px solid var(--glass-border);
-}
-
-.btn-primary {
-    background: var(--primary);
-    border: none;
-    border-radius: 0.5rem;
-    padding: 0.75rem 1.5rem;
-    font-weight: 600;
-    transition: all 0.3s ease;
-}
-
-.btn-primary:hover {
-    background: #0056b3;
-    transform: translateY(-2px);
-}
-
-.btn-outline-primary {
-    border: 2px solid var(--primary);
-    color: var(--primary);
-    background: transparent;
-    border-radius: 0.5rem;
-    padding: 0.75rem 1.5rem;
-    font-weight: 600;
-    transition: all 0.3s ease;
-}
-
-.btn-outline-primary:hover {
-    background: var(--primary);
-    color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0, 123, 255, 0.3);
-}
-
-.btn-success {
-    background: linear-gradient(135deg, #28a745, #20c997);
-    border: none;
-    color: white;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.btn-success:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(40, 167, 69, 0.3);
-}
-
-.btn-success::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-    transition: left 0.5s;
-}
-
-.btn-success:hover::before {
-    left: 100%;
-}
-
-.hero-chatbot-btn {
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
-    border: 2px solid transparent;
-    background-clip: padding-box;
-}
-
-.hero-chatbot-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 30px rgba(40, 167, 69, 0.4);
-}
-
-.hero-chatbot-btn i {
-    font-size: 1.1em;
-    animation: pulse-robot 2s infinite;
-}
-
-@keyframes pulse-robot {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-}
-
-.btn-light {
-    background: rgba(255, 255, 255, 0.9);
-    color: var(--bg-primary);
-    border: none;
-    border-radius: 0.5rem;
-    padding: 0.75rem 1.5rem;
-    font-weight: 600;
-    transition: all 0.3s ease;
-}
-
-.btn-light:hover {
-    background: white;
-    transform: translateY(-2px);
-}
-
-.text-primary {
-    color: var(--primary) !important;
-}
-
-.bg-primary {
-    background-color: var(--primary) !important;
-}
-
-.border-primary {
-    border-color: var(--primary) !important;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .hero {
-        padding: 120px 0 80px;
-    }
-
-    .hero-title {
-        font-size: clamp(2rem, 6vw, 3rem);
     }
 
     .btn-cta {
@@ -1837,13 +1570,13 @@ opacity: 1;
 
     /* Dark theme critical CSS */
     .hero {
-font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+font-family: 'TT Hoves', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
 color: var(--text-primary);
     }
 
     .hero-title {
-font-family: 'Space Grotesk', sans-serif;
+font-family: 'TT Hoves', sans-serif;
 font-weight: 800;
 color: var(--text-primary);
 line-height: 1.1;
@@ -2340,3 +2073,124 @@ html {
     100% { background-position: -200% 0; }
 }
     }
+
+
+/* TT Hoves - Regular (400) */
+@font-face {
+  font-family: 'TT Hoves';
+  src: url('/fonts/tt-hoves/TTHoves-Regular.woff2') format('woff2'),
+       url('/fonts/tt-hoves/TTHoves-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* TT Hoves - Medium (500) */
+@font-face {
+  font-family: 'TT Hoves';
+  src: url('/fonts/tt-hoves/TTHoves-Medium.woff2') format('woff2'),
+       url('/fonts/tt-hoves/TTHoves-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* TT Hoves - DemiBold (600) */
+@font-face {
+  font-family: 'TT Hoves';
+  src: url('/fonts/tt-hoves/TTHoves-DemiBold.woff2') format('woff2'),
+       url('/fonts/tt-hoves/TTHoves-DemiBold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* TT Hoves - Bold (700) */
+@font-face {
+  font-family: 'TT Hoves';
+  src: url('/fonts/tt-hoves/TTHoves-Bold.woff2') format('woff2'),
+       url('/fonts/tt-hoves/TTHoves-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+html, body { font-family: 'TT Hoves', system-ui, sans-serif; }
+
+/* TT Hoves - DemiBold (600) */
+@font-face {
+  font-family: 'TT Hoves';
+  src: url('/fonts/tt-hoves/TTHoves-DemiBold.woff2') format('woff2'),
+       url('/fonts/tt-hoves/TTHoves-DemiBold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* TT Hoves - Bold (700) */
+@font-face {
+  font-family: 'TT Hoves';
+  src: url('/fonts/tt-hoves/TTHoves-Bold.woff2') format('woff2'),
+       url('/fonts/tt-hoves/TTHoves-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* TT Hoves - Medium (500) */
+@font-face {
+  font-family: 'TT Hoves';
+  src: url('/fonts/tt-hoves/TTHoves-Medium.woff2') format('woff2'),
+       url('/fonts/tt-hoves/TTHoves-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* TT Hoves - Light (300) */
+@font-face {
+  font-family: 'TT Hoves';
+  src: url('/fonts/tt-hoves/TTHoves-Light.woff2') format('woff2'),
+       url('/fonts/tt-hoves/TTHoves-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* TT Hoves - DemiBold (600) */
+@font-face {
+  font-family: 'TT Hoves';
+  src: url('/fonts/tt-hoves/TTHoves-DemiBold.woff2') format('woff2'),
+       url('/fonts/tt-hoves/TTHoves-DemiBold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* TT Hoves - Bold (700) */
+@font-face {
+  font-family: 'TT Hoves';
+  src: url('/fonts/tt-hoves/TTHoves-Bold.woff2') format('woff2'),
+       url('/fonts/tt-hoves/TTHoves-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* TT Hoves - Medium (500) */
+@font-face {
+  font-family: 'TT Hoves';
+  src: url('/fonts/tt-hoves/TTHoves-Medium.woff2') format('woff2'),
+       url('/fonts/tt-hoves/TTHoves-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* TT Hoves - Light (300) */
+@font-face {
+  font-family: 'TT Hoves';
+  src: url('/fonts/tt-hoves/TTHoves-Light.woff2') format('woff2'),
+       url('/fonts/tt-hoves/TTHoves-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;

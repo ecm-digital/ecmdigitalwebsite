@@ -23,7 +23,7 @@ import {
   CalendarIcon,
   Bot
 } from 'lucide-react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 interface DashboardLayoutProps {
   children: ReactNode
@@ -34,6 +34,18 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
   const unreadCount = useUnreadMessages()
   const { t } = useLanguage()
   const [sidebarOpen, setSidebarOpen] = useState(false)
+
+  const [videoError, setVideoError] = useState(false)
+  const [reduceMotion, setReduceMotion] = useState(false)
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+    const media = window.matchMedia('(prefers-reduced-motion: reduce)')
+    setReduceMotion(media.matches)
+    const handler = (e: MediaQueryListEvent) => setReduceMotion(e.matches)
+    media.addEventListener?.('change', handler)
+    return () => media.removeEventListener?.('change', handler)
+  }, [])
 
   const navigation = [
     { name: t('dashboard.navigation.dashboard'), href: '/dashboard', icon: LayoutDashboard },
@@ -62,9 +74,25 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
           {/* Logo */}
           <div className="flex h-20 items-center justify-between px-8 border-b border-slate-700/50">
             <div className="flex items-center space-x-4">
-              <div className="w-10 h-10 bg-gradient-to-br from-blue-500 via-blue-600 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg">
-                <span className="text-white font-bold text-lg">E</span>
-              </div>
+              {/* MP4 logo with fallback */}
+              {!videoError && !reduceMotion ? (
+                <video
+                  src="/logo.mp4"
+                  aria-label="ECM Digital logo"
+                  className="w-10 h-10 rounded-xl shadow-lg"
+                  style={{ objectFit: 'contain' }}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="auto"
+                  onError={() => setVideoError(true)}
+                />
+              ) : (
+                <div className="w-10 h-10 bg-gradient-to-br from-blue-500 via-blue-600 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg">
+                  <span className="text-white font-bold text-lg">E</span>
+                </div>
+              )}
               <div>
                 <h1 className="text-xl font-bold text-white">ECM Digital</h1>
                 <p className="text-xs text-slate-400">Panel Klienta</p>

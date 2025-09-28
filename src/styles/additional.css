@@ -1,0 +1,220 @@
+/* Additional Dropdown Styles */
+.dropdown-menu {
+    background: #1C1C1E !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
+}
+
+.dropdown-item {
+    color: #EBEBF5 !important;
+    background: transparent !important;
+}
+
+.dropdown-item:hover {
+    background: #007AFF !important;
+    color: white !important;
+}
+
+.language-switcher .dropdown-menu {
+    background: #1C1C1E !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
+}
+
+.language-switcher .dropdown-item {
+    color: #EBEBF5 !important;
+    background: transparent !important;
+}
+
+.language-switcher .dropdown-item:hover {
+    background: #007AFF !important;
+    color: white !important;
+}
+
+.language-switcher .dropdown-item.active {
+    background: #007AFF !important;
+    color: white !important;
+}
+
+/* Equalize case study cards */
+.case-study-card {
+    min-height: 520px;
+    display: flex;
+    flex-direction: column;
+}
+
+.case-study-content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.case-study-tech {
+    margin-top: auto;
+}
+
+.case-study-desc {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* One-line subtitle under case study title */
+.case-study-sub {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* One-line title */
+.case-study-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.partner-logo {
+    height: 120px; /* equal height for all rectangles */
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    border-radius: 12px;
+    background: #FFFFFF; /* white background */
+    border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.partner-logo:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.partner-logo-img {
+    max-height: 56px;
+    max-width: 140px;
+    width: auto;
+    height: auto;
+    transition: transform 0.3s ease;
+    filter: none; /* keep original logo colors on light bg */
+}
+
+.partner-logo:hover .partner-logo-img {
+    transform: scale(1.03);
+}
+
+/* About v2 */
+#about-us {
+    padding: 100px 0;
+}
+
+.about-v2 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+}
+
+@media (min-width: 992px) {
+    .about-v2 { 
+        grid-template-columns: 1.1fr 0.9fr; 
+    }
+}
+
+.about-hero {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 32px;
+}
+
+.about-kpis {
+    display: grid; 
+    gap: 12px; 
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.kpi {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--glass-border);
+    border-radius: 14px;
+    padding: 16px;
+    text-align: center;
+}
+
+.kpi .num { 
+    font-size: 1.6rem; 
+    font-weight: 800; 
+}
+
+.kpi .lbl { 
+    font-size: .85rem; 
+    color: #EBEBF599; 
+}
+
+.about-bullets { 
+    display: grid; 
+    gap: 10px; 
+    margin: 16px 0 0 0; 
+}
+
+.about-bullets .item { 
+    display: flex; 
+    align-items: center; 
+    gap: 10px; 
+    color: #C7C7CC; 
+}
+
+.about-bullets .icon { 
+    width: 28px; 
+    height: 28px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    border-radius: 8px; 
+    background: rgba(0,122,255,.12); 
+    color: #fff; 
+}
+
+.mv-card { 
+    background: var(--glass-bg); 
+    border: 1px solid var(--glass-border); 
+    border-radius: 16px; 
+    padding: 20px; 
+    height: 100%; 
+}
+
+.mv-icon { 
+    width: 40px; 
+    height: 40px; 
+    border-radius: 12px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    background: rgba(191,90,242,.12); 
+    margin-bottom: 10px; 
+}
+
+/* Skip Links */
+.skip-links {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    z-index: 1000;
+}
+
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: #000;
+    color: #fff;
+    padding: 8px;
+    text-decoration: none;
+    z-index: 1000;
+}
+
+.skip-link:focus {
+    top: 6px;
+}

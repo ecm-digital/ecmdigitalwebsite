@@ -54,7 +54,7 @@ ECM Digital
 ```css
 /* H1 - Tytuły główne */
 h1 {
-  font-family: 'SF Pro Display', 'Inter', sans-serif;
+  font-family: 'TT Hoves', sans-serif;
   font-size: 2.5rem;
   font-weight: 800;
   line-height: 1.1;
@@ -64,7 +64,7 @@ h1 {
 
 /* H2 - Sekcje */
 h2 {
-  font-family: 'SF Pro Display', 'Inter', sans-serif;
+  font-family: 'TT Hoves', sans-serif;
   font-size: 2rem;
   font-weight: 700;
   line-height: 1.2;
@@ -74,7 +74,7 @@ h2 {
 
 /* H3 - Podsekcje */
 h3 {
-  font-family: 'SF Pro Display', 'Inter', sans-serif;
+  font-family: 'TT Hoves', sans-serif;
   font-size: 1.5rem;
   font-weight: 600;
   line-height: 1.3;
@@ -83,7 +83,7 @@ h3 {
 
 /* Body Text */
 p {
-  font-family: 'Inter', sans-serif;
+  font-family: 'TT Hoves', sans-serif;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.6;
@@ -447,7 +447,7 @@ p {
 ### 📦 CSS Framework
 ```css
 /* Base Styles */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
 
 * {
   box-sizing: border-box;
@@ -456,7 +456,7 @@ p {
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'TT Hoves', -apple-system, BlinkMacSystemFont, sans-serif;
   line-height: 1.6;
   color: var(--gray-700);
   background: var(--gray-100);

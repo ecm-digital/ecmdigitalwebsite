@@ -24,6 +24,7 @@ import {
   Bot,
   Send
 } from 'lucide-react'
+import { memo, useMemo, useCallback } from 'react'
 
 const statusColors = {
   'discovery': 'bg-blue-100 text-blue-800 border-blue-200',
@@ -43,25 +44,53 @@ const statusLabels = {
   'on-hold': 'Wstrzymane',
 }
 
-export function DashboardOverview() {
+export const DashboardOverview = memo(function DashboardOverview() {
   const { projects, loading } = useProjects()
   const { user } = useAWSAuth()
   const unreadCount = useUnreadMessages()
   const { t } = useLanguage()
 
-  // Fallback data if user or projects are not available
-  const safeUser = user || { name: 'Użytkownik', email: 'user@example.com', role: 'client' }
-  const safeProjects = projects || []
-  const safeUnreadCount = unreadCount || 0
+  // Memoized fallback data
+  const safeUser = useMemo(() => 
+    user || { name: 'Użytkownik', email: 'user@example.com', role: 'client' }, 
+    [user]
+  )
+  const safeProjects = useMemo(() => projects || [], [projects])
+  const safeUnreadCount = useMemo(() => unreadCount || 0, [unreadCount])
 
-  const activeProjects = safeProjects.filter(p => p.status !== 'completed')
-  const completedProjects = safeProjects.filter(p => p.status === 'completed')
-  
-  const totalBudget = safeProjects.reduce((sum, p) => sum + (p.budget_total || 0), 0)
-  const usedBudget = safeProjects.reduce((sum, p) => sum + (p.budget_used || 0), 0)
-  const budgetProgress = totalBudget > 0 ? (usedBudget / totalBudget) * 100 : 0
+  // Memoized calculations
+  const projectStats = useMemo(() => {
+    const activeProjects = safeProjects.filter(p => p.status !== 'completed')
+    const completedProjects = safeProjects.filter(p => p.status === 'completed')
+    const totalBudget = safeProjects.reduce((sum, p) => sum + (p.budget_total || 0), 0)
+    const usedBudget = safeProjects.reduce((sum, p) => sum + (p.budget_used || 0), 0)
+    const budgetProgress = totalBudget > 0 ? (usedBudget / totalBudget) * 100 : 0
+    const recentProjects = safeProjects.slice(0, 5)
+    
+    return {
+      activeProjects,
+      completedProjects,
+      totalBudget,
+      usedBudget,
+      budgetProgress,
+      recentProjects
+    }
+  }, [safeProjects])
 
-  const recentProjects = safeProjects.slice(0, 5)
+  const { activeProjects, completedProjects, totalBudget, usedBudget, budgetProgress, recentProjects } = projectStats
+
+  // Memoized event handlers
+  const handleNewProject = useCallback(() => {
+    // Navigate to new project page
+  }, [])
+
+  const handleSendMessage = useCallback(() => {
+    // Navigate to messages page
+  }, [])
+
+  const handleUploadDocument = useCallback(() => {
+    // Navigate to documents page
+  }, [])
 
   if (loading) {
     return (
@@ -118,74 +147,70 @@ export function DashboardOverview() {
 
       {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <Card className="group relative overflow-hidden border-0 bg-gradient-to-br from-blue-50 to-blue-100 hover:from-blue-100 hover:to-blue-200 transition-all duration-300 hover:scale-105 hover:shadow-xl">
+        <Card className="bg-blue-50 border-blue-200 hover:shadow-md transition-shadow duration-200">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3">
-            <CardTitle className="text-sm font-semibold text-blue-900">Aktywne Projekty</CardTitle>
-            <div className="p-2.5 bg-blue-200 rounded-xl group-hover:bg-blue-300 transition-colors">
+            <CardTitle className="text-sm font-semibold text-blue-800">Aktywne Projekty</CardTitle>
+            <div className="p-2.5 bg-blue-200 rounded-xl">
               <FolderOpen className="h-5 w-5 text-blue-700" />
             </div>
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold text-blue-900 mb-1">{activeProjects.length}</div>
-            <p className="text-sm text-blue-700 font-medium">
+            <div className="text-3xl font-bold text-blue-800 mb-1">{activeProjects.length}</div>
+            <p className="text-sm text-blue-600 font-medium">
               {t('dashboard.stats.activeProjectsDesc')}
             </p>
           </CardContent>
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
         </Card>
 
-        <Card className="group relative overflow-hidden border-0 bg-gradient-to-br from-green-50 to-green-100 hover:from-green-100 hover:to-green-200 transition-all duration-300 hover:scale-105 hover:shadow-xl">
+        <Card className="bg-green-50 border-green-200 hover:shadow-md transition-shadow duration-200">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3">
-            <CardTitle className="text-sm font-semibold text-green-900">Ukończone Projekty</CardTitle>
-            <div className="p-2.5 bg-green-200 rounded-xl group-hover:bg-green-300 transition-colors">
+            <CardTitle className="text-sm font-semibold text-green-800">Ukończone Projekty</CardTitle>
+            <div className="p-2.5 bg-green-200 rounded-xl">
               <CheckCircle className="h-5 w-5 text-green-700" />
             </div>
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold text-green-900 mb-1">{completedProjects.length}</div>
-            <p className="text-sm text-green-700 font-medium">
+            <div className="text-3xl font-bold text-green-800 mb-1">{completedProjects.length}</div>
+            <p className="text-sm text-green-600 font-medium">
               {t('dashboard.stats.completedProjectsDesc')}
             </p>
           </CardContent>
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
         </Card>
 
-        <Card className="group relative overflow-hidden border-0 bg-gradient-to-br from-purple-50 to-purple-100 hover:from-purple-100 hover:to-purple-200 transition-all duration-300 hover:scale-105 hover:shadow-xl">
+        <Card className="bg-purple-50 border-purple-200 hover:shadow-md transition-shadow duration-200">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3">
-            <CardTitle className="text-sm font-semibold text-purple-900">Całkowity Budżet</CardTitle>
-            <div className="p-2.5 bg-purple-200 rounded-xl group-hover:bg-purple-300 transition-colors">
+            <CardTitle className="text-sm font-semibold text-purple-800">Całkowity Budżet</CardTitle>
+            <div className="p-2.5 bg-purple-200 rounded-xl">
               <DollarSign className="h-5 w-5 text-purple-700" />
             </div>
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold text-purple-900 mb-1">${totalBudget.toLocaleString()}</div>
-            <p className="text-sm text-purple-700 font-medium">
+            <div className="text-3xl font-bold text-purple-800 mb-1">${totalBudget.toLocaleString()}</div>
+            <p className="text-sm text-purple-600 font-medium">
               {t('dashboard.stats.totalBudgetDesc')}
             </p>
           </CardContent>
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
         </Card>
 
-        <Card className="group relative overflow-hidden border-0 bg-gradient-to-br from-orange-50 to-orange-100 hover:from-orange-100 hover:to-orange-200 transition-all duration-300 hover:scale-105 hover:shadow-xl">
+        <Card className="bg-orange-50 border-orange-200 hover:shadow-md transition-shadow duration-200">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3">
-            <CardTitle className="text-sm font-semibold text-orange-900">Nieprzeczytane Wiadomości</CardTitle>
-            <div className="p-2.5 bg-orange-200 rounded-xl group-hover:bg-orange-300 transition-colors">
+            <CardTitle className="text-sm font-semibold text-orange-800">Nieprzeczytane Wiadomości</CardTitle>
+            <div className="p-2.5 bg-orange-200 rounded-xl">
               <MessageSquare className="h-5 w-5 text-orange-700" />
             </div>
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold text-orange-900 mb-1">{safeUnreadCount}</div>
-            <p className="text-sm text-orange-700 font-medium">
+            <div className="text-3xl font-bold text-orange-800 mb-1">{safeUnreadCount}</div>
+            <p className="text-sm text-orange-600 font-medium">
               {t('dashboard.stats.unreadMessagesDesc')}
             </p>
           </CardContent>
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
         </Card>
       </div>
 
       {/* Budget Progress */}
       {totalBudget > 0 && (
-        <Card className="border-0 bg-gradient-to-r from-slate-50 to-slate-100 shadow-lg">
+        <Card className="bg-slate-50 border-slate-200">
           <CardHeader>
             <CardTitle className="text-xl font-bold text-slate-800 flex items-center">
               <TrendingUp className="h-5 w-5 mr-2 text-blue-600" />
@@ -206,10 +231,7 @@ export function DashboardOverview() {
                 Całkowity: ${totalBudget.toLocaleString()}
               </span>
             </div>
-            <div className="relative">
-              <Progress value={budgetProgress} className="h-4 bg-slate-200" />
-              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 to-blue-600 opacity-20"></div>
-            </div>
+            <Progress value={budgetProgress} className="h-4 bg-slate-200" />
             <div className="text-right text-lg font-bold text-slate-800">
               {budgetProgress.toFixed(1)}% wykorzystane
             </div>
@@ -291,7 +313,7 @@ export function DashboardOverview() {
       )}
 
       {/* Quick Actions */}
-      <Card className="border-0 bg-gradient-to-r from-slate-50 to-slate-100 shadow-lg">
+      <Card className="bg-white border-gray-200">
         <CardHeader>
           <CardTitle className="text-xl font-bold text-slate-800 flex items-center">
             <Zap className="h-5 w-5 mr-2 text-yellow-600" />
@@ -302,49 +324,49 @@ export function DashboardOverview() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <button className="group p-6 bg-gradient-to-br from-blue-50 to-blue-100 hover:from-blue-100 hover:to-blue-200 rounded-2xl text-left transition-all duration-300 hover:scale-105 hover:shadow-lg border border-blue-200 hover:border-blue-300">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <button onClick={handleNewProject} className="p-6 bg-blue-50 border border-blue-200 text-left rounded-xl hover:bg-blue-100 transition-colors duration-200">
               <div className="flex items-center space-x-4">
-                <div className="p-3 bg-blue-200 rounded-xl group-hover:bg-blue-300 transition-colors">
+                <div className="p-3 bg-blue-200 rounded-xl">
                   <Plus className="h-6 w-6 text-blue-700" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-blue-900 text-lg group-hover:text-blue-800 transition-colors">
+                  <h4 className="font-semibold text-blue-900 text-lg">
                     {t('dashboard.quickActions.newProject')}
                   </h4>
-                  <p className="text-blue-700 text-sm font-medium">
+                  <p className="text-blue-700 text-sm">
                     {t('dashboard.quickActions.newProjectDesc')}
                   </p>
                 </div>
               </div>
             </button>
 
-            <button className="group p-6 bg-gradient-to-br from-green-50 to-green-100 hover:from-green-100 hover:to-green-200 rounded-2xl text-left transition-all duration-300 hover:scale-105 hover:shadow-lg border border-green-200 hover:border-green-300">
+            <button onClick={handleSendMessage} className="p-6 bg-green-50 border border-green-200 text-left rounded-xl hover:bg-green-100 transition-colors duration-200">
               <div className="flex items-center space-x-4">
-                <div className="p-3 bg-green-200 rounded-xl group-hover:bg-green-300 transition-colors">
+                <div className="p-3 bg-green-200 rounded-xl">
                   <MessageSquare className="h-6 w-6 text-green-700" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-green-900 text-lg group-hover:text-green-800 transition-colors">
+                  <h4 className="font-semibold text-green-900 text-lg">
                     {t('dashboard.quickActions.sendMessage')}
                   </h4>
-                  <p className="text-green-700 text-sm font-medium">
+                  <p className="text-green-700 text-sm">
                     {t('dashboard.quickActions.sendMessageDesc')}
                   </p>
                 </div>
               </div>
             </button>
 
-            <button className="group p-6 bg-gradient-to-br from-purple-50 to-purple-100 hover:from-purple-100 hover:to-purple-200 rounded-2xl text-left transition-all duration-300 hover:scale-105 hover:shadow-lg border border-purple-200 hover:border-purple-300">
+            <button onClick={handleUploadDocument} className="p-6 bg-purple-50 border border-purple-200 text-left rounded-xl hover:bg-purple-100 transition-colors duration-200">
               <div className="flex items-center space-x-4">
-                <div className="p-3 bg-purple-200 rounded-xl group-hover:bg-purple-300 transition-colors">
+                <div className="p-3 bg-purple-200 rounded-xl">
                   <FileText className="h-6 w-6 text-purple-700" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-purple-900 text-lg group-hover:text-purple-800 transition-colors">
+                  <h4 className="font-semibold text-purple-900 text-lg">
                     {t('dashboard.quickActions.uploadDocument')}
                   </h4>
-                  <p className="text-purple-700 text-sm font-medium">
+                  <p className="text-purple-700 text-sm">
                     {t('dashboard.quickActions.uploadDocumentDesc')}
                   </p>
                 </div>
@@ -356,4 +378,4 @@ export function DashboardOverview() {
 
     </div>
   )
-}
+})

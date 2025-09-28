@@ -35,3 +35,56 @@ body {
 
 
 
+
+
+
+
+/* TT Hoves - Bold (700) */
+@font-face {
+  font-family: 'TT Hoves';
+  src: url('/fonts/tt-hoves/TTHoves-Bold.woff2') format('woff2'),
+       url('/fonts/tt-hoves/TTHoves-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* TT Hoves - DemiBold (600) */
+@font-face {
+  font-family: 'TT Hoves';
+  src: url('/fonts/tt-hoves/TTHoves-DemiBold.woff2') format('woff2'),
+       url('/fonts/tt-hoves/TTHoves-DemiBold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* TT Hoves - Regular (400) */
+@font-face {
+  font-family: 'TT Hoves';
+  src: url('/fonts/tt-hoves/TTHoves-Regular.woff2') format('woff2'), url('/fonts/tt-hoves/TTHoves-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* TT Hoves - Medium (500) */
+@font-face {
+  font-family: 'TT Hoves';
+  src: url('/fonts/tt-hoves/TTHoves-Medium.woff2') format('woff2'), url('/fonts/tt-hoves/TTHoves-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+html, body {
+  font-family: 'TT Hoves', 'Inter', sans-serif;
+  font-synthesis: none;
+}
+
+
+
+
+
+
+

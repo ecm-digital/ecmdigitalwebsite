@@ -1,270 +1,317 @@
-"use client";
+"use client"
 
-import React from "react";
+import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+  Users,
+  Plus,
+  Search,
+  Filter,
+  Mail,
+  Phone,
+  Building,
+  Calendar,
+  DollarSign,
+  FolderKanban,
+  TrendingUp,
+  MoreHorizontal,
+  Eye,
+  Edit,
+  Star
+} from "lucide-react";
 
-interface ClientRow {
-  id: string;
-  email: string;
-  firstName: string;
-  lastName: string;
-  name: string;
-  company: string;
-  role: string;
-  status: string;
-  registration_date: string;
-  lastLoginAt: string | null;
-}
+// Mock data for clients
+const clients = [
+  {
+    id: 1,
+    name: "ABC Corporation",
+    contact: "Jan Kowalski",
+    email: "jan.kowalski@abc.com",
+    phone: "+48 123 456 789",
+    company: "ABC Corp",
+    status: "active",
+    totalProjects: 5,
+    activeProjects: 2,
+    totalRevenue: 85000,
+    lastContact: "2024-01-05",
+    rating: 5,
+    avatar: "",
+    industry: "E-commerce"
+  },
+  {
+    id: 2,
+    name: "XYZ Technologies",
+    contact: "Anna Nowak",
+    email: "anna.nowak@xyz.tech",
+    phone: "+48 987 654 321",
+    company: "XYZ Tech",
+    status: "active",
+    totalProjects: 3,
+    activeProjects: 1,
+    totalRevenue: 42000,
+    lastContact: "2024-01-03",
+    rating: 4,
+    avatar: "",
+    industry: "Fintech"
+  },
+  {
+    id: 3,
+    name: "Premium Estates",
+    contact: "Michał Wiśniewski",
+    email: "michal@premiumestates.pl",
+    phone: "+48 555 123 456",
+    company: "Premium Estates",
+    status: "prospect",
+    totalProjects: 0,
+    activeProjects: 0,
+    totalRevenue: 0,
+    lastContact: "2024-01-02",
+    rating: 0,
+    avatar: "",
+    industry: "Real Estate"
+  },
+  {
+    id: 4,
+    name: "HealthTech Solutions",
+    contact: "Dr. Maria Kowalczyk",
+    email: "maria@healthtech.pl",
+    phone: "+48 666 789 012",
+    company: "HealthTech",
+    status: "active",
+    totalProjects: 2,
+    activeProjects: 1,
+    totalRevenue: 28000,
+    lastContact: "2024-01-01",
+    rating: 5,
+    avatar: "",
+    industry: "Healthcare"
+  }
+];
 
-interface ProjectRow {
-  id: string;
-  name: string;
-  status: string;
-  client: string;
-  progress: number;
-  dueDate?: string;
-  budget?: number;
-  description?: string;
-  createdAt?: string;
-  updatedAt?: string;
-}
+const getStatusBadge = (status: string) => {
+  switch (status) {
+    case "active":
+      return <Badge variant="default" className="bg-green-500">Aktywny</Badge>;
+    case "prospect":
+      return <Badge variant="secondary">Potencjalny</Badge>;
+    case "inactive":
+      return <Badge variant="outline">Nieaktywny</Badge>;
+    default:
+      return <Badge variant="outline">Nieznany</Badge>;
+  }
+};
 
 export default function ClientsPage() {
-  const [clients, setClients] = React.useState<ClientRow[]>([]);
-  const [loading, setLoading] = React.useState(false);
-  const [error, setError] = React.useState<string | null>(null);
+  const [selectedTab, setSelectedTab] = useState("all");
+  const [searchQuery, setSearchQuery] = useState("");
 
-  const [projectsOpen, setProjectsOpen] = React.useState(false);
-  const [selectedClient, setSelectedClient] = React.useState<ClientRow | null>(null);
-  const [projects, setProjects] = React.useState<ProjectRow[]>([]);
-  const [projectsLoading, setProjectsLoading] = React.useState(false);
+  const filteredClients = clients.filter(client => {
+    const matchesSearch = client.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                         client.contact.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                         client.company.toLowerCase().includes(searchQuery.toLowerCase());
+    
+    if (selectedTab === "all") return matchesSearch;
+    return matchesSearch && client.status === selectedTab;
+  });
 
-  React.useEffect(() => {
-    const loadClients = async () => {
-      setLoading(true);
-      setError(null);
-      try {
-        // Mock data instead of API call
-        const mockClients: ClientRow[] = [
-          {
-            id: '1',
-            email: 'john@techcorp.com',
-            firstName: 'John',
-            lastName: 'Smith',
-            name: 'John Smith',
-            company: 'TechCorp',
-            role: 'client',
-            status: 'Zweryfikowany',
-            registration_date: '2025-01-15T10:30:00Z',
-            lastLoginAt: '2025-01-20T14:20:00Z'
-          },
-          {
-            id: '2',
-            email: 'sarah@startupxyz.com',
-            firstName: 'Sarah',
-            lastName: 'Johnson',
-            name: 'Sarah Johnson',
-            company: 'StartupXYZ',
-            role: 'client',
-            status: 'Zweryfikowany',
-            registration_date: '2025-01-18T09:15:00Z',
-            lastLoginAt: '2025-01-21T11:45:00Z'
-          },
-          {
-            id: '3',
-            email: 'mike@fashionstore.com',
-            firstName: 'Mike',
-            lastName: 'Brown',
-            name: 'Mike Brown',
-            company: 'FashionStore',
-            role: 'client',
-            status: 'Niezweryfikowany',
-            registration_date: '2025-01-22T16:00:00Z',
-            lastLoginAt: null
-          }
-        ];
-        setClients(mockClients);
-      } catch (e: any) {
-        setError(e?.message || 'Błąd pobierania klientów');
-        setClients([]);
-      } finally {
-        setLoading(false);
-      }
-    };
-    loadClients();
-  }, []);
-
-  const openProjects = async (client: ClientRow) => {
-    setSelectedClient(client);
-    setProjectsOpen(true);
-    setProjects([]);
-    setProjectsLoading(true);
-    try {
-      // Mock projects data
-      const mockProjects: ProjectRow[] = [
-        {
-          id: '1',
-          name: 'E-commerce Platform',
-          status: 'In Progress',
-          client: client.email,
-          progress: 75,
-          dueDate: '2025-09-15',
-          budget: 45000,
-          description: 'Modern e-commerce platform with payment integration'
-        },
-        {
-          id: '2',
-          name: 'Mobile App Development',
-          status: 'Completed',
-          client: client.email,
-          progress: 100,
-          dueDate: '2025-08-30',
-          budget: 32000,
-          description: 'Cross-platform mobile app for task management'
-        }
-      ];
-      setProjects(mockProjects);
-    } catch (e) {
-      // Keep modal open, but show empty state
-      console.error('Błąd pobierania projektów klienta:', e);
-      setProjects([]);
-    } finally {
-      setProjectsLoading(false);
-    }
+  const stats = {
+    totalClients: clients.length,
+    activeClients: clients.filter(c => c.status === "active").length,
+    prospects: clients.filter(c => c.status === "prospect").length,
+    totalRevenue: clients.reduce((sum, c) => sum + c.totalRevenue, 0),
   };
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <section className="mb-8 rounded-2xl border border-border/40 bg-secondary/60 p-6 backdrop-blur-xl supports-[backdrop-filter]:bg-secondary/50 animate-fade-in">
-        <h1 className="text-3xl font-bold">Zarządzanie Klientami</h1>
-        <p className="text-muted-foreground mt-2">Analiza klientów i ich projekty</p>
-      </section>
+    <div className="p-6 space-y-6">
+      {/* Header */}
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-3xl font-bold">Zarządzanie Klientami</h1>
+          <p className="text-muted-foreground mt-2">
+            Przegląd i zarządzanie bazą klientów agencji
+          </p>
+        </div>
+        <Button>
+          <Plus className="h-4 w-4 mr-2" />
+          Dodaj Klienta
+        </Button>
+      </div>
 
-      {/* Quick Stats */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+      {/* Stats Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Liczba Klientów</CardTitle>
-            <Badge variant="secondary">{clients.length}</Badge>
+            <CardTitle className="text-sm font-medium">Wszyscy Klienci</CardTitle>
+            <Users className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{clients.length}</div>
-            <p className="text-xs text-muted-foreground">Łącznie</p>
+            <div className="text-2xl font-bold">{stats.totalClients}</div>
+            <p className="text-xs text-muted-foreground">
+              Łączna liczba klientów
+            </p>
           </CardContent>
         </Card>
+
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Zweryfikowani</CardTitle>
-            <Badge variant="outline">{clients.filter(c => c.status === 'Zweryfikowany').length}</Badge>
+            <CardTitle className="text-sm font-medium">Aktywni Klienci</CardTitle>
+            <TrendingUp className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{clients.filter(c => c.status === 'Zweryfikowany').length}</div>
-            <p className="text-xs text-muted-foreground">Active</p>
+            <div className="text-2xl font-bold">{stats.activeClients}</div>
+            <p className="text-xs text-muted-foreground">
+              Klienci z aktywnymi projektami
+            </p>
           </CardContent>
         </Card>
+
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Niezweryfikowani</CardTitle>
-            <Badge variant="default">{clients.filter(c => c.status !== 'Zweryfikowany').length}</Badge>
+            <CardTitle className="text-sm font-medium">Potencjalni Klienci</CardTitle>
+            <Star className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{clients.filter(c => c.status !== 'Zweryfikowany').length}</div>
-            <p className="text-xs text-muted-foreground">Do follow-up</p>
+            <div className="text-2xl font-bold">{stats.prospects}</div>
+            <p className="text-xs text-muted-foreground">
+              Leads i potencjalni klienci
+            </p>
           </CardContent>
         </Card>
+
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Ostatnie logowania</CardTitle>
-            <Badge variant="secondary">{clients.filter(c => !!c.lastLoginAt).length}</Badge>
+            <CardTitle className="text-sm font-medium">Łączny Przychód</CardTitle>
+            <DollarSign className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{clients.filter(c => !!c.lastLoginAt).length}</div>
-            <p className="text-xs text-muted-foreground">Z aktywnością</p>
+            <div className="text-2xl font-bold">{stats.totalRevenue.toLocaleString()} zł</div>
+            <p className="text-xs text-muted-foreground">
+              Ze wszystkich projektów
+            </p>
           </CardContent>
         </Card>
       </div>
 
-      {/* Clients Table */}
-      <Card className="border border-border/40 bg-card/70 backdrop-blur-xl supports-[backdrop-filter]:bg-card/60 animate-slide-up">
+      {/* Search and Filters */}
+      <Card>
         <CardHeader>
-          <CardTitle>Lista klientów</CardTitle>
-        </CardHeader>
-        <CardContent>
-          {loading ? (
-            <div className="py-10 text-center text-muted-foreground">Ładowanie...</div>
-          ) : error ? (
-            <div className="py-10 text-center text-red-500">{error}</div>
-          ) : clients.length === 0 ? (
-            <div className="py-10 text-center text-muted-foreground">Brak klientów</div>
-          ) : (
-            <div className="overflow-x-auto">
-              <table className="min-w-full divide-y divide-border/40">
-                <thead className="bg-secondary/50">
-                  <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Email</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Imię</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Nazwisko</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Firma</th>
-                    <th className="px-6 py-3"></th>
-                  </tr>
-                </thead>
-                <tbody className="bg-transparent divide-y divide-border/40">
-                  {clients.map((c) => (
-                    <tr key={c.id} className="hover:bg-secondary/40">
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-foreground">
-                        <a href={`mailto:${c.email}`} className="text-primary hover:text-primary/90">{c.email}</a>
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-foreground">{c.firstName}</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-foreground">{c.lastName}</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-foreground">{c.company}</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-right text-sm">
-                        <Button size="sm" onClick={() => openProjects(c)}>Projekty</Button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+          <div className="flex items-center gap-4">
+            <div className="flex-1 relative">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+              <input
+                type="text"
+                placeholder="Szukaj klientów..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full pl-10 pr-4 py-2 border border-border rounded-lg bg-background"
+              />
             </div>
-          )}
-        </CardContent>
+            <Button variant="outline">
+              <Filter className="h-4 w-4 mr-2" />
+              Filtry
+            </Button>
+          </div>
+        </CardHeader>
       </Card>
 
-      {/* Projects Modal */}
-      <Dialog open={projectsOpen} onOpenChange={setProjectsOpen}>
-        <DialogContent className="max-w-2xl">
-          <DialogHeader>
-            <DialogTitle>
-              Projekty {selectedClient ? `— ${selectedClient.name || selectedClient.email}` : ''}
-            </DialogTitle>
-          </DialogHeader>
-
-          {projectsLoading ? (
-            <div className="py-8 text-center text-muted-foreground">Ładowanie projektów...</div>
-          ) : projects.length === 0 ? (
-            <div className="py-8 text-center text-muted-foreground">Brak projektów</div>
-          ) : (
-            <div className="space-y-3">
-              {projects.map((p) => (
-                <div key={p.id} className="border border-border/40 rounded-lg p-4 bg-secondary/50">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <div className="font-medium">{p.name}</div>
-                      <div className="text-xs text-muted-foreground">Status: {p.status}</div>
+      {/* Clients Table */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Lista Klientów</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <Tabs defaultValue="all" value={selectedTab} onValueChange={setSelectedTab}>
+            <TabsList>
+              <TabsTrigger value="all">Wszyscy ({clients.length})</TabsTrigger>
+              <TabsTrigger value="active">Aktywni ({stats.activeClients})</TabsTrigger>
+              <TabsTrigger value="prospect">Potencjalni ({stats.prospects})</TabsTrigger>
+            </TabsList>
+            
+            <TabsContent value={selectedTab} className="mt-6">
+              <div className="space-y-4">
+                {filteredClients.map((client) => (
+                  <div key={client.id} className="flex items-center justify-between p-4 border border-border rounded-lg hover:bg-secondary/50 transition-colors">
+                    <div className="flex items-center gap-4">
+                      <Avatar className="h-12 w-12">
+                        <AvatarImage src={client.avatar} />
+                        <AvatarFallback>
+                          {client.name.split(' ').map(n => n[0]).join('')}
+                        </AvatarFallback>
+                      </Avatar>
+                      
+                      <div className="space-y-1">
+                        <div className="flex items-center gap-2">
+                          <h3 className="font-semibold">{client.name}</h3>
+                          {getStatusBadge(client.status)}
+                          <div className="flex items-center">
+                            {Array.from({ length: 5 }).map((_, i) => (
+                              <Star
+                                key={i}
+                                className={`h-3 w-3 ${
+                                  i < client.rating ? 'text-yellow-400 fill-current' : 'text-gray-300'
+                                }`}
+                              />
+                            ))}
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                          <div className="flex items-center gap-1">
+                            <Building className="h-3 w-3" />
+                            {client.company}
+                          </div>
+                          <div className="flex items-center gap-1">
+                            <Mail className="h-3 w-3" />
+                            {client.email}
+                          </div>
+                          <div className="flex items-center gap-1">
+                            <Phone className="h-3 w-3" />
+                            {client.phone}
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                    <div className="text-sm text-muted-foreground">Budżet: {p.budget ?? 0} zł</div>
+
+                    <div className="flex items-center gap-6">
+                      <div className="text-center">
+                        <div className="text-sm font-medium">{client.activeProjects}</div>
+                        <div className="text-xs text-muted-foreground">Aktywne</div>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-sm font-medium">{client.totalProjects}</div>
+                        <div className="text-xs text-muted-foreground">Łącznie</div>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-sm font-medium">{client.totalRevenue.toLocaleString()} zł</div>
+                        <div className="text-xs text-muted-foreground">Przychód</div>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-sm font-medium">{client.lastContact}</div>
+                        <div className="text-xs text-muted-foreground">Ostatni kontakt</div>
+                      </div>
+                      
+                      <div className="flex items-center gap-2">
+                        <Button variant="outline" size="sm">
+                          <Eye className="h-4 w-4" />
+                        </Button>
+                        <Button variant="outline" size="sm">
+                          <Edit className="h-4 w-4" />
+                        </Button>
+                        <Button variant="outline" size="sm">
+                          <MoreHorizontal className="h-4 w-4" />
+                        </Button>
+                      </div>
+                    </div>
                   </div>
-                  {p.description && (
-                    <div className="text-sm mt-2 text-foreground/80">{p.description}</div>
-                  )}
-                </div>
-              ))}
-            </div>
-          )}
-        </DialogContent>
-      </Dialog>
+                ))}
+              </div>
+            </TabsContent>
+          </Tabs>
+        </CardContent>
+      </Card>
     </div>
   );
 }

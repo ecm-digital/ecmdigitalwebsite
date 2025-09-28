@@ -124,7 +124,7 @@ export function DocumentsLibrary({ projectId, projectName }: DocumentsLibraryPro
   const [uploading, setUploading] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
   const [typeFilter, setTypeFilter] = useState('all')
-  const [tagFilter, setTagFilter] = useState('')
+  const [tagFilter, setTagFilter] = useState('all')
   const [sortBy, setSortBy] = useState('newest')
   const [showUpload, setShowUpload] = useState(false)
   const [selectedFiles, setSelectedFiles] = useState<File[]>([])
@@ -198,7 +198,7 @@ export function DocumentsLibrary({ projectId, projectName }: DocumentsLibraryPro
         (doc.mime_type && doc.mime_type.includes(typeFilter))
       
       // Tag filter
-      const matchesTag = !tagFilter || 
+      const matchesTag = tagFilter === 'all' || 
         (doc.tags && doc.tags.includes(tagFilter))
 
       return matchesSearch && matchesType && matchesTag
@@ -246,7 +246,7 @@ export function DocumentsLibrary({ projectId, projectName }: DocumentsLibraryPro
   const clearFilters = () => {
     setSearchQuery('')
     setTypeFilter('all')
-    setTagFilter('')
+    setTagFilter('all')
     setSortBy('newest')
   }
 
@@ -421,7 +421,7 @@ export function DocumentsLibrary({ projectId, projectName }: DocumentsLibraryPro
                   <SelectValue placeholder="Wszystkie tagi" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">Wszystkie tagi</SelectItem>
+                  <SelectItem value="all">Wszystkie tagi</SelectItem>
                   {allTags.map(tag => (
                     <SelectItem key={tag} value={tag}>
                       {tag}

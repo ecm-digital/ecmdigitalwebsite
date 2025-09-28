@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automatyzacja procesu sprzedaży dla software house - ECM Digital</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #007AFF;
+            --accent: #30D158;
+            --accent-purple: #BF5AF2;
+            --accent-orange: #FF9F0A;
+            --bg-primary: #0A0A0A;
+            --bg-secondary: #1C1C1E;
+            --bg-tertiary: #2C2C2E;
+            --text-primary: #FFFFFF;
+            --text-secondary: #EBEBF5;
+            --text-muted: #8E8E93;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent-purple) 100%);
+            padding: 120px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #FFFFFF 0%, #F0F0F0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            backdrop-filter: blur(20px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent-purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .content-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(20px);
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .tech-tag {
+            background: rgba(0, 122, 255, 0.1);
+            color: var(--primary);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: 1px solid rgba(0, 122, 255, 0.2);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-item {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            backdrop-filter: blur(20px);
+        }
+
+        .gallery-placeholder {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent-purple) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent-purple) 100%);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent-purple) 100%);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 122, 255, 0.3);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            background: transparent;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .content-card {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <div class="row align-items-center">
+                    <div class="col-lg-8">
+                        <h1 class="hero-title">🤖 Automatyzacja procesu sprzedaży dla software house</h1>
+                        <p class="hero-subtitle">
+                            Kompleksowy system automatyzacji procesów sprzedażowych z integracją CRM, 
+                            automatycznym lead scoring i personalizowanymi kampaniami marketingowymi.
+                        </p>
+                        
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-number">150%</div>
+                                <div class="stat-label">Wzrost konwersji</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">60%</div>
+                                <div class="stat-label">Redukcja czasu sprzedaży</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">85%</div>
+                                <div class="stat-label">Automatyzacja leadów</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">€2.3M</div>
+                                <div class="stat-label">Dodatkowy przychód</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wyzwanie Section -->
+    <section class="section">
+        <div class="container">
+            <div class="content-card">
+                <h2 class="section-title">🎯 Wyzwanie</h2>
+                <p style="font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 2rem;">
+                    Software house potrzebował zautomatyzować proces sprzedaży, który był czasochłonny i mało efektywny. 
+                    Główne problemy obejmowały:
+                </p>
+                <ul style="color: var(--text-secondary); font-size: 1.1rem; line-height: 1.8;">
+                    <li>Ręczne zarządzanie leadami i brak systemu scoringu</li>
+                    <li>Długi cykl sprzedaży (średnio 6-8 miesięcy)</li>
+                    <li>Brak personalizacji w komunikacji z klientami</li>
+                    <li>Rozproszone dane w różnych systemach</li>
+                    <li>Niska konwersja z leadów do klientów (12%)</li>
+                    <li>Brak automatyzacji follow-up i nurturingu</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rozwiązanie Section -->
+    <section class="section" style="background: var(--bg-secondary);">
+        <div class="container">
+            <div class="content-card">
+                <h2 class="section-title">💡 Rozwiązanie</h2>
+                <p style="font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 2rem;">
+                    Stworzyliśmy kompleksowy system automatyzacji sprzedaży oparty na AI i machine learning, 
+                    który obejmuje:
+                </p>
+                
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div style="background: var(--bg-tertiary); padding: 2rem; border-radius: 16px; margin-bottom: 1.5rem;">
+                            <h4 style="color: var(--primary); margin-bottom: 1rem;">🧠 AI Lead Scoring</h4>
+                            <p style="color: var(--text-secondary);">Automatyczna ocena jakości leadów na podstawie zachowania, demografii i interakcji z marką.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div style="background: var(--bg-tertiary); padding: 2rem; border-radius: 16px; margin-bottom: 1.5rem;">
+                            <h4 style="color: var(--accent); margin-bottom: 1rem;">📧 Automatyczne kampanie</h4>
+                            <p style="color: var(--text-secondary);">Personalizowane sekwencje emaili i SMS dostosowane do etapu cyklu sprzedażowego.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div style="background: var(--bg-tertiary); padding: 2rem; border-radius: 16px; margin-bottom: 1.5rem;">
+                            <h4 style="color: var(--accent-purple); margin-bottom: 1rem;">🔄 Integracja CRM</h4>
+                            <p style="color: var(--text-secondary);">Seamless integracja z HubSpot, Salesforce i wewnętrznymi systemami zarządzania projektami.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div style="background: var(--bg-tertiary); padding: 2rem; border-radius: 16px; margin-bottom: 1.5rem;">
+                            <h4 style="color: var(--accent-orange); margin-bottom: 1rem;">📊 Dashboard analityczny</h4>
+                            <p style="color: var(--text-secondary);">Real-time monitoring KPI, konwersji i efektywności kampanii z predykcyjną analityką.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Efekt Section -->
+    <section class="section">
+        <div class="container">
+            <div class="content-card">
+                <h2 class="section-title">📈 Efekt</h2>
+                <p style="font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 2rem;">
+                    System automatyzacji przyniósł spektakularne rezultaty w zakresie efektywności sprzedaży i konwersji:
+                </p>
+                
+                <div class="row g-4">
+                    <div class="col-md-3">
+                        <div class="text-center">
+                            <div style="font-size: 3rem; font-weight: 800; color: var(--accent); margin-bottom: 0.5rem;">150%</div>
+                            <div style="color: var(--text-secondary);">Wzrost konwersji</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="text-center">
+                            <div style="font-size: 3rem; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem;">60%</div>
+                            <div style="color: var(--text-secondary);">Redukcja czasu sprzedaży</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="text-center">
+                            <div style="font-size: 3rem; font-weight: 800; color: var(--accent-purple); margin-bottom: 0.5rem;">85%</div>
+                            <div style="color: var(--text-secondary);">Automatyzacja leadów</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="text-center">
+                            <div style="font-size: 3rem; font-weight: 800; color: var(--accent-orange); margin-bottom: 0.5rem;">€2.3M</div>
+                            <div style="color: var(--text-secondary);">Dodatkowy przychód</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Zakres prac Section -->
+    <section class="section" style="background: var(--bg-secondary);">
+        <div class="container">
+            <div class="content-card">
+                <h2 class="section-title">🛠️ Zakres prac</h2>
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <h4 style="color: var(--primary); margin-bottom: 1.5rem;">Faza 1: Analiza i strategia (3 tygodnie)</h4>
+                        <ul style="color: var(--text-secondary); line-height: 1.8;">
+                            <li>Audyt obecnych procesów sprzedażowych</li>
+                            <li>Mapowanie customer journey i touchpointów</li>
+                            <li>Definicja KPI i metryk sukcesu</li>
+                            <li>Wybór narzędzi i integracji</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 style="color: var(--accent); margin-bottom: 1.5rem;">Faza 2: AI Lead Scoring (4 tygodnie)</h4>
+                        <ul style="color: var(--text-secondary); line-height: 1.8;">
+                            <li>Implementacja modelu machine learning</li>
+                            <li>Integracja z systemami CRM</li>
+                            <li>Automatyczne kategoryzowanie leadów</li>
+                            <li>Testowanie i optymalizacja algorytmów</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 style="color: var(--accent-purple); margin-bottom: 1.5rem;">Faza 3: Automatyzacja kampanii (3 tygodnie)</h4>
+                        <ul style="color: var(--text-secondary); line-height: 1.8;">
+                            <li>Tworzenie sekwencji nurturingu</li>
+                            <li>Personalizacja treści i timing</li>
+                            <li>Integracja z kanałami komunikacji</li>
+                            <li>A/B testing kampanii</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 style="color: var(--accent-orange); margin-bottom: 1.5rem;">Faza 4: Dashboard i wdrożenie (2 tygodnie)</h4>
+                        <ul style="color: var(--text-secondary); line-height: 1.8;">
+                            <li>Tworzenie dashboardu analitycznego</li>
+                            <li>Szkolenie zespołu sprzedażowego</li>
+                            <li>Uruchomienie i monitoring</li>
+                            <li>Optymalizacja na podstawie danych</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stack technologiczny Section -->
+    <section class="section">
+        <div class="container">
+            <div class="content-card">
+                <h2 class="section-title">⚙️ Stack technologiczny</h2>
+                <p style="font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 2rem;">
+                    Wykorzystane technologie do stworzenia zaawansowanego systemu automatyzacji sprzedaży:
+                </p>
+                
+                <div class="tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">TensorFlow</span>
+                    <span class="tech-tag">Scikit-learn</span>
+                    <span class="tech-tag">Pandas</span>
+                    <span class="tech-tag">HubSpot API</span>
+                    <span class="tech-tag">Salesforce API</span>
+                    <span class="tech-tag">Zapier</span>
+                    <span class="tech-tag">AWS Lambda</span>
+                    <span class="tech-tag">PostgreSQL</span>
+                    <span class="tech-tag">Redis</span>
+                    <span class="tech-tag">Docker</span>
+                    <span class="tech-tag">Grafana</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galeria Section -->
+    <section class="section" style="background: var(--bg-secondary);">
+        <div class="container">
+            <div class="content-card">
+                <h2 class="section-title">🖼️ Galeria</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <div class="gallery-placeholder">
+                            <i class="fas fa-brain" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                            <div>AI Lead Scoring</div>
+                        </div>
+                        <p style="color: var(--text-secondary);">Dashboard z automatyczną oceną jakości leadów</p>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="gallery-placeholder">
+                            <i class="fas fa-chart-line" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                            <div>Analytics Dashboard</div>
+                        </div>
+                        <p style="color: var(--text-secondary);">Real-time monitoring KPI i konwersji</p>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="gallery-placeholder">
+                            <i class="fas fa-envelope" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                            <div>Automatyczne kampanie</div>
+                        </div>
+                        <p style="color: var(--text-secondary);">Personalizowane sekwencje emaili i SMS</p>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="gallery-placeholder">
+                            <i class="fas fa-cogs" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                            <div>Integracje CRM</div>
+                        </div>
+                        <p style="color: var(--text-secondary);">Seamless połączenie z systemami zarządzania</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 1.5rem; color: white;">
+                Chcesz zautomatyzować swoją sprzedaż?
+            </h2>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem; color: rgba(255, 255, 255, 0.9);">
+                Skontaktuj się z nami i omówmy, jak możemy pomóc Twojej firmie zwiększyć efektywność sprzedaży poprzez AI.
+            </p>
+            <div class="d-flex flex-column flex-md-row gap-3 justify-content-center">
+                <a href="/#contact" class="btn btn-primary">
+                    <i class="fas fa-paper-plane me-2"></i>Skontaktuj się z nami
+                </a>
+                <a href="/#case-studies" class="btn btn-outline" style="border-color: white; color: white;">
+                    <i class="fas fa-arrow-left me-2"></i>Zobacz inne projekty
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,248 @@
+{
+  "nav": {
+    "home": "Startseite",
+    "services": "Dienstleistungen",
+    "about": "Über uns",
+    "team": "Team",
+    "clientPanel": "Kundenpanel",
+    "contact": "Kontakt",
+    "language": "DE"
+  },
+  "navigation": {
+    "home": "Startseite",
+    "services": "Dienstleistungen",
+    "about": "Über uns",
+    "blog": "Blog",
+    "caseStudies": "Fallstudien",
+    "team": "Team",
+    "myAccount": "Mein Konto",
+    "contact": "Kontakt",
+    "dropdown": {
+      "aiSolutions": "🤖 KI-Lösungen",
+      "aiAssistants": "KI-Assistenten auf Amazon Bedrock",
+      "voiceAssistants": "Sprachassistenten auf Amazon Lex",
+      "aiAudits": "KI-Implementierungsaudits",
+      "socialMediaAI": "Social Media & KI",
+      "digitalProducts": "🌐 Digitale Produkte",
+      "websites": "Websites",
+      "shopifyStores": "Shopify Stores",
+      "mobileApps": "Mobile Anwendungen",
+      "automationMvp": "⚡ Automatisierung & MVP",
+      "n8nAutomation": "N8N-Automatisierungen",
+      "mvpPrototypes": "MVP-Prototypen",
+      "viewAllServices": "Alle Dienstleistungen anzeigen"
+    }
+  },
+  "common": {
+    "learnMore": "Mehr erfahren"
+  },
+  "services": {
+    "websites": {
+      "title": "Websites",
+      "description": "Professionelle Websites, die auf Geschäftsanforderungen zugeschnitten sind. Optimiert für SEO, Leistung und Konversion."
+    },
+    "shopifyStores": {
+      "title": "Shopify Stores",
+      "description": "Professionelle Online-Shops auf der Shopify-Plattform, die effektiv verkaufen und mit Ihrem Unternehmen wachsen.",
+      "heroTitle": "Shopify & Wix Shops die <span style=\"color: #96BF47;\">verkaufen</span>",
+      "heroDescription": "Wir erstellen professionelle E-Commerce-Shops auf Shopify- und Wix-Plattformen, die Besucher in Kunden umwandeln. Custom Design, fortschrittliche Integrationen und Verkaufsautomatisierung.",
+      "stats": {
+        "salesGrowth": "Umsatzwachstum",
+        "loadTime": "Ladezeit",
+        "startPrice": "Startpreis"
+      },
+      "features": {
+        "title": "Was Sie erhalten",
+        "subtitle": "Umfassende E-Commerce-Lösung auf Shopify- und Wix-Plattformen",
+        "customDesign": {
+          "title": "Custom Design",
+          "description": "Einzigartiges Design, das auf Ihre Marke und Zielgruppe zugeschnitten ist"
+        },
+        "mobileFirst": {
+          "title": "Mobile-First",
+          "description": "Optimiert für mobile Geräte, wo 70% der Käufe stattfinden"
+        },
+        "payments": {
+          "title": "Zahlungen & Versand",
+          "description": "Integrationen mit beliebten Zahlungsgateways und Kurierunternehmen"
+        },
+        "seo": {
+          "title": "SEO & Marketing",
+          "description": "Suchmaschinenoptimierung und Marketing-Integrationen"
+        },
+        "analytics": {
+          "title": "Analytics & Berichte",
+          "description": "Verkaufsverfolgung, Kundenverhalten und Conversion-Optimierung"
+        },
+        "support": {
+          "title": "Support & Wartung",
+          "description": "Laufender technischer Support und Sicherheitsupdates"
+        }
+      },
+      "process": {
+        "title": "Wie wir arbeiten",
+        "subtitle": "Bewährtes Verfahren zur Erstellung von E-Commerce-Shops",
+        "steps": {
+          "consultation": {
+            "title": "Beratung",
+            "description": "Analyse der Geschäftsanforderungen und Plattformauswahl"
+          },
+          "design": {
+            "title": "Design & Plan",
+            "description": "Erstellung von Designkonzept und Shop-Architektur"
+          },
+          "development": {
+            "title": "Entwicklung",
+            "description": "Implementierung von Custom Design und Integrationen"
+          },
+          "testing": {
+            "title": "Testen",
+            "description": "Funktionstests und Leistungsoptimierung"
+          },
+          "launch": {
+            "title": "Start",
+            "description": "Produktive Bereitstellung und Teamschulung"
+          }
+        }
+      },
+      "pricing": {
+        "title": "Preise",
+        "subtitle": "Transparente Preise ohne versteckte Kosten",
+        "starter": {
+          "name": "Starter",
+          "price": "€2.200",
+          "features": [
+            "Custom Design",
+            "Responsive",
+            "Basis-Integrationen",
+            "Basis-SEO",
+            "30 Tage Support"
+          ]
+        },
+        "professional": {
+          "name": "Professional",
+          "price": "€3.900",
+          "features": [
+            "Erweitertes Design",
+            "Vollständige Zahlungsintegrationen",
+            "Erweitertes SEO",
+            "Verkaufsanalytik",
+            "6 Monate Support"
+          ]
+        },
+        "enterprise": {
+          "name": "Enterprise",
+          "price": "€7.200",
+          "features": [
+            "Premium Design",
+            "Alle Integrationen",
+            "Vollständige Automatisierung",
+            "Dedizierter Manager",
+            "12 Monate Support"
+          ]
+        }
+      },
+      "cta": {
+        "title": "Bereit für einen Shop, der verkauft?",
+        "subtitle": "Kontaktieren Sie uns und starten Sie Ihr E-Commerce-Abenteuer",
+        "button": "Projekt starten"
+      }
+    },
+    "mvpPrototypes": {
+      "title": "MVP-Prototypen",
+      "description": "Schnelle Validierung von Geschäftsideen durch die Erstellung funktionaler Prototypen."
+    },
+    "uxAudits": {
+      "title": "KI-Implementierungsaudits",
+      "description": "Wir analysieren Ihre Geschäftsprozesse und identifizieren Bereiche für KI-Automatisierung."
+    },
+    "automation": {
+      "title": "Automatisierung",
+      "description": "Sparen Sie 15-20 Stunden pro Woche durch die Automatisierung sich wiederholender Aufgaben."
+    },
+    "aiAssistants": {
+      "title": "KI-Assistenten",
+      "description": "Automatisieren Sie den Kundenservice 24/7 und sparen Sie bis zu 70% der Supportkosten."
+    }
+  },
+  "hero": {
+    "title": "Wir implementieren KI in Ihrem Unternehmen",
+    "subtitle": "Wir transformieren Ihr Unternehmen durch künstliche Intelligenz. Von Chatbots bis hin zu fortschrittlicher Automatisierung.",
+    "stats": {
+      "aiProjects": "50+",
+      "aiProjectsLabel": "KI-Projekte",
+      "costReduction": "70%",
+      "costReductionLabel": "Kostensenkung",
+      "support": "24/7",
+      "supportLabel": "KI-Unterstützung",
+      "satisfaction": "95%",
+      "satisfactionLabel": "Zufriedenheit"
+    }
+  },
+  "sections": {
+    "about": {
+      "title": "Über ECM Digital",
+      "subtitle": "KI-Experten, die Geschäft durch intelligente Lösungen transformieren",
+      "mission": "Mission",
+      "mission.description": "Wir demokratisieren den Zugang zu KI und helfen Unternehmen jeder Größe, das Potenzial künstlicher Intelligenz für Geschäftswachstum zu nutzen.",
+      "vision": "Vision",
+      "vision.description": "Führend in der digitalen Transformation in Polen zu sein und KI-Lösungen zu schaffen, die Effizienz und Umsatz wirklich steigern.",
+      "values": "Werte",
+      "values.description": "Innovation, Transparenz und Ergebnisse. Wir setzen jedes Projekt mit Leidenschaft um und liefern messbare Geschäftsvorteile."
+    },
+    "services": {
+      "title": "Unsere Dienstleistungen",
+      "subtitle": "Komplexe KI-Lösungen und Automatisierung, die Ihr Unternehmen transformieren und die Effizienz steigern"
+    },
+    "team": {
+      "title": "Unser Team",
+      "subtitle": "KI- und Technologieexperten, die Ihre Ideen in innovative Lösungen verwandeln"
+    }
+  },
+  "team": {
+    "title": "Unser Team",
+    "subtitle": "KI- und Technologieexperten, die Ihre Ideen in innovative Lösungen verwandeln",
+    "members": {
+      "tomasz": {
+        "name": "Tomasz Gnat",
+        "position": "Discovery-Berater",
+        "description": "Experte für die Entdeckung von Geschäftsanforderungen und KI-Strategien.",
+        "skills": {
+          "businessAnalysis": "Business Analysis",
+          "aiStrategy": "KI-Strategie"
+        }
+      },
+      "marta": {
+        "name": "Marta Górska",
+        "position": "UX/UI Designerin",
+        "description": "Designerin mit Fokus auf Benutzerbedürfnisse im KI-Zeitalter.",
+        "skills": {
+          "uxResearch": "UX Research",
+          "aiUxDesign": "KI/UX Design"
+        }
+      },
+      "karol": {
+        "name": "Karol Czechowski",
+        "position": "QA & KI-Entwickler",
+        "description": "Spezialist für Qualitätssicherung von KI-Lösungen.",
+        "skills": {
+          "aiTesting": "KI-Tests",
+          "qualityAssurance": "Qualitätssicherung"
+        }
+      },
+      "roman": {
+        "name": "Roman Dominia",
+        "position": "KI-Automatisierungs-Spezialist",
+        "description": "Experte für Geschäftsprozessautomatisierung mit KI.",
+        "skills": {
+          "processAutomation": "Prozessautomatisierung",
+          "aiAnalytics": "KI-Analytik"
+        }
+      }
+    }
+  },
+  "footer": {
+    "copyright": "© 2025 ECM Digital. Alle Rechte vorbehalten.",
+    "poweredBy": "Powered by Scrum Software Sp. z o.o."
+  }
+}

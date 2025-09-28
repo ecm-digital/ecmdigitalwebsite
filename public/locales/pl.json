@@ -24,7 +24,7 @@
       "aiAudits": "Audyty Wdrożenia AI",
       "socialMediaAI": "Social Media & AI",
       "digitalProducts": "🌐 Produkty Cyfrowe",
-      "websites": "Strony WWW",
+      "websites": "Strony WWW i Aplikacje Webowe",
       "shopifyStores": "Sklepy Shopify",
       "mobileApps": "Aplikacje Mobilne",
       "automationMvp": "⚡ Automatyzacja & MVP",
@@ -39,8 +39,8 @@
   },
   "services": {
     "websites": {
-      "title": "Strony WWW",
-      "description": "Profesjonalne strony internetowe dostosowane do potrzeb biznesowych. Zoptymalizowane pod kątem SEO, wydajności i konwersji."
+      "title": "Strony WWW i Aplikacje Webowe",
+      "description": "Profesjonalne strony internetowe i aplikacje webowe dostosowane do potrzeb biznesowych. Zoptymalizowane pod kątem SEO, wydajności i konwersji."
     },
     "shopifyStores": {
       "title": "Sklepy Shopify",
@@ -103,7 +103,7 @@
       "title": "O ECM Digital",
       "subtitle": "Zespół ekspertów AI, którzy transformują biznes poprzez inteligentne rozwiązania",
       "description1": "Jesteśmy zespołem pasjonatów technologii, którzy wierzą, że każdy biznes zasługuje na cyfrową transformację. Łączymy kreatywność z innowacyjnymi rozwiązaniami technologicznymi.",
-      "description2": "ECM Digital to marka oferująca kompleksowe i nowoczesne rozwiązania digitalowe. Specjalizujemy się w projektowaniu stron internetowych, e-commerce, audytach UX oraz automatyzacji procesów biznesowych, pomagając firmom rozwijać się w cyfrowym świecie.",
+      "description2": "ECM Digital to marka oferująca kompleksowe i nowoczesne rozwiązania digitalne. Specjalizujemy się w projektowaniu stron internetowych, e-commerce, audytach UX oraz automatyzacji procesów biznesowych, pomagając firmom rozwijać się w cyfrowym świecie.",
       "description3": "Marka ECM Digital działa w ramach spółki Scrum Software Sp. z o.o., która jest formalnym właścicielem wszystkich świadczonych przez nas usług oraz odpowiedzialnym podmiotem prawnym. To Scrum Software Sp. z o.o. wystawia faktury, zawiera umowy i prowadzi rozliczenia finansowe.",
       "description4": "Dzięki takiemu rozwiązaniu łączymy nowoczesny branding i profesjonalną obsługę prawną, zapewniając naszym klientom pełne bezpieczeństwo i transparentność współpracy.",
       "mission": "Misja",
@@ -117,6 +117,39 @@
       "about": {
         "title": "O ECM Digital",
         "subtitle": "Zespół ekspertów AI, którzy transformują biznes poprzez inteligentne rozwiązania"
+      },
+      "team": {
+        "title": "Nasz Zespół",
+        "subtitle": "Eksperci AI i technologii, którzy transformują Twoje pomysły w innowacyjne rozwiązania",
+        "members": {
+          "tomasz": {
+            "name": "Tomasz Gnat",
+            "position": "Konsultant Discovery",
+            "description": "Ekspert w odkrywaniu potrzeb biznesowych i strategii AI. Pomaga firmom identyfikować obszary do automatyzacji.",
+            "skills": {
+              "businessAnalysis": "Business Analysis",
+              "aiStrategy": "AI Strategy"
+            }
+          },
+          "marta": {
+            "name": "Marta Górska",
+            "position": "Projektantka",
+            "description": "Projektantka skupiona na potrzebach użytkowników w erze AI. Tworzy interfejsy, które naturalnie łączą ludzi z technologią.",
+            "skills": {
+              "uxResearch": "UX Research",
+              "aiUxDesign": "AI/UX Design"
+            }
+          },
+          "karol": {
+            "name": "Karol Czechowski",
+            "position": "QA & Deweloper AI",
+            "description": "Specjalista w zapewnianiu jakości rozwiązań AI i testowaniu automatycznym. Gwarantuje niezawodność systemów.",
+            "skills": {
+              "aiTesting": "AI Testing",
+              "qualityAssurance": "Quality Assurance"
+            }
+          }
+        }
       },
       "values": "Wartości",
       "values.description": "Innowacyjność, transparentność i rezultaty. Realizujemy każdy projekt z pasją, dostarczając mierzalne korzyści biznesowe.",

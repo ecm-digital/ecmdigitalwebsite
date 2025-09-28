@@ -119,6 +119,8 @@ python aws-services-upload.py
 ## 🔧 **Konfiguracja AWS**
 
 ### **Wymagane uprawnienia IAM:**
+
+#### **Podstawowe uprawnienia (DynamoDB + S3):**
 ```json
 {
   "Version": "2012-10-17",
@@ -139,6 +141,20 @@ python aws-services-upload.py
     }
   ]
 }
+```
+
+#### **Dodatkowe uprawnienia Cost Explorer:**
+⚠️ **Wymagana aktywacja Cost Explorer w AWS Console!**
+
+Dla pełnej funkcjonalności monitoringu kosztów dołącz politykę:
+```bash
+# Zastosuj politykę Cost Explorer
+aws iam attach-user-policy \
+    --user-name YOUR_IAM_USER \
+    --policy-arn arn:aws:iam::049164057970:policy/ECM-CostExplorer-Policy
+```
+
+📋 **Szczegóły**: Zobacz `docs/AWS-COST-EXPLORER-SETUP.md`
 ```
 
 ## 📈 **Monitoring i Analytics**

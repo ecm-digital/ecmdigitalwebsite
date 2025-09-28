@@ -540,15 +540,15 @@ const MobileUtils = {
     addMobileClasses: () => {
         const body = document.body;
         
-        if (this.isMobile()) {
+        if (MobileUtils.isMobile()) {
             body.classList.add('mobile-device');
         }
         
-        if (this.isTouchDevice()) {
+        if (MobileUtils.isTouchDevice()) {
             body.classList.add('touch-device');
         }
         
-        if (this.isHighDPI()) {
+        if (MobileUtils.isHighDPI()) {
             body.classList.add('high-dpi');
         }
     },
@@ -556,7 +556,7 @@ const MobileUtils = {
     // Optimize images for device
     optimizeImages: () => {
         const images = document.querySelectorAll('img');
-        const pixelRatio = this.getPixelRatio();
+        const pixelRatio = MobileUtils.getPixelRatio();
         
         images.forEach(img => {
             if (pixelRatio > 1 && img.dataset.src2x) {

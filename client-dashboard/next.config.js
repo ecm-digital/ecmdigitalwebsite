@@ -40,24 +40,34 @@ const nextConfig = {
       );
     }
 
-    // Fix for webpack chunk loading
-    if (dev) {
-      config.optimization = {
-        ...config.optimization,
-        splitChunks: {
-          chunks: 'all',
-          cacheGroups: {
-            default: false,
-            vendors: false,
-            vendor: {
-              name: 'vendor',
-              chunks: 'all',
-              test: /node_modules/,
-            },
+    // Optimize chunk loading for both dev and production
+    config.optimization = {
+      ...config.optimization,
+      splitChunks: {
+        chunks: 'all',
+        minSize: 20000,
+        maxSize: 244000,
+        cacheGroups: {
+          default: {
+            minChunks: 2,
+            priority: -20,
+            reuseExistingChunk: true,
+          },
+          vendor: {
+            test: /[\\/]node_modules[\\/]/,
+            name: 'vendors',
+            priority: -10,
+            chunks: 'all',
+          },
+          common: {
+            name: 'common',
+            minChunks: 2,
+            priority: -30,
+            reuseExistingChunk: true,
           },
         },
-        runtimeChunk: 'single',
-      };
+      },
+      runtimeChunk: 'single',
     }
 
     // Keep default React resolution; avoid overriding jsx-runtime mapping

@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
@@ -25,6 +25,18 @@ export default function Navigation({ user, onLogout }: NavigationProps) {
     router.push('/auth/login')
   }
 
+  const [videoError, setVideoError] = useState(false)
+  const [reduceMotion, setReduceMotion] = useState(false)
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+    const media = window.matchMedia('(prefers-reduced-motion: reduce)')
+    setReduceMotion(media.matches)
+    const handler = (e: MediaQueryListEvent) => setReduceMotion(e.matches)
+    media.addEventListener?.('change', handler)
+    return () => media.removeEventListener?.('change', handler)
+  }, [])
+
   return (
     <nav className="navbar navbar-expand-lg fixed-top" style={{
       background: 'var(--bg-secondary)',
@@ -38,13 +50,28 @@ export default function Navigation({ user, onLogout }: NavigationProps) {
           textDecoration: 'none',
           fontWeight: '700'
         }}>
-          <i className="fas fa-rocket me-2" style={{
-            background: 'linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text',
-            fontSize: '1.2rem'
-          }}></i>
+          {/* Prefer MP4 logo if available and motion is allowed */}
+          {!videoError && !reduceMotion ? (
+            <video
+              src="/logo.mp4"
+              aria-label="ECM Digital logo"
+              className="me-2"
+              style={{ width: '28px', height: '28px', objectFit: 'contain', borderRadius: '6px' }}
+              autoPlay
+              muted
+              loop
+              playsInline
+              onError={() => setVideoError(true)}
+            />
+          ) : (
+            <i className="fas fa-rocket me-2" style={{
+              background: 'linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              fontSize: '1.2rem'
+            }}></i>
+          )}
           <span style={{
             background: 'linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%)',
             WebkitBackgroundClip: 'text',

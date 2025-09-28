@@ -1,4 +1,4 @@
-// System wielojęzyczny ECM Digital
+// Multilingual system ECM Digital
 class I18nManager {
     constructor() {
         this.currentLanguage = 'pl';
@@ -11,20 +11,28 @@ class I18nManager {
         try {
             console.log('🔄 Initializing I18n system...');
             
-            // Użyj wbudowanych tłumaczeń jako domyślnych
-            this.loadFallbackTranslations();
+            // Try to load translations from files
+            await this.loadTranslations();
             this.initialized = true;
             
-            // Ustawienie domyślnego języka
+            // Set default language
             this.setLanguage(this.getStoredLanguage() || 'pl');
             
-            console.log('✅ I18n system initialized successfully with fallback translations');
+            // Update page content after initialization
+            this.updatePageContent();
+            
+            console.log('✅ I18n system initialized successfully');
             console.log('📊 Available translations:', Object.keys(this.translations));
         } catch (error) {
             console.error('❌ Failed to initialize I18n system:', error);
-            // Fallback do wbudowanych tłumaczeń
-            this.loadFallbackTranslations();
+            // Fallback to embedded translations
+            this.translations = {
+                pl: this.getEmbeddedTranslations('pl'),
+                en: this.getEmbeddedTranslations('en'),
+                de: this.getEmbeddedTranslations('de')
+            };
             this.setLanguage('pl');
+            this.updatePageContent();
         }
     }
 
@@ -63,7 +71,11 @@ class I18nManager {
         } catch (error) {
             console.error('❌ Failed to load translations:', error);
             // Fallback do wbudowanych tłumaczeń
-            this.loadFallbackTranslations();
+            this.translations = {
+                pl: this.getEmbeddedTranslations('pl'),
+                en: this.getEmbeddedTranslations('en'),
+                de: this.getEmbeddedTranslations('de')
+            };
         }
     }
 
@@ -98,7 +110,7 @@ class I18nManager {
                 "sections.team.members.karol.skills.aiTesting": "Testowanie AI",
                 "sections.team.members.karol.skills.qualityAssurance": "Zapewnienie Jakości",
                 "sections.team.members.marta.name": "Marta Górska",
-                "sections.team.members.marta.position": "UX/UI Designer",
+                "sections.team.members.marta.position": "Projektant UX/UI",
                 "sections.team.members.marta.description": "Projektantka skupiająca się na potrzebach użytkowników w erze AI. Tworzy interfejsy, które naturalnie łączą ludzi z technologią.",
                 "sections.team.members.marta.skills.uxResearch": "Badania UX",
                 "sections.team.members.marta.skills.aiUxDesign": "Projektowanie AI/UX",
@@ -106,7 +118,77 @@ class I18nManager {
                 "sections.team.members.roman.position": "Specjalista Automatyzacji AI",
                 "sections.team.members.roman.description": "Ekspert od automatyzacji procesów biznesowych z AI i analizy danych social media. Zwiększa efektywność operacyjną.",
                 "sections.team.members.roman.skills.processAutomation": "Automatyzacja Procesów",
-                "sections.team.members.roman.skills.aiAnalytics": "Analityka AI"
+                "sections.team.members.roman.skills.aiAnalytics": "Analityka AI",
+                "sections.caseStudies.title": "Studia Przypadków & Portfolio",
+                "sections.caseStudies.subtitle": "Prawdziwe projekty, konkretne rezultaty - zobacz jak transformujemy biznesy przez AI",
+                "sections.process.title": "Nasz Proces Pracy",
+                "sections.process.subtitle": "Od pomysłu do gotowego rozwiązania AI - sprawdzony proces, który gwarantuje sukces",
+                "sections.process.steps.discovery.title": "Discovery",
+                "sections.process.steps.discovery.description": "Analizujemy Twoje procesy i identyfikujemy możliwości AI",
+                "sections.process.steps.strategy.title": "Strategia & Plan",
+                "sections.process.steps.strategy.description": "Tworzymy roadmapę wdrożenia z priorytetami i harmonogramem",
+                "sections.process.steps.prototype.title": "Prototyp & MVP",
+                "sections.process.steps.prototype.description": "Szybki prototyp do testowania i walidacji rozwiązania",
+                "sections.process.steps.development.title": "Rozwój & Integracja",
+                "sections.process.steps.development.description": "Pełne wdrożenie AI, automatyzacja i integracja systemów",
+                "sections.process.steps.launch.title": "Wdrożenie & Szkolenie",
+                "sections.process.steps.launch.description": "Uruchomienie produkcyjne i szkolenie zespołu",
+                "sections.process.steps.optimization.title": "Optymalizacja & Wsparcie",
+                "sections.process.steps.optimization.description": "Ciągłe ulepszanie AI i 24/7 wsparcie techniczne",
+                "sections.testimonials.title": "Referencje Klientów",
+                "sections.testimonials.subtitle": "Co mówią o nas nasi klienci",
+                "sections.partners.title": "Współpracujemy z najlepszymi",
+                "sections.partners.subtitle": "Moc platform. Precyzja wdrożeń.",
+                "sections.contact.title": "Rozpocznij projekt",
+                "sections.contact.subtitle": "Skontaktuj się z nami, aby omówić swój projekt. Oferujemy bezpłatną konsultację i wycenę.",
+                "sections.contact.description": "Skontaktuj się z nami, aby omówić swój projekt. Oferujemy bezpłatną konsultację i wycenę.",
+                "sections.contact.contactUs": "Kontakt",
+                "sections.contact.phone": "Zadzwoń",
+                "sections.contact.email": "Email",
+                "sections.contact.phoneNumber": "+48 535 330 323",
+                "sections.contact.emailAddress": "hello@ecm-digital.com",
+                "sections.contact.responseTime": "Czas Odpowiedzi",
+                "sections.contact.responseTimeValue": "24 godziny",
+                "sections.contact.sendMessage": "Napisz Email",
+                "sections.contact.email.title": "Email",
+                "sections.contact.email.description": "Napisz do nas email z opisem projektu",
+                "sections.contact.email.button": "Wyślij Email",
+                "sections.contact.phone.title": "Telefon",
+                "sections.contact.phone.description": "Zadzwoń do nas, aby omówić szczegóły projektu",
+                "sections.contact.phone.button": "Zadzwoń",
+                "sections.contact.consultation.title": "Bezpłatna Konsultacja",
+                "sections.contact.consultation.description": "Umów się na bezpłatną konsultację z naszym ekspertem",
+                "sections.contact.consultation.button": "Umów Konsultację",
+                "sections.contact.hours.title": "Godziny Pracy",
+                "sections.contact.hours.description": "Jesteśmy dostępni w dni robocze",
+                "sections.contact.hours.weekdays": "Poniedziałek - Piątek:",
+                "sections.contact.hours.time": "9:00 - 17:00",
+                "sections.contact.address.title": "Adres",
+                "sections.contact.address.description": "Siedziba naszej firmy",
+                "sections.contact.address.line1": "ECM Digital",
+                "sections.contact.address.line2": "ul. Przykładowa 123",
+                "sections.contact.address.line3": "00-001 Warszawa, Polska",
+                "sections.contact.quick.title": "Szybki Kontakt",
+                "sections.contact.quick.description": "Masz pilne pytanie? Napisz do nas!",
+                "sections.contact.quick.button": "Napisz Teraz",
+                "sections.contact.form.title": "Formularz Kontaktowy",
+                "sections.contact.form.description": "Wypełnij formularz, a skontaktujemy się z Tobą w ciągu 24 godzin",
+                "sections.contact.form.name": "Imię i Nazwisko *",
+                "sections.contact.form.email": "Email *",
+                "sections.contact.form.phone": "Telefon",
+                "sections.contact.form.company": "Firma",
+                "sections.contact.form.service": "Interesująca Usługa",
+                "sections.contact.form.service.placeholder": "Wybierz usługę...",
+                "sections.contact.form.service.consultation": "Konsultacja",
+                "sections.contact.form.budget": "Budżet Projektu",
+                "sections.contact.form.budget.placeholder": "Wybierz zakres...",
+                "sections.contact.form.budget.3-5k": "3,000 - 5,000 PLN",
+                "sections.contact.form.budget.5-10k": "5,000 - 10,000 PLN",
+                "sections.contact.form.budget.10-25k": "10,000 - 25,000 PLN",
+                "sections.contact.form.budget.25k+": "Powyżej 25,000 PLN",
+                "sections.contact.form.budget.consultation": "Potrzebuję konsultacji",
+                "sections.contact.form.message": "Wiadomość *",
+                "sections.contact.form.submit": "Wyślij Wiadomość"
             },
             "services.shopifyStores.heroTitle": "Sklepy <span style=\"color: #96BF47;\">Shopify & Wix</span> Które <span style=\"color: #30D158;\">Sprzedają</span>",
             "services.shopifyStores.heroDescription": "Tworzymy profesjonalne sklepy e-commerce na platformach Shopify i Wix, które konwertują odwiedzających w klientów. Custom design, zaawansowane integracje i automatyzacja sprzedaży.",
@@ -163,7 +245,77 @@ class I18nManager {
                 "sections.team.members.roman.position": "AI Automation Specialist",
                 "sections.team.members.roman.description": "Expert in business process automation with AI and social media data analysis. Increases operational efficiency.",
                 "sections.team.members.roman.skills.processAutomation": "Process Automation",
-                "sections.team.members.roman.skills.aiAnalytics": "AI Analytics"
+                "sections.team.members.roman.skills.aiAnalytics": "AI Analytics",
+                "sections.caseStudies.title": "Case Studies & Portfolio",
+                "sections.caseStudies.subtitle": "Real projects, concrete results - see how we transform businesses through AI",
+                "sections.process.title": "Our Work Process",
+                "sections.process.subtitle": "From idea to ready AI solution - proven process that guarantees success",
+                "sections.process.steps.discovery.title": "Discovery",
+                "sections.process.steps.discovery.description": "We analyze your processes and identify AI opportunities",
+                "sections.process.steps.strategy.title": "Strategy & Plan",
+                "sections.process.steps.strategy.description": "We create implementation roadmap with priorities and timeline",
+                "sections.process.steps.prototype.title": "Prototype & MVP",
+                "sections.process.steps.prototype.description": "Quick prototype for testing and validating the solution",
+                "sections.process.steps.development.title": "Development & Integration",
+                "sections.process.steps.development.description": "Full AI implementation, automation and system integration",
+                "sections.process.steps.launch.title": "Deployment & Training",
+                "sections.process.steps.launch.description": "Production launch and team training",
+                "sections.process.steps.optimization.title": "Optimization & Support",
+                "sections.process.steps.optimization.description": "Continuous AI improvement and 24/7 technical support",
+                "sections.testimonials.title": "Client Testimonials",
+                "sections.testimonials.subtitle": "What our clients say about working with us",
+                "sections.partners.title": "We Work with the Best",
+                "sections.partners.subtitle": "Platform power. Implementation precision.",
+                "sections.contact.title": "Start Your Project",
+                "sections.contact.subtitle": "Contact us to discuss your project. We offer free consultation and quote.",
+                "sections.contact.description": "Contact us to discuss your project. We offer free consultation and quote.",
+                "sections.contact.contactUs": "Contact Us",
+                "sections.contact.phone": "Call",
+                "sections.contact.email": "Email",
+                "sections.contact.phoneNumber": "+48 535 330 323",
+                "sections.contact.emailAddress": "hello@ecm-digital.com",
+                "sections.contact.responseTime": "Response Time",
+                "sections.contact.responseTimeValue": "24 hours",
+                "sections.contact.sendMessage": "Write Email",
+                "sections.contact.email.title": "Email",
+                "sections.contact.email.description": "Write us an email with your project description",
+                "sections.contact.email.button": "Send Email",
+                "sections.contact.phone.title": "Phone",
+                "sections.contact.phone.description": "Call us to discuss project details",
+                "sections.contact.phone.button": "Call",
+                "sections.contact.consultation.title": "Free Consultation",
+                "sections.contact.consultation.description": "Schedule a free consultation with our expert",
+                "sections.contact.consultation.button": "Book Consultation",
+                "sections.contact.hours.title": "Business Hours",
+                "sections.contact.hours.description": "We are available on business days",
+                "sections.contact.hours.weekdays": "Monday - Friday:",
+                "sections.contact.hours.time": "9:00 - 17:00",
+                "sections.contact.address.title": "Address",
+                "sections.contact.address.description": "Our company headquarters",
+                "sections.contact.address.line1": "ECM Digital",
+                "sections.contact.address.line2": "Sample Street 123",
+                "sections.contact.address.line3": "00-001 Warsaw, Poland",
+                "sections.contact.quick.title": "Quick Contact",
+                "sections.contact.quick.description": "Have an urgent question? Write to us!",
+                "sections.contact.quick.button": "Write Now",
+                "sections.contact.form.title": "Contact Form",
+                "sections.contact.form.description": "Fill out the form and we will contact you within 24 hours",
+                "sections.contact.form.name": "Full Name *",
+                "sections.contact.form.email": "Email *",
+                "sections.contact.form.phone": "Phone",
+                "sections.contact.form.company": "Company",
+                "sections.contact.form.service": "Service of Interest",
+                "sections.contact.form.service.placeholder": "Choose service...",
+                "sections.contact.form.service.consultation": "Consultation",
+                "sections.contact.form.budget": "Project Budget",
+                "sections.contact.form.budget.placeholder": "Choose range...",
+                "sections.contact.form.budget.3-5k": "3,000 - 5,000 PLN",
+                "sections.contact.form.budget.5-10k": "5,000 - 10,000 PLN",
+                "sections.contact.form.budget.10-25k": "10,000 - 25,000 PLN",
+                "sections.contact.form.budget.25k+": "Above 25,000 PLN",
+                "sections.contact.form.budget.consultation": "Need consultation",
+                "sections.contact.form.message": "Message *",
+                "sections.contact.form.submit": "Send Message"
             },
             "services.shopifyStores.heroTitle": "Shopify & Wix Stores That <span style=\"color: #96BF47;\">Sell</span>",
             "services.shopifyStores.heroDescription": "We create professional e-commerce stores on Shopify and Wix platforms that convert visitors into customers. Custom design, advanced integrations and sales automation.",
@@ -463,7 +615,7 @@ class I18nManager {
                             marta: {
                                 name: "Marta Górska",
                                 position: "Projektant UX/UI",
-                                description: "Projektant skupiony na potrzebach użytkowników w erze AI. Tworzy interfejsy, które naturalnie łączą ludzi z technologią.",
+                                description: "Projektantka skupiona na potrzebach użytkowników w erze AI. Tworzy interfejsy, które naturalnie łączą ludzi z technologią.",
                                 skills: { uxResearch: "UX Research", aiUxDesign: "AI/UX Design" }
                             },
                             karol: {
@@ -1030,6 +1182,8 @@ class I18nManager {
     updatePageContent() {
         const elements = document.querySelectorAll('[data-i18n]');
         console.log(`🔄 Updating ${elements.length} elements with translations`);
+        console.log(`🌐 Current language: ${this.currentLanguage}`);
+        console.log(`📊 Available translations:`, Object.keys(this.translations));
         
         elements.forEach(element => {
             const key = element.getAttribute('data-i18n');
@@ -1051,6 +1205,13 @@ class I18nManager {
                 console.warn(`⚠️ No translation found for key: ${key}`);
             }
         });
+        
+        // Force re-render on mobile
+        if (window.innerWidth <= 768) {
+            document.body.style.display = 'none';
+            document.body.offsetHeight; // Trigger reflow
+            document.body.style.display = '';
+        }
     }
 }
 

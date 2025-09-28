@@ -60,3 +60,4 @@ node_modules/
 !.kiro/specs/
 !.kiro/steering/
 .vercel
+.env*.local

@@ -24,7 +24,7 @@
       "aiAudits": "KI-Implementierungsaudits",
       "socialMediaAI": "Social Media & KI",
       "digitalProducts": "🌐 Digitale Produkte",
-      "websites": "Websites",
+      "websites": "Websites & Webanwendungen",
       "shopifyStores": "Shopify Stores",
       "mobileApps": "Mobile Anwendungen",
       "automationMvp": "⚡ Automatisierung & MVP",
@@ -38,8 +38,8 @@
   },
   "services": {
     "websites": {
-      "title": "Websites",
-      "description": "Professionelle Websites, die auf Geschäftsanforderungen zugeschnitten sind. Optimiert für SEO, Leistung und Konversion."
+      "title": "Websites & Webanwendungen",
+      "description": "Professionelle Websites und Webanwendungen, die auf Geschäftsanforderungen zugeschnitten sind. Optimiert für SEO, Leistung und Konversion."
     },
     "shopifyStores": {
       "title": "Shopify Stores",
@@ -93,47 +93,34 @@
     },
     "team": {
       "title": "Unser Team",
-      "subtitle": "KI- und Technologieexperten, die Ihre Ideen in innovative Lösungen verwandeln"
-    }
-  },
-  "team": {
-    "title": "Unser Team",
-    "subtitle": "KI- und Technologieexperten, die Ihre Ideen in innovative Lösungen verwandeln",
-    "members": {
-      "tomasz": {
-        "name": "Tomasz Gnat",
-        "position": "Discovery-Berater",
-        "description": "Experte für die Entdeckung von Geschäftsanforderungen und KI-Strategien.",
-        "skills": {
-          "businessAnalysis": "Business Analysis",
-          "aiStrategy": "KI-Strategie"
-        }
-      },
-      "marta": {
-        "name": "Marta Górska",
-        "position": "UX/UI Designerin",
-        "description": "Designerin mit Fokus auf Benutzerbedürfnisse im KI-Zeitalter.",
-        "skills": {
-          "uxResearch": "UX Research",
-          "aiUxDesign": "KI/UX Design"
-        }
-      },
-      "karol": {
-        "name": "Karol Czechowski",
-        "position": "QA & KI-Entwickler",
-        "description": "Spezialist für Qualitätssicherung von KI-Lösungen.",
-        "skills": {
-          "aiTesting": "KI-Tests",
-          "qualityAssurance": "Qualitätssicherung"
-        }
-      },
-      "roman": {
-        "name": "Roman Dominia",
-        "position": "KI-Automatisierungs-Spezialist",
-        "description": "Experte für Geschäftsprozessautomatisierung mit KI.",
-        "skills": {
-          "processAutomation": "Prozessautomatisierung",
-          "aiAnalytics": "KI-Analytik"
+      "subtitle": "KI- und Technologieexperten, die Ihre Ideen in innovative Lösungen verwandeln",
+      "members": {
+        "tomasz": {
+          "name": "Tomasz Gnat",
+          "position": "Discovery-Berater",
+          "description": "Experte für die Entdeckung von Geschäftsanforderungen und KI-Strategien.",
+          "skills": {
+            "businessAnalysis": "Business Analysis",
+            "aiStrategy": "KI-Strategie"
+          }
+        },
+        "marta": {
+          "name": "Marta Górska",
+          "position": "Designerin",
+          "description": "Designerin mit Fokus auf Benutzerbedürfnisse im KI-Zeitalter.",
+          "skills": {
+            "uxResearch": "UX Research",
+            "aiUxDesign": "KI/UX Design"
+          }
+        },
+        "karol": {
+          "name": "Karol Czechowski",
+          "position": "QA & KI-Entwickler",
+          "description": "Spezialist für Qualitätssicherung von KI-Lösungen.",
+          "skills": {
+            "aiTesting": "KI-Tests",
+            "qualityAssurance": "Qualitätssicherung"
+          }
         }
       }
     }

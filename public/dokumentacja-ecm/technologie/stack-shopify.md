@@ -1181,9 +1181,9 @@ document.querySelectorAll('[data-product-recommendations]').forEach(element => {
 <meta http-equiv="Content-Security-Policy" content="
   default-src 'self' *.shopify.com *.shopifycdn.com;
   script-src 'self' 'unsafe-inline' 'unsafe-eval' *.shopify.com *.shopifycdn.com *.google-analytics.com *.googletagmanager.com;
-  style-src 'self' 'unsafe-inline' *.shopifycdn.com fonts.googleapis.com;
+  style-src 'self' 'unsafe-inline' *.shopifycdn.com;
   img-src 'self' data: *.shopifycdn.com *.google-analytics.com;
-  font-src 'self' *.shopifycdn.com fonts.gstatic.com;
+  font-src 'self' *.shopifycdn.com;
   connect-src 'self' *.shopify.com *.google-analytics.com;
 ">
 ```

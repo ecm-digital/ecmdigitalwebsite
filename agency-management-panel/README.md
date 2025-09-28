@@ -8,14 +8,17 @@ A comprehensive management system for software house/digital agency operations w
 - **Case Studies Management** - Complete CRUD system for portfolio case studies
 - **Markdown Export** - Generate and publish case studies to website
 - **Dashboard Overview** - Agency metrics and activity monitoring
-- **Project Management** - Basic project tracking
-- **Team Management** - Team member overview
-- **Client Management** - Client information system
+- **Project Management** - Advanced project tracking with status, progress, and team assignments
+- **Client Management** - Comprehensive client information system with contact details and project history
+- **Financial Management** - Revenue tracking, invoicing, and expense management
+- **Analytics Dashboard** - Business intelligence and performance metrics
+- **Reporting System** - Generate and manage various business reports
+- **Settings Panel** - Configure system preferences and integrations
 
 ### 🔄 In Development
-- **Financial Management** - Revenue tracking and invoicing
 - **Service Management** - Service catalog and pricing
 - **Advanced Analytics** - Detailed reporting and insights
+- **Mobile Application** - Native mobile app for iOS and Android
 
 ## 📁 Project Structure
 
@@ -145,6 +148,30 @@ AWS_REGION=eu-west-1
 ## 📝 License
 
 This project is proprietary software developed for ECM Digital.
+
+## 🚀 Deployment
+
+### Production Deployment
+The agency management panel is designed for deployment to Vercel:
+
+1. **Build the application**:
+   ```bash
+   cd frontend
+   npm run build
+   ```
+
+2. **Deploy to Vercel**:
+   ```bash
+   vercel --prod
+   ```
+
+### Integration with Main Website
+The panel integrates with the main ECM Digital website through:
+- Navigation dropdown menu under "Moje Konto"
+- Direct access at `/agency-management-panel` path
+- Automatic redirect from placeholder page
+
+See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed deployment instructions.
 
 ## 📞 Support
 

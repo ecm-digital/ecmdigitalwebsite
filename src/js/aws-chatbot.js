@@ -185,7 +185,8 @@ class AWSChatbot {
     
     initAWS() {
         if (typeof AWS === 'undefined') {
-            throw new Error('AWS SDK not loaded');
+            console.log('⚠️ AWS SDK not loaded - using fallback mode');
+            return;
         }
         
         // Get credentials from localStorage

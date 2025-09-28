@@ -26,7 +26,7 @@
       "aiAudits": "AI Implementation Audits",
       "socialMediaAI": "Social Media & AI",
       "digitalProducts": "🌐 Digital Products",
-      "websites": "Websites",
+      "websites": "Websites & Web Applications",
       "shopifyStores": "Shopify Stores",
       "mobileApps": "Mobile Applications",
       "automationMvp": "⚡ Automation & MVP",
@@ -41,8 +41,8 @@
   },
   "services": {
     "websites": {
-      "title": "Websites",
-      "description": "Professional websites tailored to business needs. Optimized for SEO, performance and conversion."
+      "title": "Websites & Web Applications",
+      "description": "Professional websites and web applications tailored to business needs. Optimized for SEO, performance and conversion."
     },
     "shopifyStores": {
       "title": "Shopify Stores",
@@ -122,110 +122,6 @@
         "clientsLabel": "Satisfied clients"
       }
     },
-    "sections": {
-      "about": {
-        "title": "About ECM Digital",
-        "subtitle": "Team of AI experts who transform business through intelligent solutions"
-      },
-      "team": {
-        "title": "Our Team",
-        "subtitle": "AI and technology experts who transform your ideas into innovative solutions"
-      }
-    },
-    "blog": {
-      "title": "Blog & Insights",
-      "subtitle": "Latest AI trends, case studies and practical tips for your business",
-      "aiTrends": {
-        "category": "🤖 AI Trends",
-        "title": "How AI is changing e-commerce in 2024?",
-        "description": "Discover the latest AI trends for e-commerce: personalization, chatbots, product recommendations and sales process automation.",
-        "readTime": "15 min read",
-        "views": "2.5k views",
-        "tags": {
-          "ecommerce": "E-commerce",
-          "ai": "AI",
-          "trends": "Trends"
-        }
-      },
-      "automation": {
-        "category": "⚡ Automation",
-        "title": "10 business processes to automate",
-        "description": "Practical guide to processes worth automating first. Save time and money with AI.",
-        "readTime": "12 min read",
-        "views": "1.8k views",
-        "tags": {
-          "automation": "Automation",
-          "process": "Process",
-          "roi": "ROI"
-        }
-      }
-    },
-    "company": {
-      "name": "Scrum Software Sp. z o.o.",
-      "description1": "ECM Digital operates within Scrum Software Sp. z o.o., which is the formal owner of all services we provide and the legally responsible entity.",
-      "description2": "It is Scrum Software Sp. z o.o. that issues invoices and enters into contracts with clients, guaranteeing full transparency and security of cooperation.",
-      "badge": "Registered Company<br>Sp. z o.o.",
-      "stats": {
-        "aiProjects": "50+",
-        "aiProjectsLabel": "AI Projects",
-        "clientSatisfaction": "95%",
-        "clientSatisfactionLabel": "Client Satisfaction",
-        "technicalSupport": "24/7",
-        "technicalSupportLabel": "Technical Support",
-        "yearFounded": "2019",
-        "yearFoundedLabel": "Year Founded"
-      }
-    },
-    "team": {
-      "title": "Our Team",
-      "subtitle": "AI and technology experts who transform your ideas into innovative solutions",
-      "members": {
-        "tomasz": {
-          "name": "Tomasz Gnat",
-          "position": "Discovery Consultant",
-          "description": "Expert in discovering business needs and AI strategy. Helps companies identify areas for automation.",
-          "skills": {
-            "businessAnalysis": "Business Analysis",
-            "aiStrategy": "AI Strategy"
-          }
-        },
-        "marta": {
-          "name": "Marta Górska",
-          "position": "UX/UI Designer",
-          "description": "Designer focused on user needs in the AI era. Creates interfaces that naturally connect humans with technology.",
-          "skills": {
-            "uxResearch": "UX Research",
-            "aiUxDesign": "AI/UX Design"
-          }
-        },
-        "karol": {
-          "name": "Karol Czechowski",
-          "position": "QA & AI Developer",
-          "description": "Specialist in AI solution quality assurance and automated testing. Guarantees system reliability.",
-          "skills": {
-            "aiTesting": "AI Testing",
-            "qualityAssurance": "Quality Assurance"
-          }
-        },
-        "roman": {
-          "name": "Roman Dominia",
-          "position": "AI Automation Specialist",
-          "description": "Expert in business process automation with AI and social media data analysis. Increases operational efficiency.",
-          "skills": {
-            "processAutomation": "Process Automation",
-            "aiAnalytics": "AI Analytics"
-          }
-        }
-      },
-      "values": {
-        "innovation": "Innovation",
-        "innovation.description": "We always seek the latest AI technologies that bring real business benefits",
-        "collaboration": "Collaboration",
-        "collaboration.description": "We work as one team with your company, sharing knowledge and experience",
-        "results": "Results",
-        "results.description": "Every solution is measured by concrete business indicators and ROI"
-      }
-    },
     "caseStudies": {
       "title": "Case Studies & Portfolio",
       "subtitle": "Real projects, concrete results - see how we transform businesses through AI"
@@ -258,14 +154,92 @@
           "title": "Optimization & Support",
           "description": "Continuous AI improvement and 24/7 technical support"
         }
+      }
+    },
+    "testimonials": {
+      "title": "Client Testimonials",
+      "subtitle": "What our clients say about working with us"
+    },
+    "partners": {
+      "title": "We Work with the Best",
+      "subtitle": "Platform power. Implementation precision."
+    },
+    "team": {
+      "title": "Our Team",
+      "subtitle": "AI and technology experts who transform your ideas into innovative solutions",
+      "members": {
+        "tomasz": {
+          "name": "Tomasz Gnat",
+          "position": "Discovery Consultant",
+          "description": "Expert in discovering business needs and AI strategy. Helps companies identify areas for automation.",
+          "skills": {
+            "businessAnalysis": "Business Analysis",
+            "aiStrategy": "AI Strategy"
+          }
+        },
+        "marta": {
+          "name": "Marta Górska",
+          "position": "Designer",
+          "description": "Designer focused on user needs in the AI era. Creates interfaces that naturally connect people with technology.",
+          "skills": {
+            "uxResearch": "UX Research",
+            "aiUxDesign": "AI/UX Design"
+          }
+        },
+        "karol": {
+          "name": "Karol Czechowski",
+          "position": "QA & AI Developer",
+          "description": "Specialist in ensuring quality of AI solutions and automated testing. Guarantees system reliability.",
+          "skills": {
+            "aiTesting": "AI Testing",
+            "qualityAssurance": "Quality Assurance"
+          }
+        },
+        "roman": {
+          "name": "Roman Domina",
+          "position": "Senior Developer",
+          "description": "Experienced programmer with extensive experience in creating advanced AI systems and integration with existing platforms.",
+          "skills": {
+            "backendDevelopment": "Backend Development",
+            "aiIntegration": "AI Integration"
+          }
+        }
       },
-      "benefits": {
-        "quickResults": "Quick Results",
-        "quickResults.description": "MVP in 4 weeks, full solution in 8-12 weeks",
-        "provenMethodology": "Proven Methodology",
-        "provenMethodology.description": "Process tested on 50+ AI projects",
-        "continuousSupport": "Continuous Support",
-        "continuousSupport.description": "24/7 monitoring and optimization after deployment"
+      "values": {
+        "innovation": "Innovation",
+        "innovation.description": "We always seek the latest AI technologies that bring real business benefits",
+        "collaboration": "Collaboration",
+        "collaboration.description": "We work as one team with your company, sharing knowledge and experience",
+        "results": "Results",
+        "results.description": "Every solution is measured by concrete business indicators and ROI"
+      }
+    },
+    "blog": {
+      "title": "Blog & Insights",
+      "subtitle": "Latest AI trends, case studies and practical tips for your business",
+      "aiTrends": {
+        "category": "🤖 AI Trends",
+        "title": "How AI is changing e-commerce in 2024?",
+        "description": "Discover the latest AI trends for e-commerce: personalization, chatbots, product recommendations and sales process automation.",
+        "readTime": "15 min read",
+        "views": "2.5k views",
+        "tags": {
+          "ecommerce": "E-commerce",
+          "ai": "AI",
+          "trends": "Trends"
+        }
+      },
+      "automation": {
+        "category": "⚡ Automation",
+        "title": "10 business processes to automate",
+        "description": "Practical guide to processes worth automating first. Save time and money with AI.",
+        "readTime": "12 min read",
+        "views": "1.8k views",
+        "tags": {
+          "automation": "Automation",
+          "process": "Process",
+          "roi": "ROI"
+        }
       }
     },
     "contact": {
@@ -319,6 +293,22 @@
       "form.budget.consultation": "Need consultation",
       "form.message": "Message *",
       "form.submit": "Send Message"
+    },
+    "company": {
+      "name": "Scrum Software Sp. z o.o.",
+      "description1": "ECM Digital operates within Scrum Software Sp. z o.o., which is the formal owner of all services we provide and the legally responsible entity.",
+      "description2": "It is Scrum Software Sp. z o.o. that issues invoices and enters into contracts with clients, guaranteeing full transparency and security of cooperation.",
+      "badge": "Registered Company<br>Sp. z o.o.",
+      "stats": {
+        "aiProjects": "50+",
+        "aiProjectsLabel": "AI Projects",
+        "clientSatisfaction": "95%",
+        "clientSatisfactionLabel": "Client Satisfaction",
+        "technicalSupport": "24/7",
+        "technicalSupportLabel": "Technical Support",
+        "yearFounded": "2019",
+        "yearFoundedLabel": "Year Founded"
+      }
     },
     "features": {
       "title": "Key Features",

@@ -186,6 +186,7 @@ aws dynamodb describe-table --table-name ECMServices --query 'Table.ItemCount'
 - API Gateway authentication
 - S3 bucket policies
 - CloudWatch monitoring
+- **Cost Explorer access** (requires activation)
 
 ### **Data Protection:**
 - Encrypted data transmission
@@ -269,6 +270,22 @@ aws dynamodb describe-table --table-name ECMServices --query 'Table.ItemCount'
 5. ✅ Documentation provided
 
 **🚀 Launch your AI-powered chatbot today!**
+
+---
+
+## 🔧 **Troubleshooting**
+
+### **Common Issues:**
+
+#### **Cost Explorer Access Denied**
+**Error**: `AccessDeniedException: IAM user access not activated`
+
+**Solution**:
+1. Activate Cost Explorer in AWS Console
+2. Apply Cost Explorer IAM policy
+3. Wait 24h for data availability
+
+📋 **Full guide**: `docs/AWS-COST-EXPLORER-SETUP.md`
 
 
 

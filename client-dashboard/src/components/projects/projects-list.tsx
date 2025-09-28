@@ -24,7 +24,10 @@ import {
   TrendingUp,
   Clock,
   CheckCircle,
-  AlertCircle
+  AlertCircle,
+  Calendar,
+  DollarSign,
+  CheckCircle2
 } from 'lucide-react'
 import { Project, ProjectStatus, ProjectType } from '@/types/database'
 
@@ -48,6 +51,12 @@ const typeOptions = [
   { value: 'social-media', label: 'Social Media' },
 ]
 
+const priorityOptions = [
+  { value: 'low', label: 'Niski', color: 'text-green-600 bg-green-50' },
+  { value: 'medium', label: 'Średni', color: 'text-yellow-600 bg-yellow-50' },
+  { value: 'high', label: 'Wysoki', color: 'text-red-600 bg-red-50' },
+]
+
 export function ProjectsList() {
   const { projects, loading, createProject } = useProjects()
   const router = useRouter()
@@ -62,6 +71,10 @@ export function ProjectsList() {
   const [formStatus, setFormStatus] = useState<ProjectStatus>('discovery')
   const [formBudget, setFormBudget] = useState<number | ''>('')
   const [formDeadline, setFormDeadline] = useState<string>('')
+  const [formPriority, setFormPriority] = useState<'low' | 'medium' | 'high'>('medium')
+  const [formStartDate, setFormStartDate] = useState<string>('')
+  const [formErrors, setFormErrors] = useState<Record<string, string>>({})
+  const [showSuccess, setShowSuccess] = useState(false)
 
   const filteredProjects = useMemo(() => {
     return projects.filter(project => {
@@ -79,20 +92,53 @@ export function ProjectsList() {
     router.push(`/dashboard/projects/${project.id}`)
   }
 
+  const validateForm = () => {
+    const errors: Record<string, string> = {}
+    
+    if (!formName.trim()) {
+      errors.name = 'Nazwa projektu jest wymagana'
+    } else if (formName.trim().length < 3) {
+      errors.name = 'Nazwa projektu musi mieć co najmniej 3 znaki'
+    }
+    
+    if (formBudget !== '' && formBudget < 0) {
+      errors.budget = 'Budżet nie może być ujemny'
+    }
+    
+    if (formDeadline && formStartDate && new Date(formDeadline) <= new Date(formStartDate)) {
+      errors.deadline = 'Termin zakończenia musi być późniejszy niż data rozpoczęcia'
+    }
+    
+    if (formStartDate && new Date(formStartDate) < new Date()) {
+      errors.startDate = 'Data rozpoczęcia nie może być w przeszłości'
+    }
+    
+    setFormErrors(errors)
+    return Object.keys(errors).length === 0
+  }
+
   const handleCreate = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (!formName.trim()) return
+    
+    if (!validateForm()) return
+    
     setCreating(true)
+    setFormErrors({})
+    
     try {
       await createProject({
         name: formName.trim(),
         description: formDescription || undefined,
         status: formStatus,
+        priority: formPriority,
         // The hook accepts additional fields via any-casting
         ...(formType ? { type: formType } : {}),
         ...(formBudget !== '' ? { budget_total: Number(formBudget) } : {}),
         ...(formDeadline ? { deadline: formDeadline } : {}),
+        ...(formStartDate ? { start_date: formStartDate } : {}),
       } as any)
+      
+      // Reset form
       setShowCreate(false)
       setFormName('')
       setFormDescription('')
@@ -100,8 +146,17 @@ export function ProjectsList() {
       setFormStatus('discovery')
       setFormBudget('')
       setFormDeadline('')
+      setFormPriority('medium')
+      setFormStartDate('')
+      setFormErrors({})
+      
+      // Show success message
+      setShowSuccess(true)
+      setTimeout(() => setShowSuccess(false), 3000)
+      
     } catch (err) {
       console.error('Create project failed:', err)
+      setFormErrors({ general: 'Wystąpił błąd podczas tworzenia projektu. Spróbuj ponownie.' })
     } finally {
       setCreating(false)
     }
@@ -141,43 +196,65 @@ export function ProjectsList() {
             </Button>
           </div>
         ) : (
-          <form onSubmit={handleCreate} className="grid grid-cols-1 md:grid-cols-6 gap-3">
-            <div className="md:col-span-2">
-              <Input
-                placeholder="Nazwa projektu *"
-                value={formName}
-                onChange={(e) => setFormName(e.target.value)}
-                required
-                className="input-modern"
-              />
-            </div>
-            <div className="md:col-span-2">
-              <Input
-                placeholder="Budżet (opcjonalnie)"
-                type="number"
-                min={0}
-                value={formBudget}
-                onChange={(e) => setFormBudget(e.target.value === '' ? '' : Number(e.target.value))}
-                className="input-modern"
-              />
-            </div>
-            <div className="md:col-span-2">
-              <Input
-                type="date"
-                placeholder="Termin (opcjonalnie)"
-                value={formDeadline}
-                onChange={(e) => setFormDeadline(e.target.value)}
-                className="input-modern"
-              />
+          <form onSubmit={handleCreate} className="space-y-6">
+            {/* Success Message */}
+            {showSuccess && (
+              <div className="bg-green-50 border border-green-200 rounded-xl p-4 flex items-center gap-3">
+                <CheckCircle className="h-5 w-5 text-green-600" />
+                <span className="text-green-800 font-medium">Projekt został pomyślnie utworzony!</span>
+              </div>
+            )}
+
+            {/* General Error */}
+            {formErrors.general && (
+              <div className="bg-red-50 border border-red-200 rounded-xl p-4 flex items-center gap-3">
+                <AlertCircle className="h-5 w-5 text-red-600" />
+                <span className="text-red-800">{formErrors.general}</span>
+              </div>
+            )}
+
+            {/* Basic Info */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Nazwa projektu *
+                </label>
+                <Input
+                  placeholder="np. Strona WWW dla firmy ABC"
+                  value={formName}
+                  onChange={(e) => setFormName(e.target.value)}
+                  className={`input-modern ${formErrors.name ? 'border-red-300 focus:border-red-500' : ''}`}
+                />
+                {formErrors.name && (
+                  <p className="text-red-600 text-sm mt-1">{formErrors.name}</p>
+                )}
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Typ projektu
+                </label>
+                <Select value={formType} onValueChange={setFormType}>
+                  <SelectTrigger className="input-modern">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {typeOptions.filter(t => t.value !== 'all').map(t => (
+                      <SelectItem key={t.value} value={t.value}>{t.label}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
             </div>
 
-            <div className="md:col-span-2">
+            {/* Status and Priority */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="block text-sm font-medium text-gray-700 mb-2">
                   Status
                 </label>
                 <Select value={formStatus} onValueChange={(value) => setFormStatus(value as ProjectStatus)}>
-                  <SelectTrigger>
+                  <SelectTrigger className="input-modern">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -189,34 +266,126 @@ export function ProjectsList() {
                   </SelectContent>
                 </Select>
               </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Priorytet
+                </label>
+                <Select value={formPriority} onValueChange={(value) => setFormPriority(value as 'low' | 'medium' | 'high')}>
+                  <SelectTrigger className="input-modern">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {priorityOptions.map((option) => (
+                      <SelectItem key={option.value} value={option.value}>
+                        <div className="flex items-center gap-2">
+                          <div className={`w-2 h-2 rounded-full ${option.color.split(' ')[1]}`}></div>
+                          {option.label}
+                        </div>
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
             </div>
-            <div className="md:col-span-2">
-              <Select value={formType} onValueChange={setFormType}>
-                <SelectTrigger className="w-full">
-                  <SelectValue placeholder="Typ" />
-                </SelectTrigger>
-                <SelectContent>
-                  {typeOptions.filter(t => t.value !== 'all').map(t => (
-                    <SelectItem key={t.value} value={t.value}>{t.label}</SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+
+            {/* Dates and Budget */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Data rozpoczęcia
+                </label>
+                <Input
+                  type="date"
+                  value={formStartDate}
+                  onChange={(e) => setFormStartDate(e.target.value)}
+                  className={`input-modern ${formErrors.startDate ? 'border-red-300 focus:border-red-500' : ''}`}
+                />
+                {formErrors.startDate && (
+                  <p className="text-red-600 text-sm mt-1">{formErrors.startDate}</p>
+                )}
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Termin zakończenia
+                </label>
+                <Input
+                  type="date"
+                  value={formDeadline}
+                  onChange={(e) => setFormDeadline(e.target.value)}
+                  className={`input-modern ${formErrors.deadline ? 'border-red-300 focus:border-red-500' : ''}`}
+                />
+                {formErrors.deadline && (
+                  <p className="text-red-600 text-sm mt-1">{formErrors.deadline}</p>
+                )}
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Budżet (PLN)
+                </label>
+                <Input
+                  placeholder="np. 15000"
+                  type="number"
+                  min={0}
+                  value={formBudget}
+                  onChange={(e) => setFormBudget(e.target.value === '' ? '' : Number(e.target.value))}
+                  className={`input-modern ${formErrors.budget ? 'border-red-300 focus:border-red-500' : ''}`}
+                />
+                {formErrors.budget && (
+                  <p className="text-red-600 text-sm mt-1">{formErrors.budget}</p>
+                )}
+              </div>
             </div>
-            <div className="md:col-span-6">
+
+            {/* Description */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Opis projektu
+              </label>
               <Textarea
-                placeholder="Opis (opcjonalnie)"
+                placeholder="Opisz szczegóły projektu, wymagania, cele..."
                 value={formDescription}
                 onChange={(e) => setFormDescription(e.target.value)}
-                className="input-modern"
+                className="input-modern min-h-[100px]"
+                rows={4}
               />
             </div>
 
-            <div className="md:col-span-6 flex items-center justify-end gap-3">
-              <Button type="button" variant="ghost" onClick={() => { setShowCreate(false); }}>
+            {/* Actions */}
+            <div className="flex items-center justify-end gap-3 pt-4 border-t border-gray-200">
+              <Button 
+                type="button" 
+                variant="ghost" 
+                onClick={() => { 
+                  setShowCreate(false); 
+                  setFormErrors({});
+                  setFormName('');
+                  setFormDescription('');
+                  setFormType('website');
+                  setFormStatus('discovery');
+                  setFormBudget('');
+                  setFormDeadline('');
+                  setFormPriority('medium');
+                  setFormStartDate('');
+                }}
+                disabled={creating}
+              >
                 Anuluj
               </Button>
               <Button type="submit" className="btn-primary-modern" disabled={creating}>
-                {creating ? 'Tworzenie...' : 'Utwórz projekt'}
+                {creating ? (
+                  <div className="flex items-center gap-2">
+                    <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                    Tworzenie...
+                  </div>
+                ) : (
+                  <>
+                    <Plus className="h-4 w-4 mr-2" />
+                    Utwórz projekt
+                  </>
+                )}
               </Button>
             </div>
           </form>

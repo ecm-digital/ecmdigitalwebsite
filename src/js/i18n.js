@@ -18,6 +18,9 @@ class I18nManager {
             // Ustawienie domyślnego języka
             this.setLanguage(this.getStoredLanguage() || 'pl');
             
+            // Aktualizacja zawartości strony po inicjalizacji
+            this.updatePageContent();
+            
             console.log('✅ I18n system initialized successfully with fallback translations');
             console.log('📊 Available translations:', Object.keys(this.translations));
         } catch (error) {
@@ -35,11 +38,21 @@ class I18nManager {
             const basePath = this.getBasePath();
             console.log('🔍 Base path determined:', basePath);
             console.log('🔍 Current pathname:', window.location.pathname);
+            console.log('🔍 Current hostname:', window.location.hostname);
+
+            // Spróbuj najpierw załadować z plików - zawsze używaj ścieżki bezwzględnej
+            const translationPaths = [
+                '/locales/pl.json',
+                '/locales/en.json',
+                '/locales/de.json'
+            ];
+
+            console.log('📁 Attempting to load translations from:', translationPaths);
             
             const [plTranslations, enTranslations, deTranslations] = await Promise.all([
-                fetch(`${basePath}src/locales/pl.json`).then(res => res.json()),
-                fetch(`${basePath}src/locales/en.json`).then(res => res.json()),
-                fetch(`${basePath}src/locales/de.json`).then(res => res.json())
+                fetch(translationPaths[0]).then(res => res.json()).catch(() => this.getEmbeddedTranslations('pl')),
+                fetch(translationPaths[1]).then(res => res.json()).catch(() => this.getEmbeddedTranslations('en')),
+                fetch(translationPaths[2]).then(res => res.json()).catch(() => this.getEmbeddedTranslations('de'))
             ]);
 
             this.translations = {
@@ -57,9 +70,203 @@ class I18nManager {
         }
     }
 
+    // Wbudowane tłumaczenia dla krytycznych sekcji (fallback gdy pliki nie są dostępne)
+    getEmbeddedTranslations(lang) {
+        const embeddedTranslations = {
+            pl: {
+                "sections.about.title": "O ECM Digital",
+                "sections.about.subtitle": "Zespół ekspertów AI, którzy transformują biznes poprzez inteligentne rozwiązania",
+                "sections.services.title": "Nasze Usługi",
+                "sections.services.subtitle": "Kompleksowe rozwiązania AI i automatyzacji, które transformują Twój biznes i zwiększają efektywność",
+                "sections.team.title": "Nasz Zespół",
+                "sections.team.subtitle": "Poznaj ekspertów, którzy tworzą Twoje projekty",
+                "hero.title": "Wdrażamy AI w Twojej Firmie",
+                "hero.subtitle": "Transformujemy Twoją firmę dzięki sztucznej inteligencji. Od chatbotów po zaawansowane automatyzacje - AI, które naprawdę działa i generuje realne korzyści biznesowe.",
+                "hero.stats.aiProjects": "50+",
+                "hero.stats.aiProjectsLabel": "Projektów AI",
+                "hero.stats.costReduction": "70%",
+                "hero.stats.costReductionLabel": "Redukcja Kosztów",
+                "hero.stats.support": "24/7",
+                "hero.stats.supportLabel": "AI Wsparcie",
+                "hero.stats.satisfaction": "95%",
+                "hero.stats.satisfactionLabel": "Satysfakcja",
+                "sections.team.members.tomasz.name": "Tomasz Gnat",
+                "sections.team.members.tomasz.position": "Konsultant Discovery",
+                "sections.team.members.tomasz.description": "Ekspert w odkrywaniu potrzeb biznesowych i strategii AI. Pomaga firmom identyfikować obszary do automatyzacji.",
+                "sections.team.members.tomasz.skills.businessAnalysis": "Business Analysis",
+                "sections.team.members.tomasz.skills.aiStrategy": "AI Strategy",
+                "sections.team.members.karol.name": "Karol Czechowski",
+                "sections.team.members.karol.position": "QA & AI Developer",
+                "sections.team.members.karol.description": "Specjalista od zapewnienia jakości rozwiązań AI i automatycznego testowania. Gwarantuje niezawodność systemów.",
+                "sections.team.members.karol.skills.aiTesting": "Testowanie AI",
+                "sections.team.members.karol.skills.qualityAssurance": "Zapewnienie Jakości",
+                "sections.team.members.marta.name": "Marta Górska",
+                "sections.team.members.marta.position": "Projektant UX/UI"
+                "sections.team.members.marta.description": "Projektantka skupiająca się na potrzebach użytkowników w erze AI. Tworzy interfejsy, które naturalnie łączą ludzi z technologią.",
+                "sections.team.members.marta.skills.uxResearch": "Badania UX",
+                "sections.team.members.marta.skills.aiUxDesign": "Projektowanie AI/UX",
+                "sections.team.members.roman.name": "Roman Dominia",
+                "sections.team.members.roman.position": "Specjalista Automatyzacji AI",
+                "sections.team.members.roman.description": "Ekspert od automatyzacji procesów biznesowych z AI i analizy danych social media. Zwiększa efektywność operacyjną.",
+                "sections.team.members.roman.skills.processAutomation": "Automatyzacja Procesów",
+                "sections.team.members.roman.skills.aiAnalytics": "Analityka AI"
+            },
+            "services.shopifyStores.heroTitle": "Sklepy <span style=\"color: #96BF47;\">Shopify & Wix</span> Które <span style=\"color: #30D158;\">Sprzedają</span>",
+            "services.shopifyStores.heroDescription": "Tworzymy profesjonalne sklepy e-commerce na platformach Shopify i Wix, które konwertują odwiedzających w klientów. Custom design, zaawansowane integracje i automatyzacja sprzedaży.",
+            "services.shopifyStores.stats.salesGrowth": "Wzrost Sprzedaży",
+            "services.shopifyStores.stats.loadTime": "Czas Ładowania",
+            "services.shopifyStores.stats.startPrice": "PLN Start",
+            "services.shopifyStores.features.title": "Co Otrzymasz",
+            "services.shopifyStores.features.subtitle": "Kompleksowe rozwiązanie e-commerce na platformach Shopify i Wix",
+            "services.shopifyStores.features.customDesign.title": "Custom Design",
+            "services.shopifyStores.features.customDesign.description": "Unikalny design dopasowany do Twojej marki i grupy docelowej",
+            "services.shopifyStores.features.mobileFirst.title": "Mobile-First",
+            "services.shopifyStores.features.mobileFirst.description": "Zoptymalizowany pod kątem urządzeń mobilnych, gdzie odbywa się 70% zakupów",
+            "services.shopifyStores.features.payments.title": "Płatności & Dostawa",
+            "services.shopifyStores.features.payments.description": "Integracje z popularnymi bramkami płatności i firmami kurierskimi",
+            "sections.about.mission": "Misja",
+            "sections.about.mission.description": "Demokratyzujemy dostęp do AI, pomagając firmom każdej wielkości wykorzystać potencjał sztucznej inteligencji dla wzrostu biznesowego.",
+            "sections.about.vision": "Wizja",
+            "sections.about.vision.description": "Być liderem cyfrowej transformacji w Polsce, tworząc rozwiązania AI, które rzeczywiście zwiększają efektywność i przychody.",
+            "sections.about.values": "Wartości",
+            "sections.about.values.description": "Innowacyjność, transparentność i rezultaty. Realizujemy każdy projekt z pasją, dostarczając mierzalne korzyści biznesowe.",
+            en: {
+                "sections.about.title": "About ECM Digital",
+                "sections.about.subtitle": "Team of AI experts who transform business through intelligent solutions",
+                "sections.services.title": "Our Services",
+                "sections.services.subtitle": "Comprehensive AI and automation solutions that transform your business and increase efficiency",
+                "sections.team.title": "Our Team",
+                "sections.team.subtitle": "Meet the experts who create your projects",
+                "hero.title": "We implement AI in your company",
+                "hero.subtitle": "We transform your company through artificial intelligence. From chatbots to advanced automation - AI that really works and generates real business benefits.",
+                "hero.stats.aiProjects": "50+",
+                "hero.stats.aiProjectsLabel": "AI Projects",
+                "hero.stats.costReduction": "70%",
+                "hero.stats.costReductionLabel": "Cost Reduction",
+                "hero.stats.support": "24/7",
+                "hero.stats.supportLabel": "AI Support",
+                "hero.stats.satisfaction": "95%",
+                "hero.stats.satisfactionLabel": "Satisfaction",
+                "sections.team.members.tomasz.name": "Tomasz Gnat",
+                "sections.team.members.tomasz.position": "Discovery Consultant",
+                "sections.team.members.tomasz.description": "Expert in discovering business needs and AI strategy. Helps companies identify areas for automation.",
+                "sections.team.members.tomasz.skills.businessAnalysis": "Business Analysis",
+                "sections.team.members.tomasz.skills.aiStrategy": "AI Strategy",
+                "sections.team.members.marta.name": "Marta Górska",
+                "sections.team.members.marta.position": "UX/UI Designer"
+                "sections.team.members.marta.description": "Designer focused on user needs in the AI era. Creates interfaces that naturally connect humans with technology.",
+                "sections.team.members.marta.skills.uxResearch": "UX Research",
+                "sections.team.members.marta.skills.aiUxDesign": "AI/UX Design",
+                "sections.team.members.karol.name": "Karol Czechowski",
+                "sections.team.members.karol.position": "QA & AI Developer",
+                "sections.team.members.karol.description": "Specialist in AI solution quality assurance and automated testing. Guarantees system reliability.",
+                "sections.team.members.karol.skills.aiTesting": "AI Testing",
+                "sections.team.members.karol.skills.qualityAssurance": "Quality Assurance",
+                "sections.team.members.roman.name": "Roman Dominia",
+                "sections.team.members.roman.position": "AI Automation Specialist",
+                "sections.team.members.roman.description": "Expert in business process automation with AI and social media data analysis. Increases operational efficiency.",
+                "sections.team.members.roman.skills.processAutomation": "Process Automation",
+                "sections.team.members.roman.skills.aiAnalytics": "AI Analytics"
+            },
+            "services.shopifyStores.heroTitle": "Shopify & Wix Stores That <span style=\"color: #96BF47;\">Sell</span>",
+            "services.shopifyStores.heroDescription": "We create professional e-commerce stores on Shopify and Wix platforms that convert visitors into customers. Custom design, advanced integrations and sales automation.",
+            "services.shopifyStores.stats.salesGrowth": "Sales Growth",
+            "services.shopifyStores.stats.loadTime": "Load Time",
+            "services.shopifyStores.stats.startPrice": "Starting Price",
+            "services.shopifyStores.features.title": "What You Get",
+            "services.shopifyStores.features.subtitle": "Comprehensive e-commerce solution on Shopify and Wix platforms",
+            "services.shopifyStores.features.customDesign.title": "Custom Design",
+            "services.shopifyStores.features.customDesign.description": "Unique design tailored to your brand and target audience",
+            "services.shopifyStores.features.mobileFirst.title": "Mobile-First",
+            "services.shopifyStores.features.mobileFirst.description": "Optimized for mobile devices where 70% of purchases take place",
+            "services.shopifyStores.features.payments.title": "Payments & Shipping",
+            "services.shopifyStores.features.payments.description": "Integrations with popular payment gateways and courier companies",
+            "sections.about.mission": "Mission",
+            "sections.about.mission.description": "We democratize access to AI, helping companies of all sizes leverage the potential of artificial intelligence for business growth.",
+            "sections.about.vision": "Vision",
+            "sections.about.vision.description": "To be a leader in digital transformation in Poland, creating AI solutions that really increase efficiency and revenue.",
+            "sections.about.values": "Values",
+            "sections.about.values.description": "Innovation, transparency and results. We implement every project with passion, delivering measurable business benefits.",
+            de: {
+                "sections.about.title": "Über ECM Digital",
+                "sections.about.subtitle": "KI-Experten, die Geschäft durch intelligente Lösungen transformieren",
+                "sections.services.title": "Unsere Dienstleistungen",
+                "sections.services.subtitle": "Komplexe KI-Lösungen und Automatisierung, die Ihr Unternehmen transformieren und die Effizienz steigern",
+                "sections.team.title": "Unser Team",
+                "sections.team.subtitle": "Lernen Sie die Experten kennen, die Ihre Projekte erstellen",
+                "hero.title": "Wir implementieren KI in Ihrem Unternehmen",
+                "hero.subtitle": "Wir transformieren Ihr Unternehmen durch künstliche Intelligenz. Von Chatbots bis hin zu fortschrittlicher Automatisierung.",
+                "hero.stats.aiProjects": "50+",
+                "hero.stats.aiProjectsLabel": "KI-Projekte",
+                "hero.stats.costReduction": "70%",
+                "hero.stats.costReductionLabel": "Kostensenkung",
+                "hero.stats.support": "24/7",
+                "hero.stats.supportLabel": "KI-Unterstützung",
+                "hero.stats.satisfaction": "95%",
+                "hero.stats.satisfactionLabel": "Zufriedenheit",
+                "sections.team.members.tomasz.name": "Tomasz Gnat",
+                "sections.team.members.tomasz.position": "Discovery-Berater",
+                "sections.team.members.tomasz.description": "Experte für die Entdeckung von Geschäftsanforderungen und KI-Strategien. Hilft Unternehmen, Bereiche für die Automatisierung zu identifizieren.",
+                "sections.team.members.tomasz.skills.businessAnalysis": "Business Analysis",
+                "sections.team.members.tomasz.skills.aiStrategy": "KI-Strategie",
+                "sections.team.members.marta.name": "Marta Górska",
+                "sections.team.members.marta.position": "UX/UI Designerin"
+                "sections.team.members.marta.description": "Designerin mit Fokus auf Benutzerbedürfnisse im KI-Zeitalter. Erstellt Schnittstellen, die Menschen und Technologie natürlich verbinden.",
+                "sections.team.members.marta.skills.uxResearch": "UX Research",
+                "sections.team.members.marta.skills.aiUxDesign": "KI/UX Design",
+                "sections.team.members.karol.name": "Karol Czechowski",
+                "sections.team.members.karol.position": "QA & KI-Entwickler",
+                "sections.team.members.karol.description": "Spezialist für Qualitätssicherung von KI-Lösungen und automatisiertes Testen. Garantiert Systemzuverlässigkeit.",
+                "sections.team.members.karol.skills.aiTesting": "KI-Tests",
+                "sections.team.members.karol.skills.qualityAssurance": "Qualitätssicherung",
+                "sections.team.members.roman.name": "Roman Dominia",
+                "sections.team.members.roman.position": "KI-Automatisierungs-Spezialist",
+                "sections.team.members.roman.description": "Experte für Geschäftsprozessautomatisierung mit KI und Social-Media-Datenanalyse. Steigert die Betriebseffizienz.",
+                "sections.team.members.roman.skills.processAutomation": "Prozessautomatisierung",
+                "sections.team.members.roman.skills.aiAnalytics": "KI-Analytik"
+            },
+            "services.shopifyStores.heroTitle": "Shopify & Wix Shops die <span style=\"color: #96BF47;\">verkaufen</span>",
+            "services.shopifyStores.heroDescription": "Wir erstellen professionelle E-Commerce-Shops auf Shopify- und Wix-Plattformen, die Besucher in Kunden umwandeln. Custom Design, fortschrittliche Integrationen und Verkaufsautomatisierung.",
+            "services.shopifyStores.stats.salesGrowth": "Umsatzwachstum",
+            "services.shopifyStores.stats.loadTime": "Ladezeit",
+            "services.shopifyStores.stats.startPrice": "Startpreis",
+            "services.shopifyStores.features.title": "Was Sie erhalten",
+            "services.shopifyStores.features.subtitle": "Umfassende E-Commerce-Lösung auf Shopify- und Wix-Plattformen",
+            "services.shopifyStores.features.customDesign.title": "Custom Design",
+            "services.shopifyStores.features.customDesign.description": "Einzigartiges Design, das auf Ihre Marke und Zielgruppe zugeschnitten ist",
+            "services.shopifyStores.features.mobileFirst.title": "Mobile-First",
+            "services.shopifyStores.features.mobileFirst.description": "Optimiert für mobile Geräte, wo 70% der Käufe stattfinden",
+            "services.shopifyStores.features.payments.title": "Zahlungen & Versand",
+            "services.shopifyStores.features.payments.description": "Integrationen mit beliebten Zahlungsgateways und Kurierunternehmen",
+            "sections.about.mission": "Mission",
+            "sections.about.mission.description": "Wir demokratisieren den Zugang zu KI und helfen Unternehmen jeder Größe, das Potenzial künstlicher Intelligenz für Geschäftswachstum zu nutzen.",
+            "sections.about.vision": "Vision",
+            "sections.about.vision.description": "Führend in der digitalen Transformation in Polen zu sein und KI-Lösungen zu schaffen, die Effizienz und Umsatz wirklich steigern.",
+            "sections.about.values": "Werte",
+            "sections.about.values.description": "Innovation, Transparenz und Ergebnisse. Wir setzen jedes Projekt mit Leidenschaft um und liefern messbare Geschäftsvorteile."
+        };
+
+        return embeddedTranslations[lang] || {};
+    }
+
     // Określ bazową ścieżkę na podstawie aktualnej lokalizacji
     getBasePath() {
         const path = window.location.pathname;
+        const hostname = window.location.hostname;
+
+        // Na produkcji Vercela ścieżki mogą być inne
+        if (hostname.includes('vercel.app')) {
+            // Na Vercelu zawsze używaj ścieżki względnej od root
+            if (path.includes('/dokumentacja-ecm/oferta-uslug/')) {
+                return '/';
+            } else if (path.includes('/dokumentacja-ecm/')) {
+                return '/';
+            } else {
+                return '/';
+            }
+        }
+
+        // Na localhost zachowaj istniejącą logikę
         if (path.includes('/dokumentacja-ecm/oferta-uslug/')) {
             return '../../../';
         } else if (path.includes('/dokumentacja-ecm/')) {
@@ -133,7 +340,46 @@ class I18nManager {
                     },
                     shopifyStores: {
                         title: "Sklepy Shopify",
-                        description: "Profesjonalne sklepy internetowe na platformie Shopify, które skutecznie sprzedają i skalują się wraz z Twoim biznesem."
+                        description: "Profesjonalne sklepy internetowe na platformie Shopify, które skutecznie sprzedają i skalują się wraz z Twoim biznesem.",
+                        heroTitle: "Sklepy <span style=\"color: #96BF47;\">Shopify & Wix</span> Które <span style=\"color: #30D158;\">Sprzedają</span>",
+                        heroDescription: "Tworzymy profesjonalne sklepy e-commerce na platformach Shopify i Wix, które konwertują odwiedzających w klientów. Custom design, zaawansowane integracje i automatyzacja sprzedaży.",
+                        stats: {
+                            salesGrowth: "Wzrost Sprzedaży",
+                            loadTime: "Czas Ładowania",
+                            startPrice: "PLN Start"
+                        },
+                        features: {
+                            title: "Co Otrzymasz",
+                            subtitle: "Kompleksowe rozwiązanie e-commerce na platformach Shopify i Wix",
+                            customDesign: {
+                                title: "Custom Design",
+                                description: "Unikalny design dopasowany do Twojej marki i grupy docelowej"
+                            },
+                            mobileFirst: {
+                                title: "Mobile-First",
+                                description: "Zoptymalizowany pod kątem urządzeń mobilnych, gdzie odbywa się 70% zakupów"
+                            },
+                            payments: {
+                                title: "Płatności & Dostawa",
+                                description: "Integracje z popularnymi bramkami płatności i firmami kurierskimi"
+                            },
+                            analytics: {
+                                title: "Analytics & Tracking",
+                                description: "Google Analytics, Facebook Pixel, konwersje i pełny tracking sprzedaży"
+                            },
+                            automation: {
+                                title: "Automatyzacja",
+                                description: "Email marketing, odzyskiwanie koszyków, zarządzanie stanami magazynowymi"
+                            },
+                            seo: {
+                                title: "SEO & Marketing",
+                                description: "Optymalizacja pod wyszukiwarki i integracje marketingowe"
+                            }
+                        },
+                        process: {
+                            title: "Jak Tworzymy Sklepy Shopify & Wix",
+                            subtitle: "Kompleksowy proces od analizy po launch i skalowanie"
+                        }
                     },
                     mvpPrototypes: {
                         title: "Prototypy MVP",
@@ -207,7 +453,36 @@ class I18nManager {
                         title: "Blog & Insights",
                         subtitle: "Najnowsze trendy AI, case studies i praktyczne wskazówki dla Twojego biznesu"
                     },
-                    team: { title: "Nasz Zespół", subtitle: "Poznaj ekspertów, którzy tworzą Twoje projekty" },
+                    team: { 
+                        title: "Nasz Zespół", 
+                        subtitle: "Poznaj ekspertów, którzy tworzą Twoje projekty",
+                        members: {
+                            tomasz: {
+                                name: "Tomasz Gnat",
+                                position: "Konsultant Discovery",
+                                description: "Ekspert w odkrywaniu potrzeb biznesowych i strategii AI. Pomaga firmom identyfikować obszary do automatyzacji.",
+                                skills: { businessAnalysis: "Business Analysis", aiStrategy: "AI Strategy" }
+                            },
+                            marta: {
+                                name: "Marta Górska",
+                                position: "Projektant UX/UI",
+                                description: "Projektantka skupiona na potrzebach użytkowników w erze AI. Tworzy interfejsy, które naturalnie łączą ludzi z technologią.",
+                                skills: { uxResearch: "UX Research", aiUxDesign: "AI/UX Design" }
+                            },
+                            karol: {
+                                name: "Karol Czechowski",
+                                position: "QA & Deweloper AI",
+                                description: "Specjalista w zapewnianiu jakości rozwiązań AI i testowaniu automatycznym. Gwarantuje niezawodność systemów.",
+                                skills: { aiTesting: "AI Testing", qualityAssurance: "Quality Assurance" }
+                            },
+                            roman: {
+                                name: "Roman Dominia",
+                                position: "Specjalista Automatyzacji AI",
+                                description: "Ekspert w automatyzacji procesów biznesowych z AI i analizie danych social media. Zwiększa efektywność operacyjną.",
+                                skills: { processAutomation: "Process Automation", aiAnalytics: "AI Analytics" }
+                            }
+                        }
+                    },
                     process: { 
                         title: "Nasz Proces Pracy",
                         steps: {
@@ -304,7 +579,46 @@ class I18nManager {
                     },
                     shopifyStores: {
                         title: "Shopify Stores",
-                        description: "Professional online stores on the Shopify platform that effectively sell and scale with your business."
+                        description: "Professional online stores on the Shopify platform that effectively sell and scale with your business.",
+                        heroTitle: "Shopify & Wix Stores That Convert",
+                        heroDescription: "We build professional e‑commerce stores on Shopify and Wix that turn visitors into customers. Custom design, advanced integrations and sales automation.",
+                        stats: {
+                            salesGrowth: "Sales Growth",
+                            loadTime: "Load Time",
+                            startPrice: "PLN Start"
+                        },
+                        features: {
+                            title: "What You Get",
+                            subtitle: "A complete e‑commerce solution on Shopify and Wix",
+                            customDesign: {
+                                title: "Custom Design",
+                                description: "Unique design tailored to your brand and audience"
+                            },
+                            mobileFirst: {
+                                title: "Mobile‑First",
+                                description: "Optimized for mobile devices where 70% of purchases happen"
+                            },
+                            payments: {
+                                title: "Payments & Shipping",
+                                description: "Integrations with popular payment gateways and couriers"
+                            },
+                            analytics: {
+                                title: "Analytics & Tracking",
+                                description: "Google Analytics, Facebook Pixel, conversions and full sales tracking"
+                            },
+                            automation: {
+                                title: "Automation",
+                                description: "Email marketing, abandoned cart recovery, inventory management"
+                            },
+                            seo: {
+                                title: "SEO & Marketing",
+                                description: "Search engine optimization and marketing integrations"
+                            }
+                        },
+                        process: {
+                            title: "How We Build Shopify & Wix Stores",
+                            subtitle: "End‑to‑end process from analysis to launch and growth"
+                        }
                     },
                     mvpPrototypes: {
                         title: "MVP Prototypes",
@@ -475,7 +789,46 @@ class I18nManager {
                     },
                     shopifyStores: {
                         title: "Shopify Stores",
-                        description: "Professionelle Online-Shops auf der Shopify-Plattform, die effektiv verkaufen und mit Ihrem Unternehmen wachsen."
+                        description: "Professionelle Online‑Shops auf der Shopify‑Plattform, die effektiv verkaufen und mit Ihrem Unternehmen wachsen.",
+                        heroTitle: "Shopify & Wix Shops, die konvertieren",
+                        heroDescription: "Wir erstellen professionelle E‑Commerce‑Shops auf Shopify und Wix, die Besucher in Kunden verwandeln. Custom Design, erweiterte Integrationen und Verkaufsautomatisierung.",
+                        stats: {
+                            salesGrowth: "Umsatzwachstum",
+                            loadTime: "Ladezeit",
+                            startPrice: "PLN Start"
+                        },
+                        features: {
+                            title: "Was Sie erhalten",
+                            subtitle: "Komplette E‑Commerce‑Lösung auf Shopify und Wix",
+                            customDesign: {
+                                title: "Custom Design",
+                                description: "Einzigartiges Design, abgestimmt auf Marke und Zielgruppe"
+                            },
+                            mobileFirst: {
+                                title: "Mobile‑First",
+                                description: "Optimiert für Mobilgeräte, wo 70% der Käufe stattfinden"
+                            },
+                            payments: {
+                                title: "Zahlungen & Versand",
+                                description: "Integrationen mit beliebten Zahlungsanbietern und Kurieren"
+                            },
+                            analytics: {
+                                title: "Analytics & Tracking",
+                                description: "Google Analytics, Facebook Pixel, Konversionen und vollständiges Sales‑Tracking"
+                            },
+                            automation: {
+                                title: "Automatisierung",
+                                description: "E‑Mail‑Marketing, Warenkorbabbruch‑Recovery, Lagerverwaltung"
+                            },
+                            seo: {
+                                title: "SEO & Marketing",
+                                description: "Suchmaschinenoptimierung und Marketing‑Integrationen"
+                            }
+                        },
+                        process: {
+                            title: "So bauen wir Shopify & Wix Shops",
+                            subtitle: "Kompletter Prozess von Analyse bis Launch und Skalierung"
+                        }
                     },
                     mvpPrototypes: {
                         title: "MVP-Prototypen",
@@ -680,6 +1033,8 @@ class I18nManager {
     updatePageContent() {
         const elements = document.querySelectorAll('[data-i18n]');
         console.log(`🔄 Updating ${elements.length} elements with translations`);
+        console.log(`🌐 Current language: ${this.currentLanguage}`);
+        console.log(`📊 Available translations:`, Object.keys(this.translations));
         
         elements.forEach(element => {
             const key = element.getAttribute('data-i18n');
@@ -689,13 +1044,25 @@ class I18nManager {
                 if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
                     element.placeholder = translation;
                 } else {
+                    // If translation contains HTML (e.g., spans for colored text), set innerHTML
+                    if (typeof translation === 'string' && translation.includes('<')) {
+                        element.innerHTML = translation;
+                } else {
                     element.textContent = translation;
+                    }
                 }
                 console.log(`✅ Updated ${key}: ${translation}`);
             } else {
                 console.warn(`⚠️ No translation found for key: ${key}`);
             }
         });
+        
+        // Force re-render on mobile
+        if (window.innerWidth <= 768) {
+            document.body.style.display = 'none';
+            document.body.offsetHeight; // Trigger reflow
+            document.body.style.display = '';
+        }
     }
 }
 

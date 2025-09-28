@@ -1,36 +1,100 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ECM Digital Agency Management Panel
 
-## Getting Started
+A comprehensive management system for ECM Digital Agency to handle clients, projects, and finances.
 
-First, run the development server:
+## Features
+
+- **Client Management**: Track clients, contacts, and project history
+- **Project Tracking**: Monitor project progress, deadlines, and team assignments
+- **Financial Dashboard**: Manage invoices, expenses, and revenue tracking
+- **Analytics**: Business intelligence and performance metrics
+- **Reporting**: Generate and manage various business reports
+- **Settings**: Configure system preferences and integrations
+
+## Deployment
+
+### Prerequisites
+
+- Node.js 18+
+- npm or yarn
+
+### Local Development
 
 ```bash
+# Install dependencies
+npm install
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The application will be available at http://localhost:3001
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Production Build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+# Create production build
+npm run build
 
-## Learn More
+# Start production server
+npm run start
+```
 
-To learn more about Next.js, take a look at the following resources:
+### Deployment to Vercel
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Install Vercel CLI:
+   ```bash
+   npm install -g vercel
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2. Deploy:
+   ```bash
+   vercel --prod
+   ```
 
-## Deploy on Vercel
+The application will be deployed to your Vercel account and accessible at:
+`https://agency-management-panel.vercel.app`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Environment Variables
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Create a `.env.local` file in the root directory with the following variables:
+
+```env
+# Database connection
+DATABASE_URL=your_database_url
+
+# API Keys
+NEXT_PUBLIC_API_URL=your_api_url
+
+# Authentication
+NEXT_PUBLIC_AUTH_URL=your_auth_url
+```
+
+## Project Structure
+
+```
+src/
+├── app/                 # Next.js app router pages
+├── components/          # Reusable UI components
+├── lib/                 # Utility functions and helpers
+└── styles/              # Global styles
+```
+
+## Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Create production build
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
+- `npm run test` - Run tests
+
+## Integration with Main Website
+
+The agency management panel is linked from the main ECM Digital website through:
+- Navigation dropdown menu under "Moje Konto" → "Panel Zarządzania"
+- Direct access at `/agency-management-panel` path
+- Automatic redirect from the placeholder page
+
+## Support
+
+For support, contact the development team or check the main documentation in the `dokumentacja-ecm` folder.

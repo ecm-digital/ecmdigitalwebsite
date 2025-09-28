@@ -1,6 +1,12 @@
-import { redirect } from 'next/navigation'
+"use client";
+
+import { useEffect } from 'react';
 
 export default function HomePage() {
-  redirect('/index.html')
-  return null
+  useEffect(() => {
+    // Redirect to index.html
+    window.location.replace('/index.html');
+  }, []);
+
+  return null;
 }

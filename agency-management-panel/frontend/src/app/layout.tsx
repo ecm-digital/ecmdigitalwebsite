@@ -1,51 +1,27 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import Providers from "./providers";
-import { DashboardHeader } from "@/components/dashboard/dashboard-header";
-import Script from "next/script";
-import { Toaster } from "@/components/ui/sonner";
+import type { Metadata } from "next"
+import { Inter } from "next/font/google"
+import { DashboardLayout } from "@/components/layout/dashboard-layout"
+import "./globals.css"
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "ECM Digital management",
-  description: "ECM Digital management panel",
-};
+  title: "ECM Digital - Panel Zarządzania",
+  description: "Panel zarządzania agencją ECM Digital",
+}
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  const hubspotPortalId = process.env.NEXT_PUBLIC_HUBSPOT_PORTAL_ID || "145940599";
-  const hubspotCluster = process.env.NEXT_PUBLIC_HUBSPOT_CLUSTER || "eu1"; // eu1 per provided embed
+}: {
+  children: React.ReactNode
+}) {
   return (
-    <html lang="pl" className="dark">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
-      >
-        <Providers>
-          <DashboardHeader />
+    <html lang="pl">
+      <body className={inter.className}>
+        <DashboardLayout>
           {children}
-        </Providers>
-        <Toaster richColors position="top-right" />
-        {hubspotPortalId ? (
-          <Script
-            id="hs-script-loader"
-            strategy="afterInteractive"
-            src={`https://js-${hubspotCluster}.hs-scripts.com/${hubspotPortalId}.js`}
-          />
-        ) : null}
+        </DashboardLayout>
       </body>
     </html>
-  );
+  )
 }
