@@ -55,6 +55,28 @@
         "availableLanguage": "Polish"
       }
     }
+    <script>
+      // Feature flag: toggle Hero KPI stats
+      (function(){
+        try {
+          var flag = localStorage.getItem('feature_hero_kpis_visible');
+          var showStats = flag === 'true';
+          var statsRow = document.querySelector('.row.g-4.justify-content-center');
+          // Fallback: query by known container with cards
+          if (!statsRow) statsRow = document.querySelector('.hero-stat-card')?.closest('.row');
+          if (statsRow) {
+            if (!showStats) {
+              statsRow.classList.add('feature-hidden');
+            } else {
+              statsRow.classList.remove('feature-hidden');
+            }
+          }
+          window.setFeatureHeroKpisVisible = function(val){
+            localStorage.setItem('feature_hero_kpis_visible', val ? 'true' : 'false');
+            location.reload();
+          };
+        } catch(e) { /* noop */ }
+      })();
     </script>
 
     <!-- Fonts -->
@@ -319,7 +341,7 @@
             </div>
             
             <!-- Hero Stats -->
-            <div class="row g-4 justify-content-center">
+            <div class="row g-4 justify-content-center feature-hidden">
                 <div class="col-lg-3 col-md-6">
                     <div class="hero-stat-card text-center">
                         <div class="stat-icon">🤖</div>
