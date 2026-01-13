@@ -71,25 +71,25 @@
       "description": "Głosowa obsługa klienta - dostępność 24/7 bez kosztów call center. Naturalne rozmowy, inteligentne odpowiedzi."
     }
   },
-      "hero": {
-        "title": "Wdrażamy AI w Twojej Firmie",
-        "titleHighlight": "Innowacjami Cyfrowymi",
-        "subtitle": "Transformujemy Twoją firmę dzięki sztucznej inteligencji. Od chatbotów po zaawansowane automatyzacje - AI, które naprawdę działa i generuje realne korzyści biznesowe.",
-        "exploreServices": "Poznaj Usługi",
-        "getQuote": "Otrzymaj Ofertę",
-        "cta_assistant": "Porozmawiaj z naszym asystentem",
-        "exploreFeatures": "Poznaj funkcje",
-        "stats": {
-          "aiProjects": "50+",
-          "aiProjectsLabel": "Projektów AI",
-          "costReduction": "70%",
-          "costReductionLabel": "Redukcja Kosztów",
-          "support": "24/7",
-          "supportLabel": "AI Wsparcie",
-          "satisfaction": "95%",
-          "satisfactionLabel": "Satysfakcja"
-        }
-    },
+  "hero": {
+    "title": "Wdrażamy AI w Twojej Firmie",
+    "titleHighlight": "Innowacjami Cyfrowymi",
+    "subtitle": "Transformujemy Twoją firmę dzięki sztucznej inteligencji. Od chatbotów po zaawansowane automatyzacje - AI, które naprawdę działa i generuje realne korzyści biznesowe.",
+    "exploreServices": "Poznaj Usługi",
+    "getQuote": "Otrzymaj Ofertę",
+    "cta_assistant": "Porozmawiaj z naszym asystentem",
+    "exploreFeatures": "Poznaj funkcje",
+    "stats": {
+      "aiProjects": "50+",
+      "aiProjectsLabel": "Projektów AI",
+      "costReduction": "70%",
+      "costReductionLabel": "Redukcja Kosztów",
+      "support": "24/7",
+      "supportLabel": "AI Wsparcie",
+      "satisfaction": "95%",
+      "satisfactionLabel": "Satysfakcja"
+    }
+  },
   "sections": {
     "services": {
       "title": "Nasze Usługi",
@@ -163,30 +163,25 @@
       "title": "Nasz Zespół",
       "subtitle": "Poznaj ekspertów, którzy tworzą Twoje projekty",
       "members": {
-                "tomasz": {
-            "name": "Tomasz Gnat",
-            "position": "Konsultant Discovery",
-            "description": "Ekspert w odkrywaniu potrzeb biznesowych i strategii AI. Pomaga firmom identyfikować obszary do automatyzacji.",
-            "skills": {
-                "businessAnalysis": "Business Analysis",
-                "aiStrategy": "AI Strategy"
-            }
+        "tomasz": {
+          "name": "Tomasz Gnat",
+          "position": "Konsultant Discovery",
+          "description": "Ekspert w odkrywaniu potrzeb biznesowych i strategii AI. Pomaga firmom identyfikować obszary do automatyzacji.",
+          "skills": {
+            "businessAnalysis": "Business Analysis",
+            "aiStrategy": "AI Strategy"
+          }
         },
         "karol": {
-            "name": "Karol Czechowski",
-            "position": "QA Specialist & Developer",
-            "description": "Specjalista od zapewnienia jakości i testowania aplikacji"
+          "name": "Karol Czechowski",
+          "position": "QA Specialist & Developer",
+          "description": "Specjalista od zapewnienia jakości i testowania aplikacji"
         },
         "marta": {
-            "name": "Marta Górska",
-            "position": "UX/UI Designer",
-            "description": "Specjalistka od projektowania doświadczeń użytkownika"
+          "name": "Marta Górska",
+          "position": "UX/UI Designer",
+          "description": "Specjalistka od projektowania doświadczeń użytkownika"
         },
-        "roman": {
-            "name": "Roman Dominia",
-            "position": "Social Media & Automations Specialist",
-            "description": "Ekspert od social media i automatyzacji procesów biznesowych"
-        }
       }
     },
     "process": {
@@ -259,29 +254,29 @@
       "form.budget.25k+": "Powyżej 25,000 PLN",
       "form.budget.consultation": "Potrzebuję konsultacji",
       "form.message": "Wiadomość *",
-              "form.submit": "Wyślij Wiadomość"
-      }
-    },
-    "features": {
-      "title": "Kluczowe funkcje",
-      "subtitle": "Wykorzystujemy najnowsze technologie do tworzenia profesjonalnych stron internetowych",
-      "shopify_subtitle": "Wykorzystujemy najnowsze technologie Shopify do tworzenia profesjonalnych sklepów e-commerce",
-      "mvp_subtitle": "Wykorzystujemy metodologię Lean Startup do szybkiej walidacji pomysłów biznesowych",
-      "socialMedia_subtitle": "Łączymy social media marketing z zaawansowaną analizą danych i AI"
-    },
-    "benefits": {
-      "title": "Dlaczego Wybrać Nas?"
-    },
-    "cta": {
-      "title": "Gotowy na Profesjonalną Stronę?",
-      "description": "Skontaktuj się z nami i otrzymaj bezpłatną konsultację. Pomożemy Ci stworzyć stronę, która przyciągnie klientów i zwiększy sprzedaż.",
-      "shopify_title": "Gotowy na Profesjonalny Sklep?",
-      "shopify_description": "Skontaktuj się z nami i otrzymaj bezpłatną konsultację. Pomożemy Ci stworzyć sklep, który zwiększy sprzedaż i skaluje Twój biznes.",
-      "mvp_title": "Gotowy na Walidację Pomysłu?",
-      "mvp_description": "Skontaktuj się z nami i otrzymaj bezpłatną konsultację. Pomożemy Ci szybko przetestować pomysł i zminimalizować ryzyko biznesowe.",
-      "socialMedia_title": "Gotowy na AI-Powered Marketing?",
-      "socialMedia_description": "Skontaktuj się z nami i otrzymaj bezpłatną konsultację. Pomożemy Ci stworzyć kampanie social media, które maksymalizują ROI dzięki AI i data science.",
-      "freeConsultation": "Darmowa Konsultacja",
-      "callNow": "Zadzwoń Teraz"
+      "form.submit": "Wyślij Wiadomość"
     }
+  },
+  "features": {
+    "title": "Kluczowe funkcje",
+    "subtitle": "Wykorzystujemy najnowsze technologie do tworzenia profesjonalnych stron internetowych",
+    "shopify_subtitle": "Wykorzystujemy najnowsze technologie Shopify do tworzenia profesjonalnych sklepów e-commerce",
+    "mvp_subtitle": "Wykorzystujemy metodologię Lean Startup do szybkiej walidacji pomysłów biznesowych",
+    "socialMedia_subtitle": "Łączymy social media marketing z zaawansowaną analizą danych i AI"
+  },
+  "benefits": {
+    "title": "Dlaczego Wybrać Nas?"
+  },
+  "cta": {
+    "title": "Gotowy na Profesjonalną Stronę?",
+    "description": "Skontaktuj się z nami i otrzymaj bezpłatną konsultację. Pomożemy Ci stworzyć stronę, która przyciągnie klientów i zwiększy sprzedaż.",
+    "shopify_title": "Gotowy na Profesjonalny Sklep?",
+    "shopify_description": "Skontaktuj się z nami i otrzymaj bezpłatną konsultację. Pomożemy Ci stworzyć sklep, który zwiększy sprzedaż i skaluje Twój biznes.",
+    "mvp_title": "Gotowy na Walidację Pomysłu?",
+    "mvp_description": "Skontaktuj się z nami i otrzymaj bezpłatną konsultację. Pomożemy Ci szybko przetestować pomysł i zminimalizować ryzyko biznesowe.",
+    "socialMedia_title": "Gotowy na AI-Powered Marketing?",
+    "socialMedia_description": "Skontaktuj się z nami i otrzymaj bezpłatną konsultację. Pomożemy Ci stworzyć kampanie social media, które maksymalizują ROI dzięki AI i data science.",
+    "freeConsultation": "Darmowa Konsultacja",
+    "callNow": "Zadzwoń Teraz"
   }
+}
