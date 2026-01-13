@@ -10,15 +10,25 @@ Dashboard do zarządzania projektami dla klientów ECM Digital.
 npm install
 ```
 
-### 2. Konfiguracja Supabase
+### 2. Konfiguracja Supabase (DARMOWA)
 
-1. Przejdź do [Supabase Dashboard](https://supabase.com/dashboard)
-2. Wybierz projekt ECM Digital
-3. Przejdź do **SQL Editor**
-4. Skopiuj i wklej zawartość pliku `supabase/migrations/001_initial_schema.sql`
-5. Kliknij **Run** aby wykonać migrację
-6. Następnie skopiuj i wklej zawartość pliku `supabase/migrations/002_storage_buckets.sql`
-7. Kliknij **Run** aby utworzyć bucket'y do przechowywania plików
+1. Utwórz konto na [Supabase](https://supabase.com) - **100% DARMOWE**
+2. Utwórz nowy projekt (darmowy tier: 500MB bazy, 1GB storage, 50k MAU)
+3. Skopiuj **Project URL** i **anon public key** z Settings > API
+4. Utwórz plik `.env.local` w głównym katalogu:
+
+```bash
+NEXT_PUBLIC_SUPABASE_URL=your_project_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_key
+```
+
+5. Przejdź do **SQL Editor** w Supabase Dashboard
+6. Skopiuj i wklej zawartość pliku `supabase/migrations/001_initial_schema.sql`
+7. Kliknij **Run** aby wykonać migrację
+8. Następnie skopiuj i wklej zawartość pliku `supabase/migrations/002_storage_buckets.sql`
+9. Kliknij **Run** aby utworzyć bucket'y do przechowywania plików
+
+**Bez konfiguracji Supabase:** Aplikacja działa w trybie demo z przykładowymi danymi.
 
 ### 3. Dodanie przykładowych danych (opcjonalnie)
 
@@ -51,15 +61,22 @@ Aplikacja będzie dostępna pod adresem: http://localhost:3000
 - 📈 **Analityka** - metryki projektów
 - 🔧 **Integracje** - zewnętrzne narzędzia
 
-## 🛠 Stack Technologiczny
+## 🛠 Stack Technologiczny (100% DARMOWY)
 
 - **Frontend:** Next.js 14, React 18, TypeScript
 - **Styling:** Tailwind CSS, shadcn/ui
-- **Backend:** Supabase (PostgreSQL + Auth + Real-time)
+- **Backend:** Supabase (PostgreSQL + Auth + Real-time + Storage) - **DARMOWE**
+- **Email:** Resend (3k emails/miesiąc) - **DARMOWE**
+- **Hosting:** Vercel (unlimited projects) - **DARMOWE**
 - **State Management:** Zustand
 - **Data Fetching:** React Query
 - **Charts:** Recharts
 - **Date Handling:** date-fns
+
+### 💰 Koszty: 0 PLN/miesiąc
+- Supabase Free Tier: 500MB DB + 1GB Storage + 50k MAU
+- Vercel Free Tier: Unlimited projects
+- Resend Free Tier: 3,000 emails/miesiąc
 
 ## 📁 Struktura Projektu
 

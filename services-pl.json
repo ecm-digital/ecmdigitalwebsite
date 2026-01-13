@@ -98,35 +98,99 @@
     },
     {
       "id": "4",
-      "title": "Audyty UX",
-      "title_en": "UX Audits",
-      "description": "Kompleksowe audyty użyteczności i doświadczenia użytkownika",
-      "description_en": "Comprehensive usability and user experience audits",
-      "icon": "eye",
+      "title": "Audyt i Strategia AI",
+      "title_en": "AI Audit & Strategy",
+      "description": "Kompleksowa analiza potencjału AI w Twojej firmie. Otrzymaj precyzyjny plan i mapę drogową transformacji.",
+      "description_en": "Comprehensive analysis of AI potential in your company. Get a precise roadmap for transformation.",
+      "icon": "search",
       "color": "bg-purple-500",
       "stats": {
-        "projects": 32,
+        "projects": 35,
         "avgTime": "1-2 tyg",
         "avgTime_en": "1-2 weeks",
+        "satisfaction": 5.0
+      },
+      "features": [
+        "Analiza procesów",
+        "Mapa drogowa AI",
+        "Estymacja ROI",
+        "Wybór technologii"
+      ],
+      "features_en": [
+        "Process Analysis",
+        "AI Roadmap",
+        "ROI Estimation",
+        "Tech Stack Selection"
+      ],
+      "priceRange": "4000-12000 PLN",
+      "priceRange_en": "4000-12000 PLN",
+      "category": "ai",
+      "priority": "high",
+      "tags": ["audit", "strategy", "roadmap", "roi", "ai"]
+    },
+    {
+      "id": "8",
+      "title": "Edukacja i Wdrożenia",
+      "title_en": "Education & Implementation",
+      "description": "Nie tylko wdrażamy, ale uczymy. Szkolenia dla zespołów i wsparcie w adopcji nowych narzędzi.",
+      "description_en": "We don't just implement, we teach. Team training and support in new tool adoption.",
+      "icon": "graduation-cap",
+      "color": "bg-teal-500",
+      "stats": {
+        "projects": 10,
+        "avgTime": "Ongoing",
+        "avgTime_en": "Ongoing",
         "satisfaction": 4.9
       },
       "features": [
-        "Heurystyki UX",
-        "User research",
-        "Raporty",
-        "Rekomendacje"
+        "Szkolenia zespołowe",
+        "Warsztaty praktyczne",
+        "Monitoring adopcji",
+        "Wsparcie powdrożeniowe"
       ],
       "features_en": [
-        "UX Heuristics",
-        "User research",
-        "Reports",
-        "Recommendations"
+        "Team Training",
+        "Practical Workshops",
+        "Adoption Monitoring",
+        "Post-implementation Support"
       ],
-      "priceRange": "2000-8000 PLN",
-      "priceRange_en": "2000-8000 PLN",
-      "category": "ux",
+      "priceRange": "5000-20000 PLN",
+      "priceRange_en": "5000-20000 PLN",
+      "category": "education",
       "priority": "medium",
-      "tags": ["ux", "audit", "research", "usability"]
+      "tags": ["education", "training", "workshops", "adoption"]
+    },
+    {
+      "id": "9",
+      "title": "AI Executive",
+      "title_en": "AI Executive",
+      "description": "Osobisty asystent AI dla kadry zarządzającej. Pełen kontekst firmy, raporty i wsparcie decyzyjne.",
+      "description_en": "Personal AI Assistant for C-level. Full company context, reports, and decision support.",
+      "icon": "user-tie",
+      "color": "bg-red-500",
+      "stats": {
+        "projects": 5,
+        "avgTime": "4-8 tyg",
+        "avgTime_en": "4-8 weeks",
+        "satisfaction": 5.0
+      },
+      "features": [
+        "Dashboard zarządczy",
+        "Analiza danych",
+        "Wsparcie decyzji",
+        "Pełna prywatność"
+      ],
+      "features_en": [
+        "Management Dashboard",
+        "Data Analysis",
+        "Decision Support",
+        "Full Privacy"
+      ],
+      "priceRange": "20000-50000 PLN",
+      "priceRange_en": "20000-50000 PLN",
+      "category": "ai",
+      "priority": "high",
+      "tags": ["executive", "assistant", "management", "data"]
     },
     {
       "id": "5",
@@ -162,10 +226,10 @@
     },
     {
       "id": "6",
-      "title": "Asystenci AI",
-      "title_en": "AI Assistants",
-      "description": "Asystenci AI na Amazon Bedrock i innych platformach",
-      "description_en": "AI assistants on Amazon Bedrock and other platforms",
+      "title": "Agenci AI",
+      "title_en": "AI Agents",
+      "description": "Inteligentni agenci AI oparci na Google Gemini. Automatyzacja procesów biznesowych, obsługa klienta 24/7 i analiza danych.",
+      "description_en": "Intelligent AI agents based on Google Gemini. Business process automation, 24/7 customer service and data analysis.",
       "icon": "bot",
       "color": "bg-pink-500",
       "stats": {
@@ -175,58 +239,26 @@
         "satisfaction": 4.9
       },
       "features": [
-        "Amazon Bedrock",
-        "Claude, Titan, Llama",
-        "Custom prompts",
-        "Integration"
+        "Google Gemini",
+        "Gemini Pro, Gemini Vision",
+        "Custom AI agents",
+        "Business automation"
       ],
       "features_en": [
-        "Amazon Bedrock",
-        "Claude, Titan, Llama",
-        "Custom prompts",
-        "Integration"
+        "Google Gemini",
+        "Gemini Pro, Gemini Vision",
+        "Custom AI agents",
+        "Business automation"
       ],
       "priceRange": "12000-50000 PLN",
       "priceRange_en": "12000-50000 PLN",
       "category": "ai",
       "priority": "high",
-      "tags": ["ai", "bedrock", "claude", "titan", "llama"]
-    },
-    {
-      "id": "7",
-      "title": "Automatyzacje",
-      "title_en": "Automations",
-      "description": "Automatyzacja procesów biznesowych z n8n, Zapier, Opal",
-      "description_en": "Business process automation with n8n, Zapier, Opal",
-      "icon": "settings",
-      "color": "bg-orange-500",
-      "stats": {
-        "projects": 20,
-        "avgTime": "2-4 tyg",
-        "avgTime_en": "2-4 weeks",
-        "satisfaction": 4.8
-      },
-      "features": [
-        "n8n workflows",
-        "Zapier automations",
-        "Opal scripts",
-        "API connections"
-      ],
-      "features_en": [
-        "n8n workflows",
-        "Zapier automations",
-        "Opal scripts",
-        "API connections"
-      ],
-      "priceRange": "3000-15000 PLN",
-      "priceRange_en": "3000-15000 PLN",
-      "category": "automation",
-      "priority": "medium",
-      "tags": ["automation", "n8n", "zapier", "opal", "workflows"]
+      "tags": ["ai", "gemini", "google", "agents", "automation"]
     }
   ],
   "meta": {
-    "totalServices": 7,
+    "totalServices": 6,
     "categories": ["web", "ecommerce", "mvp", "ux", "mobile", "ai", "automation"],
     "languages": ["pl", "en"],
     "lastUpdated": "2025-08-24T10:00:00Z",

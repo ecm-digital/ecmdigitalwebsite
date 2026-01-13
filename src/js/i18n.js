@@ -299,7 +299,7 @@ class I18nManager {
                     contact: "Kontakt",
                     dropdown: {
                         aiSolutions: "🤖 Rozwiązania AI",
-                        aiAssistants: "Asystenci AI na Amazon Bedrock",
+                        aiAssistants: "Agenci AI",
                         voiceAssistants: "Asystenci Głosowi na Amazon Lex",
                         aiAudits: "Audyty Wdrożenia AI",
                         socialMediaAI: "Social Media & AI",
@@ -398,8 +398,8 @@ class I18nManager {
                         description: "Zwiększ zaangażowanie o 60% dzięki analizie treści AI. Dowiedz się, co naprawdę interesuje Twoich klientów."
                     },
                     aiAssistants: {
-                        title: "Asystenci AI na Amazon Bedrock & Copilot Studio",
-                        description: "Automatyzuj obsługę klienta 24/7 i oszczędzaj do 70% kosztów wsparcia. Inteligentni asystenci AI odpowiadają na pytania i rozwiązują problemy."
+                        title: "Agenci AI",
+                        description: "Tworzymy inteligentnych agentów AI opartych na Google Gemini. Automatyzuj procesy biznesowe, obsługę klienta 24/7 i analizę danych. Oszczędzaj do 70% kosztów operacyjnych dzięki zaawansowanym rozwiązaniom AI."
                     },
                     mobileApps: {
                         title: "Aplikacje Mobilne",
@@ -538,7 +538,7 @@ class I18nManager {
                     contact: "Contact",
                     dropdown: {
                         aiSolutions: "🤖 AI Solutions",
-                        aiAssistants: "AI Assistants on Amazon Bedrock",
+                        aiAssistants: "AI Agents",
                         voiceAssistants: "Voice Assistants on Amazon Lex",
                         aiAudits: "AI Implementation Audits",
                         socialMediaAI: "Social Media & AI",
@@ -637,8 +637,8 @@ class I18nManager {
                         description: "Increase engagement by 60% through AI content analysis. Learn what really interests your customers."
                     },
                     aiAssistants: {
-                        title: "AI Assistants on Amazon Bedrock & Copilot Studio",
-                        description: "Automate customer service 24/7 and save up to 70% on support costs. Intelligent AI assistants answer questions and solve problems."
+                        title: "AI Agents",
+                        description: "We create intelligent AI agents based on Google Gemini. Automate business processes, 24/7 customer service and data analysis. Save up to 70% on operational costs with advanced AI solutions."
                     },
                     mobileApps: {
                         title: "Mobile Applications",
@@ -748,7 +748,7 @@ class I18nManager {
                     contact: "Kontakt",
                     dropdown: {
                         aiSolutions: "🤖 KI-Lösungen",
-                        aiAssistants: "KI-Assistenten auf Amazon Bedrock",
+                        aiAssistants: "KI-Agenten",
                         voiceAssistants: "Sprachassistenten auf Amazon Lex",
                         aiAudits: "KI-Implementierungsaudits",
                         socialMediaAI: "Social Media & KI",
@@ -847,8 +847,8 @@ class I18nManager {
                         description: "Steigern Sie das Engagement um 60% durch KI-Inhaltsanalyse. Erfahren Sie, was Ihre Kunden wirklich interessiert."
                     },
                     aiAssistants: {
-                        title: "KI-Assistenten auf Amazon Bedrock & Copilot Studio",
-                        description: "Automatisieren Sie den Kundenservice 24/7 und sparen Sie bis zu 70% der Supportkosten. Intelligente KI-Assistenten beantworten Fragen und lösen Probleme."
+                        title: "KI-Agenten",
+                        description: "Wir erstellen intelligente KI-Agenten basierend auf Google Gemini. Automatisieren Sie Geschäftsprozesse, 24/7-Kundenservice und Datenanalyse. Sparen Sie bis zu 70% der Betriebskosten mit fortschrittlichen KI-Lösungen."
                     },
                     mobileApps: {
                         title: "Mobile Anwendungen",

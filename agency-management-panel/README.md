@@ -33,7 +33,7 @@ agency-management-panel/
 └── docker-compose.yml      # Development environment
 ```
 
-## 🛠 Tech Stack
+## 🛠 Tech Stack (100% DARMOWY)
 
 ### Frontend
 - **Next.js 15** (App Router) - React framework
@@ -41,16 +41,25 @@ agency-management-panel/
 - **Tailwind CSS** - Styling
 - **shadcn/ui** - UI components
 - **Lucide React** - Icons
+- **Supabase Client** - Real-time data
 
 ### Backend
 - **Node.js + Express.js** - API server
 - **TypeScript** - Type safety
-- **AWS** - Database (RDS), authentication, and services
+- **Supabase** - Database (PostgreSQL) + Auth + Storage - **DARMOWE**
+- **Upstash Redis** - Caching - **DARMOWE** (10k commands/day)
+- **Resend** - Email - **DARMOWE** (3k emails/month)
 
 ### Development
 - **Docker Compose** - Local development environment
 - **ESLint + Prettier** - Code quality
 - **Git hooks** - Pre-commit validation
+
+### 💰 Koszty: $0/miesiąc
+- Supabase Free Tier: 500MB DB + 1GB Storage + 50k MAU
+- Upstash Free Tier: 10k commands/day
+- Resend Free Tier: 3k emails/month
+- Vercel Free Tier: Unlimited projects
 
 ## 🚀 Getting Started
 
@@ -123,12 +132,24 @@ npm start           # Start production server
 
 ### Environment Variables
 
-Create `.env.local` in the frontend directory:
+#### Frontend (.env.local):
 ```env
-AWS_ACCESS_KEY_ID=your_aws_access_key
-AWS_SECRET_ACCESS_KEY=your_aws_secret_key
-AWS_REGION=eu-west-1
+NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
+NEXT_PUBLIC_API_URL=http://localhost:3000
 ```
+
+#### Backend (.env):
+```env
+SUPABASE_URL=https://your-project.supabase.co
+SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
+DATABASE_URL=postgresql://postgres:[password]@db.[project-ref].supabase.co:5432/postgres
+REDIS_URL=redis://default:[password]@[endpoint].upstash.io:6379
+RESEND_API_KEY=re_your_api_key
+JWT_SECRET=your-super-secret-jwt-key
+```
+
+**Bez konfiguracji:** Aplikacja działa w trybie demo z przykładowymi danymi.
 
 ## 📊 Dashboard Features
 

@@ -154,12 +154,12 @@
     },
     "aiAssistants": {
       "id": "aiAssistants",
-      "name": "Asystenci AI na Amazon Bedrock & Copilot Studio",
+      "name": "Agenci AI",
       "category": "AI & Automation",
-      "description": "Tworzymy zaawansowane asystenty AI oparte na Amazon Bedrock i Microsoft Copilot Studio. Automatyzacja procesów biznesowych, obsługa klientów i analiza danych z wykorzystaniem najnowszych modeli AI.",
+      "description": "Tworzymy zaawansowane asystenty AI oparte na Google Gemini i innych rozwiązaniach Google AI. Automatyzacja procesów biznesowych, obsługa klientów i analiza danych z wykorzystaniem najnowszych modeli AI.",
       "features": [
-        "Amazon Bedrock integration",
-        "Microsoft Copilot Studio",
+        "Google Gemini integration",
+        "Google AI Studio",
         "Business process automation",
         "Customer service automation",
         "Data analysis AI",
@@ -168,11 +168,11 @@
       "process": {
         "discovery": "User interviews i research biznesowych potrzeb",
         "design": "AI agent architecture i user experience design",
-        "development": "Implementation z Amazon Bedrock i Copilot Studio",
+        "development": "Implementation z Google Gemini i Google AI",
         "testing": "AI performance testing i user validation",
         "deployment": "Production deployment i monitoring"
       },
-      "technologies": ["Amazon Bedrock", "Microsoft Copilot Studio", "AWS Lambda", "AI/ML models", "APIs"],
+      "technologies": ["Google Gemini", "Google AI Studio", "Google Cloud Functions", "AI/ML models", "APIs"],
       "deliverables": ["AI Assistant", "Integration documentation", "Training materials", "Ongoing AI optimization"],
       "url": "/dokumentacja-ecm/oferta-uslug/asystencja-ai-bedrock/",
       "priority": "High"

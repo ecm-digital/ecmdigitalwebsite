@@ -19,7 +19,7 @@
     "contact": "Kontakt",
     "dropdown": {
       "aiSolutions": "🤖 KI-Lösungen",
-      "aiAssistants": "KI-Assistenten auf Amazon Bedrock",
+      "aiAssistants": "KI-Agenten",
       "voiceAssistants": "Sprachassistenten auf Amazon Lex",
       "aiAudits": "KI-Implementierungsaudits",
       "socialMediaAI": "Social Media & KI",
@@ -62,7 +62,8 @@
       "description": "Steigern Sie das Engagement um 60% durch KI-Inhaltsanalyse. Erfahren Sie, was Ihre Kunden wirklich interessiert."
     },
     "aiAssistants": {
-      "title": "KI-Assistenten auf Amazon Bedrock & Copilot Studio",
+      "title": "KI-Agenten",
+      "description": "Wir erstellen intelligente KI-Agenten basierend auf Google Gemini. Automatisieren Sie Geschäftsprozesse, 24/7-Kundenservice und Datenanalyse. Sparen Sie bis zu 70% der Betriebskosten mit fortschrittlichen KI-Lösungen."
       "description": "Automatisieren Sie den Kundenservice 24/7 und sparen Sie bis zu 70% der Supportkosten. Intelligente KI-Assistenten beantworten Fragen und lösen Probleme."
     },
     "mobileApps": {

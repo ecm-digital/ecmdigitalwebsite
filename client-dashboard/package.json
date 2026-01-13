@@ -14,10 +14,6 @@
     "prepare": "simple-git-hooks"
   },
   "dependencies": {
-    "@aws-sdk/client-cognito-identity-provider": "^3.873.0",
-    "@aws-sdk/client-dynamodb": "^3.873.0",
-    "@aws-sdk/client-lambda": "^3.873.0",
-    "@aws-sdk/client-s3": "^3.873.0",
     "@emailjs/browser": "^4.4.1",
     "@hookform/resolvers": "^5.2.1",
     "@radix-ui/react-avatar": "^1.1.10",
@@ -27,8 +23,8 @@
     "@radix-ui/react-select": "^2.2.5",
     "@radix-ui/react-separator": "^1.1.7",
     "@radix-ui/react-slot": "^1.2.3",
+    "@supabase/supabase-js": "^2.84.0",
     "@tanstack/react-query": "^5.84.1",
-    "aws-sdk": "^2.1692.0",
     "buffer": "^6.0.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -49,7 +45,6 @@
     "zustand": "^5.0.7"
   },
   "devDependencies": {
-    "@aws-sdk/lib-dynamodb": "^3.876.0",
     "@eslint/eslintrc": "^3",
     "@types/node": "^20",
     "@types/react": "^18",

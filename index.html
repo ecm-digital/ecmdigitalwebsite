@@ -170,15 +170,8 @@
         }
     </style>
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-V309CX2XT8"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-    
-      gtag('config', 'G-V309CX2XT8');
-    </script>
+    <!-- Google Analytics 4 - Enhanced Configuration -->
+    <script src="src/js/analytics.js"></script>
     
     <!-- Hotjar Tracking Code for ECM Digital -->
     <script>
@@ -222,7 +215,7 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><h6 class="dropdown-header text-primary fw-bold" data-i18n="navigation.dropdown.aiSolutions">🤖 Rozwiązania AI</h6></li>
-                            <li><a class="dropdown-item" href="dokumentacja-ecm/oferta-uslug/asystencja-ai-bedrock/index.html" data-i18n="navigation.dropdown.aiAssistants">Asystenci AI na Amazon Bedrock</a></li>
+                            <li><a class="dropdown-item" href="dokumentacja-ecm/oferta-uslug/asystencja-ai-bedrock/index.html" data-i18n="navigation.dropdown.aiAssistants">Asystenci AI na Google Gemini</a></li>
                             <li><a class="dropdown-item" href="dokumentacja-ecm/oferta-uslug/asystenci-glosowi-lex/index.html" data-i18n="navigation.dropdown.voiceAssistants">Asystenci Głosowi na Amazon Lex</a></li>
                             <li><a class="dropdown-item" href="dokumentacja-ecm/oferta-uslug/audyty-ux/index.html" data-i18n="navigation.dropdown.aiAudits">Audyty Wdrożenia AI</a></li>
                             <li><a class="dropdown-item" href="dokumentacja-ecm/oferta-uslug/social-media-data-science/index.html" data-i18n="navigation.dropdown.socialMediaAI">Social Media & AI</a></li>
@@ -356,13 +349,13 @@
                 <p style="font-size: 1.2rem; color: #EBEBF599; max-width: 600px; margin: 0 auto;" data-i18n="sections.services.subtitle">Kompleksowe rozwiązania AI i automatyzacji, które transformują Twój biznes i zwiększają efektywność</p>
             </div>
             <div class="row g-4">
-                <!-- 1. AI Assistants on Amazon Bedrock & Copilot Studio -->
+                <!-- 1. AI Assistants on Google Gemini & Copilot Studio -->
                 <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
                     <div class="service-card">
                         <div class="service-icon mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
                             <i class="fas fa-robot"></i>
                         </div>
-                        <h4 data-i18n="services.aiAssistants.title">Asystenci AI na Amazon Bedrock & Copilot Studio</h4>
+                        <h4 data-i18n="services.aiAssistants.title">Agenci AI</h4>
                         <p class="text-muted" data-i18n="services.aiAssistants.description">Automatyzuj obsługę klienta 24/7 i oszczędzaj do 70% kosztów wsparcia. Inteligentni asystenci AI odpowiadają na pytania i rozwiązują problemy.</p>
                         <a href="dokumentacja-ecm/oferta-uslug/asystencja-ai-bedrock/index.html" class="btn-cta">
                             <i class="fas fa-arrow-right"></i>
@@ -371,32 +364,47 @@
                     </div>
                 </div>
                 
-                <!-- 2. Automation -->
-                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                <!-- 2. AI Audit & Strategy -->
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
                     <div class="service-card">
-                        <div class="service-icon mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
-                            <i class="fas fa-cogs"></i>
+                        <div class="service-icon mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, #AF52DE 0%, #5856D6 100%); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                            <i class="fas fa-search"></i>
                         </div>
-                        <h4 data-i18n="services.automation.title">Automatyzacje</h4>
-                        <p class="text-muted" data-i18n="services.automation.description">Oszczędzaj 15-20 godzin tygodniowo automatyzując powtarzalne zadania. Integracje systemów, automatyzacja workflow i eliminacja błędów ludzkich.</p>
-                        <a href="dokumentacja-ecm/oferta-uslug/automatyzacje-n8n/index.html" class="btn-cta">
+                        <h4 data-i18n="services.uxAudits.title">Audyt i Strategia AI</h4>
+                        <p class="text-muted" data-i18n="services.uxAudits.description">Pierwszy krok transformacji. Analizujemy procesy, liczymy ROI i tworzymy mapę drogową wdrożenia AI w Twojej firmie.</p>
+                        <a href="dokumentacja-ecm/oferta-uslug/audyty-ux/index.html" class="btn-cta">
                             <i class="fas fa-arrow-right"></i>
                             <span data-i18n="common.learnMore">Dowiedz się więcej</span>
                         </a>
                     </div>
                 </div>
                 
-                <!-- 3. UX Audits -->
-                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                <!-- New: Education & Implementation -->
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
                     <div class="service-card">
-                        <div class="service-icon mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
-                            <i class="fas fa-eye"></i>
+                        <div class="service-icon mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, #30D158 0%, #00C7BE 100%); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                            <i class="fas fa-graduation-cap"></i>
                         </div>
-                        <h4 data-i18n="services.uxAudits.title">Audyty Wdrożenia AI w Twojej Firmie</h4>
-                        <p class="text-muted" data-i18n="services.uxAudits.description">Analizujemy Twoje procesy biznesowe i identyfikujemy obszary do automatyzacji AI. Kompleksowy plan wdrożenia sztucznej inteligencji.</p>
-                        <a href="dokumentacja-ecm/oferta-uslug/audyty-ux/index.html" class="btn-cta">
+                        <h4 data-i18n="services.education.title">Edukacja i Wdrożenia</h4>
+                        <p class="text-muted" data-i18n="services.education.description">Technologia to tylko połowa sukcesu. Szkolimy Twój zespół i dbamy o pełną adopcję rozwiązań w firmie. Gwarancja użyteczności.</p>
+                        <a href="#contact" class="btn-cta">
                             <i class="fas fa-arrow-right"></i>
-                            <span data-i18n="common.learnMore">Dowiedz się więcej</span>
+                            <span data-i18n="common.learnMore">Zapytaj o ofertę</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- New: AI Executive -->
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="500">
+                    <div class="service-card">
+                        <div class="service-icon mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, #FF2D55 0%, #FF375F 100%); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h4 data-i18n="services.executive.title">AI Executive</h4>
+                        <p class="text-muted" data-i18n="services.executive.description">Osobisty, cyfrowy doradca dla zarządu. Pełen kontekst firmy, analiza danych i wsparcie decyzyjne w czasie rzeczywistym.</p>
+                        <a href="#contact" class="btn-cta">
+                            <i class="fas fa-arrow-right"></i>
+                            <span data-i18n="common.learnMore">Zapytaj o ofertę</span>
                         </a>
                     </div>
                 </div>
@@ -786,20 +794,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="team-member-card-new" style="background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem; text-align: center; backdrop-filter: blur(20px); transition: all 0.3s ease; height: 100%;">
-                        <div class="member-avatar-new" style="width: 80px; height: 80px; margin: 0 auto 1.5rem; background: linear-gradient(135deg, var(--accent-orange) 0%, var(--primary) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem;">
-                            🔧
-                        </div>
-                        <h5 style="color: var(--text-primary); font-weight: 700; margin-bottom: 0.5rem;">Roman Domina</h5>
-                        <div class="member-role" style="color: var(--accent-orange); font-weight: 600; margin-bottom: 1rem;">Senior Developer</div>
-                        <p class="member-description" style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5; margin-bottom: 1.5rem;">Doświadczony programista z wieloletnim doświadczeniem w tworzeniu zaawansowanych systemów AI i integracji z istniejącymi platformami.</p>
-                        <div class="member-skills" style="display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center;">
-                            <span class="skill-tag-new" style="background: rgba(255, 159, 10, 0.1); color: var(--accent-orange); padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.8rem; font-weight: 600;">Backend Development</span>
-                            <span class="skill-tag-new" style="background: rgba(0, 122, 255, 0.1); color: var(--primary); padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.8rem; font-weight: 600;">AI Integration</span>
-                        </div>
-                    </div>
-                </div>
             </div>
             
             <!-- Team Values -->
@@ -868,7 +862,7 @@
                                 Wdrożenie asystenta AI obsługującego 80% zapytań klientów, automatyczne rekomendacje produktów i spersonalizowane doświadczenie zakupowe.
                             </p>
                             <div class="case-study-tech mb-3" style="margin-top: auto;">
-                                <span class="tech-tag" style="background: rgba(0, 122, 255, 0.1); color: var(--primary); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; margin-right: 0.5rem;">Amazon Bedrock</span>
+                                <span class="tech-tag" style="background: rgba(0, 122, 255, 0.1); color: var(--primary); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; margin-right: 0.5rem;">Google Gemini</span>
                                 <span class="tech-tag" style="background: rgba(191, 90, 242, 0.1); color: var(--accent-purple); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">NLP</span>
                                 <span class="tech-tag" style="background: rgba(48, 209, 88, 0.1); color: var(--accent); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Analytics</span>
                             </div>
@@ -2628,59 +2622,36 @@
     <!-- AWS Chatbot Integration -->
     <script src="src/js/aws-chatbot.js"></script>
     
-    <!-- Existing Bedrock Integration -->
-    <script src="dokumentacja-ecm/oferta-uslug/asystencja-ai-bedrock/bedrock-config.js"></script>
-    <script src="dokumentacja-ecm/oferta-uslug/asystencja-ai-bedrock/bedrock-client.js"></script>
+    <!-- Google Gemini Integration -->
+    <script src="src/js/gemini-client.js"></script>
     
-    <!-- Set Bedrock API credentials -->
+    <!-- Set Gemini API credentials -->
     <script>
-        // Set Bedrock API credentials from your provided key
-        const BEDROCK_API_KEY = 'ABSKQmVkcm9ja0FQSUtleS1yemNuLWF0LTA0OTE2NDA1Nzk3MDpaUFZVWkVYOVZYRHZCa3dEOThxOEx3ZUFJbTdVWFNXc3M5Mlc5WHF1K2d3OGdOM3ozc2luNWJ4UStUYz0=';
+        // Set Gemini API key
+        // Get your API key from: https://makersuite.google.com/app/apikey
+        const GEMINI_API_KEY = ''; // Set your Gemini API key here or in localStorage
         
-        // Decode and set credentials
         try {
-            console.log('🔍 Decoding Bedrock API key...');
-            console.log('Original key:', BEDROCK_API_KEY);
+            // Check if API key is already in localStorage
+            let apiKey = localStorage.getItem('GEMINI_API_KEY');
             
-            const decodedKey = atob(BEDROCK_API_KEY);
-            console.log('Decoded key:', decodedKey);
+            // If not in localStorage and provided in script, use it
+            if (!apiKey && GEMINI_API_KEY) {
+                apiKey = GEMINI_API_KEY;
+                localStorage.setItem('GEMINI_API_KEY', apiKey);
+                console.log('✅ Gemini API key set from script');
+            }
             
-            const [accessKeyId, secretAccessKey] = decodedKey.split(':');
-            console.log('Split result:', { 
-                accessKeyId: accessKeyId ? accessKeyId.substring(0, 20) + '...' : 'Not set',
-                secretAccessKey: secretAccessKey ? '***' + secretAccessKey.slice(-4) : 'Not set' 
-            });
-            
-            if (accessKeyId && secretAccessKey) {
-                // Validate credentials format
-                const isValidAccessKey = accessKeyId.length > 10 && accessKeyId.includes('-');
-                const isValidSecretKey = secretAccessKey.length >= 40;
-                
-                console.log('🔍 Credentials validation:', {
-                    accessKeyValid: isValidAccessKey,
-                    secretKeyValid: isValidSecretKey,
-                    accessKeyFormat: accessKeyId.startsWith('BedrockAPIKey') ? 'Bedrock Format' : 'Unknown Format',
-                    secretKeyLength: secretAccessKey.length
-                });
-                
-                if (isValidAccessKey && isValidSecretKey) {
-                    localStorage.setItem('BEDROCK_ACCESS_KEY_ID', accessKeyId);
-                    localStorage.setItem('BEDROCK_SECRET_ACCESS_KEY', secretAccessKey);
-                    
-                    console.log('✅ Bedrock API credentials set successfully');
-                    console.log('Access Key ID:', accessKeyId);
-                    console.log('Secret Access Key length:', secretAccessKey.length);
-                } else {
-                    console.error('❌ Invalid credentials format - validation failed');
-                    console.error('Access Key valid:', isValidAccessKey);
-                    console.error('Secret Key valid:', isValidSecretKey);
-                }
-            } else {
-                console.error('❌ Invalid credentials format - missing accessKeyId or secretAccessKey');
+            // Initialize Gemini client if API key is available
+            if (apiKey && window.GeminiClient) {
+                window.geminiClient = new window.GeminiClient({ apiKey });
+                console.log('✅ Gemini client initialized successfully');
+            } else if (!apiKey) {
+                console.warn('⚠️ Gemini API key not found. Please set GEMINI_API_KEY in localStorage or provide it in the script.');
+                console.log('📝 Get your API key from: https://makersuite.google.com/app/apikey');
             }
         } catch (error) {
-            console.error('❌ Error setting Bedrock credentials:', error);
-            console.error('Error details:', error.message);
+            console.error('❌ Error setting Gemini credentials:', error);
         }
     </script>
     
@@ -3039,7 +3010,7 @@
                 
                 // Service-related responses
                 if (lowerInput.includes('usług') || lowerInput.includes('oferta')) {
-                    return 'Oferujemy kompleksowe usługi cyfrowe: Strony WWW od 3,500 PLN, Sklepy Shopify & Wix od 8,000 PLN, Aplikacje Mobilne od 15,000 PLN, Asystenci AI na Amazon Bedrock, Automatyzacje z n8n/Zapier/Opal, Audyty UX i Social Media z AI. Która usługa Cię najbardziej interesuje?';
+                    return 'Oferujemy kompleksowe usługi cyfrowe: Strony WWW od 3,500 PLN, Sklepy Shopify & Wix od 8,000 PLN, Aplikacje Mobilne od 15,000 PLN, Agenci AI, Automatyzacje z n8n/Zapier/Opal, Audyty UX i Social Media z AI. Która usługa Cię najbardziej interesuje?';
                 }
                 
                 if (lowerInput.includes('ceny') || lowerInput.includes('pakiety') || lowerInput.includes('koszt')) {
@@ -3055,7 +3026,7 @@
                 }
                 
                 if (lowerInput.includes('ai') || lowerInput.includes('sztuczna inteligencja')) {
-                    return 'Specjalizujemy się w AI! Tworzymy asystentów na Amazon Bedrock (Claude, Titan, Llama), Copilot Studio dla Microsoft 365, chatboty głosowe na Amazon Lex. AI może zautomatyzować Twoje procesy biznesowe. Chcesz dowiedzieć się więcej?';
+                    return 'Specjalizujemy się w AI! Tworzymy asystentów na Google Gemini (Gemini Pro, Gemini Vision), Google AI Studio, chatboty głosowe z integracją AI. AI może zautomatyzować Twoje procesy biznesowe. Chcesz dowiedzieć się więcej?';
                 }
                 
                 if (lowerInput.includes('automatyzac') || lowerInput.includes('n8n') || lowerInput.includes('zapier')) {

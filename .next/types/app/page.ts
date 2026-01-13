@@ -1,4 +1,4 @@
-// File: /Users/tomaszgt/ECM Digital website/src/app/page.tsx
+// File: /Users/tomaszgt/ECM Digital/ecmdigitalwebsite/src/app/page.tsx
 import * as entry from '../../../src/app/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

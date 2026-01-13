@@ -58,10 +58,30 @@ dokumentacja-ecm/
 
 ## 🔗 Integracje
 
-- AWS (Bedrock, Lambda, Lex/Polly)
+### 🎉 NOWY STACK - 100% DARMOWY!
+- **Supabase** (Auth + Database + Storage + Real-time) - DARMOWE
+- **Upstash Redis** (Caching) - DARMOWE (10k commands/day)
+- **Resend** (Email) - DARMOWE (3k emails/miesiąc)
+- **Vercel** (Hosting) - DARMOWE (unlimited projects)
+- **n8n** (Automatyzacje) - DARMOWE (self-hosted)
+
+### Pozostałe integracje:
 - Google Analytics (gtag)
 - Hotjar
 - HubSpot (tracking + formularz)
+
+## 📚 Dokumentacja Migracji
+
+### Przewodniki:
+- 📖 **[COMPLETE_FREE_STACK_GUIDE.md](COMPLETE_FREE_STACK_GUIDE.md)** - Kompletny przewodnik po wszystkich projektach
+- 📖 **[FREE_STACK_MIGRATION.md](FREE_STACK_MIGRATION.md)** - Szczegóły migracji z AWS
+- 📖 **[QUICK_START.md](QUICK_START.md)** - Szybki start (5 minut)
+
+### Projekty:
+- 👥 **[Client Dashboard](client-dashboard/MIGRATION_AWS_TO_SUPABASE.md)** - Panel dla klientów
+- 🏢 **[Agency Management Panel](agency-management-panel/MIGRATION_TO_FREE_STACK.md)** - Panel zarządzania agencją
+
+### 💰 Oszczędności: $200-500/miesiąc → $0/miesiąc!
 
 ### HubSpot (statyczna strona)
 

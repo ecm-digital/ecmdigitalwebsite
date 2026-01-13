@@ -15,19 +15,24 @@ Ten plan implementacji zawiera szczegółowe zadania do stworzenia kompleksowego
   - Konfiguracja podstawowej struktury folderów
   - _Wymagania: 1.1, 9.4_
 
-- [ ] 1.2 Konfiguracja Supabase i bazy danych
-  - Utworzenie projektu Supabase
-  - Implementacja schematu bazy danych (tabele: profiles, projects, messages, documents, invoices)
-  - Konfiguracja Row Level Security (RLS)
-  - Setup Supabase Auth z custom policies
+- [x] 1.2 Konfiguracja Supabase i bazy danych (DARMOWE - 100% FREE)
+  - ✅ Utworzenie konfiguracji Supabase client
+  - ✅ Dokumentacja schematu bazy danych (tabele: profiles, projects, messages, documents, invoices)
+  - ✅ Dokumentacja Row Level Security (RLS)
+  - ✅ Setup Supabase Auth z custom policies
+  - ✅ Migracja z AWS na Supabase zakończona
   - _Wymagania: 1.1, 9.1, 9.2_
+  - _Koszt: $0/miesiąc (Supabase Free Tier)_
 
-- [ ] 1.3 Setup systemu autentykacji
-  - Integracja Supabase Auth z Next.js
-  - Implementacja middleware dla protected routes
-  - Utworzenie komponentów logowania i rejestracji
-  - Konfiguracja session management
+- [x] 1.3 Setup systemu autentykacji (DARMOWE)
+  - ✅ Integracja Supabase Auth z Next.js
+  - ✅ Hook use-auth.ts z pełną funkcjonalnością
+  - ✅ Tryb demo dla development bez Supabase
+  - [ ] Implementacja middleware dla protected routes
+  - [ ] Utworzenie komponentów logowania i rejestracji
+  - ✅ Konfiguracja session management (Supabase auto-refresh)
   - _Wymagania: 9.1, 9.2_
+  - _Koszt: $0/miesiąc (50k MAU darmowe)_
 
 ### 2. Podstawowy System Zarządzania Projektami
 

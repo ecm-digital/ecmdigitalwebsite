@@ -408,20 +408,35 @@ class AWSChatbot {
         // Add user message
         this.addMessage(text, 'user');
 
+        // Track chatbot interaction
+        if (window.analytics && window.analytics.trackChatbotEvent) {
+            window.analytics.trackChatbotEvent('message_sent', text);
+        }
+
         try {
             console.log('🔄 Processing user input:', text);
 
-            // Send to Amazon Bedrock for intelligent response
-            const response = await this.sendToBedrock(text);
+            // Send to Google Gemini for intelligent response
+            const response = await this.sendToGemini(text);
 
             console.log('🤖 Bot response:', response);
 
             // Add bot response
             this.addMessage(response.message, 'bot');
 
+            // Track bot response
+            if (window.analytics && window.analytics.trackChatbotEvent) {
+                window.analytics.trackChatbotEvent('message_received', response.message.substring(0, 100));
+            }
+
             // Show service recommendations if available
             if (response.services && response.services.length > 0) {
                 this.showServiceRecommendations(response.services);
+                
+                // Track service recommendations shown
+                if (window.analytics && window.analytics.trackChatbotEvent) {
+                    window.analytics.trackChatbotEvent('service_recommendations_shown', response.services.join(', '));
+                }
             }
 
             // Speak response
@@ -429,6 +444,11 @@ class AWSChatbot {
 
         } catch (error) {
             console.error('❌ Error handling user input:', error);
+
+            // Track error
+            if (window.analytics && window.analytics.trackChatbotEvent) {
+                window.analytics.trackChatbotEvent('error', error.message);
+            }
 
             // Fallback response
             const fallbackResponse = this.generateFallbackResponse(text);
@@ -438,21 +458,21 @@ class AWSChatbot {
         }
     }
     
-        async sendToBedrock(text) {
-        // Check if we should use our API instead of direct AWS calls
+        async sendToGemini(text) {
+        // Check if we should use our API instead of direct Google calls
         if (this.useAPI) {
-            console.log('🔄 Using ECM Digital API instead of direct AWS calls');
+            console.log('🔄 Using ECM Digital API instead of direct Google calls');
             return await this.callAPI(text);
         }
 
-        // Use Amazon Bedrock for intelligent responses
+        // Use Google Gemini for intelligent responses
         const systemPrompt = `Jesteś cyfrowym asystentem ECM Digital. Reprezentujesz firmę specjalizującą się w usługach cyfrowych.
 
 INFORMACJE O FIRMIE:
 - Strony WWW: od 3,500 PLN
 - Sklepy Shopify: od 8,000 PLN
 - Aplikacje Mobilne: od 15,000 PLN
-- Asystenci AI na Amazon Bedrock: od 12,000 PLN
+- Agenci AI: od 12,000 PLN
 - Automatyzacje (n8n, Zapier, Opal): od 5,000 PLN
 - Audyty UX: od 2,500 PLN
 - Social Media + Data Science: od 4,000 PLN
@@ -471,15 +491,15 @@ KONTEKST: ${this.getConversationContext()}`;
         const userMessage = text;
 
         try {
-            // Use Claude 3 Sonnet for best results
-            const response = await this.callBedrockAPI(systemPrompt, userMessage);
+            // Use Gemini Pro for best results
+            const response = await this.callGeminiAPI(systemPrompt, userMessage);
             return {
                 message: response,
-                source: 'bedrock',
-                model: 'claude-3-sonnet'
+                source: 'gemini',
+                model: 'gemini-pro'
             };
         } catch (error) {
-            console.error('Bedrock error:', error);
+            console.error('Gemini error:', error);
             throw error;
         }
     }
@@ -543,32 +563,33 @@ KONTEKST: ${this.getConversationContext()}`;
         }
     }
     
-    async callBedrockAPI(systemPrompt, userMessage) {
+    async callGeminiAPI(systemPrompt, userMessage) {
         try {
-            console.log('🔍 Checking BedrockClient availability in callBedrockAPI...');
-            console.log('window.BedrockClient:', window.BedrockClient);
-            console.log('typeof window.BedrockClient:', typeof window.BedrockClient);
+            console.log('🔍 Checking GeminiClient availability in callGeminiAPI...');
+            console.log('window.GeminiClient:', window.GeminiClient);
+            console.log('window.geminiClient:', window.geminiClient);
             
-            // Try to use existing Bedrock client if available
-            if (window.BedrockClient && typeof window.BedrockClient === 'function') {
-                console.log('🚀 Using existing Bedrock client');
+            // Try to use existing Gemini client if available
+            if (window.geminiClient || (window.GeminiClient && typeof window.GeminiClient === 'function')) {
+                console.log('🚀 Using existing Gemini client');
                 console.log('System prompt:', systemPrompt);
                 console.log('User message:', userMessage);
                 
-                const response = await this.callExistingBedrock(systemPrompt, userMessage);
-                console.log('✅ Bedrock response received:', response);
+                const client = window.geminiClient || new window.GeminiClient();
+                const response = await client.generateContent(systemPrompt, userMessage);
+                console.log('✅ Gemini response received:', response);
                 return response;
             }
             
-            // Fallback to simulation if no Bedrock client
-            console.log('⚠️ No Bedrock client found, using simulation');
-            return this.simulateBedrockResponse(systemPrompt, userMessage);
+            // Fallback to simulation if no Gemini client
+            console.log('⚠️ No Gemini client found, using simulation');
+            return this.simulateGeminiResponse(systemPrompt, userMessage);
             
         } catch (error) {
-            console.error('❌ Bedrock API call failed:', error);
+            console.error('❌ Gemini API call failed:', error);
             console.log('🔄 Falling back to simulation');
             // Fallback to simulation
-            return this.simulateBedrockResponse(systemPrompt, userMessage);
+            return this.simulateGeminiResponse(systemPrompt, userMessage);
         }
     }
     
@@ -691,7 +712,7 @@ KONTEKST: ${this.getConversationContext()}`;
         }
     }
     
-    simulateBedrockResponse(systemPrompt, userMessage) {
+    simulateGeminiResponse(systemPrompt, userMessage) {
         // This simulates what Bedrock would return
         // Replace with actual Bedrock API call
         const lowerMessage = userMessage.toLowerCase();
@@ -714,10 +735,11 @@ KONTEKST: ${this.getConversationContext()}`;
    • Nowoczesne technologie
    • Skalowalne rozwiązania
 
-🤖 **Asystenci AI** - od 12,000 PLN
-   • Amazon Bedrock integration
-   • Copilot Studio
-   • Chatboty głosowe
+🤖 **Agenci AI** - od 12,000 PLN
+   • Google Gemini (Gemini Pro, Gemini Vision, Gemini 1.5 Pro)
+   • Automatyzacja procesów biznesowych
+   • Obsługa klienta 24/7
+   • Analiza danych AI
 
 ⚡ **Automatyzacje** - od 5,000 PLN
    • n8n, Zapier, Opal
@@ -801,11 +823,11 @@ Który projekt Cię najbardziej zainteresował? Mogę opowiedzieć więcej szcze
         if (lowerMessage.includes('ai') || lowerMessage.includes('sztuczna inteligencja') || lowerMessage.includes('chatbot')) {
             return `AI to nasza specjalność! Tworzymy inteligentne rozwiązania które automatyzują i optymalizują Twoje procesy biznesowe.
 
-🤖 **Asystenci AI na Amazon Bedrock:**
-   • Claude 3 (Anthropic) - najlepsze zrozumienie kontekstu
-   • Titan (Amazon) - integracja z AWS
-   • Llama 2 (Meta) - open source, customizable
-   • Cohere - specjalizacja w języku naturalnym
+🤖 **Agenci AI:**
+   • Gemini Pro - zaawansowane zrozumienie kontekstu
+   • Gemini Vision - obsługa obrazów i tekstu
+   • Gemini 1.5 Pro - najnowszy model z lepszą wydajnością
+   • Google AI Studio - łatwa integracja i zarządzanie
 
 🔧 **Copilot Studio dla Microsoft 365:**
    • Integracja z Teams, SharePoint, Outlook
@@ -1797,7 +1819,7 @@ Co Cię najbardziej interesuje? Opowiedz mi o swoich potrzebach lub wybierz jedn
         
         // Service-related responses
         if (lowerInput.includes('usług') || lowerInput.includes('oferta')) {
-            return 'Oferujemy kompleksowe usługi cyfrowe: Strony WWW od 3,500 PLN, Sklepy Shopify od 8,000 PLN, Aplikacje Mobilne od 15,000 PLN, Asystenci AI na Amazon Bedrock, Automatyzacje z n8n/Zapier/Opal, Audyty UX i Social Media z AI. Która usługa Cię najbardziej interesuje?';
+            return 'Oferujemy kompleksowe usługi cyfrowe: Strony WWW od 3,500 PLN, Sklepy Shopify od 8,000 PLN, Aplikacje Mobilne od 15,000 PLN, Agenci AI, Automatyzacje z n8n/Zapier/Opal, Audyty UX i Social Media z AI. Która usługa Cię najbardziej interesuje?';
         }
         
         if (lowerInput.includes('ceny') || lowerInput.includes('pakiety') || lowerInput.includes('koszt')) {
@@ -1813,7 +1835,7 @@ Co Cię najbardziej interesuje? Opowiedz mi o swoich potrzebach lub wybierz jedn
         }
         
         if (lowerInput.includes('ai') || lowerInput.includes('sztuczna inteligencja')) {
-            return 'Specjalizujemy się w AI! Tworzymy asystentów na Amazon Bedrock (Claude, Titan, Llama), Copilot Studio dla Microsoft 365, chatboty głosowe na Amazon Lex. AI może zautomatyzować Twoje procesy biznesowe. Chcesz dowiedzieć się więcej?';
+            return 'Specjalizujemy się w AI! Tworzymy inteligentnych agentów AI opartych na Google Gemini (Gemini Pro, Gemini Vision, Gemini 1.5 Pro). Agenci AI mogą zautomatyzować Twoje procesy biznesowe, obsługę klienta i analizę danych. Chcesz dowiedzieć się więcej?';
         }
         
         if (lowerInput.includes('automatyzac') || lowerInput.includes('n8n') || lowerInput.includes('zapier')) {
@@ -1930,7 +1952,7 @@ Co Cię najbardziej interesuje? Opowiedz mi o swoich potrzebach lub wybierz jedn
         
         switch (action) {
             case 'ai-solutions':
-                response = '🤖 Nasze rozwiązania AI obejmują:\n• Asystentów AI na Amazon Bedrock\n• Chatboty z Amazon Lex\n• Automatyzacje procesów\n• Analizę danych i predykcje\n\nKtóre rozwiązanie Cię najbardziej interesuje?';
+                response = '🤖 Nasze rozwiązania AI obejmują:\n• Agenci AI (Gemini)\n• Chatboty z integracją AI\n• Automatyzacje procesów\n• Analizę danych i predykcje\n\nKtóre rozwiązanie Cię najbardziej interesuje?';
                 followUp = '💡 Chcesz poznać szczegóły konkretnego rozwiązania?';
                 break;
             case 'services':

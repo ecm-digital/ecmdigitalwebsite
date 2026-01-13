@@ -19,7 +19,7 @@
     "contact": "Kontakt",
     "dropdown": {
       "aiSolutions": "🤖 Rozwiązania AI",
-      "aiAssistants": "Asystenci AI na Amazon Bedrock",
+      "aiAssistants": "Agenci AI",
       "voiceAssistants": "Asystenci Głosowi na Amazon Lex",
       "aiAudits": "Audyty Wdrożenia AI",
       "socialMediaAI": "Social Media & AI",
@@ -54,17 +54,13 @@
       "title": "Audyty Wdrożenia AI w Twojej Firmie",
       "description": "Analizujemy Twoje procesy biznesowe i identyfikujemy obszary do automatyzacji AI. Kompleksowy plan wdrożenia sztucznej inteligencji."
     },
-    "automation": {
-      "title": "Automatyzacje",
-      "description": "Oszczędzaj 15-20 godzin tygodniowo automatyzując powtarzalne zadania. Integracje systemów, automatyzacja workflow i eliminacja błędów ludzkich."
-    },
     "socialMediaAI": {
       "title": "Social Media & AI",
       "description": "Zwiększ zaangażowanie o 60% dzięki analizie treści AI. Dowiedz się, co naprawdę interesuje Twoich klientów."
     },
     "aiAssistants": {
-      "title": "Asystenci AI na Amazon Bedrock & Copilot Studio",
-      "description": "Automatyzuj obsługę klienta 24/7 i oszczędzaj do 70% kosztów wsparcia. Inteligentni asystenci AI odpowiadają na pytania i rozwiązują problemy."
+      "title": "Agenci AI",
+      "description": "Tworzymy inteligentnych agentów AI opartych na Google Gemini. Automatyzuj procesy biznesowe, obsługę klienta 24/7 i analizę danych. Oszczędzaj do 70% kosztów operacyjnych dzięki zaawansowanym rozwiązaniom AI."
     },
     "mobileApps": {
       "title": "Aplikacje Mobilne",

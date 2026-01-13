@@ -102,6 +102,13 @@
                 portalId: String(portalId),
                 formId: String(formId),
                 target: '#' + targetId,
+                onFormSubmit: function($form) {
+                    // Track form submission in Google Analytics
+                    if (window.analytics && window.analytics.trackContactConversion) {
+                        window.analytics.trackContactConversion('hubspot_contact');
+                    }
+                    log('Form submitted, tracking conversion');
+                }
             });
         } catch (e) {
             console.warn('[HubSpot] Failed to create form:', e);
@@ -129,6 +136,7 @@
                     var label = el.getAttribute('data-i18n') || el.textContent?.trim() || 'CTA Click';
                     var href = el.getAttribute('href') || '';
                     try {
+                        // HubSpot tracking
                         window._hsq.push([
                             'trackEvent',
                             {
@@ -139,6 +147,12 @@
                                 path: window.location.pathname,
                             },
                         ]);
+                        
+                        // Google Analytics 4 tracking
+                        if (window.analytics && window.analytics.trackCTAClick) {
+                            window.analytics.trackCTAClick(label, window.location.pathname);
+                        }
+                        
                         log('Tracked CTA click:', { label: label, href: href });
                     } catch (_) {
                         // no-op

@@ -21,7 +21,7 @@
     "contact": "Contact",
     "dropdown": {
       "aiSolutions": "🤖 AI Solutions",
-      "aiAssistants": "AI Assistants on Amazon Bedrock",
+      "aiAssistants": "AI Agents",
       "voiceAssistants": "Voice Assistants on Amazon Lex",
       "aiAudits": "AI Implementation Audits",
       "socialMediaAI": "Social Media & AI",
@@ -56,17 +56,13 @@
       "title": "AI Implementation Audits in Your Company",
       "description": "We analyze your business processes and identify areas for AI automation. Comprehensive artificial intelligence implementation plan."
     },
-    "automation": {
-      "title": "Automation",
-      "description": "Save 15-20 hours weekly by automating repetitive tasks. System integrations, workflow automation and elimination of human errors."
-    },
     "socialMediaAI": {
       "title": "Social Media & AI",
       "description": "Increase engagement by 60% through AI content analysis. Learn what really interests your customers."
     },
     "aiAssistants": {
-      "title": "AI Assistants on Amazon Bedrock & Copilot Studio",
-      "description": "Automate customer service 24/7 and save up to 70% on support costs. Intelligent AI assistants answer questions and solve problems."
+      "title": "AI Agents",
+      "description": "We create intelligent AI agents based on Google Gemini. Automate business processes, 24/7 customer service and data analysis. Save up to 70% on operational costs with advanced AI solutions."
     },
     "mobileApps": {
       "title": "Mobile Applications",
@@ -193,15 +189,6 @@
           "skills": {
             "aiTesting": "AI Testing",
             "qualityAssurance": "Quality Assurance"
-          }
-        },
-        "roman": {
-          "name": "Roman Domina",
-          "position": "Senior Developer",
-          "description": "Experienced programmer with extensive experience in creating advanced AI systems and integration with existing platforms.",
-          "skills": {
-            "backendDevelopment": "Backend Development",
-            "aiIntegration": "AI Integration"
           }
         }
       },
@@ -597,8 +584,8 @@
       "services": "We offer comprehensive digital services: Websites from 3,500 PLN, Shopify stores from 8,000 PLN, Mobile apps from 15,000 PLN, AI assistants on Amazon Bedrock, Automations with n8n/Zapier/Opal, UX audits and Social Media with AI. Which service interests you most?",
       "pricing": "Our prices start from: Websites - 3,500 PLN, Shopify stores - 8,000 PLN, Mobile apps - 15,000 PLN, AI assistants - 12,000 PLN. All prices are individual and depend on project complexity. Would you like to receive an exact quote?",
       "consultation": "Great! I can arrange a free consultation with our team. Provide your phone number or email, and we'll contact you within 24 hours. When would you be available?",
-      "portfolio": "We have a rich project portfolio: Websites for companies from various industries, Shopify stores with high conversion, Mobile apps for startups, AI assistants for corporations. Would you like to see specific examples?",
-      "aiAssistants": "We specialize in AI! We create assistants on Amazon Bedrock (Claude, Titan, Llama), Copilot Studio for Microsoft 365, voice chatbots on Amazon Lex. AI can automate your business processes. Would you like to learn more?",
+      "portfolio": "We have a rich project portfolio: Websites for companies from various industries, Shopify stores with high conversion, Mobile apps for startups, AI agents for corporations. Would you like to see specific examples?",
+      "aiAssistants": "We specialize in AI! We create intelligent AI agents based on Google Gemini (Gemini Pro, Gemini Vision, Gemini 1.5 Pro). Our AI agents can automate your business processes, provide 24/7 customer service and analyze data. Would you like to learn more?",
       "automation": "We automate business processes using n8n, Zapier and Opal. We can automate: marketing, sales, HR, finance, customer service. This saves time and reduces errors. Which processes would you like to automate?",
       "default": "Thank you for your question! I can tell you about our services, prices, arrange a consultation or show portfolio. What interests you most?"
     }
