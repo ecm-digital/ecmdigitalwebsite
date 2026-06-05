@@ -1,5 +1,8 @@
 {
+<<<<<<< Updated upstream
   "/_not-found/page": "app/_not-found/page.js",
   "/dashboard/page": "app/dashboard/page.js",
+=======
+>>>>>>> Stashed changes
   "/page": "app/page.js"
 }

@@ -19,17 +19,17 @@
     "contact": "Kontakt",
     "dropdown": {
       "aiSolutions": "🤖 Rozwiązania AI",
-      "aiAssistants": "Agenci AI",
+      "aiAssistants": "Asystenci AI i agenci firmowi",
       "voiceAssistants": "Asystenci Głosowi na Amazon Lex",
       "aiAudits": "Audyty Wdrożenia AI",
       "socialMediaAI": "Social Media & AI",
       "digitalProducts": "🌐 Produkty Cyfrowe",
-      "websites": "Strony WWW i Aplikacje Webowe",
-      "shopifyStores": "Sklepy Shopify",
+      "websites": "Strony i landing pages",
+      "shopifyStores": "E-commerce automation",
       "mobileApps": "Aplikacje Mobilne",
-      "automationMvp": "⚡ Automatyzacja & MVP",
+      "automationMvp": "⚡ Automatyzacja",
       "n8nAutomation": "Automatyzacje N8N",
-      "mvpPrototypes": "Prototypy MVP",
+      "mvpPrototypes": "MVP i aplikacje webowe z AI",
       "viewAllServices": "Zobacz wszystkie usługi"
     }
   },
@@ -39,36 +39,32 @@
   },
   "services": {
     "websites": {
-      "title": "Strony WWW i Aplikacje Webowe",
-      "description": "Profesjonalne strony internetowe i aplikacje webowe dostosowane do potrzeb biznesowych. Zoptymalizowane pod kątem SEO, wydajności i konwersji."
+      "title": "Strony i landing pages",
+      "description": "Projektujemy strony, landing pages i proste aplikacje webowe pod sprzedaż, kampanie i wdrożenia AI. Szybkie, responsywne i gotowe do mierzenia konwersji."
     },
     "shopifyStores": {
-      "title": "Sklepy Shopify",
-      "description": "Profesjonalne sklepy internetowe na platformie Shopify, które skutecznie sprzedają i skalują się wraz z Twoim biznesem."
+      "title": "E-commerce automation",
+      "description": "Rozwijamy sklepy Shopify i Wix przez automatyzacje sprzedaży, obsługi klienta, rekomendacji, raportowania i integracji z narzędziami operacyjnymi."
     },
     "mvpPrototypes": {
-      "title": "Prototypy MVP",
-      "description": "Szybka walidacja pomysłów biznesowych poprzez tworzenie funkcjonalnych prototypów. Minimalizujemy ryzyko i maksymalizujemy szanse na sukces."
+      "title": "MVP i aplikacje webowe z AI",
+      "description": "Budujemy działające prototypy, panele i aplikacje webowe, które szybko sprawdzają pomysł w realnym użyciu przed większą inwestycją."
     },
     "uxAudits": {
-      "title": "Audyt i Strategia AI",
-      "description": "Pierwszy krok transformacji. Analizujemy procesy, liczymy ROI i tworzymy mapę drogową wdrożenia AI w Twojej firmie."
+      "title": "Audyt wdrożenia AI",
+      "description": "Diagnozujemy procesy, dane, narzędzia i ryzyka. Dostajesz priorytety wdrożenia, mapę automatyzacji i plan pierwszego MVP AI."
     },
-    "education": {
-      "title": "Edukacja i Wdrożenia",
-      "description": "Technologia to tylko połowa sukcesu. Szkolimy Twój zespół i dbamy o pełną adopcję rozwiązań w firmie. Gwarancja użyteczności."
-    },
-    "executive": {
-      "title": "AI Executive",
-      "description": "Osobisty, cyfrowy doradca dla zarządu. Pełen kontekst firmy, analiza danych i wsparcie decyzyjne w czasie rzeczywistym."
+    "automation": {
+      "title": "Automatyzacje procesów i integracje",
+      "description": "Łączymy CRM, formularze, e-mail, dokumenty, płatności i raportowanie w stabilne workflow. Mniej ręcznej pracy, mniej błędów i szybciej domykane procesy."
     },
     "socialMediaAI": {
       "title": "Social Media & AI",
       "description": "Zwiększ zaangażowanie o 60% dzięki analizie treści AI. Dowiedz się, co naprawdę interesuje Twoich klientów."
     },
     "aiAssistants": {
-      "title": "Agenci AI",
-      "description": "Tworzymy inteligentnych agentów AI opartych na Google Gemini. Automatyzuj procesy biznesowe, obsługę klienta 24/7 i analizę danych. Oszczędzaj do 70% kosztów operacyjnych dzięki zaawansowanym rozwiązaniom AI."
+      "title": "Asystenci AI i agenci firmowi",
+      "description": "Wdrażamy asystentów AI do obsługi klienta, sprzedaży, analizy dokumentów i pracy z wiedzą firmową. Bezpiecznie, mierzalnie i z integracją z Twoimi systemami."
     },
     "mobileApps": {
       "title": "Aplikacje Mobilne",
@@ -101,7 +97,7 @@
   "sections": {
     "services": {
       "title": "Nasze Usługi",
-      "subtitle": "Kompleksowe rozwiązania AI i automatyzacji, które transformują Twój biznes i zwiększają efektywność"
+      "subtitle": "Praktyczne wdrożenia AI, automatyzacje i produkty cyfrowe, które porządkują procesy i tworzą mierzalną wartość"
     },
     "about": {
       "title": "O ECM Digital",

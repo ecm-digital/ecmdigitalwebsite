@@ -32,7 +32,7 @@
       "mvpPrototypes": "MVP-Prototypen",
       "viewAllServices": "Alle Dienstleistungen anzeigen"
     }
-  }
+  },
   "common": {
     "learnMore": "Mehr erfahren"
   },
@@ -195,10 +195,7 @@
       "form.budget.consultation": "Beratung benötigt",
       "form.message": "Nachricht *",
       "form.submit": "Nachricht senden"
-      }
-    }
-  }
-  },
+    },
   "footer": {
     "copyright": "© 2025 ECM Digital. Alle Rechte vorbehalten.",
     "poweredBy": "Powered by Scrum Software Sp. z o.o."

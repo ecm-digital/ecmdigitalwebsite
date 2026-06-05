@@ -25,6 +25,7 @@ import {
   Send
 } from 'lucide-react'
 import { memo, useMemo, useCallback } from 'react'
+import { useRouter } from 'next/navigation'
 
 const statusColors = {
   'discovery': 'bg-blue-100 text-blue-800 border-blue-200',
@@ -49,6 +50,7 @@ export const DashboardOverview = memo(function DashboardOverview() {
   const { user } = useAWSAuth()
   const unreadCount = useUnreadMessages()
   const { t } = useLanguage()
+  const router = useRouter()
 
   // Memoized fallback data
   const safeUser = useMemo(() => 
@@ -81,16 +83,16 @@ export const DashboardOverview = memo(function DashboardOverview() {
 
   // Memoized event handlers
   const handleNewProject = useCallback(() => {
-    // Navigate to new project page
-  }, [])
+    router.push('/dashboard/projects')
+  }, [router])
 
   const handleSendMessage = useCallback(() => {
-    // Navigate to messages page
-  }, [])
+    router.push('/dashboard/messages')
+  }, [router])
 
   const handleUploadDocument = useCallback(() => {
-    // Navigate to documents page
-  }, [])
+    router.push('/dashboard/documents')
+  }, [router])
 
   if (loading) {
     return (
@@ -252,7 +254,10 @@ export const DashboardOverview = memo(function DashboardOverview() {
                 Twoje najnowsze projekty i ich status
               </CardDescription>
             </div>
-            <button className="dashboard-button flex items-center">
+            <button 
+              onClick={() => router.push('/dashboard/projects')}
+              className="dashboard-button flex items-center"
+            >
               <Plus className="h-4 w-4 mr-2" />
               Wszystkie projekty
             </button>
@@ -260,7 +265,11 @@ export const DashboardOverview = memo(function DashboardOverview() {
           <CardContent>
             <div className="space-y-4">
               {recentProjects.map((project) => (
-                <div key={project.id} className="group p-4 bg-white rounded-xl border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all duration-300">
+                <div 
+                  key={project.id} 
+                  onClick={() => router.push(`/dashboard/projects/${project.id}`)}
+                  className="group p-4 bg-white rounded-xl border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all duration-300 cursor-pointer"
+                >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-4">
                       <div className="w-12 h-12 bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl flex items-center justify-center group-hover:from-blue-200 group-hover:to-blue-300 transition-colors">
@@ -304,7 +313,10 @@ export const DashboardOverview = memo(function DashboardOverview() {
                 <Plus className="h-8 w-8 text-blue-600" />
               </div>
               <p className="text-slate-600 mb-4">Rozpocznij swoją pierwszą współpracę z ECM Digital</p>
-              <button className="dashboard-button">
+              <button 
+                onClick={() => router.push('/dashboard/projects')}
+                className="dashboard-button"
+              >
                 Utwórz Projekt
               </button>
             </div>

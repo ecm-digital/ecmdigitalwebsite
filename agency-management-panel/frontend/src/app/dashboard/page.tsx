@@ -1,3 +1,5 @@
+"use client";
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -14,57 +16,140 @@ import {
   ArrowUp,
   ArrowDown,
   Eye,
-  Settings
+  Settings,
+  Loader2,
 } from "lucide-react";
+import { useDashboardStats, useNotifications } from "@/hooks/use-dashboard";
+
+const formatTimeAgo = (date: string | Date) => {
+  const now = new Date();
+  const then = new Date(date);
+  const seconds = Math.floor((now.getTime() - then.getTime()) / 1000);
+  
+  if (seconds < 60) return "przed chwilą";
+  const minutes = Math.floor(seconds / 60);
+  if (minutes < 60) return `${minutes} ${minutes === 1 ? 'minutę' : minutes < 5 ? 'minuty' : 'minut'} temu`;
+  const hours = Math.floor(minutes / 60);
+  if (hours < 24) return `${hours} ${hours === 1 ? 'godzinę' : hours < 5 ? 'godziny' : 'godzin'} temu`;
+  const days = Math.floor(hours / 24);
+  return `${days} ${days === 1 ? 'dzień' : 'dni'} temu`;
+};
 
 export default function Dashboard() {
+  const { data: stats, isLoading: statsLoading, error: statsError } = useDashboardStats();
+  const { data: notificationsData, isLoading: notificationsLoading } = useNotifications({
+    limit: 3,
+    unreadOnly: false,
+  });
+
+  if (statsLoading) {
+    return (
+      <div className="container mx-auto px-4 py-8 flex items-center justify-center min-h-[400px]">
+        <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
+      </div>
+    );
+  }
+
+  if (statsError) {
+    return (
+      <div className="container mx-auto px-4 py-8">
+        <Card className="border-destructive">
+          <CardContent className="pt-6">
+            <p className="text-destructive">Błąd podczas ładowania danych dashboardu</p>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
+
+  const kpis = stats?.kpis || {
+    activeClients: 0,
+    activeClientsChange: 0,
+    monthlyRevenue: 0,
+    monthlyRevenueChange: 0,
+    activeProjects: 0,
+    activeProjectsChange: 0,
+    clientSatisfaction: 0,
+  };
+
+  const projectStatus = stats?.projectStatus || {
+    completed: 0,
+    "in-progress": 0,
+    planning: 0,
+    delayed: 0,
+  };
+
+  const servicePerformance = stats?.servicePerformance || [];
+
+  const formatCurrency = (value: number) => {
+    return new Intl.NumberFormat("pl-PL", {
+      style: "currency",
+      currency: "PLN",
+      maximumFractionDigits: 0,
+    }).format(value);
+  };
+
+  const notifications = notificationsData?.notifications || [];
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold">Dashboard Zarządzania</h1>
+    <div className="container mx-auto px-4 py-8 space-y-8">
+      <div className="mb-8 animate-slide-up">
+        <h1 className="text-3xl font-bold gradient-text-primary">Dashboard Zarządzania</h1>
         <p className="text-muted-foreground mt-2">Przegląd kluczowych metryk i wydajności agencji</p>
       </div>
 
       {/* KPI Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-        <Card>
+        {/* Add stagger animation delays */}
+        <Card className="animate-slide-up animate-delay-100">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Aktywni Klienci</CardTitle>
             <Users className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">24</div>
+            <div className="text-2xl font-bold">{kpis.activeClients}</div>
             <p className="text-xs text-muted-foreground flex items-center mt-1">
-              <ArrowUp className="h-3 w-3 text-green-500 mr-1" />
-              +12% z poprzedniego miesiąca
+              {kpis.activeClientsChange >= 0 ? (
+                <ArrowUp className="h-3 w-3 text-green-500 mr-1" />
+              ) : (
+                <ArrowDown className="h-3 w-3 text-red-500 mr-1" />
+              )}
+              {kpis.activeClientsChange >= 0 ? '+' : ''}{kpis.activeClientsChange}% z poprzedniego miesiąca
             </p>
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="animate-slide-up animate-delay-200">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Przychody Miesięczne</CardTitle>
             <DollarSign className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">45,231 zł</div>
+            <div className="text-2xl font-bold">{formatCurrency(kpis.monthlyRevenue)}</div>
             <p className="text-xs text-muted-foreground flex items-center mt-1">
-              <ArrowUp className="h-3 w-3 text-green-500 mr-1" />
-              +8% z poprzedniego miesiąca
+              {kpis.monthlyRevenueChange >= 0 ? (
+                <ArrowUp className="h-3 w-3 text-green-500 mr-1" />
+              ) : (
+                <ArrowDown className="h-3 w-3 text-red-500 mr-1" />
+              )}
+              {kpis.monthlyRevenueChange >= 0 ? '+' : ''}{kpis.monthlyRevenueChange}% z poprzedniego miesiąca
             </p>
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="animate-slide-up animate-delay-300">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Projekty w Toku</CardTitle>
             <Target className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">18</div>
+            <div className="text-2xl font-bold">{kpis.activeProjects}</div>
             <p className="text-xs text-muted-foreground flex items-center mt-1">
-              <ArrowDown className="h-3 w-3 text-red-500 mr-1" />
-              -3 z poprzedniego tygodnia
+              {kpis.activeProjectsChange >= 0 ? (
+                <ArrowUp className="h-3 w-3 text-green-500 mr-1" />
+              ) : (
+                <ArrowDown className="h-3 w-3 text-red-500 mr-1" />
+              )}
+              {kpis.activeProjectsChange >= 0 ? '+' : ''}{kpis.activeProjectsChange} z poprzedniego tygodnia
             </p>
           </CardContent>
         </Card>
@@ -89,34 +174,19 @@ export default function Dashboard() {
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <span className="text-sm">Strony WWW</span>
-                <div className="flex items-center gap-2">
-                  <Progress value={85} className="w-20" />
-                  <span className="text-sm font-medium">85%</span>
-                </div>
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-sm">Sklepy Shopify</span>
-                <div className="flex items-center gap-2">
-                  <Progress value={72} className="w-20" />
-                  <span className="text-sm font-medium">72%</span>
-                </div>
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-sm">Aplikacje Mobilne</span>
-                <div className="flex items-center gap-2">
-                  <Progress value={91} className="w-20" />
-                  <span className="text-sm font-medium">91%</span>
-                </div>
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-sm">Prototypy MVP</span>
-                <div className="flex items-center gap-2">
-                  <Progress value={78} className="w-20" />
-                  <span className="text-sm font-medium">78%</span>
-                </div>
-              </div>
+              {servicePerformance.length > 0 ? (
+                servicePerformance.map((service: any, index: number) => (
+                  <div key={index} className="flex items-center justify-between">
+                    <span className="text-sm">{service.name}</span>
+                    <div className="flex items-center gap-2">
+                      <Progress value={service.progress} className="w-20" />
+                      <span className="text-sm font-medium">{service.progress}%</span>
+                    </div>
+                  </div>
+                ))
+              ) : (
+                <p className="text-sm text-muted-foreground">Brak danych o wydajności usług</p>
+              )}
             </div>
           </CardContent>
         </Card>
@@ -132,28 +202,28 @@ export default function Dashboard() {
                   <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                   <span className="text-sm">Zakończone</span>
                 </div>
-                <span className="text-sm font-medium">12</span>
+                <span className="text-sm font-medium">{projectStatus.completed || 0}</span>
               </div>
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
                   <span className="text-sm">W trakcie</span>
                 </div>
-                <span className="text-sm font-medium">18</span>
+                <span className="text-sm font-medium">{projectStatus["in-progress"] || 0}</span>
               </div>
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
                   <span className="text-sm">Oczekujące</span>
                 </div>
-                <span className="text-sm font-medium">7</span>
+                <span className="text-sm font-medium">{projectStatus.planning || 0}</span>
               </div>
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 bg-red-500 rounded-full"></div>
                   <span className="text-sm">Opóźnione</span>
                 </div>
-                <span className="text-sm font-medium">2</span>
+                <span className="text-sm font-medium">{projectStatus.delayed || 0}</span>
               </div>
             </div>
           </CardContent>
@@ -168,34 +238,21 @@ export default function Dashboard() {
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
-              <div className="flex items-start gap-4">
-                <div className="w-2 h-2 bg-green-500 rounded-full mt-2"></div>
-                <div className="flex-1">
-                  <p className="text-sm font-medium">Nowy projekt dla klienta ABC Corp</p>
-                  <p className="text-xs text-muted-foreground">2 godziny temu</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-4">
-                <div className="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
-                <div className="flex-1">
-                  <p className="text-sm font-medium">Zakończono audyt UX dla XYZ Ltd</p>
-                  <p className="text-xs text-muted-foreground">5 godzin temu</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-4">
-                <div className="w-2 h-2 bg-yellow-500 rounded-full mt-2"></div>
-                <div className="flex-1">
-                  <p className="text-sm font-medium">Raport miesięczny wygenerowany</p>
-                  <p className="text-xs text-muted-foreground">1 dzień temu</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-4">
-                <div className="w-2 h-2 bg-purple-500 rounded-full mt-2"></div>
-                <div className="flex-1">
-                  <p className="text-sm font-medium">Nowa płatność odebrana</p>
-                  <p className="text-xs text-muted-foreground">2 dni temu</p>
-                </div>
-              </div>
+              {stats?.recentActivity && stats.recentActivity.length > 0 ? (
+                stats.recentActivity.slice(0, 4).map((activity: any, index: number) => (
+                  <div key={index} className="flex items-start gap-4">
+                    <div className="w-2 h-2 bg-green-500 rounded-full mt-2"></div>
+                    <div className="flex-1">
+                      <p className="text-sm font-medium">{activity.message}</p>
+                      <p className="text-xs text-muted-foreground">
+                        {activity.timestamp ? formatTimeAgo(activity.timestamp) : "Przed chwilą"}
+                      </p>
+                    </div>
+                  </div>
+                ))
+              ) : (
+                <p className="text-sm text-muted-foreground">Brak ostatniej aktywności</p>
+              )}
             </div>
           </CardContent>
         </Card>
@@ -208,32 +265,47 @@ export default function Dashboard() {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="space-y-4">
-              <div className="flex items-start gap-3">
-                <Badge variant="destructive" className="text-xs">Pilne</Badge>
-                <div className="flex-1">
-                  <p className="text-sm font-medium">Projekt opóźniony</p>
-                  <p className="text-xs text-muted-foreground">Client DEF - termin przekroczony o 2 dni</p>
-                </div>
+            {notificationsLoading ? (
+              <div className="flex items-center justify-center py-4">
+                <Loader2 className="h-4 w-4 animate-spin text-muted-foreground" />
               </div>
-              <div className="flex items-start gap-3">
-                <Badge variant="secondary" className="text-xs">Info</Badge>
-                <div className="flex-1">
-                  <p className="text-sm font-medium">Nowa wiadomość</p>
-                  <p className="text-xs text-muted-foreground">Klient zapytał o wycenę</p>
+            ) : notifications.length > 0 ? (
+              <>
+                <div className="space-y-4">
+                  {notifications.map((notification: any) => (
+                    <div key={notification.id} className="flex items-start gap-3">
+                      <Badge
+                        variant={
+                          notification.priority === "high"
+                            ? "destructive"
+                            : notification.priority === "medium"
+                            ? "secondary"
+                            : "outline"
+                        }
+                        className="text-xs"
+                      >
+                        {notification.priority === "high"
+                          ? "Pilne"
+                          : notification.priority === "medium"
+                          ? "Info"
+                          : "Normal"}
+                      </Badge>
+                      <div className="flex-1">
+                        <p className="text-sm font-medium">{notification.message}</p>
+                        <p className="text-xs text-muted-foreground">
+                          {notification.createdAt ? formatTimeAgo(notification.createdAt) : "Przed chwilą"}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <Badge variant="outline" className="text-xs">Zadanie</Badge>
-                <div className="flex-1">
-                  <p className="text-sm font-medium">Spotkanie zespołu</p>
-                  <p className="text-xs text-muted-foreground">Jutro o 10:00</p>
-                </div>
-              </div>
-            </div>
-            <Button variant="outline" className="w-full mt-4" size="sm">
-              Zobacz wszystkie
-            </Button>
+                <Button variant="outline" className="w-full mt-4" size="sm">
+                  Zobacz wszystkie
+                </Button>
+              </>
+            ) : (
+              <p className="text-sm text-muted-foreground">Brak powiadomień</p>
+            )}
           </CardContent>
         </Card>
       </div>

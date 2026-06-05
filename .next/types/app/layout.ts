@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 // File: /Users/tomaszgt/ECM Digital/ecmdigitalwebsite/src/app/layout.tsx
+=======
+// File: /Volumes/Dysk zewn/Vibe coding/ECM Digital website/src/app/layout.tsx
+>>>>>>> Stashed changes
 import * as entry from '../../../src/app/layout.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

@@ -19,17 +19,17 @@
     "contact": "Kontakt",
     "dropdown": {
       "aiSolutions": "🤖 Rozwiązania AI",
-      "aiAssistants": "Asystenci AI na Amazon Bedrock",
+      "aiAssistants": "Asystenci AI i agenci firmowi",
       "voiceAssistants": "Asystenci Głosowi na Amazon Lex",
       "aiAudits": "Audyty Wdrożenia AI",
       "socialMediaAI": "Social Media & AI",
       "digitalProducts": "🌐 Produkty Cyfrowe",
-      "websites": "Strony WWW",
-      "shopifyStores": "Sklepy Shopify",
+      "websites": "Strony i landing pages",
+      "shopifyStores": "E-commerce automation",
       "mobileApps": "Aplikacje Mobilne",
-      "automationMvp": "⚡ Automatyzacja & MVP",
+      "automationMvp": "⚡ Automatyzacja",
       "n8nAutomation": "Automatyzacje N8N",
-      "mvpPrototypes": "Prototypy MVP",
+      "mvpPrototypes": "MVP i aplikacje webowe z AI",
       "viewAllServices": "Zobacz wszystkie usługi"
     }
   },
@@ -39,12 +39,12 @@
   },
   "services": {
     "websites": {
-      "title": "Strony WWW",
-      "description": "Profesjonalne strony internetowe dostosowane do potrzeb biznesowych. Zoptymalizowane pod kątem SEO, wydajności i konwersji."
+      "title": "Strony i landing pages",
+      "description": "Projektujemy strony, landing pages i proste aplikacje webowe pod sprzedaż, kampanie i wdrożenia AI. Szybkie, responsywne i gotowe do mierzenia konwersji."
     },
     "shopifyStores": {
-      "title": "Sklepy Shopify",
-      "description": "Profesjonalne sklepy internetowe na platformie Shopify, które skutecznie sprzedają i skalują się wraz z Twoim biznesem.",
+      "title": "E-commerce automation",
+      "description": "Rozwijamy sklepy Shopify i Wix przez automatyzacje sprzedaży, obsługi klienta, rekomendacji, raportowania i integracji z narzędziami operacyjnymi.",
       "heroTitle": "Sklepy <span style=\"color: #96BF47;\">Shopify & Wix</span> Które <span style=\"color: #30D158;\">Sprzedają</span>",
       "heroDescription": "Tworzymy profesjonalne sklepy e-commerce na platformach Shopify i Wix, które konwertują odwiedzających w klientów. Custom design, zaawansowane integracje i automatyzacja sprzedaży.",
       "stats": {
@@ -150,24 +150,24 @@
       }
     },
     "mvpPrototypes": {
-      "title": "Prototypy MVP",
-      "description": "Szybka walidacja pomysłów biznesowych poprzez tworzenie funkcjonalnych prototypów. Minimalizujemy ryzyko i maksymalizujemy szanse na sukces."
+      "title": "MVP i aplikacje webowe z AI",
+      "description": "Budujemy działające prototypy, panele i aplikacje webowe, które szybko sprawdzają pomysł w realnym użyciu przed większą inwestycją."
     },
     "uxAudits": {
-      "title": "Audyty Wdrożenia AI w Twojej Firmie",
-      "description": "Analizujemy Twoje procesy biznesowe i identyfikujemy obszary do automatyzacji AI. Kompleksowy plan wdrożenia sztucznej inteligencji."
+      "title": "Audyt wdrożenia AI",
+      "description": "Diagnozujemy procesy, dane, narzędzia i ryzyka. Dostajesz priorytety wdrożenia, mapę automatyzacji i plan pierwszego MVP AI."
     },
     "automation": {
-      "title": "Automatyzacje",
-      "description": "Oszczędzaj 15-20 godzin tygodniowo automatyzując powtarzalne zadania. Integracje systemów, automatyzacja workflow i eliminacja błędów ludzkich."
+      "title": "Automatyzacje procesów i integracje",
+      "description": "Łączymy CRM, formularze, e-mail, dokumenty, płatności i raportowanie w stabilne workflow. Mniej ręcznej pracy, mniej błędów i szybciej domykane procesy."
     },
     "socialMediaAI": {
       "title": "Social Media & AI",
       "description": "Zwiększ zaangażowanie o 60% dzięki analizie treści AI. Dowiedz się, co naprawdę interesuje Twoich klientów."
     },
     "aiAssistants": {
-      "title": "Asystenci AI na Amazon Bedrock & Copilot Studio",
-      "description": "Automatyzuj obsługę klienta 24/7 i oszczędzaj do 70% kosztów wsparcia. Inteligentni asystenci AI odpowiadają na pytania i rozwiązują problemy."
+      "title": "Asystenci AI i agenci firmowi",
+      "description": "Wdrażamy asystentów AI do obsługi klienta, sprzedaży, analizy dokumentów i pracy z wiedzą firmową. Bezpiecznie, mierzalnie i z integracją z Twoimi systemami."
     },
     "mobileApps": {
       "title": "Aplikacje Mobilne",
@@ -178,29 +178,29 @@
       "description": "Głosowa obsługa klienta - dostępność 24/7 bez kosztów call center. Naturalne rozmowy, inteligentne odpowiedzi."
     }
   },
-      "hero": {
-        "title": "Wdrażamy AI w Twojej Firmie",
-        "titleHighlight": "Innowacjami Cyfrowymi",
-        "subtitle": "Transformujemy Twoją firmę dzięki sztucznej inteligencji. Od chatbotów po zaawansowane automatyzacje - AI, które naprawdę działa i generuje realne korzyści biznesowe.",
-        "exploreServices": "Poznaj Usługi",
-        "getQuote": "Otrzymaj Ofertę",
-        "cta_assistant": "Porozmawiaj z naszym asystentem",
-        "exploreFeatures": "Poznaj funkcje",
-        "stats": {
-          "aiProjects": "50+",
-          "aiProjectsLabel": "Projektów AI",
-          "costReduction": "70%",
-          "costReductionLabel": "Redukcja Kosztów",
-          "support": "24/7",
-          "supportLabel": "AI Wsparcie",
-          "satisfaction": "95%",
-          "satisfactionLabel": "Satysfakcja"
-        }
-    },
+  "hero": {
+    "title": "Wdrażamy AI w Twojej Firmie",
+    "titleHighlight": "Innowacjami Cyfrowymi",
+    "subtitle": "Transformujemy Twoją firmę dzięki sztucznej inteligencji. Od chatbotów po zaawansowane automatyzacje - AI, które naprawdę działa i generuje realne korzyści biznesowe.",
+    "exploreServices": "Poznaj Usługi",
+    "getQuote": "Otrzymaj Ofertę",
+    "cta_assistant": "Porozmawiaj z naszym asystentem",
+    "exploreFeatures": "Poznaj funkcje",
+    "stats": {
+      "aiProjects": "50+",
+      "aiProjectsLabel": "Projektów AI",
+      "costReduction": "70%",
+      "costReductionLabel": "Redukcja Kosztów",
+      "support": "24/7",
+      "supportLabel": "AI Wsparcie",
+      "satisfaction": "95%",
+      "satisfactionLabel": "Satysfakcja"
+    }
+  },
   "sections": {
     "services": {
       "title": "Nasze Usługi",
-      "subtitle": "Kompleksowe rozwiązania AI i automatyzacji, które transformują Twój biznes i zwiększają efektywność"
+      "subtitle": "Praktyczne wdrożenia AI, automatyzacje i produkty cyfrowe, które porządkują procesy i tworzą mierzalną wartość"
     },
     "about": {
       "title": "O ECM Digital",
@@ -278,41 +278,41 @@
       "title": "Nasz Zespół",
       "subtitle": "Poznaj ekspertów, którzy tworzą Twoje projekty",
       "members": {
-                "tomasz": {
-            "name": "Tomasz Gnat",
-            "position": "Konsultant Discovery",
-            "description": "Ekspert w odkrywaniu potrzeb biznesowych i strategii AI. Pomaga firmom identyfikować obszary do automatyzacji.",
-            "skills": {
-                "businessAnalysis": "Business Analysis",
-                "aiStrategy": "AI Strategy"
-            }
+        "tomasz": {
+          "name": "Tomasz Gnat",
+          "position": "Konsultant Discovery",
+          "description": "Ekspert w odkrywaniu potrzeb biznesowych i strategii AI. Pomaga firmom identyfikować obszary do automatyzacji.",
+          "skills": {
+            "businessAnalysis": "Business Analysis",
+            "aiStrategy": "AI Strategy"
+          }
         },
         "karol": {
-            "name": "Karol Czechowski",
-            "position": "QA & AI Developer",
-            "description": "Specjalista od zapewnienia jakości rozwiązań AI i automatycznego testowania. Gwarantuje niezawodność systemów.",
-            "skills": {
-                "aiTesting": "Testowanie AI",
-                "qualityAssurance": "Zapewnienie Jakości"
-            }
+          "name": "Karol Czechowski",
+          "position": "QA & AI Developer",
+          "description": "Specjalista od zapewnienia jakości rozwiązań AI i automatycznego testowania. Gwarantuje niezawodność systemów.",
+          "skills": {
+            "aiTesting": "Testowanie AI",
+            "qualityAssurance": "Zapewnienie Jakości"
+          }
         },
         "marta": {
-            "name": "Marta Górska",
-            "position": "UX/UI Designer",
-            "description": "Projektantka skupiająca się na potrzebach użytkowników w erze AI. Tworzy interfejsy, które naturalnie łączą ludzi z technologią.",
-            "skills": {
-                "uxResearch": "Badania UX",
-                "aiUxDesign": "Projektowanie AI/UX"
-            }
+          "name": "Marta Górska",
+          "position": "UX/UI Designer",
+          "description": "Projektantka skupiająca się na potrzebach użytkowników w erze AI. Tworzy interfejsy, które naturalnie łączą ludzi z technologią.",
+          "skills": {
+            "uxResearch": "Badania UX",
+            "aiUxDesign": "Projektowanie AI/UX"
+          }
         },
         "roman": {
-            "name": "Roman Dominia",
-            "position": "Specjalista Automatyzacji AI",
-            "description": "Ekspert od automatyzacji procesów biznesowych z AI i analizy danych social media. Zwiększa efektywność operacyjną.",
-            "skills": {
-                "processAutomation": "Automatyzacja Procesów",
-                "aiAnalytics": "Analityka AI"
-            }
+          "name": "Roman Dominia",
+          "position": "Specjalista Automatyzacji AI",
+          "description": "Ekspert od automatyzacji procesów biznesowych z AI i analizy danych social media. Zwiększa efektywność operacyjną.",
+          "skills": {
+            "processAutomation": "Automatyzacja Procesów",
+            "aiAnalytics": "Analityka AI"
+          }
         }
       }
     },
@@ -386,29 +386,29 @@
       "form.budget.25k+": "Powyżej 25,000 PLN",
       "form.budget.consultation": "Potrzebuję konsultacji",
       "form.message": "Wiadomość *",
-              "form.submit": "Wyślij Wiadomość"
-      }
-    },
-    "features": {
-      "title": "Kluczowe funkcje",
-      "subtitle": "Wykorzystujemy najnowsze technologie do tworzenia profesjonalnych stron internetowych",
-      "shopify_subtitle": "Wykorzystujemy najnowsze technologie Shopify do tworzenia profesjonalnych sklepów e-commerce",
-      "mvp_subtitle": "Wykorzystujemy metodologię Lean Startup do szybkiej walidacji pomysłów biznesowych",
-      "socialMedia_subtitle": "Łączymy social media marketing z zaawansowaną analizą danych i AI"
-    },
-    "benefits": {
-      "title": "Dlaczego Wybrać Nas?"
-    },
-    "cta": {
-      "title": "Gotowy na Profesjonalną Stronę?",
-      "description": "Skontaktuj się z nami i otrzymaj bezpłatną konsultację. Pomożemy Ci stworzyć stronę, która przyciągnie klientów i zwiększy sprzedaż.",
-      "shopify_title": "Gotowy na Profesjonalny Sklep?",
-      "shopify_description": "Skontaktuj się z nami i otrzymaj bezpłatną konsultację. Pomożemy Ci stworzyć sklep, który zwiększy sprzedaż i skaluje Twój biznes.",
-      "mvp_title": "Gotowy na Walidację Pomysłu?",
-      "mvp_description": "Skontaktuj się z nami i otrzymaj bezpłatną konsultację. Pomożemy Ci szybko przetestować pomysł i zminimalizować ryzyko biznesowe.",
-      "socialMedia_title": "Gotowy na AI-Powered Marketing?",
-      "socialMedia_description": "Skontaktuj się z nami i otrzymaj bezpłatną konsultację. Pomożemy Ci stworzyć kampanie social media, które maksymalizują ROI dzięki AI i data science.",
-      "freeConsultation": "Darmowa Konsultacja",
-      "callNow": "Zadzwoń Teraz"
+      "form.submit": "Wyślij Wiadomość"
     }
+  },
+  "features": {
+    "title": "Kluczowe funkcje",
+    "subtitle": "Wykorzystujemy najnowsze technologie do tworzenia profesjonalnych stron internetowych",
+    "shopify_subtitle": "Wykorzystujemy najnowsze technologie Shopify do tworzenia profesjonalnych sklepów e-commerce",
+    "mvp_subtitle": "Wykorzystujemy metodologię Lean Startup do szybkiej walidacji pomysłów biznesowych",
+    "socialMedia_subtitle": "Łączymy social media marketing z zaawansowaną analizą danych i AI"
+  },
+  "benefits": {
+    "title": "Dlaczego Wybrać Nas?"
+  },
+  "cta": {
+    "title": "Gotowy na Profesjonalną Stronę?",
+    "description": "Skontaktuj się z nami i otrzymaj bezpłatną konsultację. Pomożemy Ci stworzyć stronę, która przyciągnie klientów i zwiększy sprzedaż.",
+    "shopify_title": "Gotowy na Profesjonalny Sklep?",
+    "shopify_description": "Skontaktuj się z nami i otrzymaj bezpłatną konsultację. Pomożemy Ci stworzyć sklep, który zwiększy sprzedaż i skaluje Twój biznes.",
+    "mvp_title": "Gotowy na Walidację Pomysłu?",
+    "mvp_description": "Skontaktuj się z nami i otrzymaj bezpłatną konsultację. Pomożemy Ci szybko przetestować pomysł i zminimalizować ryzyko biznesowe.",
+    "socialMedia_title": "Gotowy na AI-Powered Marketing?",
+    "socialMedia_description": "Skontaktuj się z nami i otrzymaj bezpłatną konsultację. Pomożemy Ci stworzyć kampanie social media, które maksymalizują ROI dzięki AI i data science.",
+    "freeConsultation": "Darmowa Konsultacja",
+    "callNow": "Zadzwoń Teraz"
   }
+}

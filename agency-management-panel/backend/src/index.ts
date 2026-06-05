@@ -1101,6 +1101,89 @@ app.get('/api/team', (req, res) => {
   ]);
 });
 
+// Dashboard stats endpoint - aggregates data from multiple sources
+app.get('/api/dashboard/stats', async (req, res) => {
+  try {
+    // Get projects from DynamoDB
+    const projectsOut = await ddb.send(new ScanCommand({ TableName: 'ecm-projects' }));
+    const projects = (projectsOut.Items || []).map(i => unmarshall(i));
+    
+    // Get clients from DynamoDB
+    const clientsOut = await ddb.send(new ScanCommand({ TableName: 'ecm-users' }));
+    const clients = (clientsOut.Items || []).map(i => unmarshall(i));
+    
+    // Calculate statistics
+    const activeProjects = projects.filter((p: any) => 
+      p.status && !['completed', 'cancelled'].includes(p.status.toLowerCase())
+    );
+    
+    const activeClients = clients.filter((c: any) => c.isEmailVerified);
+    
+    // Calculate revenue (from projects)
+    const totalRevenue = projects.reduce((sum: number, p: any) => {
+      return sum + (p.budget_total || 0);
+    }, 0);
+    
+    const monthlyRevenue = projects
+      .filter((p: any) => {
+        const createdAt = p.createdAt ? new Date(p.createdAt) : null;
+        if (!createdAt) return false;
+        const now = new Date();
+        return createdAt.getMonth() === now.getMonth() && 
+               createdAt.getFullYear() === now.getFullYear();
+      })
+      .reduce((sum: number, p: any) => sum + (p.budget_total || 0), 0);
+    
+    // Project status breakdown
+    const statusCounts = {
+      completed: projects.filter((p: any) => 
+        p.status && p.status.toLowerCase() === 'completed'
+      ).length,
+      'in-progress': activeProjects.length,
+      planning: projects.filter((p: any) => 
+        p.status && p.status.toLowerCase() === 'planning'
+      ).length,
+      delayed: projects.filter((p: any) => 
+        p.status && ['delayed', 'at-risk'].includes(p.status.toLowerCase())
+      ).length,
+    };
+    
+    // Service performance (mock data for now)
+    const servicePerformance = [
+      { name: 'Strony WWW', progress: 85 },
+      { name: 'Sklepy Shopify', progress: 72 },
+      { name: 'Aplikacje Mobilne', progress: 91 },
+      { name: 'Prototypy MVP', progress: 78 },
+    ];
+    
+    const stats = {
+      kpis: {
+        activeClients: activeClients.length,
+        activeClientsChange: 12, // TODO: Calculate from historical data
+        monthlyRevenue: monthlyRevenue,
+        monthlyRevenueChange: 8, // TODO: Calculate from historical data
+        activeProjects: activeProjects.length,
+        activeProjectsChange: -3, // TODO: Calculate from historical data
+        clientSatisfaction: 94,
+      },
+      projectStatus: statusCounts,
+      servicePerformance,
+      recentActivity: [
+        {
+          type: 'project',
+          message: `Nowy projekt: ${projects[projects.length - 1]?.name || 'Brak'}`,
+          timestamp: projects[projects.length - 1]?.createdAt || new Date().toISOString(),
+        },
+      ],
+    };
+    
+    res.json(stats);
+  } catch (error) {
+    console.error('Error fetching dashboard stats:', error);
+    res.status(500).json({ error: 'Failed to fetch dashboard statistics' });
+  }
+});
+
 // 🔥 MARKETING ANALYTICS - Statystyki marketingowe
 app.get('/api/marketing/stats', async (req, res) => {
   try {

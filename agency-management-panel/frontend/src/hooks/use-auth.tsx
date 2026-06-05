@@ -1,4 +1,5 @@
 import { useState, useEffect, createContext, useContext } from 'react';
+import { apiClient } from '@/lib/api';
 
 interface User {
   id: string;
@@ -37,30 +38,20 @@ export function useAuthProvider() {
     const token = localStorage.getItem('auth_token');
     if (token) {
       // Validate token with backend
-      validateToken(token);
+      validateToken();
     } else {
       setIsLoading(false);
     }
   }, []);
 
-  const validateToken = async (token: string) => {
+  const validateToken = async () => {
     try {
-      const response = await fetch('http://localhost:3004/auth/validate', {
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
-      });
-
-      if (response.ok) {
-        const userData = await response.json();
-        setUser(userData);
-        localStorage.setItem('auth_token', token);
-      } else {
-        localStorage.removeItem('auth_token');
-      }
+      const userData = await apiClient.getCurrentUser();
+      setUser(userData);
     } catch (error) {
       console.error('Token validation failed:', error);
       localStorage.removeItem('auth_token');
+      setUser(null);
     } finally {
       setIsLoading(false);
     }
@@ -69,24 +60,10 @@ export function useAuthProvider() {
   const login = async (email: string, password: string): Promise<boolean> => {
     setIsLoading(true);
     try {
-      const response = await fetch('http://localhost:3004/auth/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password }),
-      });
-
-      if (response.ok) {
-        const { user: userData, token } = await response.json();
-        setUser(userData);
-        localStorage.setItem('auth_token', token);
-        return true;
-      } else {
-        const error = await response.json();
-        console.error('Login failed:', error);
-        return false;
-      }
+      const { user: userData, token } = await apiClient.login(email, password);
+      setUser(userData);
+      localStorage.setItem('auth_token', token);
+      return true;
     } catch (error) {
       console.error('Login error:', error);
       return false;
@@ -95,15 +72,22 @@ export function useAuthProvider() {
     }
   };
 
-  const logout = () => {
-    setUser(null);
-    localStorage.removeItem('auth_token');
+  const logout = async () => {
+    try {
+      await apiClient.logout();
+    } catch (error) {
+      console.error('Logout error:', error);
+    } finally {
+      setUser(null);
+      localStorage.removeItem('auth_token');
+    }
   };
 
   const hasPermission = (permission: string): boolean => {
     if (!user) return false;
+    if (user.permissions?.includes('all')) return true;
     if (user.role === 'admin') return true;
-    return user.permissions.includes(permission);
+    return user.permissions?.includes(permission) ?? false;
   };
 
   return {

@@ -1,0 +1,377 @@
+{
+  "nav": {
+    "home": "Strona główna",
+    "services": "Usługi",
+    "about": "O nas",
+    "team": "Zespół",
+    "clientPanel": "Panel Klienta",
+    "contact": "Kontakt",
+    "language": "PL"
+  },
+  "navigation": {
+    "home": "Strona główna",
+    "services": "Usługi",
+    "about": "O nas",
+    "blog": "Blog",
+    "caseStudies": "Studia Przypadków",
+    "team": "Zespół",
+    "myAccount": "Moje Konto",
+    "contact": "Kontakt",
+    "dropdown": {
+      "aiSolutions": "🤖 Rozwiązania AI",
+      "aiAssistants": "Asystenci AI na Amazon Bedrock",
+      "voiceAssistants": "Asystenci Głosowi na Amazon Lex",
+      "aiAudits": "Audyty Wdrożenia AI",
+      "socialMediaAI": "Social Media & AI",
+      "digitalProducts": "🌐 Produkty Cyfrowe",
+      "websites": "Strony WWW i Aplikacje Webowe",
+      "shopifyStores": "Sklepy Shopify",
+      "mobileApps": "Aplikacje Mobilne",
+      "automationMvp": "⚡ Automatyzacja & MVP",
+      "n8nAutomation": "Automatyzacje N8N",
+      "mvpPrototypes": "Prototypy MVP",
+      "viewAllServices": "Zobacz wszystkie usługi"
+    }
+  },
+  "common": {
+    "learnMore": "Dowiedz się więcej",
+    "readMore": "Czytaj więcej"
+  },
+  "services": {
+    "websites": {
+      "title": "Strony WWW i Aplikacje Webowe",
+      "description": "Profesjonalne strony internetowe i aplikacje webowe dostosowane do potrzeb biznesowych. Zoptymalizowane pod kątem SEO, wydajności i konwersji."
+    },
+    "shopifyStores": {
+      "title": "Sklepy Shopify",
+      "description": "Profesjonalne sklepy internetowe na platformie Shopify, które skutecznie sprzedają i skalują się wraz z Twoim biznesem."
+    },
+    "mvpPrototypes": {
+      "title": "Prototypy MVP",
+      "description": "Szybka walidacja pomysłów biznesowych poprzez tworzenie funkcjonalnych prototypów. Minimalizujemy ryzyko i maksymalizujemy szanse na sukces."
+    },
+    "uxAudits": {
+      "title": "Audyty Wdrożenia AI w Twojej Firmie",
+      "description": "Analizujemy Twoje procesy biznesowe i identyfikujemy obszary do automatyzacji AI. Kompleksowy plan wdrożenia sztucznej inteligencji."
+    },
+    "automation": {
+      "title": "Automatyzacje",
+      "description": "Oszczędzaj 15-20 godzin tygodniowo automatyzując powtarzalne zadania. Integracje systemów, automatyzacja workflow i eliminacja błędów ludzkich."
+    },
+    "socialMediaAI": {
+      "title": "Social Media & AI",
+      "description": "Zwiększ zaangażowanie o 60% dzięki analizie treści AI. Dowiedz się, co naprawdę interesuje Twoich klientów."
+    },
+    "aiAssistants": {
+      "title": "Asystenci AI na Amazon Bedrock & Copilot Studio",
+      "description": "Automatyzuj obsługę klienta 24/7 i oszczędzaj do 70% kosztów wsparcia. Inteligentni asystenci AI odpowiadają na pytania i rozwiązują problemy."
+    },
+    "mobileApps": {
+      "title": "Aplikacje Mobilne",
+      "description": "Od pomysłu do App Store w 8-12 tygodni. Nowoczesne aplikacje iOS i Android, które zwiększają przychody i zaangażowanie klientów."
+    },
+    "voiceAssistants": {
+      "title": "Asystenci Głosowi na Amazon Lex",
+      "description": "Głosowa obsługa klienta - dostępność 24/7 bez kosztów call center. Naturalne rozmowy, inteligentne odpowiedzi."
+    }
+  },
+      "hero": {
+        "title": "Wdrażamy AI w Twojej Firmie",
+        "titleHighlight": "Innowacjami Cyfrowymi",
+        "subtitle": "Transformujemy Twoją firmę dzięki sztucznej inteligencji. Od chatbotów po zaawansowane automatyzacje - AI, które naprawdę działa i generuje realne korzyści biznesowe.",
+        "exploreServices": "Poznaj Usługi",
+        "getQuote": "Otrzymaj Ofertę",
+        "cta_assistant": "Porozmawiaj z naszym asystentem",
+        "exploreFeatures": "Poznaj funkcje",
+        "stats": {
+          "aiProjects": "50+",
+          "aiProjectsLabel": "Projektów AI",
+          "costReduction": "70%",
+          "costReductionLabel": "Redukcja Kosztów",
+          "support": "24/7",
+          "supportLabel": "AI Wsparcie",
+          "satisfaction": "95%",
+          "satisfactionLabel": "Satysfakcja"
+        }
+    },
+  "sections": {
+    "services": {
+      "title": "Nasze Usługi",
+      "subtitle": "Kompleksowe rozwiązania AI i automatyzacji, które transformują Twój biznes i zwiększają efektywność"
+    },
+    "about": {
+      "title": "O ECM Digital",
+      "subtitle": "Zespół ekspertów AI, którzy transformują biznes poprzez inteligentne rozwiązania",
+      "mainTitle": "AI, które realnie dowozi",
+      "description": "Łączymy strategię, UX i inżynierię. Projektujemy, testujemy i wdrażamy rozwiązania AI, które przekładają się na wyniki biznesowe.",
+      "features": {
+        "integration": "Integracje z istniejącymi systemami",
+        "mvp": "Szybkie MVP i walidacja z użytkownikami",
+        "metrics": "Raporty i metryki efektywności"
+      },
+      "description1": "Jesteśmy zespołem pasjonatów technologii, którzy wierzą, że każdy biznes zasługuje na cyfrową transformację. Łączymy kreatywność z innowacyjnymi rozwiązaniami technologicznymi.",
+      "description2": "ECM Digital to marka oferująca kompleksowe i nowoczesne rozwiązania digitalne. Specjalizujemy się w projektowaniu stron internetowych, e-commerce, audytach UX oraz automatyzacji procesów biznesowych, pomagając firmom rozwijać się w cyfrowym świecie.",
+      "description3": "Marka ECM Digital działa w ramach spółki Scrum Software Sp. z o.o., która jest formalnym właścicielem wszystkich świadczonych przez nas usług oraz odpowiedzialnym podmiotem prawnym. To Scrum Software Sp. z o.o. wystawia faktury, zawiera umowy i prowadzi rozliczenia finansowe.",
+      "description4": "Dzięki takiemu rozwiązaniu łączymy nowoczesny branding i profesjonalną obsługę prawną, zapewniając naszym klientom pełne bezpieczeństwo i transparentność współpracy.",
+      "mission": "Misja",
+      "mission.description": "Demokratyzujemy AI, dostarczając wdrożenia, które zwiększają przychody i upraszczają operacje.",
+      "vision": "Wizja",
+      "vision.description": "Być partnerem pierwszego wyboru dla firm, które chcą wykorzystać AI do przewagi konkurencyjnej.",
+      "values": "Wartości",
+      "values.description": "Pragmatyzm, odpowiedzialność i \"dowiezione na produkcji\". Mierzymy, optymalizujemy, wspieramy.",
+      "contact": {
+        "title": "Rozpocznij projekt",
+        "subtitle": "Gotowy na transformację swojego biznesu? Skontaktuj się z nami i omówmy, jak możemy pomóc Ci osiągnąć cele.",
+        "consultation": {
+          "title": "Bezpłatna konsultacja",
+          "description": "Omówmy Twoje potrzeby i zaproponujmy najlepsze rozwiązanie AI dla Twojego biznesu.",
+          "button": "Umów konsultację"
+        },
+        "mvp": {
+          "title": "Szybki MVP",
+          "description": "Chcesz szybko przetestować pomysł? Stworzymy MVP w 4 tygodnie.",
+          "button": "Zacznij od MVP"
+        },
+        "direct": {
+          "title": "Bezpośredni kontakt",
+          "description": "Masz pytania? Zadzwoń lub napisz do nas bezpośrednio.",
+          "button": "Zadzwoń teraz"
+        }
+      }
+    },
+    "caseStudies": {
+      "title": "Studia Przypadków & Portfolio",
+      "subtitle": "Prawdziwe projekty, konkretne rezultaty - zobacz, jak transformujemy biznesy poprzez AI",
+      "items": {
+        "aiAssistant": {
+          "title": "Asystent AI dla E-commerce",
+          "subtitle": "Sklep internetowy - branża modowa",
+          "description": "Implementacja asystenta AI, który obsługuje 80% zapytań klientów, automatyczne rekomendacje produktów i spersonalizowane doświadczenia zakupowe.",
+          "stats": {
+            "conversion": "25%",
+            "conversionLabel": "Wzrost konwersji",
+            "costs": "40%",
+            "costsLabel": "Redukcja kosztów",
+            "support": "24/7",
+            "supportLabel": "Wsparcie klienta"
+          },
+          "viewDetails": "Zobacz szczegóły",
+          "askSimilar": "Zapytaj o podobny projekt"
+        },
+        "learningPlatform": {
+          "title": "Platforma szkoleniowa",
+          "subtitle": "E‑learning dla firm",
+          "description": "Nowoczesna platforma e-learningowa: kursy, quizy, certyfikaty i analiza postępów. Integracja SSO i płatności.",
+          "stats": {
+            "completion": "+85%",
+            "completionLabel": "Ukończeń kursów",
+            "onboarding": "3×",
+            "onboardingLabel": "Szybszy onboarding",
+            "satisfaction": "98%",
+            "satisfactionLabel": "Satysfakcja"
+          },
+          "viewDetails": "Zobacz szczegóły",
+          "askSimilar": "Zapytaj o podobny projekt"
+        },
+        "shopifyStore": {
+          "title": "Shopify: sklep z 60 agentami AI",
+          "subtitle": "Nowoczesny e‑commerce zgodny z UX, z 60 agentami AI (Dropified)",
+          "description": "W naszym case study pokazujemy, jak został stworzony sklep e-commerce na Shopify, zbudowany według najnowszych standardów UX i przetestowany z prawdziwymi użytkownikami. Wdrożyliśmy 60 agentów AI od Dropified do automatyzacji i optymalizacji sklepu oraz zaplanowaliśmy inteligentne kampanie AI wspierające marketing i pozyskiwanie ruchu. Rezultat: kompletny, nowoczesny sklep z pełną automatyzacją i fokusem na user experience.",
+          "stats": {
+            "users": "50k+",
+            "usersLabel": "Użytkowników",
+            "rating": "4.8/5",
+            "ratingLabel": "Ocena App Store",
+            "uptime": "99.9%",
+            "uptimeLabel": "Uptime"
+          },
+          "viewDetails": "Zobacz szczegóły",
+          "askSimilar": "Zapytaj o podobny projekt"
+        }
+      }
+    },
+    "testimonials": {
+      "title": "Co mówią nasi klienci",
+      "subtitle": "Opinie zadowolonych partnerów, którzy zaufali naszym rozwiązaniom AI",
+      "items": {
+        "danuta": {
+          "quote": "Platforma szkoleniowa stworzona przez ECM Digital to rewolucja w naszym podejściu do edukacji. Uczniowie są bardziej zaangażowani, a my mamy pełną kontrolę nad procesem nauczania. Wzrost ukończeń kursów o 65%!",
+          "name": "Danuta Jagusz",
+          "position": "Właściciel, Instytut Rozwoju"
+        },
+        "mario": {
+          "quote": "E-commerce z 60 agentami AI to absolutny game-changer! Automatyzacja obsługi klienta, personalizacja ofert i inteligentne rekomendacje. Sprzedaż wzrosła o 300% w pierwszym kwartale!",
+          "name": "Mario Rifaat",
+          "position": "Właściciel, Sklep Internetowy Risovia"
+        }
+      }
+    },
+    "partners": {
+      "title": "Współpracujemy z najlepszymi",
+      "subtitle": "Moc platform. Precyzja wdrożeń."
+    },
+    "blog": {
+      "title": "Blog & Insights",
+      "subtitle": "Najnowsze trendy AI, case studies i praktyczne wskazówki dla Twojego biznesu",
+      "aiTrends": {
+        "category": "🤖 AI Trends",
+        "title": "Jak AI zmienia e-commerce w 2024?",
+        "description": "Odkryj najnowsze trendy AI dla e-commerce: personalizacja, chatboty, rekomendacje produktów i automatyzacja procesów sprzedaży.",
+        "readTime": "15 min czytania",
+        "views": "2.5k wyświetleń",
+        "tags": {
+          "ecommerce": "E-commerce",
+          "ai": "AI",
+          "trends": "Trends"
+        }
+      },
+      "automation": {
+        "category": "⚡ Automation",
+        "title": "10 procesów biznesowych do automatyzacji",
+        "description": "Praktyczny przewodnik po procesach, które warto zautomatyzować w pierwszej kolejności. Oszczędzaj czas i pieniądze dzięki AI.",
+        "readTime": "12 min czytania",
+        "views": "1.8k wyświetleń",
+        "tags": {
+          "automation": "Automatyzacja",
+          "process": "Proces",
+          "roi": "ROI"
+        }
+      }
+    },
+    "company": {
+      "name": "Scrum Software Sp. z o.o.",
+      "description1": "ECM Digital działa w ramach Scrum Software Sp. z o.o., która jest formalnym właścicielem wszystkich świadczonych przez nas usług i prawnie odpowiedzialnym podmiotem.",
+      "description2": "To Scrum Software Sp. z o.o. wystawia faktury i zawiera umowy z klientami, gwarantując pełną transparentność i bezpieczeństwo współpracy.",
+      "badge": "Spółka Zarejestrowana<br>Sp. z o.o.",
+      "stats": {
+        "aiProjects": "50+",
+        "aiProjectsLabel": "Projektów AI",
+        "clientSatisfaction": "95%",
+        "clientSatisfactionLabel": "Satysfakcja Klienta",
+        "technicalSupport": "24/7",
+        "technicalSupportLabel": "Wsparcie Techniczne",
+        "yearFounded": "2019",
+        "yearFoundedLabel": "Rok Założenia"
+      }
+    },
+    "team": {
+      "title": "Nasz Zespół",
+      "subtitle": "Poznaj ekspertów, którzy tworzą Twoje projekty",
+      "members": {
+                "tomasz": {
+            "name": "Tomasz Gnat",
+            "position": "Konsultant Discovery",
+            "description": "Ekspert w odkrywaniu potrzeb biznesowych i strategii AI. Pomaga firmom identyfikować obszary do automatyzacji.",
+            "skills": {
+                "businessAnalysis": "Business Analysis",
+                "aiStrategy": "AI Strategy"
+            }
+        },
+        "karol": {
+            "name": "Karol Czechowski",
+            "position": "QA & AI Developer",
+            "description": "Specjalista od zapewnienia jakości rozwiązań AI i automatycznego testowania. Gwarantuje niezawodność systemów.",
+            "skills": {
+                "aiTesting": "Testowanie AI",
+                "qualityAssurance": "Zapewnienie Jakości"
+            }
+        },
+        "marta": {
+            "name": "Marta Górska",
+            "position": "UX/UI Designer",
+            "description": "Projektantka skupiająca się na potrzebach użytkowników w erze AI. Tworzy interfejsy, które naturalnie łączą ludzi z technologią.",
+            "skills": {
+                "uxResearch": "Badania UX",
+                "aiUxDesign": "Projektowanie AI/UX"
+            }
+        },
+        "roman": {
+            "name": "Roman Dominia",
+            "position": "Specjalista Automatyzacji AI",
+            "description": "Ekspert od automatyzacji procesów biznesowych z AI i analizy danych social media. Zwiększa efektywność operacyjną.",
+            "skills": {
+                "processAutomation": "Automatyzacja Procesów",
+                "aiAnalytics": "Analityka AI"
+            }
+        }
+      }
+    },
+    "process": {
+      "title": "Nasz Proces Pracy",
+      "subtitle": "Sprawdzona metodologia gwarantująca najlepsze rezultaty",
+      "steps": {
+        "discovery": {
+          "title": "Konsultacja",
+          "description": "Analiza potrzeb i wymagań projektu"
+        },
+        "strategy": {
+          "title": "Strategia",
+          "description": "Planowanie i architektura rozwiązania"
+        },
+        "prototype": {
+          "title": "Prototyp",
+          "description": "Tworzenie MVP i testowanie koncepcji"
+        },
+        "development": {
+          "title": "Realizacja",
+          "description": "Development i testowanie"
+        },
+        "launch": {
+          "title": "Wdrożenie",
+          "description": "Uruchomienie i wsparcie"
+        },
+        "optimization": {
+          "title": "Optymalizacja",
+          "description": "Monitorowanie i ulepszanie rozwiązania"
+        }
+      }
+    },
+    "contact": {
+      "title": "Skontaktuj się z nami",
+      "subtitle": "Gotowy na transformację swojego biznesu? Omówmy, jak możemy pomóc Ci osiągnąć cele.",
+      "consultation": {
+        "title": "Bezpłatna konsultacja",
+        "description": "Omówmy Twoje potrzeby i zaproponujmy najlepsze rozwiązanie AI dla Twojego biznesu.",
+        "button": "Umów konsultację"
+      },
+      "mvp": {
+        "title": "Szybki MVP",
+        "description": "Chcesz szybko przetestować pomysł? Stworzymy MVP w 4 tygodnie.",
+        "button": "Zacznij od MVP"
+      },
+      "direct": {
+        "title": "Bezpośredni kontakt",
+        "description": "Masz pytania? Zadzwoń lub napisz do nas bezpośrednio.",
+        "button": "Zadzwoń teraz"
+      }
+    }
+  },
+  "features": {
+      "title": "Kluczowe funkcje",
+      "subtitle": "Wykorzystujemy najnowsze technologie do tworzenia profesjonalnych stron internetowych",
+      "shopify_subtitle": "Wykorzystujemy najnowsze technologie Shopify do tworzenia profesjonalnych sklepów e-commerce",
+      "mvp_subtitle": "Wykorzystujemy metodologię Lean Startup do szybkiej walidacji pomysłów biznesowych",
+      "socialMedia_subtitle": "Łączymy social media marketing z zaawansowaną analizą danych i AI"
+    },
+    "benefits": {
+      "title": "Dlaczego Wybrać Nas?"
+    },
+    "cta": {
+      "title": "Gotowy na Profesjonalną Stronę?",
+      "description": "Skontaktuj się z nami i otrzymaj bezpłatną konsultację. Pomożemy Ci stworzyć stronę, która przyciągnie klientów i zwiększy sprzedaż.",
+      "shopify_title": "Gotowy na Profesjonalny Sklep?",
+      "shopify_description": "Skontaktuj się z nami i otrzymaj bezpłatną konsultację. Pomożemy Ci stworzyć sklep, który zwiększy sprzedaż i skaluje Twój biznes.",
+      "mvp_title": "Gotowy na Walidację Pomysłu?",
+      "mvp_description": "Skontaktuj się z nami i otrzymaj bezpłatną konsultację. Pomożemy Ci szybko przetestować pomysł i zminimalizować ryzyko biznesowe.",
+      "socialMedia_title": "Gotowy na AI-Powered Marketing?",
+      "socialMedia_description": "Skontaktuj się z nami i otrzymaj bezpłatną konsultację. Pomożemy Ci stworzyć kampanie social media, które maksymalizują ROI dzięki AI i data science.",
+      "freeConsultation": "Darmowa Konsultacja",
+      "callNow": "Zadzwoń Teraz"
+    }
+  },
+  "footer": {
+    "address": "Al. Roździeńskiego 1a, 4 piętro, Katowice, Polska",
+    "copyright": "© 2025 ECM Digital. Wszystkie prawa zastrzeżone.",
+    "poweredBy": "Powered by Scrum Software Sp. z o.o."
+  }
+}

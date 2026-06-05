@@ -4,17 +4,17 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const badgeVariants = cva(
-  "inline-flex items-center rounded-full border border-border/40 px-2.5 py-0.5 text-xs font-semibold transition-colors backdrop-blur-xl focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
+  "inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-liquid backdrop-blur-[10px] backdrop-saturate-[150%] focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 relative overflow-hidden",
   {
     variants: {
       variant: {
         default:
-          "border-transparent bg-primary text-primary-foreground hover:bg-primary/90",
+          "border-primary/30 bg-primary/90 text-primary-foreground shadow-[0_2px_8px_hsl(var(--primary)/0.3)] hover:bg-primary hover:shadow-[0_4px_12px_hsl(var(--primary)/0.4)] hover:scale-105",
         secondary:
-          "border-transparent bg-secondary/70 text-secondary-foreground hover:bg-secondary/80",
+          "border-border/30 bg-secondary/50 text-secondary-foreground hover:bg-secondary/60 hover:shadow-sm",
         destructive:
-          "border-transparent bg-destructive text-destructive-foreground hover:bg-destructive/90",
-        outline: "text-foreground border-border/40",
+          "border-destructive/30 bg-destructive/90 text-destructive-foreground shadow-[0_2px_8px_hsl(var(--destructive)/0.3)] hover:bg-destructive hover:shadow-[0_4px_12px_hsl(var(--destructive)/0.4)] hover:scale-105",
+        outline: "text-foreground border-border/30 bg-secondary/30 hover:bg-secondary/40",
       },
     },
     defaultVariants: {

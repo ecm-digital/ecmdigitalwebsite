@@ -8,6 +8,7 @@
       "static/chunks/app/_not-found/page-ccfa893b222483f3.js"
     ],
     "/layout": [
+<<<<<<< Updated upstream
       "static/chunks/webpack-0954c5d36ad957a9.js",
       "static/chunks/fd9d1056-701a57a01d1c3987.js",
       "static/chunks/117-40b8f76e38974c67.js",
@@ -28,6 +29,12 @@
       "static/chunks/117-40b8f76e38974c67.js",
       "static/chunks/main-app-4d32b89465c3755e.js",
       "static/chunks/app/page-7e81dff624bb51d8.js"
+=======
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/layout.css",
+      "static/chunks/app/layout.js"
+>>>>>>> Stashed changes
     ]
   }
 }

@@ -1,6 +1,7 @@
 'use client'
 
 import { ReactNode } from 'react'
+import Link from 'next/link'
 import { useAWSAuth } from '@/hooks/use-aws-auth'
 import { useUnreadMessages } from '@/hooks/use-unread-messages'
 import { useLanguage } from '@/hooks/use-language'
@@ -111,7 +112,7 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
           {/* Navigation */}
           <nav className="flex-1 space-y-2 px-6 py-8">
             {navigation.map((item) => (
-              <a
+              <Link
                 key={item.name}
                 href={item.href}
                 className="group flex items-center justify-between px-4 py-4 text-sm font-medium text-slate-300 rounded-2xl hover:bg-gradient-to-r hover:from-slate-800/80 hover:to-slate-700/80 hover:text-white transition-all duration-300 hover:shadow-lg"
@@ -127,7 +128,7 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
                     {unreadCount > 99 ? '99+' : unreadCount}
                   </Badge>
                 )}
-              </a>
+              </Link>
             ))}
           </nav>
 

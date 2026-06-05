@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -22,11 +22,13 @@ import {
   Target,
   MoreHorizontal,
   Eye,
-  Edit
+  Edit,
+  Loader2
 } from "lucide-react";
+import { useProjects } from "@/hooks/use-projects";
 
-// Mock data for projects
-const projects = [
+// Mock projects data fallback
+const mockProjects = [
   {
     id: 1,
     name: "E-commerce Platform ABC",
@@ -147,11 +149,36 @@ const getPriorityBadge = (priority: string) => {
 export default function ProjectsPage() {
   const [selectedTab, setSelectedTab] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
+  
+  const { data: projectsData, isLoading, error } = useProjects();
+  
+  // Transform backend data to match frontend format
+  const projects = useMemo(() => {
+    if (!projectsData || !Array.isArray(projectsData)) return [];
+    
+    return projectsData.map((p: any) => ({
+      id: p.id,
+      name: p.name || "Bez nazwy",
+      client: p.client || p.userId || "Brak klienta",
+      clientId: p.clientId || p.userId,
+      status: (p.status || "planning").toLowerCase(),
+      priority: p.priority || "medium",
+      progress: p.progress || 0,
+      startDate: p.createdAt || new Date().toISOString(),
+      endDate: p.dueDate || p.deadline,
+      budget: p.budget || 0,
+      spent: p.budget_used || 0,
+      team: p.team || [],
+      description: p.description || "",
+      type: p.type || "Projekt",
+      phase: p.phase || p.status || "Planning"
+    }));
+  }, [projectsData]);
 
   const filteredProjects = projects.filter(project => {
     const matchesSearch = project.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
                          project.client.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         project.type.toLowerCase().includes(searchQuery.toLowerCase());
+                         (project.type && project.type.toLowerCase().includes(searchQuery.toLowerCase()));
     
     if (selectedTab === "all") return matchesSearch;
     return matchesSearch && project.status === selectedTab;
@@ -159,12 +186,34 @@ export default function ProjectsPage() {
 
   const stats = {
     totalProjects: projects.length,
-    inProgress: projects.filter(p => p.status === "in-progress").length,
-    completed: projects.filter(p => p.status === "completed").length,
-    delayed: projects.filter(p => p.status === "delayed").length,
-    totalBudget: projects.reduce((sum, p) => sum + p.budget, 0),
-    totalSpent: projects.reduce((sum, p) => sum + p.spent, 0),
+    inProgress: projects.filter(p => p.status === "in-progress" || p.status === "active").length,
+    completed: projects.filter(p => p.status === "completed" || p.status === "done").length,
+    delayed: projects.filter(p => p.status === "delayed" || p.status === "at-risk").length,
+    totalBudget: projects.reduce((sum, p) => sum + (p.budget || 0), 0),
+    totalSpent: projects.reduce((sum, p) => sum + (p.spent || 0), 0),
   };
+
+  if (isLoading) {
+    return (
+      <div className="p-6 space-y-6">
+        <div className="flex items-center justify-center min-h-[400px]">
+          <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="p-6 space-y-6">
+        <Card className="border-destructive">
+          <CardContent className="pt-6">
+            <p className="text-destructive">Błąd podczas ładowania projektów</p>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
 
   return (
     <div className="p-6 space-y-6">
@@ -312,7 +361,7 @@ export default function ProjectsPage() {
                           <span className="text-muted-foreground">Termin:</span>
                         </div>
                         <div className="text-sm font-medium">
-                          {project.startDate} - {project.endDate}
+                          {project.startDate ? new Date(project.startDate).toLocaleDateString('pl-PL') : 'Brak'} - {project.endDate ? new Date(project.endDate).toLocaleDateString('pl-PL') : 'Brak'}
                         </div>
                       </div>
 

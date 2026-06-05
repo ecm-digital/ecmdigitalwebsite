@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -21,11 +21,13 @@ import {
   MoreHorizontal,
   Eye,
   Edit,
-  Star
+  Star,
+  Loader2
 } from "lucide-react";
+import { useClients } from "@/hooks/use-clients";
 
-// Mock data for clients
-const clients = [
+// Mock clients data fallback
+const mockClients = [
   {
     id: 1,
     name: "ABC Corporation",
@@ -108,11 +110,36 @@ const getStatusBadge = (status: string) => {
 export default function ClientsPage() {
   const [selectedTab, setSelectedTab] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
+  
+  const { data: clientsData, isLoading, error } = useClients();
+  
+  // Transform backend data to match frontend format
+  const clients = useMemo(() => {
+    if (!clientsData || !Array.isArray(clientsData)) return [];
+    
+    return clientsData.map((c: any) => ({
+      id: c.id,
+      name: c.name || `${c.firstName || ''} ${c.lastName || ''}`.trim() || "Brak nazwy",
+      contact: c.firstName && c.lastName ? `${c.firstName} ${c.lastName}` : c.name || c.email || "Brak",
+      email: c.email || "",
+      phone: c.phone || "",
+      company: c.company || "",
+      status: c.status === "Zweryfikowany" ? "active" : c.status?.toLowerCase() || "prospect",
+      totalProjects: c.totalProjects || 0,
+      activeProjects: c.activeProjects || 0,
+      totalRevenue: c.totalRevenue || 0,
+      lastContact: c.lastLoginAt || c.registration_date || "",
+      rating: c.rating || 0,
+      avatar: c.avatar || "",
+      industry: c.industry || "",
+    }));
+  }, [clientsData]);
 
   const filteredClients = clients.filter(client => {
     const matchesSearch = client.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
                          client.contact.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         client.company.toLowerCase().includes(searchQuery.toLowerCase());
+                         (client.company && client.company.toLowerCase().includes(searchQuery.toLowerCase())) ||
+                         (client.email && client.email.toLowerCase().includes(searchQuery.toLowerCase()));
     
     if (selectedTab === "all") return matchesSearch;
     return matchesSearch && client.status === selectedTab;
@@ -121,9 +148,31 @@ export default function ClientsPage() {
   const stats = {
     totalClients: clients.length,
     activeClients: clients.filter(c => c.status === "active").length,
-    prospects: clients.filter(c => c.status === "prospect").length,
-    totalRevenue: clients.reduce((sum, c) => sum + c.totalRevenue, 0),
+    prospects: clients.filter(c => c.status === "prospect" || c.status === "Niezweryfikowany").length,
+    totalRevenue: clients.reduce((sum, c) => sum + (c.totalRevenue || 0), 0),
   };
+
+  if (isLoading) {
+    return (
+      <div className="p-6 space-y-6">
+        <div className="flex items-center justify-center min-h-[400px]">
+          <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="p-6 space-y-6">
+        <Card className="border-destructive">
+          <CardContent className="pt-6">
+            <p className="text-destructive">Błąd podczas ładowania klientów</p>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
 
   return (
     <div className="p-6 space-y-6">
