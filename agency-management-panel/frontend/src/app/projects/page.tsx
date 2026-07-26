@@ -381,10 +381,10 @@ export default function ProjectsPage() {
                           <span className="text-muted-foreground">Zespół:</span>
                         </div>
                         <div className="flex -space-x-2">
-                          {project.team.slice(0, 3).map((member, idx) => (
+                          {project.team.slice(0, 3).map((member: string, idx: number) => (
                             <Avatar key={idx} className="h-8 w-8 border-2 border-background">
                               <AvatarFallback className="text-xs">
-                                {member.split(' ').map(n => n[0]).join('')}
+                                {member.split(' ').map((n: string) => n[0]).join('')}
                               </AvatarFallback>
                             </Avatar>
                           ))}
