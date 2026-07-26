@@ -288,7 +288,7 @@ export default function ClientsPage() {
                       <Avatar className="h-12 w-12">
                         <AvatarImage src={client.avatar} />
                         <AvatarFallback>
-                          {client.name.split(' ').map(n => n[0]).join('')}
+                          {client.name.split(' ').map((n: string) => n[0]).join('')}
                         </AvatarFallback>
                       </Avatar>
                       
