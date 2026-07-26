@@ -1,0 +1,1754 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#050608">
+    <title>ECM Digital – Wdrażamy AI w Twojej Firmie | Agencja AI &amp; Digital</title>
+
+    <!-- SEO -->
+    <meta name="description"
+        content="ECM Digital – agencja AI i digital. Asystenci AI na Amazon Bedrock, automatyzacje, prototypy MVP, strony WWW, sklepy Shopify & Wix i aplikacje mobilne. AI, które realnie działa.">
+    <meta name="keywords"
+        content="agencja AI, wdrożenia AI, Amazon Bedrock, automatyzacje, chatboty, strony WWW, sklepy internetowe, aplikacje mobilne, MVP">
+    <meta name="author" content="ECM Digital">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.ecm-digital.com/">
+    <link rel="alternate" hreflang="pl" href="https://www.ecm-digital.com/">
+    <link rel="alternate" hreflang="x-default" href="https://www.ecm-digital.com/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.ecm-digital.com/">
+    <meta property="og:title" content="ECM Digital – Wdrażamy AI w Twojej Firmie">
+    <meta property="og:description"
+        content="Asystenci AI, automatyzacje, MVP, strony WWW i sklepy internetowe. AI, które realnie działa i generuje korzyści biznesowe.">
+    <meta property="og:image" content="https://www.ecm-digital.com/assets/images/ecm-digital-og.svg">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ECM Digital – Wdrażamy AI w Twojej Firmie">
+    <meta name="twitter:description"
+        content="Asystenci AI, automatyzacje, MVP, strony WWW i sklepy internetowe. AI, które realnie działa.">
+    <meta name="twitter:image" content="https://www.ecm-digital.com/assets/images/ecm-digital-og.svg">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "ECM Digital",
+      "url": "https://www.ecm-digital.com/",
+      "logo": "https://www.ecm-digital.com/assets/images/ecm-digital-og.svg",
+      "sameAs": [
+        "https://www.facebook.com/ecmdigital",
+        "https://www.linkedin.com/company/ecmdigital",
+        "https://twitter.com/ecmdigital"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "hello@ecm-digital.com",
+        "contactType": "customer service",
+        "areaServed": "PL",
+        "availableLanguage": "Polish"
+      }
+    }
+    </script>
+
+    <link rel="preload" href="/fonts/tt-hoves/TTHoves-Bold.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/tt-hoves/TTHoves-DemiBold.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/tt-hoves/TTHoves-Regular.woff2" as="font" type="font/woff2" crossorigin>
+
+    <style>
+        /* ============ Fonts ============ */
+        @font-face {
+            font-family: 'TT Hoves';
+            src: url('/fonts/tt-hoves/TTHoves-Regular.woff2') format('woff2'),
+                 url('/fonts/tt-hoves/TTHoves-Regular.woff') format('woff');
+            font-weight: 400;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'TT Hoves';
+            src: url('/fonts/tt-hoves/TTHoves-Medium.woff2') format('woff2'),
+                 url('/fonts/tt-hoves/TTHoves-Medium.woff') format('woff');
+            font-weight: 500;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'TT Hoves';
+            src: url('/fonts/tt-hoves/TTHoves-DemiBold.woff2') format('woff2'),
+                 url('/fonts/tt-hoves/TTHoves-DemiBold.woff') format('woff');
+            font-weight: 600;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'TT Hoves';
+            src: url('/fonts/tt-hoves/TTHoves-Bold.woff2') format('woff2'),
+                 url('/fonts/tt-hoves/TTHoves-Bold.woff') format('woff');
+            font-weight: 700;
+            font-display: swap;
+        }
+
+        /* ============ Design tokens ============ */
+        :root {
+            --bg: #050608;
+            --bg-raised: #0c0e14;
+            --surface: rgba(255, 255, 255, 0.035);
+            --surface-strong: rgba(255, 255, 255, 0.06);
+            --border: rgba(255, 255, 255, 0.09);
+            --border-strong: rgba(255, 255, 255, 0.16);
+            --text: #f5f6f8;
+            --text-2: rgba(235, 235, 245, 0.62);
+            --text-3: rgba(235, 235, 245, 0.38);
+            --blue: #3d9bff;
+            --violet: #bf5af2;
+            --green: #30d158;
+            --orange: #ff9f0a;
+            --grad: linear-gradient(120deg, #3d9bff 0%, #bf5af2 100%);
+            --radius: 20px;
+            --radius-sm: 12px;
+            --font: 'TT Hoves', 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+            --container: 1180px;
+            --shadow-card: 0 20px 60px rgba(0, 0, 0, 0.45);
+        }
+
+        /* ============ Base ============ */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 96px;
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--font);
+            font-size: 16px;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* Ambient aurora background */
+        .aurora {
+            position: fixed;
+            inset: -25%;
+            z-index: -2;
+            pointer-events: none;
+            background:
+                radial-gradient(ellipse 42% 34% at 18% 22%, rgba(61, 155, 255, 0.14), transparent 65%),
+                radial-gradient(ellipse 40% 32% at 82% 12%, rgba(191, 90, 242, 0.12), transparent 65%),
+                radial-gradient(ellipse 46% 34% at 55% 88%, rgba(48, 209, 88, 0.07), transparent 65%);
+            filter: blur(48px);
+            animation: aurora-drift 26s ease-in-out infinite alternate;
+        }
+
+        .grain {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 44px 44px;
+            mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, black 0%, transparent 100%);
+            -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, black 0%, transparent 100%);
+        }
+
+        @keyframes aurora-drift {
+            0% { transform: translate3d(0, 0, 0) scale(1); }
+            50% { transform: translate3d(-2.5%, 2%, 0) scale(1.07); }
+            100% { transform: translate3d(2.5%, -2%, 0) scale(1); }
+        }
+
+        h1, h2, h3, h4, h5 {
+            margin: 0;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            font-weight: 700;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .container {
+            width: min(var(--container), 100% - 3rem);
+            margin-inline: auto;
+        }
+
+        .skip-link {
+            position: absolute;
+            left: -9999px;
+            top: 0;
+            background: var(--blue);
+            color: #fff;
+            padding: 0.6rem 1.2rem;
+            border-radius: 0 0 10px 0;
+            z-index: 100;
+        }
+
+        .skip-link:focus {
+            left: 0;
+        }
+
+        :focus-visible {
+            outline: 2px solid var(--blue);
+            outline-offset: 3px;
+            border-radius: 4px;
+        }
+
+        ::selection {
+            background: rgba(61, 155, 255, 0.35);
+        }
+
+        /* ============ Buttons ============ */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.55rem;
+            padding: 0.85rem 1.7rem;
+            border-radius: 999px;
+            font-size: 0.98rem;
+            font-weight: 600;
+            letter-spacing: 0.01em;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+            border: 1px solid transparent;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .btn-primary {
+            background: var(--grad);
+            color: #fff;
+            box-shadow: 0 8px 28px rgba(61, 155, 255, 0.35);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 38px rgba(61, 155, 255, 0.45);
+        }
+
+        .btn-ghost {
+            background: var(--surface);
+            border-color: var(--border);
+            color: var(--text);
+            backdrop-filter: blur(12px);
+        }
+
+        .btn-ghost:hover {
+            border-color: var(--border-strong);
+            background: var(--surface-strong);
+            transform: translateY(-2px);
+        }
+
+        .btn-sm {
+            padding: 0.6rem 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .btn .arrow {
+            transition: transform 0.25s ease;
+        }
+
+        .btn:hover .arrow {
+            transform: translateX(3px);
+        }
+
+        /* ============ Header ============ */
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            transition: background 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s ease;
+            border-bottom: 1px solid transparent;
+        }
+
+        .site-header.scrolled {
+            background: rgba(5, 6, 8, 0.72);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border-bottom-color: var(--border);
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+            height: 76px;
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.65rem;
+            font-weight: 700;
+            font-size: 1.15rem;
+            letter-spacing: -0.01em;
+            white-space: nowrap;
+        }
+
+        .brand-mark {
+            width: 34px;
+            height: 34px;
+            border-radius: 10px;
+            background: var(--grad);
+            display: grid;
+            place-items: center;
+            color: #fff;
+            font-size: 0.95rem;
+            font-weight: 700;
+            box-shadow: 0 4px 18px rgba(61, 155, 255, 0.4);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links > li > a {
+            display: inline-block;
+            padding: 0.5rem 0.85rem;
+            border-radius: 999px;
+            color: var(--text-2);
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.2s ease, background 0.2s ease;
+        }
+
+        .nav-links > li > a:hover {
+            color: var(--text);
+            background: var(--surface-strong);
+        }
+
+        .nav-cta {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .nav-toggle {
+            display: none;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            width: 42px;
+            height: 42px;
+            cursor: pointer;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .nav-toggle span {
+            display: block;
+            width: 18px;
+            height: 2px;
+            background: var(--text);
+            border-radius: 2px;
+            transition: transform 0.25s ease, opacity 0.25s ease;
+        }
+
+        .nav-toggle[aria-expanded="true"] span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .nav-toggle[aria-expanded="true"] span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-toggle[aria-expanded="true"] span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+        /* ============ Hero ============ */
+        .hero {
+            padding: 176px 0 96px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            padding: 0.45rem 1.1rem;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            background: var(--surface);
+            backdrop-filter: blur(12px);
+            font-size: 0.86rem;
+            font-weight: 500;
+            color: var(--text-2);
+            margin-bottom: 2rem;
+        }
+
+        .hero-badge .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--green);
+            box-shadow: 0 0 12px var(--green);
+            animation: pulse 2.4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.35; }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.6rem, 6.4vw, 4.6rem);
+            font-weight: 700;
+            letter-spacing: -0.035em;
+            max-width: 900px;
+            margin: 0 auto 1.6rem;
+            background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.66) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero h1 .accent {
+            background: var(--grad);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-sub {
+            font-size: clamp(1.05rem, 2vw, 1.25rem);
+            color: var(--text-2);
+            max-width: 660px;
+            margin: 0 auto 2.6rem;
+            line-height: 1.7;
+        }
+
+        .hero-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 4.5rem;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            max-width: 860px;
+            margin: 0 auto;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            background: var(--border);
+            backdrop-filter: blur(12px);
+        }
+
+        .stat {
+            background: rgba(10, 12, 17, 0.72);
+            padding: 1.6rem 1rem;
+        }
+
+        .stat b {
+            display: block;
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            background: var(--grad);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat span {
+            font-size: 0.88rem;
+            color: var(--text-3);
+            font-weight: 500;
+        }
+
+        /* ============ Partners ============ */
+        .partners {
+            padding: 40px 0 24px;
+        }
+
+        .partners-label {
+            text-align: center;
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--text-3);
+            margin-bottom: 1.8rem;
+        }
+
+        .partners-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.25rem;
+            flex-wrap: wrap;
+        }
+
+        .partner {
+            height: 74px;
+            min-width: 150px;
+            padding: 1rem 1.75rem;
+            display: grid;
+            place-items: center;
+            background: #fff;
+            border-radius: 14px;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .partner:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .partner img {
+            max-height: 38px;
+            max-width: 120px;
+            width: auto;
+            height: auto;
+        }
+
+        /* ============ Sections ============ */
+        section {
+            padding: 96px 0;
+        }
+
+        .section-head {
+            text-align: center;
+            max-width: 680px;
+            margin: 0 auto 3.5rem;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--blue);
+            margin-bottom: 0.9rem;
+        }
+
+        .section-head h2 {
+            font-size: clamp(1.9rem, 4vw, 2.8rem);
+            margin-bottom: 1rem;
+        }
+
+        .section-head p {
+            color: var(--text-2);
+            font-size: 1.08rem;
+        }
+
+        /* ============ Cards / grids ============ */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.4rem;
+        }
+
+        .card {
+            position: relative;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 2rem;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            padding: 1px;
+            background: linear-gradient(150deg, rgba(61, 155, 255, 0.45), transparent 35%, transparent 70%, rgba(191, 90, 242, 0.35));
+            -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+            mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            background: var(--surface-strong);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            display: grid;
+            place-items: center;
+            font-size: 1.45rem;
+            margin-bottom: 1.4rem;
+            background: rgba(61, 155, 255, 0.12);
+        }
+
+        .card h3 {
+            font-size: 1.18rem;
+            margin-bottom: 0.7rem;
+        }
+
+        .card p {
+            color: var(--text-2);
+            font-size: 0.95rem;
+            line-height: 1.65;
+        }
+
+        .card-link {
+            margin-top: auto;
+            padding-top: 1.4rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            font-weight: 600;
+            font-size: 0.93rem;
+            color: var(--blue);
+        }
+
+        .card-link .arrow {
+            transition: transform 0.25s ease;
+        }
+
+        .card:hover .card-link .arrow {
+            transform: translateX(4px);
+        }
+
+        /* ============ Case studies ============ */
+        .case-card .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.45rem;
+            margin: 1.1rem 0 0;
+        }
+
+        .tag {
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 0.28rem 0.75rem;
+            border-radius: 999px;
+            background: rgba(61, 155, 255, 0.1);
+            color: var(--blue);
+            border: 1px solid rgba(61, 155, 255, 0.22);
+        }
+
+        .tag.violet {
+            background: rgba(191, 90, 242, 0.1);
+            color: var(--violet);
+            border-color: rgba(191, 90, 242, 0.25);
+        }
+
+        .tag.green {
+            background: rgba(48, 209, 88, 0.1);
+            color: var(--green);
+            border-color: rgba(48, 209, 88, 0.25);
+        }
+
+        .case-metrics {
+            display: flex;
+            gap: 1.5rem;
+            margin: 1.1rem 0 0.3rem;
+        }
+
+        .case-metrics div b {
+            display: block;
+            font-size: 1.35rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--text);
+        }
+
+        .case-metrics div span {
+            font-size: 0.78rem;
+            color: var(--text-3);
+        }
+
+        .case-card .kicker {
+            font-size: 0.85rem;
+            color: var(--text-3);
+            margin-bottom: 1rem;
+        }
+
+        /* ============ About ============ */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+            gap: 3.5rem;
+            align-items: center;
+        }
+
+        .about-copy h2 {
+            font-size: clamp(1.9rem, 4vw, 2.6rem);
+            margin-bottom: 1.2rem;
+        }
+
+        .about-copy > p {
+            color: var(--text-2);
+            font-size: 1.08rem;
+            margin-bottom: 2rem;
+        }
+
+        .about-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 0.85rem 0;
+        }
+
+        .about-feature .ico {
+            flex: none;
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            display: grid;
+            place-items: center;
+            background: rgba(61, 155, 255, 0.12);
+            font-size: 1.15rem;
+        }
+
+        .about-feature b {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.15rem;
+        }
+
+        .about-feature p {
+            color: var(--text-2);
+            font-size: 0.92rem;
+        }
+
+        .mv-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 1.1rem;
+        }
+
+        .mv-card {
+            display: flex;
+            gap: 1.1rem;
+            align-items: flex-start;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.6rem 1.8rem;
+            backdrop-filter: blur(16px);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .mv-card:hover {
+            transform: translateX(6px);
+            border-color: var(--border-strong);
+        }
+
+        .mv-card .ico {
+            flex: none;
+            width: 46px;
+            height: 46px;
+            border-radius: 13px;
+            display: grid;
+            place-items: center;
+            font-size: 1.3rem;
+        }
+
+        .mv-card h3 {
+            font-size: 1.05rem;
+            margin-bottom: 0.35rem;
+        }
+
+        .mv-card p {
+            color: var(--text-2);
+            font-size: 0.93rem;
+        }
+
+        /* ============ Team ============ */
+        .team-card {
+            text-align: center;
+            align-items: center;
+        }
+
+        .avatar {
+            width: 84px;
+            height: 84px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            font-size: 2rem;
+            margin-bottom: 1.3rem;
+            background: var(--grad);
+            box-shadow: 0 10px 30px rgba(61, 155, 255, 0.35);
+        }
+
+        .team-card .role {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--blue);
+            margin-bottom: 0.9rem;
+        }
+
+        .team-card .tags {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.45rem;
+            margin-top: 1.2rem;
+        }
+
+        /* ============ Testimonials ============ */
+        .quote-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.4rem;
+            max-width: 980px;
+            margin: 0 auto;
+        }
+
+        .quote-card {
+            justify-content: space-between;
+        }
+
+        .quote-mark {
+            font-size: 2.6rem;
+            line-height: 1;
+            font-weight: 700;
+            background: var(--grad);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.6rem;
+        }
+
+        .quote-card blockquote {
+            margin: 0 0 1.6rem;
+            color: var(--text-2);
+            font-size: 1.02rem;
+            line-height: 1.7;
+        }
+
+        .quote-author {
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+        }
+
+        .quote-author .avatar-sm {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            font-weight: 700;
+            color: #fff;
+            background: var(--grad);
+            flex: none;
+        }
+
+        .quote-author b {
+            display: block;
+            font-size: 0.98rem;
+        }
+
+        .quote-author span {
+            font-size: 0.85rem;
+            color: var(--text-3);
+        }
+
+        .stars {
+            color: var(--orange);
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            margin-bottom: 0.9rem;
+        }
+
+        /* ============ Contact / CTA ============ */
+        .cta-panel {
+            position: relative;
+            overflow: hidden;
+            border-radius: 28px;
+            border: 1px solid var(--border-strong);
+            background:
+                radial-gradient(ellipse 60% 90% at 20% 0%, rgba(61, 155, 255, 0.22), transparent 60%),
+                radial-gradient(ellipse 60% 90% at 85% 100%, rgba(191, 90, 242, 0.2), transparent 60%),
+                var(--bg-raised);
+            padding: clamp(2.5rem, 6vw, 5rem);
+            text-align: center;
+        }
+
+        .cta-panel h2 {
+            font-size: clamp(2rem, 4.6vw, 3.1rem);
+            max-width: 700px;
+            margin: 0 auto 1.2rem;
+        }
+
+        .cta-panel > p {
+            color: var(--text-2);
+            font-size: 1.1rem;
+            max-width: 560px;
+            margin: 0 auto 2.4rem;
+        }
+
+        .cta-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 2.6rem;
+        }
+
+        .cta-contacts {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+            font-size: 0.95rem;
+            color: var(--text-2);
+        }
+
+        .cta-contacts a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.2s ease;
+        }
+
+        .cta-contacts a:hover {
+            color: var(--text);
+        }
+
+        /* ============ Footer ============ */
+        .site-footer {
+            border-top: 1px solid var(--border);
+            padding: 3.5rem 0 2.5rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1fr 1fr;
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand p {
+            color: var(--text-3);
+            font-size: 0.92rem;
+            margin-top: 1rem;
+            max-width: 300px;
+        }
+
+        .footer-col h4 {
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--text-3);
+            margin-bottom: 1.1rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.65rem;
+        }
+
+        .footer-col a {
+            color: var(--text-2);
+            font-size: 0.93rem;
+            transition: color 0.2s ease;
+        }
+
+        .footer-col a:hover {
+            color: var(--text);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border);
+            padding-top: 1.8rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            color: var(--text-3);
+            font-size: 0.88rem;
+        }
+
+        /* ============ Reveal animations ============ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(26px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.in {
+            opacity: 1;
+            transform: none;
+        }
+
+        .reveal[data-delay="1"] { transition-delay: 0.08s; }
+        .reveal[data-delay="2"] { transition-delay: 0.16s; }
+        .reveal[data-delay="3"] { transition-delay: 0.24s; }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .aurora { animation: none; }
+            .reveal { opacity: 1; transform: none; transition: none; }
+            .btn, .card, .mv-card, .partner { transition: none; }
+        }
+
+        /* ============ Responsive ============ */
+        @media (max-width: 1020px) {
+            .grid-3 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 860px) {
+            .nav-links,
+            .nav-cta .btn-ghost {
+                display: none;
+            }
+
+            .nav-toggle {
+                display: flex;
+            }
+
+            .mobile-menu {
+                position: fixed;
+                top: 76px;
+                left: 0;
+                right: 0;
+                background: rgba(5, 6, 8, 0.96);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                border-bottom: 1px solid var(--border);
+                padding: 1rem 1.5rem 1.6rem;
+                display: none;
+                z-index: 49;
+            }
+
+            .mobile-menu.open {
+                display: block;
+            }
+
+            .mobile-menu a {
+                display: block;
+                padding: 0.85rem 0.5rem;
+                font-size: 1.05rem;
+                font-weight: 500;
+                color: var(--text-2);
+                border-bottom: 1px solid var(--border);
+            }
+
+            .mobile-menu a:last-of-type {
+                border-bottom: none;
+            }
+
+            .hero {
+                padding-top: 140px;
+            }
+
+            .hero-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .quote-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (min-width: 861px) {
+            .mobile-menu {
+                display: none !important;
+            }
+        }
+
+        @media (max-width: 620px) {
+            .nav-inner {
+                gap: 0.75rem;
+            }
+
+            .nav-cta {
+                gap: 0.5rem;
+            }
+
+            .nav-cta .btn-primary {
+                padding: 0.55rem 0.95rem;
+                font-size: 0.84rem;
+            }
+
+            .brand {
+                font-size: 1.02rem;
+                gap: 0.5rem;
+            }
+
+            .brand-mark {
+                width: 30px;
+                height: 30px;
+            }
+
+            .grid-3 {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 68px 0;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .footer-bottom {
+                justify-content: center;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <a class="skip-link" href="#main">Przejdź do treści</a>
+    <div class="aurora" aria-hidden="true"></div>
+    <div class="grain" aria-hidden="true"></div>
+
+    <!-- ============ Header ============ -->
+    <header class="site-header" id="siteHeader">
+        <div class="container nav-inner">
+            <a class="brand" href="#home" aria-label="ECM Digital – strona główna">
+                <span class="brand-mark" aria-hidden="true">E</span>
+                <span>ECM Digital</span>
+            </a>
+
+            <nav aria-label="Główna nawigacja">
+                <ul class="nav-links">
+                    <li><a href="#services">Usługi</a></li>
+                    <li><a href="#case-studies">Case studies</a></li>
+                    <li><a href="#about">O nas</a></li>
+                    <li><a href="#team">Zespół</a></li>
+                    <li><a href="#contact">Kontakt</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-cta">
+                <a class="btn btn-ghost btn-sm"
+                    href="https://client-dashboard-lzxksw2h2-ecm-digitals-projects.vercel.app/dashboard"
+                    target="_blank" rel="noopener noreferrer">Panel klienta</a>
+                <a class="btn btn-primary btn-sm" href="https://calendly.com/hello-ecm-digital" target="_blank"
+                    rel="noopener noreferrer">Umów konsultację</a>
+                <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mobileMenu"
+                    aria-label="Otwórz menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="#services">Usługi</a>
+            <a href="#case-studies">Case studies</a>
+            <a href="#about">O nas</a>
+            <a href="#team">Zespół</a>
+            <a href="#contact">Kontakt</a>
+            <a href="https://client-dashboard-lzxksw2h2-ecm-digitals-projects.vercel.app/dashboard" target="_blank"
+                rel="noopener noreferrer">Panel klienta</a>
+        </div>
+    </header>
+
+    <main id="main">
+        <!-- ============ Hero ============ -->
+        <section class="hero" id="home" aria-labelledby="hero-title">
+            <div class="container">
+                <div class="hero-badge reveal">
+                    <span class="dot" aria-hidden="true"></span>
+                    Przyjmujemy nowe projekty AI
+                </div>
+
+                <h1 id="hero-title" class="reveal" data-delay="1">
+                    Wdrażamy AI, które <span class="accent">realnie pracuje</span> na Twój biznes
+                </h1>
+
+                <p class="hero-sub reveal" data-delay="2">
+                    Od asystentów AI i automatyzacji po strony, sklepy i aplikacje mobilne.
+                    Projektujemy, budujemy i wdrażamy rozwiązania, które generują mierzalne korzyści biznesowe.
+                </p>
+
+                <div class="hero-actions reveal" data-delay="3">
+                    <a class="btn btn-primary" href="https://calendly.com/hello-ecm-digital" target="_blank"
+                        rel="noopener noreferrer">
+                        Umów bezpłatną konsultację <span class="arrow" aria-hidden="true">→</span>
+                    </a>
+                    <a class="btn btn-ghost" href="#services">Zobacz nasze usługi</a>
+                </div>
+
+                <div class="hero-stats reveal" data-delay="3">
+                    <div class="stat"><b>6+</b><span>projektów AI na produkcji</span></div>
+                    <div class="stat"><b>70%</b><span>redukcji kosztów obsługi</span></div>
+                    <div class="stat"><b>24/7</b><span>wsparcie asystentów AI</span></div>
+                    <div class="stat"><b>95%</b><span>satysfakcji klientów</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ Partners ============ -->
+        <section class="partners" id="partners" aria-label="Technologie i partnerzy">
+            <div class="container">
+                <p class="partners-label reveal">Współpracujemy z najlepszymi platformami</p>
+                <div class="partners-row reveal" data-delay="1">
+                    <div class="partner"><img src="/assets/images/partners/aws%20logo.png" alt="Amazon Web Services" loading="lazy"></div>
+                    <div class="partner"><img src="/assets/images/partners/shopify%20logo.png" alt="Shopify" loading="lazy"></div>
+                    <div class="partner"><img src="/assets/images/partners/wix%20logo.png" alt="Wix" loading="lazy"></div>
+                    <div class="partner"><img src="/assets/images/partners/Cloudwise%20Logo.png" alt="Cloudwise" loading="lazy"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ Services ============ -->
+        <section id="services" aria-labelledby="services-title">
+            <div class="container">
+                <div class="section-head reveal">
+                    <span class="eyebrow">Usługi</span>
+                    <h2 id="services-title">Kompleksowe rozwiązania AI i digital</h2>
+                    <p>Od strategii i pierwszego prototypu po stabilne systemy produkcyjne — wszystko, czego potrzebuje
+                        Twoja firma, aby rosnąć dzięki technologii.</p>
+                </div>
+
+                <div class="grid-3">
+                    <article class="card reveal">
+                        <div class="card-icon" style="background: rgba(61,155,255,.12);">🤖</div>
+                        <h3>Asystenci AI — Bedrock &amp; Copilot Studio</h3>
+                        <p>Automatyzuj obsługę klienta 24/7 i oszczędzaj do 70% kosztów wsparcia. Inteligentni asystenci
+                            odpowiadają na pytania i rozwiązują problemy klientów.</p>
+                        <a class="card-link" href="dokumentacja-ecm/oferta-uslug/asystencja-ai-bedrock/index.html">
+                            Dowiedz się więcej <span class="arrow" aria-hidden="true">→</span></a>
+                    </article>
+
+                    <article class="card reveal" data-delay="1">
+                        <div class="card-icon" style="background: rgba(191,90,242,.12);">🔍</div>
+                        <h3>Audyt i strategia AI</h3>
+                        <p>Pierwszy krok transformacji. Analizujemy procesy, liczymy ROI i tworzymy mapę drogową
+                            wdrożenia AI w Twojej firmie.</p>
+                        <a class="card-link" href="dokumentacja-ecm/oferta-uslug/audyty-ux/index.html">
+                            Dowiedz się więcej <span class="arrow" aria-hidden="true">→</span></a>
+                    </article>
+
+                    <article class="card reveal" data-delay="2">
+                        <div class="card-icon" style="background: rgba(48,209,88,.12);">🎓</div>
+                        <h3>Edukacja i wdrożenia</h3>
+                        <p>Technologia to tylko połowa sukcesu. Szkolimy Twój zespół i dbamy o pełną adopcję rozwiązań
+                            w firmie — z gwarancją użyteczności.</p>
+                        <a class="card-link" href="dokumentacja-ecm/oferta-uslug/edukacja-wdrozenia/index.html">
+                            Dowiedz się więcej <span class="arrow" aria-hidden="true">→</span></a>
+                    </article>
+
+                    <article class="card reveal">
+                        <div class="card-icon" style="background: rgba(255,45,85,.12);">🧑‍💼</div>
+                        <h3>AI Executive</h3>
+                        <p>Osobisty, cyfrowy doradca dla zarządu. Pełen kontekst firmy, analiza danych i wsparcie
+                            decyzyjne w czasie rzeczywistym.</p>
+                        <a class="card-link" href="dokumentacja-ecm/oferta-uslug/ai-executive/index.html">
+                            Dowiedz się więcej <span class="arrow" aria-hidden="true">→</span></a>
+                    </article>
+
+                    <article class="card reveal" data-delay="1">
+                        <div class="card-icon" style="background: rgba(255,159,10,.12);">💡</div>
+                        <h3>Prototypy MVP</h3>
+                        <p>Przetestuj swój pomysł za 30% kosztu pełnej aplikacji. Szybki MVP pozwala zweryfikować rynek
+                            przed dużą inwestycją.</p>
+                        <a class="card-link" href="dokumentacja-ecm/oferta-uslug/prototypy-mvp/index.html">
+                            Dowiedz się więcej <span class="arrow" aria-hidden="true">→</span></a>
+                    </article>
+
+                    <article class="card reveal" data-delay="2">
+                        <div class="card-icon" style="background: rgba(61,155,255,.12);">📈</div>
+                        <h3>Social Media &amp; AI</h3>
+                        <p>Zwiększ zaangażowanie o 60% dzięki analizie treści AI. Dowiedz się, co naprawdę interesuje
+                            Twoich klientów.</p>
+                        <a class="card-link" href="dokumentacja-ecm/oferta-uslug/social-media-data-science/index.html">
+                            Dowiedz się więcej <span class="arrow" aria-hidden="true">→</span></a>
+                    </article>
+
+                    <article class="card reveal">
+                        <div class="card-icon" style="background: rgba(48,209,88,.12);">🛒</div>
+                        <h3>Sklepy Shopify &amp; Wix</h3>
+                        <p>Sprzedawaj online już za 2 tygodnie — gotowy sklep z płatnościami i logistyką. Średnio
+                            15–25% wzrostu sprzedaży po wdrożeniu.</p>
+                        <a class="card-link" href="dokumentacja-ecm/oferta-uslug/sklepy-shopify/index.html">
+                            Dowiedz się więcej <span class="arrow" aria-hidden="true">→</span></a>
+                    </article>
+
+                    <article class="card reveal" data-delay="1">
+                        <div class="card-icon" style="background: rgba(191,90,242,.12);">🌐</div>
+                        <h3>Strony WWW i aplikacje webowe</h3>
+                        <p>Zwiększ konwersję o 25–40% dzięki profesjonalnemu projektowi. Responsywne strony z SEO,
+                            które przyciągają i zatrzymują klientów.</p>
+                        <a class="card-link" href="dokumentacja-ecm/oferta-uslug/strony-www/index.html">
+                            Dowiedz się więcej <span class="arrow" aria-hidden="true">→</span></a>
+                    </article>
+
+                    <article class="card reveal" data-delay="2">
+                        <div class="card-icon" style="background: rgba(255,159,10,.12);">📱</div>
+                        <h3>Aplikacje mobilne</h3>
+                        <p>Od pomysłu do App Store w 8–12 tygodni. Nowoczesne aplikacje iOS i Android, które zwiększają
+                            przychody i zaangażowanie klientów.</p>
+                        <a class="card-link" href="dokumentacja-ecm/oferta-uslug/aplikacje-mobilne/index.html">
+                            Dowiedz się więcej <span class="arrow" aria-hidden="true">→</span></a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ Case studies ============ -->
+        <section id="case-studies" aria-labelledby="cases-title">
+            <div class="container">
+                <div class="section-head reveal">
+                    <span class="eyebrow">Portfolio</span>
+                    <h2 id="cases-title">Studia przypadków</h2>
+                    <p>Prawdziwe projekty, konkretne rezultaty — zobacz, jak transformujemy biznesy dzięki AI.</p>
+                </div>
+
+                <div class="grid-3">
+                    <article class="card case-card reveal">
+                        <div class="card-icon">🤖</div>
+                        <h3>Asystent AI dla e‑commerce</h3>
+                        <p class="kicker">Sklep internetowy — branża modowa</p>
+                        <div class="case-metrics">
+                            <div><b>25%</b><span>wzrost konwersji</span></div>
+                            <div><b>40%</b><span>redukcja kosztów</span></div>
+                            <div><b>24/7</b><span>wsparcie klienta</span></div>
+                        </div>
+                        <p>Asystent AI obsługujący 80% zapytań klientów, automatyczne rekomendacje produktów
+                            i spersonalizowane doświadczenie zakupowe.</p>
+                        <div class="tags">
+                            <span class="tag">Amazon Bedrock</span>
+                            <span class="tag violet">NLP</span>
+                            <span class="tag green">Analytics</span>
+                        </div>
+                        <a class="card-link" href="/case-studies/ai-assistant-ecommerce.html">
+                            Zobacz szczegóły <span class="arrow" aria-hidden="true">→</span></a>
+                    </article>
+
+                    <article class="card case-card reveal" data-delay="1">
+                        <div class="card-icon" style="background: rgba(48,209,88,.12);">🎓</div>
+                        <h3>Platforma szkoleniowa</h3>
+                        <p class="kicker">E‑learning dla firm</p>
+                        <div class="case-metrics">
+                            <div><b>65%</b><span>wzrost ukończeń</span></div>
+                            <div><b>2×</b><span>zaangażowanie</span></div>
+                            <div><b>100%</b><span>kontrola procesu</span></div>
+                        </div>
+                        <p>Nowoczesna platforma e‑learningowa z pełną kontrolą nad procesem nauczania i wyraźnie
+                            wyższym zaangażowaniem uczestników.</p>
+                        <div class="tags">
+                            <span class="tag green">E‑learning</span>
+                            <span class="tag">LMS</span>
+                            <span class="tag violet">UX</span>
+                        </div>
+                        <a class="card-link" href="/case-studies/platforma-szkoleniowa.html">
+                            Zobacz szczegóły <span class="arrow" aria-hidden="true">→</span></a>
+                    </article>
+
+                    <article class="card case-card reveal" data-delay="2">
+                        <div class="card-icon" style="background: rgba(191,90,242,.12);">🛍️</div>
+                        <h3>Shopify z agentami AI</h3>
+                        <p class="kicker">E‑commerce — 60 agentów AI</p>
+                        <div class="case-metrics">
+                            <div><b>300%</b><span>wzrost sprzedaży</span></div>
+                            <div><b>60</b><span>agentów AI</span></div>
+                            <div><b>Q1</b><span>zwrot inwestycji</span></div>
+                        </div>
+                        <p>Automatyzacja obsługi klienta, personalizacja ofert i inteligentne rekomendacje — sprzedaż
+                            wzrosła o 300% w pierwszym kwartale.</p>
+                        <div class="tags">
+                            <span class="tag violet">Shopify</span>
+                            <span class="tag">Agenci AI</span>
+                            <span class="tag green">Personalizacja</span>
+                        </div>
+                        <a class="card-link" href="/case-studies/shopify-ai.html">
+                            Zobacz szczegóły <span class="arrow" aria-hidden="true">→</span></a>
+                    </article>
+
+                    <article class="card case-card reveal">
+                        <div class="card-icon" style="background: rgba(255,159,10,.12);">📱</div>
+                        <h3>Aplikacja KingSmith</h3>
+                        <p class="kicker">Aplikacja mobilna — BLE / IoT</p>
+                        <p>Aplikacja mobilna sterująca sprzętem fitness przez Bluetooth — plany treningowe, statystyki
+                            i integracja z urządzeniami IoT.</p>
+                        <div class="tags">
+                            <span class="tag">iOS / Android</span>
+                            <span class="tag violet">BLE</span>
+                            <span class="tag green">IoT</span>
+                        </div>
+                        <a class="card-link" href="/case-studies/kingsmith-app.html">
+                            Zobacz szczegóły <span class="arrow" aria-hidden="true">→</span></a>
+                    </article>
+
+                    <article class="card case-card reveal" data-delay="1">
+                        <div class="card-icon">🏠</div>
+                        <h3>Agencja nieruchomości</h3>
+                        <p class="kicker">Nowoczesny serwis WWW</p>
+                        <p>Nowoczesna strona z inteligentnym wyszukiwaniem ofert i automatyzacją kontaktu z klientami
+                            dla agencji nieruchomości.</p>
+                        <div class="tags">
+                            <span class="tag">WWW</span>
+                            <span class="tag green">SEO</span>
+                            <span class="tag violet">Automatyzacja</span>
+                        </div>
+                        <a class="card-link" href="/case-studies/agencja-nieruchomosci.html">
+                            Zobacz szczegóły <span class="arrow" aria-hidden="true">→</span></a>
+                    </article>
+
+                    <article class="card case-card reveal" data-delay="2">
+                        <div class="card-icon" style="background: rgba(48,209,88,.12);">⚙️</div>
+                        <h3>Automatyzacja sprzedaży</h3>
+                        <p class="kicker">Software house — procesy sprzedażowe</p>
+                        <p>Automatyzacja procesów sprzedażowych software house'u — od kwalifikacji leadów po follow‑upy,
+                            bez ręcznej pracy zespołu.</p>
+                        <div class="tags">
+                            <span class="tag green">N8N</span>
+                            <span class="tag">CRM</span>
+                            <span class="tag violet">Lead gen</span>
+                        </div>
+                        <a class="card-link" href="/case-studies/automatyzacja-sprzedazy-software-house.html">
+                            Zobacz szczegóły <span class="arrow" aria-hidden="true">→</span></a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ About ============ -->
+        <section id="about" aria-labelledby="about-title">
+            <div class="container about-grid">
+                <div class="about-copy reveal">
+                    <span class="eyebrow">O ECM Digital</span>
+                    <h2 id="about-title">AI, które realnie dowozi</h2>
+                    <p>Łączymy strategię, UX i inżynierię. Budujemy praktyczne wdrożenia AI — od discovery i MVP po
+                        stabilne systemy produkcyjne, które przekładają się na wyniki biznesowe.</p>
+
+                    <div class="about-feature">
+                        <div class="ico" aria-hidden="true">⚙️</div>
+                        <div>
+                            <b>Integracje z istniejącymi systemami</b>
+                            <p>Wpinamy AI w Twoje narzędzia — CRM, e‑commerce, help desk — bez rewolucji w firmie.</p>
+                        </div>
+                    </div>
+                    <div class="about-feature">
+                        <div class="ico" aria-hidden="true">🧪</div>
+                        <div>
+                            <b>Szybkie MVP i walidacja z użytkownikami</b>
+                            <p>Najpierw sprawdzamy, co działa. Testujemy z realnymi użytkownikami, zanim zainwestujesz
+                                w pełne wdrożenie.</p>
+                        </div>
+                    </div>
+                    <div class="about-feature">
+                        <div class="ico" aria-hidden="true">📈</div>
+                        <div>
+                            <b>Raporty i metryki efektywności</b>
+                            <p>Mierzymy efekty każdego wdrożenia — wiesz dokładnie, co zyskujesz i gdzie optymalizować.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mv-stack">
+                    <div class="mv-card reveal">
+                        <div class="ico" style="background: rgba(61,155,255,.12);" aria-hidden="true">🚀</div>
+                        <div>
+                            <h3>Misja</h3>
+                            <p>Demokratyzujemy AI, dostarczając wdrożenia, które zwiększają przychody i upraszczają
+                                operacje.</p>
+                        </div>
+                    </div>
+                    <div class="mv-card reveal" data-delay="1">
+                        <div class="ico" style="background: rgba(48,209,88,.12);" aria-hidden="true">🎯</div>
+                        <div>
+                            <h3>Wizja</h3>
+                            <p>Być partnerem pierwszego wyboru dla firm, które chcą wykorzystać AI do przewagi
+                                konkurencyjnej.</p>
+                        </div>
+                    </div>
+                    <div class="mv-card reveal" data-delay="2">
+                        <div class="ico" style="background: rgba(255,159,10,.12);" aria-hidden="true">⚡</div>
+                        <div>
+                            <h3>Wartości</h3>
+                            <p>Pragmatyzm, odpowiedzialność i „dowiezione na produkcji". Mierzymy, optymalizujemy,
+                                wspieramy.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ Team ============ -->
+        <section id="team" aria-labelledby="team-title">
+            <div class="container">
+                <div class="section-head reveal">
+                    <span class="eyebrow">Zespół</span>
+                    <h2 id="team-title">Eksperci, którzy dowożą</h2>
+                    <p>Eksperci AI i technologii, którzy transformują Twoje pomysły w innowacyjne rozwiązania.</p>
+                </div>
+
+                <div class="grid-3">
+                    <article class="card team-card reveal">
+                        <div class="avatar" aria-hidden="true">🎯</div>
+                        <h3>Tomasz Gnat</h3>
+                        <div class="role">Konsultant Discovery</div>
+                        <p>Ekspert w odkrywaniu potrzeb biznesowych i strategii AI. Pomaga firmom identyfikować obszary
+                            do automatyzacji.</p>
+                        <div class="tags">
+                            <span class="tag">Business Analysis</span>
+                            <span class="tag violet">AI Strategy</span>
+                        </div>
+                    </article>
+
+                    <article class="card team-card reveal" data-delay="1">
+                        <div class="avatar" style="background: linear-gradient(135deg, #30d158, #3d9bff);" aria-hidden="true">🎨</div>
+                        <h3>Marta Górska</h3>
+                        <div class="role" style="color: var(--green);">Projektantka</div>
+                        <p>Projektantka skupiona na potrzebach użytkowników w erze AI. Tworzy interfejsy, które
+                            naturalnie łączą ludzi z technologią.</p>
+                        <div class="tags">
+                            <span class="tag green">UX Research</span>
+                            <span class="tag">AI/UX Design</span>
+                        </div>
+                    </article>
+
+                    <article class="card team-card reveal" data-delay="2">
+                        <div class="avatar" style="background: linear-gradient(135deg, #bf5af2, #ff9f0a);" aria-hidden="true">💻</div>
+                        <h3>Karol Czechowski</h3>
+                        <div class="role" style="color: var(--violet);">QA &amp; Deweloper AI</div>
+                        <p>Specjalista w zapewnianiu jakości rozwiązań AI i testowaniu automatycznym. Gwarantuje
+                            niezawodność systemów.</p>
+                        <div class="tags">
+                            <span class="tag violet">AI Testing</span>
+                            <span class="tag">Quality Assurance</span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ Testimonials ============ -->
+        <section id="testimonials" aria-labelledby="testimonials-title">
+            <div class="container">
+                <div class="section-head reveal">
+                    <span class="eyebrow">Opinie</span>
+                    <h2 id="testimonials-title">Co mówią nasi klienci</h2>
+                    <p>Opinie partnerów, którzy zaufali naszym rozwiązaniom AI.</p>
+                </div>
+
+                <div class="quote-grid">
+                    <article class="card quote-card reveal">
+                        <div>
+                            <div class="quote-mark" aria-hidden="true">"</div>
+                            <div class="stars" aria-label="Ocena 5 na 5">★★★★★</div>
+                            <blockquote>Platforma szkoleniowa stworzona przez ECM Digital to rewolucja w naszym
+                                podejściu do edukacji. Uczniowie są bardziej zaangażowani, a my mamy pełną kontrolę nad
+                                procesem nauczania. Wzrost ukończeń kursów o 65%!</blockquote>
+                        </div>
+                        <div class="quote-author">
+                            <div class="avatar-sm" aria-hidden="true">D</div>
+                            <div>
+                                <b>Danuta Jagusz</b>
+                                <span>Właścicielka, Instytut Rozwoju</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card quote-card reveal" data-delay="1">
+                        <div>
+                            <div class="quote-mark" aria-hidden="true">"</div>
+                            <div class="stars" aria-label="Ocena 5 na 5">★★★★★</div>
+                            <blockquote>E‑commerce z 60 agentami AI to absolutny game‑changer! Automatyzacja obsługi
+                                klienta, personalizacja ofert i inteligentne rekomendacje. Sprzedaż wzrosła o 300%
+                                w pierwszym kwartale!</blockquote>
+                        </div>
+                        <div class="quote-author">
+                            <div class="avatar-sm" style="background: linear-gradient(135deg, #30d158, #3d9bff);" aria-hidden="true">M</div>
+                            <div>
+                                <b>Mario Rifaat</b>
+                                <span>Właściciel, Sklep Internetowy Risovia</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ Contact / CTA ============ -->
+        <section id="contact" aria-labelledby="contact-title">
+            <div class="container">
+                <div class="cta-panel reveal">
+                    <span class="eyebrow">Kontakt</span>
+                    <h2 id="contact-title">Gotowy na transformację swojego biznesu?</h2>
+                    <p>Umów bezpłatną konsultację — omówimy Twoje potrzeby i zaproponujemy najlepsze rozwiązanie AI
+                        dla Twojej firmy. Bez zobowiązań.</p>
+
+                    <div class="cta-actions">
+                        <a class="btn btn-primary" href="https://calendly.com/hello-ecm-digital" target="_blank"
+                            rel="noopener noreferrer">
+                            Umów bezpłatną konsultację <span class="arrow" aria-hidden="true">→</span>
+                        </a>
+                        <a class="btn btn-ghost" href="mailto:hello@ecm-digital.com">Napisz do nas</a>
+                    </div>
+
+                    <div class="cta-contacts">
+                        <a href="mailto:hello@ecm-digital.com">✉️ hello@ecm-digital.com</a>
+                        <a href="https://calendly.com/hello-ecm-digital" target="_blank" rel="noopener noreferrer">📅
+                            calendly.com/hello-ecm-digital</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ============ Footer ============ -->
+    <footer class="site-footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a class="brand" href="#home">
+                        <span class="brand-mark" aria-hidden="true">E</span>
+                        <span>ECM Digital</span>
+                    </a>
+                    <p>Agencja AI &amp; digital. Wdrażamy sztuczną inteligencję, która realnie pracuje na wyniki
+                        Twojego biznesu.</p>
+                </div>
+
+                <nav class="footer-col" aria-label="Usługi AI">
+                    <h4>Rozwiązania AI</h4>
+                    <ul>
+                        <li><a href="dokumentacja-ecm/oferta-uslug/asystencja-ai-bedrock/index.html">Asystenci AI</a></li>
+                        <li><a href="dokumentacja-ecm/oferta-uslug/audyty-ux/index.html">Audyt i strategia AI</a></li>
+                        <li><a href="dokumentacja-ecm/oferta-uslug/automatyzacje-n8n/index.html">Automatyzacje N8N</a></li>
+                        <li><a href="dokumentacja-ecm/oferta-uslug/social-media-data-science/index.html">Social Media &amp; AI</a></li>
+                    </ul>
+                </nav>
+
+                <nav class="footer-col" aria-label="Produkty cyfrowe">
+                    <h4>Produkty cyfrowe</h4>
+                    <ul>
+                        <li><a href="dokumentacja-ecm/oferta-uslug/strony-www/index.html">Strony WWW</a></li>
+                        <li><a href="dokumentacja-ecm/oferta-uslug/sklepy-shopify/index.html">Sklepy Shopify &amp; Wix</a></li>
+                        <li><a href="dokumentacja-ecm/oferta-uslug/aplikacje-mobilne/index.html">Aplikacje mobilne</a></li>
+                        <li><a href="dokumentacja-ecm/oferta-uslug/prototypy-mvp/index.html">Prototypy MVP</a></li>
+                    </ul>
+                </nav>
+
+                <nav class="footer-col" aria-label="Firma">
+                    <h4>Firma</h4>
+                    <ul>
+                        <li><a href="#about">O nas</a></li>
+                        <li><a href="#case-studies">Case studies</a></li>
+                        <li><a href="#team">Zespół</a></li>
+                        <li><a href="https://client-dashboard-lzxksw2h2-ecm-digitals-projects.vercel.app/dashboard"
+                                target="_blank" rel="noopener noreferrer">Panel klienta</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="footer-bottom">
+                <span>© 2026 ECM Digital. Wszystkie prawa zastrzeżone.</span>
+                <span>Made with ❤️ &amp; AI in Poland</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        (function () {
+            var header = document.getElementById('siteHeader');
+            var toggle = document.getElementById('navToggle');
+            var menu = document.getElementById('mobileMenu');
+
+            function onScroll() {
+                header.classList.toggle('scrolled', window.scrollY > 12);
+            }
+            onScroll();
+            window.addEventListener('scroll', onScroll, { passive: true });
+
+            toggle.addEventListener('click', function () {
+                var open = menu.classList.toggle('open');
+                toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+                toggle.setAttribute('aria-label', open ? 'Zamknij menu' : 'Otwórz menu');
+            });
+
+            menu.addEventListener('click', function (e) {
+                if (e.target.tagName === 'A') {
+                    menu.classList.remove('open');
+                    toggle.setAttribute('aria-expanded', 'false');
+                }
+            });
+
+            // Scroll-reveal animations
+            var revealEls = document.querySelectorAll('.reveal');
+            if ('IntersectionObserver' in window) {
+                var io = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('in');
+                            io.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+                revealEls.forEach(function (el) { io.observe(el); });
+            } else {
+                revealEls.forEach(function (el) { el.classList.add('in'); });
+            }
+        })();
+    </script>
+</body>
+
+</html>
