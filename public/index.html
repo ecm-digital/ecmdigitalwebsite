@@ -1,0 +1,1921 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#05070c">
+    <title>ECM Digital – Agencja AI &amp; Digital | Leady, Automatyzacja, Agenci AI</title>
+
+    <!-- SEO -->
+    <meta name="description"
+        content="Pomagamy firmom usługowym zdobywać więcej leadów i skracać czas odpowiedzi do 15 sekund. Agenci AI, automatyzacje n8n, strony sprzedażowe, audyty wdrożeń AI.">
+    <meta name="keywords"
+        content="agencja AI, agent AI, automatyzacja n8n, generowanie leadów, chatbot AI, strony WWW, audyt AI, wdrożenia AI">
+    <meta name="author" content="ECM Digital">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.ecm-digital.com/">
+    <link rel="alternate" hreflang="pl" href="https://www.ecm-digital.com/">
+    <link rel="alternate" hreflang="x-default" href="https://www.ecm-digital.com/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.ecm-digital.com/">
+    <meta property="og:title" content="ECM Digital – Agencja AI &amp; Digital">
+    <meta property="og:description"
+        content="Więcej leadów, odpowiedź w 15 sekund, do 80% zapytań obsłużonych przez AI. Wdrażamy strony sprzedażowe, automatyzacje i agentów AI.">
+    <meta property="og:image" content="https://www.ecm-digital.com/assets/images/ecm-digital-og.svg">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ECM Digital – Agencja AI &amp; Digital">
+    <meta name="twitter:description"
+        content="Więcej leadów, odpowiedź w 15 sekund, do 80% zapytań obsłużonych przez AI.">
+    <meta name="twitter:image" content="https://www.ecm-digital.com/assets/images/ecm-digital-og.svg">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "ECM Digital",
+      "url": "https://www.ecm-digital.com/",
+      "logo": "https://www.ecm-digital.com/assets/images/ecm-digital-og.svg",
+      "sameAs": [
+        "https://www.facebook.com/ecmdigital",
+        "https://www.linkedin.com/company/ecmdigital"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "hello@ecm-digital.com",
+        "contactType": "customer service",
+        "areaServed": "PL",
+        "availableLanguage": "Polish"
+      }
+    }
+    </script>
+
+    <link rel="preload" href="/fonts/tt-hoves/TTHoves-Bold.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/tt-hoves/TTHoves-DemiBold.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/tt-hoves/TTHoves-Regular.woff2" as="font" type="font/woff2" crossorigin>
+
+    <style>
+        /* ============ Fonts ============ */
+        @font-face {
+            font-family: 'TT Hoves';
+            src: url('/fonts/tt-hoves/TTHoves-Regular.woff2') format('woff2'),
+                 url('/fonts/tt-hoves/TTHoves-Regular.woff') format('woff');
+            font-weight: 400;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'TT Hoves';
+            src: url('/fonts/tt-hoves/TTHoves-Medium.woff2') format('woff2'),
+                 url('/fonts/tt-hoves/TTHoves-Medium.woff') format('woff');
+            font-weight: 500;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'TT Hoves';
+            src: url('/fonts/tt-hoves/TTHoves-DemiBold.woff2') format('woff2'),
+                 url('/fonts/tt-hoves/TTHoves-DemiBold.woff') format('woff');
+            font-weight: 600;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'TT Hoves';
+            src: url('/fonts/tt-hoves/TTHoves-Bold.woff2') format('woff2'),
+                 url('/fonts/tt-hoves/TTHoves-Bold.woff') format('woff');
+            font-weight: 700;
+            font-display: swap;
+        }
+
+        /* ============ Design tokens ============ */
+        :root {
+            --bg: #05070c;
+            --bg-2: #090c14;
+            --surface: rgba(255, 255, 255, 0.04);
+            --surface-2: rgba(255, 255, 255, 0.07);
+            --border: rgba(255, 255, 255, 0.09);
+            --border-2: rgba(255, 255, 255, 0.18);
+            --text: #f4f6fa;
+            --text-2: rgba(230, 235, 245, 0.64);
+            --text-3: rgba(230, 235, 245, 0.4);
+            --blue: #4d9fff;
+            --violet: #a06bff;
+            --cyan: #35d3e8;
+            --green: #34d17b;
+            --red: #ff6b6b;
+            --grad: linear-gradient(115deg, #4d9fff 0%, #a06bff 55%, #35d3e8 120%);
+            --font: 'TT Hoves', 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+            --container: 1200px;
+            --radius: 22px;
+            --radius-sm: 13px;
+            --shadow: 0 24px 70px rgba(0, 0, 0, 0.5);
+        }
+
+        /* ============ Base ============ */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 90px;
+        }
+
+        body {
+            font-family: var(--font);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        img { max-width: 100%; display: block; }
+        a { color: inherit; text-decoration: none; }
+        ul { list-style: none; }
+        button { font-family: inherit; cursor: pointer; }
+
+        ::selection { background: rgba(77, 159, 255, 0.35); }
+
+        .container {
+            width: min(var(--container), 100% - 48px);
+            margin-inline: auto;
+        }
+
+        .skip-link {
+            position: absolute;
+            left: -9999px;
+            top: 0;
+            background: var(--blue);
+            color: #fff;
+            padding: 10px 18px;
+            border-radius: 0 0 12px 0;
+            z-index: 200;
+        }
+
+        .skip-link:focus { left: 0; }
+
+        /* ============ Buttons ============ */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 28px;
+            border-radius: 999px;
+            font-size: 16px;
+            font-weight: 600;
+            border: 1px solid transparent;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+            white-space: nowrap;
+        }
+
+        .btn-primary {
+            background: var(--grad);
+            color: #fff;
+            box-shadow: 0 10px 34px rgba(89, 128, 255, 0.35);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 16px 44px rgba(89, 128, 255, 0.5);
+        }
+
+        .btn-ghost {
+            background: var(--surface);
+            border-color: var(--border-2);
+            color: var(--text);
+            backdrop-filter: blur(8px);
+        }
+
+        .btn-ghost:hover {
+            background: var(--surface-2);
+            transform: translateY(-2px);
+        }
+
+        .btn .arrow { transition: transform 0.25s ease; }
+        .btn:hover .arrow { transform: translateX(4px); }
+
+        /* ============ Header ============ */
+        .site-header {
+            position: fixed;
+            inset: 0 0 auto 0;
+            z-index: 100;
+            transition: background 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s ease;
+            border-bottom: 1px solid transparent;
+        }
+
+        .site-header.scrolled {
+            background: rgba(5, 7, 12, 0.78);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border-bottom-color: var(--border);
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            height: 76px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: baseline;
+            gap: 2px;
+            font-size: 21px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .logo .dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--grad);
+            align-self: center;
+            margin-left: 5px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav-links a {
+            padding: 9px 15px;
+            border-radius: 999px;
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text-2);
+            transition: color 0.2s ease, background 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text);
+            background: var(--surface-2);
+        }
+
+        .header-cta { display: flex; align-items: center; gap: 12px; }
+
+        .header-cta .btn { padding: 11px 22px; font-size: 15px; }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+            width: 44px;
+            height: 44px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            align-items: center;
+        }
+
+        .nav-toggle span {
+            display: block;
+            width: 18px;
+            height: 2px;
+            background: var(--text);
+            border-radius: 2px;
+            transition: transform 0.25s ease, opacity 0.25s ease;
+        }
+
+        .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+        .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            inset: 76px 0 auto 0;
+            z-index: 99;
+            background: rgba(5, 7, 12, 0.96);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            padding: 18px 24px 28px;
+        }
+
+        .mobile-menu.open { display: block; }
+
+        .mobile-menu a {
+            display: block;
+            padding: 14px 6px;
+            font-size: 18px;
+            font-weight: 500;
+            color: var(--text-2);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .mobile-menu a:last-of-type { border-bottom: none; }
+
+        .mobile-menu .btn { margin-top: 16px; width: 100%; justify-content: center; }
+
+        /* ============ Hero ============ */
+        .hero {
+            position: relative;
+            padding: 170px 0 90px;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: -40% -20% auto;
+            height: 130%;
+            background:
+                radial-gradient(42% 55% at 22% 30%, rgba(77, 159, 255, 0.16), transparent 70%),
+                radial-gradient(38% 50% at 78% 22%, rgba(160, 107, 255, 0.14), transparent 70%),
+                radial-gradient(30% 40% at 55% 80%, rgba(53, 211, 232, 0.07), transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+            background-size: 72px 72px;
+            mask-image: radial-gradient(65% 60% at 50% 30%, black, transparent);
+            -webkit-mask-image: radial-gradient(65% 60% at 50% 30%, black, transparent);
+            pointer-events: none;
+        }
+
+        .hero-inner {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin-inline: auto;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            padding: 8px 18px;
+            border-radius: 999px;
+            background: var(--surface);
+            border: 1px solid var(--border-2);
+            font-size: 13.5px;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--text-2);
+            backdrop-filter: blur(8px);
+        }
+
+        .hero-badge .pulse {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--green);
+            box-shadow: 0 0 0 0 rgba(52, 209, 123, 0.6);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(52, 209, 123, 0.55); }
+            70% { box-shadow: 0 0 0 9px rgba(52, 209, 123, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(52, 209, 123, 0); }
+        }
+
+        .hero h1 {
+            margin: 28px 0 22px;
+            font-size: clamp(38px, 5.6vw, 64px);
+            line-height: 1.08;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+        }
+
+        .grad-text {
+            background: var(--grad);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero-sub {
+            max-width: 680px;
+            margin-inline: auto;
+            font-size: clamp(17px, 2vw, 19.5px);
+            color: var(--text-2);
+        }
+
+        .hero-actions {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-top: 38px;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            max-width: 760px;
+            margin: 64px auto 0;
+        }
+
+        .stat-card {
+            padding: 22px 16px;
+            border-radius: var(--radius-sm);
+            background: var(--surface);
+            border: 1px solid var(--border);
+            backdrop-filter: blur(8px);
+        }
+
+        .stat-value {
+            font-size: clamp(26px, 3.4vw, 36px);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            background: var(--grad);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .stat-label {
+            font-size: 13.5px;
+            color: var(--text-3);
+            margin-top: 4px;
+        }
+
+        /* ============ Marquee ============ */
+        .marquee-section {
+            padding: 26px 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            background: var(--bg-2);
+            overflow: hidden;
+        }
+
+        .marquee {
+            display: flex;
+            gap: 64px;
+            width: max-content;
+            animation: marquee 34s linear infinite;
+        }
+
+        .marquee span {
+            font-size: 15px;
+            font-weight: 600;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--text-3);
+            white-space: nowrap;
+        }
+
+        @keyframes marquee {
+            to { transform: translateX(-50%); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .marquee { animation: none; }
+            html { scroll-behavior: auto; }
+        }
+
+        /* ============ Sections ============ */
+        section { padding: 104px 0; }
+
+        .section-head {
+            max-width: 720px;
+            margin: 0 auto 60px;
+            text-align: center;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--blue);
+            margin-bottom: 14px;
+        }
+
+        .section-head h2 {
+            font-size: clamp(30px, 4vw, 44px);
+            font-weight: 700;
+            line-height: 1.14;
+            letter-spacing: -0.025em;
+        }
+
+        .section-head p {
+            margin-top: 16px;
+            font-size: 17.5px;
+            color: var(--text-2);
+        }
+
+        /* ============ Audience ============ */
+        .audience-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 22px;
+        }
+
+        .audience-card {
+            position: relative;
+            padding: 38px 34px;
+            border-radius: var(--radius);
+            background: var(--surface);
+            border: 1px solid var(--border);
+            overflow: hidden;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .audience-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--border-2);
+        }
+
+        .audience-card::before {
+            content: '';
+            position: absolute;
+            inset: 0 auto auto 0;
+            width: 100%;
+            height: 3px;
+            background: var(--grad);
+            opacity: 0.85;
+        }
+
+        .audience-icon {
+            width: 52px;
+            height: 52px;
+            display: grid;
+            place-items: center;
+            border-radius: 14px;
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .audience-card h3 {
+            font-size: 23px;
+            font-weight: 700;
+            letter-spacing: -0.015em;
+        }
+
+        .audience-card .who {
+            margin-top: 8px;
+            font-size: 15px;
+            color: var(--text-3);
+        }
+
+        .audience-card > ul { margin-top: 22px; display: grid; gap: 12px; }
+
+        .audience-card > ul li {
+            position: relative;
+            padding-left: 30px;
+            font-size: 15.5px;
+            color: var(--text-2);
+        }
+
+        .audience-card > ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: rgba(52, 209, 123, 0.14);
+            color: var(--green);
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .pain-box {
+            margin-top: 26px;
+            padding: 20px 22px;
+            border-radius: var(--radius-sm);
+            background: rgba(255, 107, 107, 0.05);
+            border: 1px solid rgba(255, 107, 107, 0.16);
+        }
+
+        .pain-box h4 {
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--red);
+            margin-bottom: 12px;
+        }
+
+        .pain-box li {
+            font-size: 14.5px;
+            color: var(--text-2);
+            padding-left: 20px;
+            position: relative;
+            margin-bottom: 8px;
+        }
+
+        .pain-box li:last-child { margin-bottom: 0; }
+
+        .pain-box li::before {
+            content: '';
+            position: absolute;
+            left: 2px;
+            top: 8px;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--red);
+            opacity: 0.75;
+        }
+
+        /* ============ Services ============ */
+        #services { background: var(--bg-2); border-block: 1px solid var(--border); }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .service-card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            padding: 34px 30px;
+            border-radius: var(--radius);
+            background: var(--surface);
+            border: 1px solid var(--border);
+            transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--border-2);
+            background: var(--surface-2);
+        }
+
+        .service-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 22px;
+        }
+
+        .service-icon {
+            width: 54px;
+            height: 54px;
+            display: grid;
+            place-items: center;
+            border-radius: 15px;
+            background: linear-gradient(135deg, rgba(77, 159, 255, 0.16), rgba(160, 107, 255, 0.16));
+            border: 1px solid var(--border);
+            font-size: 25px;
+        }
+
+        .service-chip {
+            font-size: 12.5px;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            padding: 6px 13px;
+            border-radius: 999px;
+            background: rgba(52, 209, 123, 0.12);
+            border: 1px solid rgba(52, 209, 123, 0.28);
+            color: var(--green);
+            white-space: nowrap;
+        }
+
+        .service-card h3 {
+            font-size: 21.5px;
+            font-weight: 700;
+            letter-spacing: -0.015em;
+            line-height: 1.25;
+        }
+
+        .service-card p {
+            margin-top: 12px;
+            font-size: 15.5px;
+            color: var(--text-2);
+            flex: 1;
+        }
+
+        .service-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 22px;
+        }
+
+        .service-tags span {
+            font-size: 13px;
+            font-weight: 500;
+            padding: 6px 12px;
+            border-radius: 999px;
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            color: var(--text-2);
+        }
+
+        .service-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 24px;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--blue);
+        }
+
+        .service-link .arrow { transition: transform 0.25s ease; }
+        .service-card:hover .service-link .arrow { transform: translateX(5px); }
+
+        .services-more {
+            text-align: center;
+            margin-top: 44px;
+        }
+
+        /* ============ Case studies ============ */
+        .cases-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 22px;
+        }
+
+        .case-card {
+            display: flex;
+            flex-direction: column;
+            padding: 36px 32px;
+            border-radius: var(--radius);
+            background: var(--surface);
+            border: 1px solid var(--border);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .case-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--border-2);
+        }
+
+        .case-tag {
+            align-self: flex-start;
+            font-size: 12.5px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 6px 14px;
+            border-radius: 999px;
+            background: rgba(77, 159, 255, 0.12);
+            border: 1px solid rgba(77, 159, 255, 0.3);
+            color: var(--blue);
+        }
+
+        .case-card h3 {
+            margin-top: 18px;
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: -0.015em;
+            line-height: 1.3;
+        }
+
+        .case-problem, .case-result {
+            margin-top: 14px;
+            font-size: 15px;
+            color: var(--text-2);
+            padding-left: 26px;
+            position: relative;
+        }
+
+        .case-problem::before, .case-result::before {
+            position: absolute;
+            left: 0;
+            top: 2px;
+            font-size: 13px;
+        }
+
+        .case-problem::before { content: '✕'; color: var(--red); font-weight: 700; }
+        .case-result::before { content: '✓'; color: var(--green); font-weight: 700; }
+
+        .case-metrics {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 26px;
+        }
+
+        .case-metric {
+            padding: 16px;
+            border-radius: var(--radius-sm);
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+        }
+
+        .case-metric .value {
+            font-size: 26px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            background: var(--grad);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .case-metric .label {
+            font-size: 13px;
+            color: var(--text-3);
+            margin-top: 2px;
+        }
+
+        .case-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 24px;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--blue);
+        }
+
+        .case-card:hover .case-link .arrow { transform: translateX(5px); }
+        .case-link .arrow { transition: transform 0.25s ease; }
+
+        /* ============ Process / Portal ============ */
+        #process { background: var(--bg-2); border-block: 1px solid var(--border); }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 56px;
+            align-items: center;
+        }
+
+        .process-steps { display: grid; gap: 8px; }
+
+        .process-step {
+            display: flex;
+            gap: 20px;
+            padding: 22px;
+            border-radius: var(--radius-sm);
+            transition: background 0.25s ease;
+        }
+
+        .process-step:hover { background: var(--surface); }
+
+        .step-num {
+            flex-shrink: 0;
+            width: 46px;
+            height: 46px;
+            display: grid;
+            place-items: center;
+            border-radius: 13px;
+            background: var(--surface-2);
+            border: 1px solid var(--border-2);
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--blue);
+        }
+
+        .process-step h3 {
+            font-size: 18.5px;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        .process-step p {
+            margin-top: 6px;
+            font-size: 15px;
+            color: var(--text-2);
+        }
+
+        /* Portal mock */
+        .portal-mock {
+            border-radius: var(--radius);
+            background: linear-gradient(160deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+            border: 1px solid var(--border-2);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .portal-bar {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 18px;
+            border-bottom: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .portal-bar .dot-r, .portal-bar .dot-y, .portal-bar .dot-g {
+            width: 11px; height: 11px; border-radius: 50%;
+        }
+
+        .portal-bar .dot-r { background: #ff5f57; }
+        .portal-bar .dot-y { background: #febc2e; }
+        .portal-bar .dot-g { background: #28c840; }
+
+        .portal-bar .portal-title {
+            margin-left: 10px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-3);
+            letter-spacing: 0.04em;
+        }
+
+        .portal-body { padding: 24px; }
+
+        .portal-status {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .portal-status .project {
+            font-size: 15.5px;
+            font-weight: 700;
+        }
+
+        .portal-status .badge {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            padding: 6px 13px;
+            border-radius: 999px;
+            background: rgba(52, 209, 123, 0.13);
+            border: 1px solid rgba(52, 209, 123, 0.3);
+            color: var(--green);
+        }
+
+        .portal-progress {
+            height: 8px;
+            border-radius: 999px;
+            background: var(--surface-2);
+            overflow: hidden;
+            margin-bottom: 22px;
+        }
+
+        .portal-progress .fill {
+            width: 86%;
+            height: 100%;
+            border-radius: inherit;
+            background: var(--grad);
+        }
+
+        .portal-task {
+            display: flex;
+            align-items: flex-start;
+            gap: 13px;
+            padding: 13px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .portal-task .check {
+            flex-shrink: 0;
+            width: 22px;
+            height: 22px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: rgba(52, 209, 123, 0.14);
+            color: var(--green);
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .portal-task .check.pending {
+            background: var(--surface-2);
+            color: var(--text-3);
+        }
+
+        .portal-task .t-title { font-size: 14.5px; font-weight: 600; }
+        .portal-task .t-sub { font-size: 13px; color: var(--text-3); margin-top: 1px; }
+
+        /* ============ Team ============ */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 22px;
+        }
+
+        .team-card {
+            padding: 32px 24px;
+            border-radius: var(--radius);
+            background: var(--surface);
+            border: 1px solid var(--border);
+            text-align: center;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .team-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--border-2);
+        }
+
+        .avatar {
+            width: 84px;
+            height: 84px;
+            margin: 0 auto 18px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            font-size: 26px;
+            font-weight: 700;
+            color: #fff;
+            background: linear-gradient(135deg, rgba(77, 159, 255, 0.85), rgba(160, 107, 255, 0.85));
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .team-card h3 { font-size: 19px; font-weight: 700; }
+
+        .team-card .role {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--blue);
+            margin-top: 3px;
+        }
+
+        .team-card .bio {
+            font-size: 14px;
+            color: var(--text-2);
+            margin-top: 10px;
+        }
+
+        .team-tags {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 7px;
+            margin-top: 16px;
+        }
+
+        .team-tags span {
+            font-size: 12px;
+            font-weight: 500;
+            padding: 5px 11px;
+            border-radius: 999px;
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            color: var(--text-2);
+        }
+
+        /* ============ Blog ============ */
+        #blog { background: var(--bg-2); border-block: 1px solid var(--border); }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .blog-card {
+            display: flex;
+            flex-direction: column;
+            border-radius: var(--radius);
+            background: var(--surface);
+            border: 1px solid var(--border);
+            overflow: hidden;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--border-2);
+        }
+
+        .blog-cover {
+            height: 130px;
+            display: grid;
+            place-items: center;
+            font-size: 44px;
+            background: linear-gradient(135deg, rgba(77, 159, 255, 0.14), rgba(160, 107, 255, 0.14));
+            border-bottom: 1px solid var(--border);
+        }
+
+        .blog-content {
+            padding: 26px 26px 30px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .blog-content .cat {
+            font-size: 12.5px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--blue);
+        }
+
+        .blog-content h3 {
+            margin-top: 10px;
+            font-size: 19.5px;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            line-height: 1.3;
+            flex: 1;
+        }
+
+        .blog-content .read {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 18px;
+            font-size: 14.5px;
+            font-weight: 600;
+            color: var(--text-2);
+        }
+
+        .blog-card:hover .read { color: var(--blue); }
+
+        /* ============ CTA ============ */
+        .cta-section { padding: 110px 0; }
+
+        .cta-box {
+            position: relative;
+            padding: 76px 40px;
+            border-radius: 28px;
+            text-align: center;
+            background:
+                radial-gradient(60% 120% at 50% 0%, rgba(77, 159, 255, 0.18), transparent 70%),
+                radial-gradient(40% 90% at 80% 100%, rgba(160, 107, 255, 0.14), transparent 70%),
+                var(--bg-2);
+            border: 1px solid var(--border-2);
+            overflow: hidden;
+        }
+
+        .cta-box h2 {
+            font-size: clamp(30px, 4.4vw, 46px);
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            line-height: 1.12;
+            max-width: 760px;
+            margin-inline: auto;
+        }
+
+        .cta-box p {
+            max-width: 620px;
+            margin: 18px auto 0;
+            font-size: 17.5px;
+            color: var(--text-2);
+        }
+
+        .cta-actions {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 36px;
+        }
+
+        .cta-note {
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-3);
+        }
+
+        /* ============ Footer ============ */
+        .site-footer {
+            border-top: 1px solid var(--border);
+            background: var(--bg-2);
+            padding: 70px 0 36px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1fr 1fr;
+            gap: 44px;
+        }
+
+        .footer-brand p {
+            margin-top: 16px;
+            font-size: 14.5px;
+            color: var(--text-2);
+            max-width: 300px;
+        }
+
+        .footer-brand .mail {
+            display: inline-block;
+            margin-top: 18px;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--blue);
+        }
+
+        .footer-col h4 {
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--text-3);
+            margin-bottom: 18px;
+        }
+
+        .footer-col a {
+            display: block;
+            padding: 6px 0;
+            font-size: 14.5px;
+            color: var(--text-2);
+            transition: color 0.2s ease;
+        }
+
+        .footer-col a:hover { color: var(--text); }
+
+        .footer-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-top: 56px;
+            padding-top: 28px;
+            border-top: 1px solid var(--border);
+            font-size: 13.5px;
+            color: var(--text-3);
+        }
+
+        /* ============ Reveal animations ============ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(26px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .reveal { opacity: 1; transform: none; transition: none; }
+        }
+
+        /* ============ Responsive ============ */
+        @media (max-width: 1024px) {
+            .team-grid { grid-template-columns: repeat(2, 1fr); }
+            .services-grid { grid-template-columns: 1fr 1fr; }
+            .process-grid { grid-template-columns: 1fr; gap: 44px; }
+        }
+
+        @media (max-width: 860px) {
+            .nav-links, .header-cta .btn-ghost { display: none; }
+            .nav-toggle { display: flex; }
+            .header-cta .btn-primary { display: none; }
+            section { padding: 76px 0; }
+            .hero { padding: 140px 0 70px; }
+            .audience-grid, .cases-grid, .services-grid, .blog-grid { grid-template-columns: 1fr; }
+            .hero-stats { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 34px; }
+        }
+
+        @media (max-width: 560px) {
+            .team-grid { grid-template-columns: 1fr; }
+            .hero-stats { grid-template-columns: 1fr; }
+            .case-metrics { grid-template-columns: 1fr 1fr; }
+            .cta-box { padding: 56px 24px; }
+            .footer-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+
+<body>
+    <a class="skip-link" href="#main-content">Przejdź do treści</a>
+
+    <!-- ============ Header ============ -->
+    <header class="site-header" id="siteHeader">
+        <div class="container header-inner">
+            <a href="#home" class="logo" aria-label="ECM Digital – strona główna">
+                ECM&nbsp;Digital<span class="dot" aria-hidden="true"></span>
+            </a>
+
+            <nav class="nav-links" aria-label="Główna nawigacja">
+                <a href="#audience">Dla kogo</a>
+                <a href="#services">Usługi</a>
+                <a href="#case-studies">Efekty</a>
+                <a href="#process">Proces</a>
+                <a href="#team">Zespół</a>
+                <a href="#blog">Blog</a>
+            </nav>
+
+            <div class="header-cta">
+                <a href="https://calendly.com/hello-ecm-digital" target="_blank" rel="noopener"
+                    class="btn btn-primary">Umów konsultację</a>
+                <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mobileMenu"
+                    aria-label="Otwórz menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#audience">Dla kogo</a>
+        <a href="#services">Usługi</a>
+        <a href="#case-studies">Efekty</a>
+        <a href="#process">Proces</a>
+        <a href="#team">Zespół</a>
+        <a href="#blog">Blog</a>
+        <a href="https://calendly.com/hello-ecm-digital" target="_blank" rel="noopener" class="btn btn-primary">Umów
+            konsultację</a>
+    </div>
+
+    <main id="main-content">
+
+        <!-- ============ Hero ============ -->
+        <section class="hero" id="home" aria-labelledby="hero-title">
+            <div class="container hero-inner">
+                <span class="hero-badge"><span class="pulse" aria-hidden="true"></span>Dla firm usługowych: więcej
+                    leadów</span>
+
+                <h1 id="hero-title">
+                    Zdobywaj więcej leadów.<br>
+                    Odpowiadaj w <span class="grad-text">15 sekund</span>,<br>
+                    nie w kilka godzin.
+                </h1>
+
+                <p class="hero-sub">
+                    Wdrażamy strony sprzedażowe, automatyzacje follow-up i agentów AI, którzy przejmują do 80%
+                    powtarzalnych zapytań. Przestań tracić klientów na rzecz szybszej konkurencji.
+                </p>
+
+                <div class="hero-actions">
+                    <a href="https://calendly.com/hello-ecm-digital" target="_blank" rel="noopener"
+                        class="btn btn-primary">Umów darmową analizę procesów <span class="arrow"
+                            aria-hidden="true">→</span></a>
+                    <a href="#case-studies" class="btn btn-ghost">Zobacz efekty w liczbach</a>
+                </div>
+
+                <div class="hero-stats" role="list">
+                    <div class="stat-card" role="listitem">
+                        <div class="stat-value" data-counter data-target="15" data-suffix=" sek">15 sek</div>
+                        <div class="stat-label">czas odpowiedzi agenta AI</div>
+                    </div>
+                    <div class="stat-card" role="listitem">
+                        <div class="stat-value" data-counter data-target="80" data-suffix="%">80%</div>
+                        <div class="stat-label">zapytań obsługuje AI</div>
+                    </div>
+                    <div class="stat-card" role="listitem">
+                        <div class="stat-value" data-counter data-target="25" data-suffix="h">25h</div>
+                        <div class="stat-label">oszczędności tygodniowo</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ Marquee ============ -->
+        <div class="marquee-section" aria-hidden="true">
+            <div class="marquee">
+                <span>Amazon Bedrock</span><span>n8n</span><span>OpenAI</span><span>Claude</span><span>Next.js</span>
+                <span>Shopify</span><span>Wix Studio</span><span>Supabase</span><span>HubSpot</span><span>Make</span>
+                <span>Amazon Bedrock</span><span>n8n</span><span>OpenAI</span><span>Claude</span><span>Next.js</span>
+                <span>Shopify</span><span>Wix Studio</span><span>Supabase</span><span>HubSpot</span><span>Make</span>
+            </div>
+        </div>
+
+        <!-- ============ Audience ============ -->
+        <section id="audience" aria-labelledby="audience-title">
+            <div class="container">
+                <div class="section-head reveal">
+                    <span class="eyebrow">Dla kogo pracujemy</span>
+                    <h2 id="audience-title">Dla kogo projektujemy wzrost?</h2>
+                    <p>Dostosowujemy narzędzia do skali i charakteru Twojej działalności usługowej, rozwiązując
+                        konkretne problemy operacyjne.</p>
+                </div>
+
+                <div class="audience-grid">
+                    <article class="audience-card reveal">
+                        <div class="audience-icon" aria-hidden="true">📍</div>
+                        <h3>Lokalne firmy usługowe</h3>
+                        <p class="who">Kliniki medyczne, stomatologia, premium usługi budowlane, instalatorzy,
+                            deweloperzy, salony beauty.</p>
+                        <ul>
+                            <li>Zwiększamy liczbę telefonów i zapytań z map Google.</li>
+                            <li>Wdrażamy automatyczne umawianie wizyt prosto do Twojego kalendarza.</li>
+                            <li>Uruchamiamy SMS-owe i mailowe potwierdzenia oraz przypomnienia o terminach.</li>
+                        </ul>
+                        <div class="pain-box">
+                            <h4>Brzmi znajomo?</h4>
+                            <ul>
+                                <li>Klient dzwoni, gdy wykonujesz usługę — a potem wybiera konkurenta, bo nie
+                                    odebrałeś.</li>
+                                <li>Kalendarz pełen „okienek” i zero przewidywalności w rezerwacjach.</li>
+                                <li>Wieczory schodzą na ręczne potwierdzanie wizyt i odpisywanie na SMS-y.</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="audience-card reveal">
+                        <div class="audience-icon" aria-hidden="true">🏢</div>
+                        <h3>Krajowe usługi B2B &amp; doradztwo</h3>
+                        <p class="who">Agencje rekrutacyjne, firmy szkoleniowe, doradcy finansowi, logistyka, kancelarie
+                            prawne, agencje marketingowe.</p>
+                        <ul>
+                            <li>Budujemy landing pages i lejki generujące leady wysokiej jakości.</li>
+                            <li>Wdrażamy chatboty AI, które odpowiadają na pytania ofertowe w 15 sekund.</li>
+                            <li>Automatyzujemy CRM — koniec ręcznego przepisywania danych i pilnowania follow-upów.</li>
+                        </ul>
+                        <div class="pain-box">
+                            <h4>Brzmi znajomo?</h4>
+                            <ul>
+                                <li>Połowa leadów z formularzy „stygnie”, bo zespół odpowiada po kilku godzinach.</li>
+                                <li>Godziny schodzą na odpisywanie na powtarzalne pytania o cenniki i warunki.</li>
+                                <li>Handlowcy zapominają o follow-upie — z lejka uciekają dziesiątki tysięcy złotych.
+                                </li>
+                            </ul>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ Services ============ -->
+        <section id="services" aria-labelledby="services-title">
+            <div class="container">
+                <div class="section-head reveal">
+                    <span class="eyebrow">Główne filary wzrostu</span>
+                    <h2 id="services-title">Trzy wehikuły, które generują zapytania i oszczędzają Twój czas</h2>
+                    <p>Nie robimy wszystkiego. Skupiamy się na wdrożeniach, które bezpośrednio przekładają się na
+                        liczbę leadów i czas reakcji.</p>
+                </div>
+
+                <div class="services-grid">
+                    <a class="service-card reveal" href="/dokumentacja-ecm/oferta-uslug/audyty-ux/index.html">
+                        <div class="service-top">
+                            <div class="service-icon" aria-hidden="true">🔎</div>
+                            <span class="service-chip">ROI 300%+</span>
+                        </div>
+                        <h3>Audyt wdrożenia AI &amp; procesów</h3>
+                        <p>Analizujemy operacje, dane i narzędzia w Twojej firmie, identyfikujemy Quick Wins oraz
+                            przygotowujemy priorytety i gotową mapę drogową wdrożenia AI.</p>
+                        <div class="service-tags">
+                            <span>Quick Wins</span><span>Mapa drogowa</span><span>Analiza biznesowa</span>
+                        </div>
+                        <span class="service-link">Poznaj szczegóły <span class="arrow" aria-hidden="true">→</span></span>
+                    </a>
+
+                    <a class="service-card reveal" href="/dokumentacja-ecm/oferta-uslug/automatyzacje-n8n/index.html">
+                        <div class="service-top">
+                            <div class="service-icon" aria-hidden="true">⚡</div>
+                            <span class="service-chip">Czas −80%</span>
+                        </div>
+                        <h3>Automatyzacja obsługi zapytań i follow-up</h3>
+                        <p>Twój zespół marnuje godziny na kopiowanie danych z formularzy do CRM i wysyłanie
+                            standardowych maili? Łączymy Twoje narzędzia w samonapędzający się system.</p>
+                        <div class="service-tags">
+                            <span>n8n</span><span>CRM</span><span>Oszczędność czasu</span>
+                        </div>
+                        <span class="service-link">Poznaj szczegóły <span class="arrow" aria-hidden="true">→</span></span>
+                    </a>
+
+                    <a class="service-card reveal" href="/dokumentacja-ecm/oferta-uslug/asystencja-ai-bedrock/index.html">
+                        <div class="service-top">
+                            <div class="service-icon" aria-hidden="true">⏱️</div>
+                            <span class="service-chip">14 dni</span>
+                        </div>
+                        <h3>AI Agent Sprint — wdrożenie w 14 dni</h3>
+                        <p>Szybkie, mierzalne wdrożenie agenta AI zintegrowanego z Twoim CRM i dashboardem KPI. Zwinne
+                            dostarczanie wartości zamiast długich projektów IT.</p>
+                        <div class="service-tags">
+                            <span>Agent AI</span><span>Amazon Bedrock</span><span>Dashboard KPI</span>
+                        </div>
+                        <span class="service-link">Poznaj szczegóły <span class="arrow" aria-hidden="true">→</span></span>
+                    </a>
+                </div>
+
+                <div class="services-more reveal">
+                    <a href="/dokumentacja-ecm/portfolio-case-studies/index.html" class="btn btn-ghost">Zobacz
+                        portfolio realizacji</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ Case studies ============ -->
+        <section id="case-studies" aria-labelledby="cases-title">
+            <div class="container">
+                <div class="section-head reveal">
+                    <span class="eyebrow">Efekty w liczbach</span>
+                    <h2 id="cases-title">Jak pomagamy polskim firmom usługowym?</h2>
+                    <p>Realne wdrożenia, w których połączyliśmy nowoczesny design z automatyzacją procesów.</p>
+                </div>
+
+                <div class="cases-grid">
+                    <article class="case-card reveal">
+                        <span class="case-tag">Automatyzacja &amp; AI</span>
+                        <h3>Obsługa leadów 24/7 dla branży nieruchomości</h3>
+                        <p class="case-problem">Handlowcy odpowiadali na zapytania po kilku godzinach, tracąc gorących
+                            klientów.</p>
+                        <p class="case-result">Agent AI odpowiada w 15 sekund 24/7 i sam umawia spotkania z
+                            handlowcami.</p>
+                        <div class="case-metrics">
+                            <div class="case-metric">
+                                <div class="value">+400%</div>
+                                <div class="label">umówionych spotkań</div>
+                            </div>
+                            <div class="case-metric">
+                                <div class="value">15 sek</div>
+                                <div class="label">czas reakcji AI</div>
+                            </div>
+                        </div>
+                        <a class="case-link" href="/case-studies/agencja-nieruchomosci.html">Czytaj case study <span
+                                class="arrow" aria-hidden="true">→</span></a>
+                    </article>
+
+                    <article class="case-card reveal">
+                        <span class="case-tag">Automatyzacja procesów</span>
+                        <h3>Eliminacja rutyny w dziale rekrutacji B2B</h3>
+                        <p class="case-problem">Konsultanci spędzali 3 godziny dziennie na ręcznym przepisywaniu danych
+                            kandydatów do CRM.</p>
+                        <p class="case-result">Integracja formularzy z CRM przez n8n uwolniła 25 godzin tygodniowo w
+                            zespole.</p>
+                        <div class="case-metrics">
+                            <div class="case-metric">
+                                <div class="value">25h</div>
+                                <div class="label">uwolnionego czasu / tydz.</div>
+                            </div>
+                            <div class="case-metric">
+                                <div class="value">0 min</div>
+                                <div class="label">przepisywania danych</div>
+                            </div>
+                        </div>
+                        <a class="case-link" href="/case-studies/hr-automation.html">Czytaj case study <span
+                                class="arrow" aria-hidden="true">→</span></a>
+                    </article>
+
+                    <article class="case-card reveal">
+                        <span class="case-tag">E-commerce &amp; AI</span>
+                        <h3>Asystent AI dla sklepu internetowego</h3>
+                        <p class="case-problem">Obsługa klienta nie nadążała z odpowiadaniem na powtarzalne pytania o
+                            produkty i statusy zamówień.</p>
+                        <p class="case-result">Asystent AI na Amazon Bedrock przejął większość zapytań i doradza w
+                            wyborze produktów.</p>
+                        <div class="case-metrics">
+                            <div class="case-metric">
+                                <div class="value">24/7</div>
+                                <div class="label">dostępność obsługi</div>
+                            </div>
+                            <div class="case-metric">
+                                <div class="value">80%</div>
+                                <div class="label">zapytań obsługuje AI</div>
+                            </div>
+                        </div>
+                        <a class="case-link" href="/case-studies/ai-assistant-ecommerce.html">Czytaj case study <span
+                                class="arrow" aria-hidden="true">→</span></a>
+                    </article>
+
+                    <article class="case-card reveal">
+                        <span class="case-tag">Sprzedaż B2B</span>
+                        <h3>Automatyzacja sprzedaży w software house</h3>
+                        <p class="case-problem">Leady z różnych kanałów ginęły, a handlowcy nie mieli jednego źródła
+                            prawdy o kliencie.</p>
+                        <p class="case-result">Zautomatyzowany lejek: kwalifikacja leadów, follow-upy i raporty bez
+                            ręcznej pracy.</p>
+                        <div class="case-metrics">
+                            <div class="case-metric">
+                                <div class="value">100%</div>
+                                <div class="label">leadów w jednym CRM</div>
+                            </div>
+                            <div class="case-metric">
+                                <div class="value">0</div>
+                                <div class="label">pominiętych follow-upów</div>
+                            </div>
+                        </div>
+                        <a class="case-link" href="/case-studies/automatyzacja-sprzedazy-software-house.html">Czytaj
+                            case study <span class="arrow" aria-hidden="true">→</span></a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ Process / The Portal ============ -->
+        <section id="process" aria-labelledby="process-title">
+            <div class="container">
+                <div class="section-head reveal">
+                    <span class="eyebrow">Standard współpracy premium</span>
+                    <h2 id="process-title">Współpraca bez chaosu: Twój projekt na żywo w The Portal</h2>
+                    <p>Zamiast dziesiątek maili — cały proces, od mapy drogowej po uruchomienie i wsparcie,
+                        kontrolujesz w czasie rzeczywistym w dedykowanym panelu klienta.</p>
+                </div>
+
+                <div class="process-grid">
+                    <div class="process-steps">
+                        <div class="process-step reveal">
+                            <div class="step-num" aria-hidden="true">01</div>
+                            <div>
+                                <h3>Mapa drogowa i cele</h3>
+                                <p>Zapomnij o niejasnym harmonogramie. W The Portal widzisz mapę drogową projektu, cele
+                                    i listę wymaganych materiałów od pierwszego dnia.</p>
+                            </div>
+                        </div>
+                        <div class="process-step reveal">
+                            <div class="step-num" aria-hidden="true">02</div>
+                            <div>
+                                <h3>Podgląd postępów na żywo</h3>
+                                <p>Nie musisz dzwonić i pytać, co robimy. Widzisz postępy prac nad stroną oraz
+                                    szkolenia modeli AI w czasie rzeczywistym.</p>
+                            </div>
+                        </div>
+                        <div class="process-step reveal">
+                            <div class="step-num" aria-hidden="true">03</div>
+                            <div>
+                                <h3>Błyskawiczne akceptacje</h3>
+                                <p>Projekty graficzne, teksty i działanie asystentów AI akceptujesz jednym kliknięciem
+                                    w panelu. Zero nieporozumień i straconego czasu.</p>
+                            </div>
+                        </div>
+                        <div class="process-step reveal">
+                            <div class="step-num" aria-hidden="true">04</div>
+                            <div>
+                                <h3>Wdrożenie i baza VOD</h3>
+                                <p>Po starcie The Portal staje się centrum dowodzenia: nagrania wdrożeniowe AI dla
+                                    zespołu i szybki system ticketów.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="portal-mock reveal" aria-hidden="true">
+                        <div class="portal-bar">
+                            <span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span>
+                            <span class="portal-title">ECM Portal — live-project-center</span>
+                        </div>
+                        <div class="portal-body">
+                            <div class="portal-status">
+                                <span class="project">Kamień milowy #1: Analiza &amp; strategia</span>
+                                <span class="badge">ON TRACK · 86%</span>
+                            </div>
+                            <div class="portal-progress"><div class="fill"></div></div>
+                            <div class="portal-task">
+                                <span class="check">✓</span>
+                                <div>
+                                    <div class="t-title">Zdefiniowanie person i bazy wiedzy AI</div>
+                                    <div class="t-sub">Mapowanie scenariuszy obsługi klienta</div>
+                                </div>
+                            </div>
+                            <div class="portal-task">
+                                <span class="check">✓</span>
+                                <div>
+                                    <div class="t-title">Schemat architektury integracji CRM &amp; n8n</div>
+                                    <div class="t-sub">Połączenie systemów i przepływ danych</div>
+                                </div>
+                            </div>
+                            <div class="portal-task">
+                                <span class="check">✓</span>
+                                <div>
+                                    <div class="t-title">Audyt wąskich gardeł w lejku sprzedaży</div>
+                                    <div class="t-sub">Identyfikacja etapów z utratą leadów</div>
+                                </div>
+                            </div>
+                            <div class="portal-task">
+                                <span class="check pending">…</span>
+                                <div>
+                                    <div class="t-title">Akceptacja mapy drogowej wdrożenia</div>
+                                    <div class="t-sub">Czeka na Twoje jedno kliknięcie</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ Team ============ -->
+        <section id="team" aria-labelledby="team-title">
+            <div class="container">
+                <div class="section-head reveal">
+                    <span class="eyebrow">Nasz zespół</span>
+                    <h2 id="team-title">Poznaj naszych ekspertów</h2>
+                    <p>Doświadczeni specjaliści, którzy tworzą Twoje projekty.</p>
+                </div>
+
+                <div class="team-grid">
+                    <article class="team-card reveal">
+                        <div class="avatar"><img src="/assets/images/tomasz-profile-optimized.jpg"
+                                alt="Tomasz Gnat" loading="lazy"></div>
+                        <h3>Tomasz Gnat</h3>
+                        <p class="role">Konsultant Discovery</p>
+                        <p class="bio">Ekspert w odkrywaniu potrzeb biznesowych i strategii AI.</p>
+                        <div class="team-tags"><span>Business Analysis</span><span>AI Strategy</span></div>
+                    </article>
+
+                    <article class="team-card reveal">
+                        <div class="avatar" aria-hidden="true">KC</div>
+                        <h3>Karol Czechowski</h3>
+                        <p class="role">QA &amp; AI Developer</p>
+                        <p class="bio">Specjalista od jakości i testowania rozwiązań AI.</p>
+                        <div class="team-tags"><span>Testowanie AI</span><span>Quality Assurance</span></div>
+                    </article>
+
+                    <article class="team-card reveal">
+                        <div class="avatar" aria-hidden="true">MG</div>
+                        <h3>Marta Górska</h3>
+                        <p class="role">UX/UI Designer</p>
+                        <p class="bio">Projektantka interfejsów łączących ludzi z technologią.</p>
+                        <div class="team-tags"><span>UX Research</span><span>AI/UX Design</span></div>
+                    </article>
+
+                    <article class="team-card reveal">
+                        <div class="avatar" aria-hidden="true">AZ</div>
+                        <h3>Aleksander Zawadzki</h3>
+                        <p class="role">Specjalista Automatyzacji</p>
+                        <p class="bio">Ekspert od automatyzacji procesów i analizy danych.</p>
+                        <div class="team-tags"><span>Automatyzacja</span><span>AI Analytics</span></div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ Blog ============ -->
+        <section id="blog" aria-labelledby="blog-title">
+            <div class="container">
+                <div class="section-head reveal">
+                    <span class="eyebrow">Blog &amp; insights</span>
+                    <h2 id="blog-title">Wiedza ze świata AI i automatyzacji</h2>
+                    <p>Trendy, poradniki i case studies, które pomogą Ci zrozumieć i wdrożyć najnowsze technologie.</p>
+                </div>
+
+                <div class="blog-grid">
+                    <a class="blog-card reveal" href="/blog/ai-trends-2024.html">
+                        <div class="blog-cover" aria-hidden="true">🤖</div>
+                        <div class="blog-content">
+                            <span class="cat">Sztuczna inteligencja</span>
+                            <h3>Jak agenci AI zmienią Twój biznes</h3>
+                            <span class="read">Czytaj artykuł <span class="arrow" aria-hidden="true">→</span></span>
+                        </div>
+                    </a>
+
+                    <a class="blog-card reveal" href="/blog/automation-top10.html">
+                        <div class="blog-cover" aria-hidden="true">⚡</div>
+                        <div class="blog-content">
+                            <span class="cat">Automatyzacja</span>
+                            <h3>Top 10 automatyzacji, od których warto zacząć</h3>
+                            <span class="read">Czytaj artykuł <span class="arrow" aria-hidden="true">→</span></span>
+                        </div>
+                    </a>
+
+                    <a class="blog-card reveal" href="/blog/mobile-ai-ux.html">
+                        <div class="blog-cover" aria-hidden="true">📱</div>
+                        <div class="blog-content">
+                            <span class="cat">UX &amp; mobile</span>
+                            <h3>AI w mobilnym UX — co naprawdę działa</h3>
+                            <span class="read">Czytaj artykuł <span class="arrow" aria-hidden="true">→</span></span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ CTA ============ -->
+        <div class="cta-section" id="contact">
+            <div class="container">
+                <div class="cta-box reveal">
+                    <h2>Gotowy na cyfrową transformację?</h2>
+                    <p>Zarezerwuj bezpłatną 30-minutową konsultację. Przeanalizujemy Twój biznes i pokażemy, jak AI i
+                        nowoczesne technologie podniosą Twoje zyski.</p>
+                    <div class="cta-actions">
+                        <a href="https://calendly.com/hello-ecm-digital" target="_blank" rel="noopener"
+                            class="btn btn-primary">Umów darmową konsultację <span class="arrow"
+                                aria-hidden="true">→</span></a>
+                        <a href="mailto:hello@ecm-digital.com" class="btn btn-ghost">hello@ecm-digital.com</a>
+                    </div>
+                    <p class="cta-note">Bez zobowiązań · Konkretna mapa drogowa · Odpowiadamy w 24h</p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- ============ Footer ============ -->
+    <footer class="site-footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#home" class="logo">ECM&nbsp;Digital<span class="dot" aria-hidden="true"></span></a>
+                    <p>Agencja AI &amp; digital. Wdrażamy agentów AI, automatyzacje i strony sprzedażowe, które
+                        realnie generują leady i oszczędzają czas.</p>
+                    <a class="mail" href="mailto:hello@ecm-digital.com">hello@ecm-digital.com</a>
+                </div>
+
+                <nav class="footer-col" aria-label="Usługi AI">
+                    <h4>Usługi AI</h4>
+                    <a href="/dokumentacja-ecm/oferta-uslug/asystencja-ai-bedrock/index.html">Asystenci AI (Bedrock)</a>
+                    <a href="/dokumentacja-ecm/oferta-uslug/automatyzacje-n8n/index.html">Automatyzacje n8n</a>
+                    <a href="/dokumentacja-ecm/oferta-uslug/asystenci-glosowi-lex/index.html">Asystenci głosowi</a>
+                    <a href="/dokumentacja-ecm/oferta-uslug/ai-governance-agentops/index.html">AI Governance &amp;
+                        AgentOps</a>
+                    <a href="/dokumentacja-ecm/oferta-uslug/edukacja-wdrozenia/index.html">Edukacja i wdrożenia</a>
+                </nav>
+
+                <nav class="footer-col" aria-label="Produkty cyfrowe">
+                    <h4>Produkty cyfrowe</h4>
+                    <a href="/dokumentacja-ecm/oferta-uslug/strony-www/index.html">Strony WWW</a>
+                    <a href="/dokumentacja-ecm/oferta-uslug/sklepy-shopify/index.html">Sklepy Shopify</a>
+                    <a href="/dokumentacja-ecm/oferta-uslug/aplikacje-mobilne/index.html">Aplikacje mobilne</a>
+                    <a href="/dokumentacja-ecm/oferta-uslug/prototypy-mvp/index.html">Prototypy MVP</a>
+                    <a href="/dokumentacja-ecm/oferta-uslug/audyty-ux/index.html">Audyty UX</a>
+                </nav>
+
+                <nav class="footer-col" aria-label="Firma">
+                    <h4>Firma</h4>
+                    <a href="#case-studies">Case studies</a>
+                    <a href="#team">Zespół</a>
+                    <a href="#blog">Blog</a>
+                    <a href="/dokumentacja-ecm/portfolio-case-studies/index.html">Portfolio i realizacje</a>
+                    <a href="https://calendly.com/hello-ecm-digital" target="_blank" rel="noopener">Umów
+                        konsultację</a>
+                </nav>
+            </div>
+
+            <div class="footer-bottom">
+                <span>© 2026 ECM Digital. Wszystkie prawa zastrzeżone.</span>
+                <span>Zaprojektowane i zbudowane w Polsce 🇵🇱</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        (function () {
+            'use strict';
+
+            // Sticky header
+            var header = document.getElementById('siteHeader');
+            var onScroll = function () {
+                header.classList.toggle('scrolled', window.scrollY > 10);
+            };
+            window.addEventListener('scroll', onScroll, { passive: true });
+            onScroll();
+
+            // Mobile menu
+            var toggle = document.getElementById('navToggle');
+            var menu = document.getElementById('mobileMenu');
+            toggle.addEventListener('click', function () {
+                var open = menu.classList.toggle('open');
+                toggle.setAttribute('aria-expanded', String(open));
+                toggle.setAttribute('aria-label', open ? 'Zamknij menu' : 'Otwórz menu');
+            });
+            menu.addEventListener('click', function (e) {
+                if (e.target.tagName === 'A') {
+                    menu.classList.remove('open');
+                    toggle.setAttribute('aria-expanded', 'false');
+                }
+            });
+
+            // Reveal on scroll
+            var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            var revealEls = document.querySelectorAll('.reveal');
+            if (reduced || !('IntersectionObserver' in window)) {
+                revealEls.forEach(function (el) { el.classList.add('visible'); });
+            } else {
+                var io = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            io.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+                revealEls.forEach(function (el) { io.observe(el); });
+            }
+
+            // Animated counters in hero
+            if (!reduced && 'IntersectionObserver' in window) {
+                var counters = document.querySelectorAll('[data-counter]');
+                var cio = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (!entry.isIntersecting) return;
+                        cio.unobserve(entry.target);
+                        var el = entry.target;
+                        var target = parseInt(el.getAttribute('data-target'), 10);
+                        var suffix = el.getAttribute('data-suffix') || '';
+                        var start = null;
+                        var dur = 1300;
+                        var step = function (ts) {
+                            if (!start) start = ts;
+                            var p = Math.min((ts - start) / dur, 1);
+                            var eased = 1 - Math.pow(1 - p, 3);
+                            el.textContent = Math.round(target * eased) + suffix;
+                            if (p < 1) requestAnimationFrame(step);
+                        };
+                        requestAnimationFrame(step);
+                    });
+                }, { threshold: 0.5 });
+                counters.forEach(function (el) { cio.observe(el); });
+            }
+        })();
+    </script>
+</body>
+
+</html>
