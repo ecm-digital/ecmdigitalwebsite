@@ -255,10 +255,42 @@
       "category": "ai",
       "priority": "high",
       "tags": ["ai", "gemini", "google", "agents", "automation"]
+    },
+    {
+      "id": "7",
+      "title": "AI Governance & AgentOps Review",
+      "title_en": "AI Governance & AgentOps Review",
+      "description": "Kwartalny przegląd kosztów, KPI agentów, bezpieczeństwa i priorytetów rozwoju wdrożonego AI.",
+      "description_en": "Quarterly review of AI costs, agent KPIs, security and development priorities.",
+      "icon": "shield-check",
+      "color": "bg-violet-500",
+      "stats": {
+        "projects": 0,
+        "avgTime": "kwartalnie",
+        "avgTime_en": "quarterly",
+        "satisfaction": 0
+      },
+      "features": [
+        "Analiza kosztów modeli AI",
+        "KPI i jakość działania agentów",
+        "Przegląd bezpieczeństwa i uprawnień",
+        "Roadmapa automatyzacji na kolejny kwartał"
+      ],
+      "features_en": [
+        "AI model cost analysis",
+        "Agent KPIs and quality",
+        "Security and permissions review",
+        "Automation roadmap for the next quarter"
+      ],
+      "priceRange": "abonament — wycena indywidualna",
+      "priceRange_en": "subscription — custom pricing",
+      "category": "ai",
+      "priority": "high",
+      "tags": ["ai", "governance", "agentops", "security", "kpi", "subscription"]
     }
   ],
   "meta": {
-    "totalServices": 6,
+    "totalServices": 7,
     "categories": ["web", "ecommerce", "mvp", "ux", "mobile", "ai", "automation"],
     "languages": ["pl", "en"],
     "lastUpdated": "2025-08-24T10:00:00Z",

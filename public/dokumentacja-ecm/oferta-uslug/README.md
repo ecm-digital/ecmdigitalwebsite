@@ -98,6 +98,18 @@ Naszą misją jest tworzenie rozwiązań, które nie tylko wyglądają atrakcyjn
 
 [Dowiedz się więcej o kampaniach social media z data science →](social-media-data-science/README.md)
 
+### [AI Governance & AgentOps Review](ai-governance-agentops/README.md)
+
+**Kwartalny przegląd wdrożonego AI w modelu abonamentowym.** Analizujemy koszty modeli, KPI agentów, bezpieczeństwo i uprawnienia, a następnie przygotowujemy rekomendacje automatyzacji oraz plan rozwoju na kolejny kwartał.
+
+**Kluczowe korzyści:**
+- Kontrola kosztów i wykorzystania modeli AI
+- Mierzalna ocena jakości oraz skuteczności agentów
+- Regularny przegląd bezpieczeństwa i dostępu do danych
+- Jasna roadmapa rozwoju na kolejne 90 dni
+
+[Dowiedz się więcej o AI Governance & AgentOps Review →](ai-governance-agentops/README.md)
+
 ## Jak Wybrać Odpowiednią Usługę?
 
 Nie wiesz, która z naszych usług najlepiej odpowiada na Twoje potrzeby? Skorzystaj z poniższego przewodnika:
@@ -110,6 +122,7 @@ Nie wiesz, która z naszych usług najlepiej odpowiada na Twoje potrzeby? Skorzy
 | Poprawa istniejącego produktu cyfrowego | [Audyty UX](audyty-ux/README.md) |
 | Automatyzacja procesów biznesowych | [Automatyzacje z n8n](automatyzacje-n8n/README.md) |
 | Zwiększenie ROI z kampanii social media | [Kampanie Social Media z Data Science](social-media-data-science/README.md) |
+| Rozwój i nadzór nad wdrożonym AI | [AI Governance & AgentOps Review](ai-governance-agentops/README.md) |
 
 ## Proces Współpracy
 

@@ -20,6 +20,7 @@
     "dropdown": {
       "aiSolutions": "🤖 Rozwiązania AI",
       "aiAssistants": "Asystenci AI i agenci firmowi",
+      "aiGovernanceAgentOps": "AI Governance & AgentOps Review",
       "voiceAssistants": "Asystenci Głosowi na Amazon Lex",
       "aiAudits": "Audyty Wdrożenia AI",
       "socialMediaAI": "Social Media & AI",
@@ -65,6 +66,10 @@
     "aiAssistants": {
       "title": "Asystenci AI i agenci firmowi",
       "description": "Wdrażamy asystentów AI do obsługi klienta, sprzedaży, analizy dokumentów i pracy z wiedzą firmową. Bezpiecznie, mierzalnie i z integracją z Twoimi systemami."
+    },
+    "aiGovernanceAgentOps": {
+      "title": "AI Governance & AgentOps Review",
+      "description": "Kwartalny przegląd wdrożonego AI: koszty modeli, KPI agentów, bezpieczeństwo i uprawnienia, nowe automatyzacje oraz plan rozwoju na kolejny kwartał. Usługa abonamentowa rozwijająca AI Agent Sprint i AI Operations."
     },
     "mobileApps": {
       "title": "Aplikacje Mobilne",

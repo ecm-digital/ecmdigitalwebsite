@@ -47,6 +47,21 @@
       "investment": "od 2000 PLN",
       "caseStudies": ["marketing-automation-setup", "lead-nurturing-system"]
     },
+    "ai-governance-agentops": {
+      "name": "AI Governance & AgentOps Review",
+      "description": "Kwartalna usługa abonamentowa dla organizacji po wdrożeniu AI: łączy optymalizację kosztów, ocenę jakości agentów, bezpieczeństwo oraz plan dalszych automatyzacji.",
+      "features": [
+        "Analiza kosztów modeli i wykorzystania AI",
+        "Przegląd KPI, jakości odpowiedzi i niezawodności agentów",
+        "Audyt uprawnień, dostępu do danych i podstawowych zabezpieczeń",
+        "Rekomendacje nowych automatyzacji",
+        "Plan rozwoju na kolejny kwartał"
+      ],
+      "technologies": ["LLM observability", "AI gateways", "IAM", "workflow automation"],
+      "timeline": "przegląd kwartalny",
+      "investment": "abonament — wycena indywidualna",
+      "relatedServices": ["AI Agent Sprint", "AI Operations"]
+    },
     
     "ux-design": {
       "name": "UX/UI Design",
