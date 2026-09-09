@@ -246,11 +246,6 @@ Narzędzia wspierające proces developmentu i współpracy zespołowej.
 - **Benefits:** Rapid development, real-time updates, scalability
 - **Use Cases:** Real-time applications, user management
 
-**Supabase**
-- **Services:** PostgreSQL database, authentication, real-time subscriptions
-- **Benefits:** Open-source alternative to Firebase
-- **Use Cases:** Data-heavy applications, complex queries
-
 **AWS Amplify**
 - **Services:** Authentication, API, storage, hosting
 - **Benefits:** AWS ecosystem integration, scalability
