@@ -84,10 +84,10 @@ graph TB
 - **Authentication:** Demo auth (localStorage)
 
 **DevOps:**
-- **Hosting:** Vercel (Frontend) + Railway (Backend Services)
+- **Hosting:** Static/Next hosting + Railway (Backend Services)
 - **CI/CD:** GitHub Actions
-- **Monitoring:** Sentry + Vercel Analytics
-- **CDN:** Vercel Edge Network
+- **Monitoring:** Sentry
+- **CDN:** CDN / edge network
 
 ## Komponenty i Interfejsy
 
@@ -552,8 +552,8 @@ graph LR
 
 1. **Environment Setup:**
    - Development (local)
-   - Staging (Vercel Preview)
-   - Production (Vercel + Railway)
+   - Staging (preview environment)
+   - Production (hosting + Railway)
 
 2. **CI/CD Pipeline:**
    - GitHub Actions workflows
@@ -562,7 +562,7 @@ graph LR
    - Performance monitoring
 
 3. **Infrastructure:**
-   - Vercel dla frontend hosting
+   - Statyczny / Next.js hosting
    - Railway dla backend services
    - PostgreSQL / local demo
    - AWS S3 dla file storage
@@ -570,7 +570,7 @@ graph LR
 ### Monitoring i Observability
 
 - **Application Monitoring:** Sentry error tracking
-- **Performance Monitoring:** Vercel Analytics + Core Web Vitals
+- **Performance Monitoring:** Core Web Vitals
 - **Infrastructure Monitoring:** Railway metrics
 - **User Analytics:** Custom dashboard z Mixpanel
 

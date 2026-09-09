@@ -54,7 +54,7 @@ Panel zarządzania agencją to kompleksowa aplikacja webowa typu SaaS, zbudowana
 **DevOps:**
 - Docker + Docker Compose
 - GitHub Actions (CI/CD)
-- Vercel (frontend deployment)
+- Static / Next.js hosting (frontend deployment)
 - Railway/Heroku (backend)
 
 ## Components and Interfaces
@@ -413,9 +413,9 @@ services:
 ```
 
 ### Production Deployment
-- **Frontend**: Vercel z automatic deployments
+- **Frontend**: Hosting z automatic deployments
 - **Backend**: Railway/Heroku z auto-scaling
 - **Database**: Managed PostgreSQL (Neon)
 - **Cache**: Managed Redis (Upstash)
 - **Storage**: AWS S3 dla file uploads
-- **Monitoring**: Sentry + Vercel Analytics
+- **Monitoring**: Sentry

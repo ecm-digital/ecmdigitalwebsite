@@ -53,12 +53,11 @@ dokumentacja-ecm/
 
 ### Hosting i Deployment
 - Statyczna strona HTML
-- Kompatybilna z GitHub Pages, Netlify, Vercel
+- Kompatybilna z GitHub Pages, Netlify i innymi hostami statycznymi
 - CDN dla optymalnej wydajności
 
 ## 🔗 Integracje
 
-- **Vercel** (Hosting)
 - **n8n** (Automatyzacje)
 - Google Analytics (gtag)
 - Hotjar

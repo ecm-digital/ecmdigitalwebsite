@@ -333,7 +333,7 @@ graph TD
 - **Node.js/Express** - Szybki development API
 - **Python/FastAPI** - Data-heavy applications
 - **Firebase** - Backend-as-a-Service
-- **Serverless** - AWS Lambda, Vercel Functions
+- **Serverless** - AWS Lambda
 
 ### Database
 - **PostgreSQL** - Relational data
@@ -342,7 +342,7 @@ graph TD
 - **Redis** - Caching i sessions
 
 ### Hosting & Deployment
-- **Vercel/Netlify** - Frontend hosting
+- **Netlify / GitHub Pages** - Frontend hosting
 - **Railway/Render** - Full-stack deployment
 - **AWS/Google Cloud** - Scalable infrastructure
 - **Docker** - Containerization

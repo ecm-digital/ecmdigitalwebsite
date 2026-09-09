@@ -206,7 +206,7 @@ Narzędzia wspierające proces developmentu i współpracy zespołowej.
 **Next.js (React)**
 - **Zastosowanie:** Full-stack web applications
 - **Features:** SSR, API routes, automatic code splitting
-- **Deployment:** Vercel, AWS, custom servers
+- **Deployment:** AWS, Netlify, GitHub Pages, custom servers
 - **Doświadczenie:** 4+ lat, 15+ MVP projektów
 
 **Nuxt.js (Vue)**

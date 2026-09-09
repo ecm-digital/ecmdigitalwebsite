@@ -82,7 +82,7 @@ Zaprojektowaliśmy nowoczesną, profesjonalną stronę opartą na architekturze 
 | Frontend | Next.js + React | Szybkość ładowania, SEO-friendly |
 | Backend | Strapi (Headless CMS) | Łatwość zarządzania treścią |
 | Baza danych | PostgreSQL | Bezpieczeństwo i wydajność |
-| Hosting | Vercel + AWS | Globalna dostępność, CDN |
+| Hosting | AWS + CDN | Globalna dostępność, CDN |
 | Inne | TypeScript, Tailwind CSS | Jakość kodu, responsywność |
 
 ---

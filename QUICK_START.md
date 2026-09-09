@@ -6,7 +6,7 @@
 - Portfolio agencji
 - Oferta usług
 - Formularze kontaktowe / Calendly
-- **Port:** 3001 (Next) lub statyczny `public/` na Vercel
+- **Port:** 3001 (Next) lub katalog `public/` jako hosting statyczny
 
 ### 2. **Client Dashboard** (Next.js)
 - Panel dla klientów

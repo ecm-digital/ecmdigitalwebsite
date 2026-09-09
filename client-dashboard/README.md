@@ -40,7 +40,7 @@ Aplikacja będzie dostępna pod adresem: http://localhost:3002
 
 - **Frontend:** Next.js 14, React 18, TypeScript
 - **Styling:** Tailwind CSS, shadcn/ui
-- **Hosting:** Vercel
+- **Hosting:** statyczny / Next.js (GitHub Pages, Netlify, własny serwer)
 - **State Management:** Zustand
 - **Data Fetching:** React Query
 - **Charts:** Recharts
@@ -77,12 +77,9 @@ Dashboard jest w pełni responsywny i działa na:
 
 ## 🚀 Deployment
 
-### Vercel (Rekomendowane)
-
-1. Push kod do GitHub
-2. Połącz repozytorium z Vercel
-3. Dodaj wymagane zmienne środowiskowe (jeśli używasz AWS API)
-4. Deploy!
+1. Zbuduj aplikację: `npm run build`
+2. Wdróż na wybranym hostingu Next.js lub jako eksport statyczny (`npm run build:export` + S3)
+3. Ustaw wymagane zmienne środowiskowe (jeśli używasz AWS API)
 
 ## 📞 Wsparcie
 

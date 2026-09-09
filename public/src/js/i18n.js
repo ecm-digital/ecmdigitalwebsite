@@ -403,16 +403,10 @@ class I18nManager {
         const path = window.location.pathname;
         const hostname = window.location.hostname;
 
-        // Na produkcji Vercela ścieżki mogą być inne
-        if (hostname.includes('vercel.app')) {
-            // Na Vercelu zawsze używaj ścieżki względnej od root
-            if (path.includes('/dokumentacja-ecm/oferta-uslug/')) {
-                return '/';
-            } else if (path.includes('/dokumentacja-ecm/')) {
-                return '/';
-            } else {
-                return '/';
-            }
+        // Na produkcji (nie-localhost) używaj ścieżek od root
+        const isLocal = hostname === 'localhost' || hostname === '127.0.0.1'
+        if (!isLocal) {
+            return '/'
         }
 
         // Na localhost zachowaj istniejącą logikę

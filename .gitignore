@@ -59,7 +59,6 @@ node_modules/
 # Keep specs and steering
 !.kiro/specs/
 !.kiro/steering/
-.vercel
 .env*.local
 
 # Next.js
