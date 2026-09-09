@@ -19,7 +19,7 @@ Tworzenie prototypów MVP (Minimum Viable Product) wymaga specjalnego podejścia
 - **Zero Configuration** - Szybki start bez skomplikowanej konfiguracji
 - **Full-Stack Capabilities** - Frontend + API routes w jednym frameworku
 - **Built-in Optimizations** - Performance out-of-the-box
-- **Vercel Deployment** - Jednokliknięty deployment
+- **Static / container deployment** - Szybki deployment
 - **Rich Ecosystem** - Ogromna biblioteka komponentów i narzędzi
 
 **Przykład architektury MVP:**
@@ -300,14 +300,6 @@ export const addUser = async (userData) => {
   }
 };
 ```
-
-### Supabase
-
-**Supabase jako Firebase Alternative:**
-- **PostgreSQL** - Relacyjna baza danych
-- **Real-time subscriptions** - Live updates
-- **Row Level Security** - Zaawansowane bezpieczeństwo
-- **Open Source** - Pełna kontrola nad danymi
 
 **AWS Integration:**
 ```javascript
@@ -827,30 +819,6 @@ test.describe('Authentication', () => {
 
 ## Deployment & DevOps
 
-### Vercel Deployment
-
-**Vercel Configuration:**
-```json
-{
-  "version": 2,
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/next"
-    }
-  ],
-  "env": {
-    "DATABASE_URL": "@database-url",
-    "NEXTAUTH_SECRET": "@nextauth-secret",
-    "NEXTAUTH_URL": "@nextauth-url"
-  },
-  "functions": {
-    "pages/api/**/*.js": {
-      "maxDuration": 30
-    }
-  }
-}
-```
 
 ### Docker Setup
 
@@ -945,13 +913,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       
-      - name: Deploy to Vercel
-        uses: amondnet/vercel-action@v20
-        with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-org-id: ${{ secrets.ORG_ID }}
-          vercel-project-id: ${{ secrets.PROJECT_ID }}
-          vercel-args: '--prod'
+      - name: Deploy
+        run: echo "Deploy via your hosting provider"
 ```
 
 ## Analytics & Monitoring
@@ -1196,7 +1159,7 @@ Startup potrzebował szybko zwalidować pomysł na aplikację płatniczą P2P w 
 - **Backend:** Next.js API Routes + Prisma + PostgreSQL
 - **Authentication:** NextAuth.js z Google/Apple
 - **Payments:** Stripe Connect API
-- **Deployment:** Vercel + PlanetScale
+- **Deployment:** AWS / Netlify + PlanetScale
 - **Analytics:** Mixpanel + Google Analytics
 
 **Timeline:** 6 tygodni od pomysłu do MVP

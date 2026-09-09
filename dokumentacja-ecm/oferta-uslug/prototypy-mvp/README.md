@@ -72,7 +72,7 @@ MVP to wersja produktu z minimalnym zestawem funkcjonalności, która pozwala na
 - **Node.js / Express** - szybki rozwój API
 - **Python / Django** - dla złożonych aplikacji
 - **Ruby on Rails** - rapid prototyping
-- **Serverless** - AWS Lambda, Vercel Functions
+- **Serverless** - AWS Lambda
 
 ### Bazy Danych
 - **MongoDB** - elastyczne dokumentowe bazy

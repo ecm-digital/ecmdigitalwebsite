@@ -10,73 +10,41 @@ Dashboard do zarządzania projektami dla klientów ECM Digital.
 npm install
 ```
 
-### 2. Konfiguracja Supabase (DARMOWA)
-
-1. Utwórz konto na [Supabase](https://supabase.com) - **100% DARMOWE**
-2. Utwórz nowy projekt (darmowy tier: 500MB bazy, 1GB storage, 50k MAU)
-3. Skopiuj **Project URL** i **anon public key** z Settings > API
-4. Utwórz plik `.env.local` w głównym katalogu:
-
-```bash
-NEXT_PUBLIC_SUPABASE_URL=your_project_url
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_key
-```
-
-5. Przejdź do **SQL Editor** w Supabase Dashboard
-6. Skopiuj i wklej zawartość pliku `supabase/migrations/001_initial_schema.sql`
-7. Kliknij **Run** aby wykonać migrację
-8. Następnie skopiuj i wklej zawartość pliku `supabase/migrations/002_storage_buckets.sql`
-9. Kliknij **Run** aby utworzyć bucket'y do przechowywania plików
-
-**Bez konfiguracji Supabase:** Aplikacja działa w trybie demo z przykładowymi danymi.
-
-### 3. Dodanie przykładowych danych (opcjonalnie)
-
-1. W SQL Editor wklej zawartość pliku `supabase/seed.sql`
-2. Kliknij **Run** aby dodać funkcje do tworzenia przykładowych danych
-
-### 4. Uruchomienie aplikacji
+### 2. Uruchomienie aplikacji
 
 ```bash
 npm run dev
 ```
 
-Aplikacja będzie dostępna pod adresem: http://localhost:3000
+Aplikacja będzie dostępna pod adresem: http://localhost:3002
+
+**Tryb demo:** Autentykacja działa lokalnie (localStorage) z przykładowymi danymi — bez zewnętrznego backendu.
 
 ## 📋 Funkcjonalności
 
 ### ✅ Zaimplementowane:
-- 🔐 **Autentykacja** - logowanie/rejestracja z Supabase Auth
+- 🔐 **Autentykacja** - logowanie/rejestracja w trybie demo
 - 📊 **Dashboard** - przegląd projektów i statystyk
 - 📁 **Projekty** - zarządzanie projektami z filtrowaniem
-- 💬 **Komunikacja** - real-time messaging z zespołem
-- 📎 **Upload plików** - drag & drop z Supabase Storage
-- 💾 **Baza danych** - kompletny schemat z RLS policies
+- 💬 **Komunikacja** - messaging z zespołem
 - 🎨 **UI/UX** - responsywny design z Tailwind CSS
 - 📱 **PWA Ready** - przygotowane do Progressive Web App
 
 ### 🔄 W trakcie implementacji:
-- 📄 **Dokumenty** - zarządzanie plikami projektowych
+- 📄 **Dokumenty** - zarządzanie plikami projektowymi
 - 💰 **Faktury** - system płatności
 - 📈 **Analityka** - metryki projektów
 - 🔧 **Integracje** - zewnętrzne narzędzia
 
-## 🛠 Stack Technologiczny (100% DARMOWY)
+## 🛠 Stack Technologiczny
 
 - **Frontend:** Next.js 14, React 18, TypeScript
 - **Styling:** Tailwind CSS, shadcn/ui
-- **Backend:** Supabase (PostgreSQL + Auth + Real-time + Storage) - **DARMOWE**
-- **Email:** Resend (3k emails/miesiąc) - **DARMOWE**
-- **Hosting:** Vercel (unlimited projects) - **DARMOWE**
+- **Hosting:** statyczny / Next.js (GitHub Pages, Netlify, własny serwer)
 - **State Management:** Zustand
 - **Data Fetching:** React Query
 - **Charts:** Recharts
 - **Date Handling:** date-fns
-
-### 💰 Koszty: 0 PLN/miesiąc
-- Supabase Free Tier: 500MB DB + 1GB Storage + 50k MAU
-- Vercel Free Tier: Unlimited projects
-- Resend Free Tier: 3,000 emails/miesiąc
 
 ## 📁 Struktura Projektu
 
@@ -91,19 +59,12 @@ client-dashboard/
 │   │   └── ui/             # shadcn/ui komponenty
 │   ├── hooks/              # Custom React hooks
 │   ├── lib/                # Utilities i konfiguracja
-│   │   ├── supabase/       # Konfiguracja Supabase
-│   │   └── stores/         # Zustand stores
 │   └── types/              # TypeScript typy
-├── supabase/
-│   ├── migrations/         # Migracje bazy danych
-│   └── seed.sql           # Przykładowe dane
 └── scripts/               # Skrypty pomocnicze
 ```
 
 ## 🔒 Bezpieczeństwo
 
-- **Row Level Security (RLS)** - każdy użytkownik widzi tylko swoje dane
-- **JWT Authentication** - bezpieczne tokeny Supabase
 - **HTTPS Only** - szyfrowana komunikacja
 - **Input Validation** - walidacja danych z Zod
 
@@ -114,57 +75,18 @@ Dashboard jest w pełni responsywny i działa na:
 - 📱 Tablet (768px - 1023px)
 - 📱 Mobile (320px - 767px)
 
-## 🎯 Przykładowe dane
-
-Po zarejestrowaniu możesz dodać przykładowe projekty klikając przycisk "Dodaj przykładowe dane" w dashboardzie. Dane demo zawierają:
-
-- 6 różnych typów projektów (Website, Shopify, MVP, UX Audit, Automation, Social Media)
-- Faktury w różnych statusach
-- Przykładowe wiadomości
-- Różne statusy projektów (Discovery, Design, Development, Testing, Completed)
-
 ## 🚀 Deployment
 
-### Vercel (Rekomendowane)
-
-1. Push kod do GitHub
-2. Połącz repozytorium z Vercel
-3. Dodaj zmienne środowiskowe:
-   - `AWS_ACCESS_KEY_ID`
-- `AWS_SECRET_ACCESS_KEY`
-4. Deploy!
-
-### Inne platformy
-
-Dashboard może być wdrożony na dowolnej platformie obsługującej Next.js:
-- Netlify
-- Railway
-- AWS Amplify
-- DigitalOcean App Platform
-
-## 🐛 Troubleshooting
-
-### Problem z bazą danych
-- Sprawdź czy migracje zostały wykonane w Supabase
-- Upewnij się, że RLS policies są aktywne
-- Sprawdź logi w Supabase Dashboard
-
-### Problem z autentykacją
-- Sprawdź zmienne środowiskowe
-- Upewnij się, że Supabase URL i klucz są poprawne
-- Sprawdź czy użytkownik jest zweryfikowany
-
-### Problem z przykładowymi danymi
-- Upewnij się, że funkcja `create_sample_projects_for_user` została utworzona
-- Sprawdź czy użytkownik ma profil w tabeli `profiles`
+1. Zbuduj aplikację: `npm run build`
+2. Wdróż na wybranym hostingu Next.js lub jako eksport statyczny (`npm run build:export` + S3)
+3. Ustaw wymagane zmienne środowiskowe (jeśli używasz AWS API)
 
 ## 📞 Wsparcie
 
 W przypadku problemów:
 1. Sprawdź logi w konsoli przeglądarki
-2. Sprawdź logi w Supabase Dashboard
-3. Skontaktuj się z zespołem ECM Digital
+2. Skontaktuj się z zespołem ECM Digital
 
 ---
 
-**ECM Digital** - Tworzymy przyszłość cyfrową 🚀
+**ECM Digital** - Tworzymy przyszłość cyfrową

@@ -15,24 +15,18 @@ Ten plan implementacji zawiera szczegółowe zadania do stworzenia kompleksowego
   - Konfiguracja podstawowej struktury folderów
   - _Wymagania: 1.1, 9.4_
 
-- [x] 1.2 Konfiguracja Supabase i bazy danych (DARMOWE - 100% FREE)
-  - ✅ Utworzenie konfiguracji Supabase client
-  - ✅ Dokumentacja schematu bazy danych (tabele: profiles, projects, messages, documents, invoices)
-  - ✅ Dokumentacja Row Level Security (RLS)
-  - ✅ Setup Supabase Auth z custom policies
-  - ✅ Migracja z AWS na Supabase zakończona
+- [x] 1.2 Tryb demo / lokalny (bez zewnętrznego BaaS)
+  - ✅ Usunięto zewnętrznego klienta BaaS i związaną zależność npm
+  - ✅ Dokumentacja typów danych (tabele: profiles, projects, messages, documents, invoices)
+  - ✅ Auth działa w trybie demo (localStorage)
   - _Wymagania: 1.1, 9.1, 9.2_
-  - _Koszt: $0/miesiąc (Supabase Free Tier)_
 
-- [x] 1.3 Setup systemu autentykacji (DARMOWE)
-  - ✅ Integracja Supabase Auth z Next.js
-  - ✅ Hook use-auth.ts z pełną funkcjonalnością
-  - ✅ Tryb demo dla development bez Supabase
+- [x] 1.3 Setup systemu autentykacji (demo)
+  - ✅ Hook use-auth.ts (localStorage / demo)
+  - ✅ Sign-in / sign-up / sign-out w trybie lokalnym
   - [ ] Implementacja middleware dla protected routes
   - [ ] Utworzenie komponentów logowania i rejestracji
-  - ✅ Konfiguracja session management (Supabase auto-refresh)
   - _Wymagania: 9.1, 9.2_
-  - _Koszt: $0/miesiąc (50k MAU darmowe)_
 
 ### 2. Podstawowy System Zarządzania Projektami
 
@@ -60,7 +54,7 @@ Ten plan implementacji zawiera szczegółowe zadania do stworzenia kompleksowego
 ### 3. System Komunikacji Real-time
 
 - [ ] 3.1 Implementacja systemu wiadomości
-  - Konfiguracja Supabase Realtime dla messages
+  - Komunikacja wiadomości (lokalnie / API)
   - Utworzenie komponentu MessageThread z real-time updates
   - Implementacja wysyłania i odbierania wiadomości
   - Dodanie wskaźników "typing" i "online"
@@ -68,7 +62,7 @@ Ten plan implementacji zawiera szczegółowe zadania do stworzenia kompleksowego
 
 - [ ] 3.2 System przesyłania plików
   - Implementacja FileUpload z drag & drop
-  - Konfiguracja Supabase Storage dla attachments
+  - Przechowywanie załączników (lokalnie / storage API)
   - Dodanie progress bar i walidacji plików
   - Implementacja podglądu różnych typów plików
   - _Wymagania: 2.3, 3.2_

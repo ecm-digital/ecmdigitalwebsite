@@ -87,7 +87,7 @@ export default function Header() {
               </a>
               <ul className="dropdown-menu" aria-labelledby="accountDropdown">
                 <li><h6 className="dropdown-header text-primary fw-bold">👤 Dostęp do systemów</h6></li>
-                <li><a className="dropdown-item" href="https://client-dashboard-lzxksw2h2-ecm-digitals-projects.vercel.app/dashboard" target="_blank" rel="noopener noreferrer">
+                <li><a className="dropdown-item" href="/dashboard" target="_blank" rel="noopener noreferrer">
                   <i className="fas fa-tachometer-alt me-2"></i>Panel Klienta
                   <small className="text-muted d-block">Zarządzaj projektami i dokumentami</small>
                 </a></li>

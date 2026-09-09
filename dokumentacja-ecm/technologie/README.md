@@ -206,7 +206,7 @@ Narzędzia wspierające proces developmentu i współpracy zespołowej.
 **Next.js (React)**
 - **Zastosowanie:** Full-stack web applications
 - **Features:** SSR, API routes, automatic code splitting
-- **Deployment:** Vercel, AWS, custom servers
+- **Deployment:** AWS, Netlify, GitHub Pages, custom servers
 - **Doświadczenie:** 4+ lat, 15+ MVP projektów
 
 **Nuxt.js (Vue)**
@@ -245,11 +245,6 @@ Narzędzia wspierające proces developmentu i współpracy zespołowej.
 - **Services:** Authentication, Firestore, Cloud Functions, Hosting
 - **Benefits:** Rapid development, real-time updates, scalability
 - **Use Cases:** Real-time applications, user management
-
-**Supabase**
-- **Services:** PostgreSQL database, authentication, real-time subscriptions
-- **Benefits:** Open-source alternative to Firebase
-- **Use Cases:** Data-heavy applications, complex queries
 
 **AWS Amplify**
 - **Services:** Authentication, API, storage, hosting

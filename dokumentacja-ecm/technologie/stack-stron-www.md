@@ -573,29 +573,6 @@ module.exports = {
 
 ## Deployment & Hosting
 
-### Vercel Deployment
-
-**Automatic Deployments:**
-- Git integration with automatic deployments
-- Preview deployments for pull requests
-- Environment variables management
-- Custom domains and SSL
-
-**Vercel Configuration:**
-```json
-{
-  "builds": [
-    { "src": "package.json", "use": "@vercel/next" }
-  ],
-  "routes": [
-    { "src": "/api/(.*)", "dest": "/api/$1" },
-    { "src": "/(.*)", "dest": "/$1" }
-  ],
-  "env": {
-    "DATABASE_URL": "@database-url"
-  }
-}
-```
 
 ### AWS Deployment
 
@@ -671,7 +648,7 @@ export const trackEvent = (action, category, label, value) => {
 - **Frontend:** Next.js + TypeScript + Tailwind CSS
 - **Backend:** Node.js + Express + PostgreSQL
 - **CMS:** Strapi for content management
-- **Hosting:** Vercel with AWS RDS
+- **Hosting:** AWS / Netlify with AWS RDS
 
 **Results:**
 - **Performance:** 95+ Lighthouse score

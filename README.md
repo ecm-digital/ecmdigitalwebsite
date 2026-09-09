@@ -53,35 +53,20 @@ dokumentacja-ecm/
 
 ### Hosting i Deployment
 - Statyczna strona HTML
-- Kompatybilna z GitHub Pages, Netlify, Vercel
+- Kompatybilna z GitHub Pages, Netlify i innymi hostami statycznymi
 - CDN dla optymalnej wydajności
 
 ## 🔗 Integracje
 
-### 🎉 NOWY STACK - 100% DARMOWY!
-- **Supabase** (Auth + Database + Storage + Real-time) - DARMOWE
-- **Upstash Redis** (Caching) - DARMOWE (10k commands/day)
-- **Resend** (Email) - DARMOWE (3k emails/miesiąc)
-- **Vercel** (Hosting) - DARMOWE (unlimited projects)
-- **n8n** (Automatyzacje) - DARMOWE (self-hosted)
-
-### Pozostałe integracje:
+- **n8n** (Automatyzacje)
 - Google Analytics (gtag)
 - Hotjar
 - HubSpot (tracking + formularz)
 
-## 📚 Dokumentacja Migracji
+## 📚 Dokumentacja
 
-### Przewodniki:
-- 📖 **[COMPLETE_FREE_STACK_GUIDE.md](COMPLETE_FREE_STACK_GUIDE.md)** - Kompletny przewodnik po wszystkich projektach
-- 📖 **[FREE_STACK_MIGRATION.md](FREE_STACK_MIGRATION.md)** - Szczegóły migracji z AWS
-- 📖 **[QUICK_START.md](QUICK_START.md)** - Szybki start (5 minut)
-
-### Projekty:
-- 👥 **[Client Dashboard](client-dashboard/MIGRATION_AWS_TO_SUPABASE.md)** - Panel dla klientów
-- 🏢 **[Agency Management Panel](agency-management-panel/MIGRATION_TO_FREE_STACK.md)** - Panel zarządzania agencją
-
-### 💰 Oszczędności: $200-500/miesiąc → $0/miesiąc!
+- 📖 **[QUICK_START.md](QUICK_START.md)** - Szybki start
+- 👥 **[Client Dashboard](client-dashboard/README.md)** - Panel dla klientów
 
 ### HubSpot (statyczna strona)
 
