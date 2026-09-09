@@ -332,7 +332,7 @@ graph TD
 ### Backend
 - **Node.js/Express** - Szybki development API
 - **Python/FastAPI** - Data-heavy applications
-- **Firebase/Supabase** - Backend-as-a-Service
+- **Firebase** - Backend-as-a-Service
 - **Serverless** - AWS Lambda, Vercel Functions
 
 ### Database

@@ -301,14 +301,6 @@ export const addUser = async (userData) => {
 };
 ```
 
-### Supabase
-
-**Supabase jako Firebase Alternative:**
-- **PostgreSQL** - Relacyjna baza danych
-- **Real-time subscriptions** - Live updates
-- **Row Level Security** - Zaawansowane bezpieczeństwo
-- **Open Source** - Pełna kontrola nad danymi
-
 **AWS Integration:**
 ```javascript
 import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
