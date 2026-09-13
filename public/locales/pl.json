@@ -78,6 +78,14 @@
     "voiceAssistants": {
       "title": "Asystenci Głosowi na Amazon Lex",
       "description": "Głosowa obsługa klienta - dostępność 24/7 bez kosztów call center. Naturalne rozmowy, inteligentne odpowiedzi."
+    },
+    "uxDesign": {
+      "title": "UX/UI Design",
+      "description": "Projektujemy interfejsy skupione na doświadczeniu i konwersji: research, wireframe’y, prototypy, testy użyteczności i design system."
+    },
+    "seoContent": {
+      "title": "SEO i content marketing",
+      "description": "Audyt techniczny SEO, strategia treści i content marketing, które budują widoczność w Google oraz kwalifikowany ruch."
     }
   },
   "hero": {

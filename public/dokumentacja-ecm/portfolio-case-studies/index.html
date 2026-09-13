@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio i case studies – ECM Digital</title>
-    <meta name="description" content="Realizacje ECM Digital: AI, automatyzacje, e-commerce, mobile i strony WWW. Zobacz efekty w liczbach.">
+    <meta name="description" content="Pełne portfolio ECM Digital: strony WWW, Shopify, MVP, audyty UX, asystenci AI, mobile i Voice AI. 37 case studies z efektami biznesowymi.">
     <link rel="canonical" href="https://www.ecm-digital.com/dokumentacja-ecm/portfolio-case-studies/">
     <style>
         :root {
@@ -21,27 +21,25 @@
         .nav a { color: var(--muted); margin-left: 18px; font-size: .95rem; }
         .nav a:hover { color: var(--text); }
         h1 { font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -0.04em; margin: 0 0 12px; }
-        .lead { color: var(--muted); max-width: 680px; margin: 0 0 28px; font-size: 1.1rem; }
-        .filters { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 32px; }
+        .lead { color: var(--muted); max-width: 720px; margin: 0 0 28px; font-size: 1.1rem; }
+        .filters { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 36px; position: sticky; top: 0; padding: 12px 0; background: rgba(5,7,12,.92); backdrop-filter: blur(8px); z-index: 5; }
         .filters a {
             padding: 8px 14px; border-radius: 999px; border: 1px solid var(--border);
             color: var(--muted); font-size: .88rem; background: transparent;
         }
         .filters a:hover, .filters a.active { color: var(--text); border-color: var(--border-2); background: var(--surface); }
+        .cat-title { font-size: 1.35rem; letter-spacing: -0.02em; margin: 40px 0 16px; }
+        .cat-title span { color: var(--muted); font-weight: 500; font-size: 1rem; }
         .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
         .card {
-            display: flex; flex-direction: column; gap: 12px; padding: 28px;
+            display: flex; flex-direction: column; gap: 12px; padding: 24px;
             background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
-            transition: transform .2s ease, border-color .2s ease;
-            min-height: 240px;
+            transition: transform .2s ease, border-color .2s ease; min-height: 180px;
         }
         .card:hover { transform: translateY(-4px); border-color: var(--border-2); }
         .tag { font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
-        .card h2 { font-size: 1.25rem; margin: 0; letter-spacing: -0.02em; }
-        .card p { margin: 0; color: var(--muted); flex: 1; }
-        .metrics { display: flex; gap: 18px; flex-wrap: wrap; }
-        .metric .v { font-size: 1.35rem; font-weight: 800; letter-spacing: -0.03em; color: var(--green); }
-        .metric .l { font-size: .78rem; color: var(--muted); }
+        .card h2 { font-size: 1.15rem; margin: 0; letter-spacing: -0.02em; }
+        .card p { margin: 0; color: var(--muted); flex: 1; font-size: .95rem; }
         .more { color: var(--accent); font-weight: 600; font-size: .95rem; }
         .cta {
             margin-top: 48px; padding: 32px; border-radius: var(--radius);
@@ -60,7 +58,7 @@
     </style>
 </head>
 <body>
-    <div class="wrap">
+    <div class="wrap" id="all">
         <div class="top">
             <a class="logo" href="/">ECM Digital<span>.</span></a>
             <nav class="nav" aria-label="Nawigacja">
@@ -71,101 +69,275 @@
         </div>
 
         <h1>Portfolio i case studies</h1>
-        <p class="lead">Wybrane wdrożenia: agenci AI, automatyzacje, e-commerce i produkty cyfrowe. Każdy projekt z mierzalnym efektem biznesowym.</p>
+        <p class="lead">Pełny katalog realizacji ECM Digital — 37 case studies: strony WWW, Shopify, MVP, audyty UX, asystenci AI, mobile i Voice AI.</p>
 
         <div class="filters" aria-label="Filtry kategorii">
             <a class="active" href="#all">Wszystkie</a>
-            <a href="#ai">AI &amp; automatyzacje</a>
-            <a href="#ecommerce">E-commerce</a>
-            <a href="#product">Produkty cyfrowe</a>
+            <a href="#featured">Wybrane wdrożenia</a>
+            <a href="#www">Strony WWW &amp; landing</a>
+            <a href="#shopify">Shopify / e-commerce</a>
+            <a href="#mvp">MVP &amp; Product Discovery</a>
+            <a href="#ux">Audyty UX</a>
+            <a href="#ai">Asystenci AI</a>
+            <a href="#mobile">Aplikacje mobilne</a>
+            <a href="#voice">Voice AI</a>
         </div>
 
-        <div class="grid" id="all">
-            <a class="card" id="ai" href="/case-studies/agencja-nieruchomosci.html">
+        <h2 class="cat-title" id="featured">Wybrane wdrożenia <span>(8)</span></h2>
+        <div class="grid">
+            <a class="card" href="/case-studies/agencja-nieruchomosci.html">
                 <span class="tag">Automatyzacja &amp; AI</span>
-                <h2>Obsługa leadów 24/7 — agencja nieruchomości</h2>
-                <p>Agent AI odpowiada w 15 sekund i umawia spotkania z handlowcami.</p>
-                <div class="metrics">
-                    <div class="metric"><div class="v">+400%</div><div class="l">spotkań</div></div>
-                    <div class="metric"><div class="v">15 sek</div><div class="l">czas reakcji</div></div>
-                </div>
+                <h2>Strona agencji nieruchomości - ECM Digital</h2>
+                <p>Szczegóły realizacji i efektów biznesowych.</p>
                 <span class="more">Czytaj case study →</span>
             </a>
-
             <a class="card" href="/case-studies/hr-automation.html">
                 <span class="tag">Automatyzacja procesów</span>
-                <h2>Eliminacja rutyny w rekrutacji B2B</h2>
-                <p>Integracja formularzy z CRM przez n8n — koniec ręcznego przepisywania.</p>
-                <div class="metrics">
-                    <div class="metric"><div class="v">25h</div><div class="l">/ tydzień</div></div>
-                    <div class="metric"><div class="v">0 min</div><div class="l">kopiowania</div></div>
-                </div>
+                <h2>Case Study: Automatyzacja procesów HR</h2>
+                <p>Automatyzacja rekrutacji i onboardingu: n8n, ATS, dokumenty i KPI. −70% czasu operacyjnego HR.</p>
                 <span class="more">Czytaj case study →</span>
             </a>
-
             <a class="card" href="/case-studies/ai-assistant-ecommerce.html">
                 <span class="tag">E-commerce &amp; AI</span>
-                <h2>Asystent AI dla sklepu internetowego</h2>
-                <p>Bedrock przejmuje powtarzalne pytania o produkty i statusy zamówień.</p>
-                <div class="metrics">
-                    <div class="metric"><div class="v">24/7</div><div class="l">obsługa</div></div>
-                    <div class="metric"><div class="v">80%</div><div class="l">zapytań AI</div></div>
-                </div>
+                <h2>Case Study: Asystent AI dla e-commerce</h2>
+                <p>Asystent AI na Amazon Bedrock dla sklepu: 80% zapytań bez człowieka, +14% AOV, obsługa 24/7.</p>
                 <span class="more">Czytaj case study →</span>
             </a>
-
             <a class="card" href="/case-studies/automatyzacja-sprzedazy-software-house.html">
                 <span class="tag">Sprzedaż B2B</span>
-                <h2>Automatyzacja sprzedaży — software house</h2>
-                <p>Jeden lejek: kwalifikacja leadów, follow-upy i raporty bez chaosu.</p>
-                <div class="metrics">
-                    <div class="metric"><div class="v">100%</div><div class="l">leadów w CRM</div></div>
-                    <div class="metric"><div class="v">0</div><div class="l">pominiętych FU</div></div>
-                </div>
+                <h2>Automatyzacja procesu sprzedaży dla software house - ECM Digital</h2>
+                <p>Szczegóły realizacji i efektów biznesowych.</p>
                 <span class="more">Czytaj case study →</span>
             </a>
-
-            <a class="card" id="ecommerce" href="/case-studies/shopify-ai.html">
+            <a class="card" href="/case-studies/shopify-ai.html">
                 <span class="tag">Shopify &amp; AI</span>
-                <h2>Sklep Shopify z agentami AI</h2>
-                <p>E-commerce z asystentem zakupowym i automatyzacją obsługi klienta.</p>
-                <div class="metrics">
-                    <div class="metric"><div class="v">AI</div><div class="l">w checkout</div></div>
-                    <div class="metric"><div class="v">Shopify</div><div class="l">+ agent</div></div>
-                </div>
+                <h2>Case Study: Sklep Shopify z agentami AI</h2>
+                <p>Shopify + agenci AI: +32% konwersji, −45% czasu operacyjnego, automatyzacja katalogu i kampanii.</p>
                 <span class="more">Czytaj case study →</span>
             </a>
-
             <a class="card" href="/case-studies/smart-glasses-wix.html">
                 <span class="tag">Wix E-commerce</span>
-                <h2>Sklep Smart Glasses (Wix)</h2>
-                <p>Warianty, akcesoria, checkout, integracje i SEO na Wix Studio.</p>
-                <div class="metrics">
-                    <div class="metric"><div class="v">Wix</div><div class="l">Studio</div></div>
-                    <div class="metric"><div class="v">SEO</div><div class="l">+ Velo</div></div>
-                </div>
+                <h2>Case Study: Sklep Smart Glasses (Wix)</h2>
+                <p>Sklep Wix Studio dla smart glasses: warianty, checkout, SEO, automatyzacje porzuconych koszyków.</p>
                 <span class="more">Czytaj case study →</span>
             </a>
-
-            <a class="card" id="product" href="/case-studies/kingsmith-app.html">
+            <a class="card" href="/case-studies/kingsmith-app.html">
                 <span class="tag">Mobile</span>
-                <h2>KINGSMITH — aplikacja treningowa</h2>
-                <p>Aplikacja mobilna do ławeczki treningowej: sesje, postęp, UX.</p>
-                <div class="metrics">
-                    <div class="metric"><div class="v">iOS</div><div class="l">+ Android</div></div>
-                    <div class="metric"><div class="v">MVP</div><div class="l">→ produkt</div></div>
-                </div>
+                <h2>Case Study: KINGSMITH – aplikacja mobilna</h2>
+                <p>Aplikacja React Native + BLE do ławeczki treningowej KINGSMITH: 50k+ pobrań, ocena 4.8/5.</p>
                 <span class="more">Czytaj case study →</span>
             </a>
-
             <a class="card" href="/case-studies/platforma-szkoleniowa.html">
                 <span class="tag">EdTech</span>
-                <h2>Platforma szkoleniowa</h2>
-                <p>Ścieżki nauki, materiały i śledzenie postępów dla zespołów.</p>
-                <div class="metrics">
-                    <div class="metric"><div class="v">LMS</div><div class="l">web</div></div>
-                    <div class="metric"><div class="v">UX</div><div class="l">+ content</div></div>
-                </div>
+                <h2>Case Study: Platforma szkoleniowa</h2>
+                <p>Platforma e-learning: kursy, quizy, certyfikaty, SSO. +85% ukończeń, 3× szybszy onboarding.</p>
+                <span class="more">Czytaj case study →</span>
+            </a>
+        </div>
+        <h2 class="cat-title" id="www">Strony WWW &amp; landing <span>(5)</span></h2>
+        <div class="grid">
+            <a class="card" href="/case-studies/www-fluentspeak-academy.html">
+                <span class="tag">WWW</span>
+                <h2>Akademia Językowa FluentSpeak</h2>
+                <p>FluentSpeak to akademia językowa z 8-letnim doświadczeniem, oferująca kursy języka angielskiego, niemieckiego i hiszpańskiego. Pandemia…</p>
+                <span class="more">Czytaj case study →</span>
+            </a>
+            <a class="card" href="/case-studies/www-lexpartners-law.html">
+                <span class="tag">WWW</span>
+                <h2>Firma Prawnicza LexPartners</h2>
+                <p>LexPartners to renomowana kancelaria prawna z 20-letnim doświadczeniem, specjalizująca się w prawie gospodarczym, nieruchomościach i…</p>
+                <span class="more">Czytaj case study →</span>
+            </a>
+            <a class="card" href="/case-studies/www-premium-estates.html">
+                <span class="tag">WWW</span>
+                <h2>Deweloper Premium Estates</h2>
+                <p>Premium Estates to deweloper mieszkaniowy z 12-letnim doświadczeniem, realizujący projekty premium w Warszawie i Krakowie. Firma…</p>
+                <span class="more">Czytaj case study →</span>
+            </a>
+            <a class="card" href="/case-studies/www-prohealth-clinic.html">
+                <span class="tag">WWW</span>
+                <h2>Klinika Medyczna ProHealth</h2>
+                <p>Klinika Medyczna ProHealth to prywatna placówka medyczna z 15-letnim doświadczeniem, oferująca kompleksowe usługi medyczne w zakresie…</p>
+                <span class="more">Czytaj case study →</span>
+            </a>
+            <a class="card" href="/case-studies/www-techflow-solutions.html">
+                <span class="tag">WWW</span>
+                <h2>Startup TechFlow Solutions</h2>
+                <p>TechFlow Solutions to młody startup technologiczny rozwijający platformę automatyzacji procesów biznesowych dla firm B2B. Zespół…</p>
+                <span class="more">Czytaj case study →</span>
+            </a>
+        </div>
+        <h2 class="cat-title" id="shopify">Shopify / e-commerce <span>(6)</span></h2>
+        <div class="grid">
+            <a class="card" href="/case-studies/shopify-ai.html">
+                <span class="tag">Shopify</span>
+                <h2>Case Study: Sklep Shopify z agentami AI</h2>
+                <p>Shopify + agenci AI: +32% konwersji, −45% czasu operacyjnego, automatyzacja katalogu i kampanii.</p>
+                <span class="more">Czytaj case study →</span>
+            </a>
+            <a class="card" href="/case-studies/shopify-buildpro-b2b.html">
+                <span class="tag">Shopify</span>
+                <h2>BuildPro B2B</h2>
+                <p>BuildPro to hurtownia materiałów budowlanych z 25-letnim doświadczeniem, obsługująca ponad 800 firm budowlanych w całej Polsce. Firma…</p>
+                <span class="more">Czytaj case study →</span>
+            </a>
+            <a class="card" href="/case-studies/shopify-coffeebox-subscription.html">
+                <span class="tag">Shopify</span>
+                <h2>CoffeeBox Subscription</h2>
+                <p>CoffeeBox to startup założony przez pasjonatów kawy, którzy chcieli stworzyć usługę subskrypcyjną dostarczającą świeżo paloną kawę…</p>
+                <span class="more">Czytaj case study →</span>
+            </a>
+            <a class="card" href="/case-studies/shopify-greentech-dropshipping.html">
+                <span class="tag">Shopify</span>
+                <h2>GreenTech Dropshipping</h2>
+                <p>GreenTech Solutions to młoda firma założona przez przedsiębiorcę z pasją do technologii ekologicznych. Założyciel chciał rozpocząć…</p>
+                <span class="more">Czytaj case study →</span>
+            </a>
+            <a class="card" href="/case-studies/shopify-luxhome-marketplace.html">
+                <span class="tag">Shopify</span>
+                <h2>LuxHome Marketplace</h2>
+                <p>LuxHome to firma z 20-letnim doświadczeniem w branży wyposażenia wnętrz premium, posiadająca sieć showroomów w Warszawie, Krakowie i…</p>
+                <span class="more">Czytaj case study →</span>
+            </a>
+            <a class="card" href="/case-studies/shopify-xyz-fashion-store.html">
+                <span class="tag">Shopify</span>
+                <h2>XYZ Fashion Store</h2>
+                <p>XYZ Fashion to polska marka odzieżowa z 15-letnim doświadczeniem na rynku offline, posiadająca sieć 12 salonów w największych miastach…</p>
+                <span class="more">Czytaj case study →</span>
+            </a>
+        </div>
+        <h2 class="cat-title" id="mvp">MVP &amp; Product Discovery <span>(5)</span></h2>
+        <div class="grid">
+            <a class="card" href="/case-studies/mvp-edtech-learning-platform.html">
+                <span class="tag">MVP</span>
+                <h2>EduFlow - Platforma E-learningowa</h2>
+                <p>EduTech Innovations planowało stworzenie nowoczesnej platformy e-learningowej dla szkoleń korporacyjnych, która miała konkurować z…</p>
+                <span class="more">Czytaj case study →</span>
+            </a>
+            <a class="card" href="/case-studies/mvp-fintech-payment-app.html">
+                <span class="tag">MVP</span>
+                <h2>PayFlow - Aplikacja Płatności P2P</h2>
+                <p>FinTech Innovations planowało wejście na rynek płatności peer-to-peer w Polsce, konkurując z rozwiązaniami takimi jak BLIK czy PayPal.…</p>
+                <span class="more">Czytaj case study →</span>
+            </a>
+            <a class="card" href="/case-studies/mvp-healthtech-telemedicine.html">
+                <span class="tag">MVP</span>
+                <h2>MediConnect - Platforma Telemedyczna</h2>
+                <p>HealthTech Solutions chciało wprowadzić na polski rynek platformę telemedyczną łączącą pacjentów z lekarzami specjalistami. W czasie…</p>
+                <span class="more">Czytaj case study →</span>
+            </a>
+            <a class="card" href="/case-studies/mvp-logistics-delivery-platform.html">
+                <span class="tag">MVP</span>
+                <h2>QuickDeliver - Platforma Dostaw Last-Mile</h2>
+                <p>LogiTech Solutions chciało wejść na rynek dostaw last-mile, konkurując z firmami takimi jak Glovo, Uber Eats czy Wolt. Kluczowym…</p>
+                <span class="more">Czytaj case study →</span>
+            </a>
+            <a class="card" href="/case-studies/mvp-proptech-rental-platform.html">
+                <span class="tag">MVP</span>
+                <h2>RentEasy - Platforma Wynajmu Nieruchomości</h2>
+                <p>PropTech Ventures chciało zrewolucjonizować rynek wynajmu długoterminowego w Polsce, tworząc platformę łączącą właścicieli z najemcami w…</p>
+                <span class="more">Czytaj case study →</span>
+            </a>
+        </div>
+        <h2 class="cat-title" id="ux">Audyty UX <span>(5)</span></h2>
+        <div class="grid">
+            <a class="card" href="/case-studies/ux-ecommerce-fashion-audit.html">
+                <span class="tag">Audyt UX</span>
+                <h2>StyleHub Fashion - Audyt UX Sklepu Internetowego</h2>
+                <p>StyleHub Fashion to średniej wielkości sklep internetowy z odzieżą damską i męską, działający na rynku od 3 lat. Pomimo rosnącego ruchu…</p>
+                <span class="more">Czytaj case study →</span>
+            </a>
+            <a class="card" href="/case-studies/ux-edtech-learning-platform-audit.html">
+                <span class="tag">Audyt UX</span>
+                <h2>EduLearn Platform - Audyt UX Platformy Edukacyjnej</h2>
+                <p>EduLearn to platforma e-learningowa oferująca kursy online dla różnych grup wiekowych - od dzieci po dorosłych. Platforma miała problemy…</p>
+                <span class="more">Czytaj case study →</span>
+            </a>
+            <a class="card" href="/case-studies/ux-fintech-banking-app-audit.html">
+                <span class="tag">Audyt UX</span>
+                <h2>SecureBank Mobile - Audyt UX Aplikacji Bankowej</h2>
+                <p>SecureBank to nowoczesny bank cyfrowy oferujący usługi wyłącznie przez aplikację mobilną. Pomimo zaawansowanej technologii, aplikacja…</p>
+                <span class="more">Czytaj case study →</span>
+            </a>
+            <a class="card" href="/case-studies/ux-healthcare-portal-audit.html">
+                <span class="tag">Audyt UX</span>
+                <h2>MedConnect Portal - Audyt UX Platformy Medycznej</h2>
+                <p>MedConnect to platforma łącząca pacjentów z lekarzami, umożliwiająca umówienie wizyt, konsultacje online i dostęp do dokumentacji…</p>
+                <span class="more">Czytaj case study →</span>
+            </a>
+            <a class="card" href="/case-studies/ux-saas-dashboard-audit.html">
+                <span class="tag">Audyt UX</span>
+                <h2>DataFlow Analytics - Audyt UX Dashboardu SaaS</h2>
+                <p>DataFlow Analytics to platforma SaaS do analizy danych biznesowych, oferująca zaawansowane dashboardy i raporty. Pomimo potężnej…</p>
+                <span class="more">Czytaj case study →</span>
+            </a>
+        </div>
+        <h2 class="cat-title" id="ai">Asystenci AI <span>(4)</span></h2>
+        <div class="grid">
+            <a class="card" href="/case-studies/ai-assistant-ecommerce.html">
+                <span class="tag">Asystenci AI</span>
+                <h2>Case Study: Asystent AI dla e-commerce</h2>
+                <p>Asystent AI na Amazon Bedrock dla sklepu: 80% zapytań bez człowieka, +14% AOV, obsługa 24/7.</p>
+                <span class="more">Czytaj case study →</span>
+            </a>
+            <a class="card" href="/case-studies/ai-ecommerce-asystent-obslugi-klienta.html">
+                <span class="tag">Asystenci AI</span>
+                <h2>E-commerce - Asystent Obsługi Klienta</h2>
+                <p>Inteligentny asystent obsługujący klientów sklepu internetowego 24/7, odpowiadający na pytania i pomagający w zakupach.</p>
+                <span class="more">Czytaj case study →</span>
+            </a>
+            <a class="card" href="/case-studies/ai-fintech-asystent-analizy-danych.html">
+                <span class="tag">Asystenci AI</span>
+                <h2>Fintech - Asystent Analizy Danych</h2>
+                <p>Inteligentny asystent AI analizujący dane finansowe i generujący raporty inwestycyjne w czasie rzeczywistym.</p>
+                <span class="more">Czytaj case study →</span>
+            </a>
+            <a class="card" href="/case-studies/ai-healthcare-asystent-diagnostyczny.html">
+                <span class="tag">Asystenci AI</span>
+                <h2>Healthcare - Asystent Diagnostyczny</h2>
+                <p>Asystent AI wspomagający lekarzy w diagnostyce na podstawie objawów, wyników badań i historii pacjenta.</p>
+                <span class="more">Czytaj case study →</span>
+            </a>
+        </div>
+        <h2 class="cat-title" id="mobile">Aplikacje mobilne <span>(3)</span></h2>
+        <div class="grid">
+            <a class="card" href="/case-studies/mobile-healthtech-aplikacja-telemedyczna.html">
+                <span class="tag">Mobile</span>
+                <h2>HealthTech - Aplikacja Telemedyczna</h2>
+                <p>Kompleksowa aplikacja telemedyczna umożliwiająca wizyty online, e-recepty i monitoring zdrowia. Integracja z systemem PESEL i…</p>
+                <span class="more">Czytaj case study →</span>
+            </a>
+            <a class="card" href="/case-studies/mobile-logistyka-aplikacja-dla-kierowcow.html">
+                <span class="tag">Mobile</span>
+                <h2>Logistyka - Aplikacja dla Kierowców</h2>
+                <p>Aplikacja mobilna dla kierowców transportowych z systemem śledzenia tras, zarządzaniem dokumentami i komunikacją z dyspozytorem.</p>
+                <span class="more">Czytaj case study →</span>
+            </a>
+            <a class="card" href="/case-studies/mobile-proptech-platforma-wynajmu-nieruchomosci.html">
+                <span class="tag">Mobile</span>
+                <h2>Proptech - Platforma Wynajmu Nieruchomości</h2>
+                <p>Aplikacja mobilna dla agencji nieruchomości premium z zaawansowanymi filtrami, wirtualnymi spacerami i systemem rezerwacji.</p>
+                <span class="more">Czytaj case study →</span>
+            </a>
+        </div>
+        <h2 class="cat-title" id="voice">Voice AI <span>(3)</span></h2>
+        <div class="grid">
+            <a class="card" href="/case-studies/voice-bank-inteligentny-ivr-system.html">
+                <span class="tag">Voice AI</span>
+                <h2>Bank - Inteligentny IVR System</h2>
+                <p>Inteligentny system IVR dla banku obsługujący 50,000+ połączeń dziennie. Automatyzacja 80% standardowych zapytań klientów.</p>
+                <span class="more">Czytaj case study →</span>
+            </a>
+            <a class="card" href="/case-studies/voice-ecommerce-chatbot-glosowy.html">
+                <span class="tag">Voice AI</span>
+                <h2>E-commerce - Chatbot Głosowy</h2>
+                <p>Chatbot głosowy dla sklepu internetowego z elektroniką, pomagający w wyborze produktów i obsłudze zamówień.</p>
+                <span class="more">Czytaj case study →</span>
+            </a>
+            <a class="card" href="/case-studies/voice-szpital-asystent-glosowy-dla-pacjentow.html">
+                <span class="tag">Voice AI</span>
+                <h2>Szpital - Asystent Głosowy dla Pacjentów</h2>
+                <p>Asystent głosowy dla pacjentów szpitala umożliwiający sprawdzanie terminów wizyt, wyników badań i informacji o lekach.</p>
                 <span class="more">Czytaj case study →</span>
             </a>
         </div>
@@ -173,7 +345,7 @@
         <div class="cta">
             <div>
                 <h2 style="margin:0;font-size:1.4rem;letter-spacing:-0.02em;">Masz podobny problem w firmie?</h2>
-                <p>Pokażemy, co da się zautomatyzować w 2 tygodnie — bez długiego projektu IT.</p>
+                <p>Pokażemy, co da się zautomatyzować lub zbudować w 2 tygodnie — bez długiego projektu IT.</p>
             </div>
             <a class="btn" href="https://calendly.com/hello-ecm-digital" target="_blank" rel="noopener">Umów konsultację</a>
         </div>

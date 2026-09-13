@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>PayFlow - Aplikacja Płatności P2P | ECM Digital</title>
+<meta name="description" content="FinTech Innovations planowało wejście na rynek płatności peer-to-peer w Polsce, konkurując z rozwiązaniami takimi jak BLIK czy PayPal. Firma potrzebowała szybki"/>
+<link rel="canonical" href="https://www.ecm-digital.com/case-studies/mvp-fintech-payment-app.html"/>
+<style>
+:root{--bg:#05070c;--surface:#121826;--surface-2:#182033;--border:#243044;--border-2:#3a4d6b;--text:#f5f7fb;--muted:#9aa6b2;--accent:#7dd3fc;--green:#4ade80;--radius:18px}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.65}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:980px;margin:0 auto;padding:24px 20px 80px}
+.topnav{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:28px}
+.logo{font-weight:800;letter-spacing:-.03em}.logo span{color:var(--accent)}
+.btn{display:inline-flex;align-items:center;padding:12px 18px;border-radius:999px;font-weight:700;font-size:.95rem}
+.btn-primary{background:var(--accent);color:#041018}.btn-ghost{border:1px solid var(--border)}
+.hero{padding:36px 32px;border-radius:24px;border:1px solid var(--border);background:linear-gradient(160deg,#101827,#070b12);margin-bottom:22px}
+.eyebrow{display:inline-block;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+h1{margin:0 0 12px;font-size:clamp(1.7rem,4vw,2.5rem);letter-spacing:-.04em;line-height:1.15}
+.lead{margin:0 0 18px;color:var(--muted);font-size:1.05rem;max-width:740px}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.badge{padding:6px 10px;border-radius:999px;border:1px solid var(--border);background:#0d1524;color:#c7d2fe;font-size:.78rem}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.stat{padding:14px;border-radius:14px;background:rgba(255,255,255,.03);border:1px solid var(--border)}
+.stat .v{font-size:1.35rem;font-weight:800;color:var(--green)}.stat .l{font-size:.8rem;color:var(--muted);margin-top:4px}
+.section{margin-bottom:16px;padding:26px;border-radius:var(--radius);background:var(--surface);border:1px solid var(--border)}
+.section h2{margin:0 0 12px;font-size:1.3rem;letter-spacing:-.02em}
+.section h3{margin:18px 0 8px;font-size:1.05rem}
+.section p,.section li{color:var(--muted)}.section ul{margin:0;padding-left:1.15rem}.section li{margin:6px 0}
+.cta-box{margin-top:22px;padding:28px;border-radius:var(--radius);border:1px solid var(--border);background:linear-gradient(135deg,#0f172a,#121826);display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}
+.cta-box h2{margin:0 0 6px;font-size:1.25rem}.cta-box p{margin:0;color:var(--muted)}
+@media(max-width:800px){.stats{grid-template-columns:1fr 1fr}.hero,.section{padding:20px 16px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topnav">
+    <a class="logo" href="/">ECM Digital<span>.</span></a>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <a class="btn btn-ghost" href="/dokumentacja-ecm/portfolio-case-studies/">Portfolio</a>
+      <a class="btn btn-primary" href="https://calendly.com/hello-ecm-digital" target="_blank" rel="noopener">Umów konsultację</a>
+    </div>
+  </div>
+  <section class="hero">
+    <span class="eyebrow">Prototypy MVP</span>
+    <h1>PayFlow - Aplikacja Płatności P2P</h1>
+    <p class="lead">FinTech Innovations planowało wejście na rynek płatności peer-to-peer w Polsce, konkurując z rozwiązaniami takimi jak BLIK czy PayPal. Firma potrzebowała szybkiej walidacji koncepcji aplikacji mobilnej umożliwiającej nat</p>
+    <div class="meta"><span class="badge">FinTech Innovations Sp. z o.o.</span><span class="badge">Fintech / Płatności cyfrowe</span><span class="badge">Prototyp MVP</span><span class="badge">6 tygodni</span><span class="badge">React Native, Node.js, PostgreSQL, AWS</span><span class="badge">Zakończony - przeszedł do pełnego rozwoju</span></div>
+    
+  </section>
+  <section class="section"><h2>Wyzwanie</h2><h3>Sytuacja Wyjściowa</h3>
+<p>FinTech Innovations planowało wejście na rynek płatności peer-to-peer w Polsce, konkurując z rozwiązaniami takimi jak BLIK czy PayPal. Firma potrzebowała szybkiej walidacji koncepcji aplikacji mobilnej umożliwiającej natychmiastowe przelewy między użytkownikami przy użyciu tylko numeru telefonu.</p>
+<h3>Główne Problemy do Rozwiązania</h3>
+<ul><li><strong>Walidacja rynku</strong>: Czy polscy użytkownicy są gotowi na nowe rozwiązanie płatnicze?</li><li><strong>Bezpieczeństwo</strong>: Jak zapewnić bezpieczeństwo transakcji przy prostym UX?</li><li><strong>Regulacje</strong>: Jak spełnić wymagania PSD2 i KNF w MVP?</li></ul>
+<h3>Cele Biznesowe</h3>
+<ul><li><strong>Cel główny</strong>: Walidacja product-market fit w ciągu 3 miesięcy</li><li><strong>Cele dodatkowe</strong>:</li></ul>
+<p>- Pozyskanie 1000 aktywnych użytkowników</p>
+<p>- Osiągnięcie 70% retention rate po 30 dniach</p>
+<p>- Przeprowadzenie 500 transakcji testowych</p>
+<h3>Ograniczenia i Wymagania</h3>
+<ul><li><strong>Budżet</strong>: 150,000 PLN na MVP</li><li><strong>Czas</strong>: 6 tygodni do pierwszej wersji</li><li><strong>Techniczne</strong>: Integracja z systemami bankowymi</li><li><strong>Prawne</strong>: Zgodność z PSD2 i wymogami KNF</li></ul></section>
+  <section class="section"><h2>Rozwiązanie</h2><h3>Nasza Strategia</h3>
+<p>Zdecydowaliśmy się na podejście "mobile-first" z fokusem na kluczowe funkcjonalności: rejestrację, weryfikację tożsamości, dodawanie kart, wysyłanie i odbieranie płatności. Zastosowaliśmy architekturę mikrousług umożliwiającą łatwe skalowanie i integrację z systemami bankowymi.</p>
+<h3>Proces Realizacji</h3>
+<h3>Faza 1: Discovery i Planowanie (1 tydzień)</h3>
+<ul><li>Warsztat definicji MVP z zespołem klienta</li><li>Analiza konkurencji i regulacji prawnych</li><li>Określenie kluczowych user stories</li><li>Wybór stack'u technologicznego</li></ul>
+<h3>Faza 2: Design i Prototypowanie (1 tydzień)</h3>
+<ul><li>Projektowanie user flow dla kluczowych funkcjonalności</li><li>Tworzenie wireframes i prototypów interaktywnych</li><li>Design system zgodny z wytycznymi bankowymi</li><li>Testy użyteczności z grupą fokusową</li></ul>
+<h3>Faza 3: Implementacja MVP (3 tygodnie)</h3>
+<ul><li>Setup infrastruktury AWS i CI/CD</li><li>Implementacja aplikacji mobilnej (React Native)</li><li>Rozwój API backend (Node.js)</li><li>Integracja z sandbox'em systemów płatniczych</li></ul>
+<h3>Faza 4: Testowanie i Wdrożenie (1 tydzień)</h3>
+<ul><li>Testy bezpieczeństwa i penetracyjne</li><li>Beta testing z grupą 50 użytkowników</li><li>Wdrożenie do App Store i Google Play</li><li>Setup monitoringu i analityki</li></ul>
+<h3>Kluczowe Funkcjonalności</h3>
+<ul><li><strong>Rejestracja przez telefon</strong>: Weryfikacja SMS i biometria</li><li><strong>Dodawanie kart</strong>: Skanowanie karty i tokenizacja</li><li><strong>Wysyłanie pieniędzy</strong>: Transfer przez numer telefonu</li><li><strong>Historia transakcji</strong>: Przejrzysty przegląd operacji</li><li><strong>Powiadomienia</strong>: Real-time notifications o transakcjach</li></ul>
+<h3>Zastosowane Technologie</h3></section>
+  <section class="section"><h2>Rezultaty</h2><p>Rezultat</p></section>
+  <div class="cta-box">
+    <div><h2>Chcesz podobny efekt?</h2><p>Pokażemy, co da się wdrożyć w Twojej firmie — bez długiego projektu IT.</p></div>
+    <a class="btn btn-primary" href="https://calendly.com/hello-ecm-digital" target="_blank" rel="noopener">Umów konsultację</a>
+  </div>
+</div>
+</body></html>
