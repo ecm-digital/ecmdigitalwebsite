@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bezpieczeństwo i Zgodność ECM Digital | ECM Digital – Baza wiedzy</title>
+<meta name="description" content=" Bezpieczeństwo i Zgodność ECM Digital Wprowadzenie W ECM Digital bezpieczeństwo danych i zgodność z przepisami prawymi stanowią fundament naszej dzia">
+<link rel="canonical" href="https://www.ecm-digital.com/dokumentacja-ecm/bezpieczenstwo/index.html">
+<link rel="stylesheet" href="../docs-styles.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <a class="brand" href="/">ECM Digital<span>.</span></a>
+  <nav class="topnav">
+    <a href="/dokumentacja-ecm/">Baza wiedzy</a>
+    <a href="/dokumentacja-ecm/oferta-uslug/">Oferta</a>
+    <a href="/dokumentacja-ecm/portfolio-case-studies/">Portfolio</a>
+    <a href="/#contact">Kontakt</a>
+  </nav>
+</div></div>
+<div class="wrap">
+<div class="crumb"><a href="/dokumentacja-ecm/">Baza wiedzy</a> / Bezpieczeństwo i Zgodność ECM Digital</div>
+<article>
+<h1 id="bezpieczenstwo-i-zgodnosc-ecm-digital">Bezpieczeństwo i Zgodność ECM Digital</h1>
+<h2 id="wprowadzenie">Wprowadzenie</h2>
+<p>W ECM Digital bezpieczeństwo danych i zgodność z przepisami prawymi stanowią fundament naszej działalności. Stosujemy najwyższe standardy bezpieczeństwa, aby chronić dane naszych klientów i zapewnić zgodność z obowiązującymi regulacjami prawnymi.</p>
+<p><strong>Nasze zobowiązania:</strong><br />
+- <strong>Bezpieczeństwo danych</strong> - Ochrona informacji klientów na najwyższym poziomie<br />
+- <strong>Zgodność z RODO/GDPR</strong> - Pełna zgodność z przepisami o ochronie danych osobowych<br />
+- <strong>Standardy branżowe</strong> - Implementacja najlepszych praktyk bezpieczeństwa<br />
+- <strong>Ciągłe monitorowanie</strong> - Regularne audyty i aktualizacje zabezpieczeń<br />
+- <strong>Transparentność</strong> - Jasne komunikowanie polityk i procedur</p>
+<h2 id="przeglad-praktyk-bezpieczenstwa">Przegląd Praktyk Bezpieczeństwa</h2>
+<h3 id="bezpieczenstwo-techniczne">🔒 Bezpieczeństwo Techniczne</h3>
+<p>Implementujemy wielowarstwowe zabezpieczenia techniczne na każdym etapie rozwoju i wdrażania projektów.</p>
+<h3 id="zgodnosc-prawna">📋 Zgodność Prawna</h3>
+<p>Zapewniamy pełną zgodność z obowiązującymi przepisami prawnymi, w tym RODO, ustawą o e-commerce i standardami dostępności.</p>
+<h3 id="ochrona-danych">🛡️ Ochrona Danych</h3>
+<p>Stosujemy zaawansowane metody szyfrowania i bezpiecznego przechowywania danych osobowych i biznesowych.</p>
+<h3 id="dostepnosc-cyfrowa">♿ Dostępność Cyfrowa</h3>
+<p>Wszystkie nasze projekty są zgodne ze standardami WCAG 2.1 AA, zapewniając dostępność dla osób z niepełnosprawnościami.</p>
+<h2 id="nawigacja">Nawigacja</h2>
+<ul>
+<li><a href="#praktyki-bezpieczenstwa">Praktyki Bezpieczeństwa</a> - Szczegółowe procedury zabezpieczeń</li>
+<li><a href="#zgodnosc-rodo-gdpr">Zgodność z RODO/GDPR</a> - Polityki ochrony danych osobowych</li>
+<li><a href="#przepisy-e-commerce">Przepisy E-commerce</a> - Zgodność z regulacjami handlu elektronicznego</li>
+<li><a href="#dostepnosc-wcag">Dostępność WCAG</a> - Standardy dostępności cyfrowej</li>
+</ul>
+<h2 id="praktyki-bezpieczenstwa">Praktyki Bezpieczeństwa</h2>
+<h3 id="bezpieczenstwo-aplikacji">Bezpieczeństwo Aplikacji</h3>
+<h4 id="secure-development-lifecycle-sdl">Secure Development Lifecycle (SDL)</h4>
+<p><strong>1. Planowanie Bezpieczeństwa</strong><br />
+- Analiza zagrożeń (Threat Modeling)<br />
+- Definicja wymagań bezpieczeństwa<br />
+- Wybór bezpiecznych technologii i frameworków<br />
+- Planowanie testów bezpieczeństwa</p>
+<p><strong>2. Bezpieczne Kodowanie</strong><br />
+- Stosowanie secure coding guidelines<br />
+- Input validation i sanitization<br />
+- Output encoding<br />
+- Proper error handling<br />
+- Secure authentication i authorization</p>
+<p><strong>3. Testowanie Bezpieczeństwa</strong><br />
+- Static Application Security Testing (SAST)<br />
+- Dynamic Application Security Testing (DAST)<br />
+- Interactive Application Security Testing (IAST)<br />
+- Penetration testing<br />
+- Dependency scanning</p>
+<p><strong>4. Bezpieczne Wdrożenie</strong><br />
+- Secure configuration management<br />
+- Infrastructure as Code (IaC) security<br />
+- Container security<br />
+- Network security<br />
+- Monitoring i logging</p>
+<h4 id="przykady-implementacji">Przykłady Implementacji</h4>
+<p><strong>Input Validation:</strong></p>
+<pre><code class="language-javascript">// Walidacja danych wejściowych
+const validator = require('validator');
+const xss = require('xss');
+
+function validateUserInput(input) {
+    // Sanityzacja XSS
+    const cleanInput = xss(input);
+
+    // Walidacja formatu
+    if (!validator.isLength(cleanInput, { min: 1, max: 255 })) {
+        throw new Error('Invalid input length');
+    }
+
+    // Walidacja znaków specjalnych
+    if (!validator.matches(cleanInput, /^[a-zA-Z0-9\s\-_.,!?]+$/)) {
+        throw new Error('Invalid characters detected');
+    }
+
+    return cleanInput;
+}
+</code></pre>
+<p><strong>SQL Injection Prevention:</strong></p>
+<pre><code class="language-javascript">// Użycie prepared statements
+const mysql = require('mysql2/promise');
+
+async function getUserById(userId) {
+    const connection = await mysql.createConnection(dbConfig);
+
+    // Bezpieczne zapytanie z parametrami
+    const [rows] = await connection.execute(
+        'SELECT * FROM users WHERE id = ? AND active = ?',
+        [userId, 1]
+    );
+
+    await connection.end();
+    return rows[0];
+}
+</code></pre>
+<p><strong>Authentication &amp; Authorization:</strong></p>
+<pre><code class="language-javascript">const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
+
+// Hashowanie haseł
+async function hashPassword(password) {
+    const saltRounds = 12;
+    return await bcrypt.hash(password, saltRounds);
+}
+
+// Weryfikacja JWT token
+function verifyToken(req, res, next) {
+    const token = req.headers['authorization']?.split(' ')[1];
+
+    if (!token) {
+        return res.status(401).json({ error: 'Access denied' });
+    }
+
+    try {
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        req.user = decoded;
+        next();
+    } catch (error) {
+        res.status(403).json({ error: 'Invalid token' });
+    }
+}
+</code></pre>
+<h3 id="bezpieczenstwo-infrastruktury">Bezpieczeństwo Infrastruktury</h3>
+<h4 id="cloud-security">Cloud Security</h4>
+<p><strong>AWS Security Best Practices:</strong><br />
+- <strong>IAM (Identity and Access Management)</strong> - Principle of least privilege<br />
+- <strong>VPC (Virtual Private Cloud)</strong> - Network isolation<br />
+- <strong>Security Groups</strong> - Firewall rules<br />
+- <strong>WAF (Web Application Firewall)</strong> - Protection against common attacks<br />
+- <strong>CloudTrail</strong> - Audit logging<br />
+- <strong>GuardDuty</strong> - Threat detection</p>
+<p><strong>Przykład konfiguracji Terraform:</strong></p>
+<pre><code class="language-hcl"># Security Group dla aplikacji web
+resource &quot;aws_security_group&quot; &quot;web_sg&quot; {
+  name_prefix = &quot;web-sg-&quot;
+  vpc_id      = aws_vpc.main.id
+
+  # HTTPS tylko z CloudFront
+  ingress {
+    from_port   = 443
+    to_port     = 443
+    protocol    = &quot;tcp&quot;
+    cidr_blocks = [&quot;0.0.0.0/0&quot;]
+  }
+
+  # HTTP redirect do HTTPS
+  ingress {
+    from_port   = 80
+    to_port     = 80
+    protocol    = &quot;tcp&quot;
+    cidr_blocks = [&quot;0.0.0.0/0&quot;]
+  }
+
+  # Brak bezpośredniego dostępu SSH
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = &quot;-1&quot;
+    cidr_blocks = [&quot;0.0.0.0/0&quot;]
+  }
+
+  tags = {
+    Name = &quot;web-security-group&quot;
+  }
+}
+
+# S3 Bucket z szyfrowaniem
+resource &quot;aws_s3_bucket&quot; &quot;app_data&quot; {
+  bucket = &quot;ecm-digital-app-data&quot;
+
+  server_side_encryption_configuration {
+    rule {
+      apply_server_side_encryption_by_default {
+        sse_algorithm = &quot;AES256&quot;
+      }
+    }
+  }
+
+  versioning {
+    enabled = true
+  }
+
+  lifecycle_rule {
+    enabled = true
+
+    noncurrent_version_expiration {
+      days = 90
+    }
+  }
+}
+</code></pre>
+<h4 id="container-security">Container Security</h4>
+<p><strong>Docker Security:</strong></p>
+<pre><code class="language-dockerfile"># Użycie oficjalnych, minimalnych obrazów
+FROM node:18-alpine
+
+# Utworzenie non-root user
+RUN addgroup -g 1001 -S nodejs
+RUN adduser -S nextjs -u 1001
+
+# Kopiowanie tylko niezbędnych plików
+COPY --chown=nextjs:nodejs package*.json ./
+RUN npm ci --only=production &amp;&amp; npm cache clean --force
+
+# Uruchomienie jako non-root user
+USER nextjs
+
+# Expose tylko niezbędnych portów
+EXPOSE 3000
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+  CMD curl -f http://localhost:3000/health || exit 1
+
+CMD [&quot;npm&quot;, &quot;start&quot;]
+</code></pre>
+<p><strong>Kubernetes Security:</strong></p>
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: secure-app
+spec:
+  securityContext:
+    runAsNonRoot: true
+    runAsUser: 1001
+    fsGroup: 1001
+  containers:
+  - name: app
+    image: ecm-digital/app:latest
+    securityContext:
+      allowPrivilegeEscalation: false
+      readOnlyRootFilesystem: true
+      capabilities:
+        drop:
+        - ALL
+    resources:
+      limits:
+        memory: &quot;512Mi&quot;
+        cpu: &quot;500m&quot;
+      requests:
+        memory: &quot;256Mi&quot;
+        cpu: &quot;250m&quot;
+</code></pre>
+<h3 id="monitoring-i-incident-response">Monitoring i Incident Response</h3>
+<h4 id="security-monitoring">Security Monitoring</h4>
+<p><strong>Log Analysis:</strong></p>
+<pre><code class="language-javascript">// Centralized logging z Winston
+const winston = require('winston');
+
+const logger = winston.createLogger({
+  level: 'info',
+  format: winston.format.combine(
+    winston.format.timestamp(),
+    winston.format.errors({ stack: true }),
+    winston.format.json()
+  ),
+  defaultMeta: { service: 'ecm-digital-app' },
+  transports: [
+    new winston.transports.File({ filename: 'error.log', level: 'error' }),
+    new winston.transports.File({ filename: 'combined.log' })
+  ]
+});
+
+// Security event logging
+function logSecurityEvent(event, details) {
+  logger.warn('SECURITY_EVENT', {
+    event: event,
+    details: details,
+    timestamp: new Date().toISOString(),
+    ip: details.ip,
+    userAgent: details.userAgent
+  });
+}
+
+// Przykład użycia
+app.use((req, res, next) =&gt; {
+  // Wykrywanie podejrzanych wzorców
+  if (req.path.includes('../') || req.path.includes('..\\')) {
+    logSecurityEvent('PATH_TRAVERSAL_ATTEMPT', {
+      path: req.path,
+      ip: req.ip,
+      userAgent: req.get('User-Agent')
+    });
+    return res.status(400).json({ error: 'Invalid request' });
+  }
+  next();
+});
+</code></pre>
+<h4 id="incident-response-plan">Incident Response Plan</h4>
+<p><strong>1. Wykrywanie (Detection)</strong><br />
+- Automated monitoring alerts<br />
+- Log analysis<br />
+- User reports<br />
+- Security scanning results</p>
+<p><strong>2. Analiza (Analysis)</strong><br />
+- Incident classification<br />
+- Impact assessment<br />
+- Root cause analysis<br />
+- Evidence collection</p>
+<p><strong>3. Containment</strong><br />
+- Immediate threat isolation<br />
+- System shutdown if necessary<br />
+- Access revocation<br />
+- Communication to stakeholders</p>
+<p><strong>4. Eradication</strong><br />
+- Remove malicious code/access<br />
+- Patch vulnerabilities<br />
+- Update security controls<br />
+- System hardening</p>
+<p><strong>5. Recovery</strong><br />
+- System restoration<br />
+- Monitoring for reoccurrence<br />
+- Gradual service restoration<br />
+- Performance validation</p>
+<p><strong>6. Lessons Learned</strong><br />
+- Post-incident review<br />
+- Process improvements<br />
+- Documentation updates<br />
+- Team training</p>
+<h3 id="backup-i-disaster-recovery">Backup i Disaster Recovery</h3>
+<h4 id="backup-strategy">Backup Strategy</h4>
+<p><strong>3-2-1 Backup Rule:</strong><br />
+- <strong>3</strong> kopie danych (oryginał + 2 backupy)<br />
+- <strong>2</strong> różne media przechowywania<br />
+- <strong>1</strong> kopia off-site</p>
+<p><strong>Automated Backup Script:</strong></p>
+<pre><code class="language-bash">#!/bin/bash
+
+# Database backup
+TIMESTAMP=$(date +&quot;%Y%m%d_%H%M%S&quot;)
+DB_BACKUP_DIR=&quot;/backups/database&quot;
+APP_BACKUP_DIR=&quot;/backups/application&quot;
+
+# MySQL backup
+mysqldump -u $DB_USER -p$DB_PASS $DB_NAME &gt; $DB_BACKUP_DIR/db_backup_$TIMESTAMP.sql
+
+# Compress backup
+gzip $DB_BACKUP_DIR/db_backup_$TIMESTAMP.sql
+
+# Application files backup
+tar -czf $APP_BACKUP_DIR/app_backup_$TIMESTAMP.tar.gz /var/www/html
+
+# Upload to S3
+aws s3 cp $DB_BACKUP_DIR/db_backup_$TIMESTAMP.sql.gz s3://ecm-digital-backups/database/
+aws s3 cp $APP_BACKUP_DIR/app_backup_$TIMESTAMP.tar.gz s3://ecm-digital-backups/application/
+
+# Cleanup old backups (keep 30 days)
+find $DB_BACKUP_DIR -name &quot;*.sql.gz&quot; -mtime +30 -delete
+find $APP_BACKUP_DIR -name &quot;*.tar.gz&quot; -mtime +30 -delete
+
+# Log backup completion
+echo &quot;$(date): Backup completed successfully&quot; &gt;&gt; /var/log/backup.log
+</code></pre>
+<h4 id="disaster-recovery">Disaster Recovery</h4>
+<p><strong>RTO/RPO Targets:</strong><br />
+- <strong>RTO (Recovery Time Objective):</strong> 4 godziny<br />
+- <strong>RPO (Recovery Point Objective):</strong> 1 godzina</p>
+<p><strong>DR Procedures:</strong><br />
+1. <strong>Assessment</strong> - Ocena skali awarii<br />
+2. <strong>Notification</strong> - Powiadomienie zespołu DR<br />
+3. <strong>Activation</strong> - Uruchomienie procedur DR<br />
+4. <strong>Recovery</strong> - Przywracanie systemów<br />
+5. <strong>Testing</strong> - Weryfikacja funkcjonalności<br />
+6. <strong>Communication</strong> - Informowanie stakeholderów</p>
+<h2 id="zgodnosc-z-rodogdpr">Zgodność z RODO/GDPR</h2>
+<h3 id="podstawy-prawne">Podstawy Prawne</h3>
+<h4 id="kluczowe-zasady-rodo">Kluczowe Zasady RODO</h4>
+<p><strong>1. Zgodność z prawem (Lawfulness)</strong><br />
+- Zgoda osoby, której dane dotyczą<br />
+- Wykonanie umowy<br />
+- Wypełnienie obowiązku prawnego<br />
+- Ochrona żywotnych interesów<br />
+- Wykonanie zadania w interesie publicznym<br />
+- Prawnie uzasadniony interes</p>
+<p><strong>2. Rzetelność (Fairness)</strong><br />
+- Transparentne przetwarzanie<br />
+- Jasne informowanie o celach<br />
+- Uczciwe praktyki zbierania danych</p>
+<p><strong>3. Przejrzystość (Transparency)</strong><br />
+- Jasne i zrozumiałe informacje<br />
+- Dostępne polityki prywatności<br />
+- Regularne komunikaty o przetwarzaniu</p>
+<p><strong>4. Ograniczenie celu (Purpose Limitation)</strong><br />
+- Określone, wyraźne i prawnie uzasadnione cele<br />
+- Brak przetwarzania niezgodnego z pierwotnym celem</p>
+<p><strong>5. Minimalizacja danych (Data Minimisation)</strong><br />
+- Tylko niezbędne dane<br />
+- Proporcjonalne do celu przetwarzania</p>
+<p><strong>6. Dokładność (Accuracy)</strong><br />
+- Aktualne i poprawne dane<br />
+- Mechanizmy korekty błędów</p>
+<p><strong>7. Ograniczenie przechowywania (Storage Limitation)</strong><br />
+- Przechowywanie tylko przez niezbędny czas<br />
+- Jasne polityki retencji danych</p>
+<p><strong>8. Integralność i poufność (Integrity and Confidentiality)</strong><br />
+- Odpowiednie zabezpieczenia techniczne<br />
+- Ochrona przed nieuprawnionym dostępem</p>
+<h3 id="implementacja-rodo-w-projektach">Implementacja RODO w Projektach</h3>
+<h4 id="privacy-by-design">Privacy by Design</h4>
+<p><strong>Przykład implementacji zgody:</strong></p>
+<pre><code class="language-javascript">// Consent Management System
+class ConsentManager {
+  constructor() {
+    this.consentTypes = {
+      necessary: { required: true, description: 'Niezbędne do funkcjonowania' },
+      analytics: { required: false, description: 'Analityka i statystyki' },
+      marketing: { required: false, description: 'Marketing i personalizacja' },
+      social: { required: false, description: 'Media społecznościowe' }
+    };
+  }
+
+  // Sprawdzenie zgody
+  hasConsent(type) {
+    const consent = localStorage.getItem('user-consent');
+    if (!consent) return type === 'necessary';
+
+    const consentData = JSON.parse(consent);
+    return consentData[type] === true;
+  }
+
+  // Zapisanie zgody
+  saveConsent(consents) {
+    const consentData = {
+      ...consents,
+      necessary: true, // Zawsze wymagane
+      timestamp: new Date().toISOString(),
+      version: '1.0'
+    };
+
+    localStorage.setItem('user-consent', JSON.stringify(consentData));
+    this.updateTrackingScripts(consentData);
+  }
+
+  // Aktualizacja skryptów śledzących
+  updateTrackingScripts(consents) {
+    // Google Analytics
+    if (consents.analytics) {
+      gtag('consent', 'update', {
+        'analytics_storage': 'granted'
+      });
+    } else {
+      gtag('consent', 'update', {
+        'analytics_storage': 'denied'
+      });
+    }
+
+    // Facebook Pixel
+    if (consents.marketing) {
+      fbq('consent', 'grant');
+    } else {
+      fbq('consent', 'revoke');
+    }
+  }
+}
+</code></pre>
+<h4 id="data-subject-rights">Data Subject Rights</h4>
+<p><strong>Implementacja praw osoby, której dane dotyczą:</strong></p>
+<pre><code class="language-javascript">// System obsługi praw RODO
+class GDPRRightsHandler {
+
+  // Prawo dostępu (Art. 15)
+  async handleAccessRequest(userId) {
+    const userData = await this.collectUserData(userId);
+
+    return {
+      personalData: userData.profile,
+      processingPurposes: userData.purposes,
+      dataCategories: userData.categories,
+      recipients: userData.recipients,
+      retentionPeriod: userData.retention,
+      rights: this.getUserRights(),
+      dataSource: userData.source
+    };
+  }
+
+  // Prawo do sprostowania (Art. 16)
+  async handleRectificationRequest(userId, corrections) {
+    const validatedData = this.validateCorrections(corrections);
+    await this.updateUserData(userId, validatedData);
+
+    return {
+      status: 'completed',
+      updatedFields: Object.keys(validatedData),
+      timestamp: new Date().toISOString()
+    };
+  }
+
+  // Prawo do usunięcia (Art. 17)
+  async handleErasureRequest(userId, reason) {
+    // Sprawdzenie czy można usunąć dane
+    const canErase = await this.checkErasureConditions(userId, reason);
+
+    if (!canErase.allowed) {
+      return {
+        status: 'rejected',
+        reason: canErase.reason
+      };
+    }
+
+    // Usunięcie danych
+    await this.eraseUserData(userId);
+
+    return {
+      status: 'completed',
+      erasedData: canErase.dataTypes,
+      timestamp: new Date().toISOString()
+    };
+  }
+
+  // Prawo do ograniczenia przetwarzania (Art. 18)
+  async handleRestrictionRequest(userId, reason) {
+    await this.restrictProcessing(userId, reason);
+
+    return {
+      status: 'restricted',
+      reason: reason,
+      restrictedActivities: ['marketing', 'profiling'],
+      timestamp: new Date().toISOString()
+    };
+  }
+
+  // Prawo do przenoszenia danych (Art. 20)
+  async handlePortabilityRequest(userId, format = 'json') {
+    const portableData = await this.getPortableData(userId);
+
+    switch (format) {
+      case 'json':
+        return JSON.stringify(portableData, null, 2);
+      case 'csv':
+        return this.convertToCSV(portableData);
+      case 'xml':
+        return this.convertToXML(portableData);
+      default:
+        throw new Error('Unsupported format');
+    }
+  }
+}
+</code></pre>
+<h4 id="data-protection-impact-assessment-dpia">Data Protection Impact Assessment (DPIA)</h4>
+<p><strong>Template DPIA:</strong></p>
+<pre><code class="language-markdown"># Ocena Skutków dla Ochrony Danych (DPIA)
+
+## 1. Opis Przetwarzania
+- **Nazwa projektu:** [Nazwa]
+- **Opis:** [Szczegółowy opis przetwarzania]
+- **Cele:** [Cele przetwarzania danych]
+- **Podstawa prawna:** [Art. 6 RODO]
+
+## 2. Dane Osobowe
+- **Kategorie danych:** [Lista kategorii]
+- **Źródła danych:** [Skąd pochodzą dane]
+- **Odbiorcy:** [Kto otrzymuje dane]
+- **Okres przechowywania:** [Jak długo]
+
+## 3. Analiza Ryzyka
+- **Zidentyfikowane zagrożenia:** [Lista zagrożeń]
+- **Prawdopodobieństwo:** [Wysokie/Średnie/Niskie]
+- **Wpływ:** [Wysokie/Średnie/Niskie]
+- **Poziom ryzyka:** [Wysokie/Średnie/Niskie]
+
+## 4. Środki Zabezpieczające
+- **Techniczne:** [Lista środków technicznych]
+- **Organizacyjne:** [Lista środków organizacyjnych]
+- **Prawne:** [Umowy, zgody, polityki]
+
+## 5. Konsultacje
+- **IOD:** [Opinia Inspektora Ochrony Danych]
+- **Osoby, których dane dotyczą:** [Konsultacje z użytkownikami]
+- **Organy nadzorcze:** [Jeśli wymagane]
+</code></pre>
+<h3 id="polityki-i-procedury">Polityki i Procedury</h3>
+<h4 id="polityka-prywatnosci-template">Polityka Prywatności Template</h4>
+<pre><code class="language-html">&lt;!-- Przykład sekcji polityki prywatności --&gt;
+&lt;section id=&quot;privacy-policy&quot;&gt;
+  &lt;h2&gt;Polityka Prywatności&lt;/h2&gt;
+
+  &lt;h3&gt;1. Administrator Danych&lt;/h3&gt;
+  &lt;p&gt;Administratorem Państwa danych osobowych jest ECM Digital...&lt;/p&gt;
+
+  &lt;h3&gt;2. Cele i Podstawy Prawne&lt;/h3&gt;
+  &lt;table&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Cel przetwarzania&lt;/th&gt;
+      &lt;th&gt;Podstawa prawna&lt;/th&gt;
+      &lt;th&gt;Okres przechowywania&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Realizacja umowy&lt;/td&gt;
+      &lt;td&gt;Art. 6 ust. 1 lit. b RODO&lt;/td&gt;
+      &lt;td&gt;Do zakończenia umowy + 3 lata&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Marketing bezpośredni&lt;/td&gt;
+      &lt;td&gt;Art. 6 ust. 1 lit. f RODO&lt;/td&gt;
+      &lt;td&gt;Do cofnięcia sprzeciwu&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/table&gt;
+
+  &lt;h3&gt;3. Prawa Osoby, której Dane Dotyczą&lt;/h3&gt;
+  &lt;ul&gt;
+    &lt;li&gt;Prawo dostępu do danych (Art. 15 RODO)&lt;/li&gt;
+    &lt;li&gt;Prawo do sprostowania (Art. 16 RODO)&lt;/li&gt;
+    &lt;li&gt;Prawo do usunięcia (Art. 17 RODO)&lt;/li&gt;
+    &lt;li&gt;Prawo do ograniczenia przetwarzania (Art. 18 RODO)&lt;/li&gt;
+    &lt;li&gt;Prawo do przenoszenia danych (Art. 20 RODO)&lt;/li&gt;
+    &lt;li&gt;Prawo sprzeciwu (Art. 21 RODO)&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/section&gt;
+</code></pre>
+<h2 id="przepisy-e-commerce">Przepisy E-commerce</h2>
+<h3 id="zgodnosc-z-ustawa-o-swiadczeniu-usug-droga-elektroniczna">Zgodność z Ustawą o Świadczeniu Usług Drogą Elektroniczną</h3>
+<h4 id="wymagane-informacje">Wymagane Informacje</h4>
+<p><strong>Dane identyfikacyjne usługodawcy:</strong><br />
+- Nazwa (firma) i adres<br />
+- Adres poczty elektronicznej<br />
+- Numer telefonu<br />
+- NIP, REGON, KRS<br />
+- Numer wpisu do rejestru działalności regulowanej</p>
+<p><strong>Informacje o usłudze:</strong><br />
+- Opis usługi<br />
+- Warunki świadczenia<br />
+- Cena (z podatkami)<br />
+- Koszty dodatkowe<br />
+- Sposób płatności<br />
+- Czas realizacji</p>
+<h4 id="przykad-implementacji">Przykład implementacji:</h4>
+<pre><code class="language-html">&lt;!-- Footer z wymaganymi informacjami --&gt;
+&lt;footer class=&quot;legal-footer&quot;&gt;
+  &lt;div class=&quot;company-info&quot;&gt;
+    &lt;h3&gt;ECM Digital&lt;/h3&gt;
+    &lt;p&gt;ul. Przykładowa 123, 00-001 Warszawa&lt;/p&gt;
+    &lt;p&gt;NIP: 1234567890&lt;/p&gt;
+    &lt;p&gt;REGON: 123456789&lt;/p&gt;
+    &lt;p&gt;KRS: 0000123456&lt;/p&gt;
+    &lt;p&gt;Email: hello@ecm-digital.com&lt;/p&gt;
+    &lt;p&gt;Tel: +48 535 330 323&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;legal-links&quot;&gt;
+    &lt;a href=&quot;/regulamin&quot;&gt;Regulamin&lt;/a&gt;
+    &lt;a href=&quot;/polityka-prywatnosci&quot;&gt;Polityka Prywatności&lt;/a&gt;
+    &lt;a href=&quot;/polityka-cookies&quot;&gt;Polityka Cookies&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/footer&gt;
+</code></pre>
+<h3 id="regulamin-swiadczenia-usug">Regulamin Świadczenia Usług</h3>
+<h4 id="template-regulaminu">Template Regulaminu</h4>
+<pre><code class="language-markdown"># REGULAMIN ŚWIADCZENIA USŁUG DROGĄ ELEKTRONICZNĄ
+
+## § 1. POSTANOWIENIA OGÓLNE
+
+1. Niniejszy Regulamin określa zasady świadczenia usług drogą elektroniczną przez ECM Digital.
+2. Regulamin jest dostępny bezpłatnie na stronie internetowej.
+3. Korzystanie z usług oznacza akceptację Regulaminu.
+
+## § 2. DEFINICJE
+
+1. **Usługodawca** - ECM Digital z siedzibą w Warszawie
+2. **Usługobiorca** - osoba fizyczna, prawna lub jednostka organizacyjna
+3. **Usługa** - świadczenie usług IT drogą elektroniczną
+
+## § 3. RODZAJE USŁUG
+
+1. Tworzenie stron internetowych
+2. Projektowanie sklepów e-commerce
+3. Rozwój aplikacji MVP
+4. Audyty UX/UI
+5. Automatyzacje procesów biznesowych
+
+## § 4. WARUNKI ŚWIADCZENIA USŁUG
+
+1. Usługi świadczone są na podstawie zawartej umowy
+2. Wymagane jest podanie prawdziwych danych kontaktowych
+3. Usługobiorca zobowiązuje się do współpracy w realizacji projektu
+
+## § 5. PŁATNOŚCI
+
+1. Ceny podane są w złotych polskich brutto
+2. Płatność następuje przelewem bankowym
+3. Termin płatności: 14 dni od daty wystawienia faktury
+
+## § 6. ODPOWIEDZIALNOŚĆ
+
+1. Usługodawca ponosi odpowiedzialność zgodnie z przepisami prawa
+2. Odpowiedzialność ograniczona do wysokości wynagrodzenia za usługę
+3. Wyłączenie odpowiedzialności za szkody pośrednie
+
+## § 7. REKLAMACJE
+
+1. Reklamacje można składać na adres email: hello@ecm-digital.com
+2. Termin rozpatrzenia: 14 dni roboczych
+3. Odpowiedź zostanie udzielona na adres email podany w reklamacji
+
+## § 8. OCHRONA DANYCH OSOBOWYCH
+
+1. Dane osobowe przetwarzane zgodnie z RODO
+2. Szczegóły w Polityce Prywatności
+3. Prawo do kontroli i korekty danych
+
+## § 9. POSTANOWIENIA KOŃCOWE
+
+1. Regulamin może być zmieniony z ważnych przyczyn
+2. O zmianach informujemy z 7-dniowym wyprzedzeniem
+3. Prawo właściwe: prawo polskie
+4. Sąd właściwy: sąd dla siedziby Usługodawcy
+</code></pre>
+<h3 id="bezpieczenstwo-patnosci">Bezpieczeństwo Płatności</h3>
+<h4 id="pci-dss-compliance">PCI DSS Compliance</h4>
+<p><strong>Wymagania PCI DSS:</strong><br />
+1. <strong>Firewall</strong> - Ochrona danych posiadaczy kart<br />
+2. <strong>Hasła</strong> - Zmiana domyślnych haseł systemowych<br />
+3. <strong>Ochrona danych</strong> - Zabezpieczenie przechowywanych danych<br />
+4. <strong>Szyfrowanie</strong> - Szyfrowanie transmisji danych<br />
+5. <strong>Antywirus</strong> - Aktualne oprogramowanie antywirusowe<br />
+6. <strong>Systemy</strong> - Bezpieczne systemy i aplikacje<br />
+7. <strong>Dostęp</strong> - Ograniczenie dostępu do danych<br />
+8. <strong>Identyfikacja</strong> - Unikalne ID dla dostępu do systemów<br />
+9. <strong>Dostęp fizyczny</strong> - Ograniczenie fizycznego dostępu<br />
+10. <strong>Monitoring</strong> - Śledzenie dostępu do zasobów sieciowych<br />
+11. <strong>Testy</strong> - Regularne testy systemów bezpieczeństwa<br />
+12. <strong>Polityki</strong> - Polityki bezpieczeństwa informacji</p>
+<h4 id="implementacja-bezpiecznych-patnosci">Implementacja Bezpiecznych Płatności</h4>
+<pre><code class="language-javascript">// Integracja z Stripe (PCI DSS compliant)
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+
+class SecurePaymentProcessor {
+
+  // Tworzenie Payment Intent
+  async createPaymentIntent(amount, currency = 'pln', metadata = {}) {
+    try {
+      const paymentIntent = await stripe.paymentIntents.create({
+        amount: amount * 100, // Stripe używa groszy
+        currency: currency,
+        metadata: {
+          ...metadata,
+          timestamp: new Date().toISOString()
+        },
+        // Automatyczne potwierdzenie płatności
+        confirmation_method: 'manual',
+        confirm: true,
+        // Zwrot URL w przypadku wymagania dodatkowej autoryzacji
+        return_url: `${process.env.DOMAIN}/payment/confirm`
+      });
+
+      return {
+        clientSecret: paymentIntent.client_secret,
+        status: paymentIntent.status
+      };
+    } catch (error) {
+      this.logPaymentError(error);
+      throw new Error('Payment processing failed');
+    }
+  }
+
+  // Weryfikacja webhook od Stripe
+  verifyWebhook(payload, signature) {
+    try {
+      const event = stripe.webhooks.constructEvent(
+        payload,
+        signature,
+        process.env.STRIPE_WEBHOOK_SECRET
+      );
+      return event;
+    } catch (error) {
+      this.logSecurityEvent('WEBHOOK_VERIFICATION_FAILED', {
+        error: error.message,
+        signature: signature
+      });
+      throw new Error('Webhook verification failed');
+    }
+  }
+
+  // Obsługa webhook events
+  async handleWebhookEvent(event) {
+    switch (event.type) {
+      case 'payment_intent.succeeded':
+        await this.handleSuccessfulPayment(event.data.object);
+        break;
+      case 'payment_intent.payment_failed':
+        await this.handleFailedPayment(event.data.object);
+        break;
+      default:
+        console.log(`Unhandled event type: ${event.type}`);
+    }
+  }
+
+  // Logowanie błędów płatności
+  logPaymentError(error) {
+    logger.error('PAYMENT_ERROR', {
+      error: error.message,
+      code: error.code,
+      type: error.type,
+      timestamp: new Date().toISOString()
+    });
+  }
+}
+</code></pre>
+<h2 id="dostepnosc-wcag">Dostępność WCAG</h2>
+<h3 id="standardy-wcag-21-aa">Standardy WCAG 2.1 AA</h3>
+<h4 id="zasady-dostepnosci">Zasady Dostępności</h4>
+<p><strong>1. Percepcyjność (Perceivable)</strong><br />
+- Alternatywy tekstowe dla treści nietekstowych<br />
+- Napisy dla multimediów<br />
+- Odpowiedni kontrast kolorów<br />
+- Możliwość powiększenia tekstu do 200%</p>
+<p><strong>2. Funkcjonalność (Operable)</strong><br />
+- Dostępność z klawiatury<br />
+- Brak treści powodujących napady padaczkowe<br />
+- Wystarczający czas na wykonanie zadań<br />
+- Pomoc w nawigacji</p>
+<p><strong>3. Zrozumiałość (Understandable)</strong><br />
+- Czytelny i zrozumiały tekst<br />
+- Przewidywalna funkcjonalność<br />
+- Pomoc w unikaniu i poprawianiu błędów</p>
+<p><strong>4. Solidność (Robust)</strong><br />
+- Kompatybilność z technologiami wspomagającymi<br />
+- Poprawny kod HTML<br />
+- Semantyczne znaczniki</p>
+<h4 id="implementacja-wcag">Implementacja WCAG</h4>
+<p><strong>Semantic HTML:</strong></p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;pl&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+  &lt;title&gt;ECM Digital - Dostępna Strona Internetowa&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;!-- Skip link dla użytkowników czytników ekranu --&gt;
+  &lt;a href=&quot;#main-content&quot; class=&quot;skip-link&quot;&gt;Przejdź do głównej treści&lt;/a&gt;
+
+  &lt;!-- Główna nawigacja --&gt;
+  &lt;nav role=&quot;navigation&quot; aria-label=&quot;Główna nawigacja&quot;&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;/&quot; aria-current=&quot;page&quot;&gt;Strona główna&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;/uslugi&quot;&gt;Usługi&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;/portfolio&quot;&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;/kontakt&quot;&gt;Kontakt&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/nav&gt;
+
+  &lt;!-- Główna treść --&gt;
+  &lt;main id=&quot;main-content&quot; role=&quot;main&quot;&gt;
+    &lt;h1&gt;Witamy w ECM Digital&lt;/h1&gt;
+
+    &lt;!-- Formularz kontaktowy --&gt;
+    &lt;form action=&quot;/kontakt&quot; method=&quot;post&quot; novalidate&gt;
+      &lt;fieldset&gt;
+        &lt;legend&gt;Dane kontaktowe&lt;/legend&gt;
+
+        &lt;div class=&quot;form-group&quot;&gt;
+          &lt;label for=&quot;name&quot;&gt;Imię i nazwisko *&lt;/label&gt;
+          &lt;input 
+            type=&quot;text&quot; 
+            id=&quot;name&quot; 
+            name=&quot;name&quot; 
+            required 
+            aria-describedby=&quot;name-error&quot;
+            aria-invalid=&quot;false&quot;
+          &gt;
+          &lt;div id=&quot;name-error&quot; class=&quot;error-message&quot; aria-live=&quot;polite&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;form-group&quot;&gt;
+          &lt;label for=&quot;email&quot;&gt;Adres email *&lt;/label&gt;
+          &lt;input 
+            type=&quot;email&quot; 
+            id=&quot;email&quot; 
+            name=&quot;email&quot; 
+            required 
+            aria-describedby=&quot;email-help email-error&quot;
+            aria-invalid=&quot;false&quot;
+          &gt;
+          &lt;div id=&quot;email-help&quot; class=&quot;help-text&quot;&gt;
+            Podaj prawidłowy adres email, np. jan@example.com
+          &lt;/div&gt;
+          &lt;div id=&quot;email-error&quot; class=&quot;error-message&quot; aria-live=&quot;polite&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;form-group&quot;&gt;
+          &lt;label for=&quot;message&quot;&gt;Wiadomość *&lt;/label&gt;
+          &lt;textarea 
+            id=&quot;message&quot; 
+            name=&quot;message&quot; 
+            rows=&quot;5&quot; 
+            required
+            aria-describedby=&quot;message-error&quot;
+            aria-invalid=&quot;false&quot;
+          &gt;&lt;/textarea&gt;
+          &lt;div id=&quot;message-error&quot; class=&quot;error-message&quot; aria-live=&quot;polite&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/fieldset&gt;
+
+      &lt;button type=&quot;submit&quot; class=&quot;btn-primary&quot;&gt;
+        Wyślij wiadomość
+        &lt;span class=&quot;sr-only&quot;&gt;(formularz kontaktowy)&lt;/span&gt;
+      &lt;/button&gt;
+    &lt;/form&gt;
+  &lt;/main&gt;
+
+  &lt;!-- Stopka --&gt;
+  &lt;footer role=&quot;contentinfo&quot;&gt;
+    &lt;p&gt;&amp;copy; 2025 ECM Digital. Wszystkie prawa zastrzeżone.&lt;/p&gt;
+  &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p><strong>CSS dla Dostępności:</strong></p>
+<pre><code class="language-css">/* Skip link */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: #000;
+  color: #fff;
+  padding: 8px;
+  text-decoration: none;
+  z-index: 1000;
+}
+
+.skip-link:focus {
+  top: 6px;
+}
+
+/* Screen reader only content */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Focus indicators */
+a:focus,
+button:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 3px solid #005fcc;
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .btn-primary {
+    background: #000;
+    color: #fff;
+    border: 2px solid #fff;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Color contrast ratios */
+.text-primary { color: #1a1a1a; } /* 16.94:1 ratio */
+.text-secondary { color: #4a4a4a; } /* 9.64:1 ratio */
+.link-primary { color: #0066cc; } /* 7.73:1 ratio */
+
+/* Error states */
+.error-message {
+  color: #d63384;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+input[aria-invalid=&quot;true&quot;],
+textarea[aria-invalid=&quot;true&quot;] {
+  border-color: #d63384;
+  box-shadow: 0 0 0 0.2rem rgba(214, 51, 132, 0.25);
+}
+</code></pre>
+<p><strong>JavaScript dla Dostępności:</strong></p>
+<pre><code class="language-javascript">// Accessible form validation
+class AccessibleFormValidator {
+  constructor(form) {
+    this.form = form;
+    this.init();
+  }
+
+  init() {
+    this.form.addEventListener('submit', this.handleSubmit.bind(this));
+
+    // Real-time validation
+    const inputs = this.form.querySelectorAll('input, textarea');
+    inputs.forEach(input =&gt; {
+      input.addEventListener('blur', () =&gt; this.validateField(input));
+      input.addEventListener('input', () =&gt; this.clearErrors(input));
+    });
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+
+    const isValid = this.validateForm();
+    if (isValid) {
+      this.submitForm();
+    } else {
+      // Focus first invalid field
+      const firstError = this.form.querySelector('[aria-invalid=&quot;true&quot;]');
+      if (firstError) {
+        firstError.focus();
+      }
+    }
+  }
+
+  validateField(field) {
+    const value = field.value.trim();
+    const fieldName = field.name;
+    let isValid = true;
+    let errorMessage = '';
+
+    // Required field validation
+    if (field.hasAttribute('required') &amp;&amp; !value) {
+      isValid = false;
+      errorMessage = `Pole ${this.getFieldLabel(field)} jest wymagane.`;
+    }
+
+    // Email validation
+    if (field.type === 'email' &amp;&amp; value &amp;&amp; !this.isValidEmail(value)) {
+      isValid = false;
+      errorMessage = 'Podaj prawidłowy adres email.';
+    }
+
+    this.setFieldValidity(field, isValid, errorMessage);
+    return isValid;
+  }
+
+  setFieldValidity(field, isValid, errorMessage) {
+    const errorElement = document.getElementById(`${field.name}-error`);
+
+    field.setAttribute('aria-invalid', !isValid);
+
+    if (errorElement) {
+      errorElement.textContent = errorMessage;
+      errorElement.style.display = isValid ? 'none' : 'block';
+    }
+  }
+
+  clearErrors(field) {
+    if (field.getAttribute('aria-invalid') === 'true') {
+      this.validateField(field);
+    }
+  }
+
+  getFieldLabel(field) {
+    const label = this.form.querySelector(`label[for=&quot;${field.id}&quot;]`);
+    return label ? label.textContent.replace('*', '').trim() : field.name;
+  }
+
+  isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  }
+
+  validateForm() {
+    const fields = this.form.querySelectorAll('input, textarea');
+    let isFormValid = true;
+
+    fields.forEach(field =&gt; {
+      const isFieldValid = this.validateField(field);
+      if (!isFieldValid) {
+        isFormValid = false;
+      }
+    });
+
+    return isFormValid;
+  }
+
+  async submitForm() {
+    try {
+      const formData = new FormData(this.form);
+      const response = await fetch(this.form.action, {
+        method: 'POST',
+        body: formData
+      });
+
+      if (response.ok) {
+        this.showSuccessMessage();
+      } else {
+        this.showErrorMessage('Wystąpił błąd podczas wysyłania formularza.');
+      }
+    } catch (error) {
+      this.showErrorMessage('Wystąpił błąd połączenia.');
+    }
+  }
+
+  showSuccessMessage() {
+    const message = document.createElement('div');
+    message.setAttribute('role', 'alert');
+    message.setAttribute('aria-live', 'polite');
+    message.className = 'success-message';
+    message.textContent = 'Formularz został wysłany pomyślnie!';
+
+    this.form.insertBefore(message, this.form.firstChild);
+    message.focus();
+  }
+
+  showErrorMessage(text) {
+    const message = document.createElement('div');
+    message.setAttribute('role', 'alert');
+    message.setAttribute('aria-live', 'assertive');
+    message.className = 'error-message';
+    message.textContent = text;
+
+    this.form.insertBefore(message, this.form.firstChild);
+    message.focus();
+  }
+}
+
+// Initialize accessible forms
+document.addEventListener('DOMContentLoaded', () =&gt; {
+  const forms = document.querySelectorAll('form');
+  forms.forEach(form =&gt; {
+    new AccessibleFormValidator(form);
+  });
+});
+</code></pre>
+<h3 id="narzedzia-testowania-dostepnosci">Narzędzia Testowania Dostępności</h3>
+<h4 id="automated-testing">Automated Testing</h4>
+<p><strong>axe-core Integration:</strong></p>
+<pre><code class="language-javascript">// Automated accessibility testing
+const axe = require('axe-core');
+
+async function runAccessibilityTests() {
+  try {
+    const results = await axe.run();
+
+    if (results.violations.length &gt; 0) {
+      console.log('Accessibility violations found:');
+      results.violations.forEach(violation =&gt; {
+        console.log(`- ${violation.description}`);
+        console.log(`  Impact: ${violation.impact}`);
+        console.log(`  Help: ${violation.helpUrl}`);
+
+        violation.nodes.forEach(node =&gt; {
+          console.log(`  Element: ${node.target}`);
+          console.log(`  HTML: ${node.html}`);
+        });
+      });
+    } else {
+      console.log('No accessibility violations found!');
+    }
+
+    return results;
+  } catch (error) {
+    console.error('Error running accessibility tests:', error);
+  }
+}
+
+// Run tests on page load
+if (typeof window !== 'undefined') {
+  window.addEventListener('load', runAccessibilityTests);
+}
+</code></pre>
+<h4 id="manual-testing-checklist">Manual Testing Checklist</h4>
+<p><strong>Keyboard Navigation:</strong><br />
+- [ ] Wszystkie interaktywne elementy dostępne z klawiatury<br />
+- [ ] Logiczna kolejność tabulacji<br />
+- [ ] Widoczne wskaźniki focus<br />
+- [ ] Możliwość zamknięcia modali klawiszem Escape<br />
+- [ ] Skip links działają poprawnie</p>
+<p><strong>Screen Reader Testing:</strong><br />
+- [ ] Nagłówki w logicznej hierarchii (h1, h2, h3...)<br />
+- [ ] Alt text dla wszystkich obrazów<br />
+- [ ] Labels dla wszystkich pól formularza<br />
+- [ ] ARIA labels gdzie potrzebne<br />
+- [ ] Live regions dla dynamicznych treści</p>
+<p><strong>Color and Contrast:</strong><br />
+- [ ] Kontrast tekstu minimum 4.5:1 (AA)<br />
+- [ ] Kontrast dużego tekstu minimum 3:1 (AA)<br />
+- [ ] Informacje nie przekazywane tylko kolorem<br />
+- [ ] Wsparcie dla high contrast mode</p>
+<p><strong>Responsive and Zoom:</strong><br />
+- [ ] Tekst czytelny przy 200% powiększeniu<br />
+- [ ] Brak poziomego scrollowania przy powiększeniu<br />
+- [ ] Funkcjonalność zachowana na urządzeniach mobilnych<br />
+- [ ] Touch targets minimum 44x44px</p>
+<h3 id="certyfikacja-i-audyty">Certyfikacja i Audyty</h3>
+<h4 id="proces-certyfikacji-wcag">Proces Certyfikacji WCAG</h4>
+<p><strong>1. Wstępny Audyt</strong><br />
+- Automated testing (axe, WAVE)<br />
+- Manual testing checklist<br />
+- Screen reader testing<br />
+- Keyboard navigation testing</p>
+<p><strong>2. Szczegółowa Ocena</strong><br />
+- Expert review przez specjalistę dostępności<br />
+- User testing z osobami z niepełnosprawnościami<br />
+- Dokumentacja znalezionych problemów<br />
+- Plan naprawczy</p>
+<p><strong>3. Implementacja Poprawek</strong><br />
+- Naprawa zidentyfikowanych problemów<br />
+- Re-testing po implementacji<br />
+- Dokumentacja zmian<br />
+- Training zespołu</p>
+<p><strong>4. Certyfikacja</strong><br />
+- Finalna ocena zgodności<br />
+- Wystawienie certyfikatu WCAG 2.1 AA<br />
+- Dokumentacja compliance<br />
+- Plan monitorowania</p>
+<h4 id="accessibility-statement-template">Accessibility Statement Template</h4>
+<pre><code class="language-html">&lt;div class=&quot;accessibility-statement&quot;&gt;
+  &lt;h2&gt;Deklaracja Dostępności&lt;/h2&gt;
+
+  &lt;p&gt;ECM Digital zobowiązuje się do zapewnienia dostępności swojej strony internetowej zgodnie z ustawą z dnia 4 kwietnia 2019 r. o dostępności cyfrowej stron internetowych i aplikacji mobilnych podmiotów publicznych.&lt;/p&gt;
+
+  &lt;h3&gt;Stan zgodności&lt;/h3&gt;
+  &lt;p&gt;Ta strona internetowa jest &lt;strong&gt;częściowo zgodna&lt;/strong&gt; z WCAG 2.1 poziom AA ze względu na niezgodności wymienione poniżej.&lt;/p&gt;
+
+  &lt;h3&gt;Treści niedostępne&lt;/h3&gt;
+  &lt;ul&gt;
+    &lt;li&gt;Niektóre starsze dokumenty PDF mogą nie być w pełni dostępne&lt;/li&gt;
+    &lt;li&gt;Treści wideo mogą nie mieć napisów (w trakcie dodawania)&lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;h3&gt;Przygotowanie deklaracji dostępności&lt;/h3&gt;
+  &lt;p&gt;Niniejsza deklaracja została sporządzona dnia 15 stycznia 2025 r.&lt;/p&gt;
+  &lt;p&gt;Deklaracja została sporządzona na podstawie samooceny przeprowadzonej przez podmiot publiczny.&lt;/p&gt;
+
+  &lt;h3&gt;Informacje zwrotne i dane kontaktowe&lt;/h3&gt;
+  &lt;p&gt;W przypadku problemów z dostępnością strony internetowej prosimy o kontakt:&lt;/p&gt;
+  &lt;ul&gt;
+    &lt;li&gt;Email: &lt;a href=&quot;mailto:dostepnosc@ecm-digital.com&quot;&gt;dostepnosc@ecm-digital.com&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;Telefon: &lt;a href=&quot;tel:+48535330323&quot;&gt;+48 535 330 323&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;p&gt;Odpowiedź na zgłoszenie zostanie udzielona w terminie 7 dni roboczych.&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+<hr />
+<p><em>Ostatnia aktualizacja: Styczeń 2025</em><br />
+<em>Wersja dokumentu: 1.0</em></p>
+</article>
+</div>
+</body></html>

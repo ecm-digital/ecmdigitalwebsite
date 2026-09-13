@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proces Tworzenia Prototypów MVP | ECM Digital – Baza wiedzy</title>
+<meta name="description" content=" Proces Tworzenia Prototypów MVP Wprowadzenie Proces tworzenia prototypów MVP (Minimum Viable Product) w ECM Digital został zaprojektowany dla szybkie">
+<link rel="canonical" href="https://www.ecm-digital.com/dokumentacja-ecm/proces-wspolpracy/prototypy-mvp/index.html">
+<link rel="stylesheet" href="../../docs-styles.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <a class="brand" href="/">ECM Digital<span>.</span></a>
+  <nav class="topnav">
+    <a href="/dokumentacja-ecm/">Baza wiedzy</a>
+    <a href="/dokumentacja-ecm/oferta-uslug/">Oferta</a>
+    <a href="/dokumentacja-ecm/portfolio-case-studies/">Portfolio</a>
+    <a href="/#contact">Kontakt</a>
+  </nav>
+</div></div>
+<div class="wrap">
+<div class="crumb"><a href="/dokumentacja-ecm/">Baza wiedzy</a> / Proces Tworzenia Prototypów MVP</div>
+<article>
+<h1 id="proces-tworzenia-prototypow-mvp">Proces Tworzenia Prototypów MVP</h1>
+<h2 id="wprowadzenie">Wprowadzenie</h2>
+<p>Proces tworzenia prototypów MVP (Minimum Viable Product) w ECM Digital został zaprojektowany dla szybkiej walidacji pomysłów biznesowych. Stosujemy metodologie Lean Startup i Design Thinking, aby w krótkim czasie dostarczyć funkcjonalny produkt gotowy do testów z użytkownikami.</p>
+<h2 id="diagram-procesu">Diagram Procesu</h2>
+<pre><code class="language-mermaid">graph TD
+    A[Warsztat Definicji Produktu] --&gt; B[Badania i Walidacja]
+    B --&gt; C[Priorytetyzacja Funkcjonalności]
+    C --&gt; D[Projektowanie UX/UI]
+    D --&gt; E[Architektura Techniczna]
+    E --&gt; F[Sprint 1: Core Features]
+    F --&gt; G[Sprint 2: User Experience]
+    G --&gt; H[Sprint 3: Polish &amp; Testing]
+    H --&gt; I[Testy z Użytkownikami]
+    I --&gt; J[Iteracja i Poprawki]
+    J --&gt; K[Wdrożenie MVP]
+    K --&gt; L[Analiza Metryk]
+    L --&gt; M[Planowanie Rozwoju]
+</code></pre>
+<h2 id="szczegoowy-opis-etapow">Szczegółowy Opis Etapów</h2>
+<h3 id="1-warsztat-definicji-produktu-2-3-dni">1. Warsztat Definicji Produktu (2-3 dni)</h3>
+<p><strong>Cel</strong>: Zdefiniowanie wizji produktu, problemów użytkowników i hipotez biznesowych.</p>
+<p><strong>Działania</strong>:<br />
+- Design Thinking workshop<br />
+- Problem-Solution Fit<br />
+- Definicja Value Proposition<br />
+- Identyfikacja użytkowników docelowych<br />
+- Określenie success metrics</p>
+<p><strong>Deliverables</strong>:<br />
+- Product Vision Statement<br />
+- Problem Statement<br />
+- User Personas<br />
+- Value Proposition Canvas<br />
+- Success Metrics (KPI)</p>
+<h3 id="2-badania-i-walidacja-3-5-dni">2. Badania i Walidacja (3-5 dni)</h3>
+<p><strong>Cel</strong>: Walidacja założeń biznesowych i zrozumienie potrzeb użytkowników.</p>
+<p><strong>Działania</strong>:<br />
+- Wywiady z potencjalnymi użytkownikami<br />
+- Analiza konkurencji<br />
+- Badanie rynku docelowego<br />
+- Walidacja hipotez biznesowych<br />
+- Analiza feasibility technicznej</p>
+<p><strong>Deliverables</strong>:<br />
+- Raport z wywiadów użytkowników<br />
+- Analiza konkurencyjna<br />
+- Walidacja hipotez<br />
+- Technical feasibility study<br />
+- Rekomendacje strategiczne</p>
+<h3 id="3-priorytetyzacja-funkcjonalnosci-1-2-dni">3. Priorytetyzacja Funkcjonalności (1-2 dni)</h3>
+<p><strong>Cel</strong>: Określenie minimalnego zestawu funkcjonalności dla MVP.</p>
+<p><strong>Działania</strong>:<br />
+- Tworzenie User Stories<br />
+- Mapowanie User Journey<br />
+- Priorytetyzacja MoSCoW<br />
+- Planowanie release'ów<br />
+- Oszacowanie effort'u</p>
+<p><strong>Deliverables</strong>:<br />
+- Product Backlog<br />
+- User Story Mapping<br />
+- MVP Feature Set<br />
+- Release Roadmap<br />
+- Effort Estimation###<br />
+ 4. Projektowanie UX/UI (3-5 dni)</p>
+<p><strong>Cel</strong>: Stworzenie intuicyjnego interfejsu użytkownika dla MVP.</p>
+<p><strong>Działania</strong>:<br />
+- Tworzenie wireframes<br />
+- Projektowanie user flow<br />
+- Tworzenie prototypu interaktywnego<br />
+- Design system dla MVP<br />
+- Testowanie użyteczności</p>
+<p><strong>Deliverables</strong>:<br />
+- Wireframes kluczowych ekranów<br />
+- Interactive prototype<br />
+- UI Design System<br />
+- User Flow Diagrams<br />
+- Usability test results</p>
+<h3 id="5-architektura-techniczna-2-3-dni">5. Architektura Techniczna (2-3 dni)</h3>
+<p><strong>Cel</strong>: Zaprojektowanie skalowalnej architektury technicznej.</p>
+<p><strong>Działania</strong>:<br />
+- Wybór stack'u technologicznego<br />
+- Projektowanie architektury systemu<br />
+- Planowanie bazy danych<br />
+- Strategia deployment'u<br />
+- Plan bezpieczeństwa</p>
+<p><strong>Deliverables</strong>:<br />
+- Technical Architecture Document<br />
+- Database Schema<br />
+- Technology Stack Decision<br />
+- Deployment Strategy<br />
+- Security Plan</p>
+<h3 id="6-sprint-1-core-features-1-2-tygodnie">6. Sprint 1: Core Features (1-2 tygodnie)</h3>
+<p><strong>Cel</strong>: Implementacja podstawowych funkcjonalności MVP.</p>
+<p><strong>Działania</strong>:<br />
+- Setup środowiska deweloperskiego<br />
+- Implementacja core business logic<br />
+- Podstawowy interfejs użytkownika<br />
+- Integracja z bazą danych<br />
+- Podstawowe testy jednostkowe</p>
+<p><strong>Deliverables</strong>:<br />
+- Działające core features<br />
+- Basic UI implementation<br />
+- Database integration<br />
+- Unit tests<br />
+- Sprint demo</p>
+<h3 id="7-sprint-2-user-experience-1-2-tygodnie">7. Sprint 2: User Experience (1-2 tygodnie)</h3>
+<p><strong>Cel</strong>: Implementacja pełnego doświadczenia użytkownika.</p>
+<p><strong>Działania</strong>:<br />
+- Implementacja kompletnego UI<br />
+- User authentication<br />
+- Error handling<br />
+- Responsive design<br />
+- Integration testing</p>
+<p><strong>Deliverables</strong>:<br />
+- Complete UI implementation<br />
+- User management system<br />
+- Error handling<br />
+- Responsive interface<br />
+- Integration tests</p>
+<h3 id="8-sprint-3-polish-testing-1-tydzien">8. Sprint 3: Polish &amp; Testing (1 tydzień)</h3>
+<p><strong>Cel</strong>: Finalizacja MVP i przygotowanie do testów użytkowników.</p>
+<p><strong>Działania</strong>:<br />
+- Bug fixing i optymalizacja<br />
+- Performance optimization<br />
+- Security testing<br />
+- User acceptance testing<br />
+- Deployment preparation</p>
+<p><strong>Deliverables</strong>:<br />
+- Polished MVP<br />
+- Performance optimizations<br />
+- Security audit<br />
+- UAT results<br />
+- Deployment ready version</p>
+<h3 id="9-testy-z-uzytkownikami-3-5-dni">9. Testy z Użytkownikami (3-5 dni)</h3>
+<p><strong>Cel</strong>: Walidacja MVP z rzeczywistymi użytkownikami.</p>
+<p><strong>Działania</strong>:<br />
+- Rekrutacja testerów<br />
+- Przeprowadzenie sesji testowych<br />
+- Zbieranie feedbacku<br />
+- Analiza zachowań użytkowników<br />
+- Identyfikacja obszarów poprawy</p>
+<p><strong>Deliverables</strong>:<br />
+- User testing sessions<br />
+- Feedback compilation<br />
+- User behavior analysis<br />
+- Improvement recommendations<br />
+- Priority fixes list</p>
+<h3 id="10-iteracja-i-poprawki-3-5-dni">10. Iteracja i Poprawki (3-5 dni)</h3>
+<p><strong>Cel</strong>: Implementacja krytycznych poprawek na podstawie testów.</p>
+<p><strong>Działania</strong>:<br />
+- Priorytetyzacja feedbacku<br />
+- Implementacja krytycznych poprawek<br />
+- Dodatkowe testy<br />
+- Optymalizacja UX<br />
+- Przygotowanie do launch'u</p>
+<p><strong>Deliverables</strong>:<br />
+- Updated MVP version<br />
+- Critical fixes implemented<br />
+- Additional testing<br />
+- UX improvements<br />
+- Launch-ready product</p>
+<h3 id="11-wdrozenie-mvp-1-2-dni">11. Wdrożenie MVP (1-2 dni)</h3>
+<p><strong>Cel</strong>: Uruchomienie MVP w środowisku produkcyjnym.</p>
+<p><strong>Działania</strong>:<br />
+- Deployment na serwer produkcyjny<br />
+- Konfiguracja monitoringu<br />
+- Setup analytics<br />
+- Przygotowanie dokumentacji<br />
+- Launch communication</p>
+<p><strong>Deliverables</strong>:<br />
+- Live MVP application<br />
+- Monitoring setup<br />
+- Analytics configuration<br />
+- User documentation<br />
+- Launch announcement</p>
+<h3 id="12-analiza-metryk-ciagy-proces">12. Analiza Metryk (ciągły proces)</h3>
+<p><strong>Cel</strong>: Monitorowanie performance'u MVP i zbieranie danych.</p>
+<p><strong>Działania</strong>:<br />
+- Monitoring user engagement<br />
+- Analiza conversion rates<br />
+- Tracking key metrics<br />
+- User feedback collection<br />
+- Performance monitoring</p>
+<p><strong>Deliverables</strong>:<br />
+- Weekly metrics reports<br />
+- User engagement analysis<br />
+- Conversion tracking<br />
+- Feedback compilation<br />
+- Performance reports</p>
+<h3 id="13-planowanie-rozwoju-1-2-dni">13. Planowanie Rozwoju (1-2 dni)</h3>
+<p><strong>Cel</strong>: Określenie kierunku dalszego rozwoju produktu.</p>
+<p><strong>Działania</strong>:<br />
+- Analiza wyników MVP<br />
+- Planowanie kolejnych features<br />
+- Roadmap development<br />
+- Resource planning<br />
+- Investment recommendations</p>
+<p><strong>Deliverables</strong>:<br />
+- MVP results analysis<br />
+- Product roadmap v2<br />
+- Feature prioritization<br />
+- Resource requirements<br />
+- Investment proposal</p>
+<h2 id="przykadowy-harmonogram">Przykładowy Harmonogram</h2>
+<h3 id="mvp-standardowy-webmobile-app">MVP Standardowy (Web/Mobile App)</h3>
+<p><strong>Całkowity czas realizacji: 6-8 tygodni</strong></p>
+<table>
+<thead>
+<tr>
+<th>Tydzień</th>
+<th>Etapy</th>
+<th>Zaangażowanie Klienta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Warsztat, Badania, Priorytetyzacja</td>
+<td>Wysoki - warsztaty, wywiady</td>
+</tr>
+<tr>
+<td>2</td>
+<td>UX/UI Design, Architektura</td>
+<td>Średni - feedback na prototypy</td>
+</tr>
+<tr>
+<td>3-4</td>
+<td>Sprint 1 &amp; 2: Development</td>
+<td>Niski - cotygodniowe demo</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Sprint 3, Testy użytkowników</td>
+<td>Wysoki - testy UAT</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Iteracja, Wdrożenie</td>
+<td>Średni - akceptacja zmian</td>
+</tr>
+<tr>
+<td>7-8</td>
+<td>Analiza, Planowanie rozwoju</td>
+<td>Wysoki - strategia rozwoju</td>
+</tr>
+</tbody>
+</table>
+<h3 id="mvp-zaawansowany-platformsaas">MVP Zaawansowany (Platform/SaaS)</h3>
+<p><strong>Całkowity czas realizacji: 8-12 tygodni</strong></p>
+<table>
+<thead>
+<tr>
+<th>Faza</th>
+<th>Czas</th>
+<th>Opis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Discovery &amp; Design</td>
+<td>2-3 tygodnie</td>
+<td>Badania, projektowanie</td>
+</tr>
+<tr>
+<td>Development</td>
+<td>4-6 tygodni</td>
+<td>3-4 sprinty rozwoju</td>
+</tr>
+<tr>
+<td>Testing &amp; Launch</td>
+<td>2-3 tygodnie</td>
+<td>Testy, iteracja, wdrożenie</td>
+</tr>
+<tr>
+<td>Analysis &amp; Planning</td>
+<td>1 tydzień</td>
+<td>Analiza wyników, roadmap</td>
+</tr>
+</tbody>
+</table>
+<h2 id="metodologie-i-frameworki">Metodologie i Frameworki</h2>
+<h3 id="lean-startup">Lean Startup</h3>
+<ul>
+<li><strong>Build-Measure-Learn</strong> - Cykl iteracyjny</li>
+<li><strong>Validated Learning</strong> - Nauka oparta na danych</li>
+<li><strong>Innovation Accounting</strong> - Metryki dla startupów</li>
+<li><strong>Pivot or Persevere</strong> - Decyzje strategiczne</li>
+</ul>
+<h3 id="design-thinking">Design Thinking</h3>
+<ul>
+<li><strong>Empathize</strong> - Zrozumienie użytkowników</li>
+<li><strong>Define</strong> - Definicja problemu</li>
+<li><strong>Ideate</strong> - Generowanie rozwiązań</li>
+<li><strong>Prototype</strong> - Szybkie prototypowanie</li>
+<li><strong>Test</strong> - Testowanie z użytkownikami</li>
+</ul>
+<h3 id="agilescrum">Agile/Scrum</h3>
+<ul>
+<li><strong>Sprinty 1-2 tygodniowe</strong> - Krótkie iteracje</li>
+<li><strong>Daily standups</strong> - Codzienne synchronizacje</li>
+<li><strong>Sprint reviews</strong> - Prezentacje postępów</li>
+<li><strong>Retrospectives</strong> - Ciągłe doskonalenie</li>
+</ul>
+<h2 id="kluczowe-metryki-mvp">Kluczowe Metryki MVP</h2>
+<h3 id="product-market-fit-metrics">Product-Market Fit Metrics</h3>
+<ul>
+<li><strong>Net Promoter Score (NPS)</strong> - Satysfakcja użytkowników</li>
+<li><strong>Product-Market Fit Score</strong> - Dopasowanie do rynku</li>
+<li><strong>Customer Satisfaction (CSAT)</strong> - Zadowolenie klientów</li>
+<li><strong>Feature Usage</strong> - Wykorzystanie funkcjonalności</li>
+</ul>
+<h3 id="business-metrics">Business Metrics</h3>
+<ul>
+<li><strong>Customer Acquisition Cost (CAC)</strong> - Koszt pozyskania klienta</li>
+<li><strong>Lifetime Value (LTV)</strong> - Wartość życiowa klienta</li>
+<li><strong>Monthly Recurring Revenue (MRR)</strong> - Miesięczne przychody</li>
+<li><strong>Churn Rate</strong> - Wskaźnik odejść</li>
+</ul>
+<h3 id="technical-metrics">Technical Metrics</h3>
+<ul>
+<li><strong>Page Load Time</strong> - Szybkość ładowania</li>
+<li><strong>Uptime</strong> - Dostępność systemu</li>
+<li><strong>Error Rate</strong> - Częstotliwość błędów</li>
+<li><strong>API Response Time</strong> - Czas odpowiedzi API## Stack<br />
+ Technologiczny dla MVP</li>
+</ul>
+<h3 id="frontend">Frontend</h3>
+<ul>
+<li><strong>React/Vue.js</strong> - Szybki development UI</li>
+<li><strong>Next.js/Nuxt.js</strong> - Full-stack frameworks</li>
+<li><strong>Tailwind CSS</strong> - Rapid styling</li>
+<li><strong>TypeScript</strong> - Type safety</li>
+</ul>
+<h3 id="backend">Backend</h3>
+<ul>
+<li><strong>Node.js/Express</strong> - Szybki development API</li>
+<li><strong>Python/FastAPI</strong> - Data-heavy applications</li>
+<li><strong>Firebase</strong> - Backend-as-a-Service</li>
+<li><strong>Serverless</strong> - AWS Lambda, Vercel Functions</li>
+</ul>
+<h3 id="database">Database</h3>
+<ul>
+<li><strong>PostgreSQL</strong> - Relational data</li>
+<li><strong>MongoDB</strong> - Document-based</li>
+<li><strong>Firebase Firestore</strong> - Real-time database</li>
+<li><strong>Redis</strong> - Caching i sessions</li>
+</ul>
+<h3 id="hosting-deployment">Hosting &amp; Deployment</h3>
+<ul>
+<li><strong>Vercel/Netlify</strong> - Frontend hosting</li>
+<li><strong>Railway/Render</strong> - Full-stack deployment</li>
+<li><strong>AWS/Google Cloud</strong> - Scalable infrastructure</li>
+<li><strong>Docker</strong> - Containerization</li>
+</ul>
+<h2 id="kluczowe-punkty-kontrolne">Kluczowe Punkty Kontrolne</h2>
+<h3 id="milestone-1-product-definition">Milestone 1: Product Definition</h3>
+<ul>
+<li>Zatwierdzona wizja produktu</li>
+<li>Zwalidowane hipotezy biznesowe</li>
+<li>Określone success metrics</li>
+</ul>
+<h3 id="milestone-2-design-architecture">Milestone 2: Design &amp; Architecture</h3>
+<ul>
+<li>Zatwierdzony prototyp interaktywny</li>
+<li>Określona architektura techniczna</li>
+<li>Priorytetyzacja funkcjonalności</li>
+</ul>
+<h3 id="milestone-3-core-mvp">Milestone 3: Core MVP</h3>
+<ul>
+<li>Działające podstawowe funkcjonalności</li>
+<li>Zaimplementowany core user flow</li>
+<li>Podstawowe testy przeprowadzone</li>
+</ul>
+<h3 id="milestone-4-complete-mvp">Milestone 4: Complete MVP</h3>
+<ul>
+<li>Pełna funkcjonalność MVP</li>
+<li>Pozytywne testy użytkowników</li>
+<li>Gotowość do wdrożenia</li>
+</ul>
+<h3 id="milestone-5-launch-analysis">Milestone 5: Launch &amp; Analysis</h3>
+<ul>
+<li>Wdrożony MVP w produkcji</li>
+<li>Skonfigurowane metryki</li>
+<li>Plan dalszego rozwoju</li>
+</ul>
+<h2 id="komunikacja-i-raportowanie">Komunikacja i Raportowanie</h2>
+<h3 id="daily-standups-podczas-sprintow">Daily Standups (podczas sprintów)</h3>
+<ul>
+<li>Co zostało zrobione wczoraj</li>
+<li>Co będzie robione dzisiaj</li>
+<li>Jakie są blokery</li>
+</ul>
+<h3 id="sprint-reviews-co-1-2-tygodnie">Sprint Reviews (co 1-2 tygodnie)</h3>
+<ul>
+<li>Demo nowych funkcjonalności</li>
+<li>Feedback od stakeholderów</li>
+<li>Planowanie następnego sprintu</li>
+</ul>
+<h3 id="weekly-reports">Weekly Reports</h3>
+<ul>
+<li>Postęp względem roadmapy</li>
+<li>Kluczowe metryki</li>
+<li>Ryzyka i mitigation plans</li>
+<li>Następne kroki</li>
+</ul>
+<h3 id="narzedzia-wspopracy">Narzędzia Współpracy</h3>
+<ul>
+<li><strong>Figma</strong> - Design collaboration</li>
+<li><strong>Jira/Linear</strong> - Task management</li>
+<li><strong>Slack/Discord</strong> - Team communication</li>
+<li><strong>Loom</strong> - Async video updates</li>
+<li><strong>GitHub</strong> - Code collaboration</li>
+</ul>
+<h2 id="wsparcie-post-mvp">Wsparcie Post-MVP</h2>
+<h3 id="immediate-support-30-dni">Immediate Support (30 dni)</h3>
+<ul>
+<li>Bug fixes i critical issues</li>
+<li>Performance monitoring</li>
+<li>User support</li>
+<li>Basic analytics setup</li>
+</ul>
+<h3 id="growth-phase-support">Growth Phase Support</h3>
+<ul>
+<li>Feature development</li>
+<li>A/B testing</li>
+<li>Performance optimization</li>
+<li>Scaling infrastructure</li>
+</ul>
+<h3 id="long-term-partnership">Long-term Partnership</h3>
+<ul>
+<li>Product strategy consulting</li>
+<li>Technical architecture evolution</li>
+<li>Team augmentation</li>
+<li>Fundraising support</li>
+</ul>
+<h2 id="typowe-wyzwania-i-rozwiazania">Typowe Wyzwania i Rozwiązania</h2>
+<h3 id="scope-creep">Scope Creep</h3>
+<ul>
+<li><strong>Problem</strong>: Rozrastanie się zakresu MVP</li>
+<li><strong>Rozwiązanie</strong>: Sztywne trzymanie się MVP definition</li>
+</ul>
+<h3 id="technical-debt">Technical Debt</h3>
+<ul>
+<li><strong>Problem</strong>: Szybki development vs. jakość kodu</li>
+<li><strong>Rozwiązanie</strong>: Balansowanie speed vs. maintainability</li>
+</ul>
+<h3 id="user-feedback-overload">User Feedback Overload</h3>
+<ul>
+<li><strong>Problem</strong>: Za dużo feedbacku do implementacji</li>
+<li><strong>Rozwiązanie</strong>: Priorytetyzacja oparta na impact vs. effort</li>
+</ul>
+<h3 id="market-timing">Market Timing</h3>
+<ul>
+<li><strong>Problem</strong>: Za wczesne lub za późne wejście na rynek</li>
+<li><strong>Rozwiązanie</strong>: Continuous market validation</li>
+</ul>
+<h2 id="success-stories">Success Stories</h2>
+<h3 id="fintech-payment-app">FinTech Payment App</h3>
+<ul>
+<li><strong>Timeline</strong>: 8 tygodni</li>
+<li><strong>Result</strong>: 1000+ early adopters w pierwszym miesiącu</li>
+<li><strong>Key Learning</strong>: Prostota UX kluczowa w fintech</li>
+</ul>
+<h3 id="edtech-learning-platform">EdTech Learning Platform</h3>
+<ul>
+<li><strong>Timeline</strong>: 10 tygodni</li>
+<li><strong>Result</strong>: Partnership z 3 szkołami w pierwszym kwartale</li>
+<li><strong>Key Learning</strong>: Teacher feedback równie ważny jak student feedback</li>
+</ul>
+<h3 id="healthtech-telemedicine">HealthTech Telemedicine</h3>
+<ul>
+<li><strong>Timeline</strong>: 12 tygodni</li>
+<li><strong>Result</strong>: 500+ konsultacji w pierwszych 2 miesiącach</li>
+<li><strong>Key Learning</strong>: Compliance requirements muszą być w MVP</li>
+</ul>
+<h2 id="cennik-mvp">Cennik MVP</h2>
+<h3 id="mvp-basic-4-6-tygodni">MVP Basic (4-6 tygodni)</h3>
+<ul>
+<li><strong>Zakres</strong>: Simple web/mobile app</li>
+<li><strong>Team</strong>: 2-3 developers + designer</li>
+<li><strong>Cena</strong>: €15,000 - €25,000</li>
+</ul>
+<h3 id="mvp-standard-6-8-tygodni">MVP Standard (6-8 tygodni)</h3>
+<ul>
+<li><strong>Zakres</strong>: Complex web app z integracjami</li>
+<li><strong>Team</strong>: 3-4 developers + designer + PM</li>
+<li><strong>Cena</strong>: €25,000 - €40,000</li>
+</ul>
+<h3 id="mvp-premium-8-12-tygodni">MVP Premium (8-12 tygodni)</h3>
+<ul>
+<li><strong>Zakres</strong>: Platform/SaaS z custom features</li>
+<li><strong>Team</strong>: 4-6 developers + designer + PM</li>
+<li><strong>Cena</strong>: €40,000 - €70,000</li>
+</ul>
+<h3 id="mvp-enterprise-10-16-tygodni">MVP Enterprise (10-16 tygodni)</h3>
+<ul>
+<li><strong>Zakres</strong>: Enterprise solution z compliance</li>
+<li><strong>Team</strong>: 6+ developers + architect + PM</li>
+<li><strong>Cena</strong>: €70,000+</li>
+</ul>
+<hr />
+<p><em>Proces tworzenia prototypów MVP ECM Digital - Od pomysłu do działającego produktu w 6-8 tygodni</em></p>
+</article>
+</div>
+</body></html>

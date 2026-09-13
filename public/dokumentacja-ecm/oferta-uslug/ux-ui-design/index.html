@@ -3,90 +3,243 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UX/UI Design – ECM Digital</title>
-    <meta name="description" content="Projektujemy interfejsy skupione na doświadczeniu użytkownika i konwersji — research, wireframe’y, prototypy i design system.">
+    <title>UX/UI Design | ECM Digital</title>
+    <meta name="description" content="Projektujemy interfejsy skupione na doświadczeniu i konwersji: research, wireframe’y, prototypy, testy użyteczności i design system.">
+    <meta name="keywords" content="ux design, ui design, figma, prototypowanie, design system, audyt ux">
     <link rel="canonical" href="https://www.ecm-digital.com/dokumentacja-ecm/oferta-uslug/ux-ui-design/">
-    <style>
-        :root {
-            --bg:#05070c; --surface:#121826; --border:#243044; --border-2:#3a4d6b;
-            --text:#f5f7fb; --muted:#9aa6b2; --accent:#7dd3fc; --green:#4ade80; --radius:18px;
-        }
-        *{box-sizing:border-box}
-        body{margin:0;font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
-        a{color:inherit;text-decoration:none}
-        .wrap{max-width:960px;margin:0 auto;padding:28px 20px 80px}
-        .top{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:36px}
-        .logo{font-weight:800;letter-spacing:-.03em}.logo span{color:var(--accent)}
-        .back{color:var(--muted)} .back:hover{color:var(--text)}
-        .hero{padding:36px 32px;border-radius:24px;border:1px solid var(--border);background:linear-gradient(160deg,#101827,#070b12);margin-bottom:22px}
-        .chip{display:inline-block;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
-        h1{margin:0 0 12px;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-.04em;line-height:1.15}
-        .lead{margin:0 0 18px;color:var(--muted);font-size:1.08rem;max-width:720px}
-        .pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
-        .pill{padding:6px 12px;border-radius:999px;border:1px solid var(--border);background:#0d1524;color:#c7d2fe;font-size:.82rem}
-        .actions{display:flex;flex-wrap:wrap;gap:10px}
-        .btn{display:inline-flex;align-items:center;padding:12px 18px;border-radius:999px;font-weight:700}
-        .btn-primary{background:var(--accent);color:#041018}
-        .btn-ghost{border:1px solid var(--border)}
-        .section{margin-bottom:16px;padding:26px;border-radius:var(--radius);background:var(--surface);border:1px solid var(--border)}
-        .section h2{margin:0 0 12px;font-size:1.25rem;letter-spacing:-.02em}
-        .section p,.section li{color:var(--muted)}
-        .section ul{margin:0;padding-left:1.15rem}
-        .section li{margin:8px 0}
-        .price{font-size:1.4rem;font-weight:800;color:var(--green);letter-spacing:-.02em}
-        .rel-grid{display:flex;flex-wrap:wrap;gap:10px}
-        .rel{padding:10px 14px;border:1px solid var(--border);border-radius:12px;background:#0d1524;color:var(--muted);font-size:.92rem}
-        .rel:hover{color:var(--text);border-color:var(--border-2)}
-        @media(max-width:700px){.hero,.section{padding:20px 16px}}
-    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../shared-styles.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-V309CX2XT8"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-V309CX2XT8');</script>
 </head>
 <body>
-<div class="wrap">
-    <div class="top">
-        <a class="logo" href="/">ECM Digital<span>.</span></a>
-        <a class="back" href="/dokumentacja-ecm/oferta-uslug/">← Oferta usług</a>
-    </div>
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand font-display" href="../../../index.html">
+                <i class="fas fa-rocket me-2" style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"></i>
+                <span style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 700;">ECM Digital</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" style="border: none; background: none;">
+                <i class="fas fa-bars" style="color: var(--text-primary); font-size: 1.2rem;"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../../index.html#services">Usługi</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Oferta</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Baza wiedzy</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../portfolio-case-studies/index.html">Portfolio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../../index.html#contact">Kontakt</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
     <section class="hero">
-        <span class="chip">Design</span>
-        <h1>UX/UI Design</h1>
-        <p class="lead">Projektujemy interfejsy skupione na doświadczeniu użytkownika i konwersji — research, wireframe’y, prototypy i design system.</p>
-        <div class="pills">
-            <div class="pill">User research</div>
-            <div class="pill">Wireframing</div>
-            <div class="pill">Prototyping</div>
-            <div class="pill">Usability testing</div>
-            <div class="pill">Design system</div>
-        </div>
-        <div class="actions">
-            <a class="btn btn-primary" href="https://calendly.com/hello-ecm-digital" target="_blank" rel="noopener">Umów konsultację</a>
-            <a class="btn btn-ghost" href="/dokumentacja-ecm/portfolio-case-studies/">Zobacz portfolio</a>
-        </div>
-    </section>
-    <section class="section">
-        <h2>Co dostajesz</h2>
-        <ul>
-            <li>Badania użytkowników i mapowanie ścieżek (user journeys)</li>
-            <li>Makiety low/high-fidelity oraz klikalne prototypy w Figmie</li>
-            <li>Testy użyteczności i rekomendacje priorytetowe (impact × effort)</li>
-            <li>Design system: komponenty, tokeny, spójność marki</li>
-            <li>Handoff dla developmentu (specyfikacje, assets, stany UI)</li>
-        </ul>
-    </section>
-    <section class="section">
-        <h2>Inwestycja</h2>
-        <p class="price">od 5 000 PLN</p>
-        <p>Typowy projekt: 3–5 tygodni. Zakres dopasowujemy do produktu — od audytu UX po pełny redesign.</p>
-    </section>
-    <section class="section">
-        <h2>Powiązane usługi</h2>
-        <div class="rel-grid">
-            <a class="rel" href="../audyty-ux/">Audyt i strategia AI</a>
-            <a class="rel" href="../strony-www/">Strony WWW</a>
-            <a class="rel" href="../prototypy-mvp/">Prototypy MVP</a>
-            <a class="rel" href="../aplikacje-mobilne/">Aplikacje mobilne</a>
-            <a class="rel" href="/dokumentacja-ecm/portfolio-case-studies/#ux">Case studies UX</a>
+        <div class="container">
+            <div class="text-center mb-5">
+                <h1 class="hero-title mb-4">UX/UI Design, który <span style="color:#30D158;">konwertuje</span></h1>
+                <p class="hero-subtitle mb-5">Research, prototypy i design system — interfejsy prowadzące użytkownika do decyzji zakupowej.</p>
+                <div class="row g-4 justify-content-center">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="hero-stat-card text-center">
+                            <div class="stat-icon">🎨</div>
+                            <div class="stat-number">Figma</div>
+                            <div class="stat-label">Narzędzie</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="hero-stat-card text-center">
+                            <div class="stat-icon">🧪</div>
+                            <div class="stat-number">Usability</div>
+                            <div class="stat-label">Testy</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="hero-stat-card text-center">
+                            <div class="stat-icon">📦</div>
+                            <div class="stat-number">Design system</div>
+                            <div class="stat-label">Deliverable</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-5">
+                    <a href="https://calendly.com/hello-ecm-digital" target="_blank" rel="noopener" class="btn-cta me-2"><i class="fas fa-calendar"></i><span>Umów konsultację</span></a>
+                    <a href="../../portfolio-case-studies/index.html" class="btn btn-outline-light">Zobacz case studies</a>
+                </div>
+            </div>
         </div>
     </section>
-</div>
+
+    <section class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title mb-3">Co Otrzymasz</h2>
+                <p class="section-subtitle">Kompletny proces projektowy od researchu do handoffu dla developmentu</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card text-center">
+                        <div class="mb-3"><i class="fas fa-users fa-3x" style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"></i></div>
+                        <h4>User research</h4>
+                        <p class="text-muted">Persony, journey mapy i insighty z wywiadów oraz analityki.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card text-center">
+                        <div class="mb-3"><i class="fas fa-pencil-ruler fa-3x" style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"></i></div>
+                        <h4>Wireframing</h4>
+                        <p class="text-muted">Makiety low-fi i high-fi kluczowych ekranów.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card text-center">
+                        <div class="mb-3"><i class="fas fa-magic fa-3x" style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"></i></div>
+                        <h4>Prototypowanie</h4>
+                        <p class="text-muted">Klikalne prototypy do walidacji przed developmentem.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card text-center">
+                        <div class="mb-3"><i class="fas fa-vial fa-3x" style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"></i></div>
+                        <h4>Usability testing</h4>
+                        <p class="text-muted">Testy z użytkownikami i priorytety popraw.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card text-center">
+                        <div class="mb-3"><i class="fas fa-palette fa-3x" style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"></i></div>
+                        <h4>Design system</h4>
+                        <p class="text-muted">Komponenty, tokeny, stany UI i spójność marki.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card text-center">
+                        <div class="mb-3"><i class="fas fa-handshake fa-3x" style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"></i></div>
+                        <h4>Dev handoff</h4>
+                        <p class="text-muted">Specyfikacje, assets i wsparcie implementacji.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title mb-3">Jak projektujemy UX/UI</h2>
+                <p class="section-subtitle">Od insightów do produkcyjnego design systemu</p>
+            </div>
+            <div class="row"><div class="col-lg-8 mx-auto"><div class="process-timeline">
+                        <div class="process-step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4><i class="fas fa-search text-primary me-2"></i>Discovery</h4>
+                                <p class="text-muted">Cele biznesowe, persony, konkurencja i problemy użytkowników.</p>
+                                <div class="step-deliverables"><span class="badge bg-primary me-2">Brief</span><span class="badge bg-primary me-2">Persony</span></div>
+                            </div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4><i class="fas fa-sitemap text-primary me-2"></i>Architektura informacji</h4>
+                                <p class="text-muted">User flows, sitemap i wireframe’y kluczowych ścieżek.</p>
+                                <div class="step-deliverables"><span class="badge bg-primary me-2">Flows</span><span class="badge bg-primary me-2">Wireframes</span></div>
+                            </div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4><i class="fas fa-palette text-primary me-2"></i>UI & prototyp</h4>
+                                <p class="text-muted">Wizualny design, komponenty i klikalny prototyp.</p>
+                                <div class="step-deliverables"><span class="badge bg-primary me-2">UI kit</span><span class="badge bg-primary me-2">Prototyp</span></div>
+                            </div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h4><i class="fas fa-vial text-primary me-2"></i>Testy i iteracja</h4>
+                                <p class="text-muted">Usability tests, poprawki i finalny handoff.</p>
+                                <div class="step-deliverables"><span class="badge bg-primary me-2">Raport</span><span class="badge bg-primary me-2">Handoff</span></div>
+                            </div>
+                        </div>
+            </div></div></div>
+        </div>
+    </section>
+
+    <section class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title mb-3">Cennik</h2>
+                <p class="section-subtitle">Zakres dopasowujemy do produktu — od audytu UX po pełny redesign</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="pricing-card text-center">
+                        
+                        <h4>Audyt UX</h4>
+                        <div class="price mb-3" style="font-size: 2rem; font-weight: 700;">
+                            <span style="font-size: 1rem; color: #EBEBF599;">od</span>
+                            <span style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">5,000</span>
+                            <span style="font-size: 1rem; color: #EBEBF599;">PLN</span>
+                        </div>
+                        <ul class="list-unstyled mb-4 text-start"><li class="mb-2">✓ Heurystyki + ścieżki</li><li class="mb-2">✓ Raport priorytetów</li><li class="mb-2">✓ Sesja rekomendacji</li></ul>
+                        <a href="https://calendly.com/hello-ecm-digital" target="_blank" rel="noopener" class="btn-cta"><i class="fas fa-arrow-right"></i><span>Rozpocznij</span></a>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="pricing-card text-center" style="border-color: rgba(0, 122, 255, 0.4) !important; transform: translateY(-8px) !important;">
+                        <div class="badge bg-primary mb-3" style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%) !important;">Popularne</div>
+                        <h4>UX/UI Sprint</h4>
+                        <div class="price mb-3" style="font-size: 2rem; font-weight: 700;">
+                            <span style="font-size: 1rem; color: #EBEBF599;">od</span>
+                            <span style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">12,000</span>
+                            <span style="font-size: 1rem; color: #EBEBF599;">PLN</span>
+                        </div>
+                        <ul class="list-unstyled mb-4 text-start"><li class="mb-2">✓ Research + wireframes</li><li class="mb-2">✓ UI kluczowych ekranów</li><li class="mb-2">✓ Prototyp Figma</li><li class="mb-2">✓ 1 runda testów</li></ul>
+                        <a href="https://calendly.com/hello-ecm-digital" target="_blank" rel="noopener" class="btn-cta"><i class="fas fa-arrow-right"></i><span>Rozpocznij</span></a>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="pricing-card text-center">
+                        
+                        <h4>Design System</h4>
+                        <div class="price mb-3" style="font-size: 2rem; font-weight: 700;">
+                            <span style="font-size: 1rem; color: #EBEBF599;">od</span>
+                            <span style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">25,000</span>
+                            <span style="font-size: 1rem; color: #EBEBF599;">PLN</span>
+                        </div>
+                        <ul class="list-unstyled mb-4 text-start"><li class="mb-2">✓ Kompletny UI kit</li><li class="mb-2">✓ Tokeny i dokumentacja</li><li class="mb-2">✓ Handoff + wsparcie 2 tyg.</li></ul>
+                        <a href="https://calendly.com/hello-ecm-digital" target="_blank" rel="noopener" class="btn-cta"><i class="fas fa-arrow-right"></i><span>Rozpocznij</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title mb-3">Rozpocznij Projekt</h2>
+                <p class="section-subtitle">Darmowa konsultacja — pokażemy, co da się wdrożyć w 2 tygodnie i jaki będzie ROI.</p>
+                <a href="https://calendly.com/hello-ecm-digital" target="_blank" rel="noopener" class="btn-cta"><i class="fas fa-arrow-right"></i><span>Umów darmową konsultację</span></a>
+            </div>
+        </div>
+    </section>
+    <footer class="footer py-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2026 ECM Digital. Wszystkie prawa zastrzeżone.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="../../index.html" class="text-muted me-3">Baza wiedzy</a>
+                    <a href="../index.html" class="text-muted me-3">Oferta</a>
+                    <a href="../../../index.html#contact" class="text-muted">Kontakt</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

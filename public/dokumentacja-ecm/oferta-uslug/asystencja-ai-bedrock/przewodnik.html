@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amazon Bedrock Integration - ECM Digital | ECM Digital – Baza wiedzy</title>
+<meta name="description" content=" Amazon Bedrock Integration - ECM Digital 🚀 Przegląd Kompletna integracja z Amazon Bedrock API dla asystentów AI. Zawiera konfigurację, klienta API i ">
+<link rel="canonical" href="https://www.ecm-digital.com/dokumentacja-ecm/oferta-uslug/asystencja-ai-bedrock/przewodnik.html">
+<link rel="stylesheet" href="../../docs-styles.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <a class="brand" href="/">ECM Digital<span>.</span></a>
+  <nav class="topnav">
+    <a href="/dokumentacja-ecm/">Baza wiedzy</a>
+    <a href="/dokumentacja-ecm/oferta-uslug/">Oferta</a>
+    <a href="/dokumentacja-ecm/portfolio-case-studies/">Portfolio</a>
+    <a href="/#contact">Kontakt</a>
+  </nav>
+</div></div>
+<div class="wrap">
+<div class="crumb"><a href="/dokumentacja-ecm/">Baza wiedzy</a> / Amazon Bedrock Integration - ECM Digital</div>
+<article>
+<h1 id="amazon-bedrock-integration-ecm-digital">Amazon Bedrock Integration - ECM Digital</h1>
+<h2 id="przeglad">🚀 Przegląd</h2>
+<p>Kompletna integracja z Amazon Bedrock API dla asystentów AI. Zawiera konfigurację, klienta API i interaktywne demo.</p>
+<h2 id="struktura-plikow">📁 Struktura Plików</h2>
+<pre><code>asystencja-ai-bedrock/
+├── index.html              # Główna strona usługi
+├── bedrock-config.js       # Konfiguracja API i modele
+├── bedrock-client.js       # Główny klient Bedrock
+├── bedrock-demo.html       # Interaktywne demo
+└── README.md               # Ta dokumentacja
+</code></pre>
+<h2 id="instalacja-i-konfiguracja">🔧 Instalacja i Konfiguracja</h2>
+<h3 id="1-klucze-api">1. Klucze API</h3>
+<p><strong>Ważne:</strong> Nigdy nie commituj kluczy API do repozytorium!</p>
+<h4 id="opcja-a-zmienne-srodowiskowe-produkcja">Opcja A: Zmienne środowiskowe (Produkcja)</h4>
+<pre><code class="language-bash">export AWS_ACCESS_KEY_ID=&quot;twój_access_key&quot;
+export AWS_SECRET_ACCESS_KEY=&quot;twój_secret_key&quot;
+export AWS_SESSION_TOKEN=&quot;twój_session_token&quot;  # opcjonalnie
+</code></pre>
+<h4 id="opcja-b-localstorage-development">Opcja B: localStorage (Development)</h4>
+<pre><code class="language-javascript">// W konsoli przeglądarki
+localStorage.setItem('BEDROCK_ACCESS_KEY_ID', 'twój_access_key');
+localStorage.setItem('BEDROCK_SECRET_ACCESS_KEY', 'twój_secret_key');
+</code></pre>
+<h3 id="2-konfiguracja-region">2. Konfiguracja Region</h3>
+<p>Edytuj <code>bedrock-config.js</code>:</p>
+<pre><code class="language-javascript">const BEDROCK_CONFIG = {
+    region: 'us-east-1', // lub 'eu-west-1', 'ap-southeast-1'
+    endpoint: 'https://bedrock-runtime.us-east-1.amazonaws.com'
+};
+</code></pre>
+<h2 id="uzycie">🎯 Użycie</h2>
+<h3 id="podstawowe-uzycie">Podstawowe Użycie</h3>
+<pre><code class="language-javascript">// Inicjalizacja klienta
+const client = new BedrockClient();
+
+// Proste zapytanie
+const response = await client.invokeModel(&quot;Witaj, jak się masz?&quot;);
+
+// Z parametrami
+const response = await client.invokeModel(&quot;Opisz sztuczną inteligencję&quot;, {
+    model: 'anthropic.claude-3-sonnet-20240229-v1:0',
+    temperature: 0.8,
+    maxTokens: 2000
+});
+</code></pre>
+<h3 id="dostepne-modele">Dostępne Modele</h3>
+<h4 id="claude-anthropic">Claude (Anthropic)</h4>
+<ul>
+<li><code>anthropic.claude-3-sonnet-20240229-v1:0</code> - Najlepszy ogólny model</li>
+<li><code>anthropic.claude-3-haiku-20240307-v1:0</code> - Szybki i wydajny</li>
+<li><code>anthropic.claude-3-opus-20240229-v1:0</code> - Najbardziej zaawansowany</li>
+</ul>
+<h4 id="titan-amazon">Titan (Amazon)</h4>
+<ul>
+<li><code>amazon.titan-text-express-v1</code> - Generowanie tekstu</li>
+<li><code>amazon.titan-embed-text-v1</code> - Embeddingi</li>
+</ul>
+<h4 id="llama-meta">Llama (Meta)</h4>
+<ul>
+<li><code>meta.llama2-13b-chat-v1</code> - 13B parametrów</li>
+<li><code>meta.llama2-70b-chat-v1</code> - 70B parametrów</li>
+</ul>
+<h4 id="cohere">Cohere</h4>
+<ul>
+<li><code>cohere.command-text-v14</code> - Generowanie tekstu</li>
+<li><code>cohere.command-light-text-v14</code> - Lżejsza wersja</li>
+</ul>
+<h3 id="typy-asystentow">Typy Asystentów</h3>
+<pre><code class="language-javascript">// Obsługa klienta
+client.setSystemPrompt('customerSupport');
+
+// Copywriter
+client.setSystemPrompt('contentWriter');
+
+// Asystent programowania
+client.setSystemPrompt('codeAssistant');
+
+// Analityk biznesowy
+client.setSystemPrompt('businessAnalyst');
+</code></pre>
+<h2 id="bezpieczenstwo">🔒 Bezpieczeństwo</h2>
+<h3 id="best-practices">Best Practices</h3>
+<ol>
+<li><strong>Nigdy nie commituj kluczy API</strong></li>
+<li><strong>Używaj zmiennych środowiskowych w produkcji</strong></li>
+<li><strong>Implementuj rate limiting</strong></li>
+<li><strong>Loguj wszystkie zapytania</strong></li>
+<li><strong>Używaj HTTPS</strong></li>
+</ol>
+<h3 id="implementacja-rate-limiting">Implementacja Rate Limiting</h3>
+<pre><code class="language-javascript">class RateLimitedBedrockClient extends BedrockClient {
+    constructor(config) {
+        super(config);
+        this.requestCount = 0;
+        this.lastReset = Date.now();
+        this.maxRequestsPerMinute = 100;
+    }
+
+    async invokeModel(prompt, options) {
+        if (this.isRateLimited()) {
+            throw new Error('Rate limit exceeded. Try again later.');
+        }
+
+        this.requestCount++;
+        return super.invokeModel(prompt, options);
+    }
+
+    isRateLimited() {
+        const now = Date.now();
+        if (now - this.lastReset &gt; 60000) {
+            this.requestCount = 0;
+            this.lastReset = now;
+        }
+        return this.requestCount &gt;= this.maxRequestsPerMinute;
+    }
+}
+</code></pre>
+<h2 id="testowanie">🧪 Testowanie</h2>
+<h3 id="demo-strona">Demo Strona</h3>
+<p>Otwórz <code>bedrock-demo.html</code> w przeglądarce:</p>
+<ol>
+<li><strong>Dodaj klucze API</strong> w localStorage</li>
+<li><strong>Wybierz model AI</strong></li>
+<li><strong>Dostosuj parametry</strong> (temperatura, tokeny)</li>
+<li><strong>Rozpocznij chat</strong> z AI</li>
+</ol>
+<h3 id="testy-automatyczne">Testy Automatyczne</h3>
+<pre><code class="language-javascript">// Przykład testu
+describe('BedrockClient', () =&gt; {
+    it('should initialize with default config', () =&gt; {
+        const client = new BedrockClient();
+        expect(client.currentModel).toBe('anthropic.claude-3-sonnet-20240229-v1:0');
+    });
+
+    it('should change model', () =&gt; {
+        const client = new BedrockClient();
+        client.setModel('amazon.titan-text-express-v1');
+        expect(client.currentModel).toBe('amazon.titan-text-express-v1');
+    });
+});
+</code></pre>
+<h2 id="monitorowanie">📊 Monitorowanie</h2>
+<h3 id="logi">Logi</h3>
+<pre><code class="language-javascript">// Dodaj logging do klienta
+class LoggingBedrockClient extends BedrockClient {
+    async invokeModel(prompt, options) {
+        console.log(`[${new Date().toISOString()}] Model request:`, {
+            model: options.model || this.currentModel,
+            promptLength: prompt.length,
+            options
+        });
+
+        try {
+            const response = await super.invokeModel(prompt, options);
+            console.log(`[${new Date().toISOString()}] Model response:`, {
+                contentLength: response.content.length,
+                model: response.model,
+                type: response.type
+            });
+            return response;
+        } catch (error) {
+            console.error(`[${new Date().toISOString()}] Model error:`, error);
+            throw error;
+        }
+    }
+}
+</code></pre>
+<h3 id="metryki">Metryki</h3>
+<pre><code class="language-javascript">// Śledzenie użycia
+const metrics = {
+    totalRequests: 0,
+    successfulRequests: 0,
+    failedRequests: 0,
+    averageResponseTime: 0,
+    totalTokens: 0
+};
+
+// Dodaj do klienta
+client.on('request', () =&gt; metrics.totalRequests++);
+client.on('success', (response) =&gt; {
+    metrics.successfulRequests++;
+    metrics.totalTokens += response.usage?.input_tokens || 0;
+});
+</code></pre>
+<h2 id="deployment">🚀 Deployment</h2>
+<h3 id="produkcja">Produkcja</h3>
+<ol>
+<li><strong>Skonfiguruj AWS IAM</strong> z odpowiednimi uprawnieniami</li>
+<li><strong>Ustaw zmienne środowiskowe</strong></li>
+<li><strong>Włącz CloudWatch</strong> dla monitorowania</li>
+<li><strong>Skonfiguruj VPC</strong> jeśli potrzebne</li>
+</ol>
+<h3 id="docker">Docker</h3>
+<pre><code class="language-dockerfile">FROM node:18-alpine
+
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci --only=production
+
+COPY . .
+EXPOSE 3000
+
+CMD [&quot;npm&quot;, &quot;start&quot;]
+</code></pre>
+<h2 id="zasoby">📚 Zasoby</h2>
+<ul>
+<li><a href="https://docs.aws.amazon.com/bedrock/">Amazon Bedrock Documentation</a></li>
+<li><a href="https://docs.aws.amazon.com/sdk-for-javascript/">AWS SDK for JavaScript</a></li>
+<li><a href="https://docs.anthropic.com/claude/reference">Claude API Reference</a></li>
+<li><a href="https://docs.aws.amazon.com/bedrock/latest/userguide/titan-models.html">Titan Models</a></li>
+</ul>
+<h2 id="wsparcie">🤝 Wsparcie</h2>
+<ul>
+<li><strong>ECM Digital Team</strong> - Wsparcie techniczne</li>
+<li><strong>AWS Support</strong> - Problemy z Bedrock API</li>
+<li><strong>GitHub Issues</strong> - Błędy w kodzie</li>
+</ul>
+<h2 id="licencja">📄 Licencja</h2>
+<p>MIT License - ECM Digital 2025</p>
+<hr />
+<p><strong>Uwaga:</strong> Ta integracja jest w wersji beta. Przetestuj dokładnie przed użyciem w produkcji.</p>
+</article>
+</div>
+</body></html>
