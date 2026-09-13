@@ -740,6 +740,10 @@
         .service-card:hover .service-link .arrow { transform: translateX(5px); }
 
         .services-more {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            justify-content: center;
             text-align: center;
             margin-top: 44px;
         }
@@ -1447,24 +1451,32 @@
         <section id="services" aria-labelledby="services-title">
             <div class="container">
                 <div class="section-head reveal">
-                    <span class="eyebrow">Główne filary wzrostu</span>
-                    <h2 id="services-title">Trzy wehikuły, które generują zapytania i oszczędzają Twój czas</h2>
-                    <p>Nie robimy wszystkiego. Skupiamy się na wdrożeniach, które bezpośrednio przekładają się na
-                        liczbę leadów i czas reakcji.</p>
+                    <span class="eyebrow">Pełna oferta</span>
+                    <h2 id="services-title">Usługi, które generują leady i skracają czas pracy</h2>
+                    <p>Od audytu AI i agentów, przez automatyzacje, po strony, sklepy i MVP — kompletny stack wzrostu
+                        dla firm usługowych.</p>
                 </div>
 
                 <div class="services-grid">
                     <a class="service-card reveal" href="/dokumentacja-ecm/oferta-uslug/audyty-ux/index.html">
                         <div class="service-top">
                             <div class="service-icon" aria-hidden="true">🔎</div>
-                            <span class="service-chip">ROI 300%+</span>
+                            <span class="service-chip">Audyt AI</span>
                         </div>
-                        <h3>Audyt wdrożenia AI &amp; procesów</h3>
-                        <p>Analizujemy operacje, dane i narzędzia w Twojej firmie, identyfikujemy Quick Wins oraz
-                            przygotowujemy priorytety i gotową mapę drogową wdrożenia AI.</p>
-                        <div class="service-tags">
-                            <span>Quick Wins</span><span>Mapa drogowa</span><span>Analiza biznesowa</span>
+                        <h3>Audyt i strategia AI</h3>
+                        <p>Mapujemy procesy, dane i narzędzia. Dostajesz Quick Wins oraz gotową mapę drogową wdrożenia AI.</p>
+                        <div class="service-tags"><span>Quick Wins</span><span>Mapa drogowa</span></div>
+                        <span class="service-link">Poznaj szczegóły <span class="arrow" aria-hidden="true">→</span></span>
+                    </a>
+
+                    <a class="service-card reveal" href="/dokumentacja-ecm/oferta-uslug/asystencja-ai-bedrock/index.html">
+                        <div class="service-top">
+                            <div class="service-icon" aria-hidden="true">🤖</div>
+                            <span class="service-chip">14 dni</span>
                         </div>
+                        <h3>Agenci AI (Bedrock)</h3>
+                        <p>Agent AI w CRM i dashboardzie KPI — odpowiada na leady, kwalifikuje i umawia spotkania 24/7.</p>
+                        <div class="service-tags"><span>Bedrock</span><span>CRM</span><span>KPI</span></div>
                         <span class="service-link">Poznaj szczegóły <span class="arrow" aria-hidden="true">→</span></span>
                     </a>
 
@@ -1473,33 +1485,115 @@
                             <div class="service-icon" aria-hidden="true">⚡</div>
                             <span class="service-chip">Czas −80%</span>
                         </div>
-                        <h3>Automatyzacja obsługi zapytań i follow-up</h3>
-                        <p>Twój zespół marnuje godziny na kopiowanie danych z formularzy do CRM i wysyłanie
-                            standardowych maili? Łączymy Twoje narzędzia w samonapędzający się system.</p>
-                        <div class="service-tags">
-                            <span>n8n</span><span>CRM</span><span>Oszczędność czasu</span>
-                        </div>
+                        <h3>Automatyzacje n8n</h3>
+                        <p>Łączymy formularze, CRM i follow-upy w samonapędzający się system bez ręcznego przepisywania.</p>
+                        <div class="service-tags"><span>n8n</span><span>Integracje</span></div>
                         <span class="service-link">Poznaj szczegóły <span class="arrow" aria-hidden="true">→</span></span>
                     </a>
 
-                    <a class="service-card reveal" href="/dokumentacja-ecm/oferta-uslug/asystencja-ai-bedrock/index.html">
+                    <a class="service-card reveal" href="/dokumentacja-ecm/oferta-uslug/asystenci-glosowi-lex/index.html">
                         <div class="service-top">
-                            <div class="service-icon" aria-hidden="true">⏱️</div>
-                            <span class="service-chip">14 dni</span>
+                            <div class="service-icon" aria-hidden="true">🎙️</div>
+                            <span class="service-chip">Głos</span>
                         </div>
-                        <h3>AI Agent Sprint — wdrożenie w 14 dni</h3>
-                        <p>Szybkie, mierzalne wdrożenie agenta AI zintegrowanego z Twoim CRM i dashboardem KPI. Zwinne
-                            dostarczanie wartości zamiast długich projektów IT.</p>
-                        <div class="service-tags">
-                            <span>Agent AI</span><span>Amazon Bedrock</span><span>Dashboard KPI</span>
+                        <h3>Asystenci głosowi</h3>
+                        <p>IVR i chatboty głosowe na Amazon Lex — automatyczna obsługa połączeń i umawianie wizyt.</p>
+                        <div class="service-tags"><span>Amazon Lex</span><span>IVR</span></div>
+                        <span class="service-link">Poznaj szczegóły <span class="arrow" aria-hidden="true">→</span></span>
+                    </a>
+
+                    <a class="service-card reveal" href="/dokumentacja-ecm/oferta-uslug/ai-governance-agentops/index.html">
+                        <div class="service-top">
+                            <div class="service-icon" aria-hidden="true">🛡️</div>
+                            <span class="service-chip">AgentOps</span>
                         </div>
+                        <h3>AI Governance</h3>
+                        <p>Kontrola ryzyka, kosztów i jakości agentów AI — bezpieczne skalowanie wdrożeń w firmie.</p>
+                        <div class="service-tags"><span>Governance</span><span>Compliance</span></div>
+                        <span class="service-link">Poznaj szczegóły <span class="arrow" aria-hidden="true">→</span></span>
+                    </a>
+
+                    <a class="service-card reveal" href="/dokumentacja-ecm/oferta-uslug/ai-executive/index.html">
+                        <div class="service-top">
+                            <div class="service-icon" aria-hidden="true">📊</div>
+                            <span class="service-chip">C-level</span>
+                        </div>
+                        <h3>AI Executive</h3>
+                        <p>Wsparcie zarządu: strategia AI, priorytety inwestycyjne i nadzór nad efektami wdrożeń.</p>
+                        <div class="service-tags"><span>Strategia</span><span>ROI</span></div>
+                        <span class="service-link">Poznaj szczegóły <span class="arrow" aria-hidden="true">→</span></span>
+                    </a>
+
+                    <a class="service-card reveal" href="/dokumentacja-ecm/oferta-uslug/edukacja-wdrozenia/index.html">
+                        <div class="service-top">
+                            <div class="service-icon" aria-hidden="true">📚</div>
+                            <span class="service-chip">Szkolenia</span>
+                        </div>
+                        <h3>Edukacja i wdrożenia</h3>
+                        <p>Warsztaty i onboarding zespołu, żeby AI i automatyzacje realnie weszły w codzienną pracę.</p>
+                        <div class="service-tags"><span>Warsztaty</span><span>Adoption</span></div>
+                        <span class="service-link">Poznaj szczegóły <span class="arrow" aria-hidden="true">→</span></span>
+                    </a>
+
+                    <a class="service-card reveal" href="/dokumentacja-ecm/oferta-uslug/strony-www/index.html">
+                        <div class="service-top">
+                            <div class="service-icon" aria-hidden="true">🌐</div>
+                            <span class="service-chip">WWW</span>
+                        </div>
+                        <h3>Strony WWW</h3>
+                        <p>Strony sprzedażowe i landingi zoptymalizowane pod konwersję, SEO i szybkość ładowania.</p>
+                        <div class="service-tags"><span>Next.js</span><span>SEO</span></div>
+                        <span class="service-link">Poznaj szczegóły <span class="arrow" aria-hidden="true">→</span></span>
+                    </a>
+
+                    <a class="service-card reveal" href="/dokumentacja-ecm/oferta-uslug/sklepy-shopify/index.html">
+                        <div class="service-top">
+                            <div class="service-icon" aria-hidden="true">🛒</div>
+                            <span class="service-chip">E-commerce</span>
+                        </div>
+                        <h3>Sklepy Shopify &amp; Wix</h3>
+                        <p>Sklepy z konwersją: customizacja, płatności, logistyka i opcjonalni agenci AI w obsłudze.</p>
+                        <div class="service-tags"><span>Shopify</span><span>Wix</span></div>
+                        <span class="service-link">Poznaj szczegóły <span class="arrow" aria-hidden="true">→</span></span>
+                    </a>
+
+                    <a class="service-card reveal" href="/dokumentacja-ecm/oferta-uslug/aplikacje-mobilne/index.html">
+                        <div class="service-top">
+                            <div class="service-icon" aria-hidden="true">📱</div>
+                            <span class="service-chip">Mobile</span>
+                        </div>
+                        <h3>Aplikacje mobilne</h3>
+                        <p>iOS i Android (React Native) — od MVP po skalowalne produkty z backendem i analityką.</p>
+                        <div class="service-tags"><span>React Native</span><span>iOS/Android</span></div>
+                        <span class="service-link">Poznaj szczegóły <span class="arrow" aria-hidden="true">→</span></span>
+                    </a>
+
+                    <a class="service-card reveal" href="/dokumentacja-ecm/oferta-uslug/prototypy-mvp/index.html">
+                        <div class="service-top">
+                            <div class="service-icon" aria-hidden="true">🚀</div>
+                            <span class="service-chip">MVP</span>
+                        </div>
+                        <h3>Prototypy MVP</h3>
+                        <p>Szybka walidacja pomysłu: działający produkt, feedback użytkowników i ścieżka do skalowania.</p>
+                        <div class="service-tags"><span>Startup</span><span>Walidacja</span></div>
+                        <span class="service-link">Poznaj szczegóły <span class="arrow" aria-hidden="true">→</span></span>
+                    </a>
+
+                    <a class="service-card reveal" href="/dokumentacja-ecm/oferta-uslug/social-media-data-science/index.html">
+                        <div class="service-top">
+                            <div class="service-icon" aria-hidden="true">📈</div>
+                            <span class="service-chip">Marketing</span>
+                        </div>
+                        <h3>Social Media &amp; AI</h3>
+                        <p>Kampanie i automatyzacje marketingowe oparte na danych — wyższa konwersja, mniej ręcznej pracy.</p>
+                        <div class="service-tags"><span>Data science</span><span>Ads</span></div>
                         <span class="service-link">Poznaj szczegóły <span class="arrow" aria-hidden="true">→</span></span>
                     </a>
                 </div>
 
                 <div class="services-more reveal">
-                    <a href="/dokumentacja-ecm/portfolio-case-studies/index.html" class="btn btn-ghost">Zobacz
-                        portfolio realizacji</a>
+                    <a href="/dokumentacja-ecm/oferta-uslug/index.html" class="btn btn-ghost">Pełna oferta usług</a>
+                    <a href="/dokumentacja-ecm/portfolio-case-studies/index.html" class="btn btn-ghost">Portfolio realizacji</a>
                 </div>
             </div>
         </section>
@@ -1597,6 +1691,10 @@
                         <a class="case-link" href="/case-studies/automatyzacja-sprzedazy-software-house.html">Czytaj
                             case study <span class="arrow" aria-hidden="true">→</span></a>
                     </article>
+                </div>
+
+                <div class="services-more reveal" style="margin-top: 40px;">
+                    <a href="/dokumentacja-ecm/portfolio-case-studies/index.html" class="btn btn-ghost">Pełne portfolio realizacji</a>
                 </div>
             </div>
         </section>
@@ -1816,6 +1914,7 @@
                     <a href="/dokumentacja-ecm/oferta-uslug/asystenci-glosowi-lex/index.html">Asystenci głosowi</a>
                     <a href="/dokumentacja-ecm/oferta-uslug/ai-governance-agentops/index.html">AI Governance &amp;
                         AgentOps</a>
+                    <a href="/dokumentacja-ecm/oferta-uslug/ai-executive/index.html">AI Executive</a>
                     <a href="/dokumentacja-ecm/oferta-uslug/edukacja-wdrozenia/index.html">Edukacja i wdrożenia</a>
                 </nav>
 
@@ -1825,7 +1924,8 @@
                     <a href="/dokumentacja-ecm/oferta-uslug/sklepy-shopify/index.html">Sklepy Shopify</a>
                     <a href="/dokumentacja-ecm/oferta-uslug/aplikacje-mobilne/index.html">Aplikacje mobilne</a>
                     <a href="/dokumentacja-ecm/oferta-uslug/prototypy-mvp/index.html">Prototypy MVP</a>
-                    <a href="/dokumentacja-ecm/oferta-uslug/audyty-ux/index.html">Audyty UX</a>
+                    <a href="/dokumentacja-ecm/oferta-uslug/audyty-ux/index.html">Audyt i strategia AI</a>
+                    <a href="/dokumentacja-ecm/oferta-uslug/social-media-data-science/index.html">Social Media &amp; AI</a>
                 </nav>
 
                 <nav class="footer-col" aria-label="Firma">
