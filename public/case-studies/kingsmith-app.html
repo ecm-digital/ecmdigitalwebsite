@@ -1,111 +1,132 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pl">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Case Study: KINGSMITH – Aplikacja mobilna do ławeczki treningowej | ECM Digital</title>
-    <meta name="description" content="Aplikacja mobilna KINGSMITH: BLE/IoT, śledzenie treningu, plany, metryki postępów, React Native i AWS IoT." />
-
-    <style>
-      :root{--bg:#0b1220;--panel:#0f172a;--muted:#9aa4b2;--primary:#3b82f6;--accent:#30D158;--border:#1f2a44}
-      *{box-sizing:border-box}
-      body{margin:0;background:var(--bg);color:#e5e7eb;font-family:'TT Hoves',system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif}
-      .container{max-width:1100px;margin:0 auto;padding:24px}
-      .card{background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:24px}
-      a{color:#60a5fa;text-decoration:none}
-      a:hover{text-decoration:underline}
-      .badge{display:inline-block;padding:6px 12px;border-radius:999px;background:#12213a;border:1px solid var(--border);font-size:12px;color:#c7d2fe;margin-right:8px}
-      .back{display:inline-flex;align-items:center;gap:8px;color:#cbd5e1}
-      .back:hover{color:#fff}
-      .h1{font-size:32px;margin:0 0 8px 0;font-weight:800}
-      .lead{color:var(--muted);margin:0 0 16px 0}
-      .grid{display:grid;grid-template-columns:1fr;gap:24px}
-      @media(min-width:900px){.grid{grid-template-columns:1.2fr .8fr}}
-      .section-title{font-size:20px;font-weight:700;margin:0 0 8px 0}
-      .muted{color:var(--muted)}
-      .cta{display:inline-block;background:linear-gradient(135deg,#007AFF,#BF5AF2);color:#fff;border:none;padding:12px 16px;border-radius:10px;font-weight:600}
-      .cta:hover{opacity:.9;text-decoration:none}
-      header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
-      .gallery{display:grid;grid-template-columns:1fr;gap:12px}
-      @media(min-width:900px){.gallery{grid-template-columns:1fr 1fr}}
-      .gallery-item{background:#0b1424;border:1px dashed var(--border);border-radius:12px;height:180px;display:flex;align-items:center;justify-content:center;color:var(--muted)}
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <header>
-        <a class="back" href="/index.html">
-          <span>←</span>
-          <span>Wróć na stronę główną</span>
-        </a>
-        <a class="cta" href="#kontakt">Skontaktuj się z nami</a>
-      </header>
-      <div class="card">
-        <div class="grid">
-          <div>
-            <h1 class="h1">KINGSMITH – Aplikacja mobilna do ławeczki treningowej</h1>
-            <p class="lead">Aplikacja mobilna z łącznością Bluetooth Low Energy do śledzenia treningu na ławeczce KINGSMITH: zestawy, powtórzenia, tempo i obciążenie. Plany treningowe, cele i raporty postępów.</p>
-            <div style="margin:16px 0 24px 0">
-              <span class="badge">React Native</span>
-              <span class="badge">Bluetooth LE</span>
-              <span class="badge">AWS IoT</span>
-            </div>
-            <h3 class="section-title">Zakres prac</h3>
-            <ul class="muted">
-              <li>Integracja BLE z ławeczką: parowanie, status urządzenia, odczyt metryk</li>
-              <li>Logika treningowa: serie, powtórzenia, przerwy, auto-pauza</li>
-              <li>Plany i cele: personalizacja obciążeń, progresja, przypomnienia</li>
-              <li>Raporty i analityka: dzienne/tygodniowe podsumowania, eksport</li>
-            </ul>
-            <h3 class="section-title">Efekt</h3>
-            <p class="muted">Zaangażowanie użytkowników wzrosło, a dane z urządzenia pozwoliły na precyzyjne dopasowanie planów. UX uprościł start w 30 sekund od parowania.</p>
-            <h3 class="section-title">Wyzwanie</h3>
-            <p class="muted">Stabilna komunikacja BLE i spójne metryki w czasie rzeczywistym przy niskim zużyciu energii.</p>
-            <h3 class="section-title">Rozwiązanie</h3>
-            <ul class="muted">
-              <li>Warstwa BLE z reconnection i kolejką komend</li>
-              <li>Buforowanie i debouncing metryk, zapisywanie offline</li>
-              <li>Analityka postępów i rekomendacje obciążeń</li>
-            </ul>
-            <h3 class="section-title">Rezultaty</h3>
-            <ul class="muted">
-              <li>4.8/5 średnia ocena</li>
-              <li>50k+ pobrań</li>
-              <li>Stabilna łączność BLE i płynny UX</li>
-            </ul>
-            <h3 class="section-title">Timeline</h3>
-            <ul class="muted">
-              <li>Discovery i PoC BLE: 2 tygodnie</li>
-              <li>Implementacja core + UI: 4 tygodnie</li>
-              <li>Testy urządzenia i rollout: 2 tygodnie</li>
-            </ul>
-            <h3 class="section-title">Stack technologiczny</h3>
-            <div style="margin:8px 0 20px 0">
-              <span class="badge">React Native</span>
-              <span class="badge">TypeScript</span>
-              <span class="badge">BLE</span>
-              <span class="badge">AWS IoT</span>
-            </div>
-            <h3 class="section-title">Galeria</h3>
-            <div class="gallery">
-              <div class="gallery-item">Ekran parowania BLE</div>
-              <div class="gallery-item">Widok treningu LIVE</div>
-              <div class="gallery-item">Raport tygodniowy</div>
-              <div class="gallery-item">Plan treningowy i cele</div>
-            </div>
-          </div>
-          <div>
-            <div class="card" style="background:#0b1424;border:1px dashed var(--border)">
-              <div class="muted">Schemat komunikacji BLE i przepływu metryk</div>
-              <div style="height:220px"></div>
-            </div>
-            <div style="margin-top:16px">
-              <a class="cta" href="#kontakt">Porozmawiajmy o podobnym wdrożeniu</a>
-            </div>
-          </div>
-        </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Case Study: KINGSMITH – aplikacja mobilna | ECM Digital</title>
+  <meta name="description" content="Aplikacja React Native + BLE do ławeczki treningowej KINGSMITH: 50k+ pobrań, ocena 4.8/5." />
+  <link rel="canonical" href="https://www.ecm-digital.com/case-studies/kingsmith-app.html" />
+  <style>
+:root {
+  --bg: #05070c; --bg-2: #0b1018; --surface: #121826; --surface-2: #182033;
+  --border: #243044; --border-2: #3a4d6b; --text: #f5f7fb; --muted: #9aa6b2;
+  --accent: #7dd3fc; --green: #4ade80; --red: #f87171; --radius: 18px;
+}
+* { box-sizing: border-box; }
+body { margin: 0; font-family: system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+a { color: inherit; text-decoration: none; }
+.wrap { max-width: 980px; margin: 0 auto; padding: 24px 20px 80px; }
+.topnav { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 28px; }
+.logo { font-weight: 800; letter-spacing: -0.03em; }
+.logo span { color: var(--accent); }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 12px 18px; border-radius: 999px; font-weight: 700; font-size: .95rem;
+}
+.btn-primary { background: var(--accent); color: #041018; }
+.btn-ghost { border: 1px solid var(--border); color: var(--text); }
+.btn-ghost:hover { border-color: var(--border-2); }
+.hero {
+  padding: 36px 32px; border-radius: 24px; border: 1px solid var(--border);
+  background: linear-gradient(160deg, #101827 0%, #0b1220 55%, #070b12 100%);
+  margin-bottom: 28px;
+}
+.eyebrow { display: inline-block; font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+h1 { margin: 0 0 12px; font-size: clamp(1.8rem, 4vw, 2.6rem); letter-spacing: -0.04em; line-height: 1.15; }
+.lead { margin: 0 0 24px; color: var(--muted); font-size: 1.08rem; max-width: 720px; }
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.stat { padding: 16px; border-radius: 14px; background: rgba(255,255,255,.03); border: 1px solid var(--border); }
+.stat .v { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.03em; color: var(--green); }
+.stat .l { font-size: .82rem; color: var(--muted); margin-top: 4px; }
+.section {
+  margin-bottom: 18px; padding: 28px 28px; border-radius: var(--radius);
+  background: var(--surface); border: 1px solid var(--border);
+}
+.section h2 { margin: 0 0 14px; font-size: 1.35rem; letter-spacing: -0.02em; }
+.section p, .section li { color: var(--muted); }
+.section ul { margin: 0; padding-left: 1.15rem; }
+.section li { margin: 6px 0; }
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 16px; }
+.feature {
+  padding: 18px; border-radius: 14px; background: var(--surface-2); border: 1px solid var(--border);
+}
+.feature h3 { margin: 0 0 8px; font-size: 1.02rem; color: var(--text); }
+.feature p { margin: 0; font-size: .95rem; }
+.badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.badge {
+  padding: 6px 10px; border-radius: 999px; border: 1px solid var(--border);
+  background: #0d1524; color: #c7d2fe; font-size: .78rem;
+}
+.timeline { display: grid; gap: 10px; }
+.step {
+  display: grid; grid-template-columns: 110px 1fr; gap: 12px; padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+.step:last-child { border-bottom: 0; }
+.step .when { color: var(--accent); font-weight: 700; font-size: .9rem; }
+.cta-box {
+  margin-top: 24px; padding: 28px; border-radius: var(--radius); border: 1px solid var(--border);
+  background: linear-gradient(135deg, #0f172a, #121826);
+  display: flex; justify-content: space-between; align-items: center; gap: 18px; flex-wrap: wrap;
+}
+.cta-box h2 { margin: 0 0 6px; font-size: 1.3rem; }
+.cta-box p { margin: 0; color: var(--muted); }
+@media (max-width: 800px) {
+  .stats { grid-template-columns: 1fr 1fr; }
+  .grid2 { grid-template-columns: 1fr; }
+  .step { grid-template-columns: 1fr; }
+  .hero, .section { padding: 22px 18px; }
+}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="topnav">
+      <a class="logo" href="/">ECM Digital<span>.</span></a>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <a class="btn btn-ghost" href="/dokumentacja-ecm/portfolio-case-studies/">Portfolio</a>
+        <a class="btn btn-primary" href="https://calendly.com/hello-ecm-digital" target="_blank" rel="noopener">Umów konsultację</a>
       </div>
     </div>
-  </body>
- </html>
 
+    <section class="hero">
+      <span class="eyebrow">Mobile · IoT / React Native</span>
+      <h1>KINGSMITH — aplikacja do ławeczki treningowej</h1>
+      <p class="lead">Potrzebowaliśmy stabilnej aplikacji mobilnej z Bluetooth Low Energy: parowanie urządzenia, trening live, plany i raporty postępów — bez lagów i z niskim zużyciem baterii.</p>
+      <div class="stats"><div class="stat"><div class="v">50k+</div><div class="l">pobrań</div></div><div class="stat"><div class="v">4.8/5</div><div class="l">ocena użytkowników</div></div><div class="stat"><div class="v">30s</div><div class="l">od parowania do startu</div></div><div class="stat"><div class="v">BLE</div><div class="l">stabilna łączność</div></div></div>
+    </section>
+
+    <section class="section">
+      <h2>Wyzwanie</h2>
+      <p>Urządzenie fitness wymagało aplikacji, która działa pewnie w realnych warunkach treningu.</p>
+      <ul><li>Niestabilne połączenia BLE i utrata metryk w trakcie serii</li><li>Potrzeba trybu offline i synchronizacji po treningu</li><li>UX musiał być prosty — użytkownik startuje trening w mniej niż minutę</li><li>Spójne metryki (powtórzenia, tempo, obciążenie) mimo szumu czujników</li></ul>
+    </section>
+
+    <section class="section">
+      <h2>Rozwiązanie</h2>
+      <p>Zbudowaliśmy warstwę BLE z reconnection, buforowaniem i debouncingiem metryk oraz aplikację React Native z planami i analityką.</p>
+      <div class="grid2"><div class="feature"><h3>Warstwa BLE</h3><p>Parowanie, reconnection, kolejka komend i odporność na chwilowe dropy.</p></div><div class="feature"><h3>Trening LIVE</h3><p>Serie, powtórzenia, przerwy, auto-pauza i zapis offline.</p></div><div class="feature"><h3>Plany i cele</h3><p>Personalizacja obciążeń, progresja i przypomnienia.</p></div><div class="feature"><h3>Raporty</h3><p>Dzienne/tygodniowe podsumowania i eksport postępów.</p></div></div>
+    </section>
+
+    <section class="section">
+      <h2>Rezultaty</h2>
+      <p>Aplikacja weszła na rynek jako pełnoprawny produkt sprzętowy + software.</p>
+      <ul><li>Ponad 50 tys. pobrań i ocena 4.8/5</li><li>Start treningu w ok. 30 sekund od pierwszego parowania</li><li>Stabilna łączność BLE w typowych warunkach domowych</li><li>Wyższe zaangażowanie dzięki planom i widocznym postępom</li></ul>
+      <div class="badges"><span class="badge">React Native</span><span class="badge">TypeScript</span><span class="badge">Bluetooth LE</span><span class="badge">AWS IoT</span></div>
+    </section>
+
+    <section class="section">
+      <h2>Przebieg współpracy</h2>
+      <div class="timeline"><div class="step"><div class="when">Tydzień 1–2</div><div>Discovery i PoC BLE</div></div><div class="step"><div class="when">Tydzień 3–6</div><div>Core treningu, UI i synchronizacja</div></div><div class="step"><div class="when">Tydzień 7–8</div><div>Testy urządzenia, polish UX i rollout</div></div></div>
+    </section>
+
+    <div class="cta-box" id="kontakt">
+      <div>
+        <h2>Chcesz podobny efekt w swojej firmie?</h2>
+        <p>Pokażemy, co da się wdrożyć w 2–6 tygodni — bez długiego projektu IT.</p>
+      </div>
+      <a class="btn btn-primary" href="https://calendly.com/hello-ecm-digital" target="_blank" rel="noopener">Umów konsultację</a>
+    </div>
+  </div>
+</body>
+</html>

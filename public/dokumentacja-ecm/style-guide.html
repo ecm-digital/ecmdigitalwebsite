@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🎨 Style Guide - ECM Digital | ECM Digital – Baza wiedzy</title>
+<meta name="description" content=" 🎨 Style Guide - ECM Digital Brand Identity 🎯 Logo i Branding ECM Digital ├── Logo: Nowoczesny, minimalistyczny ├── Tagline: &quot;Tworzymy cyfrową przyszł">
+<link rel="canonical" href="https://www.ecm-digital.com/dokumentacja-ecm/style-guide.html">
+<link rel="stylesheet" href="/dokumentacja-ecm/docs-styles.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <a class="brand" href="/">ECM Digital<span>.</span></a>
+  <nav class="topnav">
+    <a href="/dokumentacja-ecm/">Baza wiedzy</a>
+    <a href="/dokumentacja-ecm/oferta-uslug/">Oferta</a>
+    <a href="/dokumentacja-ecm/portfolio-case-studies/">Portfolio</a>
+    <a href="/#contact">Kontakt</a>
+  </nav>
+</div></div>
+<div class="wrap">
+<div class="crumb"><a href="/dokumentacja-ecm/">Baza wiedzy</a> / 🎨 Style Guide - ECM Digital</div>
+<article>
+<h1 id="style-guide-ecm-digital">🎨 Style Guide - ECM Digital</h1>
+<h2 id="brand-identity">Brand Identity</h2>
+<h3 id="logo-i-branding">🎯 Logo i Branding</h3>
+<pre><code>ECM Digital
+├── Logo: Nowoczesny, minimalistyczny
+├── Tagline: &quot;Tworzymy cyfrową przyszłość&quot;
+├── Kolory: Niebieski (#007AFF), Szary (#2C2C2E)
+└── Font: Inter, SF Pro Display
+</code></pre>
+<h3 id="paleta-kolorow">🌈 Paleta Kolorów</h3>
+<h4 id="kolory-gowne">Kolory Główne</h4>
+<pre><code class="language-css">:root {
+  /* Primary Colors */
+  --primary-blue: #007AFF;
+  --primary-dark: #0056CC;
+  --primary-light: #409CFF;
+
+  /* Secondary Colors */
+  --accent-green: #30D158;
+  --accent-orange: #FF9F0A;
+  --accent-purple: #BF5AF2;
+  --accent-pink: #FF2D92;
+
+  /* Neutral Colors */
+  --gray-900: #1C1C1E;
+  --gray-800: #2C2C2E;
+  --gray-700: #3A3A3C;
+  --gray-600: #48484A;
+  --gray-500: #636366;
+  --gray-400: #8E8E93;
+  --gray-300: #C7C7CC;
+  --gray-200: #D1D1D6;
+  --gray-100: #F2F2F7;
+  --white: #FFFFFF;
+}
+</code></pre>
+<h4 id="zastosowanie-kolorow">Zastosowanie Kolorów</h4>
+<ul>
+<li><strong>Niebieski (#007AFF)</strong>: CTA, linki, akcenty</li>
+<li><strong>Zielony (#30D158)</strong>: Sukces, pozytywne metryki</li>
+<li><strong>Pomarańczowy (#FF9F0A)</strong>: Ostrzeżenia, ważne informacje</li>
+<li><strong>Fioletowy (#BF5AF2)</strong>: Premium, zaawansowane funkcje</li>
+<li><strong>Różowy (#FF2D92)</strong>: Kreatywność, design</li>
+</ul>
+<h3 id="typografia">📝 Typografia</h3>
+<h4 id="hierarchia-nagowkow">Hierarchia Nagłówków</h4>
+<pre><code class="language-css">/* H1 - Tytuły główne */
+h1 {
+  font-family: 'TT Hoves', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--gray-900);
+}
+
+/* H2 - Sekcje */
+h2 {
+  font-family: 'TT Hoves', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--gray-900);
+}
+
+/* H3 - Podsekcje */
+h3 {
+  font-family: 'TT Hoves', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--gray-800);
+}
+
+/* Body Text */
+p {
+  font-family: 'TT Hoves', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--gray-700);
+}
+</code></pre>
+<h4 id="rozmiary-tekstu">Rozmiary Tekstu</h4>
+<ul>
+<li><strong>Display</strong>: 3rem+ (48px+)</li>
+<li><strong>H1</strong>: 2.5rem (40px)</li>
+<li><strong>H2</strong>: 2rem (32px)</li>
+<li><strong>H3</strong>: 1.5rem (24px)</li>
+<li><strong>H4</strong>: 1.25rem (20px)</li>
+<li><strong>Body</strong>: 1rem (16px)</li>
+<li><strong>Small</strong>: 0.875rem (14px)</li>
+<li><strong>Caption</strong>: 0.75rem (12px)</li>
+</ul>
+<h2 id="komponenty-ui">🧩 Komponenty UI</h2>
+<h3 id="karty-cards">📦 Karty (Cards)</h3>
+<pre><code class="language-css">.card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  padding: 24px;
+  border: 1px solid var(--gray-200);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+</code></pre>
+<h3 id="przyciski-buttons">🔘 Przyciski (Buttons)</h3>
+<pre><code class="language-css">/* Primary Button */
+.btn-primary {
+  background: var(--primary-blue);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: var(--primary-dark);
+  transform: translateY(-1px);
+}
+
+/* Secondary Button */
+.btn-secondary {
+  background: transparent;
+  color: var(--primary-blue);
+  border: 2px solid var(--primary-blue);
+  padding: 10px 22px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: var(--primary-blue);
+  color: white;
+}
+</code></pre>
+<h3 id="badges-i-tagi">🏷️ Badges i Tagi</h3>
+<pre><code class="language-css">.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.badge-success {
+  background: rgba(48, 209, 88, 0.1);
+  color: var(--accent-green);
+}
+
+.badge-warning {
+  background: rgba(255, 159, 10, 0.1);
+  color: var(--accent-orange);
+}
+
+.badge-info {
+  background: rgba(0, 122, 255, 0.1);
+  color: var(--primary-blue);
+}
+</code></pre>
+<h2 id="layout-i-spacing">📐 Layout i Spacing</h2>
+<h3 id="grid-system">🔲 Grid System</h3>
+<pre><code class="language-css">.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.grid {
+  display: grid;
+  gap: 24px;
+}
+
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+@media (max-width: 768px) {
+  .grid-2,
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: 1fr;
+  }
+}
+</code></pre>
+<h3 id="spacing-scale">📏 Spacing Scale</h3>
+<pre><code class="language-css">:root {
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+  --space-4xl: 96px;
+}
+</code></pre>
+<h2 id="ikony-i-grafika">🎭 Ikony i Grafika</h2>
+<h3 id="ikony">📱 Ikony</h3>
+<ul>
+<li><strong>Biblioteka</strong>: Lucide React, Heroicons</li>
+<li><strong>Styl</strong>: Outline, 24px domyślnie</li>
+<li><strong>Kolory</strong>: Zgodne z paletą kolorów</li>
+<li><strong>Użycie</strong>: Spójne znaczenia w całej dokumentacji</li>
+</ul>
+<h3 id="obrazy">🖼️ Obrazy</h3>
+<ul>
+<li><strong>Format</strong>: WebP z fallback do PNG/JPG</li>
+<li><strong>Rozmiary</strong>: Responsywne z srcset</li>
+<li><strong>Alt text</strong>: Zawsze obecny dla dostępności</li>
+<li><strong>Lazy loading</strong>: Dla lepszej wydajności</li>
+</ul>
+<h2 id="responsywnosc">📱 Responsywność</h2>
+<h3 id="breakpoints">📐 Breakpoints</h3>
+<pre><code class="language-css">/* Mobile First Approach */
+:root {
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+}
+
+/* Media Queries */
+@media (min-width: 640px) { /* sm */ }
+@media (min-width: 768px) { /* md */ }
+@media (min-width: 1024px) { /* lg */ }
+@media (min-width: 1280px) { /* xl */ }
+</code></pre>
+<h3 id="mobile-optimizations">📱 Mobile Optimizations</h3>
+<ul>
+<li>Touch-friendly buttons (min 44px)</li>
+<li>Readable font sizes (min 16px)</li>
+<li>Adequate spacing for fingers</li>
+<li>Horizontal scrolling avoided</li>
+</ul>
+<h2 id="animacje-i-transitions">🎨 Animacje i Transitions</h2>
+<h3 id="micro-interactions">⚡ Micro-interactions</h3>
+<pre><code class="language-css">/* Hover Effects */
+.interactive {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.interactive:hover {
+  transform: translateY(-2px);
+}
+
+/* Loading States */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.loading {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Fade In */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+</code></pre>
+<h3 id="page-transitions">🎬 Page Transitions</h3>
+<ul>
+<li>Smooth scrolling</li>
+<li>Fade in animations</li>
+<li>Staggered loading</li>
+<li>Progressive enhancement</li>
+</ul>
+<h2 id="data-visualization">📊 Data Visualization</h2>
+<h3 id="charts-i-wykresy">📈 Charts i Wykresy</h3>
+<pre><code class="language-css">.chart-container {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.metric-card {
+  text-align: center;
+  padding: 20px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--primary-blue), var(--primary-light));
+  color: white;
+}
+
+.metric-number {
+  font-size: 2.5rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.metric-label {
+  font-size: 0.875rem;
+  opacity: 0.9;
+  margin-top: 4px;
+}
+</code></pre>
+<h3 id="progress-indicators">🎯 Progress Indicators</h3>
+<pre><code class="language-css">.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: var(--gray-200);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-blue), var(--primary-light));
+  border-radius: 4px;
+  transition: width 0.6s ease;
+}
+</code></pre>
+<h2 id="dark-mode-support">🌙 Dark Mode Support</h2>
+<h3 id="dark-theme-colors">🎨 Dark Theme Colors</h3>
+<pre><code class="language-css">@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-primary: #000000;
+    --bg-secondary: #1C1C1E;
+    --bg-tertiary: #2C2C2E;
+
+    --text-primary: #FFFFFF;
+    --text-secondary: #EBEBF5;
+    --text-tertiary: rgba(235, 235, 245, 0.6);
+  }
+
+  .card {
+    background: var(--bg-secondary);
+    border-color: var(--bg-tertiary);
+  }
+}
+</code></pre>
+<h2 id="accessibility">♿ Accessibility</h2>
+<h3 id="wcag-21-aa-compliance">🎯 WCAG 2.1 AA Compliance</h3>
+<pre><code class="language-css">/* Focus States */
+.focusable:focus {
+  outline: 2px solid var(--primary-blue);
+  outline-offset: 2px;
+}
+
+/* High Contrast */
+@media (prefers-contrast: high) {
+  .card {
+    border-width: 2px;
+  }
+
+  .btn-primary {
+    border: 2px solid transparent;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+</code></pre>
+<h3 id="typography-accessibility">🔤 Typography Accessibility</h3>
+<ul>
+<li>Minimum 16px font size</li>
+<li>4.5:1 contrast ratio</li>
+<li>1.5 line height minimum</li>
+<li>No text in images</li>
+</ul>
+<h2 id="content-guidelines">📝 Content Guidelines</h2>
+<h3 id="tone-of-voice">✍️ Tone of Voice</h3>
+<ul>
+<li><strong>Profesjonalny</strong> ale przystępny</li>
+<li><strong>Ekspercki</strong> bez żargonu</li>
+<li><strong>Pomocny</strong> i wspierający</li>
+<li><strong>Konkretny</strong> z przykładami</li>
+</ul>
+<h3 id="formatting-standards">📋 Formatting Standards</h3>
+<ul>
+<li><strong>Nagłówki</strong>: Hierarchiczne (H1-H6)</li>
+<li><strong>Listy</strong>: Numerowane lub punktowane</li>
+<li><strong>Linki</strong>: Opisowe, nie "kliknij tutaj"</li>
+<li><strong>Obrazy</strong>: Alt text zawsze obecny</li>
+</ul>
+<h3 id="call-to-action">🎯 Call-to-Action</h3>
+<pre><code class="language-html">&lt;!-- Dobry CTA --&gt;
+&lt;a href=&quot;/kontakt&quot; class=&quot;btn-primary&quot;&gt;
+  Umów bezpłatną konsultację
+&lt;/a&gt;
+
+&lt;!-- Zły CTA --&gt;
+&lt;a href=&quot;/kontakt&quot; class=&quot;btn-primary&quot;&gt;
+  Kliknij tutaj
+&lt;/a&gt;
+</code></pre>
+<h2 id="implementation">🔧 Implementation</h2>
+<h3 id="css-framework">📦 CSS Framework</h3>
+<pre><code class="language-css">/* Base Styles */
+
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'TT Hoves', -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.6;
+  color: var(--gray-700);
+  background: var(--gray-100);
+}
+
+/* Utility Classes */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.mt-1 { margin-top: var(--space-xs); }
+.mt-2 { margin-top: var(--space-sm); }
+.mt-3 { margin-top: var(--space-md); }
+.mt-4 { margin-top: var(--space-lg); }
+
+.p-1 { padding: var(--space-xs); }
+.p-2 { padding: var(--space-sm); }
+.p-3 { padding: var(--space-md); }
+.p-4 { padding: var(--space-lg); }
+</code></pre>
+<h3 id="css-custom-properties">🎨 CSS Custom Properties</h3>
+<pre><code class="language-css">/* Component Tokens */
+:root {
+  --card-padding: var(--space-lg);
+  --card-radius: 12px;
+  --card-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+
+  --button-padding: 12px 24px;
+  --button-radius: 8px;
+  --button-font-weight: 600;
+
+  --input-padding: 12px 16px;
+  --input-radius: 8px;
+  --input-border: 2px solid var(--gray-300);
+}
+</code></pre>
+<h2 id="resources">📚 Resources</h2>
+<h3 id="design-tools">🎨 Design Tools</h3>
+<ul>
+<li><strong>Figma</strong>: Design system i prototypy</li>
+<li><strong>Adobe Creative Suite</strong>: Grafika i ilustracje</li>
+<li><strong>Sketch</strong>: UI design (alternatywa)</li>
+</ul>
+<h3 id="development-tools">🔧 Development Tools</h3>
+<ul>
+<li><strong>Tailwind CSS</strong>: Utility-first framework</li>
+<li><strong>PostCSS</strong>: CSS processing</li>
+<li><strong>Autoprefixer</strong>: Browser compatibility</li>
+<li><strong>PurgeCSS</strong>: Unused CSS removal</li>
+</ul>
+<h3 id="documentation">📖 Documentation</h3>
+<ul>
+<li><a href="https://figma.com/ecm-digital-design-system">Design System Figma</a></li>
+<li><a href="https://storybook.ecm-digital.com">Component Library</a></li>
+<li><a href="https://brand.ecm-digital.com">Brand Guidelines PDF</a></li>
+</ul>
+<hr />
+<p><em>Style Guide zapewnia spójność wizualną i funkcjonalną we wszystkich materiałach ECM Digital.</em> 🎨</p>
+</article>
+</div>
+</body></html>

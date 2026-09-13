@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stack Technologiczny - MVP | ECM Digital – Baza wiedzy</title>
+<meta name="description" content=" Stack Technologiczny - MVP Wprowadzenie Tworzenie prototypów MVP (Minimum Viable Product) wymaga specjalnego podejścia technologicznego, które pozwal">
+<link rel="canonical" href="https://www.ecm-digital.com/dokumentacja-ecm/technologie/stack-mvp.html">
+<link rel="stylesheet" href="/dokumentacja-ecm/docs-styles.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <a class="brand" href="/">ECM Digital<span>.</span></a>
+  <nav class="topnav">
+    <a href="/dokumentacja-ecm/">Baza wiedzy</a>
+    <a href="/dokumentacja-ecm/oferta-uslug/">Oferta</a>
+    <a href="/dokumentacja-ecm/portfolio-case-studies/">Portfolio</a>
+    <a href="/#contact">Kontakt</a>
+  </nav>
+</div></div>
+<div class="wrap">
+<div class="crumb"><a href="/dokumentacja-ecm/">Baza wiedzy</a> / Stack Technologiczny - MVP</div>
+<article>
+<h1 id="stack-technologiczny-mvp">Stack Technologiczny - MVP</h1>
+<h2 id="wprowadzenie">Wprowadzenie</h2>
+<p>Tworzenie prototypów MVP (Minimum Viable Product) wymaga specjalnego podejścia technologicznego, które pozwala na szybkie walidowanie pomysłów biznesowych przy minimalnych kosztach i czasie. Nasz stack dla MVP jest zoptymalizowany pod kątem szybkości rozwoju, elastyczności i możliwości skalowania.</p>
+<p><strong>Filozofia MVP w ECM Digital:</strong><br />
+- <strong>Build-Measure-Learn</strong> - Szybkie iteracje oparte na feedback<br />
+- <strong>Lean Development</strong> - Minimalizacja waste i maksymalizacja value<br />
+- <strong>Rapid Prototyping</strong> - Od pomysłu do działającego produktu w tygodnie<br />
+- <strong>Scalable Foundation</strong> - Architektura gotowa na przyszły rozwój<br />
+- <strong>Cost-Effective</strong> - Optymalne wykorzystanie budżetu</p>
+<h2 id="full-stack-frameworks-dla-mvp">Full-Stack Frameworks dla MVP</h2>
+<h3 id="nextjs-react">Next.js (React)</h3>
+<p><strong>Dlaczego Next.js dla MVP?</strong><br />
+- <strong>Zero Configuration</strong> - Szybki start bez skomplikowanej konfiguracji<br />
+- <strong>Full-Stack Capabilities</strong> - Frontend + API routes w jednym frameworku<br />
+- <strong>Built-in Optimizations</strong> - Performance out-of-the-box<br />
+- <strong>Vercel Deployment</strong> - Jednokliknięty deployment<br />
+- <strong>Rich Ecosystem</strong> - Ogromna biblioteka komponentów i narzędzi</p>
+<p><strong>Przykład architektury MVP:</strong></p>
+<pre><code>mvp-project/
+├── pages/
+│   ├── index.js              # Landing page
+│   ├── dashboard.js          # User dashboard
+│   ├── api/
+│   │   ├── auth/
+│   │   │   ├── login.js      # Authentication
+│   │   │   └── register.js   # User registration
+│   │   ├── users/
+│   │   │   └── [id].js       # User management
+│   │   └── data/
+│   │       └── analytics.js  # Analytics endpoint
+├── components/
+│   ├── Layout.js             # App layout
+│   ├── AuthForm.js           # Login/register forms
+│   └── Dashboard/
+│       ├── Stats.js          # Statistics widgets
+│       └── UserList.js       # User management
+├── lib/
+│   ├── db.js                 # Database connection
+│   ├── auth.js               # Authentication logic
+│   └── analytics.js          # Analytics helpers
+└── styles/
+    └── globals.css           # Global styles
+</code></pre>
+<p><strong>MVP Development Timeline:</strong><br />
+- <strong>Week 1:</strong> Setup, authentication, basic UI<br />
+- <strong>Week 2:</strong> Core functionality, database integration<br />
+- <strong>Week 3:</strong> User testing, feedback implementation<br />
+- <strong>Week 4:</strong> Polish, deployment, analytics</p>
+<h3 id="t3-stack-nextjs-typescript-trpc-prisma">T3 Stack (Next.js + TypeScript + tRPC + Prisma)</h3>
+<p><strong>Kiedy używamy T3 Stack:</strong><br />
+- Projekty wymagające type safety<br />
+- Zespoły preferujące TypeScript<br />
+- Aplikacje z kompleksową logiką biznesową<br />
+- MVP z planami na szybkie skalowanie</p>
+<p><strong>Komponenty T3 Stack:</strong></p>
+<pre><code class="language-typescript">// tRPC router example
+import { z } from 'zod';
+import { createTRPCRouter, publicProcedure, protectedProcedure } from '~/server/api/trpc';
+
+export const userRouter = createTRPCRouter({
+  getProfile: protectedProcedure.query(({ ctx }) =&gt; {
+    return ctx.prisma.user.findUnique({
+      where: { id: ctx.session.user.id },
+    });
+  }),
+
+  updateProfile: protectedProcedure
+    .input(z.object({
+      name: z.string().min(1),
+      email: z.string().email(),
+    }))
+    .mutation(({ ctx, input }) =&gt; {
+      return ctx.prisma.user.update({
+        where: { id: ctx.session.user.id },
+        data: input,
+      });
+    }),
+});
+</code></pre>
+<p><strong>Zalety T3 Stack:</strong><br />
+- <strong>End-to-end Type Safety</strong> - Od bazy danych do UI<br />
+- <strong>Excellent DX</strong> - Developer experience na najwyższym poziomie<br />
+- <strong>Modern Tooling</strong> - Najnowsze narzędzia i praktyki<br />
+- <strong>Community Support</strong> - Aktywna społeczność i dokumentacja</p>
+<h3 id="nuxtjs-vue">Nuxt.js (Vue)</h3>
+<p><strong>Zastosowanie w MVP:</strong><br />
+- Projekty wymagające szybkiego prototypowania<br />
+- Zespoły z doświadczeniem Vue.js<br />
+- Aplikacje z dużą ilością animacji<br />
+- MVP dla rynków europejskich (dobra dokumentacja)</p>
+<p><strong>Nuxt.js Features dla MVP:</strong><br />
+- <strong>Auto-routing</strong> - Automatyczne generowanie tras<br />
+- <strong>Server-Side Rendering</strong> - SEO-friendly z pudełka<br />
+- <strong>Module Ecosystem</strong> - Gotowe moduły dla typowych funkcji<br />
+- <strong>Nuxt Content</strong> - Built-in CMS dla treści</p>
+<h2 id="mobile-development-dla-mvp">Mobile Development dla MVP</h2>
+<h3 id="react-native">React Native</h3>
+<p><strong>Kiedy wybieramy React Native:</strong><br />
+- MVP wymagające aplikacji mobilnej<br />
+- Ograniczony budżet na development<br />
+- Zespół z doświadczeniem React<br />
+- Potrzeba szybkiego wejścia na rynek</p>
+<p><strong>Architektura React Native MVP:</strong></p>
+<pre><code class="language-javascript">// App structure
+src/
+├── components/
+│   ├── common/
+│   │   ├── Button.js
+│   │   ├── Input.js
+│   │   └── Loading.js
+│   └── screens/
+│       ├── AuthScreen.js
+│       ├── DashboardScreen.js
+│       └── ProfileScreen.js
+├── navigation/
+│   └── AppNavigator.js
+├── services/
+│   ├── api.js
+│   ├── auth.js
+│   └── storage.js
+├── store/
+│   ├── authSlice.js
+│   └── userSlice.js
+└── utils/
+    ├── constants.js
+    └── helpers.js
+</code></pre>
+<p><strong>React Native MVP Timeline:</strong><br />
+- <strong>Week 1-2:</strong> Setup, navigation, basic screens<br />
+- <strong>Week 3-4:</strong> API integration, state management<br />
+- <strong>Week 5:</strong> Testing, optimization<br />
+- <strong>Week 6:</strong> App store submission</p>
+<h3 id="flutter">Flutter</h3>
+<p><strong>Zalety Flutter dla MVP:</strong><br />
+- <strong>Single Codebase</strong> - iOS i Android z jednego kodu<br />
+- <strong>Native Performance</strong> - Kompilacja do natywnego kodu<br />
+- <strong>Rich UI Components</strong> - Material Design i Cupertino<br />
+- <strong>Hot Reload</strong> - Szybkie iteracje podczas developmentu</p>
+<p><strong>Flutter MVP Example:</strong></p>
+<pre><code class="language-dart">// Main app structure
+class MVPApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'MVP App',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+      ),
+      home: AuthWrapper(),
+      routes: {
+        '/dashboard': (context) =&gt; DashboardScreen(),
+        '/profile': (context) =&gt; ProfileScreen(),
+        '/settings': (context) =&gt; SettingsScreen(),
+      },
+    );
+  }
+}
+
+// State management with Provider
+class UserProvider with ChangeNotifier {
+  User? _user;
+  bool _isLoading = false;
+
+  User? get user =&gt; _user;
+  bool get isLoading =&gt; _isLoading;
+
+  Future&lt;void&gt; login(String email, String password) async {
+    _isLoading = true;
+    notifyListeners();
+
+    try {
+      _user = await AuthService.login(email, password);
+    } catch (e) {
+      throw e;
+    } finally {
+      _isLoading = false;
+      notifyListeners();
+    }
+  }
+}
+</code></pre>
+<h3 id="progressive-web-apps-pwa">Progressive Web Apps (PWA)</h3>
+<p><strong>PWA jako MVP Strategy:</strong><br />
+- <strong>Cross-Platform</strong> - Jedna aplikacja na wszystkie platformy<br />
+- <strong>No App Store</strong> - Bezpośrednia dystrybucja<br />
+- <strong>Offline Capabilities</strong> - Działanie bez internetu<br />
+- <strong>Push Notifications</strong> - Engagement jak w natywnych appach</p>
+<p><strong>PWA Implementation:</strong></p>
+<pre><code class="language-javascript">// Service Worker for offline functionality
+self.addEventListener('fetch', (event) =&gt; {
+  if (event.request.destination === 'document') {
+    event.respondWith(
+      caches.match(event.request)
+        .then((response) =&gt; {
+          return response || fetch(event.request);
+        })
+    );
+  }
+});
+
+// Web App Manifest
+{
+  &quot;name&quot;: &quot;MVP App&quot;,
+  &quot;short_name&quot;: &quot;MVP&quot;,
+  &quot;start_url&quot;: &quot;/&quot;,
+  &quot;display&quot;: &quot;standalone&quot;,
+  &quot;background_color&quot;: &quot;#ffffff&quot;,
+  &quot;theme_color&quot;: &quot;#000000&quot;,
+  &quot;icons&quot;: [
+    {
+      &quot;src&quot;: &quot;/icon-192.png&quot;,
+      &quot;sizes&quot;: &quot;192x192&quot;,
+      &quot;type&quot;: &quot;image/png&quot;
+    }
+  ]
+}
+</code></pre>
+<h2 id="backend-as-a-service-baas">Backend as a Service (BaaS)</h2>
+<h3 id="firebase">Firebase</h3>
+<p><strong>Firebase dla MVP:</strong><br />
+- <strong>Authentication</strong> - Gotowy system logowania<br />
+- <strong>Firestore</strong> - NoSQL database w czasie rzeczywistym<br />
+- <strong>Cloud Functions</strong> - Serverless backend logic<br />
+- <strong>Hosting</strong> - Szybki deployment<br />
+- <strong>Analytics</strong> - Built-in analytics</p>
+<p><strong>Firebase Setup Example:</strong></p>
+<pre><code class="language-javascript">// Firebase configuration
+import { initializeApp } from 'firebase/app';
+import { getAuth } from 'firebase/auth';
+import { getFirestore } from 'firebase/firestore';
+
+const firebaseConfig = {
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+};
+
+const app = initializeApp(firebaseConfig);
+export const auth = getAuth(app);
+export const db = getFirestore(app);
+
+// User authentication
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
+
+export const loginUser = async (email, password) =&gt; {
+  try {
+    const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    return userCredential.user;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+// Firestore operations
+import { collection, addDoc, getDocs, query, where } from 'firebase/firestore';
+
+export const addUser = async (userData) =&gt; {
+  try {
+    const docRef = await addDoc(collection(db, 'users'), userData);
+    return docRef.id;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+</code></pre>
+<p><strong>AWS Integration:</strong></p>
+<pre><code class="language-javascript">import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
+import { CognitoIdentityProviderClient } from '@aws-sdk/client-cognito-identity-provider';
+
+const awsRegion = process.env.AWS_REGION;
+const awsAccessKey = process.env.AWS_ACCESS_KEY_ID;
+
+export const dynamoClient = new DynamoDBClient({ region: awsRegion });
+export const cognitoClient = new CognitoIdentityProviderClient({ region: awsRegion });
+
+// Authentication
+export const signUp = async (email, password) =&gt; {
+  const { user, error } = await cognitoClient.signUp({
+    ClientId: process.env.COGNITO_CLIENT_ID,
+    Username: email,
+    Password: password,
+    UserAttributes: [
+      { Name: 'email', Value: email }
+    ]
+  });
+
+  if (error) throw error;
+  return user;
+};
+
+// Database operations
+export const getUsers = async () =&gt; {
+  const { data, error } = await dynamoClient.scan({
+    TableName: 'users'
+  });
+
+  if (error) throw error;
+  return data.Items;
+};
+
+// Real-time subscriptions (using AWS AppSync or WebSocket)
+export const subscribeToUsers = (callback) =&gt; {
+  // Implementation using AWS AppSync or WebSocket
+  // For now, using polling as fallback
+  setInterval(async () =&gt; {
+    const users = await getUsers();
+    callback(users);
+  }, 5000);
+};
+</code></pre>
+<h3 id="aws-amplify">AWS Amplify</h3>
+<p><strong>Amplify dla Enterprise MVP:</strong><br />
+- <strong>Scalable Infrastructure</strong> - AWS backbone<br />
+- <strong>GraphQL API</strong> - Type-safe API layer<br />
+- <strong>Cognito Authentication</strong> - Enterprise-grade auth<br />
+- <strong>S3 Storage</strong> - File upload i storage<br />
+- <strong>Lambda Functions</strong> - Serverless compute</p>
+<h2 id="api-development-dla-mvp">API Development dla MVP</h2>
+<h3 id="graphql-z-apollo">GraphQL z Apollo</h3>
+<p><strong>Dlaczego GraphQL dla MVP:</strong><br />
+- <strong>Single Endpoint</strong> - Jedna ścieżka dla wszystkich danych<br />
+- <strong>Type Safety</strong> - Strongly typed schema<br />
+- <strong>Efficient Data Fetching</strong> - Tylko potrzebne dane<br />
+- <strong>Real-time Updates</strong> - Subscriptions out-of-the-box</p>
+<p><strong>GraphQL Schema Example:</strong></p>
+<pre><code class="language-graphql">type User {
+  id: ID!
+  email: String!
+  name: String!
+  createdAt: DateTime!
+  posts: [Post!]!
+}
+
+type Post {
+  id: ID!
+  title: String!
+  content: String!
+  author: User!
+  createdAt: DateTime!
+}
+
+type Query {
+  users: [User!]!
+  user(id: ID!): User
+  posts: [Post!]!
+}
+
+type Mutation {
+  createUser(input: CreateUserInput!): User!
+  createPost(input: CreatePostInput!): Post!
+  updateUser(id: ID!, input: UpdateUserInput!): User!
+}
+
+type Subscription {
+  userCreated: User!
+  postCreated: Post!
+}
+</code></pre>
+<h3 id="rest-api-z-expressjs">REST API z Express.js</h3>
+<p><strong>Express.js dla prostych MVP:</strong></p>
+<pre><code class="language-javascript">const express = require('express');
+const cors = require('cors');
+const helmet = require('helmet');
+const rateLimit = require('express-rate-limit');
+
+const app = express();
+
+// Middleware
+app.use(helmet());
+app.use(cors());
+app.use(express.json());
+
+// Rate limiting
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100 // limit each IP to 100 requests per windowMs
+});
+app.use('/api/', limiter);
+
+// Routes
+app.use('/api/auth', require('./routes/auth'));
+app.use('/api/users', require('./routes/users'));
+app.use('/api/posts', require('./routes/posts'));
+
+// Error handling
+app.use((err, req, res, next) =&gt; {
+  console.error(err.stack);
+  res.status(500).json({ 
+    message: 'Something went wrong!',
+    error: process.env.NODE_ENV === 'development' ? err.message : {}
+  });
+});
+
+module.exports = app;
+</code></pre>
+<h2 id="database-solutions">Database Solutions</h2>
+<h3 id="postgresql-z-prisma">PostgreSQL z Prisma</h3>
+<p><strong>Prisma ORM dla MVP:</strong></p>
+<pre><code class="language-prisma">// schema.prisma
+generator client {
+  provider = &quot;prisma-client-js&quot;
+}
+
+datasource db {
+  provider = &quot;postgresql&quot;
+  url      = env(&quot;DATABASE_URL&quot;)
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  posts     Post[]
+
+  @@map(&quot;users&quot;)
+}
+
+model Post {
+  id        String   @id @default(cuid())
+  title     String
+  content   String?
+  published Boolean  @default(false)
+  authorId  String
+  author    User     @relation(fields: [authorId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map(&quot;posts&quot;)
+}
+</code></pre>
+<p><strong>Prisma Client Usage:</strong></p>
+<pre><code class="language-javascript">import { PrismaClient } from '@prisma/client';
+
+const prisma = new PrismaClient();
+
+// Create user
+export const createUser = async (userData) =&gt; {
+  return await prisma.user.create({
+    data: userData,
+  });
+};
+
+// Get users with posts
+export const getUsersWithPosts = async () =&gt; {
+  return await prisma.user.findMany({
+    include: {
+      posts: true,
+    },
+  });
+};
+
+// Update user
+export const updateUser = async (id, userData) =&gt; {
+  return await prisma.user.update({
+    where: { id },
+    data: userData,
+  });
+};
+</code></pre>
+<h3 id="mongodb-z-mongoose">MongoDB z Mongoose</h3>
+<p><strong>MongoDB dla flexible schema:</strong></p>
+<pre><code class="language-javascript">const mongoose = require('mongoose');
+
+// User Schema
+const userSchema = new mongoose.Schema({
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+    lowercase: true,
+  },
+  name: {
+    type: String,
+    required: true,
+  },
+  profile: {
+    avatar: String,
+    bio: String,
+    preferences: {
+      theme: { type: String, default: 'light' },
+      notifications: { type: Boolean, default: true },
+    },
+  },
+  metadata: mongoose.Schema.Types.Mixed, // Flexible field
+}, {
+  timestamps: true,
+});
+
+// Virtual for full name
+userSchema.virtual('fullName').get(function() {
+  return `${this.name}`;
+});
+
+// Instance method
+userSchema.methods.toJSON = function() {
+  const user = this.toObject();
+  delete user.password;
+  return user;
+};
+
+module.exports = mongoose.model('User', userSchema);
+</code></pre>
+<h2 id="authentication-security">Authentication &amp; Security</h2>
+<h3 id="nextauthjs">NextAuth.js</h3>
+<p><strong>Authentication dla Next.js MVP:</strong></p>
+<pre><code class="language-javascript">// pages/api/auth/[...nextauth].js
+import NextAuth from 'next-auth';
+import GoogleProvider from 'next-auth/providers/google';
+import EmailProvider from 'next-auth/providers/email';
+import { PrismaAdapter } from '@next-auth/prisma-adapter';
+import { prisma } from '../../../lib/prisma';
+
+export default NextAuth({
+  adapter: PrismaAdapter(prisma),
+  providers: [
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    }),
+    EmailProvider({
+      server: process.env.EMAIL_SERVER,
+      from: process.env.EMAIL_FROM,
+    }),
+  ],
+  callbacks: {
+    session: async ({ session, token }) =&gt; {
+      if (session?.user) {
+        session.user.id = token.uid;
+      }
+      return session;
+    },
+    jwt: async ({ user, token }) =&gt; {
+      if (user) {
+        token.uid = user.id;
+      }
+      return token;
+    },
+  },
+  session: {
+    strategy: 'jwt',
+  },
+});
+
+// Usage in components
+import { useSession, signIn, signOut } from 'next-auth/react';
+
+export default function Component() {
+  const { data: session, status } = useSession();
+
+  if (status === 'loading') return &lt;p&gt;Loading...&lt;/p&gt;;
+
+  if (session) {
+    return (
+      &lt;&gt;
+        &lt;p&gt;Signed in as {session.user.email}&lt;/p&gt;
+        &lt;button onClick={() =&gt; signOut()}&gt;Sign out&lt;/button&gt;
+      &lt;/&gt;
+    );
+  }
+
+  return (
+    &lt;&gt;
+      &lt;p&gt;Not signed in&lt;/p&gt;
+      &lt;button onClick={() =&gt; signIn()}&gt;Sign in&lt;/button&gt;
+    &lt;/&gt;
+  );
+}
+</code></pre>
+<h3 id="jwt-authentication">JWT Authentication</h3>
+<p><strong>Custom JWT Implementation:</strong></p>
+<pre><code class="language-javascript">const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
+
+// Generate JWT token
+const generateToken = (userId) =&gt; {
+  return jwt.sign(
+    { userId },
+    process.env.JWT_SECRET,
+    { expiresIn: '7d' }
+  );
+};
+
+// Verify JWT token
+const verifyToken = (token) =&gt; {
+  try {
+    return jwt.verify(token, process.env.JWT_SECRET);
+  } catch (error) {
+    throw new Error('Invalid token');
+  }
+};
+
+// Hash password
+const hashPassword = async (password) =&gt; {
+  return await bcrypt.hash(password, 12);
+};
+
+// Compare password
+const comparePassword = async (password, hashedPassword) =&gt; {
+  return await bcrypt.compare(password, hashedPassword);
+};
+
+// Auth middleware
+const authenticateToken = (req, res, next) =&gt; {
+  const authHeader = req.headers['authorization'];
+  const token = authHeader &amp;&amp; authHeader.split(' ')[1];
+
+  if (!token) {
+    return res.status(401).json({ message: 'Access token required' });
+  }
+
+  try {
+    const decoded = verifyToken(token);
+    req.userId = decoded.userId;
+    next();
+  } catch (error) {
+    return res.status(403).json({ message: 'Invalid or expired token' });
+  }
+};
+
+module.exports = {
+  generateToken,
+  verifyToken,
+  hashPassword,
+  comparePassword,
+  authenticateToken,
+};
+</code></pre>
+<h2 id="testing-strategy-dla-mvp">Testing Strategy dla MVP</h2>
+<h3 id="unit-testing-z-jest">Unit Testing z Jest</h3>
+<p><strong>Testing Setup:</strong></p>
+<pre><code class="language-javascript">// jest.config.js
+module.exports = {
+  testEnvironment: 'node',
+  setupFilesAfterEnv: ['&lt;rootDir&gt;/tests/setup.js'],
+  testMatch: ['**/__tests__/**/*.test.js'],
+  collectCoverageFrom: [
+    'src/**/*.js',
+    '!src/**/*.test.js',
+  ],
+};
+
+// Example test
+const { createUser, getUserById } = require('../src/services/userService');
+const { prisma } = require('../src/lib/prisma');
+
+// Mock Prisma
+jest.mock('../src/lib/prisma', () =&gt; ({
+  prisma: {
+    user: {
+      create: jest.fn(),
+      findUnique: jest.fn(),
+    },
+  },
+}));
+
+describe('User Service', () =&gt; {
+  beforeEach(() =&gt; {
+    jest.clearAllMocks();
+  });
+
+  test('should create a new user', async () =&gt; {
+    const userData = {
+      email: 'test@example.com',
+      name: 'Test User',
+    };
+
+    const mockUser = { id: '1', ...userData };
+    prisma.user.create.mockResolvedValue(mockUser);
+
+    const result = await createUser(userData);
+
+    expect(prisma.user.create).toHaveBeenCalledWith({
+      data: userData,
+    });
+    expect(result).toEqual(mockUser);
+  });
+
+  test('should get user by id', async () =&gt; {
+    const userId = '1';
+    const mockUser = {
+      id: userId,
+      email: 'test@example.com',
+      name: 'Test User',
+    };
+
+    prisma.user.findUnique.mockResolvedValue(mockUser);
+
+    const result = await getUserById(userId);
+
+    expect(prisma.user.findUnique).toHaveBeenCalledWith({
+      where: { id: userId },
+    });
+    expect(result).toEqual(mockUser);
+  });
+});
+</code></pre>
+<h3 id="e2e-testing-z-playwright">E2E Testing z Playwright</h3>
+<p><strong>E2E Testing Setup:</strong></p>
+<pre><code class="language-javascript">// playwright.config.js
+module.exports = {
+  testDir: './e2e',
+  use: {
+    baseURL: 'http://localhost:3000',
+    headless: true,
+    screenshot: 'only-on-failure',
+  },
+  projects: [
+    {
+      name: 'chromium',
+      use: { ...devices['Desktop Chrome'] },
+    },
+    {
+      name: 'webkit',
+      use: { ...devices['Desktop Safari'] },
+    },
+  ],
+};
+
+// e2e/auth.test.js
+const { test, expect } = require('@playwright/test');
+
+test.describe('Authentication', () =&gt; {
+  test('should login successfully', async ({ page }) =&gt; {
+    await page.goto('/login');
+
+    await page.fill('[data-testid=email]', 'test@example.com');
+    await page.fill('[data-testid=password]', 'password123');
+    await page.click('[data-testid=login-button]');
+
+    await expect(page).toHaveURL('/dashboard');
+    await expect(page.locator('[data-testid=user-name]')).toContainText('Test User');
+  });
+
+  test('should show error for invalid credentials', async ({ page }) =&gt; {
+    await page.goto('/login');
+
+    await page.fill('[data-testid=email]', 'invalid@example.com');
+    await page.fill('[data-testid=password]', 'wrongpassword');
+    await page.click('[data-testid=login-button]');
+
+    await expect(page.locator('[data-testid=error-message]')).toContainText('Invalid credentials');
+  });
+});
+</code></pre>
+<h2 id="deployment-devops">Deployment &amp; DevOps</h2>
+<h3 id="vercel-deployment">Vercel Deployment</h3>
+<p><strong>Vercel Configuration:</strong></p>
+<pre><code class="language-json">{
+  &quot;version&quot;: 2,
+  &quot;builds&quot;: [
+    {
+      &quot;src&quot;: &quot;package.json&quot;,
+      &quot;use&quot;: &quot;@vercel/next&quot;
+    }
+  ],
+  &quot;env&quot;: {
+    &quot;DATABASE_URL&quot;: &quot;@database-url&quot;,
+    &quot;NEXTAUTH_SECRET&quot;: &quot;@nextauth-secret&quot;,
+    &quot;NEXTAUTH_URL&quot;: &quot;@nextauth-url&quot;
+  },
+  &quot;functions&quot;: {
+    &quot;pages/api/**/*.js&quot;: {
+      &quot;maxDuration&quot;: 30
+    }
+  }
+}
+</code></pre>
+<h3 id="docker-setup">Docker Setup</h3>
+<p><strong>Dockerfile for MVP:</strong></p>
+<pre><code class="language-dockerfile"># Multi-stage build
+FROM node:18-alpine AS deps
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci --only=production
+
+FROM node:18-alpine AS builder
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci
+COPY . .
+RUN npm run build
+
+FROM node:18-alpine AS runner
+WORKDIR /app
+
+ENV NODE_ENV production
+
+RUN addgroup --system --gid 1001 nodejs
+RUN adduser --system --uid 1001 nextjs
+
+COPY --from=builder /app/public ./public
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+
+USER nextjs
+
+EXPOSE 3000
+
+ENV PORT 3000
+
+CMD [&quot;node&quot;, &quot;server.js&quot;]
+</code></pre>
+<h3 id="cicd-pipeline">CI/CD Pipeline</h3>
+<p><strong>GitHub Actions:</strong></p>
+<pre><code class="language-yaml">name: Deploy MVP
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:13
+        env:
+          POSTGRES_PASSWORD: postgres
+        options: &gt;-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests
+        run: npm test
+        env:
+          DATABASE_URL: postgresql://postgres:postgres@localhost:5432/test
+
+      - name: Run E2E tests
+        run: npm run test:e2e
+
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Deploy to Vercel
+        uses: amondnet/vercel-action@v20
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.ORG_ID }}
+          vercel-project-id: ${{ secrets.PROJECT_ID }}
+          vercel-args: '--prod'
+</code></pre>
+<h2 id="analytics-monitoring">Analytics &amp; Monitoring</h2>
+<h3 id="google-analytics-4">Google Analytics 4</h3>
+<p><strong>GA4 Implementation:</strong></p>
+<pre><code class="language-javascript">// lib/gtag.js
+export const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA_ID;
+
+export const pageview = (url) =&gt; {
+  window.gtag('config', GA_TRACKING_ID, {
+    page_path: url,
+  });
+};
+
+export const event = ({ action, category, label, value }) =&gt; {
+  window.gtag('event', action, {
+    event_category: category,
+    event_label: label,
+    value: value,
+  });
+};
+
+// Usage in components
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
+import * as gtag from '../lib/gtag';
+
+export default function MyApp({ Component, pageProps }) {
+  const router = useRouter();
+
+  useEffect(() =&gt; {
+    const handleRouteChange = (url) =&gt; {
+      gtag.pageview(url);
+    };
+
+    router.events.on('routeChangeComplete', handleRouteChange);
+    return () =&gt; {
+      router.events.off('routeChangeComplete', handleRouteChange);
+    };
+  }, [router.events]);
+
+  return &lt;Component {...pageProps} /&gt;;
+}
+</code></pre>
+<h3 id="mixpanel-for-product-analytics">Mixpanel for Product Analytics</h3>
+<p><strong>Mixpanel Integration:</strong></p>
+<pre><code class="language-javascript">import mixpanel from 'mixpanel-browser';
+
+mixpanel.init(process.env.NEXT_PUBLIC_MIXPANEL_TOKEN);
+
+export const analytics = {
+  track: (event, properties = {}) =&gt; {
+    mixpanel.track(event, properties);
+  },
+
+  identify: (userId) =&gt; {
+    mixpanel.identify(userId);
+  },
+
+  setUserProperties: (properties) =&gt; {
+    mixpanel.people.set(properties);
+  },
+
+  alias: (userId) =&gt; {
+    mixpanel.alias(userId);
+  },
+};
+
+// Usage
+import { analytics } from '../lib/analytics';
+
+const handleSignup = async (userData) =&gt; {
+  try {
+    const user = await createUser(userData);
+
+    analytics.track('User Signed Up', {
+      method: 'email',
+      source: 'landing_page',
+    });
+
+    analytics.identify(user.id);
+    analytics.setUserProperties({
+      email: user.email,
+      name: user.name,
+      signup_date: new Date().toISOString(),
+    });
+
+  } catch (error) {
+    analytics.track('Signup Failed', {
+      error: error.message,
+    });
+  }
+};
+</code></pre>
+<h2 id="mvp-success-metrics">MVP Success Metrics</h2>
+<h3 id="key-performance-indicators">Key Performance Indicators</h3>
+<p><strong>Product Metrics:</strong><br />
+- <strong>User Acquisition Rate</strong> - Nowi użytkownicy / tydzień<br />
+- <strong>Activation Rate</strong> - % użytkowników wykonujących kluczową akcję<br />
+- <strong>Retention Rate</strong> - % użytkowników wracających po 7/30 dniach<br />
+- <strong>Churn Rate</strong> - % użytkowników przestających korzystać<br />
+- <strong>Feature Adoption</strong> - % użytkowników używających nowych funkcji</p>
+<p><strong>Technical Metrics:</strong><br />
+- <strong>Page Load Time</strong> - &lt;3s dla 95% requestów<br />
+- <strong>API Response Time</strong> - &lt;500ms średnio<br />
+- <strong>Uptime</strong> - &gt;99.5%<br />
+- <strong>Error Rate</strong> - &lt;1% requestów<br />
+- <strong>Core Web Vitals</strong> - Wszystkie w zielonych wartościach</p>
+<p><strong>Business Metrics:</strong><br />
+- <strong>Customer Acquisition Cost (CAC)</strong> - Koszt pozyskania klienta<br />
+- <strong>Lifetime Value (LTV)</strong> - Wartość klienta w całym cyklu życia<br />
+- <strong>Monthly Recurring Revenue (MRR)</strong> - Miesięczne przychody<br />
+- <strong>Conversion Rate</strong> - % odwiedzających konwertujących<br />
+- <strong>Net Promoter Score (NPS)</strong> - Satysfakcja użytkowników</p>
+<h3 id="ab-testing-framework">A/B Testing Framework</h3>
+<p><strong>A/B Testing Implementation:</strong></p>
+<pre><code class="language-javascript">// lib/experiments.js
+import { analytics } from './analytics';
+
+class ExperimentManager {
+  constructor() {
+    this.experiments = new Map();
+  }
+
+  createExperiment(name, variants, trafficAllocation = 0.5) {
+    this.experiments.set(name, {
+      variants,
+      trafficAllocation,
+      participants: new Set(),
+    });
+  }
+
+  getVariant(experimentName, userId) {
+    const experiment = this.experiments.get(experimentName);
+    if (!experiment) return null;
+
+    // Consistent assignment based on user ID
+    const hash = this.hashUserId(userId);
+    const bucket = hash % 100;
+
+    if (bucket &lt; experiment.trafficAllocation * 100) {
+      const variantIndex = bucket % experiment.variants.length;
+      const variant = experiment.variants[variantIndex];
+
+      // Track experiment participation
+      if (!experiment.participants.has(userId)) {
+        experiment.participants.add(userId);
+        analytics.track('Experiment Viewed', {
+          experiment_name: experimentName,
+          variant: variant.name,
+          user_id: userId,
+        });
+      }
+
+      return variant;
+    }
+
+    return null; // User not in experiment
+  }
+
+  trackConversion(experimentName, userId, conversionEvent) {
+    const experiment = this.experiments.get(experimentName);
+    if (experiment &amp;&amp; experiment.participants.has(userId)) {
+      analytics.track('Experiment Converted', {
+        experiment_name: experimentName,
+        conversion_event: conversionEvent,
+        user_id: userId,
+      });
+    }
+  }
+
+  hashUserId(userId) {
+    let hash = 0;
+    for (let i = 0; i &lt; userId.length; i++) {
+      const char = userId.charCodeAt(i);
+      hash = ((hash &lt;&lt; 5) - hash) + char;
+      hash = hash &amp; hash; // Convert to 32-bit integer
+    }
+    return Math.abs(hash);
+  }
+}
+
+export const experiments = new ExperimentManager();
+
+// Setup experiments
+experiments.createExperiment('signup_button_color', [
+  { name: 'blue', color: '#3498db' },
+  { name: 'green', color: '#2ecc71' },
+  { name: 'red', color: '#e74c3c' },
+]);
+
+// Usage in components
+import { experiments } from '../lib/experiments';
+import { useSession } from 'next-auth/react';
+
+export default function SignupButton() {
+  const { data: session } = useSession();
+  const userId = session?.user?.id || 'anonymous';
+
+  const variant = experiments.getVariant('signup_button_color', userId);
+  const buttonColor = variant?.color || '#3498db';
+
+  const handleSignup = () =&gt; {
+    // Signup logic
+    experiments.trackConversion('signup_button_color', userId, 'signup_completed');
+  };
+
+  return (
+    &lt;button 
+      style={{ backgroundColor: buttonColor }}
+      onClick={handleSignup}
+    &gt;
+      Sign Up
+    &lt;/button&gt;
+  );
+}
+</code></pre>
+<h2 id="case-studies-mvp">Case Studies MVP</h2>
+<h3 id="case-study-1-fintech-payment-app">Case Study 1: FinTech Payment App</h3>
+<p><strong>Challenge:</strong><br />
+Startup potrzebował szybko zwalidować pomysł na aplikację płatniczą P2P w Polsce.</p>
+<p><strong>Solution Stack:</strong><br />
+- <strong>Frontend:</strong> Next.js + TypeScript + Tailwind CSS<br />
+- <strong>Backend:</strong> Next.js API Routes + Prisma + PostgreSQL<br />
+- <strong>Authentication:</strong> NextAuth.js z Google/Apple<br />
+- <strong>Payments:</strong> Stripe Connect API<br />
+- <strong>Deployment:</strong> Vercel + PlanetScale<br />
+- <strong>Analytics:</strong> Mixpanel + Google Analytics</p>
+<p><strong>Timeline:</strong> 6 tygodni od pomysłu do MVP</p>
+<p><strong>Results:</strong><br />
+- 500+ rejestracji w pierwszym tygodniu<br />
+- 78% completion rate onboardingu<br />
+- $15,000 transaction volume w pierwszym miesiącu<br />
+- Pozyskanie seed funding $200k na podstawie MVP</p>
+<h3 id="case-study-2-edtech-learning-platform">Case Study 2: EdTech Learning Platform</h3>
+<p><strong>Challenge:</strong><br />
+Walidacja platformy do nauki programowania dla dzieci.</p>
+<p><strong>Solution Stack:</strong><br />
+- <strong>Frontend:</strong> React Native (iOS/Android)<br />
+- <strong>Backend:</strong> Firebase (Firestore + Cloud Functions)<br />
+- <strong>Authentication:</strong> Firebase Auth<br />
+- <strong>Content:</strong> Firebase Storage + CDN<br />
+- <strong>Analytics:</strong> Firebase Analytics + Custom dashboard<br />
+- <strong>Testing:</strong> Detox (E2E) + Jest (Unit)</p>
+<p><strong>Timeline:</strong> 8 tygodni development + 2 tygodnie testing</p>
+<p><strong>Results:</strong><br />
+- 1,200+ downloads w pierwszym miesiącu<br />
+- 4.6/5 rating w App Store<br />
+- 65% daily active users<br />
+- 40% course completion rate<br />
+- Expansion do 3 nowych krajów</p>
+<h3 id="case-study-3-proptech-rental-platform">Case Study 3: PropTech Rental Platform</h3>
+<p><strong>Challenge:</strong><br />
+Marketplace dla wynajmu krótkoterminowego w mniejszych miastach.</p>
+<p><strong>Solution Stack:</strong><br />
+- <strong>Frontend:</strong> Nuxt.js + Vue 3 + Vuetify<br />
+- <strong>Backend:</strong> Node.js + Express + MongoDB<br />
+- <strong>Maps:</strong> Google Maps API + Places API<br />
+- <strong>Payments:</strong> Stripe + PayU (local payments)<br />
+- <strong>Images:</strong> Cloudinary<br />
+- <strong>Deployment:</strong> DigitalOcean + Docker</p>
+<p><strong>Timeline:</strong> 10 tygodni (complex marketplace logic)</p>
+<p><strong>Results:</strong><br />
+- 150+ properties w pierwszych 3 miesiącach<br />
+- 2,500+ registered users<br />
+- $45,000 GMV w pierwszym kwartale<br />
+- 89% host satisfaction rate<br />
+- Series A funding $1.2M</p>
+<h2 id="roi-i-business-impact">ROI i Business Impact</h2>
+<h3 id="development-speed">Development Speed</h3>
+<p><strong>Time to Market:</strong><br />
+- <strong>Traditional Development:</strong> 6-12 miesięcy<br />
+- <strong>MVP Approach:</strong> 4-8 tygodni<br />
+- <strong>Speed Improvement:</strong> 75% szybciej</p>
+<p><strong>Cost Efficiency:</strong><br />
+- <strong>Full Product Development:</strong> $100k-500k<br />
+- <strong>MVP Development:</strong> $15k-50k<br />
+- <strong>Cost Reduction:</strong> 70-85% oszczędności</p>
+<h3 id="risk-mitigation">Risk Mitigation</h3>
+<p><strong>Validated Learning:</strong><br />
+- 60% MVP projektów pivot po pierwszych testach<br />
+- 40% oszczędności na niepotrzebnych features<br />
+- 80% lepsze product-market fit</p>
+<p><strong>Technical Risk:</strong><br />
+- Proven technology stack<br />
+- Scalable architecture from day one<br />
+- 90% successful transition to full product</p>
+<h3 id="business-outcomes">Business Outcomes</h3>
+<p><strong>Funding Success:</strong><br />
+- 85% MVP projektów otrzymuje kolejne finansowanie<br />
+- Średnio 3x wyższa wycena po MVP<br />
+- 50% szybszy proces fundraising</p>
+<p><strong>Market Validation:</strong><br />
+- 70% szybsza walidacja product-market fit<br />
+- 3x więcej user feedback w pierwszych miesiącach<br />
+- 45% wyższa user retention vs. full products</p>
+<hr />
+<p><em>Ostatnia aktualizacja: Styczeń 2025</em><br />
+<em>Wersja dokumentu: 1.0</em></p>
+</article>
+</div>
+</body></html>

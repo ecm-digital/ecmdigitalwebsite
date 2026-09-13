@@ -32,7 +32,7 @@ graph TB
     end
     
     subgraph "Data Layer"
-        M[Supabase PostgreSQL]
+        M[PostgreSQL / local demo]
         N[Redis Cache]
         O[S3 File Storage]
     end
@@ -78,10 +78,10 @@ graph TB
 **Backend:**
 - **Runtime:** Node.js 20 LTS
 - **Framework:** Next.js API Routes
-- **Database:** Supabase (PostgreSQL + Real-time)
+- **Database:** PostgreSQL (demo / local)
 - **Cache:** Redis (Upstash)
-- **File Storage:** AWS S3 / Supabase Storage
-- **Authentication:** Supabase Auth
+- **File Storage:** AWS S3
+- **Authentication:** Demo auth (localStorage)
 
 **DevOps:**
 - **Hosting:** Vercel (Frontend) + Railway (Backend Services)
@@ -265,7 +265,7 @@ interface WebsiteMetrics {
 ### Schemat Bazy Danych
 
 ```sql
--- Tabela użytkowników (rozszerza Supabase auth.users)
+-- Tabela użytkowników (metadane użytkownika)
 CREATE TABLE profiles (
   id UUID REFERENCES auth.users PRIMARY KEY,
   company_name TEXT,
@@ -442,7 +442,7 @@ interface ErrorResponse {
 ### Security Measures
 
 1. **Authentication & Authorization:**
-   - Supabase Auth z MFA support
+   - Demo auth (localStorage)
    - JWT tokens z refresh mechanism
    - Role-based access control (RBAC)
    - Session management z timeout
@@ -564,7 +564,7 @@ graph LR
 3. **Infrastructure:**
    - Vercel dla frontend hosting
    - Railway dla backend services
-   - Supabase dla database
+   - PostgreSQL / local demo
    - AWS S3 dla file storage
 
 ### Monitoring i Observability

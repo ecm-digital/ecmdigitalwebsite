@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stack Technologiczny - Strony WWW | ECM Digital – Baza wiedzy</title>
+<meta name="description" content=" Stack Technologiczny - Strony WWW Wprowadzenie Nasz stack technologiczny dla stron internetowych został starannie dobrany, aby zapewnić wysoką wydajn">
+<link rel="canonical" href="https://www.ecm-digital.com/dokumentacja-ecm/technologie/stack-stron-www.html">
+<link rel="stylesheet" href="/dokumentacja-ecm/docs-styles.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <a class="brand" href="/">ECM Digital<span>.</span></a>
+  <nav class="topnav">
+    <a href="/dokumentacja-ecm/">Baza wiedzy</a>
+    <a href="/dokumentacja-ecm/oferta-uslug/">Oferta</a>
+    <a href="/dokumentacja-ecm/portfolio-case-studies/">Portfolio</a>
+    <a href="/#contact">Kontakt</a>
+  </nav>
+</div></div>
+<div class="wrap">
+<div class="crumb"><a href="/dokumentacja-ecm/">Baza wiedzy</a> / Stack Technologiczny - Strony WWW</div>
+<article>
+<h1 id="stack-technologiczny-strony-www">Stack Technologiczny - Strony WWW</h1>
+<h2 id="wprowadzenie">Wprowadzenie</h2>
+<p>Nasz stack technologiczny dla stron internetowych został starannie dobrany, aby zapewnić wysoką wydajność, doskonałe SEO, responsywność i łatwość utrzymania. Wykorzystujemy nowoczesne frameworki i narzędzia, które pozwalają na szybkie tworzenie profesjonalnych stron internetowych.</p>
+<h2 id="frontend-technologies">Frontend Technologies</h2>
+<h3 id="reactjs-nextjs">React.js + Next.js</h3>
+<p><strong>Dlaczego Next.js?</strong><br />
+- <strong>Server-Side Rendering (SSR)</strong> - Lepsze SEO i szybsze ładowanie<br />
+- <strong>Static Site Generation (SSG)</strong> - Optymalna wydajność dla stron statycznych<br />
+- <strong>Automatic Code Splitting</strong> - Ładowanie tylko niezbędnego kodu<br />
+- <strong>Built-in Performance Optimizations</strong> - Image optimization, font optimization<br />
+- <strong>API Routes</strong> - Full-stack capabilities w jednym frameworku</p>
+<p><strong>Przykład architektury Next.js:</strong></p>
+<pre><code>project/
+├── pages/
+│   ├── index.js          # Strona główna
+│   ├── about.js          # O nas
+│   ├── services/
+│   │   └── [slug].js     # Dynamiczne strony usług
+│   └── api/
+│       └── contact.js    # API endpoint dla formularza
+├── components/
+│   ├── Layout.js         # Layout komponenty
+│   ├── Header.js         # Nagłówek
+│   └── Footer.js         # Stopka
+├── styles/
+│   └── globals.css       # Globalne style
+└── public/
+    ├── images/           # Statyczne obrazy
+    └── favicon.ico       # Ikona strony
+</code></pre>
+<p><strong>Performance Optimizations:</strong><br />
+- <strong>Image Optimization:</strong> Next.js Image component z lazy loading<br />
+- <strong>Font Optimization:</strong> Automatic font optimization<br />
+- <strong>Bundle Analysis:</strong> Built-in bundle analyzer<br />
+- <strong>Core Web Vitals:</strong> Monitoring i optymalizacja</p>
+<h3 id="vuejs-nuxtjs">Vue.js + Nuxt.js</h3>
+<p><strong>Kiedy wybieramy Vue/Nuxt:</strong><br />
+- Projekty wymagające szybkiego prototypowania<br />
+- Zespoły preferujące prostszą składnię<br />
+- Aplikacje z dużą ilością animacji i transitions</p>
+<p><strong>Zalety Nuxt.js:</strong><br />
+- <strong>Universal Rendering</strong> - SSR i SPA w jednym<br />
+- <strong>Auto-routing</strong> - Automatyczne generowanie tras<br />
+- <strong>Module Ecosystem</strong> - Bogaty ekosystem modułów<br />
+- <strong>Built-in Performance</strong> - Optymalizacje out-of-the-box</p>
+<h3 id="html5-css3-vanilla-javascript">HTML5 + CSS3 + Vanilla JavaScript</h3>
+<p><strong>Zastosowanie:</strong><br />
+- Proste strony wizytówkowe<br />
+- Landing pages z wysokimi wymaganiami wydajnościowymi<br />
+- Projekty wymagające pełnej kontroli nad kodem</p>
+<p><strong>Zalety:</strong><br />
+- <strong>Maksymalna wydajność</strong> - Brak overhead frameworków<br />
+- <strong>Pełna kontrola</strong> - Każda linia kodu pod kontrolą<br />
+- <strong>Szybkie ładowanie</strong> - Minimalne rozmiary plików<br />
+- <strong>Uniwersalność</strong> - Działa wszędzie bez zależności</p>
+<h2 id="css-frameworks-styling">CSS Frameworks &amp; Styling</h2>
+<h3 id="tailwind-css">Tailwind CSS</h3>
+<p><strong>Dlaczego Tailwind?</strong><br />
+- <strong>Utility-First Approach</strong> - Szybkie stylowanie bez pisania CSS<br />
+- <strong>Consistent Design System</strong> - Spójne spacing, kolory, typography<br />
+- <strong>Small Bundle Size</strong> - Tylko używane klasy w finalnym bundle<br />
+- <strong>Responsive Design</strong> - Built-in responsive utilities<br />
+- <strong>Dark Mode Support</strong> - Łatwe implementowanie dark mode</p>
+<p><strong>Przykład konfiguracji Tailwind:</strong></p>
+<pre><code class="language-javascript">// tailwind.config.js
+module.exports = {
+  content: [
+    './pages/**/*.{js,ts,jsx,tsx}',
+    './components/**/*.{js,ts,jsx,tsx}',
+  ],
+  theme: {
+    extend: {
+      colors: {
+        brand: {
+          50: '#eff6ff',
+          500: '#3b82f6',
+          900: '#1e3a8a',
+        }
+      },
+      fontFamily: {
+        sans: ['Inter', 'sans-serif'],
+      },
+    },
+  },
+  plugins: [
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/typography'),
+  ],
+}
+</code></pre>
+<h3 id="styled-components-emotion">Styled Components / Emotion</h3>
+<p><strong>Zastosowanie w React projektach:</strong><br />
+- Component-scoped styling<br />
+- Dynamic styling based on props<br />
+- Theme provider integration<br />
+- TypeScript support</p>
+<p><strong>Przykład użycia:</strong></p>
+<pre><code class="language-jsx">import styled from 'styled-components';
+
+const Button = styled.button`
+  background: ${props =&gt; props.primary ? '#007bff' : '#6c757d'};
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 0.375rem;
+  cursor: pointer;
+
+  &amp;:hover {
+    opacity: 0.9;
+  }
+`;
+
+// Użycie
+&lt;Button primary&gt;Primary Button&lt;/Button&gt;
+</code></pre>
+<h2 id="backend-technologies">Backend Technologies</h2>
+<h3 id="nodejs-expressjs">Node.js + Express.js</h3>
+<p><strong>Architektura API:</strong></p>
+<pre><code>api/
+├── controllers/
+│   ├── authController.js
+│   └── contactController.js
+├── middleware/
+│   ├── auth.js
+│   └── validation.js
+├── models/
+│   └── User.js
+├── routes/
+│   ├── auth.js
+│   └── contact.js
+└── app.js
+</code></pre>
+<p><strong>Przykład Express API:</strong></p>
+<pre><code class="language-javascript">const express = require('express');
+const cors = require('cors');
+const helmet = require('helmet');
+
+const app = express();
+
+// Middleware
+app.use(helmet());
+app.use(cors());
+app.use(express.json());
+
+// Routes
+app.use('/api/auth', require('./routes/auth'));
+app.use('/api/contact', require('./routes/contact'));
+
+// Error handling
+app.use((err, req, res, next) =&gt; {
+  console.error(err.stack);
+  res.status(500).json({ message: 'Something went wrong!' });
+});
+
+module.exports = app;
+</code></pre>
+<h3 id="python-djangofastapi">Python + Django/FastAPI</h3>
+<p><strong>Django dla complex applications:</strong><br />
+- <strong>Django Admin</strong> - Gotowy panel administracyjny<br />
+- <strong>ORM</strong> - Powerful database abstraction<br />
+- <strong>Authentication</strong> - Built-in user management<br />
+- <strong>Security</strong> - CSRF, XSS protection out-of-the-box</p>
+<p><strong>FastAPI dla modern APIs:</strong><br />
+- <strong>Automatic API Documentation</strong> - OpenAPI/Swagger<br />
+- <strong>Type Hints</strong> - Python type annotations<br />
+- <strong>High Performance</strong> - Comparable to Node.js and Go<br />
+- <strong>Async Support</strong> - Native async/await support</p>
+<h3 id="php-laravel">PHP + Laravel</h3>
+<p><strong>Kiedy wybieramy Laravel:</strong><br />
+- Projekty wymagające szybkiego MVP<br />
+- Integracja z istniejącymi systemami PHP<br />
+- Zespoły z doświadczeniem PHP</p>
+<p><strong>Laravel Features:</strong><br />
+- <strong>Eloquent ORM</strong> - Elegant database interactions<br />
+- <strong>Blade Templating</strong> - Powerful templating engine<br />
+- <strong>Artisan CLI</strong> - Command-line tools<br />
+- <strong>Queue System</strong> - Background job processing</p>
+<h2 id="database-solutions">Database Solutions</h2>
+<h3 id="postgresql">PostgreSQL</h3>
+<p><strong>Dlaczego PostgreSQL?</strong><br />
+- <strong>ACID Compliance</strong> - Pełna transakcyjność<br />
+- <strong>Advanced Data Types</strong> - JSON, Arrays, Custom types<br />
+- <strong>Full-Text Search</strong> - Built-in search capabilities<br />
+- <strong>Extensibility</strong> - Custom functions, extensions<br />
+- <strong>Performance</strong> - Excellent query optimization</p>
+<p><strong>Przykład schema design:</strong></p>
+<pre><code class="language-sql">-- Users table
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    password_hash VARCHAR(255) NOT NULL,
+    profile JSONB,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Posts table with full-text search
+CREATE TABLE posts (
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    content TEXT NOT NULL,
+    search_vector tsvector,
+    author_id INTEGER REFERENCES users(id),
+    published_at TIMESTAMP,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Full-text search index
+CREATE INDEX posts_search_idx ON posts USING GIN(search_vector);
+</code></pre>
+<h3 id="mongodb">MongoDB</h3>
+<p><strong>Zastosowanie:</strong><br />
+- Rapid prototyping<br />
+- Applications with flexible schema requirements<br />
+- Real-time applications<br />
+- Content management systems</p>
+<p><strong>Przykład MongoDB schema:</strong></p>
+<pre><code class="language-javascript">// User schema with Mongoose
+const userSchema = new mongoose.Schema({
+  email: { type: String, required: true, unique: true },
+  profile: {
+    firstName: String,
+    lastName: String,
+    avatar: String,
+    preferences: {
+      theme: { type: String, default: 'light' },
+      notifications: { type: Boolean, default: true }
+    }
+  },
+  posts: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Post' }]
+}, { timestamps: true });
+</code></pre>
+<h2 id="content-management-systems">Content Management Systems</h2>
+<h3 id="headless-cms-solutions">Headless CMS Solutions</h3>
+<p><strong>Strapi</strong><br />
+- <strong>Open Source</strong> - Pełna kontrola nad kodem<br />
+- <strong>Customizable</strong> - Flexible content types<br />
+- <strong>API First</strong> - REST i GraphQL out-of-the-box<br />
+- <strong>Plugin System</strong> - Extensible architecture</p>
+<p><strong>Contentful</strong><br />
+- <strong>Cloud-based</strong> - Managed infrastructure<br />
+- <strong>CDN Integration</strong> - Global content delivery<br />
+- <strong>Rich API</strong> - Powerful querying capabilities<br />
+- <strong>Multi-language</strong> - Built-in internationalization</p>
+<p><strong>Sanity</strong><br />
+- <strong>Real-time</strong> - Collaborative editing<br />
+- <strong>Structured Content</strong> - Portable text format<br />
+- <strong>Developer Experience</strong> - Excellent tooling<br />
+- <strong>Customizable Studio</strong> - Tailored editing experience</p>
+<h3 id="traditional-cms">Traditional CMS</h3>
+<p><strong>WordPress Custom Development</strong><br />
+- <strong>Custom Themes</strong> - Tailored design implementation<br />
+- <strong>Plugin Development</strong> - Custom functionality<br />
+- <strong>REST API</strong> - Headless WordPress setup<br />
+- <strong>Performance Optimization</strong> - Caching, CDN, optimization</p>
+<p><strong>Przykład WordPress theme structure:</strong></p>
+<pre><code>theme/
+├── style.css
+├── index.php
+├── header.php
+├── footer.php
+├── functions.php
+├── template-parts/
+│   ├── hero-section.php
+│   └── content-blocks.php
+├── assets/
+│   ├── css/
+│   ├── js/
+│   └── images/
+└── inc/
+    ├── customizer.php
+    └── post-types.php
+</code></pre>
+<h2 id="performance-optimization">Performance Optimization</h2>
+<h3 id="core-web-vitals-optimization">Core Web Vitals Optimization</h3>
+<p><strong>Largest Contentful Paint (LCP) &lt; 2.5s</strong><br />
+- Image optimization (WebP, AVIF formats)<br />
+- Critical CSS inlining<br />
+- Resource preloading<br />
+- Server-side rendering</p>
+<p><strong>First Input Delay (FID) &lt; 100ms</strong><br />
+- JavaScript code splitting<br />
+- Lazy loading non-critical scripts<br />
+- Service worker implementation<br />
+- Efficient event handlers</p>
+<p><strong>Cumulative Layout Shift (CLS) &lt; 0.1</strong><br />
+- Proper image dimensions<br />
+- Font loading optimization<br />
+- Avoiding dynamic content injection<br />
+- Skeleton screens for loading states</p>
+<h3 id="caching-strategies">Caching Strategies</h3>
+<p><strong>Browser Caching</strong></p>
+<pre><code class="language-nginx"># Nginx configuration
+location ~* \.(js|css|png|jpg|jpeg|gif|ico|svg)$ {
+    expires 1y;
+    add_header Cache-Control &quot;public, immutable&quot;;
+}
+
+location ~* \.(html)$ {
+    expires 1h;
+    add_header Cache-Control &quot;public&quot;;
+}
+</code></pre>
+<p><strong>CDN Implementation</strong><br />
+- <strong>Cloudflare</strong> - Global CDN with security features<br />
+- <strong>AWS CloudFront</strong> - AWS-native CDN solution<br />
+- <strong>KeyCDN</strong> - Performance-focused CDN</p>
+<p><strong>Application-level Caching</strong><br />
+- <strong>Redis</strong> - In-memory caching for dynamic content<br />
+- <strong>Memcached</strong> - Distributed memory caching<br />
+- <strong>Application caching</strong> - Framework-specific caching</p>
+<h2 id="seo-optimization">SEO Optimization</h2>
+<h3 id="technical-seo">Technical SEO</h3>
+<p><strong>Meta Tags Implementation:</strong></p>
+<pre><code class="language-jsx">// Next.js Head component
+import Head from 'next/head';
+
+function HomePage() {
+  return (
+    &lt;&gt;
+      &lt;Head&gt;
+        &lt;title&gt;ECM Digital - Agencja Tworzenia Stron WWW&lt;/title&gt;
+        &lt;meta name=&quot;description&quot; content=&quot;Profesjonalne strony internetowe, sklepy online i aplikacje webowe. Nowoczesne technologie, responsywny design.&quot; /&gt;
+        &lt;meta name=&quot;keywords&quot; content=&quot;strony www, sklepy online, aplikacje webowe, React, Next.js&quot; /&gt;
+        &lt;meta property=&quot;og:title&quot; content=&quot;ECM Digital - Agencja Tworzenia Stron WWW&quot; /&gt;
+        &lt;meta property=&quot;og:description&quot; content=&quot;Profesjonalne strony internetowe...&quot; /&gt;
+        &lt;meta property=&quot;og:image&quot; content=&quot;/images/og-image.jpg&quot; /&gt;
+        &lt;meta property=&quot;og:url&quot; content=&quot;https://ecm-digital.com&quot; /&gt;
+        &lt;meta name=&quot;twitter:card&quot; content=&quot;summary_large_image&quot; /&gt;
+        &lt;link rel=&quot;canonical&quot; href=&quot;https://ecm-digital.com&quot; /&gt;
+      &lt;/Head&gt;
+      {/* Page content */}
+    &lt;/&gt;
+  );
+}
+</code></pre>
+<p><strong>Structured Data:</strong></p>
+<pre><code class="language-json">{
+  &quot;@context&quot;: &quot;https://schema.org&quot;,
+  &quot;@type&quot;: &quot;Organization&quot;,
+  &quot;name&quot;: &quot;ECM Digital&quot;,
+  &quot;url&quot;: &quot;https://ecm-digital.com&quot;,
+  &quot;logo&quot;: &quot;https://ecm-digital.com/logo.png&quot;,
+  &quot;contactPoint&quot;: {
+    &quot;@type&quot;: &quot;ContactPoint&quot;,
+    &quot;telephone&quot;: &quot;+48-535-330-323&quot;,
+    &quot;contactType&quot;: &quot;customer service&quot;,
+    &quot;email&quot;: &quot;hello@ecm-digital.com&quot;
+  },
+  &quot;address&quot;: {
+    &quot;@type&quot;: &quot;PostalAddress&quot;,
+    &quot;addressCountry&quot;: &quot;PL&quot;
+  },
+  &quot;sameAs&quot;: [
+    &quot;https://linkedin.com/company/ecm-digital&quot;,
+    &quot;https://github.com/ecm-digital&quot;
+  ]
+}
+</code></pre>
+<h3 id="content-optimization">Content Optimization</h3>
+<p><strong>URL Structure:</strong><br />
+- Clean, descriptive URLs<br />
+- Proper hierarchy<br />
+- Breadcrumb navigation<br />
+- XML sitemap generation</p>
+<p><strong>Page Speed Optimization:</strong><br />
+- Image compression and optimization<br />
+- Minification of CSS/JS<br />
+- Gzip compression<br />
+- Critical resource prioritization</p>
+<h2 id="security-best-practices">Security Best Practices</h2>
+<h3 id="frontend-security">Frontend Security</h3>
+<p><strong>Content Security Policy (CSP):</strong></p>
+<pre><code class="language-javascript">// Next.js security headers
+const securityHeaders = [
+  {
+    key: 'Content-Security-Policy',
+    value: &quot;default-src 'self'; script-src 'self' 'unsafe-eval'; style-src 'self' 'unsafe-inline';&quot;
+  },
+  {
+    key: 'X-Frame-Options',
+    value: 'DENY'
+  },
+  {
+    key: 'X-Content-Type-Options',
+    value: 'nosniff'
+  }
+];
+</code></pre>
+<p><strong>Input Validation:</strong><br />
+- Client-side validation for UX<br />
+- Server-side validation for security<br />
+- Sanitization of user inputs<br />
+- CSRF protection</p>
+<h3 id="backend-security">Backend Security</h3>
+<p><strong>Authentication &amp; Authorization:</strong></p>
+<pre><code class="language-javascript">// JWT implementation
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
+
+// Password hashing
+const hashPassword = async (password) =&gt; {
+  return await bcrypt.hash(password, 12);
+};
+
+// JWT token generation
+const generateToken = (userId) =&gt; {
+  return jwt.sign({ userId }, process.env.JWT_SECRET, { expiresIn: '7d' });
+};
+
+// Auth middleware
+const authenticateToken = (req, res, next) =&gt; {
+  const token = req.headers['authorization']?.split(' ')[1];
+
+  if (!token) {
+    return res.status(401).json({ message: 'Access denied' });
+  }
+
+  jwt.verify(token, process.env.JWT_SECRET, (err, user) =&gt; {
+    if (err) return res.status(403).json({ message: 'Invalid token' });
+    req.user = user;
+    next();
+  });
+};
+</code></pre>
+<p><strong>Database Security:</strong><br />
+- Parameterized queries to prevent SQL injection<br />
+- Database connection encryption<br />
+- Regular security updates<br />
+- Backup and recovery procedures</p>
+<h2 id="development-workflow">Development Workflow</h2>
+<h3 id="local-development-setup">Local Development Setup</h3>
+<p><strong>Docker Development Environment:</strong></p>
+<pre><code class="language-yaml"># docker-compose.yml
+version: '3.8'
+services:
+  web:
+    build: .
+    ports:
+      - &quot;3000:3000&quot;
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    depends_on:
+      - db
+
+  db:
+    image: postgres:14
+    environment:
+      POSTGRES_DB: myapp
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - &quot;5432:5432&quot;
+
+volumes:
+  postgres_data:
+</code></pre>
+<h3 id="code-quality-testing">Code Quality &amp; Testing</h3>
+<p><strong>ESLint Configuration:</strong></p>
+<pre><code class="language-javascript">// .eslintrc.js
+module.exports = {
+  extends: [
+    'next/core-web-vitals',
+    '@typescript-eslint/recommended',
+    'prettier'
+  ],
+  rules: {
+    '@typescript-eslint/no-unused-vars': 'error',
+    'prefer-const': 'error',
+    'no-console': 'warn'
+  }
+};
+</code></pre>
+<p><strong>Testing Strategy:</strong><br />
+- <strong>Unit Tests:</strong> Jest + React Testing Library<br />
+- <strong>Integration Tests:</strong> Cypress for E2E testing<br />
+- <strong>Performance Tests:</strong> Lighthouse CI<br />
+- <strong>Accessibility Tests:</strong> axe-core integration</p>
+<h2 id="deployment-hosting">Deployment &amp; Hosting</h2>
+<h3 id="vercel-deployment">Vercel Deployment</h3>
+<p><strong>Automatic Deployments:</strong><br />
+- Git integration with automatic deployments<br />
+- Preview deployments for pull requests<br />
+- Environment variables management<br />
+- Custom domains and SSL</p>
+<p><strong>Vercel Configuration:</strong></p>
+<pre><code class="language-json">{
+  &quot;builds&quot;: [
+    { &quot;src&quot;: &quot;package.json&quot;, &quot;use&quot;: &quot;@vercel/next&quot; }
+  ],
+  &quot;routes&quot;: [
+    { &quot;src&quot;: &quot;/api/(.*)&quot;, &quot;dest&quot;: &quot;/api/$1&quot; },
+    { &quot;src&quot;: &quot;/(.*)&quot;, &quot;dest&quot;: &quot;/$1&quot; }
+  ],
+  &quot;env&quot;: {
+    &quot;DATABASE_URL&quot;: &quot;@database-url&quot;
+  }
+}
+</code></pre>
+<h3 id="aws-deployment">AWS Deployment</h3>
+<p><strong>Infrastructure as Code:</strong></p>
+<pre><code class="language-yaml"># AWS CloudFormation template
+AWSTemplateFormatVersion: '2010-09-09'
+Resources:
+  WebsiteBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub '${AWS::StackName}-website'
+      WebsiteConfiguration:
+        IndexDocument: index.html
+        ErrorDocument: error.html
+
+  CloudFrontDistribution:
+    Type: AWS::CloudFront::Distribution
+    Properties:
+      DistributionConfig:
+        Origins:
+          - DomainName: !GetAtt WebsiteBucket.DomainName
+            Id: S3Origin
+            S3OriginConfig:
+              OriginAccessIdentity: ''
+        DefaultCacheBehavior:
+          TargetOriginId: S3Origin
+          ViewerProtocolPolicy: redirect-to-https
+</code></pre>
+<h3 id="monitoring-analytics">Monitoring &amp; Analytics</h3>
+<p><strong>Performance Monitoring:</strong><br />
+- <strong>Google PageSpeed Insights</strong> - Core Web Vitals tracking<br />
+- <strong>GTmetrix</strong> - Performance analysis<br />
+- <strong>New Relic</strong> - Application performance monitoring<br />
+- <strong>Sentry</strong> - Error tracking and monitoring</p>
+<p><strong>Analytics Implementation:</strong></p>
+<pre><code class="language-javascript">// Google Analytics 4
+import { gtag } from 'ga-gtag';
+
+// Track page views
+export const trackPageView = (url) =&gt; {
+  gtag('config', 'GA_MEASUREMENT_ID', {
+    page_path: url,
+  });
+};
+
+// Track custom events
+export const trackEvent = (action, category, label, value) =&gt; {
+  gtag('event', action, {
+    event_category: category,
+    event_label: label,
+    value: value,
+  });
+};
+</code></pre>
+<h2 id="case-studies">Case Studies</h2>
+<h3 id="case-study-1-corporate-website-for-law-firm">Case Study 1: Corporate Website for Law Firm</h3>
+<p><strong>Requirements:</strong><br />
+- Professional design reflecting brand values<br />
+- Multi-language support (PL/EN)<br />
+- Contact forms with CRM integration<br />
+- Blog with SEO optimization<br />
+- GDPR compliance</p>
+<p><strong>Technology Stack:</strong><br />
+- <strong>Frontend:</strong> Next.js + TypeScript + Tailwind CSS<br />
+- <strong>Backend:</strong> Node.js + Express + PostgreSQL<br />
+- <strong>CMS:</strong> Strapi for content management<br />
+- <strong>Hosting:</strong> Vercel with AWS RDS</p>
+<p><strong>Results:</strong><br />
+- <strong>Performance:</strong> 95+ Lighthouse score<br />
+- <strong>SEO:</strong> 300% increase in organic traffic<br />
+- <strong>Conversion:</strong> 45% increase in contact form submissions<br />
+- <strong>Load Time:</strong> &lt;2s average page load time</p>
+<h3 id="case-study-2-real-estate-portal">Case Study 2: Real Estate Portal</h3>
+<p><strong>Requirements:</strong><br />
+- Property search with advanced filters<br />
+- Interactive maps integration<br />
+- User accounts and favorites<br />
+- Mobile-responsive design<br />
+- High-performance image galleries</p>
+<p><strong>Technology Stack:</strong><br />
+- <strong>Frontend:</strong> React + Next.js + Styled Components<br />
+- <strong>Backend:</strong> Python + Django + PostgreSQL<br />
+- <strong>Maps:</strong> Google Maps API<br />
+- <strong>Images:</strong> Cloudinary for optimization<br />
+- <strong>Hosting:</strong> AWS with CloudFront CDN</p>
+<p><strong>Results:</strong><br />
+- <strong>User Engagement:</strong> 60% increase in session duration<br />
+- <strong>Mobile Usage:</strong> 80% mobile traffic with excellent UX<br />
+- <strong>Search Performance:</strong> &lt;500ms average search response<br />
+- <strong>Image Loading:</strong> 70% faster with Cloudinary optimization</p>
+<h3 id="case-study-3-educational-platform">Case Study 3: Educational Platform</h3>
+<p><strong>Requirements:</strong><br />
+- Course catalog with video content<br />
+- User progress tracking<br />
+- Payment integration<br />
+- Discussion forums<br />
+- Certificate generation</p>
+<p><strong>Technology Stack:</strong><br />
+- <strong>Frontend:</strong> Vue.js + Nuxt.js + Vuetify<br />
+- <strong>Backend:</strong> Node.js + Express + MongoDB<br />
+- <strong>Video:</strong> Vimeo API integration<br />
+- <strong>Payments:</strong> Stripe integration<br />
+- <strong>Hosting:</strong> DigitalOcean with Redis caching</p>
+<p><strong>Results:</strong><br />
+- <strong>User Retention:</strong> 40% improvement in course completion<br />
+- <strong>Performance:</strong> 50% faster page loads with caching<br />
+- <strong>Revenue:</strong> 25% increase in course sales<br />
+- <strong>Scalability:</strong> Handles 10x more concurrent users</p>
+<h2 id="roi-i-business-impact">ROI i Business Impact</h2>
+<h3 id="development-efficiency">Development Efficiency</h3>
+<p><strong>Faster Time to Market:</strong><br />
+- 40% reduction in development time with modern frameworks<br />
+- Reusable component libraries<br />
+- Automated testing and deployment<br />
+- Standardized development processes</p>
+<p><strong>Code Quality Improvements:</strong><br />
+- 60% fewer bugs with TypeScript adoption<br />
+- Consistent code style with ESLint/Prettier<br />
+- Better maintainability with component architecture<br />
+- Comprehensive testing coverage</p>
+<h3 id="performance-benefits">Performance Benefits</h3>
+<p><strong>User Experience:</strong><br />
+- 50% improvement in Core Web Vitals scores<br />
+- 30% increase in user engagement<br />
+- 25% reduction in bounce rate<br />
+- Better accessibility compliance</p>
+<p><strong>SEO Results:</strong><br />
+- 200% average increase in organic traffic<br />
+- Higher search engine rankings<br />
+- Better click-through rates<br />
+- Improved local search visibility</p>
+<h3 id="cost-optimization">Cost Optimization</h3>
+<p><strong>Hosting Costs:</strong><br />
+- 40% reduction with optimized deployments<br />
+- Efficient CDN usage<br />
+- Serverless architecture benefits<br />
+- Automated scaling</p>
+<p><strong>Maintenance Costs:</strong><br />
+- 50% reduction in maintenance time<br />
+- Automated updates and security patches<br />
+- Better error monitoring and debugging<br />
+- Proactive performance optimization</p>
+<hr />
+<p><em>Ostatnia aktualizacja: Styczeń 2025</em><br />
+<em>Wersja dokumentu: 1.0</em></p>
+</article>
+</div>
+</body></html>

@@ -1,0 +1,1445 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stack Technologiczny - Shopify | ECM Digital – Baza wiedzy</title>
+<meta name="description" content=" Stack Technologiczny - Shopify Wprowadzenie Shopify to jedna z wiodących platform e-commerce na świecie, na której specjalizuje się ECM Digital. Nasz">
+<link rel="canonical" href="https://www.ecm-digital.com/dokumentacja-ecm/technologie/stack-shopify.html">
+<link rel="stylesheet" href="/dokumentacja-ecm/docs-styles.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <a class="brand" href="/">ECM Digital<span>.</span></a>
+  <nav class="topnav">
+    <a href="/dokumentacja-ecm/">Baza wiedzy</a>
+    <a href="/dokumentacja-ecm/oferta-uslug/">Oferta</a>
+    <a href="/dokumentacja-ecm/portfolio-case-studies/">Portfolio</a>
+    <a href="/#contact">Kontakt</a>
+  </nav>
+</div></div>
+<div class="wrap">
+<div class="crumb"><a href="/dokumentacja-ecm/">Baza wiedzy</a> / Stack Technologiczny - Shopify</div>
+<article>
+<h1 id="stack-technologiczny-shopify">Stack Technologiczny - Shopify</h1>
+<h2 id="wprowadzenie">Wprowadzenie</h2>
+<p>Shopify to jedna z wiodących platform e-commerce na świecie, na której specjalizuje się ECM Digital. Nasz zespół posiada głęboką wiedzę i doświadczenie w tworzeniu zaawansowanych sklepów internetowych, custom theme'ów oraz aplikacji Shopify.</p>
+<p><strong>Dlaczego Shopify?</strong><br />
+- <strong>Skalowalność</strong> - Od małych sklepów po enterprise solutions<br />
+- <strong>Bezpieczeństwo</strong> - PCI DSS compliance out-of-the-box<br />
+- <strong>Performance</strong> - Globalna infrastruktura CDN<br />
+- <strong>Ecosystem</strong> - Bogaty ekosystem aplikacji i integracji<br />
+- <strong>Mobile-First</strong> - Natywne wsparcie dla mobile commerce</p>
+<h2 id="shopify-development-stack">Shopify Development Stack</h2>
+<h3 id="liquid-template-language">Liquid Template Language</h3>
+<p><strong>Czym jest Liquid?</strong><br />
+Liquid to template language stworzony przez Shopify, który pozwala na dynamiczne generowanie HTML z danymi sklepu.</p>
+<p><strong>Podstawowa składnia:</strong></p>
+<pre><code class="language-liquid">&lt;!-- Wyświetlanie zmiennych --&gt;
+{{ product.title }}
+{{ product.price | money }}
+
+&lt;!-- Logika warunkowa --&gt;
+{% if product.available %}
+  &lt;button type=&quot;submit&quot;&gt;Add to Cart&lt;/button&gt;
+{% else %}
+  &lt;button disabled&gt;Sold Out&lt;/button&gt;
+{% endif %}
+
+&lt;!-- Pętle --&gt;
+{% for product in collections.featured.products %}
+  &lt;div class=&quot;product-card&quot;&gt;
+    &lt;h3&gt;{{ product.title }}&lt;/h3&gt;
+    &lt;p&gt;{{ product.price | money }}&lt;/p&gt;
+  &lt;/div&gt;
+{% endfor %}
+
+&lt;!-- Filtry --&gt;
+{{ product.featured_image | img_url: '300x300' | img_tag }}
+{{ article.published_at | date: '%B %d, %Y' }}
+{{ product.description | strip_html | truncate: 150 }}
+</code></pre>
+<p><strong>Zaawansowane techniki Liquid:</strong></p>
+<pre><code class="language-liquid">&lt;!-- Custom filtry i funkcje --&gt;
+{% assign sale_price = product.compare_at_price | minus: product.price %}
+{% assign discount_percentage = sale_price | times: 100 | divided_by: product.compare_at_price %}
+
+&lt;!-- Snippet includes --&gt;
+{% render 'product-card', product: product, show_vendor: true %}
+
+&lt;!-- Schema markup --&gt;
+&lt;script type=&quot;application/ld+json&quot;&gt;
+{
+  &quot;@context&quot;: &quot;https://schema.org/&quot;,
+  &quot;@type&quot;: &quot;Product&quot;,
+  &quot;name&quot;: &quot;{{ product.title | json }}&quot;,
+  &quot;image&quot;: &quot;{{ product.featured_image | img_url: 'master' }}&quot;,
+  &quot;description&quot;: &quot;{{ product.description | strip_html | json }}&quot;,
+  &quot;offers&quot;: {
+    &quot;@type&quot;: &quot;Offer&quot;,
+    &quot;price&quot;: &quot;{{ product.price | money_without_currency }}&quot;,
+    &quot;priceCurrency&quot;: &quot;{{ cart.currency.iso_code }}&quot;
+  }
+}
+&lt;/script&gt;
+</code></pre>
+<h3 id="shopify-cli-development-tools">Shopify CLI &amp; Development Tools</h3>
+<p><strong>Shopify CLI 3.0</strong></p>
+<pre><code class="language-bash"># Instalacja
+npm install -g @shopify/cli @shopify/theme
+
+# Tworzenie nowego theme
+shopify theme init my-theme
+
+# Development server
+shopify theme dev --store=my-store.myshopify.com
+
+# Deploy theme
+shopify theme push
+
+# Pull theme from store
+shopify theme pull
+</code></pre>
+<p><strong>Theme Development Workflow:</strong></p>
+<pre><code>local-development/
+├── assets/           # CSS, JS, images
+├── config/          # Theme settings
+├── layout/          # Layout templates
+├── locales/         # Translation files
+├── sections/        # Reusable sections
+├── snippets/        # Reusable code snippets
+├── templates/       # Page templates
+└── .shopifyignore   # Files to ignore
+</code></pre>
+<p><strong>Shopify Theme Inspector</strong><br />
+- Chrome extension dla debugging<br />
+- Live theme editing<br />
+- Performance monitoring<br />
+- Liquid variable inspection</p>
+<h2 id="frontend-development-dla-shopify">Frontend Development dla Shopify</h2>
+<h3 id="custom-theme-architecture">Custom Theme Architecture</h3>
+<p><strong>Modular Theme Structure:</strong></p>
+<pre><code>theme/
+├── assets/
+│   ├── application.css
+│   ├── application.js
+│   ├── product-form.js
+│   └── cart-drawer.js
+├── config/
+│   ├── settings_schema.json
+│   └── settings_data.json
+├── layout/
+│   └── theme.liquid
+├── sections/
+│   ├── header.liquid
+│   ├── hero-banner.liquid
+│   ├── product-grid.liquid
+│   └── footer.liquid
+├── snippets/
+│   ├── product-card.liquid
+│   ├── price.liquid
+│   └── icon.liquid
+└── templates/
+    ├── index.liquid
+    ├── product.liquid
+    ├── collection.liquid
+    └── cart.liquid
+</code></pre>
+<p><strong>Responsive Design Patterns:</strong></p>
+<pre><code class="language-css">/* Mobile-first approach */
+.product-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .product-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1280px) {
+  .product-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+</code></pre>
+<h3 id="javascript-ajax-implementation">JavaScript &amp; AJAX Implementation</h3>
+<p><strong>Modern JavaScript dla Shopify:</strong></p>
+<pre><code class="language-javascript">// Cart API integration
+class CartManager {
+  constructor() {
+    this.cart = null;
+    this.init();
+  }
+
+  async init() {
+    await this.fetchCart();
+    this.bindEvents();
+  }
+
+  async fetchCart() {
+    try {
+      const response = await fetch('/cart.js');
+      this.cart = await response.json();
+      this.updateCartUI();
+    } catch (error) {
+      console.error('Error fetching cart:', error);
+    }
+  }
+
+  async addToCart(variantId, quantity = 1) {
+    try {
+      const response = await fetch('/cart/add.js', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          id: variantId,
+          quantity: quantity
+        })
+      });
+
+      if (response.ok) {
+        await this.fetchCart();
+        this.showCartDrawer();
+      }
+    } catch (error) {
+      console.error('Error adding to cart:', error);
+    }
+  }
+
+  async updateCartItem(key, quantity) {
+    try {
+      const response = await fetch('/cart/change.js', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          id: key,
+          quantity: quantity
+        })
+      });
+
+      if (response.ok) {
+        await this.fetchCart();
+      }
+    } catch (error) {
+      console.error('Error updating cart:', error);
+    }
+  }
+
+  bindEvents() {
+    // Add to cart buttons
+    document.querySelectorAll('[data-add-to-cart]').forEach(button =&gt; {
+      button.addEventListener('click', (e) =&gt; {
+        e.preventDefault();
+        const variantId = button.dataset.variantId;
+        this.addToCart(variantId);
+      });
+    });
+
+    // Quantity selectors
+    document.querySelectorAll('[data-quantity-input]').forEach(input =&gt; {
+      input.addEventListener('change', (e) =&gt; {
+        const key = input.dataset.key;
+        const quantity = parseInt(input.value);
+        this.updateCartItem(key, quantity);
+      });
+    });
+  }
+}
+
+// Initialize cart manager
+document.addEventListener('DOMContentLoaded', () =&gt; {
+  new CartManager();
+});
+</code></pre>
+<p><strong>Product Variants Handling:</strong></p>
+<pre><code class="language-javascript">class ProductVariants {
+  constructor(productData) {
+    this.product = productData;
+    this.currentVariant = this.product.selected_or_first_available_variant;
+    this.init();
+  }
+
+  init() {
+    this.bindVariantSelectors();
+    this.updateProductInfo();
+  }
+
+  bindVariantSelectors() {
+    const selectors = document.querySelectorAll('[data-variant-selector]');
+
+    selectors.forEach(selector =&gt; {
+      selector.addEventListener('change', () =&gt; {
+        this.handleVariantChange();
+      });
+    });
+  }
+
+  handleVariantChange() {
+    const selectedOptions = this.getSelectedOptions();
+    const variant = this.getVariantFromOptions(selectedOptions);
+
+    if (variant) {
+      this.currentVariant = variant;
+      this.updateProductInfo();
+      this.updateURL();
+    }
+  }
+
+  getSelectedOptions() {
+    const selectors = document.querySelectorAll('[data-variant-selector]');
+    return Array.from(selectors).map(selector =&gt; selector.value);
+  }
+
+  getVariantFromOptions(options) {
+    return this.product.variants.find(variant =&gt; {
+      return variant.options.every((option, index) =&gt; {
+        return option === options[index];
+      });
+    });
+  }
+
+  updateProductInfo() {
+    // Update price
+    const priceElement = document.querySelector('[data-product-price]');
+    if (priceElement) {
+      priceElement.textContent = this.formatMoney(this.currentVariant.price);
+    }
+
+    // Update availability
+    const addToCartButton = document.querySelector('[data-add-to-cart]');
+    if (addToCartButton) {
+      addToCartButton.disabled = !this.currentVariant.available;
+      addToCartButton.textContent = this.currentVariant.available ? 'Add to Cart' : 'Sold Out';
+      addToCartButton.dataset.variantId = this.currentVariant.id;
+    }
+
+    // Update featured image
+    if (this.currentVariant.featured_image) {
+      const imageElement = document.querySelector('[data-product-image]');
+      if (imageElement) {
+        imageElement.src = this.currentVariant.featured_image.src;
+      }
+    }
+  }
+
+  formatMoney(cents) {
+    return (cents / 100).toLocaleString('pl-PL', {
+      style: 'currency',
+      currency: 'PLN'
+    });
+  }
+
+  updateURL() {
+    const url = new URL(window.location);
+    url.searchParams.set('variant', this.currentVariant.id);
+    window.history.replaceState({}, '', url);
+  }
+}
+</code></pre>
+<h3 id="css-framework-integration">CSS Framework Integration</h3>
+<p><strong>Tailwind CSS dla Shopify:</strong></p>
+<pre><code class="language-css">/* Custom Shopify utilities */
+@layer utilities {
+  .money {
+    @apply font-semibold text-gray-900;
+  }
+
+  .money--on-sale {
+    @apply text-red-600;
+  }
+
+  .money--compare-at {
+    @apply text-gray-500 line-through text-sm;
+  }
+
+  .btn-primary {
+    @apply bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200;
+  }
+
+  .btn-secondary {
+    @apply bg-gray-200 hover:bg-gray-300 text-gray-900 font-medium py-3 px-6 rounded-lg transition-colors duration-200;
+  }
+
+  .product-card {
+    @apply bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200 overflow-hidden;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .badge--sale {
+    @apply bg-red-100 text-red-800;
+  }
+
+  .badge--new {
+    @apply bg-green-100 text-green-800;
+  }
+}
+</code></pre>
+<h2 id="shopify-apps-development">Shopify Apps Development</h2>
+<h3 id="app-architecture">App Architecture</h3>
+<p><strong>Public App Structure:</strong></p>
+<pre><code>shopify-app/
+├── web/
+│   ├── frontend/          # React frontend
+│   │   ├── components/
+│   │   ├── pages/
+│   │   └── hooks/
+│   ├── backend/           # Node.js backend
+│   │   ├── controllers/
+│   │   ├── models/
+│   │   └── middleware/
+│   └── shopify.app.toml   # App configuration
+├── extensions/
+│   ├── checkout-ui/       # Checkout extensions
+│   └── admin-ui/          # Admin UI extensions
+└── package.json
+</code></pre>
+<p><strong>App Authentication:</strong></p>
+<pre><code class="language-javascript">// OAuth implementation
+const express = require('express');
+const { Shopify } = require('@shopify/shopify-api');
+
+const app = express();
+
+// OAuth callback
+app.get('/auth/callback', async (req, res) =&gt; {
+  try {
+    const session = await Shopify.Auth.validateAuthCallback(
+      req,
+      res,
+      req.query
+    );
+
+    // Store session in database
+    await storeSession(session);
+
+    // Redirect to app
+    res.redirect(`/?shop=${session.shop}&amp;host=${req.query.host}`);
+  } catch (error) {
+    console.error('Auth error:', error);
+    res.status(500).send('Authentication failed');
+  }
+});
+
+// Webhook verification
+app.post('/webhooks/orders/create', express.raw({type: 'application/json'}), (req, res) =&gt; {
+  const hmac = req.get('X-Shopify-Hmac-Sha256');
+  const body = req.body;
+  const hash = crypto
+    .createHmac('sha256', process.env.SHOPIFY_WEBHOOK_SECRET)
+    .update(body, 'utf8')
+    .digest('base64');
+
+  if (hash === hmac) {
+    // Process webhook
+    const order = JSON.parse(body);
+    processNewOrder(order);
+    res.status(200).send('OK');
+  } else {
+    res.status(401).send('Unauthorized');
+  }
+});
+</code></pre>
+<h3 id="frontend-z-polaris-design-system">Frontend z Polaris Design System</h3>
+<p><strong>React + Polaris Components:</strong></p>
+<pre><code class="language-jsx">import {
+  Page,
+  Layout,
+  Card,
+  DataTable,
+  Button,
+  Badge,
+  Stack,
+  Heading
+} from '@shopify/polaris';
+
+function OrdersPage() {
+  const [orders, setOrders] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() =&gt; {
+    fetchOrders();
+  }, []);
+
+  const fetchOrders = async () =&gt; {
+    try {
+      const response = await fetch('/api/orders');
+      const data = await response.json();
+      setOrders(data.orders);
+    } catch (error) {
+      console.error('Error fetching orders:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const rows = orders.map(order =&gt; [
+    order.order_number,
+    order.customer.first_name + ' ' + order.customer.last_name,
+    `$${order.total_price}`,
+    &lt;Badge status={order.financial_status === 'paid' ? 'success' : 'warning'}&gt;
+      {order.financial_status}
+    &lt;/Badge&gt;,
+    order.created_at
+  ]);
+
+  return (
+    &lt;Page
+      title=&quot;Orders&quot;
+      primaryAction={{
+        content: 'Export',
+        onAction: () =&gt; exportOrders()
+      }}
+    &gt;
+      &lt;Layout&gt;
+        &lt;Layout.Section&gt;
+          &lt;Card&gt;
+            &lt;Card.Section&gt;
+              &lt;Stack vertical&gt;
+                &lt;Heading&gt;Recent Orders&lt;/Heading&gt;
+                &lt;DataTable
+                  columnContentTypes={['text', 'text', 'text', 'text', 'text']}
+                  headings={['Order', 'Customer', 'Total', 'Status', 'Date']}
+                  rows={rows}
+                  loading={loading}
+                /&gt;
+              &lt;/Stack&gt;
+            &lt;/Card.Section&gt;
+          &lt;/Card&gt;
+        &lt;/Layout.Section&gt;
+      &lt;/Layout&gt;
+    &lt;/Page&gt;
+  );
+}
+</code></pre>
+<h3 id="graphql-admin-api">GraphQL Admin API</h3>
+<p><strong>Shopify GraphQL Queries:</strong></p>
+<pre><code class="language-javascript">// Product queries
+const GET_PRODUCTS = `
+  query getProducts($first: Int!, $after: String) {
+    products(first: $first, after: $after) {
+      edges {
+        node {
+          id
+          title
+          handle
+          status
+          totalInventory
+          featuredImage {
+            url
+            altText
+          }
+          variants(first: 10) {
+            edges {
+              node {
+                id
+                title
+                price
+                inventoryQuantity
+              }
+            }
+          }
+        }
+      }
+      pageInfo {
+        hasNextPage
+        endCursor
+      }
+    }
+  }
+`;
+
+// Product mutations
+const UPDATE_PRODUCT = `
+  mutation productUpdate($input: ProductInput!) {
+    productUpdate(input: $input) {
+      product {
+        id
+        title
+        status
+      }
+      userErrors {
+        field
+        message
+      }
+    }
+  }
+`;
+
+// GraphQL client
+class ShopifyGraphQL {
+  constructor(shop, accessToken) {
+    this.shop = shop;
+    this.accessToken = accessToken;
+    this.endpoint = `https://${shop}.myshopify.com/admin/api/2023-10/graphql.json`;
+  }
+
+  async query(query, variables = {}) {
+    try {
+      const response = await fetch(this.endpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Shopify-Access-Token': this.accessToken
+        },
+        body: JSON.stringify({
+          query,
+          variables
+        })
+      });
+
+      const data = await response.json();
+
+      if (data.errors) {
+        throw new Error(data.errors[0].message);
+      }
+
+      return data.data;
+    } catch (error) {
+      console.error('GraphQL Error:', error);
+      throw error;
+    }
+  }
+
+  async getProducts(first = 50, after = null) {
+    return this.query(GET_PRODUCTS, { first, after });
+  }
+
+  async updateProduct(productInput) {
+    return this.query(UPDATE_PRODUCT, { input: productInput });
+  }
+}
+</code></pre>
+<h2 id="third-party-integrations">Third-party Integrations</h2>
+<h3 id="payment-gateways">Payment Gateways</h3>
+<p><strong>Stripe Integration:</strong></p>
+<pre><code class="language-javascript">// Stripe custom payment method
+const stripe = Stripe('pk_test_...');
+
+class CustomCheckout {
+  constructor() {
+    this.stripe = stripe;
+    this.elements = this.stripe.elements();
+    this.init();
+  }
+
+  init() {
+    this.createPaymentElement();
+    this.bindEvents();
+  }
+
+  createPaymentElement() {
+    const paymentElement = this.elements.create('payment');
+    paymentElement.mount('#payment-element');
+  }
+
+  async handleSubmit(event) {
+    event.preventDefault();
+
+    const { error } = await this.stripe.confirmPayment({
+      elements: this.elements,
+      confirmParams: {
+        return_url: `${window.location.origin}/checkout/thank-you`
+      }
+    });
+
+    if (error) {
+      this.showError(error.message);
+    }
+  }
+}
+</code></pre>
+<p><strong>PayPal Integration:</strong></p>
+<pre><code class="language-javascript">// PayPal Express Checkout
+paypal.Buttons({
+  createOrder: function(data, actions) {
+    return actions.order.create({
+      purchase_units: [{
+        amount: {
+          value: cart.total_price / 100
+        }
+      }]
+    });
+  },
+  onApprove: function(data, actions) {
+    return actions.order.capture().then(function(details) {
+      // Redirect to Shopify checkout with PayPal token
+      window.location.href = `/checkout?paypal_token=${data.orderID}`;
+    });
+  }
+}).render('#paypal-button-container');
+</code></pre>
+<h3 id="shipping-logistics">Shipping &amp; Logistics</h3>
+<p><strong>DHL API Integration:</strong></p>
+<pre><code class="language-javascript">class DHLShipping {
+  constructor(apiKey, sandbox = false) {
+    this.apiKey = apiKey;
+    this.baseUrl = sandbox 
+      ? 'https://api-mock.dhl.com/mydhlapi'
+      : 'https://api-eu.dhl.com/mydhlapi';
+  }
+
+  async calculateShipping(shipment) {
+    try {
+      const response = await fetch(`${this.baseUrl}/rates`, {
+        method: 'POST',
+        headers: {
+          'DHL-API-Key': this.apiKey,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          customerDetails: shipment.customerDetails,
+          accounts: shipment.accounts,
+          productCode: 'P',
+          localProductCode: 'P',
+          valueAddedServices: [],
+          payerCountryCode: 'PL',
+          plannedShippingDateAndTime: new Date().toISOString(),
+          unitOfMeasurement: 'metric',
+          isCustomsDeclarable: false,
+          packages: shipment.packages
+        })
+      });
+
+      const data = await response.json();
+      return data.products;
+    } catch (error) {
+      console.error('DHL API Error:', error);
+      throw error;
+    }
+  }
+
+  async createShipment(shipmentData) {
+    try {
+      const response = await fetch(`${this.baseUrl}/shipments`, {
+        method: 'POST',
+        headers: {
+          'DHL-API-Key': this.apiKey,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(shipmentData)
+      });
+
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error('DHL Shipment Error:', error);
+      throw error;
+    }
+  }
+}
+</code></pre>
+<h3 id="marketing-automation">Marketing Automation</h3>
+<p><strong>Klaviyo Integration:</strong></p>
+<pre><code class="language-javascript">class KlaviyoIntegration {
+  constructor(apiKey) {
+    this.apiKey = apiKey;
+    this.baseUrl = 'https://a.klaviyo.com/api';
+  }
+
+  async trackEvent(event, customerProperties, eventProperties) {
+    const data = {
+      token: this.apiKey,
+      event: event,
+      customer_properties: customerProperties,
+      properties: eventProperties
+    };
+
+    try {
+      await fetch(`${this.baseUrl}/track`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      });
+    } catch (error) {
+      console.error('Klaviyo tracking error:', error);
+    }
+  }
+
+  async addToList(listId, profiles) {
+    try {
+      const response = await fetch(`${this.baseUrl}/v2/list/${listId}/members`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Klaviyo-API-Key ${this.apiKey}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          profiles: profiles
+        })
+      });
+
+      return await response.json();
+    } catch (error) {
+      console.error('Klaviyo list error:', error);
+      throw error;
+    }
+  }
+}
+
+// Usage in Shopify theme
+document.addEventListener('DOMContentLoaded', function() {
+  const klaviyo = new KlaviyoIntegration('YOUR_API_KEY');
+
+  // Track page view
+  klaviyo.trackEvent('Viewed Product', {
+    '$email': customer.email,
+    '$first_name': customer.first_name,
+    '$last_name': customer.last_name
+  }, {
+    'Product Name': product.title,
+    'Product ID': product.id,
+    'Product Price': product.price,
+    'Product URL': window.location.href
+  });
+
+  // Track add to cart
+  document.addEventListener('cart:item-added', function(event) {
+    klaviyo.trackEvent('Added to Cart', {
+      '$email': customer.email
+    }, {
+      'Product Name': event.detail.product.title,
+      'Product ID': event.detail.product.id,
+      'Quantity': event.detail.quantity,
+      'Price': event.detail.product.price
+    });
+  });
+});
+</code></pre>
+<h2 id="performance-optimization">Performance Optimization</h2>
+<h3 id="core-web-vitals-dla-shopify">Core Web Vitals dla Shopify</h3>
+<p><strong>Largest Contentful Paint (LCP) Optimization:</strong></p>
+<pre><code class="language-liquid">&lt;!-- Critical CSS inlining --&gt;
+&lt;style&gt;
+  {% render 'critical-css' %}
+&lt;/style&gt;
+
+&lt;!-- Preload key resources --&gt;
+&lt;link rel=&quot;preload&quot; href=&quot;{{ 'application.css' | asset_url }}&quot; as=&quot;style&quot;&gt;
+&lt;link rel=&quot;preload&quot; href=&quot;{{ 'application.js' | asset_url }}&quot; as=&quot;script&quot;&gt;
+
+&lt;!-- Optimize hero image --&gt;
+{% if section.settings.hero_image %}
+  &lt;img 
+    src=&quot;{{ section.settings.hero_image | img_url: '1920x800' }}&quot;
+    srcset=&quot;{{ section.settings.hero_image | img_url: '480x250' }} 480w,
+            {{ section.settings.hero_image | img_url: '768x400' }} 768w,
+            {{ section.settings.hero_image | img_url: '1024x533' }} 1024w,
+            {{ section.settings.hero_image | img_url: '1920x800' }} 1920w&quot;
+    sizes=&quot;100vw&quot;
+    alt=&quot;{{ section.settings.hero_image.alt | escape }}&quot;
+    loading=&quot;eager&quot;
+    fetchpriority=&quot;high&quot;
+  &gt;
+{% endif %}
+</code></pre>
+<p><strong>First Input Delay (FID) Optimization:</strong></p>
+<pre><code class="language-javascript">// Lazy load non-critical JavaScript
+const loadScript = (src) =&gt; {
+  return new Promise((resolve, reject) =&gt; {
+    const script = document.createElement('script');
+    script.src = src;
+    script.onload = resolve;
+    script.onerror = reject;
+    document.head.appendChild(script);
+  });
+};
+
+// Load scripts after page interaction
+let scriptsLoaded = false;
+const loadNonCriticalScripts = async () =&gt; {
+  if (scriptsLoaded) return;
+
+  try {
+    await Promise.all([
+      loadScript('{{ &quot;product-recommendations.js&quot; | asset_url }}'),
+      loadScript('{{ &quot;reviews.js&quot; | asset_url }}'),
+      loadScript('{{ &quot;analytics.js&quot; | asset_url }}')
+    ]);
+    scriptsLoaded = true;
+  } catch (error) {
+    console.error('Error loading scripts:', error);
+  }
+};
+
+// Load on first user interaction
+['mousedown', 'touchstart', 'keydown', 'scroll'].forEach(event =&gt; {
+  document.addEventListener(event, loadNonCriticalScripts, { once: true, passive: true });
+});
+
+// Fallback: load after 3 seconds
+setTimeout(loadNonCriticalScripts, 3000);
+</code></pre>
+<p><strong>Cumulative Layout Shift (CLS) Prevention:</strong></p>
+<pre><code class="language-css">/* Reserve space for images */
+.product-image {
+  aspect-ratio: 1 / 1;
+  background-color: #f5f5f5;
+}
+
+/* Skeleton loading for dynamic content */
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Prevent layout shift from fonts */
+@font-face {
+  font-family: 'CustomFont';
+  src: url('font.woff2') format('woff2');
+  font-display: swap;
+  size-adjust: 100%;
+}
+</code></pre>
+<h3 id="image-optimization">Image Optimization</h3>
+<p><strong>Responsive Images z Shopify:</strong></p>
+<pre><code class="language-liquid">{% comment %} Responsive product images {% endcomment %}
+{% assign image_sizes = '(min-width: 1200px) 25vw, (min-width: 768px) 33vw, 50vw' %}
+
+&lt;img
+  src=&quot;{{ product.featured_image | img_url: '400x400' }}&quot;
+  srcset=&quot;
+    {{ product.featured_image | img_url: '200x200' }} 200w,
+    {{ product.featured_image | img_url: '400x400' }} 400w,
+    {{ product.featured_image | img_url: '600x600' }} 600w,
+    {{ product.featured_image | img_url: '800x800' }} 800w
+  &quot;
+  sizes=&quot;{{ image_sizes }}&quot;
+  alt=&quot;{{ product.featured_image.alt | escape }}&quot;
+  loading=&quot;lazy&quot;
+  width=&quot;400&quot;
+  height=&quot;400&quot;
+&gt;
+
+{% comment %} WebP support with fallback {% endcomment %}
+&lt;picture&gt;
+  &lt;source 
+    srcset=&quot;
+      {{ product.featured_image | img_url: '400x400', format: 'webp' }} 400w,
+      {{ product.featured_image | img_url: '800x800', format: 'webp' }} 800w
+    &quot;
+    sizes=&quot;{{ image_sizes }}&quot;
+    type=&quot;image/webp&quot;
+  &gt;
+  &lt;img
+    src=&quot;{{ product.featured_image | img_url: '400x400' }}&quot;
+    srcset=&quot;
+      {{ product.featured_image | img_url: '400x400' }} 400w,
+      {{ product.featured_image | img_url: '800x800' }} 800w
+    &quot;
+    sizes=&quot;{{ image_sizes }}&quot;
+    alt=&quot;{{ product.featured_image.alt | escape }}&quot;
+    loading=&quot;lazy&quot;
+    width=&quot;400&quot;
+    height=&quot;400&quot;
+  &gt;
+&lt;/picture&gt;
+</code></pre>
+<h3 id="javascript-optimization">JavaScript Optimization</h3>
+<p><strong>Code Splitting i Lazy Loading:</strong></p>
+<pre><code class="language-javascript">// Dynamic imports for large features
+const loadProductRecommendations = async () =&gt; {
+  const { ProductRecommendations } = await import('./product-recommendations.js');
+  return new ProductRecommendations();
+};
+
+// Intersection Observer for lazy loading
+const observeElement = (element, callback) =&gt; {
+  const observer = new IntersectionObserver((entries) =&gt; {
+    entries.forEach(entry =&gt; {
+      if (entry.isIntersecting) {
+        callback(entry.target);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  observer.observe(element);
+};
+
+// Lazy load product recommendations
+document.querySelectorAll('[data-product-recommendations]').forEach(element =&gt; {
+  observeElement(element, async (target) =&gt; {
+    const recommendations = await loadProductRecommendations();
+    recommendations.init(target);
+  });
+});
+</code></pre>
+<h2 id="seo-optimization-dla-shopify">SEO Optimization dla Shopify</h2>
+<h3 id="structured-data">Structured Data</h3>
+<p><strong>Product Schema:</strong></p>
+<pre><code class="language-liquid">&lt;script type=&quot;application/ld+json&quot;&gt;
+{
+  &quot;@context&quot;: &quot;https://schema.org/&quot;,
+  &quot;@type&quot;: &quot;Product&quot;,
+  &quot;name&quot;: {{ product.title | json }},
+  &quot;image&quot;: [
+    {% for image in product.images limit: 3 %}
+      {{ image | img_url: 'master' | json }}{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ],
+  &quot;description&quot;: {{ product.description | strip_html | json }},
+  &quot;sku&quot;: {{ product.selected_or_first_available_variant.sku | json }},
+  &quot;brand&quot;: {
+    &quot;@type&quot;: &quot;Brand&quot;,
+    &quot;name&quot;: {{ product.vendor | json }}
+  },
+  &quot;offers&quot;: {
+    &quot;@type&quot;: &quot;Offer&quot;,
+    &quot;url&quot;: {{ shop.url | append: product.url | json }},
+    &quot;priceCurrency&quot;: {{ cart.currency.iso_code | json }},
+    &quot;price&quot;: {{ product.selected_or_first_available_variant.price | divided_by: 100.0 | json }},
+    &quot;availability&quot;: &quot;{% if product.selected_or_first_available_variant.available %}https://schema.org/InStock{% else %}https://schema.org/OutOfStock{% endif %}&quot;,
+    &quot;seller&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: {{ shop.name | json }}
+    }
+  }
+  {% if product.selected_or_first_available_variant.compare_at_price &gt; product.selected_or_first_available_variant.price %},
+  &quot;priceSpecification&quot;: {
+    &quot;@type&quot;: &quot;UnitPriceSpecification&quot;,
+    &quot;price&quot;: {{ product.selected_or_first_available_variant.compare_at_price | divided_by: 100.0 | json }},
+    &quot;priceCurrency&quot;: {{ cart.currency.iso_code | json }}
+  }
+  {% endif %}
+}
+&lt;/script&gt;
+</code></pre>
+<p><strong>Organization Schema:</strong></p>
+<pre><code class="language-liquid">&lt;script type=&quot;application/ld+json&quot;&gt;
+{
+  &quot;@context&quot;: &quot;https://schema.org&quot;,
+  &quot;@type&quot;: &quot;Organization&quot;,
+  &quot;name&quot;: {{ shop.name | json }},
+  &quot;url&quot;: {{ shop.url | json }},
+  &quot;logo&quot;: {{ shop.brand.logo | img_url: 'master' | json }},
+  &quot;contactPoint&quot;: {
+    &quot;@type&quot;: &quot;ContactPoint&quot;,
+    &quot;telephone&quot;: {{ shop.phone | json }},
+    &quot;contactType&quot;: &quot;customer service&quot;,
+    &quot;email&quot;: {{ shop.email | json }}
+  },
+  &quot;address&quot;: {
+    &quot;@type&quot;: &quot;PostalAddress&quot;,
+    &quot;streetAddress&quot;: {{ shop.address.street | json }},
+    &quot;addressLocality&quot;: {{ shop.address.city | json }},
+    &quot;postalCode&quot;: {{ shop.address.zip | json }},
+    &quot;addressCountry&quot;: {{ shop.address.country_code | json }}
+  },
+  &quot;sameAs&quot;: [
+    {% if shop.brand.social_facebook_link != blank %}{{ shop.brand.social_facebook_link | json }},{% endif %}
+    {% if shop.brand.social_instagram_link != blank %}{{ shop.brand.social_instagram_link | json }},{% endif %}
+    {% if shop.brand.social_twitter_link != blank %}{{ shop.brand.social_twitter_link | json }}{% endif %}
+  ]
+}
+&lt;/script&gt;
+</code></pre>
+<h3 id="meta-tags-optimization">Meta Tags Optimization</h3>
+<p><strong>Dynamic Meta Tags:</strong></p>
+<pre><code class="language-liquid">{% comment %} Product page meta tags {% endcomment %}
+{% if template contains 'product' %}
+  &lt;title&gt;{{ product.title }} - {{ shop.name }}&lt;/title&gt;
+  &lt;meta name=&quot;description&quot; content=&quot;{{ product.description | strip_html | truncate: 160 }}&quot;&gt;
+  &lt;meta property=&quot;og:title&quot; content=&quot;{{ product.title }}&quot;&gt;
+  &lt;meta property=&quot;og:description&quot; content=&quot;{{ product.description | strip_html | truncate: 160 }}&quot;&gt;
+  &lt;meta property=&quot;og:image&quot; content=&quot;{{ product.featured_image | img_url: '1200x630' }}&quot;&gt;
+  &lt;meta property=&quot;og:url&quot; content=&quot;{{ shop.url }}{{ product.url }}&quot;&gt;
+  &lt;meta property=&quot;og:type&quot; content=&quot;product&quot;&gt;
+  &lt;meta property=&quot;product:price:amount&quot; content=&quot;{{ product.selected_or_first_available_variant.price | divided_by: 100.0 }}&quot;&gt;
+  &lt;meta property=&quot;product:price:currency&quot; content=&quot;{{ cart.currency.iso_code }}&quot;&gt;
+
+{% comment %} Collection page meta tags {% endcomment %}
+{% elsif template contains 'collection' %}
+  &lt;title&gt;{{ collection.title }} - {{ shop.name }}&lt;/title&gt;
+  &lt;meta name=&quot;description&quot; content=&quot;{{ collection.description | default: collection.title | strip_html | truncate: 160 }}&quot;&gt;
+  &lt;meta property=&quot;og:title&quot; content=&quot;{{ collection.title }}&quot;&gt;
+  &lt;meta property=&quot;og:description&quot; content=&quot;{{ collection.description | default: collection.title | strip_html | truncate: 160 }}&quot;&gt;
+  {% if collection.image %}
+    &lt;meta property=&quot;og:image&quot; content=&quot;{{ collection.image | img_url: '1200x630' }}&quot;&gt;
+  {% endif %}
+  &lt;meta property=&quot;og:url&quot; content=&quot;{{ shop.url }}{{ collection.url }}&quot;&gt;
+
+{% comment %} Default meta tags {% endcomment %}
+{% else %}
+  &lt;title&gt;{% if page_title != blank %}{{ page_title }} - {% endif %}{{ shop.name }}&lt;/title&gt;
+  &lt;meta name=&quot;description&quot; content=&quot;{{ page_description | default: shop.description | strip_html | truncate: 160 }}&quot;&gt;
+  &lt;meta property=&quot;og:title&quot; content=&quot;{% if page_title != blank %}{{ page_title }} - {% endif %}{{ shop.name }}&quot;&gt;
+  &lt;meta property=&quot;og:description&quot; content=&quot;{{ page_description | default: shop.description | strip_html | truncate: 160 }}&quot;&gt;
+  &lt;meta property=&quot;og:image&quot; content=&quot;{{ shop.brand.logo | img_url: '1200x630' }}&quot;&gt;
+  &lt;meta property=&quot;og:url&quot; content=&quot;{{ canonical_url }}&quot;&gt;
+{% endif %}
+
+{% comment %} Common meta tags {% endcomment %}
+&lt;meta property=&quot;og:site_name&quot; content=&quot;{{ shop.name }}&quot;&gt;
+&lt;meta name=&quot;twitter:card&quot; content=&quot;summary_large_image&quot;&gt;
+&lt;meta name=&quot;twitter:site&quot; content=&quot;@{{ shop.brand.social_twitter_handle }}&quot;&gt;
+&lt;link rel=&quot;canonical&quot; href=&quot;{{ canonical_url }}&quot;&gt;
+</code></pre>
+<h2 id="security-best-practices">Security Best Practices</h2>
+<h3 id="theme-security">Theme Security</h3>
+<p><strong>Input Sanitization:</strong></p>
+<pre><code class="language-liquid">{% comment %} Always escape user input {% endcomment %}
+&lt;h1&gt;{{ product.title | escape }}&lt;/h1&gt;
+&lt;p&gt;{{ product.description | strip_html | escape }}&lt;/p&gt;
+
+{% comment %} Safe URL generation {% endcomment %}
+&lt;a href=&quot;{{ product.url | within: collection }}&quot;&gt;{{ product.title | escape }}&lt;/a&gt;
+
+{% comment %} Secure form handling {% endcomment %}
+&lt;form action=&quot;/cart/add&quot; method=&quot;post&quot; enctype=&quot;multipart/form-data&quot;&gt;
+  {{ form.authenticity_token }}
+  &lt;input type=&quot;hidden&quot; name=&quot;id&quot; value=&quot;{{ product.selected_or_first_available_variant.id }}&quot;&gt;
+  &lt;input type=&quot;number&quot; name=&quot;quantity&quot; value=&quot;1&quot; min=&quot;1&quot;&gt;
+  &lt;button type=&quot;submit&quot;&gt;Add to Cart&lt;/button&gt;
+&lt;/form&gt;
+</code></pre>
+<p><strong>Content Security Policy:</strong></p>
+<pre><code class="language-liquid">{% comment %} CSP headers in theme.liquid {% endcomment %}
+&lt;meta http-equiv=&quot;Content-Security-Policy&quot; content=&quot;
+  default-src 'self' *.shopify.com *.shopifycdn.com;
+  script-src 'self' 'unsafe-inline' 'unsafe-eval' *.shopify.com *.shopifycdn.com *.google-analytics.com *.googletagmanager.com;
+  style-src 'self' 'unsafe-inline' *.shopifycdn.com;
+  img-src 'self' data: *.shopifycdn.com *.google-analytics.com;
+  font-src 'self' *.shopifycdn.com;
+  connect-src 'self' *.shopify.com *.google-analytics.com;
+&quot;&gt;
+</code></pre>
+<h3 id="app-security">App Security</h3>
+<p><strong>Webhook Verification:</strong></p>
+<pre><code class="language-javascript">const crypto = require('crypto');
+
+function verifyWebhook(data, hmacHeader) {
+  const calculated_hmac = crypto
+    .createHmac('sha256', process.env.SHOPIFY_WEBHOOK_SECRET)
+    .update(data, 'utf8')
+    .digest('base64');
+
+  return crypto.timingSafeEqual(
+    Buffer.from(calculated_hmac, 'base64'),
+    Buffer.from(hmacHeader, 'base64')
+  );
+}
+
+// Middleware for webhook verification
+const webhookVerification = (req, res, next) =&gt; {
+  const hmac = req.get('X-Shopify-Hmac-Sha256');
+  const body = req.body;
+
+  if (!verifyWebhook(body, hmac)) {
+    return res.status(401).send('Unauthorized');
+  }
+
+  next();
+};
+</code></pre>
+<p><strong>API Rate Limiting:</strong></p>
+<pre><code class="language-javascript">const rateLimit = require('express-rate-limit');
+
+// API rate limiting
+const apiLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // limit each IP to 100 requests per windowMs
+  message: 'Too many requests from this IP, please try again later.',
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+
+// Shopify API rate limiting
+class ShopifyAPILimiter {
+  constructor() {
+    this.callsMade = 0;
+    this.maxCalls = 40;
+    this.resetTime = Date.now() + 1000; // 1 second window
+  }
+
+  async waitIfNeeded() {
+    if (this.callsMade &gt;= this.maxCalls) {
+      const waitTime = this.resetTime - Date.now();
+      if (waitTime &gt; 0) {
+        await new Promise(resolve =&gt; setTimeout(resolve, waitTime));
+        this.callsMade = 0;
+        this.resetTime = Date.now() + 1000;
+      }
+    }
+    this.callsMade++;
+  }
+}
+</code></pre>
+<h2 id="testing-quality-assurance">Testing &amp; Quality Assurance</h2>
+<h3 id="theme-testing">Theme Testing</h3>
+<p><strong>Automated Testing:</strong></p>
+<pre><code class="language-javascript">// Shopify Theme Inspector tests
+const { chromium } = require('playwright');
+
+describe('Shopify Theme Tests', () =&gt; {
+  let browser, page;
+
+  beforeAll(async () =&gt; {
+    browser = await chromium.launch();
+    page = await browser.newPage();
+  });
+
+  afterAll(async () =&gt; {
+    await browser.close();
+  });
+
+  test('Product page loads correctly', async () =&gt; {
+    await page.goto('https://your-store.myshopify.com/products/test-product');
+
+    // Check if product title is visible
+    await expect(page.locator('[data-product-title]')).toBeVisible();
+
+    // Check if add to cart button is present
+    await expect(page.locator('[data-add-to-cart]')).toBeVisible();
+
+    // Check if product images load
+    const images = page.locator('[data-product-image] img');
+    await expect(images.first()).toHaveAttribute('src');
+  });
+
+  test('Cart functionality works', async () =&gt; {
+    await page.goto('https://your-store.myshopify.com/products/test-product');
+
+    // Add product to cart
+    await page.click('[data-add-to-cart]');
+
+    // Wait for cart to update
+    await page.waitForSelector('[data-cart-count]');
+
+    // Check cart count
+    const cartCount = await page.textContent('[data-cart-count]');
+    expect(parseInt(cartCount)).toBeGreaterThan(0);
+  });
+
+  test('Performance metrics', async () =&gt; {
+    const response = await page.goto('https://your-store.myshopify.com');
+
+    // Check response time
+    expect(response.request().timing().responseEnd).toBeLessThan(3000);
+
+    // Run Lighthouse audit
+    const lighthouse = await page.evaluate(() =&gt; {
+      return new Promise((resolve) =&gt; {
+        // Simplified lighthouse check
+        const performanceEntries = performance.getEntriesByType('navigation');
+        const timing = performanceEntries[0];
+        resolve({
+          loadTime: timing.loadEventEnd - timing.loadEventStart,
+          domContentLoaded: timing.domContentLoadedEventEnd - timing.domContentLoadedEventStart
+        });
+      });
+    });
+
+    expect(lighthouse.loadTime).toBeLessThan(2000);
+  });
+});
+</code></pre>
+<h3 id="manual-testing-checklist">Manual Testing Checklist</h3>
+<p><strong>Functionality Testing:</strong><br />
+- [ ] Product pages display correctly<br />
+- [ ] Variant selection works<br />
+- [ ] Add to cart functionality<br />
+- [ ] Cart drawer/page updates<br />
+- [ ] Checkout process flows<br />
+- [ ] Search functionality<br />
+- [ ] Navigation menus<br />
+- [ ] Contact forms<br />
+- [ ] Newsletter signup</p>
+<p><strong>Performance Testing:</strong><br />
+- [ ] Page load times &lt;3s<br />
+- [ ] Core Web Vitals scores<br />
+- [ ] Image optimization<br />
+- [ ] Mobile performance<br />
+- [ ] Third-party script impact</p>
+<p><strong>Cross-browser Testing:</strong><br />
+- [ ] Chrome (latest)<br />
+- [ ] Firefox (latest)<br />
+- [ ] Safari (latest)<br />
+- [ ] Edge (latest)<br />
+- [ ] Mobile browsers</p>
+<p><strong>Accessibility Testing:</strong><br />
+- [ ] Keyboard navigation<br />
+- [ ] Screen reader compatibility<br />
+- [ ] Color contrast ratios<br />
+- [ ] Alt text for images<br />
+- [ ] Form labels and validation</p>
+<h2 id="deployment-maintenance">Deployment &amp; Maintenance</h2>
+<h3 id="theme-deployment">Theme Deployment</h3>
+<p><strong>CI/CD Pipeline:</strong></p>
+<pre><code class="language-yaml"># GitHub Actions workflow
+name: Deploy Shopify Theme
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm test
+
+      - name: Lint code
+        run: npm run lint
+
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Shopify CLI
+        run: npm install -g @shopify/cli @shopify/theme
+
+      - name: Deploy to Shopify
+        env:
+          SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
+          SHOPIFY_STORE: ${{ secrets.SHOPIFY_STORE }}
+        run: |
+          shopify theme push --store=$SHOPIFY_STORE --theme-id=${{ secrets.THEME_ID }}
+</code></pre>
+<h3 id="monitoring-maintenance">Monitoring &amp; Maintenance</h3>
+<p><strong>Performance Monitoring:</strong></p>
+<pre><code class="language-javascript">// Custom performance monitoring
+class ShopifyPerformanceMonitor {
+  constructor() {
+    this.metrics = {};
+    this.init();
+  }
+
+  init() {
+    // Monitor Core Web Vitals
+    this.observeLCP();
+    this.observeFID();
+    this.observeCLS();
+
+    // Monitor custom metrics
+    this.observeCartPerformance();
+    this.observeSearchPerformance();
+  }
+
+  observeLCP() {
+    new PerformanceObserver((entryList) =&gt; {
+      const entries = entryList.getEntries();
+      const lastEntry = entries[entries.length - 1];
+      this.metrics.lcp = lastEntry.startTime;
+      this.sendMetric('lcp', lastEntry.startTime);
+    }).observe({ entryTypes: ['largest-contentful-paint'] });
+  }
+
+  observeFID() {
+    new PerformanceObserver((entryList) =&gt; {
+      const entries = entryList.getEntries();
+      entries.forEach(entry =&gt; {
+        this.metrics.fid = entry.processingStart - entry.startTime;
+        this.sendMetric('fid', entry.processingStart - entry.startTime);
+      });
+    }).observe({ entryTypes: ['first-input'] });
+  }
+
+  observeCLS() {
+    let clsValue = 0;
+    new PerformanceObserver((entryList) =&gt; {
+      for (const entry of entryList.getEntries()) {
+        if (!entry.hadRecentInput) {
+          clsValue += entry.value;
+        }
+      }
+      this.metrics.cls = clsValue;
+      this.sendMetric('cls', clsValue);
+    }).observe({ entryTypes: ['layout-shift'] });
+  }
+
+  sendMetric(name, value) {
+    // Send to analytics service
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'performance_metric', {
+        metric_name: name,
+        metric_value: Math.round(value),
+        custom_parameter: window.location.pathname
+      });
+    }
+  }
+}
+
+// Initialize monitoring
+if (typeof window !== 'undefined') {
+  new ShopifyPerformanceMonitor();
+}
+</code></pre>
+<h2 id="roi-i-business-impact">ROI i Business Impact</h2>
+<h3 id="performance-improvements">Performance Improvements</h3>
+<p><strong>Conversion Rate Optimization:</strong><br />
+- 25% average increase in conversion rates<br />
+- 40% reduction in cart abandonment<br />
+- 30% improvement in mobile conversions<br />
+- 50% faster checkout completion</p>
+<p><strong>SEO Benefits:</strong><br />
+- 150% increase in organic traffic<br />
+- 60% improvement in search rankings<br />
+- 35% increase in click-through rates<br />
+- Better Core Web Vitals scores</p>
+<h3 id="development-efficiency">Development Efficiency</h3>
+<p><strong>Faster Development:</strong><br />
+- 50% reduction in theme development time<br />
+- Reusable component library<br />
+- Automated testing and deployment<br />
+- Standardized development processes</p>
+<p><strong>Maintenance Benefits:</strong><br />
+- 40% reduction in maintenance costs<br />
+- Proactive monitoring and alerts<br />
+- Automated security updates<br />
+- Better code documentation</p>
+<h3 id="client-satisfaction">Client Satisfaction</h3>
+<p><strong>Measurable Results:</strong><br />
+- 95% client satisfaction rate<br />
+- 4.9/5 average project rating<br />
+- 85% of clients choose ECM for additional projects<br />
+- 90% would recommend our Shopify services</p>
+<p><strong>Business Growth:</strong><br />
+- 200% increase in Shopify project inquiries<br />
+- 35% premium pricing for advanced features<br />
+- 60% faster project delivery<br />
+- 45% increase in team productivity</p>
+<hr />
+<p><em>Ostatnia aktualizacja: Styczeń 2025</em><br />
+<em>Wersja dokumentu: 1.0</em></p>
+</article>
+</div>
+</body></html>

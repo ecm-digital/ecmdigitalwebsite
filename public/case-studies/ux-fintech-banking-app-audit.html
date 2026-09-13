@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>SecureBank Mobile - Audyt UX Aplikacji Bankowej | ECM Digital</title>
+<meta name="description" content="SecureBank to nowoczesny bank cyfrowy oferujący usługi wyłącznie przez aplikację mobilną. Pomimo zaawansowanej technologii, aplikacja otrzymywała negatywne ocen"/>
+<link rel="canonical" href="https://www.ecm-digital.com/case-studies/ux-fintech-banking-app-audit.html"/>
+<style>
+:root{--bg:#05070c;--surface:#121826;--surface-2:#182033;--border:#243044;--border-2:#3a4d6b;--text:#f5f7fb;--muted:#9aa6b2;--accent:#7dd3fc;--green:#4ade80;--radius:18px}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.65}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:980px;margin:0 auto;padding:24px 20px 80px}
+.topnav{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:28px}
+.logo{font-weight:800;letter-spacing:-.03em}.logo span{color:var(--accent)}
+.btn{display:inline-flex;align-items:center;padding:12px 18px;border-radius:999px;font-weight:700;font-size:.95rem}
+.btn-primary{background:var(--accent);color:#041018}.btn-ghost{border:1px solid var(--border)}
+.hero{padding:36px 32px;border-radius:24px;border:1px solid var(--border);background:linear-gradient(160deg,#101827,#070b12);margin-bottom:22px}
+.eyebrow{display:inline-block;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+h1{margin:0 0 12px;font-size:clamp(1.7rem,4vw,2.5rem);letter-spacing:-.04em;line-height:1.15}
+.lead{margin:0 0 18px;color:var(--muted);font-size:1.05rem;max-width:740px}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.badge{padding:6px 10px;border-radius:999px;border:1px solid var(--border);background:#0d1524;color:#c7d2fe;font-size:.78rem}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.stat{padding:14px;border-radius:14px;background:rgba(255,255,255,.03);border:1px solid var(--border)}
+.stat .v{font-size:1.35rem;font-weight:800;color:var(--green)}.stat .l{font-size:.8rem;color:var(--muted);margin-top:4px}
+.section{margin-bottom:16px;padding:26px;border-radius:var(--radius);background:var(--surface);border:1px solid var(--border)}
+.section h2{margin:0 0 12px;font-size:1.3rem;letter-spacing:-.02em}
+.section h3{margin:18px 0 8px;font-size:1.05rem}
+.section p,.section li{color:var(--muted)}.section ul{margin:0;padding-left:1.15rem}.section li{margin:6px 0}
+.cta-box{margin-top:22px;padding:28px;border-radius:var(--radius);border:1px solid var(--border);background:linear-gradient(135deg,#0f172a,#121826);display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}
+.cta-box h2{margin:0 0 6px;font-size:1.25rem}.cta-box p{margin:0;color:var(--muted)}
+@media(max-width:800px){.stats{grid-template-columns:1fr 1fr}.hero,.section{padding:20px 16px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topnav">
+    <a class="logo" href="/">ECM Digital<span>.</span></a>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <a class="btn btn-ghost" href="/dokumentacja-ecm/portfolio-case-studies/">Portfolio</a>
+      <a class="btn btn-primary" href="https://calendly.com/hello-ecm-digital" target="_blank" rel="noopener">Umów konsultację</a>
+    </div>
+  </div>
+  <section class="hero">
+    <span class="eyebrow">Audyty UX</span>
+    <h1>SecureBank Mobile - Audyt UX Aplikacji Bankowej</h1>
+    <p class="lead">SecureBank to nowoczesny bank cyfrowy oferujący usługi wyłącznie przez aplikację mobilną. Pomimo zaawansowanej technologii, aplikacja otrzymywała negatywne oceny w App Store (2.8/5) i Google Play (3.1/5). Główne skargi d</p>
+    <div class="meta"><span class="badge">SecureBank</span><span class="badge">Fintech / Bankowość</span><span class="badge">Audyt UX</span><span class="badge">4 tygodnie</span><span class="badge">Firebase Analytics, Mixpanel, UserTesting, Accessibility Scanner</span><span class="badge">Zakończony</span></div>
+    
+  </section>
+  <section class="section"><h2>Wyzwanie</h2><h3>Sytuacja Wyjściowa</h3>
+<p>SecureBank to nowoczesny bank cyfrowy oferujący usługi wyłącznie przez aplikację mobilną. Pomimo zaawansowanej technologii, aplikacja otrzymywała negatywne oceny w App Store (2.8/5) i Google Play (3.1/5). Główne skargi dotyczyły skomplikowanej nawigacji, długich procesów autoryzacji i problemów z dostępnością dla starszych użytkowników.</p>
+<h3>Główne Problemy do Rozwiązania</h3>
+<ul><li><strong>Niska ocena w sklepach</strong>: App Store 2.8/5, Google Play 3.1/5</li><li><strong>Wysokie abandon rate</strong>: 45% użytkowników porzucało proces rejestracji</li><li><strong>Problemy z dostępnością</strong>: Brak zgodności z WCAG, skargi użytkowników niepełnosprawnych</li><li><strong>Skomplikowane procesy</strong>: Średnio 12 kroków do wykonania przelewu</li></ul>
+<h3>Cele Biznesowe</h3>
+<ul><li><strong>Cel główny</strong>: Zwiększenie oceny aplikacji do 4.2/5 w ciągu 6 miesięcy</li><li><strong>Cele dodatkowe</strong>:</li></ul>
+<p>- Redukcja abandon rate rejestracji do 25%</p>
+<p>- Osiągnięcie zgodności z WCAG 2.1 AA</p>
+<p>- Skrócenie czasu wykonywania podstawowych operacji o 40%</p>
+<h3>Ograniczenia i Wymagania</h3>
+<ul><li><strong>Budżet</strong>: Wysokie wymagania bezpieczeństwa - każda zmiana wymaga audytu security</li><li><strong>Czas</strong>: Zgodność z harmonogramem aktualizacji systemu bankowego</li><li><strong>Techniczne</strong>: Zachowanie wszystkich funkcji bezpieczeństwa</li><li><strong>Prawne</strong>: Zgodność z PSD2, RODO i wymogami KNF</li></ul></section>
+  <section class="section"><h2>Rozwiązanie</h2><h3>Nasza Strategia</h3>
+<p>Przeprowadziliśmy specjalistyczny audyt UX dla aplikacji fintech, uwzględniający specyfikę branży bankowej. Skupiliśmy się na bezpieczeństwie, dostępności i uproszczeniu kluczowych procesów przy zachowaniu najwyższych standardów ochrony danych.</p>
+<h3>Proces Realizacji</h3>
+<h3>Faza 1: Analiza Bezpieczeństwa i Compliance</h3>
+<ul><li>Przegląd zgodności z PSD2 i wymogami KNF</li><li>Analiza procesów autoryzacji i uwierzytelniania</li><li>Audyt accessibility według WCAG 2.1</li><li>Identyfikacja 31 problemów UX związanych z security</li></ul>
+<h3>Faza 2: Badania z Użytkownikami Różnych Grup Wiekowych</h3>
+<ul><li>Testy użyteczności z 20 uczestnikami (18-65 lat)</li><li>Specjalne sesje z użytkownikami 55+ (8 osób)</li><li>Testy z osobami niepełnosprawnymi (5 osób)</li><li>Analiza customer support tickets (500 zgłoszeń)</li></ul>
+<h3>Faza 3: Analiza Procesów i User Flows</h3>
+<ul><li>Mapowanie wszystkich user journeys</li><li>Analiza friction points w kluczowych procesach</li><li>Benchmarking z 8 aplikacjami bankowymi</li><li>Optymalizacja information architecture</li></ul>
+<h3>Kluczowe Funkcjonalności</h3>
+<ul><li><strong>Uproszczona rejestracja</strong>: Redukcja z 8 do 4 kroków z zachowaniem bezpieczeństwa</li><li><strong>Biometryczna autoryzacja</strong>: Touch ID/Face ID dla szybszego logowania</li><li><strong>Accessibility features</strong>: Voice over, high contrast, large text support</li><li><strong>Smart notifications</strong>: Kontekstowe powiadomienia o operacjach</li><li><strong>Quick actions</strong>: Szybkie akcje na ekranie głównym</li></ul>
+<h3>Zastosowane Technologie</h3></section>
+  <section class="section"><h2>Rezultaty</h2><p>Rezultat</p></section>
+  <div class="cta-box">
+    <div><h2>Chcesz podobny efekt?</h2><p>Pokażemy, co da się wdrożyć w Twojej firmie — bez długiego projektu IT.</p></div>
+    <a class="btn btn-primary" href="https://calendly.com/hello-ecm-digital" target="_blank" rel="noopener">Umów konsultację</a>
+  </div>
+</div>
+</body></html>

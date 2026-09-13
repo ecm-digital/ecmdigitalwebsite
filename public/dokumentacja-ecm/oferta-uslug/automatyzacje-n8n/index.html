@@ -1,186 +1,245 @@
 <!DOCTYPE html>
 <html lang="pl">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Softwaryzacja & Automatyzacja | ECM Digital</title>
-
-    <!-- SEO Meta Tags -->
-    <meta name="description"
-        content="Łączymy dedykowane oprogramowanie z automatyzacją AI. Budujemy narzędzia, które oszczędzają czas i eliminują błędy.">
-    <meta name="keywords"
-        content="automatyzacja n8n, softwaryzacja, custom software, integracje api, dashboardy biznesowe">
-
-    <!-- Fonts -->
+    <title>Automatyzacje n8n | ECM Digital</title>
+    <meta name="description" content="Automatyzacje procesów biznesowych z n8n: CRM, marketing, sprzedaż, HR i finanse — mniej ręcznej pracy, mniej błędów.">
+    <meta name="keywords" content="n8n, automatyzacje, integracje, workflow, crm automation">
+    <link rel="canonical" href="https://www.ecm-digital.com/dokumentacja-ecm/oferta-uslug/automatyzacje-n8n/">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Shared Styles -->
-    <link rel="stylesheet" href="../shared-styles.css">
-
-    <!-- Google Analytics -->
+    <link rel="stylesheet" href="/dokumentacja-ecm/oferta-uslug/shared-styles.css">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-V309CX2XT8"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'G-V309CX2XT8');
-    </script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-V309CX2XT8');</script>
 </head>
-
 <body>
-    <!-- Navigation -->
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
-            <a class="navbar-brand font-display" href="../../../index.html">
-                <i class="fas fa-rocket me-2"
-                    style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"></i>
-                <span
-                    style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 700;">ECM
-                    Digital</span>
+            <a class="navbar-brand font-display" href="/">
+                <i class="fas fa-rocket me-2" style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"></i>
+                <span style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 700;">ECM Digital</span>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                style="border: none; background: none;">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" style="border: none; background: none;">
                 <i class="fas fa-bars" style="color: var(--text-primary); font-size: 1.2rem;"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="../../../index.html#home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../../../index.html#services">Usługi</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../../../index.html#about-us">O nas</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../../../index.html#team">Zespół</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../../../index.html#contact">Kontakt</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/#services">Usługi</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/dokumentacja-ecm/oferta-uslug/">Oferta</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/">Baza wiedzy</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/dokumentacja-ecm/portfolio-case-studies/">Portfolio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/#contact">Kontakt</a></li>
                 </ul>
             </div>
         </div>
     </nav>
-
-    <!-- Hero Section -->
     <section class="hero">
         <div class="container">
             <div class="text-center mb-5">
-                <h1 class="hero-title mb-4">Softwaryzacja & Automatyzacja</h1>
-                <p class="hero-subtitle mb-5">Łączymy solidną inżynierię oprogramowania (80%) z nowoczesnymi modelami AI
-                    (20%), aby tworzyć narzędzia, które realnie oszczędzają czas.</p>
-
-                <!-- Hero Stats -->
+                <h1 class="hero-title mb-4">Automatyzacje n8n, które <span style="color:#30D158;">oszczędzają czas</span></h1>
+                <p class="hero-subtitle mb-5">Łączymy CRM, formularze, e-mail, dokumenty i raporty w samonapędzające się workflow.</p>
                 <div class="row g-4 justify-content-center">
                     <div class="col-lg-3 col-md-6">
                         <div class="hero-stat-card text-center">
-                            <div class="stat-icon">⏱️</div>
-                            <div class="stat-number">40h+</div>
-                            <div class="stat-label">Oszczędności / mc</div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="hero-stat-card text-center">
-                            <div class="stat-icon">🛠️</div>
-                            <div class="stat-number">n8n & Python</div>
-                            <div class="stat-label">Stack</div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="hero-stat-card text-center">
                             <div class="stat-icon">⚡</div>
-                            <div class="stat-number">99.9%</div>
-                            <div class="stat-label">Uptime</div>
+                            <div class="stat-number">−80%</div>
+                            <div class="stat-label">Czasu ręcznego</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="hero-stat-card text-center">
+                            <div class="stat-icon">🔗</div>
+                            <div class="stat-number">400+</div>
+                            <div class="stat-label">Integracji</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="hero-stat-card text-center">
+                            <div class="stat-icon">💰</div>
+                            <div class="stat-number">ROI</div>
+                            <div class="stat-label">300–1000%</div>
                         </div>
                     </div>
                 </div>
+                <div class="mt-5">
+                    <a href="https://calendly.com/hello-ecm-digital" target="_blank" rel="noopener" class="btn-cta me-2"><i class="fas fa-calendar"></i><span>Umów konsultację</span></a>
+                    <a href="/dokumentacja-ecm/portfolio-case-studies/" class="btn btn-outline-light">Zobacz case studies</a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
     <section class="py-5">
         <div class="container">
             <div class="text-center mb-5">
-                <h2 class="section-title mb-3">Model 80/20</h2>
-                <p class="section-subtitle">Dlaczego warto stawiać na dedykowane oprogramowanie wspierane przez AI</p>
+                <h2 class="section-title mb-3">Co Automatyzujemy</h2>
+                <p class="section-subtitle">Marketing, sprzedaż, HR, finanse i integracje systemów</p>
             </div>
-
             <div class="row g-4">
-                <div class="col-md-6 text-center">
-                    <div class="p-4" style="background: rgba(255,255,255,0.05); border-radius: 12px;">
-                        <h4>🧱 80% Software Foundation</h4>
-                        <p>Stabilne, dedykowane aplikacje, API i dashboardy. Fundament, który działa niezawodnie i jest
-                            w pełni pod Twoją kontrolą.</p>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card text-center">
+                        <div class="mb-3"><i class="fas fa-bullhorn fa-3x" style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"></i></div>
+                        <h4>Marketing</h4>
+                        <p class="text-muted">Lead nurturing, e-mail, social posting, sync z ads.</p>
                     </div>
                 </div>
-                <div class="col-md-6 text-center">
-                    <div class="p-4" style="background: rgba(255,255,255,0.05); border-radius: 12px;">
-                        <h4>🧠 20% AI Intelligence</h4>
-                        <p>Warstwa inteligencji, która przetwarza nieustrukturyzowane dane, generuje treści i podejmuje
-                            decyzje w Twoich procesach.</p>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card text-center">
+                        <div class="mb-3"><i class="fas fa-handshake fa-3x" style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"></i></div>
+                        <h4>Sprzedaż</h4>
+                        <p class="text-muted">Follow-upy, pipeline, kwalifikacja leadów.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card text-center">
+                        <div class="mb-3"><i class="fas fa-users fa-3x" style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"></i></div>
+                        <h4>HR</h4>
+                        <p class="text-muted">Rekrutacja, onboarding, dokumenty kadrowe.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card text-center">
+                        <div class="mb-3"><i class="fas fa-file-invoice-dollar fa-3x" style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"></i></div>
+                        <h4>Finanse</h4>
+                        <p class="text-muted">Faktury, raporty, reconciliation płatności.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card text-center">
+                        <div class="mb-3"><i class="fas fa-plug fa-3x" style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"></i></div>
+                        <h4>Integracje</h4>
+                        <p class="text-muted">CRM, e-commerce, Slack/Teams, custom API.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card text-center">
+                        <div class="mb-3"><i class="fas fa-shield-alt fa-3x" style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"></i></div>
+                        <h4>Self-hosted</h4>
+                        <p class="text-muted">Kontrola danych — n8n w Twojej infrastrukturze.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Pricing Section -->
     <section class="py-5">
         <div class="container">
             <div class="text-center mb-5">
-                <h2 class="section-title mb-3">Cennik Wdrożeń</h2>
-                <p class="section-subtitle">Automatyzacja, która zarabia na siebie</p>
+                <h2 class="section-title mb-3">Jak wdrażamy automatyzacje</h2>
+                <p class="section-subtitle">Od mapy procesów do działających workflow</p>
             </div>
+            <div class="row"><div class="col-lg-8 mx-auto"><div class="process-timeline">
+                        <div class="process-step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4><i class="fas fa-search text-primary me-2"></i>Mapowanie procesów</h4>
+                                <p class="text-muted">Gdzie tracisz czas i gdzie są błędy ręczne.</p>
+                                <div class="step-deliverables"><span class="badge bg-primary me-2">Mapa procesów</span></div>
+                            </div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4><i class="fas fa-compass text-primary me-2"></i>Projekt workflow</h4>
+                                <p class="text-muted">Architektura integracji i reguł biznesowych.</p>
+                                <div class="step-deliverables"><span class="badge bg-primary me-2">Diagram n8n</span></div>
+                            </div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4><i class="fas fa-cogs text-primary me-2"></i>Wdrożenie</h4>
+                                <p class="text-muted">Budowa, testy i monitoring błędów.</p>
+                                <div class="step-deliverables"><span class="badge bg-primary me-2">Workflow live</span></div>
+                            </div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h4><i class="fas fa-graduation-cap text-primary me-2"></i>Szkolenie</h4>
+                                <p class="text-muted">Dokumentacja i adoption w zespole.</p>
+                                <div class="step-deliverables"><span class="badge bg-primary me-2">Docs</span><span class="badge bg-primary me-2">Szkolenie</span></div>
+                            </div>
+                        </div>
+            </div></div></div>
+        </div>
+    </section>
 
-            <div class="row g-4 justify-content-center">
+    <section class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title mb-3">Cennik</h2>
+                <p class="section-subtitle">Od jednego workflow po cały system operacyjny firmy</p>
+            </div>
+            <div class="row g-4">
                 <div class="col-lg-4">
-                    <div class="hero-stat-card text-center p-5">
-                        <h3>Workflow</h3>
-                        <div class="display-4 my-3">2,500 PLN</div>
-                        <p class="text-muted">Pojedyncza automatyzacja</p>
-                        <ul class="list-unstyled mb-4 text-start">
-                            <li>✅ Analiza procesu</li>
-                            <li>✅ Budowa scenariusza n8n/Make</li>
-                            <li>✅ Testy i wdrożenie</li>
-                        </ul>
-                        <a href="../../../index.html#contact" class="btn btn-primary w-100">Wybierz</a>
+                    <div class="pricing-card text-center">
+                        
+                        <h4>Quick Win</h4>
+                        <div class="price mb-3" style="font-size: 2rem; font-weight: 700;">
+                            <span style="font-size: 1rem; color: #EBEBF599;">od</span>
+                            <span style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">2,500</span>
+                            <span style="font-size: 1rem; color: #EBEBF599;">PLN</span>
+                        </div>
+                        <ul class="list-unstyled mb-4 text-start"><li class="mb-2">✓ 1 kluczowy workflow</li><li class="mb-2">✓ Integracja 2 systemów</li><li class="mb-2">✓ Dokumentacja</li></ul>
+                        <a href="https://calendly.com/hello-ecm-digital" target="_blank" rel="noopener" class="btn-cta"><i class="fas fa-arrow-right"></i><span>Rozpocznij</span></a>
                     </div>
                 </div>
                 <div class="col-lg-4">
-                    <div class="hero-stat-card text-center p-5" style="border-color: #FF9F0A !important;">
-                        <h3>System</h3>
-                        <div class="display-4 my-3">15,000 PLN+</div>
-                        <p class="text-muted">Dedykowane narzędzie (Software + AI)</p>
-                        <ul class="list-unstyled mb-4 text-start">
-                            <li>✅ Własny Frontend (React)</li>
-                            <li>✅ Backend integracyjny</li>
-                            <li>✅ Zaawansowane agenty AI</li>
-                            <li>✅ Pełne wdrożenie on-premise</li>
-                        </ul>
-                        <a href="../../../index.html#contact" class="btn btn-primary w-100">Wycena Indywidualna</a>
+                    <div class="pricing-card text-center" style="border-color: rgba(0, 122, 255, 0.4) !important; transform: translateY(-8px) !important;">
+                        <div class="badge bg-primary mb-3" style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%) !important;">Popularne</div>
+                        <h4>Automation Pack</h4>
+                        <div class="price mb-3" style="font-size: 2rem; font-weight: 700;">
+                            <span style="font-size: 1rem; color: #EBEBF599;">od</span>
+                            <span style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">7,500</span>
+                            <span style="font-size: 1rem; color: #EBEBF599;">PLN</span>
+                        </div>
+                        <ul class="list-unstyled mb-4 text-start"><li class="mb-2">✓ 3–5 workflow</li><li class="mb-2">✓ Monitoring</li><li class="mb-2">✓ Szkolenie zespołu</li></ul>
+                        <a href="https://calendly.com/hello-ecm-digital" target="_blank" rel="noopener" class="btn-cta"><i class="fas fa-arrow-right"></i><span>Rozpocznij</span></a>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="pricing-card text-center">
+                        
+                        <h4>Ops Platform</h4>
+                        <div class="price mb-3" style="font-size: 2rem; font-weight: 700;">
+                            <span style="font-size: 1rem; color: #EBEBF599;">od</span>
+                            <span style="background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">15,000</span>
+                            <span style="font-size: 1rem; color: #EBEBF599;">PLN</span>
+                        </div>
+                        <ul class="list-unstyled mb-4 text-start"><li class="mb-2">✓ Architektura end-to-end</li><li class="mb-2">✓ Self-hosted n8n</li><li class="mb-2">✓ Wsparcie 30 dni</li></ul>
+                        <a href="https://calendly.com/hello-ecm-digital" target="_blank" rel="noopener" class="btn-cta"><i class="fas fa-arrow-right"></i><span>Rozpocznij</span></a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
+    <section class="contact-section py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title mb-3">Rozpocznij Projekt</h2>
+                <p class="section-subtitle">Darmowa konsultacja — pokażemy, co da się wdrożyć w 2 tygodnie i jaki będzie ROI.</p>
+                <a href="https://calendly.com/hello-ecm-digital" target="_blank" rel="noopener" class="btn-cta"><i class="fas fa-arrow-right"></i><span>Umów darmową konsultację</span></a>
+            </div>
+        </div>
+    </section>
     <footer class="footer py-4">
         <div class="container">
-            <div class="row">
+            <div class="row align-items-center">
                 <div class="col-md-6">
-                    <p class="mb-0">&copy; 2024 ECM Digital. Wszystkie prawa zastrzeżone.</p>
+                    <p class="mb-0">&copy; 2026 ECM Digital. Wszystkie prawa zastrzeżone.</p>
                 </div>
                 <div class="col-md-6 text-md-end">
-                    <a href="../../../index.html" class="text-muted me-3">Strona główna</a>
-                    <a href="../../../index.html#contact" class="text-muted">Kontakt</a>
+                    <a href="/" class="text-muted me-3">Baza wiedzy</a>
+                    <a href="/dokumentacja-ecm/oferta-uslug/" class="text-muted me-3">Oferta</a>
+                    <a href="/#contact" class="text-muted">Kontakt</a>
                 </div>
             </div>
         </div>
     </footer>
-
-    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <style>
-        .hero-stat-card h3 {
-            color: white;
-        }
-    </style>
 </body>
-
 </html>

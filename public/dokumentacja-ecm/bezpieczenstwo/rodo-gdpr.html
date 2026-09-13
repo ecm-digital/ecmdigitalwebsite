@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zgodność z RODO/GDPR - ECM Digital | ECM Digital – Baza wiedzy</title>
+<meta name="description" content=" Zgodność z RODO/GDPR - ECM Digital Wprowadzenie ECM Digital w pełni przestrzega przepisów Rozporządzenia o Ochronie Danych Osobowych (RODO/GDPR). Nas">
+<link rel="canonical" href="https://www.ecm-digital.com/dokumentacja-ecm/bezpieczenstwo/rodo-gdpr.html">
+<link rel="stylesheet" href="/dokumentacja-ecm/docs-styles.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <a class="brand" href="/">ECM Digital<span>.</span></a>
+  <nav class="topnav">
+    <a href="/dokumentacja-ecm/">Baza wiedzy</a>
+    <a href="/dokumentacja-ecm/oferta-uslug/">Oferta</a>
+    <a href="/dokumentacja-ecm/portfolio-case-studies/">Portfolio</a>
+    <a href="/#contact">Kontakt</a>
+  </nav>
+</div></div>
+<div class="wrap">
+<div class="crumb"><a href="/dokumentacja-ecm/">Baza wiedzy</a> / Zgodność z RODO/GDPR - ECM Digital</div>
+<article>
+<h1 id="zgodnosc-z-rodogdpr-ecm-digital">Zgodność z RODO/GDPR - ECM Digital</h1>
+<h2 id="wprowadzenie">Wprowadzenie</h2>
+<p>ECM Digital w pełni przestrzega przepisów Rozporządzenia o Ochronie Danych Osobowych (RODO/GDPR). Nasze podejście do ochrony danych osobowych opiera się na zasadach privacy by design i privacy by default, co oznacza, że ochrona prywatności jest uwzględniana na każdym etapie projektowania i rozwoju systemów.</p>
+<h2 id="podstawy-prawne-przetwarzania">Podstawy Prawne Przetwarzania</h2>
+<h3 id="art-6-rodo-podstawy-prawne">Art. 6 RODO - Podstawy Prawne</h3>
+<p><strong>1. Zgoda (Art. 6 ust. 1 lit. a)</strong><br />
+- Dobrowolna, konkretna, świadoma i jednoznaczna<br />
+- Możliwość cofnięcia w dowolnym momencie<br />
+- Dokumentowana i weryfikowalna</p>
+<p><strong>2. Wykonanie umowy (Art. 6 ust. 1 lit. b)</strong><br />
+- Realizacja zawartej umowy o świadczenie usług<br />
+- Działania przedumowne na żądanie osoby</p>
+<p><strong>3. Obowiązek prawny (Art. 6 ust. 1 lit. c)</strong><br />
+- Wystawienie i przechowywanie faktur (6 lat)<br />
+- Archiwizacja dokumentów księgowych</p>
+<p><strong>4. Żywotne interesy (Art. 6 ust. 1 lit. d)</strong><br />
+- Ochrona życia lub zdrowia (rzadko stosowane)</p>
+<p><strong>5. Zadanie publiczne (Art. 6 ust. 1 lit. e)</strong><br />
+- Nie dotyczy działalności ECM Digital</p>
+<p><strong>6. Prawnie uzasadniony interes (Art. 6 ust. 1 lit. f)</strong><br />
+- Marketing bezpośredni własnych usług<br />
+- Zabezpieczenie roszczeń<br />
+- Zapewnienie bezpieczeństwa IT</p>
+<h2 id="prawa-osob-ktorych-dane-dotycza">Prawa Osób, Których Dane Dotyczą</h2>
+<h3 id="implementacja-praw-rodo">Implementacja Praw RODO</h3>
+<h4 id="1-prawo-dostepu-art-15">1. Prawo Dostępu (Art. 15)</h4>
+<pre><code class="language-javascript">// System obsługi prawa dostępu
+class DataAccessHandler {
+  async handleAccessRequest(userId, requestId) {
+    try {
+      // Weryfikacja tożsamości
+      const identity = await this.verifyIdentity(userId, requestId);
+      if (!identity.verified) {
+        throw new Error('Identity verification failed');
+      }
+
+      // Zbieranie danych z wszystkich systemów
+      const userData = await this.collectAllUserData(userId);
+
+      // Przygotowanie raportu
+      const accessReport = {
+        personalData: userData.profile,
+        processingPurposes: this.getProcessingPurposes(userId),
+        legalBasis: this.getLegalBasis(userId),
+        dataCategories: this.getDataCategories(userData),
+        recipients: this.getDataRecipients(userId),
+        retentionPeriod: this.getRetentionPeriods(userId),
+        dataSource: userData.source,
+        rights: this.getUserRights(),
+        transfersToThirdCountries: this.getThirdCountryTransfers(userId)
+      };
+
+      // Logowanie żądania
+      await this.logAccessRequest(userId, requestId, 'completed');
+
+      return accessReport;
+    } catch (error) {
+      await this.logAccessRequest(userId, requestId, 'failed', error.message);
+      throw error;
+    }
+  }
+
+  async collectAllUserData(userId) {
+    const [profile, orders, communications, analytics] = await Promise.all([
+      this.getUserProfile(userId),
+      this.getUserOrders(userId),
+      this.getUserCommunications(userId),
+      this.getUserAnalytics(userId)
+    ]);
+
+    return {
+      profile,
+      orders,
+      communications,
+      analytics,
+      source: 'direct_collection'
+    };
+  }
+}
+</code></pre>
+<h4 id="2-prawo-do-sprostowania-art-16">2. Prawo do Sprostowania (Art. 16)</h4>
+<pre><code class="language-javascript">class DataRectificationHandler {
+  async handleRectificationRequest(userId, corrections, requestId) {
+    try {
+      // Walidacja poprawek
+      const validatedCorrections = await this.validateCorrections(corrections);
+
+      // Sprawdzenie uprawnień do modyfikacji
+      const canModify = await this.checkModificationRights(userId, Object.keys(corrections));
+      if (!canModify.allowed) {
+        throw new Error(`Cannot modify: ${canModify.reason}`);
+      }
+
+      // Wykonanie poprawek
+      const updateResults = await this.updateUserData(userId, validatedCorrections);
+
+      // Powiadomienie systemów trzecich
+      await this.notifyThirdParties(userId, validatedCorrections);
+
+      // Logowanie
+      await this.logRectification(userId, requestId, validatedCorrections);
+
+      return {
+        status: 'completed',
+        updatedFields: Object.keys(validatedCorrections),
+        timestamp: new Date().toISOString(),
+        affectedSystems: updateResults.systems
+      };
+    } catch (error) {
+      await this.logRectification(userId, requestId, corrections, error.message);
+      throw error;
+    }
+  }
+
+  async validateCorrections(corrections) {
+    const validated = {};
+
+    for (const [field, value] of Object.entries(corrections)) {
+      switch (field) {
+        case 'email':
+          validated.email = this.validateEmail(value);
+          break;
+        case 'firstName':
+        case 'lastName':
+          validated[field] = this.validateName(value);
+          break;
+        case 'phone':
+          validated.phone = this.validatePhone(value);
+          break;
+        default:
+          throw new Error(`Field ${field} cannot be modified`);
+      }
+    }
+
+    return validated;
+  }
+}
+</code></pre>
+<h1 id="_1"></h1>
+<h3 id="3-prawo-do-usuniecia-art-17">3. Prawo do Usunięcia (Art. 17)</h3>
+<pre><code class="language-javascript">class DataErasureHandler {
+  async handleErasureRequest(userId, reason, requestId) {
+    try {
+      // Sprawdzenie warunków usunięcia
+      const erasureCheck = await this.checkErasureConditions(userId, reason);
+
+      if (!erasureCheck.allowed) {
+        return {
+          status: 'rejected',
+          reason: erasureCheck.reason,
+          legalBasis: erasureCheck.legalBasis
+        };
+      }
+
+      // Identyfikacja danych do usunięcia
+      const dataToErase = await this.identifyErasableData(userId);
+
+      // Wykonanie usunięcia
+      const erasureResults = await this.performErasure(userId, dataToErase);
+
+      // Powiadomienie systemów trzecich
+      await this.notifyThirdPartiesOfErasure(userId);
+
+      // Logowanie (zachowanie minimalnych danych do celów prawnych)
+      await this.logErasure(userId, requestId, reason, dataToErase.categories);
+
+      return {
+        status: 'completed',
+        erasedDataCategories: dataToErase.categories,
+        retainedData: erasureResults.retained,
+        timestamp: new Date().toISOString()
+      };
+    } catch (error) {
+      await this.logErasure(userId, requestId, reason, [], error.message);
+      throw error;
+    }
+  }
+
+  async checkErasureConditions(userId, reason) {
+    const user = await this.getUserData(userId);
+
+    // Sprawdzenie czy dane są nadal potrzebne
+    const activeContracts = await this.checkActiveContracts(userId);
+    if (activeContracts.length &gt; 0) {
+      return {
+        allowed: false,
+        reason: 'Active contracts exist',
+        legalBasis: 'Art. 17 ust. 3 lit. b RODO'
+      };
+    }
+
+    // Sprawdzenie obowiązków prawnych
+    const legalObligations = await this.checkLegalObligations(userId);
+    if (legalObligations.accounting || legalObligations.tax) {
+      return {
+        allowed: false,
+        reason: 'Legal obligations require data retention',
+        legalBasis: 'Art. 17 ust. 3 lit. b RODO'
+      };
+    }
+
+    // Sprawdzenie roszczeń prawnych
+    const legalClaims = await this.checkLegalClaims(userId);
+    if (legalClaims.pending) {
+      return {
+        allowed: false,
+        reason: 'Pending legal claims',
+        legalBasis: 'Art. 17 ust. 3 lit. e RODO'
+      };
+    }
+
+    return { allowed: true };
+  }
+}
+</code></pre>
+<h2 id="polityka-prywatnosci">Polityka Prywatności</h2>
+<h3 id="template-polityki-prywatnosci">Template Polityki Prywatności</h3>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;pl&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Polityka Prywatności - ECM Digital&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class=&quot;privacy-policy&quot;&gt;
+        &lt;h1&gt;Polityka Prywatności&lt;/h1&gt;
+
+        &lt;section id=&quot;administrator&quot;&gt;
+            &lt;h2&gt;1. Administrator Danych Osobowych&lt;/h2&gt;
+            &lt;p&gt;Administratorem Państwa danych osobowych jest:&lt;/p&gt;
+            &lt;address&gt;
+                &lt;strong&gt;ECM Digital&lt;/strong&gt;&lt;br&gt;
+                ul. [Adres]&lt;br&gt;
+                [Kod pocztowy] [Miasto]&lt;br&gt;
+                NIP: [NIP]&lt;br&gt;
+                Email: &lt;a href=&quot;mailto:privacy@ecm-digital.com&quot;&gt;privacy@ecm-digital.com&lt;/a&gt;&lt;br&gt;
+                Telefon: &lt;a href=&quot;tel:+48535330323&quot;&gt;+48 535 330 323&lt;/a&gt;
+            &lt;/address&gt;
+        &lt;/section&gt;
+
+        &lt;section id=&quot;purposes&quot;&gt;
+            &lt;h2&gt;2. Cele i Podstawy Prawne Przetwarzania&lt;/h2&gt;
+            &lt;table class=&quot;data-processing-table&quot;&gt;
+                &lt;thead&gt;
+                    &lt;tr&gt;
+                        &lt;th&gt;Cel przetwarzania&lt;/th&gt;
+                        &lt;th&gt;Podstawa prawna&lt;/th&gt;
+                        &lt;th&gt;Okres przechowywania&lt;/th&gt;
+                        &lt;th&gt;Kategorie danych&lt;/th&gt;
+                    &lt;/tr&gt;
+                &lt;/thead&gt;
+                &lt;tbody&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;Realizacja umowy o świadczenie usług&lt;/td&gt;
+                        &lt;td&gt;Art. 6 ust. 1 lit. b RODO&lt;/td&gt;
+                        &lt;td&gt;Do zakończenia umowy + 3 lata&lt;/td&gt;
+                        &lt;td&gt;Dane kontaktowe, dane rozliczeniowe&lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;Wystawienie i przechowywanie faktur&lt;/td&gt;
+                        &lt;td&gt;Art. 6 ust. 1 lit. c RODO&lt;/td&gt;
+                        &lt;td&gt;5 lat od końca roku podatkowego&lt;/td&gt;
+                        &lt;td&gt;Dane rozliczeniowe, NIP&lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;Marketing bezpośredni&lt;/td&gt;
+                        &lt;td&gt;Art. 6 ust. 1 lit. f RODO&lt;/td&gt;
+                        &lt;td&gt;Do cofnięcia sprzeciwu&lt;/td&gt;
+                        &lt;td&gt;Email, preferencje&lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;Analityka strony internetowej&lt;/td&gt;
+                        &lt;td&gt;Art. 6 ust. 1 lit. f RODO&lt;/td&gt;
+                        &lt;td&gt;26 miesięcy&lt;/td&gt;
+                        &lt;td&gt;Dane techniczne, behawioralne&lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;Obsługa zapytań i reklamacji&lt;/td&gt;
+                        &lt;td&gt;Art. 6 ust. 1 lit. f RODO&lt;/td&gt;
+                        &lt;td&gt;3 lata od rozpatrzenia&lt;/td&gt;
+                        &lt;td&gt;Dane kontaktowe, treść zapytania&lt;/td&gt;
+                    &lt;/tr&gt;
+                &lt;/tbody&gt;
+            &lt;/table&gt;
+        &lt;/section&gt;
+
+        &lt;section id=&quot;rights&quot;&gt;
+            &lt;h2&gt;3. Prawa Osoby, której Dane Dotyczą&lt;/h2&gt;
+            &lt;p&gt;Zgodnie z RODO przysługują Państwu następujące prawa:&lt;/p&gt;
+
+            &lt;div class=&quot;rights-grid&quot;&gt;
+                &lt;div class=&quot;right-item&quot;&gt;
+                    &lt;h3&gt;Prawo dostępu (Art. 15)&lt;/h3&gt;
+                    &lt;p&gt;Prawo do uzyskania informacji o przetwarzanych danych oraz otrzymania kopii danych.&lt;/p&gt;
+                    &lt;a href=&quot;/data-access-request&quot; class=&quot;btn-secondary&quot;&gt;Złóż wniosek&lt;/a&gt;
+                &lt;/div&gt;
+
+                &lt;div class=&quot;right-item&quot;&gt;
+                    &lt;h3&gt;Prawo do sprostowania (Art. 16)&lt;/h3&gt;
+                    &lt;p&gt;Prawo do poprawienia nieprawidłowych lub uzupełnienia niekompletnych danych.&lt;/p&gt;
+                    &lt;a href=&quot;/data-rectification-request&quot; class=&quot;btn-secondary&quot;&gt;Złóż wniosek&lt;/a&gt;
+                &lt;/div&gt;
+
+                &lt;div class=&quot;right-item&quot;&gt;
+                    &lt;h3&gt;Prawo do usunięcia (Art. 17)&lt;/h3&gt;
+                    &lt;p&gt;Prawo do usunięcia danych w określonych przypadkach.&lt;/p&gt;
+                    &lt;a href=&quot;/data-erasure-request&quot; class=&quot;btn-secondary&quot;&gt;Złóż wniosek&lt;/a&gt;
+                &lt;/div&gt;
+
+                &lt;div class=&quot;right-item&quot;&gt;
+                    &lt;h3&gt;Prawo do ograniczenia (Art. 18)&lt;/h3&gt;
+                    &lt;p&gt;Prawo do ograniczenia przetwarzania w określonych sytuacjach.&lt;/p&gt;
+                    &lt;a href=&quot;/data-restriction-request&quot; class=&quot;btn-secondary&quot;&gt;Złóż wniosek&lt;/a&gt;
+                &lt;/div&gt;
+
+                &lt;div class=&quot;right-item&quot;&gt;
+                    &lt;h3&gt;Prawo do przenoszenia (Art. 20)&lt;/h3&gt;
+                    &lt;p&gt;Prawo do otrzymania danych w formacie umożliwiającym przeniesienie.&lt;/p&gt;
+                    &lt;a href=&quot;/data-portability-request&quot; class=&quot;btn-secondary&quot;&gt;Złóż wniosek&lt;/a&gt;
+                &lt;/div&gt;
+
+                &lt;div class=&quot;right-item&quot;&gt;
+                    &lt;h3&gt;Prawo sprzeciwu (Art. 21)&lt;/h3&gt;
+                    &lt;p&gt;Prawo do wniesienia sprzeciwu wobec przetwarzania danych.&lt;/p&gt;
+                    &lt;a href=&quot;/data-objection-request&quot; class=&quot;btn-secondary&quot;&gt;Złóż wniosek&lt;/a&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/section&gt;
+
+        &lt;section id=&quot;cookies&quot;&gt;
+            &lt;h2&gt;4. Pliki Cookies&lt;/h2&gt;
+            &lt;p&gt;Nasza strona wykorzystuje pliki cookies w następujących celach:&lt;/p&gt;
+
+            &lt;div class=&quot;cookies-categories&quot;&gt;
+                &lt;div class=&quot;cookie-category&quot;&gt;
+                    &lt;h4&gt;Niezbędne (Necessary)&lt;/h4&gt;
+                    &lt;p&gt;Umożliwiają podstawowe funkcjonowanie strony.&lt;/p&gt;
+                    &lt;ul&gt;
+                        &lt;li&gt;Sesja użytkownika&lt;/li&gt;
+                        &lt;li&gt;Preferencje językowe&lt;/li&gt;
+                        &lt;li&gt;Bezpieczeństwo&lt;/li&gt;
+                    &lt;/ul&gt;
+                    &lt;span class=&quot;cookie-status required&quot;&gt;Wymagane&lt;/span&gt;
+                &lt;/div&gt;
+
+                &lt;div class=&quot;cookie-category&quot;&gt;
+                    &lt;h4&gt;Analityczne (Analytics)&lt;/h4&gt;
+                    &lt;p&gt;Pomagają zrozumieć sposób korzystania ze strony.&lt;/p&gt;
+                    &lt;ul&gt;
+                        &lt;li&gt;Google Analytics&lt;/li&gt;
+                        &lt;li&gt;Hotjar&lt;/li&gt;
+                    &lt;/ul&gt;
+                    &lt;span class=&quot;cookie-status optional&quot;&gt;Opcjonalne&lt;/span&gt;
+                &lt;/div&gt;
+
+                &lt;div class=&quot;cookie-category&quot;&gt;
+                    &lt;h4&gt;Marketingowe (Marketing)&lt;/h4&gt;
+                    &lt;p&gt;Służą personalizacji reklam i treści.&lt;/p&gt;
+                    &lt;ul&gt;
+                        &lt;li&gt;Facebook Pixel&lt;/li&gt;
+                        &lt;li&gt;Google Ads&lt;/li&gt;
+                    &lt;/ul&gt;
+                    &lt;span class=&quot;cookie-status optional&quot;&gt;Opcjonalne&lt;/span&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&quot;cookie-controls&quot;&gt;
+                &lt;button id=&quot;manage-cookies&quot; class=&quot;btn-primary&quot;&gt;Zarządzaj cookies&lt;/button&gt;
+                &lt;button id=&quot;accept-all-cookies&quot; class=&quot;btn-secondary&quot;&gt;Akceptuj wszystkie&lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/section&gt;
+
+        &lt;section id=&quot;contact&quot;&gt;
+            &lt;h2&gt;5. Kontakt w Sprawach Ochrony Danych&lt;/h2&gt;
+            &lt;p&gt;W przypadku pytań dotyczących przetwarzania danych osobowych prosimy o kontakt:&lt;/p&gt;
+            &lt;ul&gt;
+                &lt;li&gt;Email: &lt;a href=&quot;mailto:privacy@ecm-digital.com&quot;&gt;privacy@ecm-digital.com&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;Telefon: &lt;a href=&quot;tel:+48535330323&quot;&gt;+48 535 330 323&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;Adres: [Adres korespondencyjny]&lt;/li&gt;
+            &lt;/ul&gt;
+
+            &lt;p&gt;&lt;strong&gt;Czas odpowiedzi:&lt;/strong&gt; Do 30 dni od otrzymania wniosku&lt;/p&gt;
+            &lt;p&gt;&lt;strong&gt;Prawo do skargi:&lt;/strong&gt; Przysługuje Państwu prawo wniesienia skargi do Prezesa Urzędu Ochrony Danych Osobowych.&lt;/p&gt;
+        &lt;/section&gt;
+
+        &lt;section id=&quot;updates&quot;&gt;
+            &lt;h2&gt;6. Zmiany Polityki Prywatności&lt;/h2&gt;
+            &lt;p&gt;Niniejsza polityka prywatności może być aktualizowana. O istotnych zmianach będziemy informować:&lt;/p&gt;
+            &lt;ul&gt;
+                &lt;li&gt;Poprzez powiadomienie na stronie internetowej&lt;/li&gt;
+                &lt;li&gt;Poprzez email (jeśli posiadamy Państwa adres)&lt;/li&gt;
+                &lt;li&gt;Z co najmniej 14-dniowym wyprzedzeniem&lt;/li&gt;
+            &lt;/ul&gt;
+
+            &lt;p&gt;&lt;strong&gt;Ostatnia aktualizacja:&lt;/strong&gt; &lt;time datetime=&quot;2025-01-15&quot;&gt;15 stycznia 2025&lt;/time&gt;&lt;/p&gt;
+            &lt;p&gt;&lt;strong&gt;Wersja:&lt;/strong&gt; 2.0&lt;/p&gt;
+        &lt;/section&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h2 id="consent-management-system">Consent Management System</h2>
+<h3 id="implementacja-zarzadzania-zgodami">Implementacja Zarządzania Zgodami</h3>
+<pre><code class="language-javascript">class ConsentManagementSystem {
+  constructor() {
+    this.consentTypes = {
+      necessary: {
+        required: true,
+        name: 'Niezbędne',
+        description: 'Pliki cookies niezbędne do funkcjonowania strony',
+        cookies: ['session_id', 'csrf_token', 'language_preference']
+      },
+      analytics: {
+        required: false,
+        name: 'Analityczne',
+        description: 'Pliki cookies służące do analizy ruchu na stronie',
+        cookies: ['_ga', '_gid', '_hjid', '_hjIncludedInSessionSample']
+      },
+      marketing: {
+        required: false,
+        name: 'Marketingowe',
+        description: 'Pliki cookies służące do personalizacji reklam',
+        cookies: ['_fbp', '_fbc', 'ads_preferences']
+      },
+      social: {
+        required: false,
+        name: 'Media społecznościowe',
+        description: 'Pliki cookies od platform społecznościowych',
+        cookies: ['facebook_connect', 'twitter_widget', 'linkedin_insights']
+      }
+    };
+
+    this.init();
+  }
+
+  init() {
+    this.loadStoredConsent();
+    this.setupEventListeners();
+    this.checkConsentStatus();
+  }
+
+  loadStoredConsent() {
+    const stored = localStorage.getItem('gdpr_consent');
+    if (stored) {
+      try {
+        this.currentConsent = JSON.parse(stored);
+        this.applyConsent();
+      } catch (error) {
+        console.error('Error loading stored consent:', error);
+        this.showConsentBanner();
+      }
+    } else {
+      this.showConsentBanner();
+    }
+  }
+
+  showConsentBanner() {
+    const banner = this.createConsentBanner();
+    document.body.appendChild(banner);
+  }
+
+  createConsentBanner() {
+    const banner = document.createElement('div');
+    banner.id = 'consent-banner';
+    banner.className = 'consent-banner';
+    banner.innerHTML = `
+      &lt;div class=&quot;consent-content&quot;&gt;
+        &lt;h3&gt;Szanujemy Twoją prywatność&lt;/h3&gt;
+        &lt;p&gt;Używamy plików cookies, aby zapewnić najlepsze doświadczenia na naszej stronie. Możesz zaakceptować wszystkie cookies lub dostosować swoje preferencje.&lt;/p&gt;
+
+        &lt;div class=&quot;consent-actions&quot;&gt;
+          &lt;button id=&quot;accept-all&quot; class=&quot;btn-primary&quot;&gt;Akceptuj wszystkie&lt;/button&gt;
+          &lt;button id=&quot;reject-optional&quot; class=&quot;btn-secondary&quot;&gt;Tylko niezbędne&lt;/button&gt;
+          &lt;button id=&quot;customize-consent&quot; class=&quot;btn-link&quot;&gt;Dostosuj preferencje&lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    `;
+
+    return banner;
+  }
+
+  createConsentModal() {
+    const modal = document.createElement('div');
+    modal.id = 'consent-modal';
+    modal.className = 'consent-modal';
+
+    const categoriesHtml = Object.entries(this.consentTypes).map(([key, category]) =&gt; `
+      &lt;div class=&quot;consent-category&quot;&gt;
+        &lt;div class=&quot;category-header&quot;&gt;
+          &lt;label class=&quot;toggle-switch&quot;&gt;
+            &lt;input type=&quot;checkbox&quot; 
+                   id=&quot;consent-${key}&quot; 
+                   ${category.required ? 'checked disabled' : ''}
+                   data-category=&quot;${key}&quot;&gt;
+            &lt;span class=&quot;toggle-slider&quot;&gt;&lt;/span&gt;
+          &lt;/label&gt;
+          &lt;div class=&quot;category-info&quot;&gt;
+            &lt;h4&gt;${category.name} ${category.required ? '(Wymagane)' : ''}&lt;/h4&gt;
+            &lt;p&gt;${category.description}&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;category-details&quot;&gt;
+          &lt;h5&gt;Pliki cookies:&lt;/h5&gt;
+          &lt;ul&gt;
+            ${category.cookies.map(cookie =&gt; `&lt;li&gt;&lt;code&gt;${cookie}&lt;/code&gt;&lt;/li&gt;`).join('')}
+          &lt;/ul&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    `).join('');
+
+    modal.innerHTML = `
+      &lt;div class=&quot;modal-content&quot;&gt;
+        &lt;div class=&quot;modal-header&quot;&gt;
+          &lt;h2&gt;Preferencje prywatności&lt;/h2&gt;
+          &lt;button class=&quot;modal-close&quot;&gt;&amp;times;&lt;/button&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;modal-body&quot;&gt;
+          &lt;p&gt;Wybierz, które kategorie plików cookies chcesz zaakceptować:&lt;/p&gt;
+          &lt;div class=&quot;consent-categories&quot;&gt;
+            ${categoriesHtml}
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;modal-footer&quot;&gt;
+          &lt;button id=&quot;save-preferences&quot; class=&quot;btn-primary&quot;&gt;Zapisz preferencje&lt;/button&gt;
+          &lt;button id=&quot;accept-all-modal&quot; class=&quot;btn-secondary&quot;&gt;Akceptuj wszystkie&lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    `;
+
+    return modal;
+  }
+
+  setupEventListeners() {
+    document.addEventListener('click', (e) =&gt; {
+      switch (e.target.id) {
+        case 'accept-all':
+          this.acceptAllConsent();
+          break;
+        case 'reject-optional':
+          this.acceptOnlyNecessary();
+          break;
+        case 'customize-consent':
+          this.showConsentModal();
+          break;
+        case 'save-preferences':
+          this.saveCustomPreferences();
+          break;
+        case 'accept-all-modal':
+          this.acceptAllConsent();
+          break;
+      }
+    });
+  }
+
+  acceptAllConsent() {
+    const consent = {};
+    Object.keys(this.consentTypes).forEach(key =&gt; {
+      consent[key] = true;
+    });
+
+    this.saveConsent(consent);
+    this.hideConsentUI();
+  }
+
+  acceptOnlyNecessary() {
+    const consent = {};
+    Object.keys(this.consentTypes).forEach(key =&gt; {
+      consent[key] = this.consentTypes[key].required;
+    });
+
+    this.saveConsent(consent);
+    this.hideConsentUI();
+  }
+
+  saveCustomPreferences() {
+    const consent = {};
+    Object.keys(this.consentTypes).forEach(key =&gt; {
+      const checkbox = document.getElementById(`consent-${key}`);
+      consent[key] = checkbox ? checkbox.checked : this.consentTypes[key].required;
+    });
+
+    this.saveConsent(consent);
+    this.hideConsentUI();
+  }
+
+  saveConsent(consent) {
+    const consentData = {
+      ...consent,
+      timestamp: new Date().toISOString(),
+      version: '2.0'
+    };
+
+    localStorage.setItem('gdpr_consent', JSON.stringify(consentData));
+    this.currentConsent = consentData;
+    this.applyConsent();
+
+    // Send consent to server
+    this.sendConsentToServer(consentData);
+  }
+
+  applyConsent() {
+    // Google Analytics
+    if (this.currentConsent.analytics) {
+      this.enableGoogleAnalytics();
+    } else {
+      this.disableGoogleAnalytics();
+    }
+
+    // Marketing cookies
+    if (this.currentConsent.marketing) {
+      this.enableMarketingCookies();
+    } else {
+      this.disableMarketingCookies();
+    }
+
+    // Social media cookies
+    if (this.currentConsent.social) {
+      this.enableSocialCookies();
+    } else {
+      this.disableSocialCookies();
+    }
+  }
+
+  enableGoogleAnalytics() {
+    if (typeof gtag !== 'undefined') {
+      gtag('consent', 'update', {
+        'analytics_storage': 'granted'
+      });
+    }
+  }
+
+  disableGoogleAnalytics() {
+    if (typeof gtag !== 'undefined') {
+      gtag('consent', 'update', {
+        'analytics_storage': 'denied'
+      });
+    }
+  }
+
+  async sendConsentToServer(consentData) {
+    try {
+      await fetch('/api/consent', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(consentData)
+      });
+    } catch (error) {
+      console.error('Error sending consent to server:', error);
+    }
+  }
+
+  hideConsentUI() {
+    const banner = document.getElementById('consent-banner');
+    const modal = document.getElementById('consent-modal');
+
+    if (banner) banner.remove();
+    if (modal) modal.remove();
+  }
+}
+
+// Initialize consent management
+document.addEventListener('DOMContentLoaded', () =&gt; {
+  new ConsentManagementSystem();
+});
+</code></pre>
+<h2 id="data-protection-impact-assessment-dpia">Data Protection Impact Assessment (DPIA)</h2>
+<h3 id="template-dpia">Template DPIA</h3>
+<pre><code class="language-markdown"># Ocena Skutków dla Ochrony Danych (DPIA)
+**Projekt:** [Nazwa projektu]
+**Data:** [Data przeprowadzenia]
+**Wersja:** 1.0
+
+## 1. Opis Przetwarzania Danych
+
+### 1.1 Cel Przetwarzania
+- **Główny cel:** [Opisz główny cel]
+- **Cele szczegółowe:** [Lista celów szczegółowych]
+- **Korzyści biznesowe:** [Opis korzyści]
+
+### 1.2 Podstawa Prawna
+- **Art. 6 RODO:** [Wskaż właściwą podstawę]
+- **Art. 9 RODO:** [Jeśli dotyczy danych szczególnych kategorii]
+- **Uzasadnienie:** [Dlaczego ta podstawa jest właściwa]
+
+### 1.3 Opis Procesu
+```mermaid
+graph TD
+    A[Zbieranie danych] --&gt; B[Przetwarzanie]
+    B --&gt; C[Przechowywanie]
+    C --&gt; D[Udostępnianie]
+    D --&gt; E[Usuwanie]
+</code></pre>
+<h2 id="2-dane-osobowe">2. Dane Osobowe</h2>
+<h3 id="21-kategorie-danych">2.1 Kategorie Danych</h3>
+<ul>
+<li>[ ] Dane identyfikacyjne (imię, nazwisko, PESEL)</li>
+<li>[ ] Dane kontaktowe (email, telefon, adres)</li>
+<li>[ ] Dane finansowe (numer konta, historia płatności)</li>
+<li>[ ] Dane techniczne (IP, cookies, logi)</li>
+<li>[ ] Dane behawioralne (preferencje, historia aktywności)</li>
+<li>[ ] Dane szczególnych kategorii (zdrowie, przekonania)</li>
+</ul>
+<h3 id="22-zroda-danych">2.2 Źródła Danych</h3>
+<ul>
+<li>[ ] Bezpośrednio od osoby, której dane dotyczą</li>
+<li>[ ] Od stron trzecich (partnerzy, dostawcy)</li>
+<li>[ ] Z publicznie dostępnych źródeł</li>
+<li>[ ] Z systemów automatycznych (tracking, analytics)</li>
+</ul>
+<h3 id="23-odbiorcy-danych">2.3 Odbiorcy Danych</h3>
+<ul>
+<li>[ ] Pracownicy organizacji</li>
+<li>[ ] Podwykonawcy (procesory)</li>
+<li>[ ] Partnerzy biznesowi</li>
+<li>[ ] Organy publiczne</li>
+<li>[ ] Podmioty w krajach trzecich</li>
+</ul>
+<h2 id="3-analiza-ryzyka">3. Analiza Ryzyka</h2>
+<h3 id="31-identyfikacja-zagrozen">3.1 Identyfikacja Zagrożeń</h3>
+<table>
+<thead>
+<tr>
+<th>Zagrożenie</th>
+<th>Prawdopodobieństwo</th>
+<th>Wpływ</th>
+<th>Poziom Ryzyka</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nieautoryzowany dostęp</td>
+<td>Średnie</td>
+<td>Wysokie</td>
+<td>Wysokie</td>
+</tr>
+<tr>
+<td>Utrata danych</td>
+<td>Niskie</td>
+<td>Wysokie</td>
+<td>Średnie</td>
+</tr>
+<tr>
+<td>Błędne przetwarzanie</td>
+<td>Średnie</td>
+<td>Średnie</td>
+<td>Średnie</td>
+</tr>
+<tr>
+<td>Naruszenie poufności</td>
+<td>Niskie</td>
+<td>Wysokie</td>
+<td>Średnie</td>
+</tr>
+</tbody>
+</table>
+<h3 id="32-ocena-wpywu-na-osoby">3.2 Ocena Wpływu na Osoby</h3>
+<p><strong>Potencjalne skutki dla osób, których dane dotyczą:</strong><br />
+- [ ] Dyskryminacja<br />
+- [ ] Kradzież tożsamości<br />
+- [ ] Straty finansowe<br />
+- [ ] Naruszenie reputacji<br />
+- [ ] Utrata kontroli nad danymi<br />
+- [ ] Ograniczenie praw i wolności</p>
+<h2 id="4-srodki-zabezpieczajace">4. Środki Zabezpieczające</h2>
+<h3 id="41-srodki-techniczne">4.1 Środki Techniczne</h3>
+<ul>
+<li>[ ] Szyfrowanie danych</li>
+<li>[ ] Kontrola dostępu</li>
+<li>[ ] Monitoring i logowanie</li>
+<li>[ ] Backup i recovery</li>
+<li>[ ] Firewall i antywirus</li>
+<li>[ ] Pseudonimizacja</li>
+</ul>
+<h3 id="42-srodki-organizacyjne">4.2 Środki Organizacyjne</h3>
+<ul>
+<li>[ ] Polityki bezpieczeństwa</li>
+<li>[ ] Szkolenia pracowników</li>
+<li>[ ] Procedury incydentów</li>
+<li>[ ] Audyty wewnętrzne</li>
+<li>[ ] Umowy z procesorami</li>
+<li>[ ] Privacy by design</li>
+</ul>
+<h3 id="43-srodki-prawne">4.3 Środki Prawne</h3>
+<ul>
+<li>[ ] Umowy przetwarzania</li>
+<li>[ ] Zgody użytkowników</li>
+<li>[ ] Polityki prywatności</li>
+<li>[ ] Procedury realizacji praw</li>
+<li>[ ] Umowy międzynarodowe</li>
+</ul>
+<h2 id="5-konsultacje">5. Konsultacje</h2>
+<h3 id="51-konsultacje-wewnetrzne">5.1 Konsultacje Wewnętrzne</h3>
+<ul>
+<li><strong>IOD (jeśli wyznaczony):</strong> [Opinia IOD]</li>
+<li><strong>Zespół bezpieczeństwa:</strong> [Opinia zespołu]</li>
+<li><strong>Zespół prawny:</strong> [Opinia prawna]</li>
+</ul>
+<h3 id="52-konsultacje-z-osobami-ktorych-dane-dotycza">5.2 Konsultacje z Osobami, których Dane Dotyczą</h3>
+<ul>
+<li><strong>Metoda konsultacji:</strong> [Ankieta/wywiad/forum]</li>
+<li><strong>Liczba uczestników:</strong> [Liczba]</li>
+<li><strong>Główne uwagi:</strong> [Podsumowanie uwag]</li>
+</ul>
+<h3 id="53-konsultacje-z-organem-nadzorczym">5.3 Konsultacje z Organem Nadzorczym</h3>
+<ul>
+<li><strong>Czy wymagane:</strong> [Tak/Nie]</li>
+<li><strong>Podstawa:</strong> [Art. 36 RODO]</li>
+<li><strong>Status:</strong> [Planowane/W trakcie/Zakończone]</li>
+</ul>
+<h2 id="6-wnioski-i-rekomendacje">6. Wnioski i Rekomendacje</h2>
+<h3 id="61-ocena-koncowa">6.1 Ocena Końcowa</h3>
+<p><strong>Poziom ryzyka po wdrożeniu środków:</strong> [Niskie/Średnie/Wysokie]</p>
+<h3 id="62-rekomendacje">6.2 Rekomendacje</h3>
+<ol>
+<li>[Rekomendacja 1]</li>
+<li>[Rekomendacja 2]</li>
+<li>[Rekomendacja 3]</li>
+</ol>
+<h3 id="63-plan-dziaan">6.3 Plan Działań</h3>
+<table>
+<thead>
+<tr>
+<th>Działanie</th>
+<th>Odpowiedzialny</th>
+<th>Termin</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[Działanie 1]</td>
+<td>[Osoba]</td>
+<td>[Data]</td>
+<td>[Status]</td>
+</tr>
+<tr>
+<td>[Działanie 2]</td>
+<td>[Osoba]</td>
+<td>[Data]</td>
+<td>[Status]</td>
+</tr>
+</tbody>
+</table>
+<h2 id="7-monitoring-i-przeglad">7. Monitoring i Przegląd</h2>
+<h3 id="71-wskazniki-monitorowania">7.1 Wskaźniki Monitorowania</h3>
+<ul>
+<li>Liczba incydentów bezpieczeństwa</li>
+<li>Czas odpowiedzi na żądania osób</li>
+<li>Skuteczność środków technicznych</li>
+<li>Poziom świadomości pracowników</li>
+</ul>
+<h3 id="72-harmonogram-przegladow">7.2 Harmonogram Przeglądów</h3>
+<ul>
+<li><strong>Przegląd kwartalny:</strong> [Data]</li>
+<li><strong>Przegląd roczny:</strong> [Data]</li>
+<li><strong>Przegląd po incydencie:</strong> [W razie potrzeby]</li>
+</ul>
+<hr />
+<p><strong>Zatwierdził:</strong> [Imię i nazwisko]<br />
+<strong>Stanowisko:</strong> [Stanowisko]<br />
+<strong>Data:</strong> [Data zatwierdzenia]<br />
+```</p>
+<hr />
+<p><em>Ostatnia aktualizacja: Styczeń 2025</em><br />
+<em>Wersja dokumentu: 1.0</em></p>
+</article>
+</div>
+</body></html>

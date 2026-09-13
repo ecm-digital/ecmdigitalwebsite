@@ -415,7 +415,7 @@ services:
 ### Production Deployment
 - **Frontend**: Vercel z automatic deployments
 - **Backend**: Railway/Heroku z auto-scaling
-- **Database**: Managed PostgreSQL (Supabase/Neon)
+- **Database**: Managed PostgreSQL (Neon)
 - **Cache**: Managed Redis (Upstash)
 - **Storage**: AWS S3 dla file uploads
 - **Monitoring**: Sentry + Vercel Analytics

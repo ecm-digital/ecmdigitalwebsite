@@ -110,6 +110,30 @@ Naszą misją jest tworzenie rozwiązań, które nie tylko wyglądają atrakcyjn
 
 [Dowiedz się więcej o AI Governance & AgentOps Review →](ai-governance-agentops/README.md)
 
+### [UX/UI Design](ux-ui-design/README.md)
+
+**Projektujemy interfejsy skupione na doświadczeniu użytkownika i konwersji** — od researchu, przez prototypy, po design system i handoff dla developmentu.
+
+**Kluczowe korzyści:**
+- Decyzje produktowe oparte na badaniach użytkowników
+- Spójny design system przyspieszający rozwój
+- Wyższa konwersja dzięki czytelnej ścieżce użytkownika
+- Mniej kosztownych poprawek po wdrożeniu
+
+[Dowiedz się więcej o UX/UI Design →](ux-ui-design/README.md)
+
+### [SEO i content marketing](seo-content-marketing/README.md)
+
+**Budujemy widoczność organiczną** przez audyt techniczny, strategię treści i content marketing dopasowany do lejka sprzedażowego.
+
+**Kluczowe korzyści:**
+- Więcej kwalifikowanego ruchu z Google
+- Treści, które wspierają sprzedaż i pozycjonowanie
+- Jasne KPI i comiesięczny monitoring
+- Fundament SEO pod strony WWW i e-commerce
+
+[Dowiedz się więcej o SEO i content marketing →](seo-content-marketing/README.md)
+
 ## Jak Wybrać Odpowiednią Usługę?
 
 Nie wiesz, która z naszych usług najlepiej odpowiada na Twoje potrzeby? Skorzystaj z poniższego przewodnika:
@@ -123,6 +147,8 @@ Nie wiesz, która z naszych usług najlepiej odpowiada na Twoje potrzeby? Skorzy
 | Automatyzacja procesów biznesowych | [Automatyzacje z n8n](automatyzacje-n8n/README.md) |
 | Zwiększenie ROI z kampanii social media | [Kampanie Social Media z Data Science](social-media-data-science/README.md) |
 | Rozwój i nadzór nad wdrożonym AI | [AI Governance & AgentOps Review](ai-governance-agentops/README.md) |
+| Redesign produktu / design system | [UX/UI Design](ux-ui-design/README.md) |
+| Więcej ruchu organicznego | [SEO i content marketing](seo-content-marketing/README.md) |
 
 ## Proces Współpracy
 

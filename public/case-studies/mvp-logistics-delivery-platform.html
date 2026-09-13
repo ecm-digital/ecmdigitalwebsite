@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>QuickDeliver - Platforma Dostaw Last-Mile | ECM Digital</title>
+<meta name="description" content="LogiTech Solutions chciało wejść na rynek dostaw last-mile, konkurując z firmami takimi jak Glovo, Uber Eats czy Wolt. Kluczowym założeniem było stworzenie plat"/>
+<link rel="canonical" href="https://www.ecm-digital.com/case-studies/mvp-logistics-delivery-platform.html"/>
+<style>
+:root{--bg:#05070c;--surface:#121826;--surface-2:#182033;--border:#243044;--border-2:#3a4d6b;--text:#f5f7fb;--muted:#9aa6b2;--accent:#7dd3fc;--green:#4ade80;--radius:18px}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.65}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:980px;margin:0 auto;padding:24px 20px 80px}
+.topnav{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:28px}
+.logo{font-weight:800;letter-spacing:-.03em}.logo span{color:var(--accent)}
+.btn{display:inline-flex;align-items:center;padding:12px 18px;border-radius:999px;font-weight:700;font-size:.95rem}
+.btn-primary{background:var(--accent);color:#041018}.btn-ghost{border:1px solid var(--border)}
+.hero{padding:36px 32px;border-radius:24px;border:1px solid var(--border);background:linear-gradient(160deg,#101827,#070b12);margin-bottom:22px}
+.eyebrow{display:inline-block;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+h1{margin:0 0 12px;font-size:clamp(1.7rem,4vw,2.5rem);letter-spacing:-.04em;line-height:1.15}
+.lead{margin:0 0 18px;color:var(--muted);font-size:1.05rem;max-width:740px}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.badge{padding:6px 10px;border-radius:999px;border:1px solid var(--border);background:#0d1524;color:#c7d2fe;font-size:.78rem}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.stat{padding:14px;border-radius:14px;background:rgba(255,255,255,.03);border:1px solid var(--border)}
+.stat .v{font-size:1.35rem;font-weight:800;color:var(--green)}.stat .l{font-size:.8rem;color:var(--muted);margin-top:4px}
+.section{margin-bottom:16px;padding:26px;border-radius:var(--radius);background:var(--surface);border:1px solid var(--border)}
+.section h2{margin:0 0 12px;font-size:1.3rem;letter-spacing:-.02em}
+.section h3{margin:18px 0 8px;font-size:1.05rem}
+.section p,.section li{color:var(--muted)}.section ul{margin:0;padding-left:1.15rem}.section li{margin:6px 0}
+.cta-box{margin-top:22px;padding:28px;border-radius:var(--radius);border:1px solid var(--border);background:linear-gradient(135deg,#0f172a,#121826);display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}
+.cta-box h2{margin:0 0 6px;font-size:1.25rem}.cta-box p{margin:0;color:var(--muted)}
+@media(max-width:800px){.stats{grid-template-columns:1fr 1fr}.hero,.section{padding:20px 16px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topnav">
+    <a class="logo" href="/">ECM Digital<span>.</span></a>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <a class="btn btn-ghost" href="/dokumentacja-ecm/portfolio-case-studies/">Portfolio</a>
+      <a class="btn btn-primary" href="https://calendly.com/hello-ecm-digital" target="_blank" rel="noopener">Umów konsultację</a>
+    </div>
+  </div>
+  <section class="hero">
+    <span class="eyebrow">Prototypy MVP</span>
+    <h1>QuickDeliver - Platforma Dostaw Last-Mile</h1>
+    <p class="lead">LogiTech Solutions chciało wejść na rynek dostaw last-mile, konkurując z firmami takimi jak Glovo, Uber Eats czy Wolt. Kluczowym założeniem było stworzenie platformy obsługującej nie tylko dostawy jedzenia, ale także zak</p>
+    <div class="meta"><span class="badge">LogiTech Solutions Sp. z o.o.</span><span class="badge">Logistyka / Dostawy</span><span class="badge">Prototyp MVP</span><span class="badge">7 tygodni</span><span class="badge">React Native, Python/FastAPI, PostgreSQL, Redis, AWS</span><span class="badge">Zakończony - skalowany do 5 miast</span></div>
+    
+  </section>
+  <section class="section"><h2>Wyzwanie</h2><h3>Sytuacja Wyjściowa</h3>
+<p>LogiTech Solutions chciało wejść na rynek dostaw last-mile, konkurując z firmami takimi jak Glovo, Uber Eats czy Wolt. Kluczowym założeniem było stworzenie platformy obsługującej nie tylko dostawy jedzenia, ale także zakupy spożywcze, leki i przesyłki kurierskie w modelu on-demand.</p>
+<h3>Główne Problemy do Rozwiązania</h3>
+<ul><li><strong>Optymalizacja tras</strong>: Efektywne planowanie dostaw w czasie rzeczywistym</li><li><strong>Zarządzanie kurierami</strong>: System rekrutacji, onboardingu i płatności</li><li><strong>Multi-kategoria</strong>: Obsługa różnych typów dostaw w jednej aplikacji</li><li><strong>Konkurencyjność</strong>: Jak konkurować z dużymi graczami przy ograniczonym budżecie</li></ul>
+<h3>Cele Biznesowe</h3>
+<ul><li><strong>Cel główny</strong>: Walidacja modelu multi-category delivery w średnich miastach</li><li><strong>Cele dodatkowe</strong>:</li></ul>
+<p>- Pozyskanie 200 kurierów</p>
+<p>- Przeprowadzenie 1000 dostaw testowych</p>
+<p>- Osiągnięcie średniego czasu dostawy <30 minut</p>
+<h3>Ograniczenia i Wymagania</h3>
+<ul><li><strong>Budżet</strong>: 220,000 PLN na MVP</li><li><strong>Czas</strong>: 7 tygodni do uruchomienia w pierwszym mieście</li><li><strong>Techniczne</strong>: Real-time tracking, offline capability dla kurierów</li><li><strong>Prawne</strong>: Zgodność z przepisami pracy i ubezpieczeniami</li></ul></section>
+  <section class="section"><h2>Rozwiązanie</h2><h3>Nasza Strategia</h3>
+<p>Stworzyliśmy ecosystem trzech aplikacji: aplikację dla klientów (zamówienia), aplikację dla kurierów (dostawy) i panel administracyjny (zarządzanie). Kluczowym elementem był algorytm optymalizacji tras i system dynamic pricing dostosowujący ceny do popytu.</p>
+<h3>Proces Realizacji</h3>
+<h3>Faza 1: Market Research i Architecture (1 tydzień)</h3>
+<ul><li>Analiza rynku dostaw w średnich miastach Polski</li><li>Badania z potencjalnymi kurierami i klientami</li><li>Projektowanie architektury mikrousług</li><li>Wybór technologii z fokusem na real-time capabilities</li></ul>
+<h3>Faza 2: Multi-App Design (1.5 tygodnia)</h3>
+<ul><li>UX research dla trzech różnych grup użytkowników</li><li>Design system spójny dla wszystkich aplikacji</li><li>Prototypowanie kluczowych flow (order, delivery, admin)</li><li>Testy użyteczności z kurierami</li></ul>
+<h3>Faza 3: Development Sprint (3.5 tygodnia)</h3>
+<ul><li>Implementacja aplikacji klienta (React Native)</li><li>Rozwój aplikacji kuriera z offline support</li><li>Backend API z real-time capabilities (WebSockets)</li><li>Panel administracyjny (React + Dashboard)</li></ul>
+<h3>Faza 4: Testing i Soft Launch (1 tydzień)</h3>
+<ul><li>Load testing dla 100 równoczesnych zamówień</li><li>Field testing z 20 kurierami w Krakowie</li><li>A/B testing różnych modeli cenowych</li><li>Soft launch z ograniczoną liczbą partnerów</li></ul>
+<h3>Kluczowe Funkcjonalności</h3>
+<ul><li><strong>Multi-Category Ordering</strong>: Jedzenie, zakupy, leki, przesyłki w jednej app</li><li><strong>Real-Time Tracking</strong>: Live tracking kuriera i ETA</li><li><strong>Route Optimization</strong>: AI-powered algorytm optymalizacji tras</li><li><strong>Dynamic Pricing</strong>: Ceny dostosowane do popytu i dostępności kurierów</li><li><strong>Courier Management</strong>: Onboarding, scheduling, payments dla kurierów</li></ul>
+<h3>Zastosowane Technologie</h3></section>
+  <section class="section"><h2>Rezultaty</h2><p>Rezultat</p></section>
+  <div class="cta-box">
+    <div><h2>Chcesz podobny efekt?</h2><p>Pokażemy, co da się wdrożyć w Twojej firmie — bez długiego projektu IT.</p></div>
+    <a class="btn btn-primary" href="https://calendly.com/hello-ecm-digital" target="_blank" rel="noopener">Umów konsultację</a>
+  </div>
+</div>
+</body></html>

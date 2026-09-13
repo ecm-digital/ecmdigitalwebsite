@@ -1,112 +1,132 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pl">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Case Study: Platforma szkoleniowa | ECM Digital</title>
-    <meta name="description" content="Platforma e‑learning dla firm: kursy, quizy, certyfikaty, analityka postępów, integracje SSO i płatności." />
-
-    <style>
-      :root{--bg:#0b1220;--panel:#0f172a;--muted:#9aa4b2;--primary:#3b82f6;--accent:#30D158;--border:#1f2a44}
-      *{box-sizing:border-box}
-      body{margin:0;background:var(--bg);color:#e5e7eb;font-family:'TT Hoves',system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif}
-      .container{max-width:1100px;margin:0 auto;padding:24px}
-      .card{background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:24px}
-      a{color:#60a5fa;text-decoration:none}
-      a:hover{text-decoration:underline}
-      .badge{display:inline-block;padding:6px 12px;border-radius:999px;background:#12213a;border:1px solid var(--border);font-size:12px;color:#c7d2fe;margin-right:8px}
-      .back{display:inline-flex;align-items:center;gap:8px;color:#cbd5e1}
-      .back:hover{color:#fff}
-      .h1{font-size:32px;margin:0 0 8px 0;font-weight:800}
-      .lead{color:var(--muted);margin:0 0 16px 0}
-      .grid{display:grid;grid-template-columns:1fr;gap:24px}
-      @media(min-width:900px){.grid{grid-template-columns:1.2fr .8fr}}
-      .section-title{font-size:20px;font-weight:700;margin:0 0 8px 0}
-      .muted{color:var(--muted)}
-      .cta{display:inline-block;background:linear-gradient(135deg,#007AFF,#BF5AF2);color:#fff;border:none;padding:12px 16px;border-radius:10px;font-weight:600}
-      .cta:hover{opacity:.9;text-decoration:none}
-      header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
-      .gallery{display:grid;grid-template-columns:1fr;gap:12px}
-      @media(min-width:900px){.gallery{grid-template-columns:1fr 1fr}}
-      .gallery-item{background:#0b1424;border:1px dashed var(--border);border-radius:12px;height:180px;display:flex;align-items:center;justify-content:center;color:var(--muted)}
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <header>
-        <a class="back" href="/index.html">
-          <span>←</span>
-          <span>Wróć na stronę główną</span>
-        </a>
-        <a class="cta" href="#kontakt">Skontaktuj się z nami</a>
-      </header>
-      <div class="card">
-        <div class="grid">
-          <div>
-            <h1 class="h1">Platforma szkoleniowa</h1>
-            <p class="lead">Kompletna platforma e‑learning z kursami, quizami, certyfikatami i rozbudowaną analityką postępów. Integracja SSO, płatności i automatyczne powiadomienia.</p>
-            <div style="margin:16px 0 24px 0">
-              <span class="badge">Courses</span>
-              <span class="badge">Quizzes</span>
-              <span class="badge">Certificates</span>
-            </div>
-            <h3 class="section-title">Zakres prac</h3>
-            <ul class="muted">
-              <li>Architektura treści: ścieżki, moduły, lekcje</li>
-              <li>Quizy, certyfikaty i mechanizmy zaliczeń</li>
-              <li>SSO (Google/Microsoft), role i uprawnienia</li>
-              <li>Integracje płatności i webhooki</li>
-            </ul>
-            <h3 class="section-title">Efekt</h3>
-            <p class="muted">Szybszy onboarding pracowników, standaryzacja wiedzy i przejrzyste metryki postępów oraz zaangażowania.</p>
-            <h3 class="section-title">Wyzwanie</h3>
-            <p class="muted">Rozproszone materiały szkoleniowe i brak spójnej weryfikacji wiedzy w organizacji.</p>
-            <h3 class="section-title">Rozwiązanie</h3>
-            <ul class="muted">
-              <li>Skalowalny model treści z wersjonowaniem</li>
-              <li>Silnik quizów z bankiem pytań i progiem zaliczeń</li>
-              <li>Analityka postępów, alerty i raporty</li>
-              <li>Automatyczne certyfikaty PDF</li>
-            </ul>
-            <h3 class="section-title">Rezultaty</h3>
-            <ul class="muted">
-              <li>+85% ukończeń kursów</li>
-              <li>3× szybszy onboarding</li>
-              <li>98% satysfakcji użytkowników</li>
-            </ul>
-            <h3 class="section-title">Timeline</h3>
-            <ul class="muted">
-              <li>Discovery i UX: 2 tygodnie</li>
-              <li>Implementacja: 4 tygodnie</li>
-              <li>Testy i rollout: 2 tygodnie</li>
-            </ul>
-            <h3 class="section-title">Stack technologiczny</h3>
-            <div style="margin:8px 0 20px 0">
-              <span class="badge">Next.js</span>
-              <span class="badge">PostgreSQL</span>
-              <span class="badge">Stripe</span>
-              <span class="badge">SSO</span>
-            </div>
-            <h3 class="section-title">Galeria</h3>
-            <div class="gallery">
-              <div class="gallery-item">Dashboard kursów</div>
-              <div class="gallery-item">Quiz z podpowiedziami</div>
-              <div class="gallery-item">Certyfikat końcowy</div>
-            </div>
-          </div>
-          <div>
-            <div class="card" style="background:#0b1424;border:1px dashed var(--border)">
-              <div class="muted">Miejsce na schemat architektury</div>
-              <div style="height:220px"></div>
-            </div>
-            <div style="margin-top:16px">
-              <a class="cta" href="#kontakt">Porozmawiajmy o podobnym wdrożeniu</a>
-            </div>
-          </div>
-        </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Case Study: Platforma szkoleniowa | ECM Digital</title>
+  <meta name="description" content="Platforma e-learning: kursy, quizy, certyfikaty, SSO. +85% ukończeń, 3× szybszy onboarding." />
+  <link rel="canonical" href="https://www.ecm-digital.com/case-studies/platforma-szkoleniowa.html" />
+  <style>
+:root {
+  --bg: #05070c; --bg-2: #0b1018; --surface: #121826; --surface-2: #182033;
+  --border: #243044; --border-2: #3a4d6b; --text: #f5f7fb; --muted: #9aa6b2;
+  --accent: #7dd3fc; --green: #4ade80; --red: #f87171; --radius: 18px;
+}
+* { box-sizing: border-box; }
+body { margin: 0; font-family: system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+a { color: inherit; text-decoration: none; }
+.wrap { max-width: 980px; margin: 0 auto; padding: 24px 20px 80px; }
+.topnav { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 28px; }
+.logo { font-weight: 800; letter-spacing: -0.03em; }
+.logo span { color: var(--accent); }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 12px 18px; border-radius: 999px; font-weight: 700; font-size: .95rem;
+}
+.btn-primary { background: var(--accent); color: #041018; }
+.btn-ghost { border: 1px solid var(--border); color: var(--text); }
+.btn-ghost:hover { border-color: var(--border-2); }
+.hero {
+  padding: 36px 32px; border-radius: 24px; border: 1px solid var(--border);
+  background: linear-gradient(160deg, #101827 0%, #0b1220 55%, #070b12 100%);
+  margin-bottom: 28px;
+}
+.eyebrow { display: inline-block; font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+h1 { margin: 0 0 12px; font-size: clamp(1.8rem, 4vw, 2.6rem); letter-spacing: -0.04em; line-height: 1.15; }
+.lead { margin: 0 0 24px; color: var(--muted); font-size: 1.08rem; max-width: 720px; }
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.stat { padding: 16px; border-radius: 14px; background: rgba(255,255,255,.03); border: 1px solid var(--border); }
+.stat .v { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.03em; color: var(--green); }
+.stat .l { font-size: .82rem; color: var(--muted); margin-top: 4px; }
+.section {
+  margin-bottom: 18px; padding: 28px 28px; border-radius: var(--radius);
+  background: var(--surface); border: 1px solid var(--border);
+}
+.section h2 { margin: 0 0 14px; font-size: 1.35rem; letter-spacing: -0.02em; }
+.section p, .section li { color: var(--muted); }
+.section ul { margin: 0; padding-left: 1.15rem; }
+.section li { margin: 6px 0; }
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 16px; }
+.feature {
+  padding: 18px; border-radius: 14px; background: var(--surface-2); border: 1px solid var(--border);
+}
+.feature h3 { margin: 0 0 8px; font-size: 1.02rem; color: var(--text); }
+.feature p { margin: 0; font-size: .95rem; }
+.badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.badge {
+  padding: 6px 10px; border-radius: 999px; border: 1px solid var(--border);
+  background: #0d1524; color: #c7d2fe; font-size: .78rem;
+}
+.timeline { display: grid; gap: 10px; }
+.step {
+  display: grid; grid-template-columns: 110px 1fr; gap: 12px; padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+.step:last-child { border-bottom: 0; }
+.step .when { color: var(--accent); font-weight: 700; font-size: .9rem; }
+.cta-box {
+  margin-top: 24px; padding: 28px; border-radius: var(--radius); border: 1px solid var(--border);
+  background: linear-gradient(135deg, #0f172a, #121826);
+  display: flex; justify-content: space-between; align-items: center; gap: 18px; flex-wrap: wrap;
+}
+.cta-box h2 { margin: 0 0 6px; font-size: 1.3rem; }
+.cta-box p { margin: 0; color: var(--muted); }
+@media (max-width: 800px) {
+  .stats { grid-template-columns: 1fr 1fr; }
+  .grid2 { grid-template-columns: 1fr; }
+  .step { grid-template-columns: 1fr; }
+  .hero, .section { padding: 22px 18px; }
+}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="topnav">
+      <a class="logo" href="/">ECM Digital<span>.</span></a>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <a class="btn btn-ghost" href="/dokumentacja-ecm/portfolio-case-studies/">Portfolio</a>
+        <a class="btn btn-primary" href="https://calendly.com/hello-ecm-digital" target="_blank" rel="noopener">Umów konsultację</a>
       </div>
     </div>
-  </body>
- </html>
 
+    <section class="hero">
+      <span class="eyebrow">EdTech · LMS / Next.js</span>
+      <h1>Platforma szkoleniowa dla firm</h1>
+      <p class="lead">Materiały szkoleniowe były rozproszone, a weryfikacja wiedzy — niespójna. Dostarczyliśmy LMS z kursami, quizami, certyfikatami, SSO i analityką postępów.</p>
+      <div class="stats"><div class="stat"><div class="v">+85%</div><div class="l">ukończeń kursów</div></div><div class="stat"><div class="v">3×</div><div class="l">szybszy onboarding</div></div><div class="stat"><div class="v">98%</div><div class="l">satysfakcji</div></div><div class="stat"><div class="v">SSO</div><div class="l">Google / Microsoft</div></div></div>
+    </section>
 
+    <section class="section">
+      <h2>Wyzwanie</h2>
+      <p>Organizacja szkoliła pracowników w wielu kanałach naraz — bez jednego źródła prawdy.</p>
+      <ul><li>Pliki, nagrania i checklisty rozrzucone po dyskach i mailach</li><li>Brak progu zaliczeń i spójnej certyfikacji</li><li>Managerowie nie widzieli, kto ukończył obowiązkowe szkolenia</li><li>Onboarding nowych osób trwał zbyt długo i zależał od „kto akurat ma czas”</li></ul>
+    </section>
+
+    <section class="section">
+      <h2>Rozwiązanie</h2>
+      <p>Zaprojektowaliśmy architekturę treści (ścieżki → moduły → lekcje) i silnik quizów z raportowaniem.</p>
+      <div class="grid2"><div class="feature"><h3>Ścieżki nauki</h3><p>Wersjonowane kursy z jasną progresją i wymaganiami zaliczenia.</p></div><div class="feature"><h3>Quizy i certyfikaty</h3><p>Bank pytań, próg zaliczeń i automatyczne PDF-y certyfikatów.</p></div><div class="feature"><h3>SSO i role</h3><p>Logowanie Google/Microsoft, uprawnienia admin / trener / uczestnik.</p></div><div class="feature"><h3>Analityka</h3><p>Postępy, alerty, raporty dla HR i managerów.</p></div></div>
+    </section>
+
+    <section class="section">
+      <h2>Rezultaty</h2>
+      <p>Szkolenia stały się procesem mierzalnym, a nie „zależnym od dobrej woli”.</p>
+      <ul><li>+85% wskaźnika ukończeń kursów obowiązkowych</li><li>Onboarding skrócony 3× dzięki standardowej ścieżce</li><li>98% satysfakcji użytkowników w badaniach po wdrożeniu</li><li>Pełna widoczność compliance szkoleń dla zarządu</li></ul>
+      <div class="badges"><span class="badge">Next.js</span><span class="badge">PostgreSQL</span><span class="badge">Stripe</span><span class="badge">SSO</span><span class="badge">PDF certificates</span></div>
+    </section>
+
+    <section class="section">
+      <h2>Przebieg współpracy</h2>
+      <div class="timeline"><div class="step"><div class="when">Tydzień 1–2</div><div>Discovery, UX i model treści</div></div><div class="step"><div class="when">Tydzień 3–6</div><div>Implementacja LMS, quizów i SSO</div></div><div class="step"><div class="when">Tydzień 7–8</div><div>Migracja treści, testy i rollout</div></div></div>
+    </section>
+
+    <div class="cta-box" id="kontakt">
+      <div>
+        <h2>Chcesz podobny efekt w swojej firmie?</h2>
+        <p>Pokażemy, co da się wdrożyć w 2–6 tygodni — bez długiego projektu IT.</p>
+      </div>
+      <a class="btn btn-primary" href="https://calendly.com/hello-ecm-digital" target="_blank" rel="noopener">Umów konsultację</a>
+    </div>
+  </div>
+</body>
+</html>
