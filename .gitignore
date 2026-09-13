@@ -68,3 +68,7 @@ out/
 build/
 dist/
 
+
+# Firebase
+.firebase/
+*-debug.log
